@@ -11,10 +11,8 @@ import '../../../../../App.css';
 interface ProfileData {
     name: string;
     email: string;
-    phone: number;
-    designation: string;
     company: string;
-    country: string;
+    companyType: string;
     role: string;
 }
 
@@ -36,10 +34,8 @@ const InviteNew: React.FC<InviteNewProps> = ({
     const [newData, setNewData] = useState<ProfileData>({
         name: '',
         email: '',
-        phone: 0,
-        designation: '',
         company: '',
-        country: '',
+        companyType: '',
         role: ''
     });
 
@@ -115,3 +111,4 @@ const InviteNew: React.FC<InviteNewProps> = ({
     );
 }
 
+export default InviteNew

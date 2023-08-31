@@ -11,11 +11,9 @@ import '../../../../../App.css';
 interface ProfileData {
     name: string;
     email: string;
-    phone: number;
-    designation: string;
-    company: string;
-    country: string;
     role: string;
+    company: string;
+    companyType: string;
 }
 
 interface EditInviteProps {

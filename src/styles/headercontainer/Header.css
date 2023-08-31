@@ -1,0 +1,58 @@
+.Header {
+    margin: 2rem 0rem 0rem 0rem;
+}
+
+.btn {
+	/* background-color: #fff; */
+	border: 1px solid #dbdbdb;
+	border-radius: 0.5rem;
+	box-shadow: none;
+	box-sizing: border-box;	
+	font-size: 0.9rem;
+	height: 2.6rem;
+	padding: 0.25rem 1rem;    
+}
+
+.btn:hover {
+    border-color: #b5b5b5;
+}
+
+.btn-black {
+    color: #ffffff;
+    background-color: #414652;
+}
+
+.btn-white {
+    color: #565657;
+    background-color: #ffffff;    
+}
+
+/* .btn-white:hover {
+    color: #ffffff;
+    background-color: #414652;
+} */
+
+.location-search {
+    width: 100rem;
+    margin: 20rem;
+}
+
+.header-icon {
+    margin-top: 0.5rem;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+}
+
+.subheader-btn {
+    border: none;
+    background-color: #ffffff;
+    color: #4C4C4C;
+    font-size: 0.925rem;
+}
+
+.header-search-bar {
+    min-width: 12rem !important;
+}

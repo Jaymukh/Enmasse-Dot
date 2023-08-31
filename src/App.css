@@ -469,6 +469,10 @@
 	font-size: 0.85rem;
 }
 
+.fit-content-div {
+	width: fit-content;
+}
+
 .core-sol-div {
 	border: none;
 	border-radius: 3%;

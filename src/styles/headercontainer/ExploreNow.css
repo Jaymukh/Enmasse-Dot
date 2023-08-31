@@ -1,0 +1,60 @@
+.btn {
+	/* background-color: #fff; */
+	border: 1px solid #dbdbdb;
+	border-radius: 0.5rem;
+	box-shadow: none;
+	box-sizing: border-box;	
+	font-size: 0.9rem;
+	height: 2.6rem;
+	padding: 0.25rem 1rem;    
+}
+
+.btn:hover {
+    border-color: #b5b5b5;
+}
+
+.btn-black {
+    color: #ffffff;
+    background-color: #414652;
+}
+
+.btn-white {
+    color: #565657;
+    background-color: #ffffff;    
+}
+
+.description-div {
+	width: 41.25rem;
+	max-width: 21.25rem;
+}
+
+.description-para {
+	font-size: 0.9rem;
+}
+
+.note-div {
+	background-color: #FCF1E8;
+	border-radius: 0.35rem;
+
+}
+
+.upload-btn {
+	border: 1px solid #dbdbdb;
+	border-radius: 0.35rem;
+	box-shadow: none;
+	box-sizing: border-box;	
+	font-size: 0.9rem;
+	height: 2.6rem;
+	padding: 0.25rem 1rem;   
+	color: #ffffff;
+    background-color: #111827; 
+	font-weight: 500;
+}
+
+.download-div {
+	height: 10rem;
+	border: 1px solid #dbdbdb;
+	border-radius: 0.35rem;
+	box-shadow: none;
+
+}

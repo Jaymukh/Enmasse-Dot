@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import * as MapConstants from './../utils/json/googlemapstyle';
 import axios from 'axios';
 import * as turf from '@turf/turf';
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
 
 const StaticMap: React.FC = () => {
   const [geoJSON, setGeoJSON] = useState<any>(null); // Change 'any' to the actual GeoJSON type if available

@@ -8,7 +8,7 @@ import TAMInfographic from './TAMInfographic';
 interface OverlayContainerProps {
   showInfographic: number;
   handleOverlay: (overlay: boolean) => void;
-  handleInfographic: () => void;
+  handleInfographic: (showInfographic: number) => void;
 }
 
 const OverlayContainer: React.FC<OverlayContainerProps> = ({ showInfographic, handleOverlay, handleInfographic }) => {

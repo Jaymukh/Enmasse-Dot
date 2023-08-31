@@ -12,7 +12,7 @@ import WIPDrawer from '../mapcontainer/mapoptions/WIPDrawer';
 interface HeaderProps {
   handleVisiblePanel: (index: number) => void;
   handleOverlay: (overlay: boolean) => void;
-  handleInfographic: (value: number) => void;
+  handleInfographic: (showInfographic: number) => void;
 }
 
 function Header({ handleVisiblePanel, handleOverlay, handleInfographic }: HeaderProps) {
@@ -55,7 +55,7 @@ function Header({ handleVisiblePanel, handleOverlay, handleInfographic }: Header
         <button className='border-0 btn-white' onClick={() => openWIPDrawer("Notifications")}>
           <MdNotifications fontSize={25} className='mb-1 header-icon' />
         </button>
-        <AccountOptions className='mx-2' handleVisiblePanel={handleVisiblePanel} />
+        <AccountOptions handleVisiblePanel={handleVisiblePanel} />
       </div>
 
       {open && <WIPDrawer open={open} title={title} closeWIPDrawer={closeWIPDrawer} />}

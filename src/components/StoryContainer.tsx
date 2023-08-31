@@ -1,11 +1,10 @@
 import React from 'react';
 import Header from './headercontainer/Header';
 import FamilyContainer from './familyContainer/FamilyContainer';
-
 interface StoryContainerProps {
   handleVisiblePanel: (index: number) => void;
   handleOverlay: (overlay: boolean) => void;
-  handleInfographic: () => void;
+  handleInfographic: (showInfographic: number) => void; 
 }
 
 const StoryContainer: React.FC<StoryContainerProps> = ({ handleVisiblePanel, handleOverlay, handleInfographic }) => {

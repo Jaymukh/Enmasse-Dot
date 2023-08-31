@@ -21,9 +21,7 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                             <button type="button" className="btn-close" onClick={() => handleConfirmDeleteModal(false, -1)}></button>
                         </div>
                         <div className="modal-body">
-
                             <p className='text-start '>Are you sure you want to delete this row?</p>
-
                         </div>
                         <div className="modal-footer py-1">
                             <button className=' login-btn bg-dark text-white width-fit-content-button px-4 fs-14 py-2' onClick={() => handleDeleteClick()}>Delete</button>

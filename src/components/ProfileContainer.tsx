@@ -5,7 +5,7 @@ import AccountContainer from './accountcontainer/AccountContainer';
 interface ProfileContainerProps {
   handleVisiblePanel: (index: number) => void;
   handleOverlay: (overlay: boolean) => void;
-  handleInfographic: () => void;
+  handleInfographic: (showInfographic: number) => void;
   visiblePanel: number;
 }
 

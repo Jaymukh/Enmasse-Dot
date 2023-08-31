@@ -1,0 +1,50 @@
+.btn {
+	/* background-color: #fff; */
+	border: 1px solid #dbdbdb;
+	border-radius: 0.5rem;
+	box-shadow: none;
+	box-sizing: border-box;	
+	font-size: 0.9rem;
+	height: 2.6rem;
+	padding: 0.25rem 1rem;    
+}
+
+.btn:hover {
+    border-color: #b5b5b5;
+}
+
+.btn-white {
+    color: #565657;
+    background-color: #ffffff;    
+}
+
+.drawer-header {
+    font-weight: bold !important;
+	font-size: 1.25rem !important;
+}
+
+.contact-para {
+	max-width: 21.25rem;
+}
+
+.contact-input {
+	min-width: 21.25rem !important;
+}
+
+.submit-btn {
+	border: 1px solid #dbdbdb;
+	border-radius: 0.35rem;
+	box-shadow: none;
+	box-sizing: border-box;	
+	font-size: 0.9rem;
+	height: 2.6rem;
+	padding: 0.25rem 1rem;   
+	color: #ffffff;
+    background-color: #111827; 
+	font-weight: 500;
+}
+
+.contact-num {
+	color: #797C85;
+	font-weight: 500;
+}

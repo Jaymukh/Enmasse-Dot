@@ -1,0 +1,25 @@
+.suboption-div {
+    padding-top: 0.5rem;
+}
+
+.primary-select {
+    min-width: 13rem !important;
+}
+
+.select {
+    min-width: 11rem !important;
+    margin-top: 1rem;
+}
+
+.country-text {
+    font-size: 0.6rem;
+    color: #797C85;;
+    margin-left: 0rem;
+    margin-bottom: 0.1rem;
+    width: 1px;
+}
+
+.secondary-select {
+    min-width: 8rem !important;
+    min-height: 1rem !important;
+}
