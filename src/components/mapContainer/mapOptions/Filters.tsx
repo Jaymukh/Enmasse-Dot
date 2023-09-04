@@ -10,7 +10,7 @@ function Filters() {
 	const [open, setOpen] = useState(false);
 	// const [tabValue, setTabValue] = useState('1');
 
-	const toggleDrawer = (open) => {
+	const toggleDrawer = (open: boolean) => {
 		setOpen(open);
 	};
 

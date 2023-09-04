@@ -20,7 +20,7 @@ const DashBoardContainer: React.FC<DashBoardContainerProps> = ({
         handleOverlay={handleOverlay}
         handleInfographic={handleInfographic}
       />
-      <DashBoard />
+      <DashBoard  />
     </div>
   );
 };

@@ -31,15 +31,15 @@ const districts: DistrictInfo[] = [
 
 function MapContainer() {
     const [global, setGlobal] = useState<boolean>(true);
-    const [selectedCountry, setSelectedCountry] = useState<CountryInfo | {}>({});
-    const [selectedState, setSelectedState] = useState<StateInfo | {}>({});
+    const [selectedCountry, setSelectedCountry] = useState<CountryInfo | undefined>(undefined); // Initialize with undefined
+    const [selectedState, setSelectedState] = useState<StateInfo | undefined>(undefined); // Initialize with undefined
     const [selectedDistrict, setSelectedDistrict] = useState<string>('');
     const [states, setStates] = useState<StateInfo[] | undefined>();
 
     const handleGlobal = () => {
         setGlobal(!global);
-        setSelectedCountry({});
-        setSelectedState({});
+        setSelectedCountry(undefined);
+        setSelectedState(undefined);
         setSelectedDistrict('');
     };
 
@@ -49,7 +49,7 @@ function MapContainer() {
         if (selectedItem) {
             setStates(State.getStatesOfCountry(selectedItem.isoCode));
             setSelectedCountry(selectedItem);
-            setSelectedState({});
+            setSelectedState(undefined);
             setSelectedDistrict('');
         }
     };
@@ -58,7 +58,7 @@ function MapContainer() {
         const value = event.target.value;
         if (states) {
             const selectedItem = states.find(item => item.name === value);
-            setSelectedState(selectedItem || {});
+            setSelectedState(selectedItem || undefined);
         }
     };
 
@@ -75,8 +75,8 @@ function MapContainer() {
                 handleStateChange={handleStateChange}
                 handleDistrictChange={handleDistrictChange}
                 global={global}
-                selectedCountry={selectedCountry.name}
-                selectedState={selectedState.name}
+                selectedCountry={selectedCountry?.name || ''} // Use optional chaining and default value
+                selectedState={selectedState?.name || ''}
                 selectedDistrict={selectedDistrict}
                 countries={countries.map(country => country.name)}
                 states={states?.map(state => state.name)}
@@ -84,9 +84,9 @@ function MapContainer() {
             />
             <Map
                 global={global}
-                selectedCountry={selectedCountry.name}
-                selectedCountryCode={selectedCountry.isoCode}
-                selectedState={selectedState.name}
+                selectedCountry={selectedCountry?.name || ''} // Use optional chaining and default value
+                selectedState={selectedState?.name || ''}
+                selectedCountryCode={selectedCountry?.isoCode || ''}
                 selectedDistrict={selectedDistrict}
             />
         </div>

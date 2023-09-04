@@ -6,11 +6,12 @@ import OverViewMap from './OverViewMap';
 import ScatterGraph from './ScatterGraph';
 import TableView from './TableView';
 
-const DashBoardContainer = ({ handleMapDisplay, handleDisplayDashboard }) => {
+  
+  const DashBoard = () => {
     return (
         <div className='row w-100 primary-bg m-0 pb-5'>
             <div className='col-12 p-0'>
-                <AccountHeader handleMapDisplay={handleMapDisplay} handleDisplayDashboard={handleDisplayDashboard} />
+                <AccountHeader  />
             </div>
             <div className='col-12 p-0'>
                 <FamilyDetails />
@@ -34,4 +35,4 @@ const DashBoardContainer = ({ handleMapDisplay, handleDisplayDashboard }) => {
     )
 }
 
-export default DashBoardContainer;
+export default DashBoard;

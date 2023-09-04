@@ -1,6 +1,14 @@
 import '../../App.css';
+interface StatisticsCardProps {
+    data: {
+        value: string; // Adjust the type to match the actual type of data.value
+        title: string; // Adjust the type to match the actual type of data.title
+    };
+    index: number;
+}
 
-const StatisticsCard = ({ data, index }) => {
+const StatisticsCard = ({ data, index }: StatisticsCardProps) => {
+    
     return (
         <div className={`d-flex flex-column dashboard-col align-items-start justify-content-center ps-2 py-2 my-1 ${index < 4 ? 'white-bg' : 'bg-green-card'}`}>
             <h6 className={`fs-14 m-0 pb-1 ${index < 2 ? 'black-text' : index >= 4 ? 'white-text' : 'green-text'}`}>{data.value}</h6>
