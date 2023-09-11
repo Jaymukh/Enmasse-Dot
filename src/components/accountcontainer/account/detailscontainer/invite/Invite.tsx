@@ -63,7 +63,7 @@ export default function Invite() {
 		<div className='container bg-white w-90 h-100 mt-4 detail-container me-5'>
 			<div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
 				<h5 className='mt-2 col-2'>Invite</h5>
-				<button data-testid="InviteNew" className='btn btn-outline-secondary width-fit-content-button' onClick={handleOpenInviteNew} ><AddIcon className='mx-1 mb-1 text-dark' />Invite New</button>
+				<button data-testid="NewInvite" className='btn btn-outline-secondary width-fit-content-button' onClick={handleOpenInviteNew} ><AddIcon className='mx-1 mb-1 text-dark' />Invite New</button>
 			</div>
 			<hr />
 			<div className="row w-100 d-flex justify-content-center m-auto invite-table-drawer">

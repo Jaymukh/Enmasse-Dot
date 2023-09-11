@@ -86,7 +86,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         className='btn-outline-black drawer-input-box-height p-0'
                         onChange={(e) => handleChangeData(e)}
                     >
-                        {Constants.company.map((company) => (
+                        {Constants.company?.map((company) => (
                             <MenuItem value={company.key}>{company.value}</MenuItem>
                         ))}
                     </Select>
@@ -99,7 +99,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         className='btn-outline-black drawer-input-box-height p-0'
                         onChange={(e) => handleChangeData(e)}
                     >
-                        {Constants.companyType.map((companyType) => (
+                        {Constants.companyType?.map((companyType) => (
                             <MenuItem value={companyType.key}>{companyType.value}</MenuItem>
                         ))}
                     </Select>

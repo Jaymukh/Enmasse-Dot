@@ -24,11 +24,11 @@ describe('Invite Component', () => {
   });
   it('Clicking the "Invite New" button opens the Invite New modal', () => {
     render(<Invite />);
-    const InviteButton = screen.getByTestId('InviteNew');
+    const InviteButton = screen.getByTestId('NewInvite');
     fireEvent.click(InviteButton);
     console.log(screen.debug());
-    const confirmDeleteModal = screen.getByTestId('InviteNew');
-    expect(confirmDeleteModal).toBeInTheDocument();
+    const InviteNewModal = screen.getByTestId("InviteNew");
+    expect(InviteNewModal).toBeInTheDocument();
   });
 
   it('Clicking the "Delete" button opens the ConfirmDelete modal', () => {
