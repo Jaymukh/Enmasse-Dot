@@ -10,7 +10,7 @@ const SelectYear = () => {
 
     const [selectedYear, setSelctedYear] = useState(currentYear);
 
-    const handleChangeYear = (event) => {
+    const handleChangeYear = (event: { target: { value: any; }; }) => {
         const value = event.target.value;
         setSelctedYear(value);
     }

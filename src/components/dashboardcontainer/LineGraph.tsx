@@ -56,9 +56,9 @@ const options = {
     },
     plugins: {
         tooltip: {
-            mode: 'index',
+            // mode: 'index',
             intersect: false,
-            yAlign: 'bottom',
+            // yAlign: 'bottom',
             titleColor: '#696B71', // Set the title (header) color
             bodyColor: '#696B71', // Set the body (content) color
             backgroundColor: '#ffffff', // Set the background color
@@ -71,11 +71,11 @@ const options = {
             xPadding: 12,      // Increase padding on the x-axis
             yPadding: 12,
             callbacks: {
-                label: function (context) {
+                label: function (context: any) {
                     const yLabel = context.parsed.y !== null ? context.parsed.y : '';
                     return yLabel;
                 },
-                labelColor: function (context) {
+                labelColor: function (context: any) {
                     return {
                         borderColor: 'transparent', // Hide the legend color border
                         backgroundColor: 'transparent' // Hide the legend color background

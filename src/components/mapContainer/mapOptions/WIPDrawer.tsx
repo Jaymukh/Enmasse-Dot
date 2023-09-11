@@ -1,42 +1,22 @@
 import '../../../styles/mapcontainer/mapoptions/Bookmarks.css';
 import '../../../App.css'
-import React, { useState } from 'react';
-import { FiDownload } from 'react-icons/fi';
+import React from 'react';
 import { MdClose } from 'react-icons/md';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import WorkInProgressImage from '../../../utils/images/work_in_progress.svg';
 
-function WIPDrawer({
-	open,
-	title, 
-	closeWIPDrawer
-}) {
+interface WIPDrawerProps {
+    open: boolean;
+    title: string;
+    closeWIPDrawer: () => void;
+}
 
-	// const [open, setOpen] = useState(false);
-	// const [title, setTitle] = useState('');
-
-	// const openWIPDrawer = () => {
-	// 	setOpen(true);
-	// 	setTitle('Download data');
-	// };
-	// const closeWIPDrawer = () => {
-	// 	setOpen(false);
-	// 	setTitle('');
-	// };
+const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer }) => {
 
 	return (
 		<>
-			{/* <button
-				className='btn-white px-1 me-2'
-				onClick={() => toggleWIPDrawer(true)}
-			>
-				<div className='d-flex flex-wrap'>
-					<FiDownload className='mt-1' />
-					<p className='mx-2 my-0'>Download data</p>
-				</div>
-			</button> */}
 			<Drawer
 				anchor='right'
 				open={open}

@@ -22,8 +22,8 @@ function Map({
     selectedState,
     selectedDistrict,
 }: MapProps) {
-    const [features, setFeatures] = useState<any>(); // You should replace "any" with the actual type of your features
-    const [pointFeatures, setPointFeatures] = useState<any[]>(); // Same here
+    const [features, setFeatures] = useState<any>(); 
+    const [pointFeatures, setPointFeatures] = useState<any[]>([]); // Same here
 
     const handleZoom = (event: MouseEvent, zoomIn: boolean): boolean => {
         return zoomIn;
@@ -75,7 +75,6 @@ function Map({
                 <GlobalMap
                     features={features}
                     handleImportFeature={handleImportFeature}
-                    handleZoom={handleZoom}
                 />
             ) : (
                 <StateMap

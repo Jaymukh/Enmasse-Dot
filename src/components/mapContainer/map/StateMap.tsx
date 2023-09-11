@@ -1,17 +1,25 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { GoogleMap, LoadScript, InfoWindow, Popup } from '@react-google-maps/api';
-import * as MapConstants from '../../../utils/json/googlemapstyle';
+import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api';
+import * as MapConstants from '../../../utils/json/googlemapstyle'
 import { storyFeatures } from '../../../utils/constants/Constants';
 import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
 
 interface StateMapProps {
-    features: any; // Adjust this type based on the actual data structure
-    handleImportFeature: () => void;
+    features: any;
+    handleImportFeature: (code?: string | undefined) => void;
     selectedCountry: string;
     selectedState: string;
     selectedDistrict: string;
-    pointFeatures: any[]; // Adjust this type based on the actual data structure
+    pointFeatures: any[];
+}
+interface Feature {
+    type: string;
+    id: number;
+    geometry: {
+        type: string;
+        coordinates: any;
+    };
 }
 
 const StateMap: React.FC<StateMapProps> = ({
@@ -23,8 +31,8 @@ const StateMap: React.FC<StateMapProps> = ({
     pointFeatures
 }) => {
     const mapRef = useRef(null);
-    const [map, setMap] = useState(undefined);
-    const [circles, setCircles] = useState([]);
+    const [map, setMap] = useState<google.maps.Map | null>(null);
+    const [circles, setCircles] = useState<google.maps.Circle[]>([]);
     const [viewStories, setViewStories] = useState(false);
     const [selectedRb, setSelectedRb] = useState(0);
     const [selectedCoreSoln, setSelectedCoreSoln] = useState({ key: 0, label: 'All', type: 'radius_all' });
@@ -42,21 +50,21 @@ const StateMap: React.FC<StateMapProps> = ({
         styles: MapConstants.NonGlobalMapStyle
     };
 
-    const handleMapLoad = useCallback((mapInstance) => {
+    const handleMapLoad = useCallback((mapInstance: google.maps.Map) => {
         setMap(mapInstance);
-        mapInstance.circles = [];
+        // mapInstance.circles = [];
     }, []);
 
-    const handleViewStories = (checked) => {
+    const handleViewStories = (checked: boolean | ((prevState: boolean) => boolean)) => {
         setViewStories(checked);
     }
 
-    const handleChangeRb = (event, option) => {
+    const handleChangeRb = (event: { target: { value: any; }; }, option: React.SetStateAction<{ key: number; label: string; type: string; }>) => {
         setSelectedRb(Number(event.target.value));
         setSelectedCoreSoln(option);
     };
 
-    const getColorBasedOnPopulation = (population) => {
+    const getColorBasedOnPopulation = (population: number) => {
         if (population <= 100000) {
             return '#D4E2DB';
         } else if (population <= 5000000) {
@@ -75,7 +83,7 @@ const StateMap: React.FC<StateMapProps> = ({
         setCircles([]);
     };
 
-    const handleFocused = (index) => {
+    const handleFocused = (index: number) => {
         setFocused(index);
     }
 
@@ -98,21 +106,21 @@ const StateMap: React.FC<StateMapProps> = ({
             });
 
             const bounds = new window.google.maps.LatLngBounds();
-            features.features.forEach(feature => {
+            features.features.forEach((feature: Feature) => {
                 processCoordinates(feature.geometry.coordinates);
             });
 
-            function processCoordinates(coordinates) {
+            const processCoordinates = (coordinates: any) => {
                 if (Array.isArray(coordinates[0])) {
                     // Multi-part geometry, like a polygon with holes or a multi-line string
-                    coordinates.forEach(coordSet => {
+                    coordinates.forEach((coordSet: any) => {
                         processCoordinates(coordSet);
                     });
                 } else {
                     // Single set of coordinates
                     bounds.extend(new window.google.maps.LatLng(coordinates[1], coordinates[0]));
                 }
-            }
+            };
 
             // Set map center and zoom level based on bounding box
             map.fitBounds(bounds);
@@ -138,14 +146,14 @@ const StateMap: React.FC<StateMapProps> = ({
                     return new window.google.maps.Circle({
                         center: center,
                         radius: feature.properties[radius],
-                        options: {
-                            fillColor: '#FFFFFF',
-                            fillOpacity: fillOpacity,
-                            strokeColor: '#FFFFFF',
-                            strokeOpacity: 1,
-                            strokeWeight: 1,
-                            zIndex: 100,
-                        },
+                        // options: {
+                        fillColor: '#FFFFFF',
+                        fillOpacity: fillOpacity,
+                        strokeColor: '#FFFFFF',
+                        strokeOpacity: 1,
+                        strokeWeight: 1,
+                        zIndex: 100,
+                        // },
                         map: map,
                     });
                 });

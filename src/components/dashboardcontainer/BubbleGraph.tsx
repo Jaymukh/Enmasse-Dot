@@ -3,24 +3,31 @@ import * as d3 from "d3";
 import { bubbleData } from '../../utils/constants/Constants';
 import SelectYear from "./SelectYear";
 
+interface BubbleNode {
+	name: string;
+	value: number;
+	color?: string;
+	// children?: BubbleNode[];
+}
+
 const BubbleGraph = () => {
 	const hierarchy = d3
-		.hierarchy(bubbleData)
+		.hierarchy<BubbleNode>(bubbleData)
 		.sum((d) => d.value)
-		.sort((a, b) => b.value - a.value);
+		.sort((a, b) => (b.value || 0) - (a.value || 0));
 
-	const packGenerator = d3.pack().size([500, 300]).padding(15);
+	const packGenerator = d3.pack<BubbleNode>().size([500, 300]).padding(15);
 	const root = packGenerator(hierarchy);
 
 	return (
-		<div className="white-bg py-3 dashboard-col m-4 px-4">			
+		<div className="white-bg py-3 dashboard-col m-4 px-4">
 			<div className='px-4 pt-2 d-flex justify-content-between'>
-			<h5 className="mb-0 text-start fs-14">Core Solutions by EH</h5>
-                <SelectYear />
-            </div>
-			<div style={{width:'30rem', height:'50rem' }}>
+				<h5 className="mb-0 text-start fs-14">Core Solutions by EH</h5>
+				<SelectYear />
+			</div>
+			<div style={{ width: '30rem', height: '50rem' }}>
 				<svg width={550} height={330} style={{ display: "inline-block" }}>
-				{/* <svg width='100%' height='100%' style={{ display: "inline-block" }}> */}
+					{/* <svg width='100%' height='100%' style={{ display: "inline-block" }}> */}
 					{root
 						.descendants()
 						.slice(1)
@@ -48,7 +55,8 @@ const BubbleGraph = () => {
 								alignmentBaseline="middle"
 								fill="#ffffff"
 							>
-								{`${node.data.value}%`}
+								{/* {`${node.data.value}%`} */}
+								{`${node.data.value || 0}%`}
 							</text>
 						))}
 					<g className="legend" transform="translate(90, 310)">

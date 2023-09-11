@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, Title, Tooltip, Label, ReferenceLine } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 import SelectYear from './SelectYear';
 
-const CustomizedDot = ({ cx, cy, payload }) => {
+const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
     return (
         <g>
-            {/* <circle cx={cx} cy={cy} r={6} fill="blue" /> */}
             <text x={cx} y={cy - 10} textAnchor="middle" fill="black" fontSize={12} fontWeight={500}>
                 {payload.label}
             </text>
@@ -71,7 +70,8 @@ const DashboardContainer = () => {
                     <Label angle={-90} value="INCOME" position="left" offset={0} fontWeight={500} fill='000000' fontSize={13} />
                 </YAxis>
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter data={data} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot />} />
+                <Scatter data={data} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
+
                 <ReferenceLine x={0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
                 <ReferenceLine y={0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
                 <text x={90} y={60} textAnchor="start" fill="#000000" fontSize={10}>
