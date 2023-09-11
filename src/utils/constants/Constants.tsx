@@ -699,7 +699,7 @@ export interface StoryFeatureProperties {
     radius: number;
     id: number;
     family: string;
-    annualSpend: string;
+    annualSpend: number;
     image: string;
 }
 
@@ -716,7 +716,7 @@ export const storyFeatures: StoryFeature[] = [
             radius: 15,
             id: 1,
             family: "5 Family members",
-            annualSpend: '$6000',
+            annualSpend: 6000,
             image: 'https://s3.ap-south-1.amazonaws.com/kronos-new-tarento/1/userprofile/1841/1657528681838_Ameya%20Shetty.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230807T085110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=299&X-Amz-Credential=AKIAS2D3QDFYXIAJ2TAB%2F20230807%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=fe32f142787a47fdf38bb6b994d0ac3882c862ffb42bcf2c6fa3e3d95f39d059'
         },
     },
@@ -727,7 +727,7 @@ export const storyFeatures: StoryFeature[] = [
             radius: 15,
             id: 1,
             family: "3 Family members",
-            annualSpend: '$3000',
+            annualSpend: 3000,
             image: 'https://s3.ap-south-1.amazonaws.com/kronos-new-tarento/1/userprofile/1841/1657528681838_Ameya%20Shetty.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230807T085110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=299&X-Amz-Credential=AKIAS2D3QDFYXIAJ2TAB%2F20230807%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=fe32f142787a47fdf38bb6b994d0ac3882c862ffb42bcf2c6fa3e3d95f39d059'
         },
     },
@@ -738,7 +738,7 @@ export const storyFeatures: StoryFeature[] = [
             radius: 15,
             id: 1,
             family: "6 Family members",
-            annualSpend: '$6000',
+            annualSpend: 6000,
             image: 'https://s3.ap-south-1.amazonaws.com/kronos-new-tarento/1/userprofile/1841/1657528681838_Ameya%20Shetty.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230807T085110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=299&X-Amz-Credential=AKIAS2D3QDFYXIAJ2TAB%2F20230807%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=fe32f142787a47fdf38bb6b994d0ac3882c862ffb42bcf2c6fa3e3d95f39d059'
         },
     },
@@ -749,7 +749,7 @@ export const storyFeatures: StoryFeature[] = [
             radius: 15,
             id: 1,
             family: "3 Family members",
-            annualSpend: '$5000',
+            annualSpend: 5000,
             image: 'https://s3.ap-south-1.amazonaws.com/kronos-new-tarento/1/userprofile/1841/1657528681838_Ameya%20Shetty.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230807T085110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=299&X-Amz-Credential=AKIAS2D3QDFYXIAJ2TAB%2F20230807%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=fe32f142787a47fdf38bb6b994d0ac3882c862ffb42bcf2c6fa3e3d95f39d059'
         },
     }

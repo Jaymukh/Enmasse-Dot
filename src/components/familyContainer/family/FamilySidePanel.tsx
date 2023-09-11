@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../../App.css';
-import Box from '@mui/material/Box';
 import { BiArrowBack } from 'react-icons/bi';
 import { MdOutlineArrowForward } from 'react-icons/md';
 import { families } from '../../../utils/constants/Constants';
@@ -8,11 +7,10 @@ import { FiArrowRight } from 'react-icons/fi';
 
 interface FamilySidePanelProps {
     selectedFamily: number; // Update with appropriate type
-    selectedData: any; // Update with appropriate type
     handleCarouselSlide: (index: number) => void;
 }
 
-const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selectedData, handleCarouselSlide }) => {
+const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handleCarouselSlide }) => {
     return (
         <div className='col-3 d-flex mt-4 flex-column'>
             <div className="card fam-details-card bg-white my-6 pt-3 d-flex flex-column justify-content-center align-items-center"
@@ -20,7 +18,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selec
             >
                 <h6 className="card-title">Static Map will display here</h6>
             </div>
-            <div id="carouselExampleControlsNoTouching" className="carousel slide bgcolor d-flex justify-content-between custom-carousel bg-white my-6 mx-3" data-bs-touch="false" data-bs-interval="false" width="20vw" height="8vw" >
+            <div id="carouselExampleControlsNoTouching" className="carousel slide bgcolor d-flex justify-content-between custom-carousel bg-white my-6 mx-3 carousel-width" data-bs-touch="false" data-bs-interval="false" >
                 <div className="carousel-inner">
                     {families.family.map((data, index) => (
                         <div className={`carousel-item ${index === selectedFamily ? ' active' : ''}`} key={index}>

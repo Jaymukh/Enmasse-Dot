@@ -4,23 +4,38 @@ import SelectBox from './SelectBox';
 import { FiDownload } from 'react-icons/fi';
 import { MdBookmarks } from 'react-icons/md';
 import WIPDrawer from './WIPDrawer';
+import { SelectChangeEvent } from '@mui/material';
+
+interface CountryInfo {
+    key: string;
+    name: string;
+    state: string;
+}
+
+interface StateInfo {
+    key: string;
+    name: string;
+    state: string;
+}
+
+interface DistrictInfo {
+    key: string;
+    name: string;
+    state: string;
+}
 
 interface MapOptionsProps {
     handleGlobal: () => void;
-    handleCountryChange: (event: ChangeEvent<HTMLSelectElement>) => void;
-    handleStateChange: (event: ChangeEvent<HTMLSelectElement>) => void;
-    handleDistrictChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+    handleCountryChange: (event: SelectChangeEvent) => void;
+    handleStateChange: (event: SelectChangeEvent) => void;
+    handleDistrictChange: (event: SelectChangeEvent) => void;
     global: boolean;
     selectedCountry: string;
     selectedState: string;
     selectedDistrict: string;
-    countries: string[];
-    states: string[] | undefined;
-    districts: {
-        key: string;
-        name: string;
-        state: string;
-    }[];
+    countries: CountryInfo[];
+    states: StateInfo[];
+    districts: DistrictInfo[];
 }
 
 function MapOptions({
@@ -76,7 +91,7 @@ function MapOptions({
                         <p className='country-text'>STATE</p>
                         <SelectBox
                             handleChange={handleStateChange}
-                            options={states || []}
+                            options={states}
                             selected={selectedState}
                             primary={false}
                         />
@@ -89,7 +104,7 @@ function MapOptions({
                         <p className='country-text'>DISTRICT</p>
                         <SelectBox
                             handleChange={handleDistrictChange}
-                            options={districts.map(district => district.name)}
+                            options={districts}
                             selected={selectedDistrict}
                             primary={false}
                         />

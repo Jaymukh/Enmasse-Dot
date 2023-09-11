@@ -14,7 +14,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                     {families.family.map((data, index) => (
                         <div className='col-4 family-card-container px-0' key={index}>
                             <div className="card m-2" onClick={() => handleFamilyVisible(index)}>
-                                <img className="" style={{ width: '100% !important', height: '60% !important', objectFit: 'cover !important' }} src={data.properties.image} alt="Family image" />
+                                <img className="" style={{ width: '100% !important', height: '60% !important' }} src={data.properties.image} alt="Family image" />
                                 <div className="card-body text-start">
                                     <h5 className="card-title text-left fs-18">{data.properties.familyName}</h5>
                                     <p className="card-text text-left fs-14">{data.properties.district}, {data.properties.state}, {data.properties.country}</p>

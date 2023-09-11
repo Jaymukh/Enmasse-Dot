@@ -1,11 +1,10 @@
 import React from 'react';
 
 interface FamilyDetailsContainerProps {
-    selectedFamily: number; // Update with appropriate type
     selectedData: any; // Update with appropriate type
 }
 
-const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedFamily, selectedData }) => {
+const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
     return (
         <div className='col-6 py-2 my-3' style={{ height: '98%', overflow: 'auto' }}>
             <div className="card fam-details-card white-bg mb-3 OneFamilySidePanelWidth py-3">

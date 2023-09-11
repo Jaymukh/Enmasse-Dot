@@ -17,7 +17,7 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
   const handleMapClick = (event: google.maps.MapMouseEvent) => {
     const geocoder = new window.google.maps.Geocoder();
     geocoder.geocode({ location: event.latLng }, (results, status) => {
-      if (status === 'OK' && results.length) {
+      if (status === 'OK' && Array.isArray(results) && results.length > 0) {
         const country = results.find((component) => component.types.includes('country'));
         if (country) {
           const countryCode = country.address_components?.[0]?.short_name || '';
@@ -28,6 +28,7 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
       }
     });
   };
+  
 
   const mapOptions: google.maps.MapOptions = {
     disableDefaultUI: true,

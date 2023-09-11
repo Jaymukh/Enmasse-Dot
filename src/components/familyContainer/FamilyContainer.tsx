@@ -6,7 +6,7 @@ import '../../App.css';
 import { families } from '../../utils/constants/Constants';
 
 function FamilyContainer() {
-    const [selectedFamily, setSelectedFamily] = useState<number | null>(null);
+    const [selectedFamily, setSelectedFamily] = useState<number>(0);
     const [selectedData, setSelectedData] = useState<any | null>(null);
 
     const handleFamilyVisible = (index: number) => {

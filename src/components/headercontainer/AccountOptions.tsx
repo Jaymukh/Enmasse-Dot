@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../utils/constants/routeConstants';
 
 interface AccountMenuItem {
-  key: string;
+  key: number;
   text: string;
   icon: JSX.Element;
 }
@@ -24,7 +24,7 @@ interface AccountOptionsProps {
 }
 
 const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
+  const handleClickMenuItem = (index: number) => {
     handleVisiblePanel(index);
     handleClose();
     navigate(RouteConstants.profile);
@@ -71,7 +71,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
           className='my-0 py-0'
         >
           {Constants.accountMenuItems.map((item: AccountMenuItem, index: number) => (
-            <MenuItem onClick={(event) => handleClickMenuItem(event, index)} className="menu-font-size">
+            <MenuItem key={item.key} onClick={() => handleClickMenuItem(index)} className="menu-font-size">
               <ListItemIcon>
                 {item.icon}
               </ListItemIcon>
@@ -86,7 +86,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
             Logout
           </MenuItem>
         </Menu>
-      </div> 
+      </div>
     </div>
   );
 }
