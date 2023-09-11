@@ -43,7 +43,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "testing-library/no-debugging-utils": "off"
+    }
   },
   "browserslist": {
     "production": [

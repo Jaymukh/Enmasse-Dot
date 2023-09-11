@@ -64,19 +64,22 @@ const EditInvite: React.FC<EditInviteProps> = ({
                     <input type="email" placeholder="Enter your Email ID" value={updatedData.email} name='email'
                         onChange={(e) => handleChangeData(e)} className='my-2  p-2 btn-outline-black drawer-input-box-height' />
                     <h6 className='my-1 font-87-5'>Role</h6>
-                    <input type="tel" maxLength={10} placeholder="Enter your phone number" value={updatedData.role} name='role'
+                    <input type="tel" maxLength={10} placeholder="Enter your role" value={updatedData.role} name='role'
                         onChange={(e) => handleChangeData(e)} className='my-2  p-2 btn-outline-black drawer-input-box-height' />
                     <h6 className='my-1 font-87-5'>Company</h6>
                     <Select
                         value={updatedData.company}
                         name='company'
                         displayEmpty
-                        inputProps={{ 'aria-label': 'Without label' }}
+                        inputProps={{ 'data-testid': 'company-placeholder' }}
                         className='btn-outline-black drawer-input-box-height p-0'
                         onChange={(e) => handleChangeData(e)}
+                       // data-testid="company-placeholder"
                     >
                         {Constants.company.map((company) => (
-                            <MenuItem value={company.key}>{company.value}</MenuItem>
+                            <MenuItem key={company.key} value={company.key}>
+                                {company.value}
+                            </MenuItem>
                         ))}
                     </Select>
                     <h6 className='my-1 font-87-5'>CompanyType</h6>
@@ -84,9 +87,10 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         value={updatedData.companyType}
                         name='companyType'
                         displayEmpty
-                        inputProps={{ 'aria-label': 'Without label' }}
+                        inputProps={{ 'data-testid': 'companytype-placeholder' }}
                         className='btn-outline-black drawer-input-box-height p-0'
                         onChange={(e) => handleChangeData(e)}
+                        data-testid="companyType-placeholder"
                     >
                         {Constants.companyType.map((companyType) => (
                             <MenuItem value={companyType.key}>{companyType.value}</MenuItem>

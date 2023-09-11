@@ -12,8 +12,8 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
     handleDeleteClick
 }) => {
     return (
-        <div>
-            <div className={`modal ${showConfirmDeleteModal ? 'show' : ''}`} tabIndex={-1} role="dialog" style={{ display: showConfirmDeleteModal ? 'block' : 'none' , borderStyle: 'inset'}}>
+        <div data-testid="ConfirmDelete">
+            <div  className={`modal ${showConfirmDeleteModal ? 'show' : ''}`} tabIndex={-1} role="dialog" style={{ display: showConfirmDeleteModal ? 'block' : 'none' , borderStyle: 'inset'}}>
                 <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered w-25">
                     <div className="modal-content">
                         <div className='modal-header d-flex flex-row justify-content-between w-100 pb-1'>

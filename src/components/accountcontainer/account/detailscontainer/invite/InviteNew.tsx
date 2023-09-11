@@ -52,7 +52,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
     };
 
     return (
-        <div className=''>
+        <div className='' data-testid="InviteNew">
             <Drawer
                 anchor='right'
                 open={openInviteNew}

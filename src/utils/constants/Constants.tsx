@@ -335,20 +335,16 @@ export const companyType: CompanyTypeOption[] = [
 export interface ProfileData {
     name: string;
     email: string;
-    phone: number;
-    designation: string;
     company: string;
-    country: string;
+    companyType: string;
     role: string;
   }
   
   export const profileData: ProfileData = {
     name: 'Kartik Parija',
     email: 'kartik@enmasse.world',
-    phone: 76564545,
-    designation: 'Manager',
     company: 'Enmasse',
-    country: 'India',
+    companyType: 'Enmasse',
     role: 'Admin'
   };
   
