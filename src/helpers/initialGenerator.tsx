@@ -1,4 +1,4 @@
-const initialGenerator = (value) => {
+const initialGenerator = (value: string) => {
     if(value) {
         let initaial = value.split(' ');
         return initaial[0];

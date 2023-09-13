@@ -1,4 +1,4 @@
-const RouteConstants = {
+const RouteConstants: any = {
     root: '/',
     login: '/login',
     update_password: '/update-password',

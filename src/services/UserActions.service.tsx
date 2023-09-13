@@ -13,7 +13,7 @@ const useUserService = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const login = (data) => {
+    const login = (data: any) => {
         return fetchWrapper.post(APIS.USERS.LOGIN, data)
             .then(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -57,7 +57,7 @@ const useUserService = () => {
             console.log(error);
         });
     };
-    const updateUserDetails = (updatedData) => {
+    const updateUserDetails = (updatedData: any) => {
         return fetchWrapper.put(APIS.USERS.UPDATE_LOGGED_USER, updatedData);
     }
 
@@ -65,15 +65,15 @@ const useUserService = () => {
         return fetchWrapper.post(APIS.USERS.SET_NEW_PASSWORD);
     }
 
-    const changePassword = (data) => {
+    const changePassword = (data: any) => {
         return fetchWrapper.put(APIS.USERS.CHANGE_PASSWORD, data);
     }
 
-    const inviteNew = (newUser) => {
+    const inviteNew = (newUser: any) => {
         return fetchWrapper.post(APIS.USERS.INVITE_NEW, newUser)
     }
 
-    const editInvite = (updatedUser) => {
+    const editInvite = (updatedUser: any) => {
         return fetchWrapper.post(APIS.USERS.REINVITE, updatedUser)
     }
 
@@ -81,7 +81,7 @@ const useUserService = () => {
         return fetchWrapper.get(APIS.USERS.ACCEPT_AGREEMENT);
     }
     
-    const deleteInvite = (user_id) => {
+    const deleteInvite = (user_id: string) => {
         const URL = APIS.USERS.DELETE_INVITE + user_id + '/delete/';
         return fetchWrapper.delete(URL);
     }
@@ -97,7 +97,7 @@ const useUserService = () => {
         inviteNew,
         editInvite,
         acceptAgreement,
-        deleteInvite
+        deleteInvite,
     }
 }
 

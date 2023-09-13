@@ -1,4 +1,4 @@
-const APIS = {
+const APIS: any = {
     USERS: {
         LOGIN: "/users/login/",
         LOGOUT: '/users/logout/',
