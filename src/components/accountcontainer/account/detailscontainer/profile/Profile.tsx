@@ -3,13 +3,13 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
-import { loggedUserState, LoggedUser } from "../../../../../states";
+import { loggedUserState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
 
 export default function Profile() {
 
-    const [selectedData, setSelectedData] = useState<LoggedUser | null>(null);
-    const loggedUser = useRecoilValue<LoggedUser>(loggedUserState);
+    const [selectedData, setSelectedData] = useState<User | null>(null);
+    const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
 	useEffect(() => {
 		userService.getUserDetails();

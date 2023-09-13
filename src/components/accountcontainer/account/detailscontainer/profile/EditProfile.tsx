@@ -6,11 +6,11 @@ import * as Constants from '../../../../../utils/constants/Constants'
 import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
-import { AllSettingsState, LoggedUser } from "../../../../../states";
+import { AllSettingsState, User } from "../../../../../states";
 
 interface EditProfileProps {
-    selectedData: LoggedUser;
-    handleUpdate: (updatedRow: LoggedUser) => void;
+    selectedData: User;
+    handleUpdate: (updatedRow: User) => void;
     handleCloseDialog: () => void;
 }
 
@@ -29,11 +29,11 @@ export default function EditProfile({
         settingsService.getAllSettings();
     }, []);
 
-    const [updatedData, setUpdatedData] = useState<LoggedUser>(selectedData);
+    const [updatedData, setUpdatedData] = useState<User>(selectedData);
 
     const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault();
-        const name = e.target.name as keyof LoggedUser;
+        const name = e.target.name as keyof User;
         const value = e.target.value;
         setUpdatedData({ ...updatedData, [name]: value });
     };
