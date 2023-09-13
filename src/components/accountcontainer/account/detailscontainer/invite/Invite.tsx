@@ -1,42 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../../../../App.css';
-import * as Constants from '../../../../../utils/constants/Constants'
 import EditInvite from './EditInvite';
 import InviteNew from './InviteNew';
 import ConfirmDelete from './ConfirmDelete';
-import AddIcon from '@mui/icons-material/Add';
+import { IoMdAdd } from 'react-icons/io';
+import { MdModeEdit } from 'react-icons/md';
+import { MdDeleteSweep } from 'react-icons/md';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
+import { usersState, loggedUserState, LoggedUser } from "../../../../../states";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useUserService } from '../../../../../services';
+import { toast } from 'react-toastify';
 
-interface InviteData {
-	name: string;
-	email: string;
-	role: string;
-	company: string;
-	companyType: string;
-}
 
 export default function Invite() {
-	const [inviteData, setInviteData] = useState<InviteData[]>(Constants.inviteData);
-	const [selectedData, setSelectedData] = useState<InviteData | null>(null);
+	const [selectedData, setSelectedData] = useState<LoggedUser | null>(null);
 	const [openInviteNew, setOpenInviteNew] = useState(false);
 	const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
-	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+	const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
 
-	const handleEditClick = (row: InviteData) => {
+	// all user's data
+	const [users, setUsers] = useRecoilState(usersState);
+	const userService = useUserService();
+	const loggedUser = useRecoilValue(loggedUserState);
+
+	//function to get all the users
+	useEffect(() => {
+		getUsers();
+	}, []);
+
+	const getUsers = () => {
+		userService.getAll()
+			.then((response) => {
+				if (response) {
+					setUsers(response);
+					console.log('All invited users:', response);
+				}
+			})
+			.catch(error => {
+				toast.error(error);
+			});
+
+	};
+
+	const handleEditClick = (row: LoggedUser) => {
 		setSelectedData(row);
 	};
 	const handleCloseDialog = () => {
 		setSelectedData(null);
 	};
-	const handleUpdate = (updatedRow: InviteData) => {
-		setInviteData(prevData =>
-			prevData.map(row => (row.email === updatedRow.email ? updatedRow : row))
-		);
-		handleCloseDialog();
+	const handleUpdate = (updatedRow:LoggedUser) => {
+		userService.editInvite(updatedRow)
+			.then((response) => {
+				if (response) {
+					console.log('response', response);
+					setUsers((prevData) =>
+						prevData.map((row) => (
+							row.user_id === updatedRow.user_id ? updatedRow : row
+						))
+					);
+					getUsers();
+					handleCloseDialog();
+					toast.success('Successfully Updated.');
+				}
+			})
+			.catch(error => {
+				toast.error(error);
+			});
 	};
 
+
+	// invite new drawer
 	const handleOpenInviteNew = () => {
 		setOpenInviteNew(true);
 	};
@@ -44,19 +78,34 @@ export default function Invite() {
 		setOpenInviteNew(false);
 	};
 
-	const handleConfirmDeleteModal = (show: boolean, index: number) => {
-		setShowConfirmDeleteModal(show);
-		setSelectedIndex(index);
+	// Confirm Delete Model
+	const handleConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
+		setShowConfirmDeleteModal(showConfirmDeleteModal);
+		setSelectedUserId(user_id);
 	};
-
+	// function for Delete
 	const handleDeleteClick = () => {
-		if (selectedIndex !== null) {
-			const updatedData = [...inviteData];
-			updatedData.splice(selectedIndex, 1);
-			setInviteData(updatedData);
-			handleConfirmDeleteModal(false, -1); // Pass -1 instead of null or undefined
-		}
+		userService.deleteInvite(selectedUserId)
+			.then((response) => {
+				if (response) {
+					getUsers();
+					setShowConfirmDeleteModal(false);
+				}
+			})
+			.catch(error => {
+				toast.error(error);
+			});
+
 	};
+	// function for toast message
+	/*
+	const showToast = (toastMessage) => {
+		toast.success(toastMessage, {
+			autoClose: 3000, // Set the timeout to 3 seconds (3000 milliseconds)
+		});
+	};
+	*/
+
 
 
 	return (
