@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../../../../App.css';
 import LockIcon from '@mui/icons-material/Lock';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
@@ -6,11 +6,18 @@ import Switch from '@mui/material/Switch';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
-import * as Constants from '../../../../../utils/constants/Constants';
 import ChangePassword from './ChangePassword';
 import EditSetting from './EditSetting';
+import UpdateSuccessModal from './UpdateSuccessModel';
+import { RouteConstants } from '../../../../../constants';
+import { useNavigate } from 'react-router-dom';
+import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useSettingsService } from '../../../../../services';
 
-interface SettingsProps {}
+interface SettingsProps { }
+
+
 
 const Settings: React.FC<SettingsProps> = () => {
     const AntSwitch = styled(Switch)(({ theme }) => ({
@@ -56,9 +63,15 @@ const Settings: React.FC<SettingsProps> = () => {
     }));
 
     // handle edit
+    const navigate = useNavigate();
     const [editMode, setEditMode] = useState(false);
-
-    var [open, setOpen] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(true);
+    // all settings's data
+    const settings: SettingsData = useRecoilValue(AllSettingsState);    
+    const [usersettings, setUserSettings] = useRecoilState<UserSettings>(UserSettingsState);
+    const settingsService = useSettingsService();
 
     const handleUpdateClick = () => {
         handleDrawer(false);
@@ -70,14 +83,35 @@ const Settings: React.FC<SettingsProps> = () => {
     // handle edit setting
     const handleEditClick = (editMode: boolean) => {
         setEditMode(editMode);
+        setIsDisabled(!editMode);
     };
+    //function to get logged users
+    const getLoggedUserSettings = () => {
+        settingsService.getUserSettings().then((response) => {
+            if (response) {
+                setUserSettings(response);
+            }
+        });
+    };
+    const handleShowModal = (flag:boolean , navigateFlag:boolean) => {
+        setShowModal(flag);
+        if (navigateFlag) {
+            navigate(RouteConstants.login);
+        }
+    }
+    //function to get all the users
+    useEffect(() => {
+        settingsService.getAllSettings();
+        getLoggedUserSettings();
+    }, []);
+
 
     return (
         <div className='container bg-white w-90 h-100 mt-4 detail-container me-5'>
             <div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
                 <h5 className='mt-2 col-2'>Settings</h5>
                 <div className='mt-2 col-10 d-flex justify-content-end'>
-                    <button className='btn btn-outline-secondary width-fit-content-button me-2' onClick={() => handleEditClick(true)}>
+                    <button className='btn btn-outline-secondary width-fit-content-button me-2' onClick={() => handleEditClick(!editMode)}>
                         <ModeEditIcon className='mx-1 mb-1 color-black' />
                         Edit Setting
                     </button>
@@ -91,31 +125,32 @@ const Settings: React.FC<SettingsProps> = () => {
             <div className="row w-100 h-90">
                 <div className='col-5 d-flex justify-content-start flex-column text-justify m-4'>
                     <h6 className='mt-2 text-start'>Language</h6>
-                    <select className='mb-2 btn-outline-black inputBoxHeight text-left disabled'>
-                        {Constants.languages.map((data) => (
-                            <option>{data.value}</option>
+                    <select name='language' className='mb-2 btn-outline-black inputBoxHeight text-left' value={usersettings?.language} disabled={isDisabled} >
+                        {settings?.languages?.map((data) => (
+                            <option key={data.code} value={data.name}>{data.name}</option>
                         ))}
                     </select>
                     <h6 className='mt-2 text-start'>Currency</h6>
-                    <select className='mb-2 btn-outline-black inputBoxHeight text-left disabled'>
-                        {Constants.currency.map((data) => (
-                            <option>{data.value}</option>
+                    <select name='currency' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={usersettings?.currency} disabled={isDisabled} >
+                        {settings?.currencies?.map((data) => (
+                            <option key={data.code} value={data.name}>{data.name}</option>
                         ))}
                     </select>
                     <h6 className='mt-2 text-start'>Location</h6>
-                    <select className='mb-2 btn-outline-black inputBoxHeight text-left disabled'>
-                        {Constants.location.map((data) => (
-                            <option>{data.value}</option>
+                    <select name='location' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={usersettings?.location} disabled={isDisabled} >
+                        {settings?.locations?.map((data) => (
+                            <option key={data.code} value={data.name}>{data.name}</option>
                         ))}
                     </select>
                     <Stack direction="row" alignItems="center" className='btn-outline-black d-flex justify-content-between mt-4 inputBoxHeight'>
                         <Typography className='color-black font-weight-bold fw-bold' noWrap>Receive email notifications</Typography>
-                        <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
+                        <AntSwitch inputProps={{ 'aria-label': 'ant design' }} checked={usersettings.email_notification} />
                     </Stack>
                 </div>
             </div>
             {open && (<ChangePassword open={open} handleUpdateClick={handleUpdateClick} handleDrawer={handleDrawer} />)}
             {editMode && (<EditSetting editMode={editMode} handleEditClick={handleEditClick} />)}
+            {showModal && <UpdateSuccessModal showModal={showModal} handleShowModal={handleShowModal} />}
         </div>
     )
 }

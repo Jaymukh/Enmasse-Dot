@@ -5,7 +5,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
 import HelpIcon from '@mui/icons-material/Help';
 import * as Constants from '../../../utils/constants/Constants';
 

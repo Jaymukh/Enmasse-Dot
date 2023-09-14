@@ -1,34 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
-import * as Constants from '../../../../../utils/constants/Constants';
+import { useRecoilValue } from "recoil";
+import { loggedUserState, User } from "../../../../../states";
+import { useUserService } from '../../../../../services';
 
-interface ProfileData {
-    name: string;
-    email: string;
-    phone: number;
-    designation: string;
-    company: string;
-    country: string;
-    role: string;
-}
 export default function Profile() {
 
-    // function for EditInvite dialog
-    const [profileData, setProfileData] = useState<ProfileData>(Constants.profileData);
-    const [selectedData, setSelectedData] = useState<ProfileData | null>(null);
+    const [selectedData, setSelectedData] = useState<User | null>(null);
+    const loggedUser = useRecoilValue<User>(loggedUserState);
+    const userService = useUserService();
+	useEffect(() => {
+		userService.getUserDetails();
+        console.log('loggedUser', loggedUser);
+	}, []);
 
     const handleEditClick = () => {
-        setSelectedData(profileData);
+        setSelectedData(loggedUser);
     };
     const handleCloseDialog = () => {
         setSelectedData(null);
     };
 
-    const handleUpdate = (updatedRow: ProfileData) => {
-        setProfileData(updatedRow);
-        handleCloseDialog();
+    const handleUpdate = (updatedData: any) => {
+        const payload = {...updatedData, country: 'India'};
+        userService.updateUserDetails(payload)
+			.then((response) => {
+				if (response) {
+					handleCloseDialog();
+                    userService.getUserDetails();
+					console.log('Successfully Updated.', response);
+				}
+			})
+			.catch(error => {
+				console.log('Error while updating details',error);
+			});
     };
 
     return (
@@ -49,35 +56,35 @@ export default function Profile() {
                     <ul className='edit-profile-list'>
                         <li >
                             <p className="text-muted fs-6  mb-0">Name:</p>
-                            <p className="color-black">{profileData.name}</p>
+                            <p className="color-black">{loggedUser.name}</p>
                         </li>
                         <li >
                             <p className="text-muted fs-6  mb-0">Phone:</p>
-                            <p className="color-black">{profileData.phone}</p>
+                            <p className="color-black">{loggedUser.phone_number}</p>
                         </li>
                         <li >
                             <p className="text-muted fs-6  mb-0">Company Name:</p>
-                            <p className="color-black">{profileData.company}</p>
+                            <p className="color-black">{loggedUser.company}</p>
                         </li>
                         <li >
                             <p className="text-muted fs-6  mb-0">Role:</p>
-                            <p className="color-black">{profileData.role}</p>
+                            <p className="color-black">{loggedUser.role}</p>
                         </li>
                     </ul>
                 </div>
                 <div className="col-4">
                     <ul className='edit-profile-list'>
-                        <li >
+                        <li>
                             <p className="text-muted fs-6  mb-0">Email Id:</p>
-                            <p className="color-black">{profileData.email}</p>
+                            <p className="color-black">{loggedUser.email_id}</p>
                         </li>
                         <li >
                             <p className="text-muted fs-6  mb-0">Designation:</p>
-                            <p className="color-black">{profileData.designation}</p>
+                            <p className="color-black">{loggedUser.designation}</p>
                         </li>
                         <li >
                             <p className="text-muted fs-6  mb-0">Country:</p>
-                            <p className="color-black">{profileData.country}</p>
+                            <p className="color-black">{loggedUser.country}</p>
                         </li>
                     </ul>
                 </div>
@@ -86,8 +93,6 @@ export default function Profile() {
                 <EditProfile
                     selectedData={selectedData}
                     handleCloseDialog={handleCloseDialog}
-                    // profileData={profileData}
-                    setProfileData={setProfileData}
                     handleUpdate={handleUpdate}
                 />
             )}

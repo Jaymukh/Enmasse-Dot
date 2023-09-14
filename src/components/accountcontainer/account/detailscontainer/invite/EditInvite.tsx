@@ -7,7 +7,6 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import * as Constants from '../../../../../utils/constants/Constants';
 import '../../../../../App.css';
-
 interface ProfileData {
     name: string;
     email: string;
