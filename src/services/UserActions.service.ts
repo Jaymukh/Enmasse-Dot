@@ -1,6 +1,6 @@
 import { useSetRecoilState, useRecoilState } from 'recoil';
 import { useFetchWrapper } from '../helpers';
-import { authState, loggedUserState } from '../states';
+import { authState, loggedUserState, usersState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { APIS, RouteConstants } from '../constants';
 import { toast } from "react-toastify";
