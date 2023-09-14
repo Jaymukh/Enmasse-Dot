@@ -49,8 +49,8 @@ export default function Profile() {
             </div>
             <hr />
             <div className="row w-100">
-                <div className="col-3 d-flex justify-content-center">
-                    <img src="" alt="Profile Photo" className='profile-image-box'/>
+            <div className="col-3 d-flex justify-content-center align-items-center fs-64 ms-3 mt-2 mb-4" style={{backgroundColor: loggedUser.userHSL, color: '#ffffff'}}>
+                    {loggedUser?.img ? <img src="" alt="Profile Photo" className='profile-image-box' /> : (loggedUser.initial)}
                 </div>
                 <div className="col-4">
                     <ul className='edit-profile-list'>

@@ -11,6 +11,9 @@ export interface User {
     phone_number: number;
     role: string;
     status: string;
+    img?: string;
+    initial?: string;
+    userHSL?: any;
 }
 export const usersState = atom({
     key: 'users',

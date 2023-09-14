@@ -11,7 +11,9 @@ import Divider from '@mui/material/Divider';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { MdArrowDropDown } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../utils/constants/routeConstants';
+import { RouteConstants } from '../../constants';
+import { loggedUserState } from '../../states';
+import { useRecoilValue } from 'recoil';
 
 interface AccountMenuItem {
   key: number;
@@ -27,12 +29,13 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const loggedUser = useRecoilValue(loggedUserState);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClickMenuItem = (index: number) => {
+  const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
     handleVisiblePanel(index);
     handleClose();
     navigate(RouteConstants.profile);
@@ -70,8 +73,18 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           className='my-0 py-0'
         >
+          <MenuItem onClick={(event) => handleClickMenuItem(event, 0)} className="menu-font-size" >
+            <ListItemIcon>
+              <Avatar
+                sx={{ width: 28, height: 28, fontSize: 15 }}
+              >
+                {loggedUser.initial}
+              </Avatar>
+            </ListItemIcon>
+            {loggedUser.name}
+          </MenuItem>
           {Constants.accountMenuItems.map((item: AccountMenuItem, index: number) => (
-            <MenuItem key={item.key} onClick={() => handleClickMenuItem(index)} className="menu-font-size">
+            <MenuItem key={item.key} onClick={(e) => handleClickMenuItem(e, item.key)} className="menu-font-size">
               <ListItemIcon>
                 {item.icon}
               </ListItemIcon>

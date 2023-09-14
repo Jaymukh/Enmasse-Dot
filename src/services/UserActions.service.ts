@@ -1,5 +1,5 @@
 import { useSetRecoilState, useRecoilState } from 'recoil';
-import { useFetchWrapper } from '../helpers';
+import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
 import { authState, loggedUserState, usersState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { APIS, RouteConstants } from '../constants';
@@ -51,7 +51,9 @@ const useUserService = () => {
 
     const getUserDetails = () => {
         return fetchWrapper.get(APIS.USERS.GET_LOGGED_USER).then(data => {
-            setLoggedUser(data);
+            const initial = initialGenerator(data.name);
+            const userHSL = generateHSL(data.name);
+            setLoggedUser({...data, initial: initial, userHSL: userHSL});
         })
         .catch(error => {
             console.log(error);
