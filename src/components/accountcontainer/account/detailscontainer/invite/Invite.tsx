@@ -26,22 +26,8 @@ export default function Invite() {
 
 	//function to get all the users
 	useEffect(() => {
-		getUsers();
+		userService.getAll();
 	}, []);
-
-	const getUsers = () => {
-		userService.getAll()
-			.then((response) => {
-				if (response) {
-					setUsers(response);
-					console.log('All invited users:', response);
-				}
-			})
-			.catch(error => {
-				toast.error(error);
-			});
-
-	};
 
 	const handleEditClick = (row: User) => {
 		setSelectedData(row);
@@ -49,7 +35,7 @@ export default function Invite() {
 	const handleCloseDialog = () => {
 		setSelectedData(null);
 	};
-	const handleUpdate = (updatedRow:User) => {
+	const handleUpdate = (updatedRow: User) => {
 		userService.editInvite(updatedRow)
 			.then((response) => {
 				if (response) {
@@ -59,7 +45,7 @@ export default function Invite() {
 							row.user_id === updatedRow.user_id ? updatedRow : row
 						))
 					);
-					getUsers();
+					userService.getAll();
 					handleCloseDialog();
 					toast.success('Successfully Updated.');
 				}
@@ -79,16 +65,20 @@ export default function Invite() {
 	};
 
 	// Confirm Delete Model
-	const handleConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
+	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
 		setShowConfirmDeleteModal(showConfirmDeleteModal);
 		setSelectedUserId(user_id);
 	};
+	const closeConfirmDeleteModal = () => {
+		setShowConfirmDeleteModal(false);
+	};
+	
 	// function for Delete
 	const handleDeleteClick = () => {
 		userService.deleteInvite(selectedUserId)
 			.then((response) => {
 				if (response) {
-					getUsers();
+					userService.getAll();
 					setShowConfirmDeleteModal(false);
 				}
 			})
@@ -117,7 +107,7 @@ export default function Invite() {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{users.map((row, index) => (
+							{users.map((row) => (
 								<TableRow
 									key={row.name}
 									sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -127,10 +117,10 @@ export default function Invite() {
 									<TableCell component="th" align="center" scope="row">{row.company}</TableCell>
 									<TableCell component="th" align="center" scope="row">{row.company_type}</TableCell>
 									<TableCell align="center" className='' >
-									<button type='submit' className='btn-white' onClick={() => handleEditClick(row)}>
+										<button type='submit' className='btn-white' onClick={() => handleEditClick(row)}>
 											<MdModeEdit className='color-gray' fontSize={20} />
 										</button>
-										<button type='submit' className='btn-white' onClick={() => handleConfirmDeleteModal(true, row.user_id)}>
+										<button type='submit' className='btn-white' onClick={() => openConfirmDeleteModal(true, row.user_id)}>
 											<MdDeleteSweep className='color-orange ms-2' fontSize={20} />
 										</button>
 									</TableCell>
@@ -144,11 +134,11 @@ export default function Invite() {
 				<EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
 
 			{openInviteNew &&
-				<InviteNew openInviteNew={openInviteNew} setOpenInviteNew={setOpenInviteNew} handleOpenInviteNew={handleOpenInviteNew} handleCloseInviteNew={handleCloseInviteNew} getUsers={getUsers} />}
+				<InviteNew openInviteNew={openInviteNew} handleCloseInviteNew={handleCloseInviteNew} />}
 
 			{showConfirmDeleteModal &&
 				<ConfirmDelete showConfirmDeleteModal={showConfirmDeleteModal}
-					handleConfirmDeleteModal={handleConfirmDeleteModal} handleDeleteClick={handleDeleteClick} />}
+					closeConfirmDeleteModal={closeConfirmDeleteModal} handleDeleteClick={handleDeleteClick} />}
 		</div>
 
 
