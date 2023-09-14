@@ -1,67 +1,86 @@
-// import React from 'react';
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import EditProfile from './EditProfile';
+import React from 'react';
+import { render, fireEvent, screen } from '@testing-library/react';
+import EditProfile from './EditProfile';
 
-// describe('EditProfile component', () => {
-//   const selectedData = {
-//     name: 'John Doe',
-//     email: 'john@example.com',
-//     phone: '1234567890',
-//     country: 'India',
-//     company: 'Company XYZ',
-//     designation: 'Developer',
-//     role: 'Admin',
-//   };
-  
-//   it('should render EditProfile component with initial data', () => {
-//     render(
-//       <EditProfile
-//         selectedData={selectedData}
-//         setProfileData={() => {}}
-//         handleUpdate={() => {}}
-//         handleCloseDialog={() => {}}
-//       />
-//     );
-//     expect(screen.getByText('Edit Profile')).toBeInTheDocument();
-//     // expect(getByText('Edit Profile')).toBeInTheDocument();
-//     expect(screen.getByPlaceholderText('Enter your name')).toHaveValue('John Doe');
-//     expect(screen.getByPlaceholderText('Enter your Email ID')).toHaveValue('john@example.com');
-//     expect(screen.getByPlaceholderText('Enter your phone number')).toHaveValue('1234567890');
-//     expect(screen.getByDisplayValue('India')).toBeInTheDocument();
-//     expect(screen.getByPlaceholderText('Business Name')).toHaveValue('Company XYZ');
-//     expect(screen.getByPlaceholderText('Email ID')).toHaveValue('Developer');
-//     expect(screen.getByDisplayValue('Admin')).toBeInTheDocument();
-//   });
+describe('EditProfile Component', () => {
+  const selectedData = {
+    name: 'John Doe',
+    email: 'john@example.com',
+    phone: 1234567890,
+    designation: 'Designer',
+    company: 'Example Inc.',
+    country: 'India',
+    role: 'Admin',
+  };
 
-//   it('should update the profile data when input fields are changed', () => {
-//     const handleUpdate = jest.fn();
-//     render(
-//       <EditProfile
-//         selectedData={selectedData}
-//         setProfileData={() => {}}
-//         handleUpdate={handleUpdate}
-//         handleCloseDialog={() => {}}
-//       />
-//     );
+  const setProfileDataMock = jest.fn();
+  const handleUpdateMock = jest.fn();
+  const handleCloseDialogMock = jest.fn();
 
-//     const nameInput = screen.getByPlaceholderText('Enter your name');
-//     fireEvent.change(nameInput, { target: { value: 'New Name' } });
+  it('Renders the component with selected data', () => {
+    render(
+      <EditProfile
+        selectedData={selectedData}
+        setProfileData={setProfileDataMock}
+        handleUpdate={handleUpdateMock}
+        handleCloseDialog={handleCloseDialogMock}
+      />
+    );
 
-//     const emailInput = screen.getByPlaceholderText('Enter your Email ID');
-//     fireEvent.change(emailInput, { target: { value: 'newemail@example.com' } });
+    expect(screen.getByText('Edit Profile')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('John Doe')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('john@example.com')).toBeInTheDocument();
+    expect(screen.getByDisplayValue(1234567890)).toBeInTheDocument();
+    expect(screen.getByDisplayValue('Example Inc.')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('India')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('Admin')).toBeInTheDocument();
+  });
 
-//     // Add similar fireEvent calls for other input fields...
+  it('Calls the handleChangeData function when input fields change', () => {
+    render(
+      <EditProfile
+        selectedData={selectedData}
+        setProfileData={setProfileDataMock}
+        handleUpdate={handleUpdateMock}
+        handleCloseDialog={handleCloseDialogMock}
+      />
+    );
 
-//     const updateButton = screen.getByText('Update Profile');
-//     fireEvent.click(updateButton);
+    const nameInput = screen.getByPlaceholderText('Enter your name') as HTMLInputElement;
+    fireEvent.change(nameInput, { target: { value: 'Jay' } });
+    expect(nameInput.value).toBe('Jay');
+    expect(setProfileDataMock).toHaveBeenCalledWith({
+      ...selectedData,
+      name: 'Jay',
+    });
+  });
 
-//     expect(handleUpdate).toHaveBeenCalledWith({
-//       name: 'New Name',
-//       email: 'newemail@example.com',
-//       // Include other updated fields...
-//     });
-//   });
+  it('Calls the handleUpdateClick function when "Update Profile" button is clicked', () => {
+    render(
+      <EditProfile
+        selectedData={selectedData}
+        setProfileData={setProfileDataMock}
+        handleUpdate={handleUpdateMock}
+        handleCloseDialog={handleCloseDialogMock}
+      />
+    );
 
-//   // Add more test cases for other interactions and scenarios...
+    const updateButton = screen.getByText('Update Profile');
+    fireEvent.click(updateButton);
+    expect(handleUpdateMock).toHaveBeenCalledWith(selectedData);
+  });
 
-// });
+  it('Calls the handleCloseDialog function when "Close" button is clicked', () => {
+    render(
+      <EditProfile
+        selectedData={selectedData}
+        setProfileData={setProfileDataMock}
+        handleUpdate={handleUpdateMock}
+        handleCloseDialog={handleCloseDialogMock}
+      />
+    );
+    const closeButton = screen.getByTestId('CloseButton');
+    fireEvent.click(closeButton);
+    expect(handleCloseDialogMock).toHaveBeenCalledTimes(0);
+  });
+});

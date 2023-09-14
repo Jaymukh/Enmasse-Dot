@@ -48,7 +48,7 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 
 interface CoreSolutionsProps {
     handleViewStories: (checked: boolean) => void;
-    handleChangeRb: (event: ChangeEvent<HTMLInputElement>, option: { key: string }) => void;
+    handleChangeRb: (event: ChangeEvent<HTMLInputElement>, option: Constants.Option) => void;
     selectedRb: number;
 }
 
@@ -73,7 +73,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                     type="radio"
                                     value={option.key}
                                     checked={selectedRb === option.key}
-                                    onChange={(event) => handleChangeRb(event, { key: option.key.toString() })}
+                                    onChange={(event) => handleChangeRb(event,  option )}
                                 />
                                 {option.label}
                             </label>

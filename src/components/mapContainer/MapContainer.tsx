@@ -3,13 +3,15 @@ import React, { useState, ChangeEvent } from 'react';
 import MapOptions from './mapoptions/MapOptions';
 import Map from './map/Map';
 import { Country, State } from 'country-state-city';
+import { SelectChangeEvent } from '@mui/material';
 
 interface CountryInfo {
-    name: string;
     isoCode: string;
+    name: string;
 }
 
 interface StateInfo {
+    isoCode: string;
     name: string;
 }
 
@@ -43,7 +45,7 @@ function MapContainer() {
         setSelectedDistrict('');
     };
 
-    const handleCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const handleCountryChange = (event: SelectChangeEvent) => {
         const value = event.target.value;
         const selectedItem = countries.find(item => item.name === value);
         if (selectedItem) {
@@ -54,7 +56,7 @@ function MapContainer() {
         }
     };
 
-    const handleStateChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const handleStateChange = (event: SelectChangeEvent) => {
         const value = event.target.value;
         if (states) {
             const selectedItem = states.find(item => item.name === value);
@@ -62,8 +64,8 @@ function MapContainer() {
         }
     };
 
-    const handleDistrictChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        const value = event.target.value;
+    const handleDistrictChange = (event: SelectChangeEvent) => {
+        const value = event.target.value as string;
         setSelectedDistrict(value);
     };
 
@@ -78,8 +80,9 @@ function MapContainer() {
                 selectedCountry={selectedCountry?.name || ''} // Use optional chaining and default value
                 selectedState={selectedState?.name || ''}
                 selectedDistrict={selectedDistrict}
-                countries={countries.map(country => country.name)}
-                states={states?.map(state => state.name)}
+                // countries={countries.map(country => country.name)}
+                countries={countries}
+                states={states}
                 districts={districts}
             />
             <Map

@@ -14,11 +14,12 @@ interface FamilyProps {
 function Family({ selectedFamily, handleCarouselSlide, selectedData }: FamilyProps) {
     return (
         <>
-            <FamilySidePanel selectedFamily={selectedFamily} selectedData={selectedData} handleCarouselSlide={handleCarouselSlide} />
+            <FamilySidePanel selectedFamily={selectedFamily} handleCarouselSlide={handleCarouselSlide} />
 
             {selectedData.properties.familyDetails ?
-                <FamilyDetailsContainer selectedData={selectedData} handleCarouselSlide={handleCarouselSlide} /> :
-                <FamilyDetailsEmptyContainer selectedData={selectedData} handleCarouselSlide={handleCarouselSlide} />}
+                <FamilyDetailsContainer selectedData={selectedData} /> :
+                <FamilyDetailsEmptyContainer selectedData={selectedData}  />
+            }
 
             <DistrictSidebar selectedData={selectedData} />
         </>

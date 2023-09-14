@@ -594,6 +594,11 @@
 	height: 4rem;
 	padding: 0.25rem !important;
 }
+.info-window.options {
+	padding: 0;
+	max-width: 250;
+	border-radius: 0%;
+}
 
 .map-popup-grey-text {
 	font-size: 0.825rem;
@@ -785,7 +790,10 @@ th {
 	border-radius: 50%;
 	background-color: black;
 } */
-
+.carousel-width {
+	width: 20vw;
+	height: 8vh;
+}
 .PrevBtn {
 	left: -1.2rem;
 	background-color: white;

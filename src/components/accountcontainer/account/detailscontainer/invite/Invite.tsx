@@ -16,8 +16,14 @@ interface InviteData {
 	company: string;
 	companyType: string;
 }
+interface InviteProps {
+	// Define any props needed for the component here
+	handleEditClick: (row:InviteData) => void;
+	handleConfirmDeleteModal:(show: true, index: 0)=> void;
+	handleOpenInviteNew:()=>void;
+  }
 
-export default function Invite() {
+export default function Invite(props: InviteProps) {
 	const [inviteData, setInviteData] = useState<InviteData[]>(Constants.inviteData);
 	const [selectedData, setSelectedData] = useState<InviteData | null>(null);
 	const [openInviteNew, setOpenInviteNew] = useState(false);
@@ -58,7 +64,6 @@ export default function Invite() {
 		}
 	};
 
-
 	return (
 		<div className='container bg-white w-90 h-100 mt-4 detail-container me-5'>
 			<div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
@@ -81,15 +86,16 @@ export default function Invite() {
 						<TableBody>
 							{inviteData.map((row, index) => (
 								<TableRow
+								data-testid="cells"
 									key={row.name}
 									sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 								>
-									<TableCell component="th" scope="row">{row.name}<br />{row.email} </TableCell>
-									<TableCell component="th" align="center" scope="row" sx={{ fontSize: '16px' }}><div className='color-green'>{row.role}</div></TableCell>
-									<TableCell component="th" align="center" scope="row">{row.company}</TableCell>
-									<TableCell component="th" align="center" scope="row">{row.companyType}</TableCell>
+									<TableCell component="th" scope="row" >{row.name}<br />{row.email} </TableCell>
+									<TableCell  component="th" align="center" scope="row" sx={{ fontSize: '16px' }}><div data-testid="rolecell" className='color-green'>{row.role}</div></TableCell>
+									<TableCell data-testid="cellsCompany" component="th" align="center" scope="row">{row.company}</TableCell>
+									<TableCell data-testid="cellsCompanyType" component="th" align="center" scope="row">{row.companyType}</TableCell>
 									<TableCell align="center" className='' >
-										<button className='btn-white'>
+										<button className='btn-white'data-testid="EditInviteBtn">
 											<EditIcon className='color-gray' onClick={() => handleEditClick(row)} />
 										</button>
 										<button className='btn-white'>

@@ -41,7 +41,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
         handleUpdate(updatedData);
     };
     return (
-        <div className=''>
+        <div className='' data-testid="InviteEdit">
             <Drawer
                 anchor='right'
                 open={selectedData !== null}
@@ -74,9 +74,9 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         inputProps={{ 'data-testid': 'company-placeholder' }}
                         className='btn-outline-black drawer-input-box-height p-0'
                         onChange={(e) => handleChangeData(e)}
-                       // data-testid="company-placeholder"
+                       //data-testid="company-placeholder"
                     >
-                        {Constants.company.map((company) => (
+                        {Constants.company?.map((company) => (
                             <MenuItem key={company.key} value={company.key}>
                                 {company.value}
                             </MenuItem>
@@ -92,7 +92,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         onChange={(e) => handleChangeData(e)}
                         data-testid="companyType-placeholder"
                     >
-                        {Constants.companyType.map((companyType) => (
+                        {Constants.companyType?.map((companyType) => (
                             <MenuItem value={companyType.key}>{companyType.value}</MenuItem>
                         ))}
                     </Select>

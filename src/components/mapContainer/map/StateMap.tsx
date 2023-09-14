@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
+import '../../../App.css';
 import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api';
 import * as MapConstants from '../../../utils/json/googlemapstyle'
-import { storyFeatures } from '../../../utils/constants/Constants';
+import * as Constants from '../../../utils/constants/Constants';
 import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
+import { option } from 'yargs';
 
 interface StateMapProps {
     features: any;
@@ -59,7 +61,7 @@ const StateMap: React.FC<StateMapProps> = ({
         setViewStories(checked);
     }
 
-    const handleChangeRb = (event: { target: { value: any; }; }, option: React.SetStateAction<{ key: number; label: string; type: string; }>) => {
+    const handleChangeRb = (event: { target: { value: any; }; }, option: Constants.Option) => {
         setSelectedRb(Number(event.target.value));
         setSelectedCoreSoln(option);
     };
@@ -171,42 +173,41 @@ const StateMap: React.FC<StateMapProps> = ({
     return (
         <div className='row'
             style={{ height: '81vh', width: '100vw', zIndex: 999 }}>
-            <LoadScript
-                googleMapsApiKey={apiKey}
-            // libraries={["drawing", "visualization", "geometry", "places"]}
-            >
-                <GoogleMap
-                    ref={mapRef}
-                    zoom={4}
-                    mapContainerStyle={MapConstants.containerStyle}
-                    center={center}
-                    onLoad={handleMapLoad}
-                    options={mapOptions}
+            {apiKey && (
+                <LoadScript
+                    googleMapsApiKey={apiKey}
+                // libraries={["drawing", "visualization", "geometry", "places"]}
                 >
-                    {storyFeatures && viewStories && (
-                        storyFeatures.map((feature, index) => (
-                            <InfoWindow
-                                className='info-window'
-                                position={feature.position}
+                    <GoogleMap
+                        ref={mapRef}
+                        zoom={4}
+                        mapContainerStyle={MapConstants.containerStyle}
+                        center={center}
+                        onLoad={handleMapLoad}
+                        options={mapOptions}
+                    >
+                        {Constants.storyFeatures && viewStories && (
+                            Constants.storyFeatures.map((feature, index) => (
+                                <InfoWindow
+                                    position={feature.position}
                                 // onClose={handleHoverEnd}
-                                closeButton={false}
-                                options={{
-                                    padding: 0,
-                                    maxWidth: 250,
-                                    borderRadius: 0,
-                                    zIndex: focused === index ? 1000 : 0
-                                }}
-                            >
-                                <MapPopup
-                                    properties={feature.properties}
-                                    handleFocused={handleFocused}
-                                    index={index}
-                                />
-                            </InfoWindow>
-                        ))
-                    )}
-                </GoogleMap>
-            </LoadScript>
+                                //closeButton={false}
+                                >
+                                    <div className='info-window'>
+                                        <div className="info-window options" style={{ zIndex: focused === index ? 1000 : 0 }}>
+                                            <MapPopup
+                                                properties={feature.properties}
+                                                handleFocused={handleFocused}
+                                                index={index}
+                                            />
+                                        </div>
+                                    </div>
+                                </InfoWindow>
+                            ))
+                        )}
+                    </GoogleMap>
+                </LoadScript>
+            )}
             <CoreSolutions handleViewStories={handleViewStories} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
         </div>
     )

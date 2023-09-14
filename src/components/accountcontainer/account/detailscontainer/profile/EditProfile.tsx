@@ -56,7 +56,7 @@ export default function EditProfile({
                     <h5 className=''>
                         Edit Profile
                     </h5>
-                    <button className='bg-white border-0'>
+                    <button className='bg-white border-0' data-testid="CloseButton">
                         <CloseIcon onClick={handleCloseDialog} />
                     </button>
                 </Box>
