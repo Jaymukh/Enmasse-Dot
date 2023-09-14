@@ -1,20 +1,16 @@
 import '../../../styles/mapcontainer/mapoptions/PrimarySelect.css';
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 
-interface Option {
-	isoCOde: string;
-    name: string;
-  }
-  
-  interface SelectBoxProps {
-    handleChange: (event: SelectChangeEvent) => void;
-    options: Option[];
-    selected: string;
-    primary?: boolean;
+
+interface SelectBoxProps {
+	handleChange: (event: SelectChangeEvent) => void;
+	options: any;
+	selected: string;
+	primary?: boolean;
 }
-  
-  function SelectBox({ handleChange, options, selected, primary }: SelectBoxProps) {
+
+function SelectBox({ handleChange, options, selected, primary }: SelectBoxProps) {
 	return (
 		<div className='primary-select-box'>
 			<Select
@@ -25,7 +21,7 @@ interface Option {
 				size='small'
 				placeholder='SELECT'
 			>
-				{options.map((option) => (
+				{options.map((option: any) => (
 					<MenuItem key={option.isoCode} value={option.name} className="menu-font-size">
 						{option.name}
 					</MenuItem>

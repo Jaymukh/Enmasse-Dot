@@ -15,19 +15,15 @@ interface MapProps {
     selectedDistrict: string;
 }
 
-function Map({
+const Map: React.FC<MapProps> =({
     global,
     selectedCountry,
     selectedCountryCode,
     selectedState,
     selectedDistrict,
-}: MapProps) {
-    const [features, setFeatures] = useState<any>(); 
+}) => {
+    const [features, setFeatures] = useState<any>();
     const [pointFeatures, setPointFeatures] = useState<any[]>([]); // Same here
-
-    const handleZoom = (event: MouseEvent, zoomIn: boolean): boolean => {
-        return zoomIn;
-    };
 
     const handleImportFeature = async (code: string | undefined) => {
         try {
@@ -75,7 +71,7 @@ function Map({
                 <GlobalMap
                     features={features}
                     handleImportFeature={handleImportFeature}
-                />
+                    />
             ) : (
                 <StateMap
                     features={features}
