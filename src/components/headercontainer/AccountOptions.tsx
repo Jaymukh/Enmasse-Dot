@@ -16,92 +16,92 @@ import { loggedUserState } from '../../states';
 import { useRecoilValue } from 'recoil';
 
 interface AccountMenuItem {
-  key: number;
-  text: string;
-  icon: JSX.Element;
+	key: number;
+	text: string;
+	icon: JSX.Element;
 }
 
 interface AccountOptionsProps {
-  handleVisiblePanel: (index: number) => void;
+	handleVisiblePanel: (index: number) => void;
 }
 
 const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) => {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const open = Boolean(anchorEl);
-  const navigate = useNavigate();
-  const loggedUser = useRecoilValue(loggedUserState);
+	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+	const open = Boolean(anchorEl);
+	const navigate = useNavigate();
+	const loggedUser = useRecoilValue(loggedUserState);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
 
-  const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
-    handleVisiblePanel(index);
-    handleClose();
-    navigate(RouteConstants.profile);
-  };
+	const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
+		handleVisiblePanel(index);
+		handleClose();
+		navigate(RouteConstants.profile);
+	};
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
 
-  return (
-    <div>
-      <div>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-          >
-            <Avatar sx={{ width: 30, height: 30, fontSize: 16 }}>M</Avatar>
-            <MdArrowDropDown className='mx-1' fontSize={25} />
-          </IconButton>
-        </Tooltip>
-      </div>
-      <div>
-        <Menu
-          anchorEl={anchorEl}
-          id="account-menu"
-          open={open}
-          onClose={handleClose}
-          onClick={handleClose}
-          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-          className='my-0 py-0'
-        >
-          <MenuItem onClick={(event) => handleClickMenuItem(event, 0)} className="menu-font-size" >
-            <ListItemIcon>
-              <Avatar
-                sx={{ width: 28, height: 28, fontSize: 15 }}
-              >
-                {loggedUser.initial}
-              </Avatar>
-            </ListItemIcon>
-            {loggedUser.name}
-          </MenuItem>
-          {Constants.accountMenuItems.map((item: AccountMenuItem, index: number) => (
-            <MenuItem key={item.key} onClick={(e) => handleClickMenuItem(e, item.key)} className="menu-font-size">
-              <ListItemIcon>
-                {item.icon}
-              </ListItemIcon>
-              {item.text}
-            </MenuItem>
-          ))}
-          <Divider className='my-0' />
-          <MenuItem onClick={handleClose} className="menu-font-size mb-0">
-            <ListItemIcon>
-              <LogoutIcon fontSize="small" />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
-        </Menu>
-      </div>
-    </div>
-  );
+	return (
+		<div>
+			<div>
+				<Tooltip title="Account settings">
+					<IconButton
+						onClick={handleClick}
+						size="small"
+						sx={{ ml: 2 }}
+						aria-controls={open ? 'account-menu' : undefined}
+						aria-haspopup="true"
+						aria-expanded={open ? 'true' : undefined}
+					>
+						<Avatar sx={{ width: 30, height: 30, fontSize: 16 }}>M</Avatar>
+						<MdArrowDropDown className='mx-1' fontSize={25} />
+					</IconButton>
+				</Tooltip>
+			</div>
+			<div>
+				<Menu
+					anchorEl={anchorEl}
+					id="account-menu"
+					open={open}
+					onClose={handleClose}
+					onClick={handleClose}
+					transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+					anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+					className='my-0 py-0'
+				>
+					<MenuItem onClick={(event) => handleClickMenuItem(event, 0)} className="menu-font-size" >
+						<ListItemIcon>
+							<Avatar
+								sx={{ width: 28, height: 28, fontSize: 15 }}
+							>
+								{loggedUser.initial}
+							</Avatar>
+						</ListItemIcon>
+						{loggedUser.name}
+					</MenuItem>
+					{Constants.accountMenuItems.map((item: AccountMenuItem, index: number) => (
+						<MenuItem key={item.key} onClick={(e) => handleClickMenuItem(e, item.key)} className="menu-font-size">
+							<ListItemIcon>
+								{item.icon}
+							</ListItemIcon>
+							{item.text}
+						</MenuItem>
+					))}
+					<Divider className='my-0' />
+					<MenuItem onClick={handleClose} className="menu-font-size mb-0">
+						<ListItemIcon>
+							<LogoutIcon fontSize="small" />
+						</ListItemIcon>
+						Logout
+					</MenuItem>
+				</Menu>
+			</div>
+		</div>
+	);
 }
 
 export default AccountOptions;

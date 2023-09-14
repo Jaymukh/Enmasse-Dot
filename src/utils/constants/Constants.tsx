@@ -34,6 +34,9 @@ export interface Option {
 
 // Enmasse-Dot\src\components\InsightBar.tsx
 export interface CountryData {
+    tam: ReactNode;
+    medianSpendonCoreSoln: ReactNode;
+    households: ReactNode;
     country: string;
     population: string;
     annualAverageIncome: string;
