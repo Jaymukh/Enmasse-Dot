@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../../utils/constants/routeConstants';
+import { RouteConstants } from '../../../constants';
 
 interface MapPopupProps {
     properties: {

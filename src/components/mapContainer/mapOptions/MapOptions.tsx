@@ -6,24 +6,6 @@ import { MdBookmarks } from 'react-icons/md';
 import WIPDrawer from './WIPDrawer';
 import { SelectChangeEvent } from '@mui/material';
 
-interface CountryInfo {
-    key: string;
-    name: string;
-    state: string;
-}
-
-interface StateInfo {
-    key: string;
-    name: string;
-    state: string;
-}
-
-interface DistrictInfo {
-    key: string;
-    name: string;
-    state: string;
-}
-
 interface MapOptionsProps {
     handleGlobal: () => void;
     handleCountryChange: (event: SelectChangeEvent) => void;
@@ -33,9 +15,9 @@ interface MapOptionsProps {
     selectedCountry: string;
     selectedState: string;
     selectedDistrict: string;
-    countries: CountryInfo[];
-    states: StateInfo[];
-    districts: DistrictInfo[];
+    countries: any;
+    states: any;
+    districts: any;
 }
 
 function MapOptions({
@@ -117,7 +99,7 @@ function MapOptions({
                 <button className='subheader-btn' onClick={() => openWIPDrawer("Download data")}>
                     <div className='d-flex flex-wrap'>
                         <FiDownload className='mt-1' />
-                        <p className='px-2 my-0'>Download data</p>
+                        <p className='px-2 my-1 fs-12'>Download data</p>
                     </div>
                 </button>
                 <button
@@ -126,7 +108,7 @@ function MapOptions({
                 >
                     <div className='d-flex flex-wrap'>
                         <MdBookmarks className='mt-1' />
-                        <p className='mx-2 my-0'>Bookmarks</p>
+                        <p className='mx-2 my-1 fs-12'>Bookmarks</p>
                     </div>
                 </button>
             </div>

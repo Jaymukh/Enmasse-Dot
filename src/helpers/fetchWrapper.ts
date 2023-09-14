@@ -50,8 +50,7 @@ function useFetchWrapper() {
                         });
 
                     } catch (error) {
-                        toast.error(error);
-                        console.error('Error refreshing access token:', error);
+                        toast.error(error as string);
                         // You can choose to log the user out or handle this error differently
 
                     }

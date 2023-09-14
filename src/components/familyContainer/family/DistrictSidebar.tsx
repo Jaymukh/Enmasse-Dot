@@ -3,11 +3,7 @@ import { countryData } from '../../../utils/constants/Constants';
 import { PiArrowRightBold } from 'react-icons/pi';
 import '../../../App.css';
 
-interface DistrictSidebarProps {
-    selectedData: any; // Update with appropriate type
-}
-
-const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedData }) => {
+const DistrictSidebar = () => {
     return (
         <div className='col-3 py-2 bg-white' style={{ height: '98%' }}>
             <div className='SideBar'>
