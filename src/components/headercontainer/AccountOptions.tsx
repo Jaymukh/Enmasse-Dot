@@ -10,57 +10,58 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import { MdLogout } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../utils/constants/routeConstants';
-import { useUserService } from '../../services';
-import { useRecoilValue } from 'recoil';
+import { RouteConstants } from '../../constants';
 import { loggedUserState } from '../../states';
+import { useRecoilValue } from 'recoil';
+import { useUserService } from '../../services';
 
 interface AccountMenuItem {
-  key: number;
-  text: string;
-  icon: JSX.Element;
+	key: number;
+	text: string;
+	icon: JSX.Element;
 }
 
 interface AccountOptionsProps {
-  handleVisiblePanel: (index: number) => void;
+	handleVisiblePanel: (index: number) => void;
 }
 
 const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) => {
 
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const open = Boolean(anchorEl);
-  const navigate = useNavigate();
-  const userService = useUserService();
+	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+	const open = Boolean(anchorEl);
+	const navigate = useNavigate();
+	const userService = useUserService();
 	const loggedUser = useRecoilValue(loggedUserState);
 
 	useEffect(() => {
 		userService.getUserDetails();
 	}, []);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
 
-  const handleClickMenuItem = (index: number) => {
-    handleVisiblePanel(index);
-    handleClose();
-    navigate(RouteConstants.profile);
-  };
+	const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
+		handleVisiblePanel(index);
+		handleClose();
+		navigate(RouteConstants.profile);
+	};
 
-  const handleLogout = () => {
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
+	const handleLogout = () => {
 		userService.logout();
 		handleClose();
 	}
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
-  return (
-    <div>
+	return (
+		<div>
 			<div>
 				<Tooltip title="Account settings">
 					<IconButton
-						onClick={(e) => handleClick(e)}
+						onClick={handleClick}
 						size="small"
 						sx={{ ml: 2 }}
 						aria-controls={open ? 'account-menu' : undefined}
@@ -82,7 +83,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 					anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 					className='my-0 py-0'
 				>
-					<MenuItem onClick={() => handleClickMenuItem(0)} className="menu-font-size" >
+					<MenuItem onClick={(event) => handleClickMenuItem(event, 0)} className="menu-font-size" >
 						<ListItemIcon>
 							<Avatar
 								sx={{ width: 28, height: 28, fontSize: 15 }}
@@ -92,8 +93,8 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 						</ListItemIcon>
 						{loggedUser.name}
 					</MenuItem>
-					{Constants.accountMenuItems.map((item, index) => (
-						<MenuItem onClick={() => handleClickMenuItem(item.key)} className="menu-font-size" >
+					{Constants.accountMenuItems.map((item: AccountMenuItem, index: number) => (
+						<MenuItem key={item.key} onClick={(e) => handleClickMenuItem(e, item.key)} className="menu-font-size">
 							<ListItemIcon>
 								{item.icon}
 							</ListItemIcon>
@@ -110,7 +111,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 				</Menu>
 			</div>
 		</div>
-  );
+	);
 }
 
 export default AccountOptions;
