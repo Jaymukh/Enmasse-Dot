@@ -619,7 +619,7 @@ export const families: FamiliesData = {
     export const explorePlaces: ExplorePlace[] = [
     {
         state:'Andhra Pradesh',
-        districts:['Anantapur', 'Chittoor', 'East Godavari', 'Guntur','Krishna']
+        districts:['Anantapur', 'Chittoor', 'East Godavari', 'Guntur', 'Krishna']
     },
     {
         state:'Gujarat',

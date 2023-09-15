@@ -10,7 +10,7 @@ const ExploreNow = () => {
   const [selectedValue, setSelectedValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedshowDiv, setSelectedshowDiv] = useState<boolean>(true);
-  const [selectedDistricts, setSelectedDistricts] = useState<Constants.ExplorePlace[]>([]);
+  const [selectedDistricts, setSelectedDistricts] = useState<Constants.ExplorePlace[] | string[]>([]);
   const [selectedDistrictOptions, setSelectedDistrictOptions] = useState<string[]>([]);
   const [selectedPlaceType, setSelectedPlaceType] = useState<string>('state');
   const [showExploreNowModal, setShowExploreNowModal] = useState<boolean>(false); // explore now dialog
@@ -164,7 +164,7 @@ const ExploreNow = () => {
                       <hr></hr>
                       <div className='row'>
                         {selectedDistricts.map((district) => (
-                          <div className='col-4 d-flex justify-content-start' key={district}>
+                          <div className='col-4 d-flex justify-content-start'>
                             <p className='color-green'>{district}</p>
                           </div>
                         ))}
