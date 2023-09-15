@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { countryData } from '../../../utils/constants/Constants';
 import { PiArrowRightBold } from 'react-icons/pi';
 import '../../../App.css';
 
+const options = [
+    {
+        currency: "US Dollar",
+        symbol: "$"
+    },
+    {
+        currency: "Indian Rupee",
+        symbol: '₹'
+    }
+]
 const DistrictSidebar = () => {
+    const [currency, setCurrency] = useState<string>("US Dollar");
+
+    const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setCurrency(event.target.value);
+    }
     return (
         <div className='col-3 py-2 bg-white' style={{ height: '98%' }}>
             <div className='SideBar'>

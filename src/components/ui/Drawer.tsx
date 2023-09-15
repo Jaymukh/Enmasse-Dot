@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Drawer = ({ id, title, isOpen, toggleFunction, children }) => {
+interface DrawerProps {
+    id: string;
+    title: string;
+    isOpen: boolean;
+    toggleFunction: (isOpen: boolean) => void;
+    children?: React.ReactNode;
+}
+
+const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, children }) => {
     return (
         <div className={`offcanvas offcanvas-end h-100 drawer-shadow border-0 ${isOpen ? 'show' : ''}`} id={id}>
             <div className="offcanvas-header pt-4 pb-0 px-4">
