@@ -6,7 +6,7 @@ import { MdNotifications } from 'react-icons/md';
 import MapYourBusiness from './MapYourBusiness';
 import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../utils/constants/routeConstants';
+import { RouteConstants } from '../../constants/routeConstants';
 import WIPDrawer from '../mapcontainer/mapoptions/WIPDrawer';
 
 interface HeaderProps {
