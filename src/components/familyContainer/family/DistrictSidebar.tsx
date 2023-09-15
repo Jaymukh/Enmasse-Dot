@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import { countryData } from '../../../utils/constants/Constants';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import '../../../App.css';
@@ -13,14 +14,12 @@ const options = [
         symbol: '₹'
     }
 ]
-
-function DistrictSidebar() {
-    const [currency, setCurrency] = useState("US Dollar");
+const DistrictSidebar = () => {
+    const [currency, setCurrency] = useState<string>("US Dollar");
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
     }
-
     return (
         // <div className='col-3 py-4 px-2 bg-white px-0' style={{ height: '98%', overflow: 'auto' }}>
         <div className='py-4 px-2 bg-white px-0 h-100' style={{ overflow: 'auto' }}>

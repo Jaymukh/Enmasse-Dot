@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import * as Constants from '../../utils/constants/Constants';
 import Avatar from '@mui/material/Avatar';
@@ -8,12 +8,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { MdArrowDropDown } from 'react-icons/md';
+import { MdLogout } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { loggedUserState } from '../../states';
 import { useRecoilValue } from 'recoil';
+import { useUserService } from '../../services';
 
 interface AccountMenuItem {
 	key: number;
@@ -26,10 +26,16 @@ interface AccountOptionsProps {
 }
 
 const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) => {
+
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const open = Boolean(anchorEl);
 	const navigate = useNavigate();
+	const userService = useUserService();
 	const loggedUser = useRecoilValue(loggedUserState);
+
+	useEffect(() => {
+		userService.getUserDetails();
+	}, []);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
@@ -45,6 +51,11 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 		setAnchorEl(null);
 	};
 
+	const handleLogout = () => {
+		userService.logout();
+		handleClose();
+	}
+
 	return (
 		<div>
 			<div>
@@ -57,8 +68,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 						aria-haspopup="true"
 						aria-expanded={open ? 'true' : undefined}
 					>
-						<Avatar sx={{ width: 30, height: 30, fontSize: 16 }}>M</Avatar>
-						<MdArrowDropDown className='mx-1' fontSize={25} />
+						<Avatar sx={{ width: 30, height: 30, fontSize: 16 }}>{loggedUser.initial}</Avatar>
 					</IconButton>
 				</Tooltip>
 			</div>
@@ -78,7 +88,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 							<Avatar
 								sx={{ width: 28, height: 28, fontSize: 15 }}
 							>
-								{loggedUser.initial}
+								{loggedUser?.initial}
 							</Avatar>
 						</ListItemIcon>
 						{loggedUser.name}
@@ -92,9 +102,9 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 						</MenuItem>
 					))}
 					<Divider className='my-0' />
-					<MenuItem onClick={handleClose} className="menu-font-size mb-0">
+					<MenuItem onClick={handleLogout} className="menu-font-size mb-0" >
 						<ListItemIcon>
-							<LogoutIcon fontSize="small" />
+							<MdLogout fontSize={22} />
 						</ListItemIcon>
 						Logout
 					</MenuItem>
