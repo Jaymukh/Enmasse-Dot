@@ -11,19 +11,23 @@ interface OverlayContainerProps {
   handleInfographic: (showInfographic: number) => void;
 }
 
-const OverlayContainer: React.FC<OverlayContainerProps> = ({ showInfographic, handleOverlay, handleInfographic }) => {
+const OverlayContainer: React.FC<OverlayContainerProps> = ({ 
+  showInfographic, 
+  handleOverlay, 
+  handleInfographic 
+}) => {
 
   return (
     <div className='OverlayContainer'>
-      {(showInfographic === 0) &&
-        <LandingPage handleInfographic={handleInfographic} handleOverlay={handleOverlay} />}
-      {(showInfographic === 1) &&
-        <EHInfographic handleInfographic={handleInfographic} handleOverlay={handleOverlay} />}
-      {(showInfographic === 2) &&
-        <ISPInfographic handleInfographic={handleInfographic} handleOverlay={handleOverlay} />}
-      {(showInfographic === 3) &&
-        <TAMInfographic handleInfographic={handleInfographic} handleOverlay={handleOverlay} />}
-    </div>
+			{(showInfographic === 0) &&
+				<LandingPage handleInfographic={handleInfographic} handleOverlay={handleOverlay} />}
+			{(showInfographic === 1) &&
+				<EHInfographic handleInfographic={handleInfographic} handleOverlay={handleOverlay} />}
+			{(showInfographic === 2)  &&
+				<ISPInfographic handleInfographic={handleInfographic} handleOverlay={handleOverlay} />}
+			{(showInfographic === 3)  &&
+				<TAMInfographic handleOverlay={handleOverlay} />}
+		</div>
   );
 }
 

@@ -17,7 +17,7 @@ export default function Invite() {
 	const [selectedData, setSelectedData] = useState<User | null>(null);
 	const [openInviteNew, setOpenInviteNew] = useState(false);
 	const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
-	const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+	const [selectedUserId, setSelectedUserId] = useState<string>('');
 
 	// all user's data
 	const [users, setUsers] = useRecoilState(usersState);

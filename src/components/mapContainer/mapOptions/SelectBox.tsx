@@ -10,7 +10,11 @@ interface SelectBoxProps {
 	primary?: boolean;
 }
 
-function SelectBox({ handleChange, options, selected, primary }: SelectBoxProps) {
+function SelectBox({ 
+	handleChange, 
+	options, 
+	selected, 
+	primary }: SelectBoxProps) {
 	return (
 		<div className='primary-select-box'>
 			<Select

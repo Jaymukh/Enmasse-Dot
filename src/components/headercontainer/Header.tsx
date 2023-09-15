@@ -7,8 +7,12 @@ import MapYourBusiness from './MapYourBusiness';
 import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../utils/constants/routeConstants';
+<<<<<<< HEAD
 import WIPDrawer from '../mapcontainer/mapOptions/WIPDrawer';
 
+=======
+import WIPDrawer from '../mapcontainer/mapoptions/WIPDrawer';
+>>>>>>> ad6c456cc720fc074a4a850c8c271e9603ea76dc
 interface HeaderProps {
   handleVisiblePanel: (index: number) => void;
   handleOverlay: (overlay: boolean) => void;

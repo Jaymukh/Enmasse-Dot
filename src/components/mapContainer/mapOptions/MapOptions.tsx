@@ -1,5 +1,5 @@
 import '../../../App.css';
-import React, { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
 import SelectBox from './SelectBox';
 import { FiDownload } from 'react-icons/fi';
 import { MdBookmarks } from 'react-icons/md';

@@ -1,6 +1,6 @@
 import '../../App.css';
 import React, { useState } from 'react';
-import MapOptions from './mapOptions/MapOptions';
+import MapOptions from './mapoptions/MapOptions';
 import Map from './map/Map';
 import { Country, State } from 'country-state-city';
 import { SelectChangeEvent } from '@mui/material';
