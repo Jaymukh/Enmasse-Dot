@@ -40,7 +40,7 @@ const UpdatePassword = () => {
 
     const password = watch('password');
 
-    const handlePasswordChange = (e: { target: { value: any; }; }) => {
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newPassword = e.target.value;
         setConditions({
             lengthCheck: newPassword.length >= 8,
