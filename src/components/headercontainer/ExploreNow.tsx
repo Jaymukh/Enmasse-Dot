@@ -10,7 +10,7 @@ const ExploreNow = () => {
   const [selectedValue, setSelectedValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedshowDiv, setSelectedshowDiv] = useState<boolean>(true);
-  const [selectedDistricts, setSelectedDistricts] = useState<Constants.ExplorePlace[]>([]);
+  const [selectedDistricts, setSelectedDistricts] = useState<any>([]);
   const [selectedDistrictOptions, setSelectedDistrictOptions] = useState<string[]>([]);
   const [selectedPlaceType, setSelectedPlaceType] = useState<string>('state');
   const [showExploreNowModal, setShowExploreNowModal] = useState<boolean>(false); // explore now dialog
@@ -148,7 +148,7 @@ const ExploreNow = () => {
                           <h5 className='d-flex justify-content-start'>{item.state}</h5>
                           <hr></hr>
                           <div className='row'>
-                            {item.districts.map((district) => (
+                            {item.districts.map((district: string) => (
                               <div className='col-4 d-flex justify-content-start' key={district}>
                                 <p className='color-green'>{district}</p>
                               </div>
@@ -163,8 +163,8 @@ const ExploreNow = () => {
                       <h5 className='d-flex justify-content-start'>{selectedValue}</h5>
                       <hr></hr>
                       <div className='row'>
-                        {selectedDistricts.map((district) => (
-                          <div className='col-4 d-flex justify-content-start' key={district}>
+                        {selectedDistricts.map((district: string) => (
+                          <div className='col-4 d-flex justify-content-start'>
                             <p className='color-green'>{district}</p>
                           </div>
                         ))}

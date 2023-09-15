@@ -624,7 +624,7 @@ export const families: FamiliesData = {
 //
 export interface ExplorePlace {
     state: string;
-    districts: string[];
+    districts: any;
 }
 
 export const explorePlaces: ExplorePlace[] = [
@@ -641,7 +641,7 @@ export const explorePlaces: ExplorePlace[] = [
         state: 'Kerala',
         districts: ['Thiruvananthapuram', 'Thrissur']
     }
-]
+];
 
 // export const storyFeatures = {
 //     type: 'FeatureCollection',
