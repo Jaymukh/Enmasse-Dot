@@ -1,15 +1,13 @@
+import '../../styles/headercontainer/ExploreNow.css';
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
-import { RouteConstants } from '../../utils/constants/routeConstants';
-import { useNavigate } from 'react-router-dom';
+import { RxExternalLink } from 'react-icons/rx';
 
-interface ExploreNowProps {}
-
-const ExploreNow: React.FC<ExploreNowProps> = () => {
+const ExploreNow = () => {
   const [selectedValue, setSelectedValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedshowDiv, setSelectedshowDiv] = useState<boolean>(true);
@@ -17,7 +15,6 @@ const ExploreNow: React.FC<ExploreNowProps> = () => {
   const [selectedDistrictOptions, setSelectedDistrictOptions] = useState<string[]>([]);
   const [selectedPlaceType, setSelectedPlaceType] = useState<string>('state');
   const [showExploreNowModal, setShowExploreNowModal] = useState<boolean>(false); // explore now dialog
-  const navigate = useNavigate();
 
   // explore now dialog open and close functions
   const openExploreNowModal = () => {
@@ -29,7 +26,7 @@ const ExploreNow: React.FC<ExploreNowProps> = () => {
     setSelectedValue('');
     setInputValue('');
     setSelectedDistricts(Constants.explorePlaces);
-    setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.state));
+    setSelectedDistrictOptions(Constants.explorePlaces);
     setSelectedPlaceType('state');
     setSelectedshowDiv(true);
   };
@@ -37,7 +34,7 @@ const ExploreNow: React.FC<ExploreNowProps> = () => {
   const handleStateChange = (event: React.ChangeEvent<{}>, newValue: string | null, clear: string) => {
     if (!newValue && !selectedValue) {
       setSelectedDistricts(Constants.explorePlaces); // Keep the entire array
-      setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.state));
+      setSelectedDistrictOptions(Constants.explorePlaces);
       setSelectedPlaceType('state');
       setInputValue(clear);
     } else {
