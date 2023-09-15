@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import '../../../App.css'
-=======
-import '../../../App.css';
->>>>>>> ad6c456cc720fc074a4a850c8c271e9603ea76dc
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React, { useState } from 'react';
 import GlobalMap from './GlobalMap';
