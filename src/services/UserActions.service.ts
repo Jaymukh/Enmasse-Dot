@@ -63,7 +63,7 @@ const useUserService = () => {
         return fetchWrapper.put(APIS.USERS.UPDATE_LOGGED_USER, updatedData);
     }
 
-    const setNewPassword = () => {
+    const setNewPassword = (data: any) => {
         return fetchWrapper.post(APIS.USERS.SET_NEW_PASSWORD);
     }
 
