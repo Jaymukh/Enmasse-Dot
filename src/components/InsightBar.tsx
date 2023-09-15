@@ -2,7 +2,6 @@ import '../App.css';
 import React, { useState } from 'react';
 import * as Constants from '../utils/constants/Constants';
 import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../constants';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 const options = [

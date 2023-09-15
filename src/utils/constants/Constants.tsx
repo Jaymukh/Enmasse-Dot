@@ -23,55 +23,65 @@ export interface Option {
     key: number;
     label: string;
     type: string;
-  }
-  export const options: Option[] = [
+}
+export const options: Option[] = [
     { key: 0, label: 'All', type: 'radius_all' },
     { key: 1, label: 'Healthcare', type: 'radius_edu' },
     { key: 2, label: 'Education', type: 'radius_agri' },
     { key: 3, label: 'Agri Markets', type: 'radius_healthcare' },
     { key: 4, label: 'Financial', type: 'radius_fin' },
-  ];
+];
 
 // Enmasse-Dot\src\components\InsightBar.tsx
 export interface CountryData {
     country: string;
     population: string;
+    households: string;
     annualAverageIncome: string;
     entrepreneurialHouseholds: string;
-    totalAddressableMarket: string;
+    tam: string;
+    medianSpendonCoreSoln: string;
     button: string;
-  }
+}
 export const countryData: CountryData[] = [
     {
         country: 'India',
         population: '1.39B',
+        households: '285 Million',
         annualAverageIncome: '$7500',
         entrepreneurialHouseholds: '200M',
-        totalAddressableMarket: '$1 Trillion',
+        tam: '$1 Trillion',
+        medianSpendonCoreSoln: '$5000',
         button: 'Explore More'
     },
     {
         country: 'Central & South America',
         population: '1.39B',
+        households: '285 Million',
         annualAverageIncome: '$7500',
         entrepreneurialHouseholds: '200M',
-        totalAddressableMarket: '$1 Trillion',
+        tam: '$1 Trillion',
+        medianSpendonCoreSoln: '$5000',
         button: 'Explore More'
     },
     {
         country: 'South East Asia',
         population: '1.39B',
+        households: '285 Million',
         annualAverageIncome: '$7500',
         entrepreneurialHouseholds: '200M',
-        totalAddressableMarket: '$1 Trillion',
+        tam: '$1 Trillion',
+        medianSpendonCoreSoln: '$5000',
         button: 'Explore More'
     },
     {
         country: 'Africa',
         population: '1.39B',
+        households: '285 Million',
         annualAverageIncome: '$7500',
         entrepreneurialHouseholds: '200M',
-        totalAddressableMarket: '$1 Trillion',
+        tam: '$1 Trillion',
+        medianSpendonCoreSoln: '$5000',
         button: 'Explore More'
     }
 ];
@@ -81,7 +91,7 @@ export interface SidebarItem {
     index: number;
     icon: JSX.Element;
     option: string;
-  }
+}
 export const sidebarData: SidebarItem[] = [
     {
         index: 0,
@@ -193,7 +203,7 @@ export const accountMenuItems: AccountMenuItem[] = [
     {
         key: 2,
         text: "Invite",
-        icon: <GroupAddIcon fontSize='small'/>
+        icon: <GroupAddIcon fontSize='small' />
     },
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\settings\Settings.tsx language selectbox
@@ -340,9 +350,9 @@ export interface ProfileData {
     company: string;
     country: string;
     role: string;
-  }
-  
-  export const profileData: ProfileData = {
+}
+
+export const profileData: ProfileData = {
     name: 'Kartik Parija',
     email: 'kartik@enmasse.world',
     phone: 76564545,
@@ -350,8 +360,8 @@ export interface ProfileData {
     company: 'Enmasse',
     country: 'India',
     role: 'Admin'
-  };
-  
+};
+
 //
 export const headers: string[] = ['State', 'Entrepreneurial Households', 'Median Annual EH Spend on Core Solutions', 'Median Annual EH Income', 'EM Rank']
 
@@ -609,28 +619,29 @@ export const families: FamiliesData = {
                 coordinates: [-61.21582, -15.971891]
             }
         }
-    ]}
+    ]
+}
 //
-    export interface ExplorePlace {
-        state: string;
-        districts: string[];
-    }
-    
-    export const explorePlaces: ExplorePlace[] = [
+export interface ExplorePlace {
+    state: string;
+    districts: any;
+}
+
+export const explorePlaces: ExplorePlace[] = [
     {
-        state:'Andhra Pradesh',
-        districts:['Anantapur', 'Chittoor', 'East Godavari', 'Guntur', 'Krishna']
+        state: 'Andhra Pradesh',
+        districts: ['Anantapur', 'Chittoor', 'East Godavari', 'Guntur', 'Krishna']
     },
     {
-        state:'Gujarat',
-        districts:['Ahmedabad', 'Amreli', 'Anand', 'Kutch'] 
+        state: 'Gujarat',
+        districts: ['Ahmedabad', 'Amreli', 'Anand', 'Kutch']
 
     },
     {
-        state:'Kerala',
-        districts:['Thiruvananthapuram', 'Thrissur']
+        state: 'Kerala',
+        districts: ['Thiruvananthapuram', 'Thrissur']
     }
-]
+];
 
 // export const storyFeatures = {
 //     type: 'FeatureCollection',
