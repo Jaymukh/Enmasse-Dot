@@ -1,4 +1,4 @@
-import '../../../styles/mapcontainer/mapoptions/PrimarySelect.css';
+import '../../../App.css';
 import React from 'react';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 

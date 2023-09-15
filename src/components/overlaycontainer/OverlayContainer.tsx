@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/OverlayContainer.css';
+import '../../App.css';
 import LandingPage from './LandingPage';
 import EHInfographic from './EHInfographic';
 import ISPInfographic from './ISPInfographic';

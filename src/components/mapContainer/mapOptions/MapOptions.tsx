@@ -1,4 +1,4 @@
-import '../../../styles/mapcontainer/mapoptions/MapOptions.css';
+import '../../../App.css';
 import React, { useState, ChangeEvent } from 'react';
 import SelectBox from './SelectBox';
 import { FiDownload } from 'react-icons/fi';

@@ -29,9 +29,19 @@ function FamilyContainer() {
 
     return (
         <div className="row w-100 h-90 fixed-bottom m-0 border-top" style={{ height: '90vh' }}>
-            <FamilyHeader selectedData={selectedData} handleBackClick={handleBackClick} />
+            <FamilyHeader
+                selectedData={selectedData}
+                handleBackClick={handleBackClick} />
             {selectedData && Object.keys(selectedData).length > 0 ?
-                <Family selectedFamily={selectedFamily} selectedData={selectedData} handleCarouselSlide={handleCarouselSlide} /> : <Families handleFamilyVisible={handleFamilyVisible} />}
+                <Family
+                    selectedFamily={selectedFamily}
+                    selectedData={selectedData}
+                    handleCarouselSlide={handleCarouselSlide}
+                    handleBackClick={handleBackClick}
+                />
+                : <Families
+                    handleFamilyVisible={handleFamilyVisible}
+                />}
         </div>
     );
 }

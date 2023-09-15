@@ -1,4 +1,4 @@
-import '../../styles/headercontainer/MapYourBusiness.css';
+import '../../App.css';
 import React, { useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';

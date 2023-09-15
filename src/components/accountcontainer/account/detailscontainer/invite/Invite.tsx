@@ -75,7 +75,7 @@ export default function Invite() {
 	
 	// function for Delete
 	const handleDeleteClick = () => {
-		userService.deleteInvite(selectedUserId)
+		userService.deleteInvite(selectedUserId!)
 			.then((response) => {
 				if (response) {
 					userService.getAll();

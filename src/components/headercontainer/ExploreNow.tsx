@@ -1,4 +1,4 @@
-import '../../styles/headercontainer/ExploreNow.css';
+import '../../App.css';
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';

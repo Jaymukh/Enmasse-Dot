@@ -1,7 +1,6 @@
-import '../../../styles/mapcontainer/mapoptions/Bookmarks.css';
-import '../../../App.css'
+import '../../../App.css';
 import React from 'react';
-import Drawer from '../../../ui/Drawer';
+import Drawer from '../../ui/Drawer';
 import WorkInProgressImage from '../../../utils/images/work_in_progress.svg';
 
 interface WIPDrawerProps {
