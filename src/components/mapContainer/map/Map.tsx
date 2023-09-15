@@ -1,4 +1,4 @@
-import '../../../styles/mapcontainer/map/Map.css';
+import '../../../App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React, { useState } from 'react';
 import GlobalMap from './GlobalMap';

@@ -1,11 +1,10 @@
-import '../../styles/headercontainer/ExploreNow.css';
+import '../../App.css';
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
-import { RxExternalLink } from 'react-icons/rx';
 
 const ExploreNow = () => {
   const [selectedValue, setSelectedValue] = useState<string>('');
@@ -26,7 +25,7 @@ const ExploreNow = () => {
     setSelectedValue('');
     setInputValue('');
     setSelectedDistricts(Constants.explorePlaces);
-    setSelectedDistrictOptions(Constants.explorePlaces);
+    setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.state));
     setSelectedPlaceType('state');
     setSelectedshowDiv(true);
   };
@@ -34,7 +33,7 @@ const ExploreNow = () => {
   const handleStateChange = (event: React.ChangeEvent<{}>, newValue: string | null, clear: string) => {
     if (!newValue && !selectedValue) {
       setSelectedDistricts(Constants.explorePlaces); // Keep the entire array
-      setSelectedDistrictOptions(Constants.explorePlaces);
+      setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.state));
       setSelectedPlaceType('state');
       setInputValue(clear);
     } else {

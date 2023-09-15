@@ -1,5 +1,4 @@
-import '../../../styles/mapcontainer/mapoptions/PrimarySelect.css';
-import React from 'react';
+import '../../../App.css';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 
 
@@ -10,7 +9,11 @@ interface SelectBoxProps {
 	primary?: boolean;
 }
 
-function SelectBox({ handleChange, options, selected, primary }: SelectBoxProps) {
+function SelectBox({ 
+	handleChange, 
+	options, 
+	selected, 
+	primary }: SelectBoxProps) {
 	return (
 		<div className='primary-select-box'>
 			<Select

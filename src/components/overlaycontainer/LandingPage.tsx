@@ -5,7 +5,9 @@ interface LandingPageProps {
   handleOverlay: (overlay: boolean) => void;
 }
 
-const LandingPage: React.FC<LandingPageProps> = ({ handleInfographic, handleOverlay }) => {
+const LandingPage: React.FC<LandingPageProps> = ({ 
+  handleInfographic, 
+  handleOverlay }) => {
 
   return (
     <div>
