@@ -1,6 +1,7 @@
-import PersonIcon from '@mui/icons-material/Person';
-import SettingsIcon from '@mui/icons-material/Settings';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
+
+import { MdGroupAdd } from 'react-icons/md';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { IoSettingsSharp } from 'react-icons/io5';
 import Avatar from '@mui/material/Avatar';
 import Navale from '../images/family-sample.png';
 
@@ -95,17 +96,17 @@ export interface SidebarItem {
 export const sidebarData: SidebarItem[] = [
     {
         index: 0,
-        icon: <PersonIcon />,
+        icon: <BsFillPersonFill />,
         option: 'Profile'
     },
     {
         index: 1,
-        icon: <SettingsIcon />,
+        icon: <IoSettingsSharp />,
         option: 'Settings'
     },
     {
         index: 2,
-        icon: <GroupAddIcon />,
+        icon: <MdGroupAdd />,
         option: 'Invite'
     }
 ];
@@ -187,23 +188,14 @@ export interface AccountMenuItem {
 
 export const accountMenuItems: AccountMenuItem[] = [
     {
-        key: 0,
-        text: "Profile name",
-        icon: <Avatar
-            sx={{ width: 28, height: 28, fontSize: 15 }}
-        >
-            M
-        </Avatar>
-    },
-    {
         key: 1,
         text: "Settings",
-        icon: <SettingsIcon fontSize='small' />
+        icon: <IoSettingsSharp fontSize='small' />
     },
     {
         key: 2,
         text: "Invite",
-        icon: <GroupAddIcon fontSize='small' />
+        icon: <MdGroupAdd fontSize='small' />
     },
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\settings\Settings.tsx language selectbox

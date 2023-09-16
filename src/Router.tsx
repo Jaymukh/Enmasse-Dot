@@ -90,7 +90,7 @@ interface ProtectedRouteProps {
     children: React.ReactNode;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath = RouteConstants.login, children }) => {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath, children }) => {
     if (!Object.keys(auth).length) {
         return <Navigate to={redirectPath} />;
     }
@@ -128,7 +128,7 @@ const Router = () => {
             <Suspense fallback={<div className=""></div>}>
                 <Routes>
                     <Route path={RouteConstants.login} element={<Login />} />
-                    <Route element={<ProtectedRoute auth={auth} redirectPath={''} children={undefined} />}>
+                    <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} children={undefined} />}>
                         <Route path={RouteConstants.update_password} element={<UpdatePassword />} />
                         <Route path={RouteConstants.root} element={<HomeContainer handleVisiblePanel={handleVisiblePanel} handleOverlay={handleOverlay} handleInfographic={handleInfographic} overlay={overlay} showInfographic={showInfographic} />} />
                         <Route path={RouteConstants.dashboards} element={<DashboardContainer handleVisiblePanel={handleVisiblePanel} handleOverlay={handleOverlay} handleInfographic={handleInfographic} />} />
