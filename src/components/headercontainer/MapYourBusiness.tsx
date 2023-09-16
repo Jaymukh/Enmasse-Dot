@@ -14,7 +14,7 @@ const MapYourBusiness = () => {
 	return (
 		<div >
 			<button
-				className='btn btn-white mx-2 fs-13'
+				className='header-btns header-btn-white mx-2 fs-13'
 				onClick={() => toggleDrawer()}
 			>
 				<MdOutlineShareLocation className='me-2' fontSize={20} color='#111827' />
