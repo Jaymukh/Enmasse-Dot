@@ -15,7 +15,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handl
     return (
         <div className='col-3 d-flex mt-1 flex-column'>
             <FamiliesSidePanel />
-            <div id="carouselExampleControlsNoTouching" className="carousel slide bgcolor d-flex justify-content-between custom-carousel bg-white m-3" data-bs-touch="false" data-bs-interval="false" style={{width:"20vw", height:"8vw"}} >
+            <div id="carouselExampleControlsNoTouching" className="carousel slide bgcolor d-flex justify-content-between custom-carousel bg-white m-3" data-bs-touch="false" data-bs-interval="false" style={{ height: "8vw" }} >
                 <div className="carousel-inner">
                     {families.family.map((data, index) => (
                         <div className={`carousel-item ${index === selectedFamily ? ' active' : ''}`} key={index}>
@@ -31,11 +31,21 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handl
                     ))}
                 </div>
 
-                <button className="carousel-control-prev PrevBtn" onClick={() => handleCarouselSlide((selectedFamily - 1 + families.family.length) % families.family.length)} type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                <button className="carousel-control-prev PrevBtn"
+                    onClick={() => handleCarouselSlide((selectedFamily - 1 + families.family.length) % families.family.length)}
+                    type="button"
+                    data-bs-target="#carouselExampleControlsNoTouching"
+                    data-bs-slide="prev"
+                >
                     <BiArrowBack className="iconNextPrev" aria-hidden="true"></BiArrowBack>
                 </button>
 
-                <button className="carousel-control-next NextBtn" onClick={() => handleCarouselSlide((selectedFamily + 1 + families.family.length) % families.family.length)} type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                <button className="carousel-control-next NextBtn"
+                    onClick={() => handleCarouselSlide((selectedFamily + 1 + families.family.length) % families.family.length)}
+                    type="button"
+                    data-bs-target="#carouselExampleControlsNoTouching"
+                    data-bs-slide="next"
+                >
                     <MdOutlineArrowForward className='iconNextPrev' fontSize={20} aria-hidden="true"></MdOutlineArrowForward>
                 </button>
             </div>

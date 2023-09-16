@@ -7,7 +7,7 @@ interface FamilyDetailsContainerProps {
 const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
     return (
         <div className='col-6 py-2 my-3' style={{ height: '98%', overflow: 'auto' }}>
-            <div className="card fam-details-card white-bg mb-3 OneFamilySidePanelWidth py-3">
+            <div className="card fam-details-card white-bg mb-3 OneFamilySidePanelWidth py-3 my-1">
                 <div className='d-flex flex-row mx-2 px-2 pb-1'>
                     <h5 className="card-title fs-18">{selectedData.properties.familyName}</h5>
                     <h6 className="card-title text-muted mx-2 my-1 fs-14">{selectedData.properties.district}, {selectedData.properties.state}, {selectedData.properties.country}</h6>

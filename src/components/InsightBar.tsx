@@ -25,7 +25,7 @@ export default function InsightBar() {
     }
 
     return (
-        <div className='sideBar-parent-expended py-4 me-3' style={{overflow: 'auto', overflowX: 'hidden'}} >
+        <div className='sideBar-parent-expended py-4 me-3 px-0' style={{overflow: 'auto', overflowX: 'hidden'}} >
             <div className='d-flex justify-content-between align-items-start px-3'>
                 <div className='d-flex justify-content-start'>
                     <h6 className='me-2 ms-1 fs-18'>EnMasses Thesis</h6>

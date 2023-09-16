@@ -9,7 +9,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
     return (
         <div className='col-9 ps-2 mb-6 h-100' style={{ height: '98%' }}>
             <h5 className="text-start mt-4 fs-21">Families in {families.place}</h5>
-            <div className=' w-100 h-100 mb-6' style={{ overflow: 'auto' }}>
+            <div className='w-100 h-100 mb-6' style={{ overflow: 'auto' }}>
                 <div className='row mb-6' style={{ marginBottom: '5rem' }}>
                     {families.family.map((data, index) => (
                         <div className='col-4 family-card-container px-0 cursor-pointer'>

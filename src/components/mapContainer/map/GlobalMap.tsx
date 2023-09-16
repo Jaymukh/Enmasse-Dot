@@ -43,7 +43,7 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
 		<div className='map row mx-0'
 			style={{ height: '81vh', width: '100vw', zIndex: 999 }}
 		>
-			<div className='row bg-transparent h-100 w-100 overlay-card'>
+			<div className='row bg-transparent h-100 w-100 overlay-card px-0'>
 				<div className='col-8'>
 					<GlobalOverlayCard />
 				</div>
