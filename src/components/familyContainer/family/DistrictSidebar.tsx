@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { countryData } from '../../../utils/constants/Constants';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
+import { RouteConstants } from '../../../constants';
 import '../../../App.css';
 
 const options = [
@@ -15,10 +17,14 @@ const options = [
     }
 ]
 const DistrictSidebar = () => {
+    const navigate = useNavigate();
     const [currency, setCurrency] = useState<string>("US Dollar");
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
+    }
+    const handleExploreMore = () => {
+        navigate(RouteConstants.dashboards);
     }
     return (
         // <div className='col-3 py-4 px-2 bg-white px-0' style={{ height: '98%', overflow: 'auto' }}>
@@ -110,7 +116,7 @@ const DistrictSidebar = () => {
                     </div>
                 </div>
             </div>
-            <button className='btn btn-dark rounded w-100 my-4 fs-12'>Explore more<PiArrowRightBold className='ms-2' /></button>
+            <button className='btn btn-dark rounded w-100 my-4 fs-12' onClick={handleExploreMore} >Explore more<PiArrowRightBold className='ms-2' /></button>
         </div>
     );
 }

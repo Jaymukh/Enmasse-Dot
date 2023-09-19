@@ -3,8 +3,9 @@ import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { RouteConstants } from "./constants";
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
-import { useRecoilValue } from "recoil";
-import { authState, } from './states';
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { authState, visiblePanelState } from './states';
+
 
 const customTheme = (outerTheme: any) =>
     createTheme({
@@ -100,7 +101,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath, chi
 const Router = () => {
     const outerTheme = useTheme();
     const auth = useRecoilValue(authState);
-    const [visiblePanel, setVisiblePanel] = useState(0);
+    // const [visiblePanel, setVisiblePanel] = useState(0);
+    const setVisiblePanel = useSetRecoilState(visiblePanelState);
+    const visiblePanel = useRecoilValue(visiblePanelState);
     const [overlay, setOverlay] = useState(true);
     const [showInfographic, setShowInfographic] = useState(0);
 
