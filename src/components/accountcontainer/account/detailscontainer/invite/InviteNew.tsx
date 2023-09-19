@@ -6,8 +6,9 @@ import { useRecoilValue } from "recoil";
 import { useUserService, useSettingsService } from '../../../../../services';
 import { loggedUserState, AllSettingsState, User } from "../../../../../states";
 import { toast } from "react-toastify";
+import Select, { SelectSize } from '../../../../ui/select/Select';
 
-interface NewData { 
+interface NewData {
     name: string | undefined;
     email_id: string | undefined;
     role: string | undefined;
@@ -77,11 +78,20 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     <input type="email" placeholder="Enter your Email ID" value={newData.email_id} name='email_id'
                         onChange={(e) => handleChangeData(e)} className='mb-2  p-2 btn-outline-black drawer-input-box-height' />
                     <h6 className='my-1 font-87-5 text-start'>Role</h6>
-                    <select name='role' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.role} onChange={(e) => handleChangeData(e)} >
+                    {/* <select name='role' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.role} onChange={(e) => handleChangeData(e)} >
                         {settings?.roles?.map((role) => (
                             <option key={role.id} value={role.name}>{role.name}</option>
                         ))}
-                    </select>
+                    </select> */}
+                    <Select
+                        options={settings?.roles}
+                        onChange={(e) => handleChangeData(e)}
+                        value={newData?.role}
+                        labelKey='name'
+                        valueKey='name'
+                        size={SelectSize.large}
+                        name='role'
+                    />
                     <h6 className='mt-1 font-87-5 text-start'>Company</h6>
                     <select name='role' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.company} onChange={(e) => handleChangeData(e)} >
                         {Constants?.company?.map((company) => (

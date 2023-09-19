@@ -9,12 +9,13 @@ export enum SelectSize {
 interface SelectProps<T> {
     options: T[];
     onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-    value: string;
+    value: string | undefined;
     labelKey: keyof T;
-    valueKey: keyof T; 
+    valueKey: keyof T;
     size: SelectSize;
     disabled?: boolean;
     classname?: string;
+    name?: string;
 }
 
 const getSizeClass = (size: SelectSize) => {
@@ -22,15 +23,16 @@ const getSizeClass = (size: SelectSize) => {
     return classname;
 }
 
-const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size }: SelectProps<any>) => {
+const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name }: SelectProps<any>) => {
     return (
         <select
             className={`${getSizeClass(size)} ${classname} w-100`}
             value={value}
             onChange={onChange}
             disabled={disabled}
+            name={name}
         >
-            {options.map((option: any, key: number) => (
+            {options?.map((option: any, key: number) => (
                 <option key={key} value={option[valueKey] as any}>
                     {option[labelKey]}
                 </option>
