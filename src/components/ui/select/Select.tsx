@@ -6,10 +6,15 @@ export enum SelectSize {
     large,
 }
 
+export enum SelectType {
+    contained,
+    transparent,
+}
+
 interface SelectProps<T> {
     options: T[];
     onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-    value: string | undefined;
+    value: any;
     labelKey: keyof T;
     valueKey: keyof T;
     size: SelectSize;

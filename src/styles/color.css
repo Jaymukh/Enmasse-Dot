@@ -6,6 +6,7 @@ html {
     --black-2: #565657;
     --black-3: #0D0B0B; /*select large border */
     --black-4: #1118261A; /* select small border */
+    --black-5: rgba(0, 0, 0, 0.3);
     --white-1: #FFFFFF;
     --warning: #D55038;
 }
