@@ -111,6 +111,7 @@ export default function Login() {
                                 placeholder='Enter your password here' />
                             {errors?.password?.message && <p className='text-danger m-0 p-0'>{errors?.password?.message}</p>}
                             <button
+                                autoFocus={true}
                                 type='submit'
                                 className='mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-dark'
                             //className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-secondary ${(filledInputCount < 2) ? 'bg-secondary' : 'bg-dark'}`}
