@@ -6,7 +6,7 @@ import MapYourBusiness from './MapYourBusiness';
 import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants/routeConstants';
-import WIPDrawer from '../mapcontainer/mapOptions/WIPDrawer';
+import WIPDrawer from '../mapcontainer/mapoptions/WIPDrawer';
 
 interface HeaderProps {
   handleVisiblePanel: (index: number) => void;
