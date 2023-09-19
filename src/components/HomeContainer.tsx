@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './headercontainer/Header';
-import MapContainer from './mapcontainer/MapContainer';
+import MapContainer from './mapContainer/MapContainer';
 import OverlayContainer from '../components/overlaycontainer/OverlayContainer';
 
 interface HomeContainerProps {
