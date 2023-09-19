@@ -23,15 +23,15 @@
 
 .btn_secondary { /* white button */
 	background-color: var(--white-1);
-	border-color: var(--black-2);
+	border-color: var(--black-1);
 	border-radius: 1px;
-	color: var(--black-2);
+	color: var(--black-0);
 }
 
 .btn_secondary_transparent { /* white button */
 	background-color: var(--white-1);
 	border: none !important;
-	color: var(--black-2);
+	color: var(--black-0);
 }
 
 /* .btn_secondary:hover {

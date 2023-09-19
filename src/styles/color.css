@@ -1,6 +1,7 @@
 /* include all the color variable */
 
 html {
+    --black-0: #000000;
     --black-1: #111827;
     --black-2: #565657;
     --black-3: #0D0B0B; /*select large border */
