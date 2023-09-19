@@ -8,7 +8,6 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { useUserService } from '../../services';
-import Drawer from '../ui/Drawer';
 
 interface IFormValues {
     email_id: string;

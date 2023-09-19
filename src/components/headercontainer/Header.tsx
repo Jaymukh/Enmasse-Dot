@@ -12,16 +12,16 @@ import WIPDrawer from '../mapcontainer/mapoptions/WIPDrawer';
 interface HeaderProps {
   handleVisiblePanel: (index: number) => void;
   handleOverlay: (overlay: boolean) => void;
-  handleInfographic: (showInfographic: number) => void;
+  handleHelp: (showHelp: number) => void;
 }
 
-function Header({ handleVisiblePanel, handleOverlay, handleInfographic }: HeaderProps) {
+function Header({ handleVisiblePanel, handleOverlay, handleHelp }: HeaderProps) {
 
   const navigate = useNavigate();
-  const handleHelp = () => {
+  const handleHelpClick = () => {
     navigate(RouteConstants.root);
     handleOverlay(true);
-    handleInfographic(1);
+    handleHelp(1);
   }
 
   const [open, setOpen] = useState(false);
@@ -49,7 +49,7 @@ function Header({ handleVisiblePanel, handleOverlay, handleInfographic }: Header
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />
 				<MapYourBusiness />
-				<button className='border-0 btn-white' onClick={() => handleHelp()} ><MdLiveHelp fontSize={25} className='ms-4 me-3 mb-1 header-icon' /></button>
+				<button className='border-0 btn-white' onClick={() => handleHelpClick()} ><MdLiveHelp fontSize={25} className='ms-4 me-3 mb-1 header-icon' /></button>
 				<button className='border-0 btn-white' onClick={() => openWIPDrawer("Notifications")}>
 					<MdNotifications fontSize={25} className='mb-1 header-icon' />
 				</button>

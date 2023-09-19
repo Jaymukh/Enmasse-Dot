@@ -3,12 +3,11 @@ import Profile from './profile/Profile';
 import Settings from './settings/Settings';
 import Invite from './invite/Invite';
 import { useUserService } from '../../../../services';
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { visiblePanelState } from '../../../../states';
 
-interface DetailsContainerProps {
-    visiblePanel: number;
-}
-
-const DetailsContainer: React.FC<DetailsContainerProps> = ({ visiblePanel }) => {
+const DetailsContainer = () => {
+    const visiblePanel = useRecoilValue(visiblePanelState);
     const userService = useUserService();
 	useEffect(() => {
 		userService.getUserDetails();

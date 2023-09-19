@@ -2,43 +2,40 @@ import React from 'react';
 import Header from './headercontainer/Header';
 import MapContainer from './mapcontainer/MapContainer';
 import OverlayContainer from '../components/overlaycontainer/OverlayContainer';
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
+import { overlayState } from '../states';
 
 interface HomeContainerProps {
   handleVisiblePanel: (index: number) => void;
   handleOverlay: (overlay: boolean) => void;
-  handleInfographic: (showInfographic: number) => void;
-  overlay: boolean;
-  showInfographic: number;
+  handleHelp: (showHelp: number) => void;
 }
 
 const HomeContainer: React.FC<HomeContainerProps> = ({
   handleVisiblePanel,
   handleOverlay,
-  handleInfographic,
-  overlay,
-  showInfographic,
+  handleHelp,
 }) => {
+  const overlay = useRecoilValue(overlayState);
+
   return (
     <>
       <div className='w-100 primary-bg'>
         <Header
           handleVisiblePanel={handleVisiblePanel}
           handleOverlay={handleOverlay}
-          handleInfographic={handleInfographic}
+          handleHelp={handleHelp}
         />
         <MapContainer />
       </div>
-      {overlay ? (
+      {overlay && (
         <div className='overlay d-flex flex-wrap justify-content-center align-items-center'>
           <OverlayContainer
             handleOverlay={handleOverlay}
-            handleInfographic={handleInfographic}
-            showInfographic={showInfographic}
+            handleHelp={handleHelp}
           />
-        </div>
-      ) : (
-        ''
-      )}
+        </div>)
+      }
     </>
   );
 };

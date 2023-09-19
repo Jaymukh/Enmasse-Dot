@@ -4,14 +4,13 @@ import DetailsContainer from './detailscontainer/DetailsContainer';
 
 interface AccountProps {
     handleVisiblePanel: (index: number) => void;
-    visiblePanel: number;
 }
 
-const Account: React.FC<AccountProps> = ({ handleVisiblePanel, visiblePanel }) => {
+const Account: React.FC<AccountProps> = ({ handleVisiblePanel }) => {
     return (
         <>
-            <SideBar handleVisiblePanel={handleVisiblePanel} visiblePanel={visiblePanel} />
-            <DetailsContainer visiblePanel={visiblePanel}/>
+            <SideBar handleVisiblePanel={handleVisiblePanel} />
+            <DetailsContainer/>
         </>
     );
 }
