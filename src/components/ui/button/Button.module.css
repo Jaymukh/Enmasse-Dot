@@ -59,7 +59,7 @@
 }
 
 .btn_small {
-	font-size: 0.75rem !important;
+	font-size: 0.75rem !important; /* 12px */
 }
 
 .no_radius {

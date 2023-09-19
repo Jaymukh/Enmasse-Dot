@@ -1,14 +1,9 @@
 import React from 'react';
-
-export enum SelectVariant{
-    contained,
-    outline,
-}
+import styles from "./Select.module.css";
 
 export enum SelectSize {
     small,
     large,
-    default,
 }
 
 interface SelectProps<T> {
@@ -17,16 +12,20 @@ interface SelectProps<T> {
     value: string;
     labelKey: keyof T;
     valueKey: keyof T; 
-    variant: SelectVariant;
     size: SelectSize;
-    disabled: boolean;
+    disabled?: boolean;
     classname?: string;
 }
 
-const Select: React.FC<SelectProps<any>> = ({ options, onChange, value, labelKey, valueKey, variant, size, disabled, classname }) => {
+const getSizeClass = (size: SelectSize) => {
+    let classname = size === SelectSize.small ? `${styles.select_small}` : `${styles.select_large}`;
+    return classname;
+}
+
+const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size }: SelectProps<any>) => {
     return (
         <select
-            className={``}
+            className={`${getSizeClass(size)} ${classname} w-100`}
             value={value}
             onChange={onChange}
             disabled={disabled}
