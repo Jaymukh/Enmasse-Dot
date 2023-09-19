@@ -51,7 +51,8 @@ export default function Invite() {
 				}
 			})
 			.catch(error => {
-				toast.error(error);
+				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+				toast.error(errorMsg);
 			});
 	};
 
@@ -72,7 +73,7 @@ export default function Invite() {
 	const closeConfirmDeleteModal = () => {
 		setShowConfirmDeleteModal(false);
 	};
-	
+
 	// function for Delete
 	const handleDeleteClick = () => {
 		userService.deleteInvite(selectedUserId!)
@@ -83,7 +84,10 @@ export default function Invite() {
 				}
 			})
 			.catch(error => {
-				toast.error(error);
+				{
+					const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+					toast.error(errorMsg);
+				};
 			});
 	};
 
