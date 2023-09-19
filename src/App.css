@@ -709,6 +709,10 @@
 	color: var(--gray-color);
 }
 
+.fs-11 {
+	font-size: 0.688rem;
+}
+
 .fs-12 {
 	font-size: 0.75rem;
 }
@@ -717,40 +721,36 @@
 	font-size: 0.813rem !important;
 }
 
-.fs-18 {
-	font-size: 1.125rem;
-}
-
 .fs-14 {
 	font-size: 0.875rem;
-}
-
-.fs-11 {
-	font-size: 0.688rem;
-}
-
-.fs-21 {
-	font-size: 1.313rem;
-}
-
-.fs-16 {
-	font-size: 1rem;
-}
-
-.fs-24 {
-	font-size: 1.5rem !important;
-}
-
-.fs-31 {
-	font-size: 1.983rem;
 }
 
 .fs-15 {
 	font-size: 0.938rem;
 }
 
+.fs-16 {
+	font-size: 1rem;
+}
+
+.fs-18 {
+	font-size: 1.125rem;
+}
+
+.fs-21 {
+	font-size: 1.313rem;
+}
+
+.fs-24 {
+	font-size: 1.5rem !important;
+}
+
 .fs-27 {
 	font-size: 1.688rem;
+}
+
+.fs-31 {
+	font-size: 1.983rem;
 }
 
 .fs-64 {

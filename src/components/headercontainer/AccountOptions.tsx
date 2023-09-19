@@ -93,7 +93,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 						</ListItemIcon>
 						{loggedUser.name}
 					</MenuItem>
-					{Constants.accountMenuItems.map((item: AccountMenuItem, index: number) => (
+					{Constants.accountMenuItems.map((item: AccountMenuItem) => (
 						<MenuItem key={item.key} onClick={(e) => handleClickMenuItem(e, item.key)} className="menu-font-size">
 							<ListItemIcon>
 								{item.icon}

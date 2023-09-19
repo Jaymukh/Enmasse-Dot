@@ -1,5 +1,6 @@
 
 import { MdGroupAdd } from 'react-icons/md';
+import '../../App.css';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { IoSettingsSharp } from 'react-icons/io5';
 import Avatar from '@mui/material/Avatar';
@@ -190,12 +191,12 @@ export const accountMenuItems: AccountMenuItem[] = [
     {
         key: 1,
         text: "Settings",
-        icon: <IoSettingsSharp fontSize='small' />
+        icon: <IoSettingsSharp fontSize='fs-21' />
     },
     {
         key: 2,
         text: "Invite",
-        icon: <MdGroupAdd fontSize='small' />
+        icon: <MdGroupAdd fontSize='fs-21' />
     },
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\settings\Settings.tsx language selectbox
