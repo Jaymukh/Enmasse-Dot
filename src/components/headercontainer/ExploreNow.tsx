@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
+import { Button, ButtonType, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 const ExploreNow = () => {
   const [selectedValue, setSelectedValue] = useState<string>('');
@@ -83,10 +84,16 @@ const ExploreNow = () => {
 
   return (
     <div>
-      <button className='header-btns btn-black me-2 fs-13 grayBtnClr' onClick={openExploreNowModal}>
+      {/* <button className='header-btns btn-black me-2 fs-13 grayBtnClr' onClick={openExploreNowModal}> */}
+      <Button
+        type={ButtonType.primary}
+        size={ButtonSize.default}
+        variant={ButtonVariant.contained}
+        onClick={openExploreNowModal}>
         <MdOutlineTravelExplore className='me-2' fontSize={20} />
         Explore Now
-      </button>
+      </Button>
+      {/* </button> */}
       <div
         className={`modal ${showExploreNowModal ? 'show' : ''}`}
         tabIndex={-1}

@@ -1,35 +1,67 @@
+@import url("../../../styles/color.css");
+/* @import url("assets/fonts/fonts.css"); */
 
-@import url("styles/colors.css");
-@import url("assets/fonts/fonts.css");
+.btn_primary { /* black button */
+	background-color: var(--black-1);
+	border-color: var(--black-1);
+	border-radius: 5px;
+	color: var(--white-1);
+}
 
-.btn_primary {
-    background-color: var(--primary-1);
-    border-color: var(--primary-1);
-    border-radius: 0;
-    color: var(--white-1);
-  }
+.btn_primary_transparent {
+	background-color: var(--black-1);
+	border: 0;
+	color: var(--white-1);
+}
 
-  .btn_primary:hover {
+/* .btn_primary:hover {
     background-color: var(--primary-hover-1);
     border-color: var(--primary-hover-1);
     border-radius: 0;
     color: var(--white-1);
-  }
+  } */
 
-  .btn_secondary {
-    background-color: var(--primary-2);
-    border-color: var(--primary-2);
-    border-radius: 0;
-    color: var(--white-1);
-  }
+.btn_secondary { /* white button */
+	background-color: var(--white-1);
+	border-color: var(--black-2);
+	border-radius: 1px;
+	color: var(--black-2);
+}
 
-  .btn_secondary:hover {
+.btn_secondary_transparent { /* white button */
+	background-color: var(--white-1);
+	border: none !important;
+	color: var(--black-2);
+}
+
+/* .btn_secondary:hover {
     background-color: var(--primary-hover-2);
     border-color: var(--primary-hover-2);
     border-radius: 0;
     color: var(--white-1);
-  }
+  } */
 
-  .no_radius {
-    border-radius: 0;
-  }
+.btn_warning {
+	background-color: var(--warning);
+	border-color: var(--warning);
+	border-radius: 4px;
+	color: var(--white-1);
+}
+
+.btn_warning_transparent {
+	background-color: var(--warning);
+	border: none !important;
+	color: var(--white-1);
+}
+
+.btn_default {
+	font-size: 0.813rem; /* 13px */
+}
+
+.btn_small {
+	font-size: 0.75rem !important;
+}
+
+.no_radius {
+	border-radius: 0;
+}

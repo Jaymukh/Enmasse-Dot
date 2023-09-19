@@ -1,5 +1,8 @@
 /* include all the color variable */
 
 html {
-
+    --black-1: #111827;
+    --black-2: #565657;
+    --white-1: #FFFFFF;
+    --warning: #D55038;
 }
