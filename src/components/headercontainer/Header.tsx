@@ -1,13 +1,12 @@
 import '../../App.css';
 import React, { useState } from 'react';
-import { MdLiveHelp } from 'react-icons/md';
+import { MdLiveHelp, MdNotifications } from 'react-icons/md';
 import AccountOptions from './AccountOptions';
-import { MdNotifications } from 'react-icons/md';
 import MapYourBusiness from './MapYourBusiness';
 import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants/routeConstants';
-import WIPDrawer from '../mapcontainer/mapoptions/WIPDrawer';
+import WIPDrawer from '../mapcontainer/mapOptions/WIPDrawer';
 
 interface HeaderProps {
   handleVisiblePanel: (index: number) => void;
