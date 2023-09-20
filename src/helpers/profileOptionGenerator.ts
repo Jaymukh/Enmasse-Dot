@@ -1,11 +1,11 @@
 const initialGenerator = (value: string) => {
     if (value) {
         let initial = value.split(' ');
-        // if (initial[1]) {
-        //     return initial[0][0].toUpperCase() + initial[1][0].toUpperCase();
-        // } else {
-        return initial[0][0].toUpperCase();
-        //}
+        if (initial[1]) {
+            return initial[0][0].toUpperCase() + initial[1][0].toUpperCase();
+        } else {
+            return initial[0][0].toUpperCase();
+        }
     } else {
         return '';
     }
