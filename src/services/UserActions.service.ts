@@ -30,10 +30,10 @@ const useUserService = () => {
                 }
             })
             .catch(error => {
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."                
+                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });
-                
+
     }
 
     const logout = () => {
@@ -45,10 +45,10 @@ const useUserService = () => {
                 setAuth({});
                 navigate(RouteConstants.login);
             })
-            .catch(error => { 
-            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."                
-            toast.error(errorMsg);
-        });
+            .catch(error => {
+                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                toast.error(errorMsg);
+            });
 
     }
 
@@ -60,11 +60,12 @@ const useUserService = () => {
         return fetchWrapper.get(APIS.USERS.GET_LOGGED_USER).then(data => {
             const initial = initialGenerator(data.name);
             const userHSL = generateHSL(data.name);
-            setLoggedUser({...data, initial: initial, userHSL: userHSL});
+            setLoggedUser({ ...data, initial: initial, userHSL: userHSL });
         })
-        .catch(error => {
-            console.log(error);
-        });
+            .catch(error => {
+                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                toast.error(errorMsg);
+            });
     };
     const updateUserDetails = (updatedData: any) => {
         return fetchWrapper.put(APIS.USERS.UPDATE_LOGGED_USER, updatedData);
@@ -89,7 +90,7 @@ const useUserService = () => {
     const acceptAgreement = () => {
         return fetchWrapper.get(APIS.USERS.ACCEPT_AGREEMENT);
     }
-    
+
     const deleteInvite = (user_id: string) => {
         const URL = APIS.USERS.DELETE_INVITE + user_id + '/delete/';
         return fetchWrapper.delete(URL);

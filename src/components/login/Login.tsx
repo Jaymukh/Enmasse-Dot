@@ -8,7 +8,6 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { useUserService } from '../../services';
-import Drawer from '../ui/Drawer';
 
 interface IFormValues {
     email_id: string;
@@ -23,7 +22,6 @@ interface IModal {
 export default function Login() {
     const userService = useUserService();
     const [email, setEmail] = useState('');
-    const [filledInputCount, setFilledInputCount] = useState(0);
     const [showModal, setShowModal] = useState<IModal>({
         passwordModal: false,
         sendMailModal: false,
@@ -44,8 +42,6 @@ export default function Login() {
     });
     const { errors, isSubmitting } = formState;
 
-    const updateObject = watch();
-
     const onSubmit = (values: IFormValues) => {
         if (Object.values(errors).length > 0) {
             return;
@@ -65,12 +61,6 @@ export default function Login() {
         setEmail('');
         handleModal({ passwordModal: false });
     }
-
-    useEffect(() => {
-        const values = watch(); // Get all form values
-        const count = Object.values(values).filter(Boolean).length;  //`Boolean` is called as a function and it converts its argument into a boolean value. 
-        setFilledInputCount(count);
-    }, [updateObject, watch]);
 
     return (
         <div>
@@ -102,7 +92,7 @@ export default function Login() {
                             {errors?.email_id?.message && <p className='text-danger m-0 p-0'>{errors?.email_id?.message}</p>}
                             <div className='d-flex flex-row justify-content-between mt-3'>
                                 <h5 className='fs-6'>Password</h5>
-                                <button className='bg-transparent underline-text border-0' onClick={() => handleModal({ passwordModal: true })}>Forgot password?</button>
+                                <a href='' onClick={() => handleModal({ passwordModal: true })}>Forgot password?</a>
                             </div>
                             <input
                                 type='password'

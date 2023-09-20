@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('./styles/main.css');
 
 :root {
 	--primaryColor: #f2f3f4;
@@ -36,6 +37,11 @@
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
 	color: white;
+}
+
+a {
+	cursor: pointer;
+	color: #000000;
 }
 
 /* Header */
@@ -223,6 +229,7 @@
 .fontSizeXS {
 	font-size: 10px;
 }
+
 .fontSizeXL {
 	font-size: 60px;
 }
@@ -602,7 +609,8 @@
 .color-orange {
 	color: #D55038;
 }
-.bg-orange{
+
+.bg-orange {
 	background-color: #D55038;
 }
 
@@ -922,16 +930,17 @@ th {
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
+	width: 0px;
+	background: transparent;
+	/* make scrollbar transparent */
 }
 
 .font-lato {
-	font-family: 'Lato', sans-serif;	
+	font-family: 'Lato', sans-serif;
 }
 
 .font-poppins {
-	font-family: 'Poppins', sans-serif !important;	
+	font-family: 'Poppins', sans-serif !important;
 }
 
 .right-border {
@@ -989,44 +998,45 @@ th {
 
 /* MapOptions */
 .suboption-div {
-    padding-top: 0.5rem;
+	padding-top: 0.5rem;
 }
 
 .primary-select {
-    min-width: 13rem !important;
+	min-width: 13rem !important;
 }
 
 .select {
-    min-width: 11rem !important;
-    margin-top: 1rem;
+	min-width: 11rem !important;
+	margin-top: 1rem;
 }
 
 .country-text {
-    font-size: 0.6rem;
-    color: #797C85;;
-    margin-left: 0rem;
-    margin-bottom: 0.1rem;
-    width: 1px;
+	font-size: 0.6rem;
+	color: #797C85;
+	;
+	margin-left: 0rem;
+	margin-bottom: 0.1rem;
+	width: 1px;
 }
 
 .secondary-select {
-    min-width: 8rem !important;
-    min-height: 1rem !important;
+	min-width: 8rem !important;
+	min-height: 1rem !important;
 }
 
 /* Bookmarks */
 .bookmark-div {
-    padding-left: 1rem;
-    padding-right: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 .bookmark-search-bar {
-    min-width: 25rem !important;
+	min-width: 25rem !important;
 }
 
 /* Notifications */
 .drawer-header {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 /* Map your business */
@@ -1035,23 +1045,23 @@ th {
 	border: 1px solid #dbdbdb;
 	border-radius: 0.5rem;
 	box-shadow: none;
-	box-sizing: border-box;	
+	box-sizing: border-box;
 	font-size: 0.9rem;
 	height: 2.6rem;
-	padding: 0.25rem 1rem;    
+	padding: 0.25rem 1rem;
 }
 
 .btn:hover {
-    border-color: #b5b5b5;
+	border-color: #b5b5b5;
 }
 
 .header-btn-white {
-    color: #565657;
-    background-color: #ffffff;    
+	color: #565657;
+	background-color: #ffffff;
 }
 
 .drawer-header {
-    font-weight: bold !important;
+	font-weight: bold !important;
 	font-size: 1.25rem !important;
 }
 
@@ -1067,12 +1077,12 @@ th {
 	border: 1px solid #dbdbdb;
 	border-radius: 0.35rem;
 	box-shadow: none;
-	box-sizing: border-box;	
+	box-sizing: border-box;
 	font-size: 0.9rem;
 	height: 2.6rem;
-	padding: 0.25rem 1rem;   
+	padding: 0.25rem 1rem;
 	color: #ffffff;
-    background-color: #111827; 
+	background-color: #111827;
 	font-weight: 500;
 }
 
@@ -1087,24 +1097,24 @@ th {
 	border: 1px solid #dbdbdb;
 	border-radius: 0.5rem;
 	box-shadow: none;
-	box-sizing: border-box;	
+	box-sizing: border-box;
 	font-size: 0.9rem;
 	height: 2.6rem;
-	padding: 0.25rem 1rem;    
+	padding: 0.25rem 1rem;
 }
 
 .btn:hover {
-    border-color: #b5b5b5;
+	border-color: #b5b5b5;
 }
 
 .btn-black {
-    color: #ffffff;
-    background-color: #414652;
+	color: #ffffff;
+	background-color: #414652;
 }
 
 .header-btn-white {
-    color: #565657;
-    background-color: #ffffff;    
+	color: #565657;
+	background-color: #ffffff;
 }
 
 .description-div {
@@ -1126,12 +1136,12 @@ th {
 	border: 1px solid #dbdbdb;
 	border-radius: 0.35rem;
 	box-shadow: none;
-	box-sizing: border-box;	
+	box-sizing: border-box;
 	font-size: 0.9rem;
 	height: 2.6rem;
-	padding: 0.25rem 1rem;   
+	padding: 0.25rem 1rem;
 	color: #ffffff;
-    background-color: #111827; 
+	background-color: #111827;
 	font-weight: 500;
 }
 
@@ -1142,4 +1152,3 @@ th {
 	box-shadow: none;
 
 }
-
