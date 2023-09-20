@@ -5,7 +5,7 @@ import { FiDownload } from 'react-icons/fi';
 import { MdBookmarks } from 'react-icons/md';
 import WIPDrawer from './WIPDrawer';
 import { SelectChangeEvent } from '@mui/material';
-import { Button, ButtonType, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 
 interface MapOptionsProps {
     handleGlobal: () => void;
@@ -98,7 +98,7 @@ function MapOptions({
             </div>
             <div className='col-xl-5 col-md-5 d-flex flex-wrap justify-content-end align-items-center'>
                 <Button
-                    type={ButtonType.secondary}
+                    theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
                     variant={ButtonVariant.transparent}
                     onClick={() => openWIPDrawer("Download data")}
@@ -116,7 +116,7 @@ function MapOptions({
                     </div>
                 </button> */}
                 <Button
-                    type={ButtonType.secondary}
+                    theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
                     variant={ButtonVariant.transparent}
                     onClick={() => openWIPDrawer("Download data")}

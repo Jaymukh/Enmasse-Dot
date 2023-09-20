@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { HiMiniPhone } from 'react-icons/hi2';
 import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
 import Drawer from '../ui/Drawer';
-import { Button, ButtonType, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 const MapYourBusiness = () => {
 	const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ const MapYourBusiness = () => {
 				Map Your Business
 			</button> */}
 			<Button
-				type={ButtonType.secondary}
+				theme={ButtonTheme.secondary}
 				size={ButtonSize.default}
 				variant={ButtonVariant.contained}
 				onClick={() => toggleDrawer()}>

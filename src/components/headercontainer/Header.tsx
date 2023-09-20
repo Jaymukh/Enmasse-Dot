@@ -7,7 +7,7 @@ import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants/routeConstants';
 import WIPDrawer from '../mapContainer/mapOptions/WIPDrawer';
-import { Button, ButtonType, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 interface HeaderProps {
   handleVisiblePanel: (index: number) => void;
@@ -53,7 +53,7 @@ function Header({ handleVisiblePanel, handleOverlay, handleHelp }: HeaderProps) 
           <MdLiveHelp fontSize={25} className='ms-4 me-3 mb-1 header-icon' />
         </button> */}
         <Button
-          type={ButtonType.secondary}
+          theme={ButtonTheme.secondary}
           size={ButtonSize.default}
           variant={ButtonVariant.transparent}
           onClick={() => handleHelpClick()}
@@ -64,7 +64,7 @@ function Header({ handleVisiblePanel, handleOverlay, handleHelp }: HeaderProps) 
           <MdNotifications fontSize={25} className='mb-1 header-icon' />
         </button> */}
         <Button
-          type={ButtonType.secondary}
+          theme={ButtonTheme.secondary}
           size={ButtonSize.default}
           variant={ButtonVariant.transparent}
           onClick={() => handleHelpClick()}
