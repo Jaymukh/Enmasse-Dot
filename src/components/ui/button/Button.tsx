@@ -13,7 +13,7 @@ export enum ButtonSize {
     default,
 }
 
-export enum ButtonType {
+export enum ButtonTheme {
     primary,
     secondary,
     warning
@@ -23,10 +23,11 @@ interface ButtonProps {
     onClick?: (event: any) => void;
     variant?: ButtonVariant,
     size?: ButtonSize,
-    type?: ButtonType,
+    theme?: ButtonTheme,
     className?: string,
     disabled?: boolean,
     children?: React.ReactNode,
+    type?: "button" | "submit" | "reset";
 }
 
 const getSizeClass = (size: ButtonSize) => {
@@ -48,16 +49,16 @@ const getSizeClass = (size: ButtonSize) => {
     return className;
 }
 
-const getTypeVariantClass = (type: ButtonType, variant: ButtonVariant) => {
+const getTypeVariantClass = (theme: ButtonTheme, variant: ButtonVariant) => {
     let className = "";
-    switch (type) {
-        case ButtonType.primary:
+    switch (theme) {
+        case ButtonTheme.primary:
             className = variant === ButtonVariant.transparent ? `${styles.btn_primary_transparent}` : `${styles.btn_primary}`;
             break;
-        case ButtonType.secondary:
+        case ButtonTheme.secondary:
             className = variant === ButtonVariant.transparent ? `${styles.btn_secondary_transparent}` : `${styles.btn_secondary}`;
             break;
-        case ButtonType.warning:
+        case ButtonTheme.warning:
             className = variant === ButtonVariant.transparent ? `${styles.btn_warning_transparent}` : `${styles.btn_warning}`;
             break;
     }
@@ -68,16 +69,18 @@ const getTypeVariantClass = (type: ButtonType, variant: ButtonVariant) => {
 export const Button = ({
     onClick,
     variant = ButtonVariant.contained,
-    type= ButtonType.primary,
+    theme= ButtonTheme.primary,
     size= ButtonSize.default,
     disabled,
-    children
+    children,
+    type
 }: ButtonProps) => {
     return (
         <button
-            className={`btn ${getTypeVariantClass(type, variant)} ${getSizeClass(size)}`}
+            className={`btn ${getTypeVariantClass(theme, variant)} ${getSizeClass(size)}`}
             onClick={onClick}
             disabled={disabled}
+            type={type}
         >
             {children}
         </button>
