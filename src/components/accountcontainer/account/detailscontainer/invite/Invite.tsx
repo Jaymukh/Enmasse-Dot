@@ -12,7 +12,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 
-
 export default function Invite() {
 	const [selectedData, setSelectedData] = useState<User | null>(null);
 	const [openInviteNew, setOpenInviteNew] = useState(false);
@@ -26,7 +25,9 @@ export default function Invite() {
 
 	//function to get all the users
 	useEffect(() => {
-		userService.getAll();
+		userService.getAll() .then(response => {
+			setUsers(response);
+		});
 	}, []);
 
 	const handleEditClick = (row: User) => {

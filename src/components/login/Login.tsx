@@ -1,5 +1,5 @@
 import '../../App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import globe from '../../utils/images/globe.png';
 import ForgotPassword from './ForgotPassword';
 import EmailSent from './EmailSent';
@@ -23,6 +23,8 @@ export default function Login() {
     const userService = useUserService();
     const [email, setEmail] = useState('');
     const [filledInputCount, setFilledInputCount] = useState(0);
+    const buttonRef = useRef<HTMLButtonElement | null>(null); // for login button focus
+
     const [showModal, setShowModal] = useState<IModal>({
         passwordModal: false,
         sendMailModal: false,
@@ -69,7 +71,14 @@ export default function Login() {
         const values = watch(); // Get all form values
         const count = Object.values(values).filter(Boolean).length;  //`Boolean` is called as a function and it converts its argument into a boolean value. 
         setFilledInputCount(count);
+        
     }, [updateObject, watch]);
+
+    useEffect(() => { // for login button focus
+        if (buttonRef.current) {
+          buttonRef.current.focus();
+        }
+      }, []);
 
     return (
         <div>
@@ -111,7 +120,7 @@ export default function Login() {
                                 placeholder='Enter your password here' />
                             {errors?.password?.message && <p className='text-danger m-0 p-0'>{errors?.password?.message}</p>}
                             <button
-                                autoFocus={true}
+                                ref={buttonRef}
                                 type='submit'
                                 className='mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-dark'
                             //className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-secondary ${(filledInputCount < 2) ? 'bg-secondary' : 'bg-dark'}`}
