@@ -99,14 +99,14 @@ function MapOptions({
             <div className='col-xl-5 col-md-5 d-flex flex-wrap justify-content-end align-items-center'>
                 <Button
                     type={ButtonType.secondary}
-                    size={ButtonSize.small}
+                    size={ButtonSize.default}
                     variant={ButtonVariant.transparent}
                     onClick={() => openWIPDrawer("Download data")}
                 >
                     <FiDownload className='me-2' fontSize={15} />
                     Download data
                 </Button>
-                <button
+                {/* <button
                     className='btn-white px-1'
                     onClick={() => openWIPDrawer("Bookmarks")}
                 >
@@ -114,7 +114,16 @@ function MapOptions({
                         <MdBookmarks className='mt-1' />
                         <p className='mx-2 my-1 fs-12'>Bookmarks</p>
                     </div>
-                </button>
+                </button> */}
+                <Button
+                    type={ButtonType.secondary}
+                    size={ButtonSize.default}
+                    variant={ButtonVariant.transparent}
+                    onClick={() => openWIPDrawer("Download data")}
+                >
+                    <MdBookmarks className='me-2' fontSize={15} />
+                    Bookmarks
+                </Button>
             </div>
             {open && <WIPDrawer open={open} title={title} closeWIPDrawer={closeWIPDrawer} />}
         </div>
