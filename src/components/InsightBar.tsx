@@ -35,7 +35,7 @@ export default function InsightBar() {
                     {options.map((option, key) => <option key={key} value={option.currency}>{option.currency} {option.symbol}</option>)}
                 </select>
             </div>
-            {Constants.countryData.map((data, key) => (
+            {Constants.countryData.map((data) => (
                 <>
                     <h6 className='fs-16 text-start px-3 my-1 ms-1'>{data.country}</h6>
                     <div className="row d-flex justify-content-center py-2">

@@ -3,7 +3,6 @@ import { MdGroupAdd } from 'react-icons/md';
 import '../../App.css';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { IoSettingsSharp } from 'react-icons/io5';
-import Avatar from '@mui/material/Avatar';
 import Navale from '../images/family-sample.png';
 
 export const TOKEN: string =

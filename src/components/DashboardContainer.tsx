@@ -5,20 +5,20 @@ import DashBoard from './dashboardcontainer/DashBoard';
 interface DashBoardContainerProps {
 	handleVisiblePanel: (index: number) => void;
 	handleOverlay: (overlay: boolean) => void;
-	handleInfographic: (showInfographic: number) => void;
+	handleHelp: (showHelp: number) => void;
 }
 
 const DashBoardContainer: React.FC<DashBoardContainerProps> = ({
 	handleVisiblePanel,
 	handleOverlay,
-	handleInfographic,
+	handleHelp,
 }) => {
 	return (
 		<div className='w-100 primary-bg'>
 			<Header
 				handleVisiblePanel={handleVisiblePanel}
 				handleOverlay={handleOverlay}
-				handleInfographic={handleInfographic}
+				handleHelp={handleHelp}
 			/>
 			<DashBoard />
 		</div>

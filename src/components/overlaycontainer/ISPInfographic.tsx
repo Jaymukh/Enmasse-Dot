@@ -2,12 +2,12 @@ import React from 'react';
 import img5 from '../../utils/images/img5.png';
 
 interface ISPInfographicProps {
-  handleInfographic: (value: number) => void;
+  handleHelp: (value: number) => void;
   handleOverlay: (overlay: boolean) => void;
 }
 
 const ISPInfographic: React.FC<ISPInfographicProps> = ({ 
-  handleInfographic, 
+  handleHelp, 
   handleOverlay 
 }) => {
   return (
@@ -18,7 +18,7 @@ const ISPInfographic: React.FC<ISPInfographicProps> = ({
           <p className='color-white'>An expandable summary screen inclusive of demographic and characteristic activity of the region of opportunity</p>
           <div className='d-flex justify-content-between '>
             <button className='border-0 bg-transparent text-white px-4 py-2 rounded-1' onClick={() => handleOverlay(false)}>Skip</button>
-            <button className="btn btn-light btn-height" onClick={() => handleInfographic(3)}>Next</button>
+            <button className="btn btn-light btn-height" onClick={() => handleHelp(3)}>Next</button>
           </div>
         </div>
         <img src={img5} alt="Image 5" width="300" height="300" className='contextualinfo' />
