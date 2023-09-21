@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 interface ForgotPasswordProps {
     showModal: boolean;
@@ -38,14 +39,18 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                                     placeholder='Enter your email id here'
                                     onChange={(e) => handleEmailChange(e.target.value)}
                                 />
-                                {/* {forgotPasswordEmailError && <p className='text-danger text-start'>{forgotPasswordEmailError}</p>} */}
-
-                                <button
-                                    className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 ${email ? 'bg-dark' : 'bg-secondary'}`}
-                                    // disabled={email.length > 0 ? true : false}
+                                {/* <button className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 ${email ? 'bg-dark' : 'bg-secondary'}`} onClick={handleSendEmail}>
+                                    Send Email
+                                </button> */}
+                                <Button
+                                    theme={email ? ButtonTheme.primary : ButtonTheme.muted}
+                                    classname='mb-2 mt-4'
+                                    size={ButtonSize.large}
+                                    variant={ButtonVariant.transparent}
                                     onClick={handleSendEmail}
-                                >Send Email
-                                </button>
+                                >
+                                    Send Email
+                                </Button>
                                 <button className='bg-transparent underline-text border-0' onClick={() => handleModal({ passwordModal: false })}>Back to Login</button>
                             </div>
                         </div>

@@ -36,12 +36,27 @@
 	color: var(--black-0);
 }
 
-/* .btn_secondary:hover {
-    background-color: var(--primary-hover-2);
-    border-color: var(--primary-hover-2);
-    border-radius: 0;
-    color: var(--white-1);
-  } */
+.btn_muted { /* lightgray button */
+	background-color: var(--black-6);
+	border-color: var(--black-6);
+	border-radius: 5px;
+	color: var(--white-1);
+	height: 3rem;
+}
+
+.btn_muted_transparent { /* lightgray button */
+	background-color: var(--black-6);
+	border: none;
+	color: var(--white-1);
+	height: 3rem;
+}
+
+.btn_muted:hover {
+    background-color: var(--black-6);
+	border: none;
+	color: var(--white-1);
+	height: 3rem;
+  }
 
 .btn_warning {
 	background-color: var(--warning);
@@ -62,6 +77,16 @@
 
 .btn_small {
 	font-size: 0.75rem !important; /* 12px */
+}
+
+.btn_medium {
+	font-size: 0.75rem !important; /* 12px */
+	width: 198px;
+}
+
+.btn_large {
+	font-size: 1rem !important; /* 12px */
+	width: 100%;
 }
 
 .no_radius {
