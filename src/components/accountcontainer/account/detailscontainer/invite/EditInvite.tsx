@@ -5,6 +5,7 @@ import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User } from "../../../../../states";
+import Select, { SelectSize } from '../../../../ui/select/Select';
 
 interface EditInviteProps {
     selectedData: User;
@@ -55,23 +56,33 @@ const EditInvite: React.FC<EditInviteProps> = ({
                     <input type="email" placeholder="Enter your Email ID" value={updatedData.email_id} name='email_id'
                         onChange={(e) => handleChangeData(e)} className='mb-2  p-2 btn-outline-black drawer-input-box-height' />
                     <h6 className='mt-1 font-87-5 text-start'>Role</h6>
-                    <select name='role' className='mb-2 btn-outline-black drawer-input-box-height text-left ' value={updatedData.role} onChange={(e) => handleChangeData(e)} >
-                        {settings?.roles?.map((role) => (
-                            <option key={role.id} value={role.name}>{role.name}</option>
-                        ))}
-                    </select>
+                    <Select
+                        options={settings?.roles}
+                        onChange={(e) => handleChangeData(e)}
+                        value={updatedData?.role}
+                        labelKey='name'
+                        valueKey='name'
+                        size={SelectSize.large}
+                        name='role'
+                    />
                     <h6 className='mt-1 font-87-5 text-start'>Company</h6>
-                    <select name='company' className='mb-2 btn-outline-black drawer-input-box-height text-left ' value={updatedData.company} onChange={(e) => handleChangeData(e)} >
-                        {Constants.company.map((company) => (
-                            <option key={company.key} value={company.value}>{company.value}</option>
-                        ))}
-                    </select>
+                    <Select
+                        options={Constants?.company}
+                        value={updatedData?.company}
+                        labelKey='value'
+                        valueKey='value'
+                        size={SelectSize.large}
+                        name='company'
+                    />
                     <h6 className='mt-1 font-87-5 text-start'>CompanyType</h6>
-                    <select name='company_type' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={updatedData.company_type} onChange={(e) => handleChangeData(e)} >
-                        {settings?.company_types?.map((company_type) => (
-                            <option key={company_type.id} value={company_type.name}>{company_type.name}</option>
-                        ))}
-                    </select>
+                    <Select
+                        options={settings?.company_types}
+                        value={updatedData?.company_type}
+                        labelKey='name'
+                        valueKey='name'
+                        size={SelectSize.large}
+                        name='company_type'
+                    />
                     <button className='btn-black bg-dark border-0 drawer-input-box-height mt-2 mb-3 my-4' onClick={handleUpdateClick}>Update</button>
                 </div>
             </Drawer>

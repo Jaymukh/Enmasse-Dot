@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as Constants from '../utils/constants/Constants';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
+import Select, { SelectSize } from './ui/select/Select';
 
 const options = [
     {
@@ -25,15 +26,22 @@ export default function InsightBar() {
     }
 
     return (
-        <div className='sideBar-parent-expended py-4 me-3 px-0' style={{overflow: 'auto', overflowX: 'hidden'}} >
-            <div className='d-flex justify-content-between align-items-start px-3'>
-                <div className='d-flex justify-content-start'>
+        <div className='sideBar-parent-expended py-4 me-3 px-0' style={{ overflow: 'auto', overflowX: 'hidden' }} >
+            <div className='row d-flex justify-content-between align-items-start px-3'>
+                <div className='col-8 d-flex justify-content-start'>
                     <h6 className='me-2 ms-1 fs-18'>EnMasses Thesis</h6>
                     <AiOutlineInfoCircle fontSize={20} color='#606060' />
                 </div>
-                <select className='currency-select-box px-2 py-1 fs-11' value={currency} onChange={handleChangeCurrency}>
-                    {options.map((option, key) => <option key={key} value={option.currency}>{option.currency} {option.symbol}</option>)}
-                </select>
+                <div className='col-4'>
+                    <Select
+                        options={options}
+                        value={currency}
+                        labelKey='currency'
+                        valueKey='currency'
+                        size={SelectSize.small}
+                        onChange={handleChangeCurrency}
+                    />
+                </div>
             </div>
             {Constants.countryData.map((data) => (
                 <>

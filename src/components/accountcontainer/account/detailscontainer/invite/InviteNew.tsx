@@ -53,10 +53,10 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     userService.getAll();
                 }
             })
-            .catch(error => { 
-            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."                
-            toast.error(errorMsg);
-        });
+            .catch(error => {
+                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                toast.error(errorMsg);
+            });
         handleCloseInviteNew();
     };
 
@@ -81,11 +81,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     <input type="email" placeholder="Enter your Email ID" value={newData.email_id} name='email_id'
                         onChange={(e) => handleChangeData(e)} className='mb-2  p-2 btn-outline-black drawer-input-box-height' />
                     <h6 className='my-1 font-87-5 text-start'>Role</h6>
-                    {/* <select name='role' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.role} onChange={(e) => handleChangeData(e)} >
-                        {settings?.roles?.map((role) => (
-                            <option key={role.id} value={role.name}>{role.name}</option>
-                        ))}
-                    </select> */}
                     <Select
                         options={settings?.roles}
                         onChange={(e) => handleChangeData(e)}
@@ -96,17 +91,23 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='role'
                     />
                     <h6 className='mt-1 font-87-5 text-start'>Company</h6>
-                    <select name='role' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.company} onChange={(e) => handleChangeData(e)} >
-                        {Constants?.company?.map((company) => (
-                            <option key={company.key} value={company.value}>{company.value}</option>
-                        ))}
-                    </select>
+                    <Select
+                        options={Constants?.company}
+                        value={newData?.company}
+                        labelKey='value'
+                        valueKey='value'
+                        size={SelectSize.large}
+                        name='company'
+                    />
                     <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
-                    <select name='company_type' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.company_type} onChange={(e) => handleChangeData(e)} >
-                        {settings?.company_types?.map((company_type) => (
-                            <option key={company_type.id} value={company_type.name}>{company_type.name}</option>
-                        ))}
-                    </select>
+                    <Select
+                        options={settings?.company_types}
+                        value={newData?.company_type}
+                        labelKey='name'
+                        valueKey='name'
+                        size={SelectSize.large}
+                        name='company_type'
+                    />
                     <p className='my-3 Note d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p>
                     <button className='btn-black bg-dark border-0 drawer-input-box-height mt-2 mb-3' onClick={handleSubmitInviteNew}>Invite</button>
                 </div>

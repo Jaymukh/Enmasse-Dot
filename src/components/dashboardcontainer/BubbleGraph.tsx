@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import * as d3 from "d3";
 import { bubbleData } from '../../utils/constants/Constants';
-import SelectYear from "./SelectYear";
+import Select, { SelectSize } from '../ui/select/Select';
 
 interface BubbleNode {
 	name: string;
@@ -11,6 +11,20 @@ interface BubbleNode {
 }
 
 const BubbleGraph = () => {
+	const options: any[] = [];
+	const currentYear = new Date().getFullYear();
+
+	for (let year = currentYear - 10; year <= currentYear; year++) {
+		options.push({ key: year, value: year.toString() });
+	}
+
+	const [selectedYear, setSelctedYear] = useState(currentYear);
+
+	const handleChangeYear = (event: { target: { value: any; }; }) => {
+		const value = event.target.value;
+		setSelctedYear(value);
+	}
+
 	const hierarchy = d3
 		.hierarchy<BubbleNode>(bubbleData)
 		.sum((d) => d.value)
@@ -21,9 +35,18 @@ const BubbleGraph = () => {
 
 	return (
 		<div className="white-bg py-3 dashboard-col m-4 px-4">
-			<div className='px-4 pt-2 d-flex justify-content-between'>
-				<h5 className="mb-0 text-start fs-14">Core Solutions by EH</h5>
-				<SelectYear />
+			<div className='row px-4 pt-2 d-flex justify-content-between'>
+				<h5 className="col-3 mb-0 text-start fs-14">Core Solutions by EH</h5>
+				<div className='col-2'>
+					<Select
+						options={options}
+						onChange={handleChangeYear}
+						value={selectedYear}
+						labelKey='name'
+						valueKey='name'
+						size={SelectSize.small}
+					/>
+				</div>
 			</div>
 			<div style={{ width: '30rem', height: '50rem' }}>
 				<svg width={550} height={330} style={{ display: "inline-block" }}>

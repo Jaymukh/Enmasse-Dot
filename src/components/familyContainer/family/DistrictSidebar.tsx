@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
-import { countryData } from '../../../utils/constants/Constants';
+import React, { useState } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../../constants';
+import Select, { SelectSize } from '../../ui/select/Select';
 import '../../../App.css';
+
 
 const options = [
     {
@@ -29,14 +30,21 @@ const DistrictSidebar = () => {
     return (
         // <div className='col-3 py-4 px-2 bg-white px-0' style={{ height: '98%', overflow: 'auto' }}>
         <div className='py-4 px-2 bg-white px-0 h-100' style={{ overflow: 'auto' }}>
-            <div className='d-flex justify-content-between align-items-start px-2'>
-                <div>
+            <div className='row d-flex justify-content-between align-items-start px-2'>
+                <div className='col-8'>
                     <h6 className='fs-18'>Kutch</h6>
                     <p className='ps-2 fs-14 mx-0 my-0'>Gujarat</p>
                 </div>
-                <select className='currency-select-box px-2 py-1 fs-11' value={currency} onChange={handleChangeCurrency}>
-                    {options.map((option, key) => <option key={key} value={option.currency}>{option.currency} {option.symbol}</option>)}
-                </select>
+                <div className='col-4'>
+                    <Select
+                        options={options}
+                        value={currency}
+                        labelKey='currency'
+                        valueKey='currency'
+                        size={SelectSize.small}
+                        onChange={handleChangeCurrency}
+                    />
+                </div>
             </div>
             <div className="row d-flex justify-content-center py-2">
                 <div className='col-sm-11 col-md-11 col-lg-5 col-xl-5 mx-2 my-2 card py-2 d-flex align-items-start text-start' >

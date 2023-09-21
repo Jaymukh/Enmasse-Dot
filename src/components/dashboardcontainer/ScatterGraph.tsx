@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
-import SelectYear from './SelectYear';
 import Select, { SelectSize } from '../ui/select/Select';
 
 const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
@@ -68,15 +67,16 @@ const DashboardContainer = () => {
         <div className='white-bg py-3 dashboard-col'>
             <div className='row px-4 pt-2 d-flex justify-content-between'>
                 <h6 className='col-3 text-start fs-14' >EH Income and Expense</h6>
-                <div className='col-2'><Select
-                    options={options}
-                    onChange={handleChangeYear}
-                    value={selectedYear}
-                    labelKey='name'
-                    valueKey='name'
-                    size={SelectSize.small}
-                /></div>
-                
+                <div className='col-2'>
+                    <Select
+                        options={options}
+                        onChange={handleChangeYear}
+                        value={selectedYear}
+                        labelKey='name'
+                        valueKey='name'
+                        size={SelectSize.small}
+                    />
+                </div>
             </div>
 
             <ScatterChart width={750} height={375} margin={{ top: 60, right: 20, bottom: 20, left: 20 }}>
