@@ -93,15 +93,15 @@ export default function Invite() {
 	};
 
 	return (
-		<div className='container bg-white w-90 h-100 mt-4 detail-container me-5'>
+		<div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
 			<div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
 				<h5 className='mt-2 col-2'>Invite</h5>
 				<button className='btn btn-outline-secondary width-fit-content-button' onClick={handleOpenInviteNew} ><IoMdAdd className='me-1 text-dark' fontSize={22} />Invite New</button>
 			</div>
 			<hr />
-			<div className="row w-100 d-flex justify-content-center m-auto invite-table-drawer">
-				<TableContainer component={Paper} className='invite-table-width '>
-					<Table sx={{ minWidth: 650, marginBottom: '5rem' }} aria-label="simple table">
+			<div className="w-100 d-flex justify-content-center m-auto">
+				<TableContainer component={Paper}>
+					<Table sx={{ minWidth: 650 }} aria-label="simple table">
 						<TableHead>
 							<TableRow>
 								<TableCell align="left" variant='head' sx={{ fontWeight: '600' }}>Name</TableCell>

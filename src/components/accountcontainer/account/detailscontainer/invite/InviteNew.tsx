@@ -29,9 +29,9 @@ const InviteNew: React.FC<InviteNewProps> = ({
     const [newData, setNewData] = useState<NewData>({
         name: undefined,
         email_id: undefined,
-        role: undefined,
-        company: undefined,
-        company_type: undefined,
+        role: 'Admin',
+        company: 'enmasse',
+        company_type: 'Enmasse',
     });
     const userService = useUserService();
     const loggedUser = useRecoilValue(loggedUserState);
@@ -81,11 +81,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     <input type="email" placeholder="Enter your Email ID" value={newData.email_id} name='email_id'
                         onChange={(e) => handleChangeData(e)} className='mb-2  p-2 btn-outline-black drawer-input-box-height' />
                     <h6 className='my-1 font-87-5 text-start'>Role</h6>
-                    {/* <select name='role' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.role} onChange={(e) => handleChangeData(e)} >
-                        {settings?.roles?.map((role) => (
-                            <option key={role.id} value={role.name}>{role.name}</option>
-                        ))}
-                    </select> */}
                     <Select
                         options={settings?.roles}
                         onChange={(e) => handleChangeData(e)}

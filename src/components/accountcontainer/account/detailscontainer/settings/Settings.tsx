@@ -105,9 +105,8 @@ const Settings: React.FC<SettingsProps> = () => {
         getLoggedUserSettings();
     }, []);
 
-
     return (
-        <div className='container bg-white w-90 h-100 mt-4 detail-container me-5'>
+        <div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
             <div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
                 <h5 className='mt-2 col-2'>Settings</h5>
                 <div className='mt-2 col-10 d-flex justify-content-end'>

@@ -28,8 +28,8 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
         />
         <MapContainer />
       </div>
-      {overlay && (
-        <div className='overlay d-flex flex-wrap justify-content-center align-items-center'>
+      {overlay &&
+        (<div className='overlay d-flex flex-wrap justify-content-center align-items-center'>
           <OverlayContainer
             handleOverlay={handleOverlay}
             handleHelp={handleHelp}

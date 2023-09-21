@@ -8,7 +8,7 @@ import { loggedUserState } from '../../states';
 import { useRecoilValue } from 'recoil';
 import { useUserService } from '../../services';
 import { ButtonAvatar } from '../ui/button/ButtonAvatar';
-import { Button, ButtonTheme, ButtonVariant } from '../ui/button/Button';
+import { Button, ButtonTheme, ButtonVariant, ButtonSize } from '../ui/button/Button';
 
 interface AccountMenuItem {
 	key: number;
@@ -23,7 +23,6 @@ interface AccountOptionsProps {
 const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) => {
 
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-	const open = Boolean(anchorEl);
 	const navigate = useNavigate();
 	const userService = useUserService();
 	const loggedUser = useRecoilValue(loggedUserState);
@@ -33,7 +32,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 	}, []);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-		setAnchorEl(event.currentTarget);
+		Boolean(anchorEl) ? setAnchorEl(null) : setAnchorEl(event.currentTarget);
 	};
 
 	const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
@@ -52,7 +51,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 	}
 
 	return (
-		<div className='account-menu'>
+		<div className='account-menu z-index-2'>
 			<ButtonAvatar
 				onClick={handleClick}
 				image=''
@@ -60,78 +59,37 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 				bgColor={loggedUser.userHSL}
 				classname='account-menu-button'
 			/>
-			<div>
-				{open && (
-					<div className='account-menu-dropdown py-1'>
-						<Button theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} className='menu-item d-flex flex-column' onClick={(event) => handleClickMenuItem(event, 0)}>
-							<div className='me-3'>
-								{loggedUser?.img ? (
-									<img src={loggedUser?.img} alt="Avatar" className="img-fluid rounded-circle" />
-								) : (
-									<>{loggedUser.initial}</>
-								)}
+			{Boolean(anchorEl) &&
+				(<ul className='account-menu-dropdown z-index-2'>
+					<li className='menu-item' onClick={(event) => handleClickMenuItem(event, 0)}>
+						<ButtonAvatar
+							image={loggedUser?.img}
+							initial={loggedUser.initial}
+							bgColor={loggedUser.userHSL}
+							classname='account-menu-button'
+							disabled={false}
+						/>
+						<span>{loggedUser.name}</span>
+					</li>
+					{Constants.accountMenuItems.map((item) => (
+						<li
+							key={item.key}
+							className='menu-item d-flex'
+							onClick={(event) => handleClickMenuItem(event, item.key)}
+						>
+							<div>{item.icon}</div>
 
-								<span>{loggedUser.name}</span>
-							</div>
-						</Button>
-						{Constants.accountMenuItems.map((item) => (
-							<Button theme={ButtonTheme.secondary} variant={ButtonVariant.transparent}
-								key={item.key}
-								className='menu-item d-flex'
-								onClick={(event) => handleClickMenuItem(event, item.key)}
-							>
-								<div className='me-3'>{item.icon}
-									<span>{item.text}</span>
-								</div>
-							</Button>
-						))}
-						<div className='divider'></div>
-						<Button theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} className='menu-item d-flex logout' onClick={handleLogout}>
-							<MdLogout className='me-3' fontSize={22} />
-							Logout
-						</Button>
-					</div>
-				)
-				}
-			</div >
-			{/* <div>
-				<Menu
-					anchorEl={anchorEl}
-					id="account-menu"
-					open={open}
-					onClose={handleClose}
-					onClick={handleClose}
-					transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-					anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-					className='my-0 py-0'
-				>
-					<MenuItem onClick={(event) => handleClickMenuItem(event, 0)} className="menu-font-size" >
-						<ListItemIcon>
-							<Avatar
-								sx={{ width: 28, height: 28, fontSize: 15 }}
-							>
-								{loggedUser?.initial}
-							</Avatar>
-						</ListItemIcon>
-						{loggedUser.name}
-					</MenuItem>
-					{Constants.accountMenuItems.map((item: AccountMenuItem) => (
-						<MenuItem key={item.key} onClick={(e) => handleClickMenuItem(e, item.key)} className="menu-font-size">
-							<ListItemIcon>
-								{item.icon}
-							</ListItemIcon>
-							{item.text}
-						</MenuItem>
+							<span>{item.text}</span>
+						</li>
 					))}
-					<Divider className='my-0' />
-					<MenuItem onClick={handleLogout} className="menu-font-size mb-0" >
-						<ListItemIcon>
-							<MdLogout fontSize={22} />
-						</ListItemIcon>
+					<hr className='m-0' />
+					<Button theme={ButtonTheme.secondary} size={ButtonSize.large} variant={ButtonVariant.transparent} classname='menu-item d-flex logout my-1' onClick={handleLogout}>
+						<MdLogout className='me-3' fontSize={22} />
 						Logout
-					</MenuItem>
-				</Menu>
-			</div> */}
+					</Button>
+				</ul>)
+			}
+
 		</div >
 	);
 }

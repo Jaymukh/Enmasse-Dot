@@ -96,17 +96,17 @@ export interface SidebarItem {
 export const sidebarData: SidebarItem[] = [
     {
         index: 0,
-        icon: <BsFillPersonFill />,
+        icon: <BsFillPersonFill className='fs-21' />,
         option: 'Profile'
     },
     {
         index: 1,
-        icon: <IoSettingsSharp />,
+        icon: <IoSettingsSharp className='fs-21' />,
         option: 'Settings'
     },
     {
         index: 2,
-        icon: <MdGroupAdd />,
+        icon: <MdGroupAdd className='fs-21' />,
         option: 'Invite'
     }
 ];
@@ -190,12 +190,12 @@ export const accountMenuItems: AccountMenuItem[] = [
     {
         key: 1,
         text: "Settings",
-        icon: <IoSettingsSharp fontSize='fs-21' />
+        icon: <IoSettingsSharp className='fs-21' />
     },
     {
         key: 2,
         text: "Invite",
-        icon: <MdGroupAdd fontSize='fs-21' />
+        icon: <MdGroupAdd className='fs-21' />
     },
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\settings\Settings.tsx language selectbox
@@ -295,8 +295,8 @@ export interface CompanyOption {
 
 export const company: CompanyOption[] = [
     {
-        key: 'Enmasse',
-        value: 'Enmasse'
+        key: 'enmasse',
+        value: 'enmasse'
     },
     {
         key: 'Sarvagram',
