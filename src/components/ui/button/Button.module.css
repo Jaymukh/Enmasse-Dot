@@ -67,3 +67,14 @@
 .no_radius {
 	border-radius: 0;
 }
+
+.btn_avatar {
+	width: 2.188rem;
+    height: 2.188rem;
+    padding: 0rem 0.25rem;
+	color: var(--white-1);
+}
+
+.btn_avatar:hover {
+	color: var(--white-1);
+}
