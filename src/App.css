@@ -1152,3 +1152,22 @@ th {
 	box-shadow: none;
 
 }
+
+.account-menu-dropdown {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: #fff;
+	z-index: 1000;
+	border-radius: 0.3125rem;
+	background: #FFF;
+	width: 200px;
+	height: 249px;
+	margin-left: -10rem;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+	border: 1px solid #ccc;
+}
+
+.account-menu {
+	position: relative;
+}
