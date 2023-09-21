@@ -1,17 +1,16 @@
 import '../../../App.css';
 import { useState } from 'react';
-import SelectBox from './SelectBox';
 import { FiDownload } from 'react-icons/fi';
 import { MdBookmarks } from 'react-icons/md';
 import WIPDrawer from './WIPDrawer';
-import { SelectChangeEvent } from '@mui/material';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import Select, { SelectSize } from '../../ui/select/Select';
 
 interface MapOptionsProps {
     handleGlobal: () => void;
-    handleCountryChange: (event: SelectChangeEvent) => void;
-    handleStateChange: (event: SelectChangeEvent) => void;
-    handleDistrictChange: (event: SelectChangeEvent) => void;
+    handleCountryChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    handleStateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    handleDistrictChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     global: boolean;
     selectedCountry: string;
     selectedState: string;
@@ -59,11 +58,14 @@ function MapOptions({
                 {!global ? (
                     <div className='select-right-margin ms-2 py-1'>
                         <p className='country-text'>COUNTRY</p>
-                        <SelectBox
-                            handleChange={handleCountryChange}
+                        <Select
                             options={countries}
-                            selected={selectedCountry}
-                            primary={false}
+                            onChange={handleCountryChange}
+                            value={selectedCountry}
+                            labelKey='name'
+                            valueKey='name'
+                            size={SelectSize.medium}
+                            placeholder='SELECT'
                         />
                     </div>
                 ) : (
@@ -72,11 +74,14 @@ function MapOptions({
                 {!global && selectedCountry ? (
                     <div className='select-right-margin ms-2 py-1'>
                         <p className='country-text'>STATE</p>
-                        <SelectBox
-                            handleChange={handleStateChange}
+                        <Select
                             options={states}
-                            selected={selectedState}
-                            primary={false}
+                            onChange={handleStateChange}
+                            value={selectedState}
+                            labelKey='name'
+                            valueKey='name'
+                            size={SelectSize.medium}
+                            placeholder='SELECT'
                         />
                     </div>
                 ) : (
@@ -85,11 +90,14 @@ function MapOptions({
                 {!global && selectedState ? (
                     <div className='select-right-margin ms-2 py-1'>
                         <p className='country-text'>DISTRICT</p>
-                        <SelectBox
-                            handleChange={handleDistrictChange}
+                        <Select
                             options={districts}
-                            selected={selectedDistrict}
-                            primary={false}
+                            onChange={handleDistrictChange}
+                            value={selectedDistrict}
+                            labelKey='name'
+                            valueKey='name'
+                            size={SelectSize.medium}
+                            placeholder='SELECT'
                         />
                     </div>
                 ) : (
@@ -106,15 +114,6 @@ function MapOptions({
                     <FiDownload className='me-2' fontSize={15} />
                     Download data
                 </Button>
-                {/* <button
-                    className='btn-white px-1'
-                    onClick={() => openWIPDrawer("Bookmarks")}
-                >
-                    <div className='d-flex flex-wrap'>
-                        <MdBookmarks className='mt-1' />
-                        <p className='mx-2 my-1 fs-12'>Bookmarks</p>
-                    </div>
-                </button> */}
                 <Button
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}

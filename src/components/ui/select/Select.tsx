@@ -3,6 +3,7 @@ import styles from "./Select.module.css";
 
 export enum SelectSize {
     small,
+    medium,
     large,
 }
 
@@ -21,14 +22,26 @@ interface SelectProps<T> {
     disabled?: boolean;
     classname?: string;
     name?: string;
+    placeholder?: string;
 }
 
 const getSizeClass = (size: SelectSize) => {
-    let classname = size === SelectSize.small ? `${styles.select_small}` : `${styles.select_large}`;
-    return classname;
+    let className = "";
+    switch (size) {
+        case SelectSize.small:
+            className = `${styles.select_small}`;
+            break;
+        case SelectSize.medium:
+            className = `${styles.select_medium}`;
+            break;
+        case SelectSize.large:
+            className = `${styles.select_large}`;
+            break;
+    }
+    return className;
 }
 
-const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name }: SelectProps<any>) => {
+const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name, placeholder }: SelectProps<any>) => {
     return (
         <select
             className={`${getSizeClass(size)} ${classname} w-100`}
@@ -36,6 +49,7 @@ const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classn
             onChange={onChange}
             disabled={disabled}
             name={name}
+            placeholder={placeholder}
         >
             {options?.map((option: any, key: number) => (
                 <option key={key} value={option[valueKey] as any}>

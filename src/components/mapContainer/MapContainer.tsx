@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import MapOptions from './mapOptions/MapOptions';
 import Map from './map/Map';
 import { Country, State } from 'country-state-city';
-import { SelectChangeEvent } from '@mui/material';
 
 const countries: any = Country.getAllCountries();
 
@@ -29,7 +28,7 @@ function MapContainer() {
         setSelectedDistrict('');
     };
 
-    const handleCountryChange = (event: SelectChangeEvent) => {
+    const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
         const selectedItem = countries.find((item: any) => item.name === value);
         if (selectedItem) {
@@ -37,10 +36,11 @@ function MapContainer() {
             setSelectedCountry(selectedItem);
             setSelectedState(undefined);
             setSelectedDistrict('');
+            console.log(State.getStatesOfCountry(selectedItem.isoCode))
         }
     };
 
-    const handleStateChange = (event: SelectChangeEvent) => {
+    const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
         if (states) {
             const selectedItem = states.find((item: any) => item.name === value);
@@ -48,7 +48,7 @@ function MapContainer() {
         }
     };
 
-    const handleDistrictChange = (event: SelectChangeEvent) => {
+    const handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value as string;
         setSelectedDistrict(value);
     };
