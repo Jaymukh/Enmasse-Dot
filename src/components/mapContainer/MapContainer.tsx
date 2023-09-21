@@ -35,9 +35,9 @@ function MapContainer() {
             setStates(State.getStatesOfCountry(selectedItem.isoCode));
             setSelectedCountry(selectedItem);
             setSelectedState(undefined);
-            setSelectedDistrict('');
-            console.log(State.getStatesOfCountry(selectedItem.isoCode))
+            setSelectedDistrict('');            
         }
+        console.log(selectedState, selectedDistrict);
     };
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -61,7 +61,7 @@ function MapContainer() {
                 handleStateChange={handleStateChange}
                 handleDistrictChange={handleDistrictChange}
                 global={global}
-                selectedCountry={selectedCountry?.name} // Use optional chaining and default value
+                selectedCountry={selectedCountry?.name}
                 selectedState={selectedState?.name}
                 selectedDistrict={selectedDistrict}
                 countries={countries}
@@ -70,7 +70,7 @@ function MapContainer() {
             />
             <Map
                 global={global}
-                selectedCountry={selectedCountry?.name} // Use optional chaining and default value
+                selectedCountry={selectedCountry?.name}
                 selectedState={selectedState?.name}
                 selectedCountryCode={selectedCountry?.isoCode}
                 selectedDistrict={selectedDistrict}

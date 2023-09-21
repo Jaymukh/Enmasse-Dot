@@ -51,6 +51,7 @@ const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classn
             name={name}
             placeholder={placeholder}
         >
+            {placeholder && <option value="" selected>SELECT</option>}
             {options?.map((option: any, key: number) => (
                 <option key={key} value={option[valueKey] as any}>
                     {option[labelKey]}
