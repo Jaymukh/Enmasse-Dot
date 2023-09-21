@@ -14,7 +14,7 @@ export enum SelectType {
 
 interface SelectProps<T> {
     options: T[];
-    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     value: any;
     labelKey: keyof T;
     valueKey: keyof T;

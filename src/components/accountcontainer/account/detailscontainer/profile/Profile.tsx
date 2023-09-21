@@ -1,55 +1,69 @@
 import React, { useState, useEffect } from 'react'
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
 import { loggedUserState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
+import { toast } from 'react-toastify';
 
 export default function Profile() {
 
     const [selectedData, setSelectedData] = useState<User | null>(null);
+    const [open, setOpen] = useState<boolean>(false);
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
-	useEffect(() => {
-		userService.getUserDetails();
+    useEffect(() => {
+        userService.getUserDetails();
         console.log('loggedUser', loggedUser);
-	}, []);
+    }, []);
 
     const handleEditClick = () => {
         setSelectedData(loggedUser);
     };
+
+    const handleOpen = (flag?: boolean) => {
+        if (flag) {
+            setSelectedData(loggedUser);
+            setOpen(flag);
+        } else {
+            setSelectedData(null);
+            setOpen(flag!);
+        }
+    }
+
     const handleCloseDialog = () => {
         setSelectedData(null);
     };
 
     const handleUpdate = (updatedData: any) => {
-        const payload = {...updatedData, country: 'India'};
+        const payload = { ...updatedData, country: 'India' };
         userService.updateUserDetails(payload)
-			.then((response) => {
-				if (response) {
-					handleCloseDialog();
+            .then((response) => {
+                if (response) {
+                    handleCloseDialog();
                     userService.getUserDetails();
-					console.log('Successfully Updated.', response);
-				}
-			})
-			.catch(error => {
-				console.log('Error while updating details',error);
-			});
+                    console.log('Successfully Updated.', response);
+                }
+            })
+            .catch(error => {
+                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                toast.error(errorMsg);
+            });
     };
 
     return (
         <div className='container bg-white w-90 h-100 mt-4 detail-container me-5'>
             <div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
                 <h5 className='mt-2 col-2'>Profile</h5>
-                <button className='btn btn-outline-secondary width-fit-content-button' onClick={() => handleEditClick()}>
-                    <ModeEditIcon className='mx-1 mb-1 color-black' />
+                <button className='btn btn-outline-secondary width-fit-content-button' onClick={() => handleOpen(true)}>
+                    <MdModeEdit className='me-1 mb-1 color-black' fontSize={20} />
                     Edit Profile
                 </button>
             </div>
             <hr />
             <div className="row w-100">
-            <div className="col-3 d-flex justify-content-center align-items-center fs-64 ms-3 mt-2 mb-4" style={{backgroundColor: loggedUser.userHSL, color: '#ffffff'}}>
+                <div className="col-3 d-flex justify-content-center align-items-center fs-64 ms-3 mt-2 mb-4" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
                     {loggedUser?.img ? <img src="" alt="Profile Photo" className='profile-image-box' /> : (loggedUser.initial)}
                 </div>
                 <div className="col-4">
@@ -92,8 +106,9 @@ export default function Profile() {
             {selectedData && (
                 <EditProfile
                     selectedData={selectedData}
-                    handleCloseDialog={handleCloseDialog}
                     handleUpdate={handleUpdate}
+                    open={open}
+                    handleOpen={handleOpen}
                 />
             )}
         </div>

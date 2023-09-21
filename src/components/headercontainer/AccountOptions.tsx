@@ -53,14 +53,14 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 
 	return (
 		<div className='account-menu'>
-			<ButtonAvatar
+			{/* <ButtonAvatar
 				onClick={handleClick}
 				image=''
 				initial={loggedUser.initial}
 				bgColor={loggedUser.userHSL}
 				classname='account-menu-button'
-			/>
-			<div>
+			/> */}
+			{/* <div>
 				{open && (
 					<div className='account-menu-dropdown py-1'>
 						<Button theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} className='menu-item d-flex flex-column' onClick={(event) => handleClickMenuItem(event, 0)}>
@@ -93,7 +93,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 					</div>
 				)
 				}
-			</div >
+			</div > */}
 			{/* <div>
 				<Menu
 					anchorEl={anchorEl}
