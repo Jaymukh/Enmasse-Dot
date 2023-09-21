@@ -16,6 +16,7 @@ export enum ButtonSize {
 export enum ButtonTheme {
     primary,
     secondary,
+    muted,
     warning
 }
 
@@ -24,7 +25,7 @@ interface ButtonProps {
     variant?: ButtonVariant,
     size?: ButtonSize,
     theme?: ButtonTheme,
-    className?: string,
+    classname?: string,
     disabled?: boolean,
     children?: React.ReactNode,
     type?: "button" | "submit" | "reset";
@@ -58,6 +59,9 @@ const getTypeVariantClass = (theme: ButtonTheme, variant: ButtonVariant) => {
         case ButtonTheme.secondary:
             className = variant === ButtonVariant.transparent ? `${styles.btn_secondary_transparent}` : `${styles.btn_secondary}`;
             break;
+        case ButtonTheme.muted:
+            className = variant === ButtonVariant.transparent ? `${styles.btn_muted_transparent}` : `${styles.btn_muted}`;
+            break;
         case ButtonTheme.warning:
             className = variant === ButtonVariant.transparent ? `${styles.btn_warning_transparent}` : `${styles.btn_warning}`;
             break;
@@ -73,11 +77,12 @@ export const Button = ({
     size= ButtonSize.default,
     disabled,
     children,
-    type
+    type,
+    classname
 }: ButtonProps) => {
     return (
         <button
-            className={`btn ${getTypeVariantClass(theme, variant)} ${getSizeClass(size)}`}
+            className={`btn ${getTypeVariantClass(theme, variant)} ${getSizeClass(size)} ${classname}`}
             onClick={onClick}
             disabled={disabled}
             type={type}

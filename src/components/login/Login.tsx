@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { useUserService } from '../../services';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 interface IFormValues {
     email_id: string;
@@ -17,7 +18,8 @@ interface IFormValues {
 interface IModal {
     passwordModal: boolean;
     sendMailModal: boolean;
-    tncModal: boolean;}
+    tncModal: boolean;
+}
 
 export default function Login() {
     const userService = useUserService();
@@ -92,7 +94,17 @@ export default function Login() {
                             {errors?.email_id?.message && <p className='text-danger m-0 p-0'>{errors?.email_id?.message}</p>}
                             <div className='d-flex flex-row justify-content-between mt-3'>
                                 <h5 className='fs-6'>Password</h5>
-                                <a href='' onClick={() => handleModal({ passwordModal: true })}>Forgot password?</a>
+                                {/* <a href='' onClick={() => handleModal({ passwordModal: true })}>Forgot password?</a> */}
+                                <Button
+                                    type='button'
+                                    theme={ButtonTheme.secondary}
+                                    size={ButtonSize.default}
+                                    variant={ButtonVariant.transparent}
+                                    onClick={() => handleModal({ passwordModal: true })}
+                                    classname='fw-bold text-decoration-underline'
+                                >
+                                    Forgot password?
+                                </Button>
                             </div>
                             <input
                                 type='password'

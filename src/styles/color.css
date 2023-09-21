@@ -7,6 +7,8 @@ html {
     --black-3: #0D0B0B; /*select large border */
     --black-4: #1118261A; /* select small border */
     --black-5: rgba(0, 0, 0, 0.3);
+    --black-6: rgba(17, 24, 39, 0.50); /* login muted */
     --white-1: #FFFFFF;
     --warning: #D55038;
+
 }

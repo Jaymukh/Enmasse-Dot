@@ -49,9 +49,6 @@ function Header({ handleVisiblePanel, handleOverlay, handleHelp }: HeaderProps) 
       <div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
         <ExploreNow />
         <MapYourBusiness />
-        {/* <button className='border-0 btn-white' onClick={() => handleHelpClick()} >
-          <MdLiveHelp fontSize={25} className='ms-4 me-3 mb-1 header-icon' />
-        </button> */}
         <Button
           theme={ButtonTheme.secondary}
           size={ButtonSize.default}
@@ -60,9 +57,6 @@ function Header({ handleVisiblePanel, handleOverlay, handleHelp }: HeaderProps) 
         >
           <MdLiveHelp fontSize={25} />
         </Button>
-        {/* <button className='border-0 btn-white' onClick={() => openWIPDrawer("Notifications")}>
-          <MdNotifications fontSize={25} className='mb-1 header-icon' />
-        </button> */}
         <Button
           theme={ButtonTheme.secondary}
           size={ButtonSize.default}
