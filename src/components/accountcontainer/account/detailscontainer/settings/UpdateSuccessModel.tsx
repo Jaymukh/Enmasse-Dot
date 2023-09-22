@@ -36,16 +36,16 @@ const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, hand
                         <div className="modal-body m-2 py-0">
                             <h6 className='fs-21'>Password changed</h6>
                             <p className='fs-14'>Password for your account updated successfully</p>
-                            <button className='btn border-0 text-white btn-dark rounded-0 w-100' onClick={() => handleShowModal(false, true)}>Continue</button>
-                            {/* <Button
+                            {/* <button className='btn border-0 text-white btn-dark rounded-0 w-100' onClick={() => handleShowModal(false, true)}>Continue</button> */}
+                            <Button
                                 theme={ButtonTheme.primary}
                                 size={ButtonSize.large}
-                                variant={ButtonVariant.transparent}
+                                variant={ButtonVariant.contained}
                                 onClick={() => handleShowModal(false, true)}
                                 classname='my-4'
                             >
                                 Continue
-                            </Button> */}
+                            </Button>
                         </div>
                     </div>
                 </div>

@@ -137,8 +137,11 @@ const Settings: React.FC<SettingsProps> = () => {
                     </div>
                 </div>
             </div>
-            {open && (<ChangePassword open={open} handleUpdateClick={handleUpdateClick} handleDrawer={handleDrawer} handleShowModal={handleShowModal} />)}
+            {/* drawer for edit setting */}
             {editMode && (<WIPDrawer open={editMode} title='Edit Settings' closeWIPDrawer={handleEditClick} />)}
+            {/* drawer for change Password */}
+            {open && (<ChangePassword open={open} handleUpdateClick={handleUpdateClick} handleDrawer={handleDrawer} handleShowModal={handleShowModal} />)}
+            {/* modal for success message */}
             {showModal && <UpdateSuccessModal showModal={showModal} handleShowModal={handleShowModal} />}
         </div>
     )
