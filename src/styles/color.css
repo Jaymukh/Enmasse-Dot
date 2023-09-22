@@ -10,5 +10,6 @@ html {
     --black-6: rgba(17, 24, 39, 0.50); /* login muted */
     --white-1: #FFFFFF;
     --warning: #D55038;
+    --bs-btn-disabled-bg: rgba(17, 24, 39, 0.50);
 
 }

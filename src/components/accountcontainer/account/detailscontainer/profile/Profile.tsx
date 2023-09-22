@@ -6,6 +6,7 @@ import { useRecoilValue } from "recoil";
 import { loggedUserState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 export default function Profile() {
 
@@ -53,13 +54,18 @@ export default function Profile() {
     };
 
     return (
-        <div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
-            <div className="row w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pl-4">
-                <h5 className='mt-2 ms-4 col-3 text-start'>Profile</h5>
-                <button className='btn btn-outline-secondary width-fit-content-button' onClick={() => handleOpen(true)}>
-                    <MdModeEdit className='me-1 mb-1 color-black' fontSize={20} />
+        <div className='container bg-white mt-4 me-5' style={{ height: '90%' }}>
+            <div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
+                <h5 className='mt-2 col-2'>Profile</h5>
+                <Button
+                    theme={ButtonTheme.secondary}
+                    size={ButtonSize.default}
+                    variant={ButtonVariant.contained}
+                    onClick={() => handleEditClick()}
+                >
+                    <MdModeEdit className='mx-1 mb-1 color-black' />
                     Edit Profile
-                </button>
+                </Button>
             </div>
             <hr />
             <div className="row w-100">

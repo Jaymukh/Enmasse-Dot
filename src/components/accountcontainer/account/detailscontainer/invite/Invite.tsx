@@ -11,6 +11,7 @@ import { usersState, loggedUserState, User } from "../../../../../states";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 export default function Invite() {
 	const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -25,7 +26,7 @@ export default function Invite() {
 
 	//function to get all the users
 	useEffect(() => {
-		userService.getAll() .then(response => {
+		userService.getAll().then(response => {
 			setUsers(response);
 		});
 	}, []);
@@ -93,10 +94,18 @@ export default function Invite() {
 	};
 
 	return (
-		<div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
-			<div className="row w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pl-4">
-				<h5 className='mt-2 ms-4 col-3 text-start'>Invite</h5>
-				<button className='btn btn-outline-secondary width-fit-content-button' onClick={handleOpenInviteNew} ><IoMdAdd className='me-1 text-dark' fontSize={22} />Invite New</button>
+		<div className='container bg-white mt-4 me-5' style={{ height: '90%' }}>
+			<div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
+				<h5 className='mt-2 col-2'>Invite</h5>
+				<Button
+					theme={ButtonTheme.secondary}
+					size={ButtonSize.default}
+					variant={ButtonVariant.contained}
+					onClick={() => handleOpenInviteNew()}
+				>
+					<IoMdAdd className='me-1' fontSize={22} />
+					Invite New
+				</Button>
 			</div>
 			<hr />
 			<div className="w-100 d-flex justify-content-center m-auto">
@@ -122,12 +131,22 @@ export default function Invite() {
 									<TableCell component="th" align="center" scope="row">{row.company}</TableCell>
 									<TableCell component="th" align="center" scope="row">{row.company_type}</TableCell>
 									<TableCell align="center" className='' >
-										<button type='submit' className='btn-white' onClick={() => handleEditClick(row)}>
-											<MdModeEdit className='color-gray' fontSize={20} />
-										</button>
-										<button type='submit' className='btn-white' onClick={() => openConfirmDeleteModal(true, row.user_id)}>
-											<MdDeleteSweep className='color-orange ms-2' fontSize={20} />
-										</button>
+										<Button
+											theme={ButtonTheme.muted}
+											size={ButtonSize.default}
+											variant={ButtonVariant.transparent}
+											onClick={() => handleEditClick(row)}
+										>
+											<MdModeEdit fontSize={20} />
+										</Button>
+										<Button
+											theme={ButtonTheme.warning}
+											size={ButtonSize.default}
+											variant={ButtonVariant.transparent}
+											onClick={() => openConfirmDeleteModal(true, row.user_id)}
+										>
+											<MdDeleteSweep fontSize={20} />
+										</Button>
 									</TableCell>
 								</TableRow>
 							))}

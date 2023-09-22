@@ -6,13 +6,15 @@
 	border-color: var(--black-1);
 	border-radius: 5px;
 	color: var(--white-1);
-	margin: 0rem 0.5rem;
+	height: 3rem;
+	/* margin: 0rem 0.5rem; */
 }
 
 .btn_primary_transparent {
 	background-color: var(--black-1);
 	border: 0;
 	color: var(--white-1);
+	height: 3rem;
 }
 
 /* .btn_primary:hover {
@@ -27,13 +29,15 @@
 	border-color: var(--black-1);
 	border-radius: 5px;
 	color: var(--black-0);
-	margin: 0rem 0.5rem;
+	height: 3rem;
+	/* margin: 0rem 0.5rem; */
 }
 
 .btn_secondary_transparent { /* white button */
 	background-color: var(--white-1);
 	border: none !important;
 	color: var(--black-0);
+	height: 3rem;
 }
 
 .btn_muted { /* lightgray button */
@@ -45,9 +49,9 @@
 }
 
 .btn_muted_transparent { /* lightgray button */
-	background-color: var(--black-6);
+	background-color: var(--white-1);
 	border: none;
-	color: var(--white-1);
+	color: var(--black-6);
 	height: 3rem;
 }
 
@@ -66,26 +70,28 @@
 }
 
 .btn_warning_transparent {
-	background-color: var(--warning);
+	background-color: var(--white-1);
 	border: none !important;
-	color: var(--white-1);
-}
-
-.btn_default {
-	font-size: 0.813rem; /* 13px */
+	color: var(--warning);
 }
 
 .btn_small {
 	font-size: 0.75rem !important; /* 12px */
+	width: fit-content;
+}
+
+.btn_default {
+	font-size: 0.813rem; /* 13px */
+	width: fit-content;
 }
 
 .btn_medium {
-	font-size: 0.75rem !important; /* 12px */
+	font-size: 0.875rem !important; /* 14px */
 	width: 198px;
 }
 
 .btn_large {
-	font-size: 1rem !important; /* 12px */
+	font-size: 1rem !important; /* 16px */
 	width: 100%;
 }
 
@@ -102,4 +108,8 @@
 
 .btn_avatar:hover {
 	color: var(--white-1);
+}
+
+.btn:disabled {
+	background-color: red !important;
 }
