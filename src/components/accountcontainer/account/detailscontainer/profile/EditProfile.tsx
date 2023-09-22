@@ -6,6 +6,7 @@ import { useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User } from "../../../../../states";
 import Select, { SelectSize } from '../../../../ui/select/Select';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 interface EditProfileProps {
     selectedData: User;
@@ -90,8 +91,15 @@ export default function EditProfile({
                     size={SelectSize.large}
                     name='company_type'
                 />
-                <button className='btn-black bg-dark border-0 inputBoxHeight my-5' onClick={handleUpdateClick}>Update Profile</button>
-            </div>
+                <Button
+                    theme={ButtonTheme.primary}
+                    size={ButtonSize.large}
+                    variant={ButtonVariant.contained}
+                    onClick={() => handleUpdateClick()}
+                    classname='my-3'
+                >
+                    Update Profile
+                </Button>            </div>
         </Drawer>
     );
 }

@@ -25,6 +25,7 @@ const MapYourBusiness = () => {
 				theme={ButtonTheme.secondary}
 				size={ButtonSize.default}
 				variant={ButtonVariant.contained}
+				classname='ms-2'
 				onClick={() => toggleDrawer()}>
 				<HiMiniPhone className='me-2' fontSize={20} color='#111827' />
 				Request Details
