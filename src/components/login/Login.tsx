@@ -125,7 +125,7 @@ export default function Login() {
                         <p className='text-muted mb-0 mt-2 login-p'>By clicking on continue you are agreeing to the Enmasse
                             <button className='bg-transparent black underline-text border-0' onClick={() => handleModal({ tncModal: true })} >Terms & conditions</button>
                             and <button className='bg-transparent black underline-text border-0' onClick={() => handleModal({ tncModal: true })} >Privacy policies</button>
-                        </p>
+                        </p>                        
                     </div>
                 </div>
 

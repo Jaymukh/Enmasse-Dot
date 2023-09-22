@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 @import url('./styles/main.css');
+@import url('./styles/color.css');
 
 :root {
 	--primaryColor: #f2f3f4;
@@ -9,6 +10,7 @@
 	--lightGreyColor: #E7E7E9;
 	--pinkColor: #f45eac;
 	--blackColor: #1f1f1f;
+	--black-3: #0D0B0B;
 
 	--background-color: #f2f3f4;
 	--light-gray-color: '#E7E7E9';
@@ -478,30 +480,16 @@ a {
 }
 
 /* Core Solutions */
-.rb-label {
-	font-size: 0.8rem;
-}
+
 
 .input-rb {
 	height: 1rem;
 	width: 1rem;
-	background-color: #111827;
-	accent-color: black;
-}
-
-.input-rb-header {
-	font-size: 0.85rem;
+	accent-color: #111827;
 }
 
 .fit-content-div {
 	width: fit-content;
-}
-
-.core-sol-div {
-	border: none;
-	border-radius: 3%;
-	font-family: 'Poppins', sans-serif;
-	width: 11rem;
 }
 
 .round-btn {
@@ -1164,10 +1152,18 @@ th {
 	width: 200px;
 	height: 249px;
 	margin-left: -10rem;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	border: 1px solid #ccc;
 }
 
 .account-menu {
 	position: relative;
+}
+
+/* Settings */
+
+.input-div {
+	border-radius: 0.3125rem;
+	border: 1px solid rgba(0, 0, 0, 0.30);
+	height: 3rem;
 }

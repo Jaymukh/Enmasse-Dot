@@ -37,7 +37,6 @@ function MapContainer() {
             setSelectedState(undefined);
             setSelectedDistrict('');            
         }
-        console.log(selectedState, selectedDistrict);
     };
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

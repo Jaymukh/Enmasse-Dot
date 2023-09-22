@@ -1,50 +1,7 @@
-import React, { ChangeEvent } from "react";
-import { BsFillChatLeftFill } from 'react-icons/bs';
+import React, { ChangeEvent, useState } from "react";
 import * as Constants from '../../../utils/constants/Constants';
-import Switch from '@mui/material/Switch';
-import { styled } from '@mui/material/styles';
-
-const AntSwitch = styled(Switch)(({ theme }) => ({
-    width: 28,
-    height: 16,
-    padding: 0,
-    display: 'flex',
-    '&:active': {
-        '& .MuiSwitch-thumb': {
-            width: 15,
-        },
-        '& .MuiSwitch-switchBase.Mui-checked': {
-            transform: 'translateX(9px)',
-        },
-    },
-    '& .MuiSwitch-switchBase': {
-        padding: 2,
-        '&.Mui-checked': {
-            transform: 'translateX(12px)',
-            color: '#fff',
-            '& + .MuiSwitch-track': {
-                opacity: 1,
-                backgroundColor: theme.palette.mode === 'dark' ? '#177ddc' : '#000000',
-            },
-        },
-    },
-    '& .MuiSwitch-thumb': {
-        boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
-        width: 12,
-        height: 12,
-        borderRadius: 6,
-        transition: theme.transitions.create(['width'], {
-            duration: 200,
-        }),
-    },
-    '& .MuiSwitch-track': {
-        borderRadius: 16 / 2,
-        opacity: 1,
-        backgroundColor:
-            theme.palette.mode === 'dark' ? 'rgba(255,255,255,.35)' : 'rgba(0,0,0,.25)',
-        boxSizing: 'border-box',
-    },
-}));
+import Switch from '../../ui/switch/Switch';
+import userStoryImg from '../../../utils/images/user-stories.svg';
 
 interface CoreSolutionsProps {
     handleViewStories: (checked: boolean) => void;
@@ -59,14 +16,27 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
 }) => {
     const options = Constants.options;
 
+    const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
+    const toggleSwitch = (event?: React.ChangeEvent<HTMLInputElement>) => {
+        const name: string = event?.target?.name!;
+        setIsChecked({ ...isChecked, [name]: !isChecked[name] });
+    };
+
     return (
-        <div className="ms-4 fit-content-div top-0 start-0" style={{ position: "absolute" }}>
-            <div className="mt-4 mx-1 bg-white p-3 core-sol-div">
-                <h6 className="fw-bold mx-2 input-rb-header pe-3">Core Solutions</h6>
+        <div className="ms-4 top-0 start-0" style={{ position: "absolute" }}>
+            <div className="mt-4 mx-1 bg-white p-3 ">
+                <div className='d-flex'>
+                    <h6 className="mx-2 pe-3 text-start fs-16">Core Solutions</h6>
+                    <Switch
+                        isChecked={isChecked?.coreSolution}
+                        toggleSwitch={toggleSwitch}
+                        name='coreSolution'
+                    />
+                </div>
                 <div className="pe-3">
                     {options.map((option) => (
                         <div className="d-flex flex-row justify-content-start">
-                            <label key={option.label} className="my-1 rb-label">
+                            <label key={option.label} className="my-1 fs-14">
                                 <input
                                     className="mx-2 input-rb"
                                     size={1.5}
@@ -81,10 +51,14 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     ))}
                 </div>
             </div>
-            <div className="d-flex flex-row bg-white mt-2 mx-1 px-3 py-2 core-sol-div">
-                <BsFillChatLeftFill size={16} color="#7F7F7F" className="mt-1" />
-                <p className="paragraph mx-2 fs-12">View Stories</p>
-                <AntSwitch inputProps={{ 'aria-label': 'ant design' }} onChange={(event) => handleViewStories(event.target.checked)} />
+            <div className="d-flex justify-content-between align-items-center bg-white mt-2 mx-1 px-3 py-2">
+                <img src={userStoryImg} alt="user story" />
+                <p className=" my-0 ms-2 me-5 fs-12">View Stories</p>
+                <Switch
+                    isChecked={isChecked?.viewStories}
+                    toggleSwitch={toggleSwitch}
+                    name='viewStories'
+                />
             </div>
         </div>
     );

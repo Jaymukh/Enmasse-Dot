@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import HelpIcon from '@mui/icons-material/Help';
 import * as Constants from '../../../utils/constants/Constants';
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { visiblePanelState } from '../../../states';
 
 interface SideBarProps {

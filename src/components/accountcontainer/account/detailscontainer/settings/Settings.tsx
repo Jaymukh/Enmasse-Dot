@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../../../../App.css';
 import { MdModeEdit } from 'react-icons/md';
 import { MdLock } from 'react-icons/md';
-import Switch from '@mui/material/Switch';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
+import Switch from '../../../../ui/switch/Switch';
 import ChangePassword from './ChangePassword';
 import UpdateSuccessModal from './UpdateSuccessModel';
 import { RouteConstants } from '../../../../../constants';
@@ -20,47 +18,6 @@ interface SettingsProps { }
 
 
 const Settings: React.FC<SettingsProps> = () => {
-    const AntSwitch = styled(Switch)(({ theme }) => ({
-        width: 28,
-        height: 16,
-        padding: 0,
-        display: 'flex',
-        '&:active': {
-            '& .MuiSwitch-thumb': {
-                width: 15,
-            },
-            '& .MuiSwitch-switchBase.Mui-checked': {
-                transform: 'translateX(9px)',
-            },
-        },
-        '& .MuiSwitch-switchBase': {
-            padding: 2,
-            '&.Mui-checked': {
-                transform: 'translateX(12px)',
-                color: '#fff',
-                '& + .MuiSwitch-track': {
-                    opacity: 1,
-                    backgroundColor: theme.palette.mode === 'dark' ? '#177ddc' : '#000000',
-                },
-            },
-        },
-        '& .MuiSwitch-thumb': {
-            boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
-            width: 12,
-            height: 12,
-            borderRadius: 6,
-            transition: theme.transitions.create(['width'], {
-                duration: 200,
-            }),
-        },
-        '& .MuiSwitch-track': {
-            borderRadius: 16 / 2,
-            opacity: 1,
-            backgroundColor:
-                theme.palette.mode === 'dark' ? 'rgba(255,255,255,.35)' : 'rgba(0,0,0,.25)',
-            boxSizing: 'border-box',
-        },
-    }));
 
     // handle edit
     const navigate = useNavigate();
@@ -71,6 +28,7 @@ const Settings: React.FC<SettingsProps> = () => {
     // all settings's data
     const settings: SettingsData = useRecoilValue(AllSettingsState);
     const [usersettings, setUserSettings] = useRecoilState<UserSettings>(UserSettingsState);
+    const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
     const settingsService = useSettingsService();
 
     const handleUpdateClick = () => {
@@ -99,6 +57,11 @@ const Settings: React.FC<SettingsProps> = () => {
             navigate(RouteConstants.login);
         }
     }
+
+    const toggleSwitch = () => {
+        setIsChecked(!isChecked);
+    };
+
     //function to get all the users
     useEffect(() => {
         settingsService.getAllSettings();
@@ -127,7 +90,7 @@ const Settings: React.FC<SettingsProps> = () => {
             <hr />
             <div className="row w-100 h-90">
                 <div className='col-5 d-flex justify-content-start flex-column text-justify m-4'>
-                    <h6 className='mt-2 text-start'>Language</h6>
+                    <h6 className='mt-2 text-start'>Language Preference</h6>
                     <Select
                         options={settings?.languages}
                         value={usersettings?.language}
@@ -136,7 +99,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         size={SelectSize.large}
                         name='language'
                     />
-                    <h6 className='mt-2 text-start'>Currency</h6>
+                    <h6 className='mt-2 text-start'>Currency Preference</h6>
                     <Select
                         options={settings?.currencies}
                         value={usersettings?.currency}
@@ -145,7 +108,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         size={SelectSize.large}
                         name='currency'
                     />
-                    <h6 className='mt-2 text-start'>Location</h6>
+                    <h6 className='mt-2 text-start'>Location Focus</h6>
                     <Select
                         options={settings?.locations}
                         value={usersettings?.location}
@@ -154,10 +117,15 @@ const Settings: React.FC<SettingsProps> = () => {
                         size={SelectSize.large}
                         name='location'
                     />
-                    <Stack direction="row" alignItems="center" className='btn-outline-black d-flex justify-content-between mt-4 inputBoxHeight'>
-                        <h6 className='color-black' >Receive email notifications</h6>
-                        <AntSwitch name='email_notification' inputProps={{ 'aria-label': 'ant design' }} checked={usersettings.email_notification} />
-                    </Stack>
+                    <h6 className='mt-2 text-start'>Notifications</h6>
+                    <div className='d-flex justify-content-between align-items-center px-3 py-2 input-div'>
+                        <h6 className='color-black m-0' >Receive email notifications</h6>
+                        <Switch
+                            isChecked={isChecked}
+                            toggleSwitch={toggleSwitch}
+                            name='email_notification'
+                        />
+                    </div>
                 </div>
             </div>
             {open && (<ChangePassword open={open} handleUpdateClick={handleUpdateClick} handleDrawer={handleDrawer} handleShowModal={handleShowModal} />)}
