@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
-import WIPDrawer from '../../../../mapContainer/mapOptions/WIPDrawer';
+import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 

@@ -6,7 +6,7 @@ import MapYourBusiness from './MapYourBusiness';
 import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants/routeConstants';
-import WIPDrawer from '../mapContainer/mapOptions/WIPDrawer';
+import WIPDrawer from '../mapContainer/WIPDrawer';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { useSetRecoilState } from "recoil";
 import { overlayState, showHelpState } from '../../states';

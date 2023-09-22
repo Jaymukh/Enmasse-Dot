@@ -1,8 +1,8 @@
 import React from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import * as MapConstants from '../../../utils/json/googlemapstyle';
-import GlobalOverlayCard from '../../GlobalOverlayCard';
-import InsightBar from '../../InsightBar';
+import * as MapConstants from '../../utils/json/googlemapstyle';
+import GlobalOverlayCard from '../GlobalOverlayCard';
+import InsightBar from '../InsightBar';
 import { toast } from 'react-toastify';
 
 interface GlobalMapProps {

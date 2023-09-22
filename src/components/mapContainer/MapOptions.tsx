@@ -1,4 +1,4 @@
-import '../../../App.css';
+import '../../App.css';
 import { useState } from 'react';
 import { FiDownload } from 'react-icons/fi';
 import { MdBookmarks } from 'react-icons/md';

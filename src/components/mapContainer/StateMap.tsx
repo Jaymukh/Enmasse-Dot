@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import '../../../App.css';
+import '../../App.css';
 import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api';
-import * as MapConstants from '../../../utils/json/googlemapstyle'
-import * as Constants from '../../../utils/constants/Constants';
+import * as MapConstants from '../../utils/json/googlemapstyle'
+import * as Constants from '../../utils/constants/Constants';
 import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
-import DistrictSideBar from '../../familyContainer/family/DistrictSidebar';
+import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 
 
 interface StateMapProps {

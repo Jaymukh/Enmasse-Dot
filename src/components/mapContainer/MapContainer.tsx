@@ -1,7 +1,7 @@
 import '../../App.css';
 import React, { useState } from 'react';
 import MapOptions from './MapOptions';
-import Map from './map/Map';
+import Map from './Map';
 import { Country, State } from 'country-state-city';
 
 const countries: any = Country.getAllCountries();

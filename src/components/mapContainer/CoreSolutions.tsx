@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import * as Constants from '../../utils/constants/Constants';
 import Switch from '../ui/switch/Switch';
-import userStoryImg from '../../../utils/images/user-stories.svg';
+import userStoryImg from '../../utils/images/user-stories.svg';
 
 interface CoreSolutionsProps {
     handleChangeRb: (event: ChangeEvent<HTMLInputElement>, option: Constants.Option) => void;
