@@ -13,7 +13,7 @@ const DetailsContainer = () => {
 		userService.getUserDetails();
 	}, []);
     return (
-        <div className='col-9 h-100'>
+        <div className='col-9 h-100 z-index-0'>
             {visiblePanel === 0 ? <Profile /> : visiblePanel === 1 ? <Settings /> : <Invite />}
         </div>
     );

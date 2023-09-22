@@ -29,9 +29,9 @@ const InviteNew: React.FC<InviteNewProps> = ({
     const [newData, setNewData] = useState<NewData>({
         name: undefined,
         email_id: undefined,
-        role: undefined,
-        company: undefined,
-        company_type: undefined,
+        role: 'Admin',
+        company: 'enmasse',
+        company_type: 'Enmasse',
     });
     const userService = useUserService();
     const loggedUser = useRecoilValue(loggedUserState);

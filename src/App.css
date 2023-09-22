@@ -102,7 +102,6 @@ a {
 	padding-bottom: 0rem;
 }
 
-/* MapButtonGroup */
 
 
 /* sidebar css */
@@ -1140,26 +1139,41 @@ th {
 	box-shadow: none;
 
 }
+/* accountoptions */
+
+.account-menu {
+	position: relative;
+}
 
 .account-menu-dropdown {
 	position: absolute;
 	top: 100%;
 	left: 0;
 	background-color: #fff;
-	z-index: 1000;
+	z-index: 1000 !important;
 	border-radius: 0.3125rem;
 	background: #FFF;
 	width: 200px;
-	height: 249px;
 	margin-left: -10rem;
+<<<<<<< HEAD
+=======
+	padding: 0;
+>>>>>>> a6aed332b51af43faebe525af2755e18d7c2645d
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	border: 1px solid #ccc;
 }
 
-.account-menu {
-	position: relative;
+.menu-item {
+	padding: 15px;
+	width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
+<<<<<<< HEAD
 /* Settings */
 
 .input-div {
@@ -1167,3 +1181,17 @@ th {
 	border: 1px solid rgba(0, 0, 0, 0.30);
 	height: 3rem;
 }
+=======
+.menu-item:hover {
+	background-color: #f0f0f0;
+}
+
+.menu-item span {
+	margin-left: 10px;
+}
+.menu-item div {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+>>>>>>> a6aed332b51af43faebe525af2755e18d7c2645d

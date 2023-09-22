@@ -8,10 +8,10 @@ interface AccountProps {
 
 const Account: React.FC<AccountProps> = ({ handleVisiblePanel }) => {
     return (
-        <>
+        <div className='row' style={{height: '82.5vh'}}>
             <SideBar handleVisiblePanel={handleVisiblePanel} />
-            <DetailsContainer/>
-        </>
+            <DetailsContainer  />
+        </div >
     );
 }
 

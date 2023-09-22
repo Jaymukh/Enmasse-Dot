@@ -16,7 +16,6 @@ const APIS: any = {
     SETTINGS: {
         GET_ALL_SETTINGS : '/users/settings/details/',
         GET_USER_SETTINGS: '/users/settings/',
-        
     }
 }
 
