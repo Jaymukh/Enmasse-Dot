@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CloseIcon from '@mui/icons-material/Close';
 import * as Constants from '../../../../../utils/constants/Constants'
 import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User } from "../../../../../states";
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 interface EditProfileProps {
     selectedData: User;
@@ -50,13 +50,17 @@ export default function EditProfile({
                 onClose={handleCloseDialog}
                 className='edit-profile-drawer-width edit-profile-drawer-padding'
             >
-                <Box className='d-flex flex-wrap justify-content-between mb-2'>
+                <Box className='d-flex flex-wrap justify-content-between align-items-center mb-2'>
                     <h5 className=''>
                         Edit Profile
                     </h5>
-                    <button className='bg-white border-0'>
-                        <CloseIcon onClick={handleCloseDialog} />
-                    </button>
+                    <Button
+                        theme={ButtonTheme.secondary}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.transparent}
+                        onClick={() => handleCloseDialog()}
+                        classname='btn-close'
+                    />
                 </Box>
                 <Box className='d-flex justify-content-center flex-column'>
                     <h6 className='my-2'>Name</h6>
@@ -79,7 +83,7 @@ export default function EditProfile({
                         onChange={(e) => handleChangeData(e)} className='my-2  p-2 btn-outline-black inputBoxHeight' />
                     <h6 className='my-2'>Company</h6>
                     <select name='company' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={updatedData.company} onChange={(e) => handleChangeData(e)} >
-                    {Constants.company.map((company) => (
+                        {Constants.company.map((company) => (
                             <option key={company.key} value={company.value}>{company.value}</option>
                         ))}
                     </select>
@@ -89,7 +93,15 @@ export default function EditProfile({
                             <option key={company_type.id} value={company_type.name}>{company_type.name}</option>
                         ))}
                     </select>
-                    <button className='btn-black inputBoxHeight my-5' onClick={handleUpdateClick}>Update Profile</button>
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.large}
+                        variant={ButtonVariant.contained}
+                        onClick={() => handleUpdateClick()}
+                        classname='my-3'
+                    >
+                        Update Profile
+                    </Button>
                 </Box>
             </Drawer>
         </div>

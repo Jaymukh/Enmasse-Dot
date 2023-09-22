@@ -5,16 +5,17 @@ import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
 import { loggedUserState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 export default function Profile() {
 
     const [selectedData, setSelectedData] = useState<User | null>(null);
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
-	useEffect(() => {
-		userService.getUserDetails();
+    useEffect(() => {
+        userService.getUserDetails();
         console.log('loggedUser', loggedUser);
-	}, []);
+    }, []);
 
     const handleEditClick = () => {
         setSelectedData(loggedUser);
@@ -24,32 +25,37 @@ export default function Profile() {
     };
 
     const handleUpdate = (updatedData: any) => {
-        const payload = {...updatedData, country: 'India'};
+        const payload = { ...updatedData, country: 'India' };
         userService.updateUserDetails(payload)
-			.then((response) => {
-				if (response) {
-					handleCloseDialog();
+            .then((response) => {
+                if (response) {
+                    handleCloseDialog();
                     userService.getUserDetails();
-					console.log('Successfully Updated.', response);
-				}
-			})
-			.catch(error => {
-				console.log('Error while updating details',error);
-			});
+                    console.log('Successfully Updated.', response);
+                }
+            })
+            .catch(error => {
+                console.log('Error while updating details', error);
+            });
     };
 
     return (
-        <div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
+        <div className='container bg-white mt-4 me-5' style={{ height: '90%' }}>
             <div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
                 <h5 className='mt-2 col-2'>Profile</h5>
-                <button className='btn btn-outline-secondary width-fit-content-button' onClick={() => handleEditClick()}>
+                <Button
+                    theme={ButtonTheme.secondary}
+                    size={ButtonSize.default}
+                    variant={ButtonVariant.contained}
+                    onClick={() => handleEditClick()}
+                >
                     <ModeEditIcon className='mx-1 mb-1 color-black' />
                     Edit Profile
-                </button>
+                </Button>
             </div>
             <hr />
             <div className="row w-100">
-            <div className="col-3 d-flex justify-content-center align-items-center fs-64 ms-3 mt-2 mb-4" style={{backgroundColor: loggedUser.userHSL, color: '#ffffff'}}>
+                <div className="col-3 d-flex justify-content-center align-items-center fs-64 ms-3 mt-2 mb-4" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
                     {loggedUser?.img ? <img src="" alt="Profile Photo" className='profile-image-box' /> : (loggedUser.initial)}
                 </div>
                 <div className="col-4">

@@ -5,6 +5,7 @@ import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User } from "../../../../../states";
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 interface EditInviteProps {
     selectedData: User;
@@ -72,7 +73,15 @@ const EditInvite: React.FC<EditInviteProps> = ({
                             <option key={company_type.id} value={company_type.name}>{company_type.name}</option>
                         ))}
                     </select>
-                    <button className='btn-black bg-dark border-0 drawer-input-box-height mt-2 mb-3 my-4' onClick={handleUpdateClick}>Update</button>
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.large}
+                        variant={ButtonVariant.contained}
+                        onClick={() => handleUpdateClick()}
+                        classname='my-4'
+                    >
+                        Update
+                    </Button>
                 </div>
             </Drawer>
         </div>

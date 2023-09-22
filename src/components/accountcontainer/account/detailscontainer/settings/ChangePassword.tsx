@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import '../../../../../App.css';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CloseIcon from '@mui/icons-material/Close';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 interface ChangePasswordProps {
     // visiblePanel: number;
-    open: boolean, 
-    handleUpdateClick: () => void, 
+    open: boolean,
+    handleUpdateClick: () => void,
     handleDrawer: (open: boolean) => void
 }
 
@@ -73,7 +73,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                 setDisabled(true);
             }
         }
-        else{
+        else {
             setConfirmNewPasswordError('');
         }
     };
@@ -92,14 +92,19 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                 onClose={() => handleDrawer(false)}
                 className='edit-profile-drawer-width edit-profile-drawer-padding'
             >
-                <Box className='d-flex flex-wrap justify-content-between mb-2'>
+                <Box className='d-flex flex-wrap justify-content-between align-items-center mb-2'>
                     <h5 className=''>
                         Change Password
                     </h5>
-                    <button className='bg-white border-0'>
-                        <CloseIcon onClick={() => handleDrawer(false)} />
-                    </button>
-                </Box>                
+                    <Button
+                        theme={ButtonTheme.secondary}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.transparent}
+                        onClick={() => handleDrawer(false)}
+                        classname='btn-close'
+                    >
+                    </Button>
+                </Box>
                 <p className='text-muted'>You will be required to re-login after updating the password.</p>
                 <Box className='d-flex justify-content-center flex-column'>
                     <h5>Old Password</h5>
@@ -140,7 +145,16 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     <h5>Confirm Password</h5>
                     <input type="password" value={confirmNewPassword} onChange={handleConfirmNewPasswordChange} className='my-2 inputBoxHeight' placeholder='Re-enter your password here' />
                     {confirmNewPasswordError && <p className='text-danger'>{confirmNewPasswordError}</p>}
-                    <input type="submit" className={disabled ? 'mediumMarginTopBottom inputBoxHeight bg-secondary text-white my-2' : 'mediumMarginTopBottom inputBoxHeight bg-dark text-white my-2'} onClick={handleUpdateClick} value="Update Password" disabled={disabled} />
+                    {/* <input type="submit" className={disabled ? 'mediumMarginTopBottom inputBoxHeight bg-secondary text-white my-2' : 'mediumMarginTopBottom inputBoxHeight bg-dark text-white my-2'} onClick={handleUpdateClick} value="Update Password" disabled={disabled} /> */}
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.large}
+                        variant={ButtonVariant.contained}
+                        onClick={() => handleUpdateClick()}
+                        disabled={disabled}
+                    >
+                        Update
+                    </Button>
 
                     {/* <button className='btn-black inputBoxHeight my-5' onClick={handleUpdateClick}>Update</button> */}
                 </Box>

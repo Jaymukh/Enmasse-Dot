@@ -9,6 +9,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import * as Constants from '../../../utils/constants/Constants';
 import { useRecoilValue } from "recoil";
 import { visiblePanelState } from '../../../states';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 
 interface SideBarProps {
     handleVisiblePanel: (index: number) => void;
@@ -16,7 +17,7 @@ interface SideBarProps {
 
 const SideBar: React.FC<SideBarProps> = ({ handleVisiblePanel }) => {
     const visiblePanel = useRecoilValue(visiblePanelState);
-    
+
     return (
         <div className='account-sidebar col-3 p-0 pe-3 h-100'>
             <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'white' }} className="h-100 full-height d-flex flex-column justify-content-between w-100" style={{ height: '81.5vh' }}>
@@ -36,7 +37,14 @@ const SideBar: React.FC<SideBarProps> = ({ handleVisiblePanel }) => {
                     ))}
                 </List>
                 <div className='justify-content-start'>
-                    <button className='btn btn-white bottom-0 border-0 w-100'><HelpIcon className='mx-1 mb-1 color-black ' />Help & Support</button>
+                    <Button
+                        theme={ButtonTheme.secondary}
+                        size={ButtonSize.medium}
+                        variant={ButtonVariant.transparent}
+                    >
+                        <HelpIcon className='mx-1 mb-1 color-black ' />
+                        Help & Support
+                    </Button>
                 </div>
             </Box>
         </div>
