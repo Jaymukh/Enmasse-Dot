@@ -6,13 +6,20 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import * as Constants from '../../../utils/constants/Constants';
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useNavigate } from 'react-router-dom';
 import { visiblePanelState } from '../../../states';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 
 
 const SideBar = () => {
+    const navigate = useNavigate();
     const visiblePanel = useRecoilValue(visiblePanelState);
     const setVisiblePanel = useSetRecoilState(visiblePanelState);
+
+    const handleItemClick = (data: string) => {
+        setVisiblePanel('/' + data);
+        navigate('/' + data);
+    }
 
     return (
         <div className='account-sidebar col-3 p-0 pe-3 h-100'>
@@ -21,8 +28,8 @@ const SideBar = () => {
                     {Constants.sidebarData.map((data, index) => (
                         <ListItem className='p-0 m-0' divider key={index}>
                             <ListItemButton
-                                selected={index === visiblePanel}
-                                onClick={() => setVisiblePanel(index)}
+                                selected={(data.option).toLowerCase() === visiblePanel}
+                                onClick={() => handleItemClick((data.option).toLowerCase())}
                             >
                                 <ListItemIcon>
                                     {data.icon}

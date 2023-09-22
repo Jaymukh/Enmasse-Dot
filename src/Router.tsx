@@ -1,16 +1,15 @@
 import React, { Suspense, useMemo } from "react";
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { RouteConstants } from "./constants";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { authState, visiblePanelState, overlayState, showHelpState } from './states';
+import { useRecoilValue } from "recoil";
+import { authState } from './states';
 
 interface ProtectedRouteProps {
     auth: any;
     redirectPath: string;
-    children: React.ReactNode;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath, children }) => {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath }) => {
     if (!Object.keys(auth).length) {
         return <Navigate to={redirectPath} />;
     }
@@ -32,12 +31,14 @@ const Router = () => {
         <Suspense fallback={<div className=""></div>}>
             <Routes>
                 <Route path={RouteConstants.login} element={<Login />} />
-                <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} children={undefined} />}>
+                <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} />}>
                     <Route path={RouteConstants.update_password} element={<UpdatePassword />} />
                     <Route path={RouteConstants.root} element={<HomeContainer />} />
                     <Route path={RouteConstants.dashboards} element={<DashboardContainer />} />
                     <Route path={RouteConstants.stories} element={<StoryContainer />} />
-                    <Route path={RouteConstants.profile || RouteConstants.settings || RouteConstants.invite} element={<ProfileContainer />} />
+                    <Route path={RouteConstants.profile} element={<ProfileContainer />} />
+                    <Route path={RouteConstants.settings} element={<ProfileContainer />} />
+                    <Route path={RouteConstants.invite} element={<ProfileContainer />} />
                 </Route>
             </Routes>
         </Suspense >

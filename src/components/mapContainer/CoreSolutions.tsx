@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
-import * as Constants from '../../../utils/constants/Constants';
-import Switch from '../../ui/switch/Switch';
+import * as Constants from '../../utils/constants/Constants';
+import Switch from '../ui/switch/Switch';
 import userStoryImg from '../../../utils/images/user-stories.svg';
 
 interface CoreSolutionsProps {

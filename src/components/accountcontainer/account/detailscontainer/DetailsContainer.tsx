@@ -9,12 +9,14 @@ import { visiblePanelState } from '../../../../states';
 const DetailsContainer = () => {
     const visiblePanel = useRecoilValue(visiblePanelState);
     const userService = useUserService();
+
 	useEffect(() => {
 		userService.getUserDetails();
 	}, []);
+
     return (
         <div className='col-9 h-100 z-index-0'>
-            {visiblePanel === 0 ? <Profile /> : visiblePanel === 1 ? <Settings /> : <Invite />}
+            {visiblePanel === '/profile' ? <Profile /> : visiblePanel === '/settings' ? <Settings /> : <Invite />}
         </div>
     );
 }

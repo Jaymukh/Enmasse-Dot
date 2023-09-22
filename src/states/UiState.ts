@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const visiblePanelState = atom({
     key: 'visiblePanel',
-    default: 0,
+    default: window.location.pathname || '/profile',
 });
 
 export const overlayState = atom({

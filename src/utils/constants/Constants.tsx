@@ -92,26 +92,22 @@ export interface SidebarItem {
     index: number;
     icon: JSX.Element;
     option: string;
-    route: string;
 }
 export const sidebarData: SidebarItem[] = [
     {
         index: 0,
         icon: <BsFillPersonFill className='fs-21' />,
         option: 'Profile',
-        route: '/profile'
     },
     {
         index: 1,
         icon: <IoSettingsSharp className='fs-21' />,
         option: 'Settings',
-        route: '/settings'
     },
     {
         index: 2,
         icon: <MdGroupAdd className='fs-21' />,
         option: 'Invite',
-        route: '/invite'
     }
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\invite\Invite.tsx
@@ -188,18 +184,19 @@ export interface AccountMenuItem {
     key: number;
     text: string;
     icon: JSX.Element;
+    
 }
 
 export const accountMenuItems: AccountMenuItem[] = [
     {
         key: 1,
         text: "Settings",
-        icon: <IoSettingsSharp className='fs-21' />
+        icon: <IoSettingsSharp className='fs-21' />,
     },
     {
         key: 2,
         text: "Invite",
-        icon: <MdGroupAdd className='fs-21' />
+        icon: <MdGroupAdd className='fs-21' />,
     },
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\settings\Settings.tsx language selectbox

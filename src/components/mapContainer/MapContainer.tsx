@@ -1,6 +1,6 @@
 import '../../App.css';
 import React, { useState } from 'react';
-import MapOptions from './mapOptions/MapOptions';
+import MapOptions from './MapOptions';
 import Map from './map/Map';
 import { Country, State } from 'country-state-city';
 
@@ -35,7 +35,7 @@ function MapContainer() {
             setStates(State.getStatesOfCountry(selectedItem.isoCode));
             setSelectedCountry(selectedItem);
             setSelectedState(undefined);
-            setSelectedDistrict('');            
+            setSelectedDistrict('');
         }
     };
 

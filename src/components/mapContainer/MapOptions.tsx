@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { FiDownload } from 'react-icons/fi';
 import { MdBookmarks } from 'react-icons/md';
 import WIPDrawer from './WIPDrawer';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
-import Select, { SelectSize } from '../../ui/select/Select';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import Select, { SelectSize } from '../ui/select/Select';
 
 interface MapOptionsProps {
     handleGlobal: () => void;

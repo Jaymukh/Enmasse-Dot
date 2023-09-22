@@ -13,7 +13,6 @@ const useSettingsService = () => {
         .then((response) => {
             if (response) {
                 setSettings(response);
-                console.log('allSettings', response);
             }
         });
     }
