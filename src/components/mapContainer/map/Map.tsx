@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import GlobalMap from './GlobalMap';
 import axios from 'axios';
 import * as turf from '@turf/turf';
-import InsightBar from '../../InsightBar';
 import StateMap from './StateMap';
 
 interface MapProps {

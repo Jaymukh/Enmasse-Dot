@@ -16,6 +16,7 @@ interface StateMapProps {
     selectedDistrict: string;
     pointFeatures: any[];
 }
+
 interface Feature {
     type: string;
     id: number;
@@ -36,10 +37,15 @@ const StateMap: React.FC<StateMapProps> = ({
     const mapRef = useRef(null);
     const [map, setMap] = useState<google.maps.Map | null>(null);
     const [circles, setCircles] = useState<google.maps.Circle[]>([]);
-    const [viewStories, setViewStories] = useState(false);
     const [selectedRb, setSelectedRb] = useState(0);
     const [selectedCoreSoln, setSelectedCoreSoln] = useState({ key: 0, label: 'All', type: 'radius_all' });
     const [focused, setFocused] = useState(0);
+    const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
+
+    const toggleSwitch = (event?: React.ChangeEvent<HTMLInputElement>) => {
+        const name: string = event?.target?.name!;
+        setIsChecked({ ...isChecked, [name]: !isChecked[name] });
+    };
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const center = {
@@ -52,17 +58,14 @@ const StateMap: React.FC<StateMapProps> = ({
         // zoomControl: false,
         mapTypeControl: false,
         streetViewControl: false,
-        styles: MapConstants.NonGlobalMapStyle
+        styles: MapConstants.NonGlobalMapStyle,
+        isFractionalZoomEnabled: true
     };
 
     const handleMapLoad = useCallback((mapInstance: google.maps.Map) => {
         setMap(mapInstance);
         (mapInstance as any).circles = [];
     }, []);
-
-    const handleViewStories = (checked: boolean | ((prevState: boolean) => boolean)) => {
-        setViewStories(checked);
-    }
 
     const handleChangeRb = (event: { target: { value: any; }; }, option: Constants.Option) => {
         setSelectedRb(Number(event.target.value));
@@ -133,7 +136,10 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [map, features]);
 
     useEffect(() => {
-        if (map && pointFeatures) {
+        if (!isChecked.coreSolution) {
+            clearCircles();
+        }
+        else if (map && pointFeatures && isChecked.coreSolution) {
             clearCircles();
 
             const newCircles = pointFeatures.map((feature) => {
@@ -166,7 +172,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
             setCircles(newCircles.flat());
         }
-    }, [map, pointFeatures, selectedCoreSoln]);
+    }, [map, pointFeatures, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
         handleImportFeature();
@@ -189,8 +195,9 @@ const StateMap: React.FC<StateMapProps> = ({
                             center={center}
                             onLoad={handleMapLoad}
                             options={mapOptions}
+                            //isFractionalZoomEnabled={true}
                         >
-                            {Constants.storyFeatures && viewStories && (
+                            {Constants.storyFeatures && isChecked?.viewStories && (
                                 Constants.storyFeatures.map((feature, index) => (
                                     <InfoWindow
                                         position={feature.position}
@@ -214,7 +221,7 @@ const StateMap: React.FC<StateMapProps> = ({
                         </GoogleMap>
                     </LoadScript>
                 )}
-                <CoreSolutions handleViewStories={handleViewStories} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
+                <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
             </div>
             <div className='col-3 p-0 h-100'>
                 <DistrictSideBar />

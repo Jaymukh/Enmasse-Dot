@@ -94,8 +94,8 @@ export default function Invite() {
 
 	return (
 		<div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
-			<div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
-				<h5 className='mt-2 col-2'>Invite</h5>
+			<div className="row w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pl-4">
+				<h5 className='mt-2 ms-4 col-3 text-start'>Invite</h5>
 				<button className='btn btn-outline-secondary width-fit-content-button' onClick={handleOpenInviteNew} ><IoMdAdd className='me-1 text-dark' fontSize={22} />Invite New</button>
 			</div>
 			<hr />

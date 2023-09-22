@@ -54,8 +54,8 @@ export default function Profile() {
 
     return (
         <div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
-            <div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
-                <h5 className='mt-2 col-2'>Profile</h5>
+            <div className="row w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pl-4">
+                <h5 className='mt-2 ms-4 col-3 text-start'>Profile</h5>
                 <button className='btn btn-outline-secondary width-fit-content-button' onClick={() => handleOpen(true)}>
                     <MdModeEdit className='me-1 mb-1 color-black' fontSize={20} />
                     Edit Profile

@@ -70,9 +70,9 @@ const Settings: React.FC<SettingsProps> = () => {
 
     return (
         <div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
-            <div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
-                <h5 className='mt-2 col-2'>Settings</h5>
-                <div className='mt-2 col-10 d-flex justify-content-end'>
+            <div className="row w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pl-4">
+                <h5 className='mt-2 ms-4 col-3 text-start'>Settings</h5>
+                <div className='col-8 d-flex justify-content-end m-0 p-0'>
                     <button className='btn btn-outline-secondary width-fit-content-button me-2 fs-13' onClick={() => handleEditClick(!editMode)}>
                         <MdModeEdit className='me-1 mb-1 color-black' fontSize={20} /> Edit Setting
                         {/* { editMode ? 
@@ -88,7 +88,7 @@ const Settings: React.FC<SettingsProps> = () => {
             </div>
             <hr />
             <div className="row w-100 h-90">
-                <div className='col-5 d-flex justify-content-start flex-column text-justify m-4'>
+                <div className='col-5 d-flex justify-content-start flex-column text-justify mb-4 mx-4'>
                     <h6 className='mt-2 text-start'>Language Preference</h6>
                     <Select
                         options={settings?.languages}
