@@ -92,22 +92,26 @@ export interface SidebarItem {
     index: number;
     icon: JSX.Element;
     option: string;
+    route: string;
 }
 export const sidebarData: SidebarItem[] = [
     {
         index: 0,
         icon: <BsFillPersonFill className='fs-21' />,
-        option: 'Profile'
+        option: 'Profile',
+        route: '/profile'
     },
     {
         index: 1,
         icon: <IoSettingsSharp className='fs-21' />,
-        option: 'Settings'
+        option: 'Settings',
+        route: '/settings'
     },
     {
         index: 2,
         icon: <MdGroupAdd className='fs-21' />,
-        option: 'Invite'
+        option: 'Invite',
+        route: '/invite'
     }
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\invite\Invite.tsx

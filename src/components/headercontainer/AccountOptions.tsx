@@ -5,21 +5,20 @@ import { MdLogout } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { loggedUserState } from '../../states';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useUserService } from '../../services';
 import { ButtonAvatar } from '../ui/button/ButtonAvatar';
 import { Button, ButtonTheme, ButtonVariant, ButtonSize } from '../ui/button/Button';
+import { visiblePanelState } from '../../states';
 
-interface AccountOptionsProps {
-	handleVisiblePanel: (index: number) => void;
-}
 
-const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) => {
+const AccountOptions = () => {
 
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const navigate = useNavigate();
 	const userService = useUserService();
 	const loggedUser = useRecoilValue(loggedUserState);
+	const setVisiblePanel = useSetRecoilState(visiblePanelState);
 
 	useEffect(() => {
 		userService.getUserDetails();
@@ -30,7 +29,7 @@ const AccountOptions: React.FC<AccountOptionsProps> = ({ handleVisiblePanel }) =
 	};
 
 	const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
-		handleVisiblePanel(index);
+		setVisiblePanel(index);
 		handleClose();
 		navigate(RouteConstants.profile);
 	};

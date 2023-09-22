@@ -7,28 +7,20 @@ import TAMInfographic from './TAMInfographic';
 import { useRecoilValue } from "recoil";
 import { showHelpState } from '../../states';
 
-interface OverlayContainerProps {
-  handleOverlay: (overlay: boolean) => void;
-  handleHelp: (showHelp: number) => void;
-}
-
-const OverlayContainer: React.FC<OverlayContainerProps> = ({ 
-  handleOverlay, 
-  handleHelp 
-}) => {
+const OverlayContainer = () => {
 
   const showHelp = useRecoilValue(showHelpState );
 
   return (
     <div className='OverlayContainer'>
 			{(showHelp === 0) &&
-				<LandingPage handleHelp={handleHelp} handleOverlay={handleOverlay} />}
+				<LandingPage />}
 			{(showHelp === 1) &&
-				<EHInfographic handleHelp={handleHelp} handleOverlay={handleOverlay} />}
+				<EHInfographic />}
 			{(showHelp === 2)  &&
-				<ISPInfographic handleHelp={handleHelp} handleOverlay={handleOverlay} />}
+				<ISPInfographic />}
 			{(showHelp === 3)  &&
-				<TAMInfographic handleOverlay={handleOverlay} />}
+				<TAMInfographic />}
 		</div>
   );
 }
