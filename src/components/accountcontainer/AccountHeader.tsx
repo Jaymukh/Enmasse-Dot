@@ -7,13 +7,13 @@ const AccountHeader: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="col-12 w-100 bg-white mx-0 ps-6 border-bottom z-index-0" style={{ height: '6vh' }}>
+        <div className="col-12 d-flex align-items-center w-100 bg-white mx-0 ps-6 border-bottom z-index-0" style={{ height: '6vh' }}>
             <Button
                 theme={ButtonTheme.secondary}
                 size={ButtonSize.default}
                 variant={ButtonVariant.transparent}
                 onClick={() => navigate(-1)}
-                classname='d-flex justify-content-start align-items-center m-0'
+                classname='m-0 h-auto'
             >
                 <BiArrowBack className='me-2 mb-1 text-dark' />
                 Back

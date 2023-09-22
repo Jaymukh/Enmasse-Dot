@@ -109,7 +109,3 @@
 .btn_avatar:hover {
 	color: var(--white-1);
 }
-
-.btn:disabled {
-	background-color: red !important;
-}

@@ -5,11 +5,8 @@ import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User } from "../../../../../states";
-<<<<<<< HEAD
 import Select, { SelectSize } from '../../../../ui/select/Select';
-=======
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
->>>>>>> c9f08d098b6428c0bcabad81df8ecbe03f2436f6
 
 interface EditInviteProps {
     selectedData: User;
@@ -79,7 +76,6 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         name='company'
                     />
                     <h6 className='mt-1 font-87-5 text-start'>CompanyType</h6>
-<<<<<<< HEAD
                     <Select
                         options={settings?.company_types}
                         value={updatedData?.company_type}
@@ -88,13 +84,6 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         size={SelectSize.large}
                         name='company_type'
                     />
-                    <button className='btn-black bg-dark border-0 drawer-input-box-height mt-2 mb-3 my-4' onClick={handleUpdateClick}>Update</button>
-=======
-                    <select name='company_type' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={updatedData.company_type} onChange={(e) => handleChangeData(e)} >
-                        {settings?.company_types?.map((company_type) => (
-                            <option key={company_type.id} value={company_type.name}>{company_type.name}</option>
-                        ))}
-                    </select>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
@@ -103,9 +92,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         classname='my-4'
                     >
                         Update
-                    </Button>
->>>>>>> c9f08d098b6428c0bcabad81df8ecbe03f2436f6
-                </div>
+                    </Button>                </div>
             </Drawer>
         </div>
     );
