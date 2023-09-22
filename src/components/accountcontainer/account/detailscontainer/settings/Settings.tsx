@@ -12,6 +12,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import WIPDrawer from '../../../../mapContainer/mapOptions/WIPDrawer';
 import Select, { SelectSize } from '../../../../ui/select/Select';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 interface SettingsProps { }
 
@@ -24,7 +25,6 @@ const Settings: React.FC<SettingsProps> = () => {
     const [editMode, setEditMode] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [open, setOpen] = useState(false);
-    const [isDisabled, setIsDisabled] = useState(true);
     // all settings's data
     const settings: SettingsData = useRecoilValue(AllSettingsState);
     const [usersettings, setUserSettings] = useRecoilState<UserSettings>(UserSettingsState);
@@ -41,7 +41,6 @@ const Settings: React.FC<SettingsProps> = () => {
     // handle edit setting
     const handleEditClick = (editMode?: boolean) => {
         setEditMode(editMode!);
-        setIsDisabled(!editMode);
     };
     //function to get logged users
     const getLoggedUserSettings = () => {
@@ -69,21 +68,29 @@ const Settings: React.FC<SettingsProps> = () => {
     }, []);
 
     return (
-        <div className='container bg-white mt-4 me-5' style={{height: '90%'}}>
+        <div className='container bg-white mt-4 me-5' style={{ height: '90%' }}>
             <div className="row w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pl-4">
-                <h5 className='mt-2 ms-4 col-3 text-start'>Settings</h5>
-                <div className='col-8 d-flex justify-content-end m-0 p-0'>
-                    <button className='btn btn-outline-secondary width-fit-content-button me-2 fs-13' onClick={() => handleEditClick(!editMode)}>
-                        <MdModeEdit className='me-1 mb-1 color-black' fontSize={20} /> Edit Setting
-                        {/* { editMode ? 
-                            ('Save Setting') : 
-                            ( <><ModeEditIcon className='mx-1 mb-1 color-black' /> 'Edit Setting'</> )
-                        } */}
-                    </button>
-                    <button className='btn btn-outline-secondary width-fit-content-button fs-13' onClick={() => handleDrawer(true)}>
-                        <MdLock className='me-1 mb-1 color-black' fontSize={20} />
+                <h5 className='mt-2 col-2'>Settings</h5>
+                <div className='mt-2 col-10 d-flex justify-content-end '>
+                    <Button
+                        theme={ButtonTheme.secondary}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.contained}
+                        onClick={() => handleEditClick(!editMode)}
+                    >
+                        <MdModeEdit className='me-1 mb-1' fontSize={20} />
+                        Edit Setting
+                    </Button>
+                    <Button
+                        theme={ButtonTheme.secondary}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.contained}
+                        onClick={() => handleDrawer(true)}
+                        classname='ms-2'
+                    >
+                        <MdLock className='me-1 mb-1' fontSize={20} />
                         Change Password
-                    </button>
+                    </Button>
                 </div>
             </div>
             <hr />
@@ -97,6 +104,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         valueKey='name'
                         size={SelectSize.large}
                         name='language'
+                        disabled={!editMode}
                     />
                     <h6 className='mt-2 text-start'>Currency Preference</h6>
                     <Select
@@ -106,6 +114,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         valueKey='name'
                         size={SelectSize.large}
                         name='currency'
+                        disabled={!editMode}
                     />
                     <h6 className='mt-2 text-start'>Location Focus</h6>
                     <Select
@@ -115,6 +124,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         valueKey='name'
                         size={SelectSize.large}
                         name='location'
+                        disabled={!editMode}
                     />
                     <h6 className='mt-2 text-start'>Notifications</h6>
                     <div className='d-flex justify-content-between align-items-center px-3 py-2 input-div'>

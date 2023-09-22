@@ -92,7 +92,8 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         classname='my-4'
                     >
                         Update
-                    </Button>                </div>
+                    </Button>
+                </div>
             </Drawer>
         </div>
     );
