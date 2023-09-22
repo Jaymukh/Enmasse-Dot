@@ -101,7 +101,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='company'
                     />
                     <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
-<<<<<<< HEAD
                     <Select
                         options={settings?.company_types}
                         value={newData?.company_type}
@@ -111,14 +110,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='company_type'
                     />
                     <p className='my-3 Note d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p>
-                    <button className='btn-black bg-dark border-0 drawer-input-box-height mt-2 mb-3' onClick={handleSubmitInviteNew}>Invite</button>
-=======
-                    <select name='company_type' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.company_type} onChange={(e) => handleChangeData(e)} >
-                        {settings?.company_types?.map((company_type) => (
-                            <option key={company_type.id} value={company_type.name}>{company_type.name}</option>
-                        ))}
-                    </select>
-                    <p className='my-2 Note d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
@@ -128,7 +119,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     >
                         Invite
                     </Button>
->>>>>>> c9f08d098b6428c0bcabad81df8ecbe03f2436f6
                 </div>
             </Drawer>
         </>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import checkAnimation from '../../../../../utils/lotties/checklotties.json';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 interface UpdateSuccessModalProps {
     showModal: boolean;
@@ -36,6 +37,15 @@ const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, hand
                             <h6 className='fs-21'>Password changed</h6>
                             <p className='fs-14'>Password for your account updated successfully</p>
                             <button className='btn border-0 text-white btn-dark rounded-0 w-100' onClick={() => handleShowModal(false, true)}>Continue</button>
+                            {/* <Button
+                                theme={ButtonTheme.primary}
+                                size={ButtonSize.large}
+                                variant={ButtonVariant.transparent}
+                                onClick={() => handleShowModal(false, true)}
+                                classname='my-4'
+                            >
+                                Continue
+                            </Button> */}
                         </div>
                     </div>
                 </div>
