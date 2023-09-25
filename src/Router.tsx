@@ -34,6 +34,7 @@ const Router = () => {
                 <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} />}>
                     <Route path={RouteConstants.update_password} element={<UpdatePassword />} />
                     <Route path={RouteConstants.root} element={<HomeContainer />} />
+                    <Route path={RouteConstants.explore} element={<HomeContainer />} />
                     <Route path={RouteConstants.dashboards} element={<DashboardContainer />} />
                     <Route path={RouteConstants.stories} element={<StoryContainer />} />
                     <Route path={RouteConstants.profile} element={<ProfileContainer />} />

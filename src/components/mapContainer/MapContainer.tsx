@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import MapOptions from './MapOptions';
 import Map from './Map';
 import { Country, State } from 'country-state-city';
+import { useNavigate } from 'react-router-dom';
+import { RouteConstants } from '../../constants';
 
 const countries: any = Country.getAllCountries();
 
@@ -15,13 +17,16 @@ const districts: any = [
 ];
 
 function MapContainer() {
-    const [global, setGlobal] = useState<boolean>(true);
+    const navigate = useNavigate();
+    const routeFlag = window.location.pathname === '/' ? true : false;
+    const [global, setGlobal] = useState<boolean>(routeFlag);
     const [selectedCountry, setSelectedCountry] = useState<any>({}); // Initialize with undefined
     const [selectedState, setSelectedState] = useState<any>({}); // Initialize with undefined
     const [selectedDistrict, setSelectedDistrict] = useState<any>({});
     const [states, setStates] = useState<any>();
 
     const handleGlobal = () => {
+        global ? navigate(RouteConstants.explore) : navigate(RouteConstants.root);
         setGlobal(!global);
         setSelectedCountry({});
         setSelectedState({});
