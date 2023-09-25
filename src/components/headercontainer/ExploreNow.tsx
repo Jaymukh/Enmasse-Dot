@@ -96,26 +96,28 @@ const ExploreNow = () => {
 				className={`modal ${showExploreNowModal ? 'show' : ''}`}
 				tabIndex={-1}
 				role='dialog'
-				style={{ display: showExploreNowModal ? 'block' : 'none', borderStyle: 'inset' }}
+				style={{ display: showExploreNowModal ? 'block' : 'none' }}
 			>
-				<div className='modal-dialog  modal-dialog-centered dialog-width'>
-					<div className='modal-content'>
-						<div className='modal-body d-flex flex-column justify-content-center w-auto m-3'>
+				<div className='modal-dialog  modal-dialog-centered dialog-width'
+				// style={{width: '62.5rem', height: '38.5625rem'}}
+				>
+					<div className='modal-content' >
+						<div className='modal-body d-flex flex-column justify-content-center m-4' >
 							<div className='d-flex flex-row justify-content-between'>
 								<h5>Explore Now</h5>
 								<button type='button' className='btn-close' onClick={closeExploreNowModal}></button>
 							</div>
 							<div className='modal-dialog-scrollable'>
-								<p className='Dialog-p'>
+								<p className='text-muted text-start fs-14'>
 									Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
 								</p>
 								<div className='d-flex flex-row justify-content-start'>
-									<h5 className=''>{selectedValue}</h5>
+									<h5 className='fs-16'>{selectedValue}</h5>
 									{selectedValue && ( // Show clear button only when inputValue is not empty
 										<button type='button' className='btn-close mx-3' onClick={clearInput} />
 									)}
 								</div>
-								<Stack spacing={2} sx={{ width: 300 }} className=''>
+								{/* <Stack spacing={2} sx={{ width: 300 }} className=''> */}
 									<Autocomplete
 										id='free-solo-demo'
 										onInputChange={onhandleInputChange}
@@ -143,20 +145,18 @@ const ExploreNow = () => {
 											/>
 										)}
 									/>
-								</Stack>
+								{/* </Stack> */}
 								<div className='my-4'>
 									{selectedshowDiv ? (
 										// Show this div when selectedValue is true
 										<div>
 											{Constants.explorePlaces.map((item) => (
-												<div key={item.state}>
-													<h5 className='d-flex justify-content-start'>{item.state}</h5>
-													<hr></hr>
+												<div key={item.state} className='my-2'>
+													<h5 className='d-flex justify-content-start fs-18 mb-0'>{item.state}</h5>
+													<hr className='mt-0'></hr>
 													<div className='row'>
 														{item.districts.map((district: string) => (
-															<div className='col-4 d-flex justify-content-start' key={district}>
-																<p className='color-green'>{district}</p>
-															</div>
+															<p className='col-4 text-start mb-1 color-green fs-16'>{district}</p>
 														))}
 													</div>
 												</div>
@@ -182,6 +182,7 @@ const ExploreNow = () => {
 					</div>
 				</div>
 			</div>
+			{showExploreNowModal && <div className=" modal-backdrop fade show"></div>}
 		</div>
 	);
 };
