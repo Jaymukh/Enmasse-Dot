@@ -9,10 +9,10 @@ import TableView from './TableView';
   
   const DashBoard = () => {
     return (
-        <div className='row w-100 primary-bg m-0 pb-5'>
-            <div className='col-12 p-0'>
+        <div className='row w-100 primary-bg m-0 pb-5' style={{height: '100vh', overflow: 'auto'}}>
+            {/* <div className='col-12 p-0'>
                 <AccountHeader  />
-            </div>
+            </div> */}
             <div className='col-12 p-0'>
                 <FamilyDetails />
             </div>

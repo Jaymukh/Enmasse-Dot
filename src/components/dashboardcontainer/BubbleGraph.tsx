@@ -36,7 +36,7 @@ const BubbleGraph = () => {
 	return (
 		<div className="white-bg py-3 dashboard-col m-4 px-4">
 			<div className='row px-4 pt-2 d-flex justify-content-between'>
-				<h5 className="col-3 mb-0 text-start fs-14">Core Solutions by EH</h5>
+				<h5 className="col-4 mb-0 text-start fs-14">Core Solutions by EH</h5>
 				<div className='col-2'>
 					<Select
 						options={options}
@@ -48,7 +48,7 @@ const BubbleGraph = () => {
 					/>
 				</div>
 			</div>
-			<div style={{ width: '30rem', height: '50rem' }}>
+			<div style={{ width: '30rem', height: '22rem' }}>
 				<svg width={550} height={330} style={{ display: "inline-block" }}>
 					{/* <svg width='100%' height='100%' style={{ display: "inline-block" }}> */}
 					{root

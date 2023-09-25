@@ -109,6 +109,7 @@ function MapOptions({
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
                     variant={ButtonVariant.transparent}
+                    classname='m-0 h-auto'
                     onClick={() => openWIPDrawer("Download data")}
                 >
                     <FiDownload className='me-2' fontSize={15} />
@@ -118,6 +119,7 @@ function MapOptions({
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
                     variant={ButtonVariant.transparent}
+                    classname='m-0 h-auto'
                     onClick={() => openWIPDrawer("Download data")}
                 >
                     <MdBookmarks className='me-2' fontSize={15} />
