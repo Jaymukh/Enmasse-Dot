@@ -27,12 +27,12 @@ const Map: React.FC<MapProps> =({
     const handleImportFeature = async (code: string | undefined) => {
         try {
             if (code) {
-                const module = await import('../../../utils/json/geojson/countries/' + code + '.geo.json');
+                const module = await import('../../utils/json/geojson/countries/' + code + '.geo.json');
                 setFeatures(module.default);
             } else {
                 if (!selectedState && selectedCountry) {
                     const module = await import(
-                        '../../../utils/json/geojson/countries/' + selectedCountryCode + '.geo.json'
+                        '../../utils/json/geojson/countries/' + selectedCountryCode + '.geo.json'
                     );
                     setFeatures(module.default);
                     const pointFeatures = module.default.features.map((feature: any) => {
@@ -43,7 +43,7 @@ const Map: React.FC<MapProps> =({
                 } else if (!selectedDistrict && selectedState) {
                     const state = selectedState.toUpperCase();
                     const module = await import(
-                        '../../../utils/json/geojson/states/' + state + '_STATE.geojson'
+                        '../../utils/json/geojson/states/' + state + '_STATE.geojson'
                     );
                     const response = await axios.get(module.default);
                     const data = response.data;

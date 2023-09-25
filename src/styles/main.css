@@ -1,6 +1,36 @@
 /* include all the global css */
 /* eg: styles related to text, background colors of div, border etc */
+@import url("./color.css");
 
 a {
     cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-item-button {
+    width: 100%;
+    border: none;
+    background-color: var(--white-0);
+    height: 3.75rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0rem;
+    border-bottom: 1px solid var(--black-7);
+}
+
+.li-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--black-8);
+}
+
+.li-selected {
+    background-color: var(--green-8);
+	border-left: 4px solid var(--green-1);
 }

@@ -6,7 +6,6 @@ import ConfirmDelete from './ConfirmDelete';
 import { IoMdAdd } from 'react-icons/io';
 import { MdModeEdit } from 'react-icons/md';
 import { MdDeleteSweep } from 'react-icons/md';
-// import { Table, TableBody, TableCell, TableContainer, TableHead, tr, Paper } from '@mui/material';
 import { usersState, loggedUserState, User } from "../../../../../states";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useUserService } from '../../../../../services';

@@ -8,8 +8,14 @@ html {
     --black-4: #1118261A; /* select small border */
     --black-5: rgba(0, 0, 0, 0.3);
     --black-6: rgba(17, 24, 39, 0.50); /* login muted */
+    --black-7: #D9D9D9; /* settings li border */
+    --black-8: rgba(0, 0, 0, 0.8);
     --white-1: #FFFFFF;
     --warning: #D55038;
+
+    --green-1: #108041;
+    --green-8: #e7f2ec;
     --bs-btn-disabled-bg: rgba(17, 24, 39, 0.50);
+    
 
 }

@@ -1,9 +1,5 @@
 import React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemIcon';
+import '../../../styles/main.css';
 import * as Constants from '../../../utils/constants/Constants';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useNavigate } from 'react-router-dom';
@@ -24,21 +20,20 @@ const SideBar = () => {
     return (
         <div className='account-sidebar col-3 p-0 pe-3 h-100'>
             <div className="h-100 bg-white full-height d-flex flex-column justify-content-between w-100" style={{ height: '81.5vh' }}>
-                <List component="nav" aria-label="main mailbox folders" className='my-0 p-0'>
+                <ul>
                     {Constants.sidebarData.map((data, index) => (
-                        <ListItem className='p-0 m-0' divider key={index}>
-                            <ListItemButton
-                                selected={(data.option).toLowerCase() === visiblePanel}
+                        <li className='p-0 m-0' key={index}>
+                            <button
+                                className={`list-item-button ${'/' + (data.option).toLowerCase() === visiblePanel ? 'li-selected' : ''
+                                    }`}
                                 onClick={() => handleItemClick((data.option).toLowerCase())}
                             >
-                                <ListItemIcon>
-                                    {data.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={data.option} />
-                            </ListItemButton>
-                        </ListItem>
+                                <span className='mx-3 li-icon'>{data.icon}</span>
+                                <span>{data.option}</span>
+                            </button>
+                        </li>
                     ))}
-                </List>
+                </ul>
                 {/* <div className='justify-content-start'>
                     <Button
                         theme={ButtonTheme.secondary}
