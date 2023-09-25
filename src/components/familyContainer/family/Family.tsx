@@ -17,7 +17,7 @@ function Family({ selectedFamily, selectedData, handleCarouselSlide, handleBackC
         <>
             <FamilySidePanel selectedFamily={selectedFamily} handleCarouselSlide={handleCarouselSlide} />
 
-            {selectedData.properties.familyDetails ?
+            {selectedData.properties.familyDetails.familyMembers ?
                 <FamilyDetailsContainer selectedData={selectedData} /> :
                 <FamilyDetailsEmptyContainer selectedData={selectedData} handleBackClick={handleBackClick} />
             }

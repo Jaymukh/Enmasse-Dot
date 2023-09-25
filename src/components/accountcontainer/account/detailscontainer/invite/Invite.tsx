@@ -6,7 +6,7 @@ import ConfirmDelete from './ConfirmDelete';
 import { IoMdAdd } from 'react-icons/io';
 import { MdModeEdit } from 'react-icons/md';
 import { MdDeleteSweep } from 'react-icons/md';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+// import { Table, TableBody, TableCell, TableContainer, TableHead, tr, Paper } from '@mui/material';
 import { usersState, loggedUserState, User } from "../../../../../states";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useUserService } from '../../../../../services';
@@ -109,28 +109,27 @@ export default function Invite() {
 			</div>
 			<hr />
 			<div className="w-100 d-flex justify-content-center m-auto">
-				<TableContainer component={Paper}>
-					<Table sx={{ minWidth: 650 }} aria-label="simple table">
-						<TableHead>
-							<TableRow>
-								<TableCell align="left" variant='head' sx={{ fontWeight: '600' }}>Name</TableCell>
-								<TableCell align="center" variant='head' sx={{ fontWeight: '600' }}>Role</TableCell>
-								<TableCell align="center" variant='head' sx={{ fontWeight: '600' }}>Company</TableCell>
-								<TableCell align="center" variant='head' sx={{ fontWeight: '600' }}>Company Type</TableCell>
-								<TableCell align="center" variant='head' sx={{ fontWeight: '600' }}>Action</TableCell>
-							</TableRow>
-						</TableHead>
-						<TableBody>
+				<div className='dashboard-table-container w-100'>
+					<table className=''>
+						<thead>
+							<tr>
+								<th className='text-start'>Name</th>
+								<th className='text-center'>Role</th>
+								<th className='text-center'>Company</th>
+								<th className='text-center'>Company Type</th>
+								<th className='text-center'>Action</th>
+							</tr>
+						</thead>
+						<tbody>
 							{users.map((row) => (
-								<TableRow
+								<tr
 									key={row.name}
-									sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 								>
-									<TableCell component="th" scope="row">{row.name}<br />{row.email_id} </TableCell>
-									<TableCell component="th" align="center" scope="row" sx={{ fontSize: '16px' }}><div className='color-green'>{row.role}</div></TableCell>
-									<TableCell component="th" align="center" scope="row">{row.company}</TableCell>
-									<TableCell component="th" align="center" scope="row">{row.company_type}</TableCell>
-									<TableCell align="center" className='' >
+									<td className='text-start'>{row.name}<br />{row.email_id} </td>
+									<td className='text-center'><div className='color-green'>{row.role}</div></td>
+									<td className='text-center'>{row.company}</td>
+									<td className='text-center'>{row.company_type}</td>
+									<td className='text-center'>
 										<Button
 											theme={ButtonTheme.muted}
 											size={ButtonSize.default}
@@ -147,12 +146,12 @@ export default function Invite() {
 										>
 											<MdDeleteSweep fontSize={20} />
 										</Button>
-									</TableCell>
-								</TableRow>
+									</td>
+								</tr>
 							))}
-						</TableBody>
-					</Table>
-				</TableContainer>
+						</tbody>
+					</table>
+				</div>
 			</div>
 			{selectedData &&
 				<EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
@@ -164,9 +163,6 @@ export default function Invite() {
 				<ConfirmDelete showConfirmDeleteModal={showConfirmDeleteModal}
 					closeConfirmDeleteModal={closeConfirmDeleteModal} handleDeleteClick={handleDeleteClick} />}
 		</div>
-
-
-
 	)
 }
 

@@ -39,19 +39,24 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                                     placeholder='Enter your email id here'
                                     onChange={(e) => handleEmailChange(e.target.value)}
                                 />
-                                {/* <button className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 ${email ? 'bg-dark' : 'bg-secondary'}`} onClick={handleSendEmail}>
-                                    Send Email
-                                </button> */}
                                 <Button
-                                    theme={email ? ButtonTheme.primary : ButtonTheme.muted}
+                                    theme={ButtonTheme.primary}
                                     classname='mb-2 mt-4'
                                     size={ButtonSize.large}
-                                    variant={ButtonVariant.transparent}
+                                    variant={ButtonVariant.contained}
                                     onClick={handleSendEmail}
                                 >
                                     Send Email
                                 </Button>
-                                <button className='bg-transparent underline-text border-0' onClick={() => handleModal({ passwordModal: false })}>Back to Login</button>
+                                <Button
+                                    theme={ButtonTheme.secondary}
+                                    size={ButtonSize.large}
+                                    variant={ButtonVariant.transparent}
+                                    onClick={() => handleModal({ passwordModal: false })}
+                                    classname='underline-text'
+                                >
+                                    Back to Login
+                                </Button>
                             </div>
                         </div>
                     </div>

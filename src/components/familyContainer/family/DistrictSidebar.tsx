@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../../constants';
 import Select, { SelectSize } from '../../ui/select/Select';
 import '../../../App.css';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 
 
 const options = [
@@ -124,7 +125,16 @@ const DistrictSidebar = () => {
                     </div>
                 </div>
             </div>
-            <button className='btn btn-dark rounded w-100 my-4 fs-12' onClick={handleExploreMore} >Explore more<PiArrowRightBold className='ms-2' /></button>
+            <Button
+                theme={ButtonTheme.primary}
+                size={ButtonSize.large}
+                variant={ButtonVariant.transparent}
+                onClick={() => handleExploreMore()}
+                classname='my-4'
+            >
+                Explore More
+                <PiArrowRightBold className='ms-2' />
+            </Button>
         </div>
     );
 }

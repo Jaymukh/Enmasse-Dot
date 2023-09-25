@@ -1,6 +1,7 @@
 import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi';
 import { headers } from '../../utils/constants/Constants';
 import { dashboardTableData } from '../../utils/constants/Constants';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 
 const TableView = () => {
@@ -16,15 +17,26 @@ const TableView = () => {
                                     <div className='d-flex flex-row align-items-center'>
                                         <p className='pt-3 pe-2'>{item}</p>
                                         <div className='d-flex flex-column pb-2'>
-                                            <button className='border-0 bg-transparent table-header-btn'>
-                                                <BiSolidUpArrow fontSize={12} color='#CDCDCD' />
-                                            </button>
-                                            <button className='border-0 bg-transparent table-header-btn'>
-                                                <BiSolidDownArrow fontSize={12} color='#367A2B' />
-                                            </button>
+                                            <Button
+                                                theme={ButtonTheme.secondary}
+                                                size={ButtonSize.default}
+                                                variant={ButtonVariant.transparent}
+                                                classname='h-auto'
+                                            >
+                                                <BiSolidUpArrow fontSize={12} />
+                                            </Button>
+                                            <Button
+                                                theme={ButtonTheme.secondary}
+                                                size={ButtonSize.default}
+                                                variant={ButtonVariant.transparent}
+                                                classname='h-auto'
+                                            >
+                                                <BiSolidDownArrow fontSize={12} color='#367A2B'  />
+                                            </Button>
                                         </div>
                                     </div>
-                                </th>))}
+                                </th>
+                            ))}
                         </tr>
                     </thead>
                     <tbody>
