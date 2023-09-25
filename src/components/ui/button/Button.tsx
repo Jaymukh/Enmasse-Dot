@@ -19,13 +19,8 @@ export enum ButtonTheme {
     primary,
     secondary,
     muted,
-    warning
-}
-
-export enum ButtonBorder {
-    borderNone,
-    borderWith
-
+    warning,
+    success
 }
 
 interface ButtonProps {
@@ -62,49 +57,35 @@ const getTypeVariantClass = (theme: ButtonTheme, variant: ButtonVariant) => {
     let className = "";
     switch (theme) {
         case ButtonTheme.primary:
-            className = variant === ButtonVariant.transparent ? `${styles.btn_primary_transparent}` : `${styles.btn_primary}`;
+            className = variant === ButtonVariant.transparent ? `${styles.btn_primary_transparent}` :
+                (className = variant === ButtonVariant.contained ? `${styles.btn_primary_contained}` : `${styles.btn_primary}`);
             break;
         case ButtonTheme.secondary:
-            className = variant === ButtonVariant.transparent ? `${styles.btn_secondary_transparent}` : `${styles.btn_secondary}`;
+            className = variant === ButtonVariant.transparent ? `${styles.btn_secondary_transparent}` :
+                (className = variant === ButtonVariant.contained ? `${styles.btn_secondary_contained}` : `${styles.btn_secondary}`);
             break;
         case ButtonTheme.muted:
-            className = variant === ButtonVariant.transparent ? `${styles.btn_muted_transparent}` : `${styles.btn_muted}`;
+            className = variant === ButtonVariant.transparent ? `${styles.btn_muted_transparent}` :
+                (className = variant === ButtonVariant.contained ? `${styles.btn_muted_contained}` : `${styles.btn_muted}`);
             break;
         case ButtonTheme.warning:
-            className = variant === ButtonVariant.transparent ? `${styles.btn_warning_transparent}` : `${styles.btn_warning}`;
+            className = variant === ButtonVariant.transparent ? `${styles.btn_warning_transparent}` :
+                (className = variant === ButtonVariant.contained ? `${styles.btn_warning_contained}` : `${styles.btn_warning}`);
+            break;
+        case ButtonTheme.success:
+            className = variant === ButtonVariant.transparent ? `${styles.btn_success_transparent}` :
+                (className = variant === ButtonVariant.contained ? `${styles.btn_success_contained}` : `${styles.btn_success}`);
             break;
     }
     return className;
-
-}
-
-const getBorderStyle = (theme: ButtonTheme, border: ButtonBorder) => {
-    let className = "";
-    switch (theme) {
-        case ButtonTheme.primary:
-            className = border === ButtonBorder.borderNone ? `${styles.btn_no_border}` : `${styles.btn_with_border}`;
-            break;
-        case ButtonTheme.secondary:
-            className = border === ButtonBorder.borderNone ? `${styles.btn_no_border}` : `${styles.btn_with_border}`;
-            break;
-        case ButtonTheme.muted:
-            className = border === ButtonBorder.borderNone ? `${styles.btn_no_border}` : `${styles.btn_with_border}`;
-            break;
-        case ButtonTheme.warning:
-            className = border === ButtonBorder.borderNone ? `${styles.btn_no_border}` : `${styles.btn_with_border}`;
-            break;
-    }
-    return className;
-
- 
 
 }
 
 export const Button = ({
     onClick,
     variant = ButtonVariant.contained,
-    theme= ButtonTheme.primary,
-    size= ButtonSize.default,
+    theme = ButtonTheme.primary,
+    size = ButtonSize.default,
     disabled,
     children,
     type,

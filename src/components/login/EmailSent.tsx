@@ -19,7 +19,15 @@ const EmailSent: React.FC<EmailSentProps> = ({
                     <div className="modal-content">
                         <div className="modal-body d-flex flex-column justify-content-center w-auto m-3">
                             <div className='d-flex flex-row-reverse'>
-                                <button type="button" className="btn-close" onClick={() => handleModal({ sendMailModal: false })}></button>
+                                {/* <button type="button" className="btn-close" onClick={() => handleModal({ sendMailModal: false })}></button> */}
+                                <Button
+                                    theme={ButtonTheme.primary}
+                                    size={ButtonSize.medium}
+                                    variant={ButtonVariant.transparent}
+                                    onClick={() => handleModal({ sendMailModal: false })}
+                                    type='button'
+                                    classname='btn-close mx-3 w-auto my-auto'
+                                />
                             </div>
                             <div className=" d-flex flex-column justify-content-center my-2">
                                 <h5 className='text-start'>Email sent</h5>

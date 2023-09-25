@@ -16,13 +16,9 @@ function FamilyHeader({ handleBackClick, selectedData }: FamilyHeaderProps) {
     }
 
     return (
-        <div className="row w-100 bg-white mx-0 ps-6 border-bottom" >
-            {/* <button className='btn btn-white m-0 d-flex justify-content-start align-items-center border-0 story-header-btn' onClick={selectedData ? handleBackClick : onNavigateBack}>
-                <BiArrowBack className='me-2 mb-1 color-black' fontSize={22} />
-                Back
-            </button> */}
+        <div className="w-100 d-flex align-items-center bg-white mx-0 ps-6 border-bottom z-index-0" style={{ height: '6vh' }}>
             <Button
-                theme={ButtonTheme.secondary}
+                theme={ButtonTheme.primary}
                 size={ButtonSize.default}
                 variant={ButtonVariant.transparent}
                 onClick={selectedData ? handleBackClick : onNavigateBack}

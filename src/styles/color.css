@@ -9,7 +9,16 @@ html {
     --black-5: rgba(0, 0, 0, 0.3);
     --black-6: rgba(17, 24, 39, 0.50); /* login muted */
     --white-1: #FFFFFF;
-    --warning: #D55038;
+    --warning-0: #D55038;
+    --warning-1: #B4331C;
     --bs-btn-disabled-bg: rgba(17, 24, 39, 0.50);
+    --green-0: rgba(16, 128, 65, 1);
+    --green-1: rgba(16, 128, 65, 0.8);
+    --green-2: rgba(16, 128, 65, 0.6);
+    --green-3: rgba(16, 128, 65, 0.5);
+    --green-4: rgba(16, 128, 65, 0.4);
+    --green-5: rgba(16, 128, 65, 0.3);
+    --green-6: rgba(16, 128, 65, 0.2);
+    --green-7: rgba(16, 128, 65, 0.1);
 
 }

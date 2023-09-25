@@ -92,12 +92,12 @@ export default function Login() {
                                 className='my-1 px-2 inputBoxHeight'
                                 placeholder='Enter your email id here' />
                             {errors?.email_id?.message && <p className='text-danger m-0 p-0'>{errors?.email_id?.message}</p>}
-                            <div className='d-flex flex-row justify-content-between mt-3'>
+                            <div className='d-flex flex-row justify-content-between align-items-center mt-3'>
                                 <h5 className='fs-6'>Password</h5>
                                 {/* <a href='' onClick={() => handleModal({ passwordModal: true })}>Forgot password?</a> */}
                                 <Button
                                     type='button'
-                                    theme={ButtonTheme.secondary}
+                                    theme={ButtonTheme.primary}
                                     size={ButtonSize.default}
                                     variant={ButtonVariant.transparent}
                                     onClick={() => handleModal({ passwordModal: true })}

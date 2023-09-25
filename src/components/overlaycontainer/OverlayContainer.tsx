@@ -9,20 +9,20 @@ import { showHelpState } from '../../states';
 
 const OverlayContainer = () => {
 
-  const showHelp = useRecoilValue(showHelpState );
+	const showHelp = useRecoilValue(showHelpState);
 
-  return (
-    <div className='OverlayContainer'>
+	return (
+		<div className='OverlayContainer'>
 			{(showHelp === 0) &&
 				<LandingPage />}
 			{(showHelp === 1) &&
 				<EHInfographic />}
-			{(showHelp === 2)  &&
+			{(showHelp === 2) &&
 				<ISPInfographic />}
-			{(showHelp === 3)  &&
+			{(showHelp === 3) &&
 				<TAMInfographic />}
 		</div>
-  );
+	);
 }
 
 export default OverlayContainer;

@@ -24,9 +24,16 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                 <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-body d-flex flex-column justify-content-center w-auto m-3">
-                            <div className='d-flex flex-row justify-content-between'>
+                            <div className='d-flex flex-row justify-content-between align-items-center'>
                                 <h5 >Forgot Password</h5>
-                                <button type="button" className="btn-close" onClick={() => handleModal({ passwordModal: false })}></button>
+                                <Button
+                                    theme={ButtonTheme.primary}
+                                    size={ButtonSize.medium}
+                                    variant={ButtonVariant.transparent}
+                                    onClick={() => handleModal({ passwordModal: false })}
+                                    type='button'
+                                    classname='btn-close m-0 w-auto p-2'
+                                />
                             </div>
                             <p className='Dialog-p'>Enter your email, we will send you instructions.</p>
                             <div className=" d-flex flex-column justify-content-start my-2" >
@@ -49,7 +56,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                                     Send Email
                                 </Button>
                                 <Button
-                                    theme={ButtonTheme.secondary}
+                                    theme={ButtonTheme.primary}
                                     size={ButtonSize.large}
                                     variant={ButtonVariant.transparent}
                                     onClick={() => handleModal({ passwordModal: false })}

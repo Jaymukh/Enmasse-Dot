@@ -21,7 +21,15 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 								<h5 >Terms and Conditions</h5>
 								<p className=' mx-2 Dialog-p'>Last updated: DD/MM/YYYY</p>
 							</div>
-							<button type="button" className="btn-close" onClick={() => handleModal({ tncModal: false })} />
+							{/* <button type="button" className="btn-close" onClick={() => handleModal({ tncModal: false })} /> */}
+							<Button
+								theme={ButtonTheme.primary}
+								size={ButtonSize.medium}
+								variant={ButtonVariant.transparent}
+								onClick={() => handleModal({ tncModal: false })}
+								type='button'
+								classname='btn-close mx-3 w-auto my-auto'
+							/>
 						</div>
 						<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 modal-padding">
 							<div className=" d-flex flex-column justify-content-start modal-dialog-scrollable my-2">

@@ -1,25 +1,35 @@
 import React from 'react';
 import { useSetRecoilState } from "recoil";
 import { overlayState, showHelpState } from '../../states';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 const LandingPage = () => {
 	const setOverlay = useSetRecoilState(overlayState);
 	const setShow = useSetRecoilState(showHelpState);
 	return (
-		<div>
+		<div className='w-100'>
 			<h4 className='text-white mb-3'>
 				Hello! Welcome to Enmasse | D.O.T.S
 			</h4>
-			<div className='d-flex flex-column px-5 mx-5'>
-				<button className='transparent-btn border border-white bg-transparent text-white px-4 py-2 rounded-1 mx-5 my-2' onClick={() => setShow(1)}>
+			<div className='d-flex flex-column justify-content-center m-auto w-100'>
+				<Button
+					theme={ButtonTheme.secondary}
+					size={ButtonSize.medium}
+					variant={ButtonVariant.bordered}
+					onClick={() => setShow(1)}
+					classname='mx-auto my-3'
+				>
 					Start Exploring
-				</button>
-				<button
-					className='transparent-btn border-0 bg-transparent text-white px-4 py-2 rounded-1'
+				</Button>
+				<Button
+					theme={ButtonTheme.secondary}
+					size={ButtonSize.large}
+					variant={ButtonVariant.transparent}
 					onClick={() => setOverlay(false)}
+					classname='m-auto'
 				>
 					Skip
-				</button>
+				</Button>
 			</div>
 		</div>
 	);

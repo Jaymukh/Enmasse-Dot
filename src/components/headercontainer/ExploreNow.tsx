@@ -101,18 +101,33 @@ const ExploreNow = () => {
         <div className='modal-dialog  modal-dialog-centered dialog-width'>
           <div className='modal-content'>
             <div className='modal-body d-flex flex-column justify-content-center w-auto m-3'>
-              <div className='d-flex flex-row justify-content-between'>
+              <div className='d-flex flex-row justify-content-between align-items-center'>
                 <h5>Explore Now</h5>
-                <button type='button' className='btn-close' onClick={closeExploreNowModal}></button>
+                <Button
+                  theme={ButtonTheme.primary}
+                  size={ButtonSize.medium}
+                  variant={ButtonVariant.transparent}
+                  onClick={closeExploreNowModal}
+                  type='button'
+                  classname='btn-close m-0 w-auto p-2'
+                  />
               </div>
               <div className='modal-dialog-scrollable'>
                 <p className='Dialog-p'>
                   Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
                 </p>
-                <div className='d-flex flex-row justify-content-start'>
+                <div className='d-flex flex-row justify-content-start align-items-center my-1'>
                   <h5 className=''>{selectedValue}</h5>
                   {selectedValue && ( // Show clear button only when inputValue is not empty
-                    <button type='button' className='btn-close mx-3' onClick={clearInput} />
+                    // <button type='button' className='btn-close mx-3' onClick={clearInput} />
+                    <Button
+                      theme={ButtonTheme.primary}
+                      size={ButtonSize.default}
+                      variant={ButtonVariant.transparent}
+                      onClick={clearInput}
+                      type='button'
+                      classname='btn-close mx-3 w-auto mb-1'
+                    />
                   )}
                 </div>
                 <Stack spacing={2} sx={{ width: 300 }} className=''>

@@ -2,7 +2,7 @@ import '../../App.css';
 import React, { useState } from 'react';
 import { MdLiveHelp, MdNotifications } from 'react-icons/md';
 import AccountOptions from './AccountOptions';
-import MapYourBusiness from './MapYourBusiness';
+import RequestDetails from './RequestDetails';
 import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants/routeConstants';
@@ -13,7 +13,6 @@ import { overlayState, showHelpState } from '../../states';
 
 
 function Header() {
-
 	const navigate = useNavigate();
 	const setOverlay = useSetRecoilState(overlayState);
 	const setShow = useSetRecoilState(showHelpState);
@@ -45,9 +44,9 @@ function Header() {
 			</div>
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />
-				<MapYourBusiness />
+				<RequestDetails />
 				<Button
-					theme={ButtonTheme.secondary}
+					theme={ButtonTheme.primary}
 					size={ButtonSize.default}
 					variant={ButtonVariant.transparent}
 					onClick={() => handleHelpClick()}
@@ -55,7 +54,7 @@ function Header() {
 					<MdLiveHelp fontSize={25} />
 				</Button>
 				<Button
-					theme={ButtonTheme.secondary}
+					theme={ButtonTheme.primary}
 					size={ButtonSize.default}
 					variant={ButtonVariant.transparent}
 					onClick={() => handleHelpClick()}

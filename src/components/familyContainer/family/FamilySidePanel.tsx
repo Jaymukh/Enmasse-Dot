@@ -14,7 +14,9 @@ interface FamilySidePanelProps {
 const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handleCarouselSlide }) => {
     return (
         <div className='col-3 d-flex mt-1 flex-column'>
+            <div style={{width: '18rem'}}>
             <FamiliesSidePanel />
+            </div>
             <div id="carouselExampleControlsNoTouching" className="carousel slide bgcolor d-flex justify-content-between custom-carousel bg-white m-3" data-bs-touch="false" data-bs-interval="false" style={{ height: "8vw" }} >
                 <div className="carousel-inner">
                     {families.family.map((data, index) => (
