@@ -4,6 +4,8 @@ import styles from "./Button.module.css";
 export enum ButtonVariant {
     contained,
     transparent,
+    bordered
+
 }
 
 export enum ButtonSize {
@@ -18,6 +20,12 @@ export enum ButtonTheme {
     secondary,
     muted,
     warning
+}
+
+export enum ButtonBorder {
+    borderNone,
+    borderWith
+
 }
 
 interface ButtonProps {
@@ -67,6 +75,28 @@ const getTypeVariantClass = (theme: ButtonTheme, variant: ButtonVariant) => {
             break;
     }
     return className;
+
+}
+
+const getBorderStyle = (theme: ButtonTheme, border: ButtonBorder) => {
+    let className = "";
+    switch (theme) {
+        case ButtonTheme.primary:
+            className = border === ButtonBorder.borderNone ? `${styles.btn_no_border}` : `${styles.btn_with_border}`;
+            break;
+        case ButtonTheme.secondary:
+            className = border === ButtonBorder.borderNone ? `${styles.btn_no_border}` : `${styles.btn_with_border}`;
+            break;
+        case ButtonTheme.muted:
+            className = border === ButtonBorder.borderNone ? `${styles.btn_no_border}` : `${styles.btn_with_border}`;
+            break;
+        case ButtonTheme.warning:
+            className = border === ButtonBorder.borderNone ? `${styles.btn_no_border}` : `${styles.btn_with_border}`;
+            break;
+    }
+    return className;
+
+ 
 
 }
 

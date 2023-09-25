@@ -1,7 +1,8 @@
 import React from 'react'
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 interface EmailSentProps {
-    showModal : boolean;
+    showModal: boolean;
     handleModal: (value: any) => void;
     email: string;
 }
@@ -22,10 +23,18 @@ const EmailSent: React.FC<EmailSentProps> = ({
                             </div>
                             <div className=" d-flex flex-column justify-content-center my-2">
                                 <h5 className='text-start'>Email sent</h5>
-                                <p className=' Dialog-p '>Email sent to
-                                    {email}
-                                    with further instructions.</p>
-                                <button className='mb-2 mt-4 inputBoxHeight login-btn bg-dark text-white fs-6' onClick={() => handleModal({ sendMailModal: false })}>Back to Login</button>
+                                <p className=' Dialog-p '>
+                                    Email sent {email} with further instructions.
+                                </p>
+                                <Button
+                                    theme={ButtonTheme.primary}
+                                    size={ButtonSize.large}
+                                    variant={ButtonVariant.contained}
+                                    onClick={() => handleModal({ sendMailModal: false })}
+                                    classname='mt-4 mb-3'
+                                >
+                                    Back to Login
+                                </Button>
                             </div>
                         </div>
                     </div>

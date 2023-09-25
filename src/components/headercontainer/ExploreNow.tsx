@@ -84,7 +84,6 @@ const ExploreNow = () => {
 
   return (
     <div>
-      {/* <button className='header-btns btn-black me-2 fs-13 grayBtnClr' onClick={openExploreNowModal}> */}
       <Button
         theme={ButtonTheme.primary}
         size={ButtonSize.default}
@@ -93,7 +92,6 @@ const ExploreNow = () => {
         <MdOutlineTravelExplore className='me-2' fontSize={20} />
         Explore Now
       </Button>
-      {/* </button> */}
       <div
         className={`modal ${showExploreNowModal ? 'show' : ''}`}
         tabIndex={-1}

@@ -1,36 +1,41 @@
 @import url("../../../styles/color.css");
 /* @import url("assets/fonts/fonts.css"); */
 
-.btn_primary { /* black button */
+.btn_primary_bordered{ /* black button with black backgrount and with black border */
 	background-color: var(--black-1);
 	border-color: var(--black-1);
 	border-radius: 5px;
 	color: var(--white-1);
 	height: 3rem;
-	/* margin: 0rem 0.5rem; */
 }
 
-.btn_primary_transparent {
+.btn_primary_contained { /* black button with black backgrount and without border */
+	background-color: var(--black-1);
+	border-radius: 5px;
+	color: var(--white-1);
+	height: 3rem;
+}
+
+.btn_primary_transparent { /* black button without backgrount and without border */
 	background-color: var(--black-1);
 	border: 0;
 	color: var(--white-1);
 	height: 3rem;
 }
 
-/* .btn_primary:hover {
-    background-color: var(--primary-hover-1);
-    border-color: var(--primary-hover-1);
-    border-radius: 0;
-    color: var(--white-1);
-  } */
-
-.btn_secondary { /* white button */
+.btn_secondary_bordered { /* white button */
 	background-color: var(--white-1);
-	border-color: var(--black-1);
+	border-color: var(--white-1);
 	border-radius: 5px;
 	color: var(--black-0);
 	height: 3rem;
-	/* margin: 0rem 0.5rem; */
+}
+
+.btn_secondary_contained { /* white button */
+	background-color: var(--white-1);
+	border-radius: 5px;
+	color: var(--black-0);
+	height: 3rem;
 }
 
 .btn_secondary_transparent { /* white button */

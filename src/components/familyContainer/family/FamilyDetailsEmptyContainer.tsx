@@ -1,6 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import animationData from '../../../utils/lotties/lotties.json';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 
 interface FamilyDetailsEmptyContainerProps {
     selectedData: any;
@@ -31,7 +32,14 @@ const FamilyDetailsEmptyContainer: React.FC<FamilyDetailsEmptyContainerProps> = 
                         width={200}
                     />
                     <p className=" card-text OneFamilyCardText p-1 my-2 fs-20">Building conversations, capturing stories</p>
-                    <button className='family-empty-btn fs-14' onClick={handleBackClick}>View all families</button>
+                    <Button
+                        theme={ButtonTheme.secondary}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.contained}
+                        onClick={() => handleBackClick()}
+                    >
+                        View all families
+                    </Button>
                 </div>
             </div>
         </div >

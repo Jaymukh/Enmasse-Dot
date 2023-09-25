@@ -14,13 +14,6 @@ const MapYourBusiness = () => {
 
 	return (
 		<div >
-			{/* <button
-				className='header-btns header-btn-white mx-2 fs-13'
-				onClick={() => toggleDrawer()}
-			>
-				<MdOutlineShareLocation className='me-2' fontSize={20} color='#111827' />
-				Map Your Business
-			</button> */}
 			<Button
 				theme={ButtonTheme.secondary}
 				size={ButtonSize.default}
