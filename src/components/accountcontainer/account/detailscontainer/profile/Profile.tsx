@@ -61,7 +61,7 @@ export default function Profile() {
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
                     variant={ButtonVariant.contained}
-                    onClick={() => handleEditClick()}
+                    onClick={() => handleOpen(true)}
                 >
                     <MdModeEdit className='mx-1 mb-1 color-black' />
                     Edit Profile
