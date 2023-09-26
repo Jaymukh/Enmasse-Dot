@@ -94,7 +94,7 @@ export default function Invite() {
 
 	return (
 		<div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
-			<div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
+			<div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pe-4">
 				<h5 className='mt-2 col-2 ms-3 text-start'>Invite</h5>
 				<Button
 					theme={ButtonTheme.secondary}

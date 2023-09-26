@@ -69,7 +69,7 @@ const Settings: React.FC<SettingsProps> = () => {
 
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
-            <div className="row w-100 mx-0 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pl-4">
+            <div className="row w-100 mx-0 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pe-4">
                 <h5 className='mt-2 col-2 ms-3 text-start'>Settings</h5>
                 <div className='mt-2 col-9 d-flex justify-content-end '>
                     <Button
