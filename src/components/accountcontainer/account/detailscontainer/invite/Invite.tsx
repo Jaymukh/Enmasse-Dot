@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import '../../../../../App.css';
 import EditInvite from './EditInvite';
@@ -6,11 +7,12 @@ import ConfirmDelete from './ConfirmDelete';
 import { IoMdAdd } from 'react-icons/io';
 import { MdModeEdit } from 'react-icons/md';
 import { MdDeleteSweep } from 'react-icons/md';
-import { usersState, loggedUserState, User } from "../../../../../states";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { usersState, User } from "../../../../../states";
+import { useRecoilState } from "recoil";
 import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Spinner } from '../../../../ui/spinner/Spinner';
 
 export default function Invite() {
 	const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -21,7 +23,6 @@ export default function Invite() {
 	// all user's data
 	const [users, setUsers] = useRecoilState(usersState);
 	const userService = useUserService();
-	const loggedUser = useRecoilValue(loggedUserState);
 
 	//function to get all the users
 	useEffect(() => {

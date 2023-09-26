@@ -497,7 +497,7 @@ a {
 	height: 2rem;
 }
 
-.primary-select-box .MuiOutlinedInput-notchedOutline {
+.primary-select-box .OutlinedInput-notchedOutline {
 	border: none !important;
 }
 
@@ -756,6 +756,7 @@ a {
 .fs-64 {
 	font-size: 4rem;
 }
+
 .h-2 {
 	height: 2rem !important;
 
@@ -1148,6 +1149,7 @@ th {
 	box-shadow: none;
 
 }
+
 /* accountoptions */
 
 .account-menu {
@@ -1186,16 +1188,18 @@ th {
 .menu-item span {
 	margin-left: 10px;
 }
+
 .menu-item div {
 	margin-left: 5px;
 	margin-right: 5px;
 }
 
 .input-div {
-    border-radius: 0.3125rem;
-    height: 3rem;
-    font-size: 0.875rem;
-	border: 1px solid rgba(0, 0, 0, 0.3);;
+	border-radius: 0.3125rem;
+	height: 3rem;
+	font-size: 0.875rem;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	;
 }
 
 .table-row-height {

@@ -22,6 +22,7 @@ const AccountOptions = () => {
 
 	useEffect(() => {
 		userService.getUserDetails();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -29,7 +30,7 @@ const AccountOptions = () => {
 	};
 
 	const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, route: string) => {
-		setVisiblePanel(route);
+		setVisiblePanel('/' + route);
 		handleClose();
 		navigate(RouteConstants[route]);
 	};
@@ -54,7 +55,7 @@ const AccountOptions = () => {
 			/>
 			{Boolean(anchorEl) &&
 				(<ul className='account-menu-dropdown z-index-2'>
-					<li className='menu-item' onClick={(event) => handleClickMenuItem(event, 'profile')}>
+					<li className='menu-item fs-16' onClick={(event) => handleClickMenuItem(event, 'profile')}>
 						<ButtonAvatar
 							image={loggedUser?.img}
 							initial={loggedUser.initial}
@@ -67,7 +68,7 @@ const AccountOptions = () => {
 					{Constants.accountMenuItems.map((item) => (
 						<li
 							key={item.key}
-							className='menu-item d-flex'
+							className='menu-item d-flex fs-16'
 							onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
 						>
 							<div>{item.icon}</div>
@@ -81,7 +82,6 @@ const AccountOptions = () => {
 					</Button>
 				</ul>)
 			}
-
 		</div >
 	);
 }
