@@ -49,11 +49,15 @@ function MapOptions({
         <div className='row justify-content-around align-items-center border-bottom bg-white mx-0' style={{ height: '7.5vh' }}>
             <div className='col-xl-7 col-md-7 justify-content-start d-flex flex-wrap h-100'>
                 <div className='select-right-margin py-1'>
-                    <button
-                        className='subheader-btn global-btn px-3 text-start d-flex flex-row align-items-end'
-                        onClick={handleGlobal}>
-                        Global
-                    </button>
+                    <Button
+							theme={ButtonTheme.primary}
+							size={ButtonSize.medium}
+							variant={ButtonVariant.transparent}
+							onClick={handleGlobal}
+                            classname='w-auto'
+						>
+							Global
+						</Button>
                 </div>
                 {!global ? (
                     <div className='select-right-margin ms-2 py-1'>
@@ -106,7 +110,7 @@ function MapOptions({
             </div>
             <div className='col-xl-5 col-md-5 d-flex flex-wrap justify-content-end align-items-center'>
                 <Button
-                    theme={ButtonTheme.secondary}
+                    theme={ButtonTheme.primary}
                     size={ButtonSize.default}
                     variant={ButtonVariant.transparent}
                     classname='m-0 h-auto'
@@ -116,7 +120,7 @@ function MapOptions({
                     Download data
                 </Button>
                 <Button
-                    theme={ButtonTheme.secondary}
+                    theme={ButtonTheme.primary}
                     size={ButtonSize.default}
                     variant={ButtonVariant.transparent}
                     classname='m-0 h-auto'

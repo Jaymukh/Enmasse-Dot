@@ -28,7 +28,7 @@ function FamilyContainer() {
     };
 
     return (
-        <div className="row w-100 h-90 fixed-bottom m-0 border-top" style={{ height: '90vh' }}>
+        <div className="w-100 fixed-bottom m-0 border-top z-index-0" style={{ height: '88.5vh', position: 'inherit' }}>
             <FamilyHeader
                 selectedData={selectedData}
                 handleBackClick={handleBackClick} />

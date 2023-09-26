@@ -5,7 +5,7 @@ import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
 import Drawer from '../ui/Drawer';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
-const MapYourBusiness = () => {
+const RequestDetails = () => {
 	const [open, setOpen] = useState(false);
 
 	const toggleDrawer = () => {
@@ -20,7 +20,7 @@ const MapYourBusiness = () => {
 				variant={ButtonVariant.contained}
 				classname='ms-2'
 				onClick={() => toggleDrawer()}>
-				<HiMiniPhone className='me-2' fontSize={20} color='#111827' />
+				<HiMiniPhone className='me-2' fontSize={20}/>
 				Request Details
 			</Button>
 			<Drawer
@@ -45,4 +45,4 @@ const MapYourBusiness = () => {
 	);
 }
 
-export default MapYourBusiness;
+export default RequestDetails;

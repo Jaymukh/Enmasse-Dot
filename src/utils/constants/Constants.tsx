@@ -3,7 +3,11 @@ import { MdGroupAdd } from 'react-icons/md';
 import '../../App.css';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { IoSettingsSharp } from 'react-icons/io5';
-import Navale from '../images/family-sample.png';
+// import Navale from '../images/family-sample.png';
+import Navale from '../images/Navale.png'
+import Ashe from '../images/Ashe.png'
+import Joshi from '../images/Joshi.png'
+import Shah from '../images/Shah.png'
 
 export const TOKEN: string =
     'pk.eyJ1IjoiZGF5YW5hZWR3aW4iLCJhIjoiY2xqbnpmcW91MDl0dDNkcGp3eDJ4cGE5cSJ9.q2SWsgW4OxyhoosSjKsANQ';
@@ -521,7 +525,7 @@ export const families: FamiliesData = {
             properties: {
                 message: 'Foo',
                 description: "Hi! I'm Ameya. This app will work fine",
-                image: Navale,
+                image: Ashe,
                 familyName: 'Ashe Family',
                 district: 'Kutch',
                 state: 'Gujarat',
@@ -546,7 +550,7 @@ export const families: FamiliesData = {
                 message: 'Bar',
                 description: 'Hi! This is Ameya again! I aasure again that this app will live soon...',
                 image: Navale,
-                familyName: 'Navale family',
+                familyName: 'Navale Family',
                 district: 'Anand',
                 state: 'Gujarat',
                 country: 'India',
@@ -569,7 +573,7 @@ export const families: FamiliesData = {
             properties: {
                 message: 'Foo',
                 description: "Hi! I'm Ameya. This app will work fine",
-                image: Navale,
+                image: Joshi,
                 familyName: 'Joshi Family',
                 district: 'Dahod',
                 state: 'Gujarat',
@@ -593,8 +597,8 @@ export const families: FamiliesData = {
             properties: {
                 message: 'Bar',
                 description: 'Hi! This is Ameya again! I aasure again that this app will live soon...',
-                image: Navale,
-                familyName: 'Shah family',
+                image: Shah,
+                familyName: 'Shah Family',
                 district: 'Navsari',
                 state: 'Gujarat',
                 country: 'India',

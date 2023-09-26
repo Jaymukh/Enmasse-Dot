@@ -753,6 +753,10 @@ a {
 .fs-64 {
 	font-size: 4rem;
 }
+.h-2 {
+	height: 2rem !important;
+
+}
 
 .dashboard-col {
 	border: 1px solid #1118261A;
@@ -885,8 +889,8 @@ th {
 }
 
 .fam-side-map-div {
-	height: fit-content;
-	width: fit-content;
+	height: fit-content !important;
+	width: 20vw !important;
 }
 
 .family-card-container {

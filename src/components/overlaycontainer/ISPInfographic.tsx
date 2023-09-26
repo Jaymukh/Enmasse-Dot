@@ -2,6 +2,7 @@ import React from 'react';
 import img5 from '../../utils/images/img5.png';
 import { useSetRecoilState } from "recoil";
 import { overlayState, showHelpState } from '../../states';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 const ISPInfographic = () => {
     const setOverlay = useSetRecoilState(overlayState);
@@ -13,8 +14,24 @@ const ISPInfographic = () => {
                     <h5 className='color-white justify-content-start'>Contextual Information Feed</h5>
                     <p className='color-white'>An expandable summary screen inclusive of demographic and characteristic activity of the region of opportunity</p>
                     <div className='d-flex justify-content-between '>
-                        <button className='border-0 bg-transparent text-white px-4 py-2 rounded-1' onClick={() => setOverlay(false)}>Skip</button>
-                        <button className="btn btn-light btn-height" onClick={() => setShow(3)}>Next</button>
+                        <Button
+							theme={ButtonTheme.secondary}
+							size={ButtonSize.default}
+							variant={ButtonVariant.transparent}
+							onClick={() => setOverlay(false)}
+							classname='h-2 text-decoration-underline'
+						>
+							Skip
+						</Button>
+						<Button
+							theme={ButtonTheme.secondary}
+							size={ButtonSize.default}
+							variant={ButtonVariant.contained}
+							onClick={() => setShow(3)}
+							classname='h-2'
+						>
+							Next
+						</Button>
                     </div>
                 </div>
                 <img src={img5} alt="Image 5" width="300" height="300" className='contextualinfo' />

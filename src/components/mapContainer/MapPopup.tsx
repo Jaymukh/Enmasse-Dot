@@ -2,6 +2,7 @@ import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 interface MapPopupProps {
     properties: {
@@ -31,10 +32,16 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     <span className="green-text pe-1">{properties.annualSpend} </span>
                     Annual Spend on Core Solutions
                 </p>
-                <button className="map-popup-description border-0 bg-transparent green-text text-start p-0" onClick={handlePopupClick}>
+                <Button
+                    theme={ButtonTheme.success}
+                    size={ButtonSize.small}
+                    variant={ButtonVariant.transparent}
+                    onClick={handlePopupClick}
+                    classname='h-auto ps-0'
+                >
                     Read more
-                    <FiArrowRight className="color-green ms-1" />
-                </button>
+                    <FiArrowRight className="ms-1" />
+                </Button>
             </div>
         </div>
     );

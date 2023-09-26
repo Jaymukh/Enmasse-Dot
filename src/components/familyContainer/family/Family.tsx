@@ -14,7 +14,7 @@ interface FamilyProps {
 
 function Family({ selectedFamily, selectedData, handleCarouselSlide, handleBackClick }: FamilyProps) {
     return (
-        <>
+        <div style={{ height: '82.5vh' }} className='row w-100'>
             <FamilySidePanel selectedFamily={selectedFamily} handleCarouselSlide={handleCarouselSlide} />
 
             {selectedData.properties.familyDetails.familyMembers ?
@@ -22,10 +22,10 @@ function Family({ selectedFamily, selectedData, handleCarouselSlide, handleBackC
                 <FamilyDetailsEmptyContainer selectedData={selectedData} handleBackClick={handleBackClick} />
             }
 
-            <div className='col-3 py-4 px-2 bg-white px-0' style={{ height: '98%', overflow: 'auto' }}>
+            <div className='col-3 py-4 bg-white' style={{ height: '100%', overflow: 'auto' }}>
                 <DistrictSidebar  />
             </div>
-        </>
+        </div>
     );
 }
 

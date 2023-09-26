@@ -10,6 +10,7 @@ import { useUserService } from '../../services';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { toast } from "react-toastify";
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 const UpdatePassword = () => {
     const navigate = useNavigate();
@@ -134,11 +135,33 @@ const UpdatePassword = () => {
                         className='my-1 px-2 inputBoxHeight'
                         placeholder='Re enter your password here' />
                     {errors?.confirm_password?.message && <p className='text-danger m-0 p-0'>{errors?.confirm_password?.message}</p>}
-                    <button type="submit" className='mb-2 mt-4 inputBoxHeight login-btn bg-dark text-white fs-6' >
+                    {/* <button type="submit" className='mb-2 mt-4 inputBoxHeight login-btn bg-dark text-white fs-6' >
                         {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
                         Update Password
-                    </button>
-                    <button className='bg-transparent black underline-text border-0 mt-3' onChange={() => handleSkip()}>Skip</button>
+                    </button> */}
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.large}
+                        variant={ButtonVariant.bordered}
+                        type='submit'
+                        classname='m-auto'
+                    >
+                        {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
+                        Update Password
+                    </Button>
+                    {/* <button className='bg-transparent black underline-text border-0 mt-3' onClick={() => handleSkip()}>
+                    Skip
+                    </button> */}
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.large}
+                        variant={ButtonVariant.transparent}
+                        onClick={() => handleSkip()}
+                        type='button'
+                        classname='text-decoration-underline mt-3'
+                    >
+                        Skip
+                    </Button>
                 </form>
             </div>
         </div>

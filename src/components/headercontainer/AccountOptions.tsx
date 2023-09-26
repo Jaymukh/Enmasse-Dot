@@ -75,7 +75,7 @@ const AccountOptions = () => {
 						</li>
 					))}
 					<hr className='m-0' />
-					<Button theme={ButtonTheme.secondary} size={ButtonSize.large} variant={ButtonVariant.transparent} classname='menu-item d-flex logout my-1' onClick={handleLogout}>
+					<Button theme={ButtonTheme.primary} size={ButtonSize.large} variant={ButtonVariant.transparent} classname='menu-item d-flex logout my-1' onClick={handleLogout}>
 						<MdLogout className='me-3' fontSize={22} />
 						Logout
 					</Button>
