@@ -8,6 +8,7 @@ import { loggedUserState, AllSettingsState, User } from "../../../../../states";
 import { toast } from "react-toastify";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Input } from '../../../../ui/input/Input';
 
 interface NewData {
     name: string | undefined;
@@ -76,11 +77,21 @@ const InviteNew: React.FC<InviteNewProps> = ({
             >
                 <div className='d-flex justify-content-center flex-column px-3'>
                     <h6 className='mt-1 font-87-5 text-start'>Name</h6>
-                    <input type="text" placeholder="Enter your name" value={newData.name} name='name'
-                        onChange={(e) => handleChangeData(e)} className='mb-2 p-2 btn-outline-black ' />
+                    <Input
+                        type="text"
+                        placeholder="Enter your name"
+                        value={newData.name}
+                        name='name'
+                        onChange={(e) => handleChangeData(e)}
+                    />
                     <h6 className='mt-1 font-87-5 text-start'>Email</h6>
-                    <input type="email" placeholder="Enter your Email ID" value={newData.email_id} name='email_id'
-                        onChange={(e) => handleChangeData(e)} className='mb-2  p-2 btn-outline-black drawer-input-box-height' />
+                    <Input
+                        type="email"
+                        placeholder="Enter your Email ID"
+                        value={newData.email_id}
+                        name='email_id'
+                        onChange={(e) => handleChangeData(e)}
+                    />
                     <h6 className='my-1 font-87-5 text-start'>Role</h6>
                     <Select
                         options={settings?.roles}
