@@ -52,7 +52,7 @@ const Map: React.FC<MapProps> =({
                 } else if (selectedDistrict) {
                     const district = selectedDistrict.toUpperCase();
                     const module = await import(
-                        '../../../utils/json/geojson/districts/' + district + '.geojson'
+                        '../../utils/json/geojson/districts/' + district + '.geojson'
                     );
                     const response = await axios.get(module.default);
                     const data = response.data;
