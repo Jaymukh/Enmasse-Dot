@@ -347,6 +347,7 @@ a {
 .dialog-width {
 	min-width: 54rem;
 	max-width: 54rem;
+	min-height: 38.5625rem;
 }
 
 .modal-padding {
