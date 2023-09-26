@@ -184,7 +184,7 @@ export interface AccountMenuItem {
     key: number;
     text: string;
     icon: JSX.Element;
-    
+
 }
 
 export const accountMenuItems: AccountMenuItem[] = [
@@ -616,23 +616,74 @@ export const families: FamiliesData = {
 }
 //
 export interface ExplorePlace {
-    state: string;
+    code: string;
+    name: string;
     districts: any;
 }
 
 export const explorePlaces: ExplorePlace[] = [
     {
-        state: 'Andhra Pradesh',
-        districts: ['Anantapur', 'Chittoor', 'East Godavari', 'Guntur', 'Krishna']
+        code: 'AD',
+        name: 'Andhra Pradesh',
+        districts: [
+            {
+                code: 'AD1',
+                name: 'Anantapur',
+            },
+            {
+                code: 'AD2',
+                name: 'Chittoor',
+            },
+            {
+                code: 'AD3',
+                name: 'East Godavari',
+            },
+            {
+                code: 'AD4',
+                name: 'Guntur',
+            },
+            {
+                code: 'AD4',
+                name: 'Krishna'
+            }
+        ]
     },
     {
-        state: 'Gujarat',
-        districts: ['Ahmedabad', 'Amreli', 'Anand', 'Kutch']
+        code: 'GJ',
+        name: 'Gujarat',
+        districts: [
+            {
+                code: 'GJ1',
+                name: 'Ahmedabad',
+            },
+            {
+                code: 'GJ2',
+                name: 'Amreli',
+            },
+            {
+                code: 'GJ3',
+                name: 'Anand',
+            },
+            {
+                code: 'GJ4',
+                name: 'Kutch'
+            }
+        ]
 
     },
     {
-        state: 'Kerala',
-        districts: ['Thiruvananthapuram', 'Thrissur']
+        code: 'KL',
+        name: 'Kerala',
+        districts: [
+            {
+                code: 'KL1',
+                name: 'Thiruvananthapuram',
+            },
+            {
+                code: 'KL6',
+                name: 'Thrissur'
+            }
+        ]
     }
 ];
 

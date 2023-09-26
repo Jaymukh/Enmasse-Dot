@@ -1,14 +1,12 @@
 import '../../App.css';
 import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import Search from '../ui/search/Search';
 
 const ExploreNow = () => {
-	const [selectedValue, setSelectedValue] = useState<string>('');
+	//const [selectedValue, setSelectedValue] = useState<string>('');
 	const [inputValue, setInputValue] = useState<string>('');
 	const [selectedshowDiv, setSelectedshowDiv] = useState<boolean>(true);
 	const [selectedDistricts, setSelectedDistricts] = useState<any>([]);
@@ -16,71 +14,93 @@ const ExploreNow = () => {
 	const [selectedPlaceType, setSelectedPlaceType] = useState<string>('state');
 	const [showExploreNowModal, setShowExploreNowModal] = useState<boolean>(false); // explore now dialog
 
-	// explore now dialog open and close functions
+	// // explore now dialog open and close functions
 	const openExploreNowModal = () => {
 		setShowExploreNowModal(true);
 	};
 
 	const closeExploreNowModal = () => {
 		setShowExploreNowModal(false);
-		setSelectedValue('');
-		setInputValue('');
-		setSelectedDistricts(Constants.explorePlaces);
-		setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.state));
-		setSelectedPlaceType('state');
-		setSelectedshowDiv(true);
+		// setSelectedValue('');
+		// setInputValue('');
+		// setSelectedDistricts(Constants.explorePlaces);
+		// setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.name));
+		// setSelectedPlaceType('state');
+		// setSelectedshowDiv(true);
 	};
 
-	const handleStateChange = (event: React.ChangeEvent<{}>, newValue: string | null, clear: string) => {
-		if (!newValue && !selectedValue) {
-			setSelectedDistricts(Constants.explorePlaces); // Keep the entire array
-			setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.state));
-			setSelectedPlaceType('state');
-			setInputValue(clear);
+	// const handleStateChange = (event: React.ChangeEvent<{}>, newValue: string | null, clear: string) => {
+	// 	if (!newValue && !selectedValue) {
+	// 		setSelectedDistricts(Constants.explorePlaces); // Keep the entire array
+	// 		setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.name));
+	// 		setSelectedPlaceType('state');
+	// 		setInputValue(clear);
+	// 	} else {
+	// 		if (!newValue) {
+	// 			const index = Constants.explorePlaces.findIndex((option) => option.name === selectedValue);
+	// 			setSelectedDistricts(Constants.explorePlaces[index].districts);
+	// 		} else {
+	// 			const val = Constants.explorePlaces.some((option) => option.name === newValue) ? 'districts' : 'state';
+	// 			if (val === 'districts') {
+	// 				setSelectedValue(newValue);
+	// 				setInputValue(clear); // Clear the input value when the option is selected
+	// 				const index = Constants.explorePlaces.findIndex((option) => option.name === newValue);
+	// 				setSelectedDistricts(Constants.explorePlaces[index].districts);
+	// 				setSelectedDistrictOptions(Constants.explorePlaces[index].districts);
+	// 				setSelectedPlaceType(val);
+	// 				setSelectedshowDiv(false);
+	// 			} else {
+	// 				const districtFound = Constants.explorePlaces.some((option) =>
+	// 					option.districts.includes(newValue)
+	// 				);
+	// 				if (districtFound) {
+	// 					setSelectedDistricts([newValue]);
+	// 					setSelectedPlaceType('districts');
+	// 					setSelectedshowDiv(false);
+	// 				} else {
+	// 					setSelectedDistricts(Constants.explorePlaces); // Keep the entire array
+	// 					setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.name));
+	// 					setSelectedPlaceType('state');
+	// 					setInputValue(clear);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// };
+
+	// const onhandleInputChange = (event: React.ChangeEvent<{}>, newInputValue: string) => {
+	// 	setInputValue('');
+	// };
+
+	// const clearInput = () => {
+	// 	setSelectedValue('');
+	// 	setInputValue('');
+	// 	setSelectedshowDiv(true);
+	// 	setSelectedDistricts(Constants.explorePlaces); // Keep the entire array
+	// 	setSelectedPlaceType('state');
+	// };
+
+	const [results, setResults] = useState<any>(Constants.explorePlaces);
+	const [value, setValue] = useState<string>('');
+	const [selectedValue, setSelectedValue] = useState({ state: '', district: '' });
+	const [suggestions, setSuggestions] = useState<any>(Constants.explorePlaces);
+
+	const handleInputChange = (value: string) => {
+		setValue(value);
+		if (!value) {
+			setSuggestions(Constants.explorePlaces);
 		} else {
-			if (!newValue) {
-				const index = Constants.explorePlaces.findIndex((option) => option.state === selectedValue);
-				setSelectedDistricts(Constants.explorePlaces[index].districts);
-			} else {
-				const val = Constants.explorePlaces.some((option) => option.state === newValue) ? 'districts' : 'state';
-				if (val === 'districts') {
-					setSelectedValue(newValue);
-					setInputValue(clear); // Clear the input value when the option is selected
-					const index = Constants.explorePlaces.findIndex((option) => option.state === newValue);
-					setSelectedDistricts(Constants.explorePlaces[index].districts);
-					setSelectedDistrictOptions(Constants.explorePlaces[index].districts);
-					setSelectedPlaceType(val);
-					setSelectedshowDiv(false);
-				} else {
-					const districtFound = Constants.explorePlaces.some((option) =>
-						option.districts.includes(newValue)
-					);
-					if (districtFound) {
-						setSelectedDistricts([newValue]);
-						setSelectedPlaceType('districts');
-						setSelectedshowDiv(false);
-					} else {
-						setSelectedDistricts(Constants.explorePlaces); // Keep the entire array
-						setSelectedDistrictOptions(Constants.explorePlaces.map((option) => option.state));
-						setSelectedPlaceType('state');
-						setInputValue(clear);
-					}
-				}
-			}
+			const result = suggestions.filter((item: any) => item.name.toLowerCase().includes(value.toLowerCase()));
+			setSuggestions(result);
 		}
-	};
+	}
 
-	const onhandleInputChange = (event: React.ChangeEvent<{}>, newInputValue: string) => {
-		setInputValue('');
-	};
-
-	const clearInput = () => {
-		setSelectedValue('');
-		setInputValue('');
-		setSelectedshowDiv(true);
-		setSelectedDistricts(Constants.explorePlaces); // Keep the entire array
-		setSelectedPlaceType('state');
-	};
+	const handleSelectValue = (value: string) => {
+		setValue(value);
+		const filteredData = suggestions.filter((item: any) => item.name.toLowerCase().includes(value.toLowerCase()));
+		setResults(filteredData);
+		setSelectedValue({...selectedValue, state: filteredData[0].name});
+	}
 
 	return (
 		<div>
@@ -99,7 +119,7 @@ const ExploreNow = () => {
 				style={{ display: showExploreNowModal ? 'block' : 'none' }}
 			>
 				<div className='modal-dialog  modal-dialog-centered dialog-width'
-				// style={{width: '62.5rem', height: '38.5625rem'}}
+					style={{ width: '62.5rem', height: '38.5625rem' }}
 				>
 					<div className='modal-content' >
 						<div className='modal-body d-flex flex-column justify-content-center m-4' >
@@ -112,70 +132,45 @@ const ExploreNow = () => {
 									Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
 								</p>
 								<div className='d-flex flex-row justify-content-start'>
-									<h5 className='fs-16'>{selectedValue}</h5>
-									{selectedValue && ( // Show clear button only when inputValue is not empty
-										<button type='button' className='btn-close mx-3' onClick={clearInput} />
-									)}
-								</div>
-								{/* <Stack spacing={2} sx={{ width: 300 }} className=''> */}
-									<Autocomplete
-										id='free-solo-demo'
-										onInputChange={onhandleInputChange}
-										value={inputValue}
-										freeSolo
-										options={
-											selectedPlaceType === 'districts'
-												? selectedDistrictOptions
-												: Constants.explorePlaces.map((option) => option.state)
-										}
-										onChange={handleStateChange}
-										renderInput={(params) => (
-											<TextField
-												{...params}
-												label='Search'
-												inputProps={{
-													...params.inputProps,
-													style: {
-														height: '1rem',
-														textAlign: 'left',
-														display: 'flex',
-														alignItems: 'center',
-													},
-												}}
+									{Object.values(selectedValue)?.map(item => (
+										item &&
+										(<>
+											<h5 className='fs-16'>{item}</h5>
+											<button
+												type='button'
+												className='btn-close mx-3'
 											/>
-										)}
-									/>
-								{/* </Stack> */}
+										</>)
+									))}
+
+								</div>
+								<Search
+									handleInputChange={handleInputChange}
+									handleSelectValue={handleSelectValue}
+									data={Constants.explorePlaces}
+									value={value}
+									suggestions={suggestions}
+
+								// data={Constants.explorePlaces}
+								// results={results}
+								// value={value}
+								// handleChangeResults={handleChangeResults}
+								// handleSelectedValue={handleSelectedValue}
+								/>
 								<div className='my-4'>
-									{selectedshowDiv ? (
-										// Show this div when selectedValue is true
-										<div>
-											{Constants.explorePlaces.map((item) => (
-												<div key={item.state} className='my-2'>
-													<h5 className='d-flex justify-content-start fs-18 mb-0'>{item.state}</h5>
-													<hr className='mt-0'></hr>
-													<div className='row'>
-														{item.districts.map((district: string) => (
-															<p className='col-4 text-start mb-1 color-green fs-16'>{district}</p>
-														))}
-													</div>
+									<div>
+										{results.map((item: any) => (
+											<div key={item.name} className='my-2'>
+												<h5 className='d-flex justify-content-start fs-18 mb-0'>{item.name}</h5>
+												<hr className='mt-0'></hr>
+												<div className='row'>
+													{item.districts.map((district: any) => (
+														<p className='col-4 text-start mb-1 color-green fs-16'>{district.name}</p>
+													))}
 												</div>
-											))}
-										</div>
-									) : (
-										// Show this div when selectedValue is false
-										<div className='div2'>
-											<h5 className='d-flex justify-content-start'>{selectedValue}</h5>
-											<hr></hr>
-											<div className='row'>
-												{selectedDistricts.map((district: string) => (
-													<div className='col-4 d-flex justify-content-start'>
-														<p className='color-green'>{district}</p>
-													</div>
-												))}
 											</div>
-										</div>
-									)}
+										))}
+									</div>
 								</div>
 							</div>
 						</div>

@@ -1,0 +1,33 @@
+@import url("../../../styles/color.css");
+
+input {
+    width: 26.625rem;
+    height: 3.0625rem;
+    border-radius: 0.3125rem;
+    border: 1px solid var(--black-5);
+    padding: 0rem 2.5rem;
+    position: relative;
+    font-size: 0.875rem;
+
+}
+
+.icon {
+    position: absolute;
+    transform: translate(56%, 52%);
+}
+
+.suggestions_hidden {
+    height: 0;
+    visibility: hidden;
+}
+
+.suggestions_visible {
+    width: 26.625rem;
+    font-size: 0.875rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
+}
+
+.suggestions_item:hover {
+    background-color: var(--green-8);
+    color: var(--black-0);
+}
