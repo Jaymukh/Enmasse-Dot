@@ -7,6 +7,7 @@ import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User } from "../../../../../states";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Input } from '../../../../ui/input/Input';
 
 interface EditProfileProps {
     selectedData: User;
@@ -53,14 +54,29 @@ export default function EditProfile({
         >
             <div className='d-flex justify-content-center flex-column px-3'>
                 <h6 className='mt-1 font-87-5 text-start'>Name</h6>
-                <input type="text" placeholder="Enter your name" name='name' value={updatedData.name}
-                    onChange={(e) => handleChangeData(e)} className='mb-2 p-2 btn-outline-black drawer-input-box-height' />
+                <Input
+                    type="text"
+                    placeholder="Enter your name"
+                    value={updatedData.name}
+                    name='name'
+                    onChange={(e) => handleChangeData(e)}
+                />
                 <h6 className='mt-1 font-87-5 text-start'>Email</h6>
-                <input type="email" placeholder="Enter your Email ID" name='email_id' value={updatedData.email_id}
-                    onChange={(e) => handleChangeData(e)} className='mb-2 p-2 btn-outline-black drawer-input-box-height' />
+                <Input
+                    type="email"
+                    placeholder="Enter your Email ID"
+                    value={updatedData.email_id}
+                    name='email_id'
+                    onChange={(e) => handleChangeData(e)}
+                />
                 <h6 className='mt-1 font-87-5 text-start'>Phone Number</h6>
-                <input type="tel" maxLength={10} placeholder="Enter your Phone number" name='phone_number' value={updatedData.phone_number}
-                    onChange={(e) => handleChangeData(e)} className='mb-2 p-2 btn-outline-black drawer-input-box-height' />
+                <Input
+                    type="tel"
+                    placeholder="Enter your Phone number"
+                    value={updatedData.phone_number}
+                    name='phone_number'
+                    onChange={(e) => handleChangeData(e)}
+                />
                 <h6 className='mt-1 font-87-5 text-start'>Role</h6>
                 <Select
                     options={settings?.roles}
@@ -71,8 +87,13 @@ export default function EditProfile({
                     name='role'
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Designation</h6>
-                <input type="text" placeholder="Enter your designation" name='designation' value={updatedData.designation}
-                    onChange={(e) => handleChangeData(e)} className='mb-2 p-2 btn-outline-black drawer-input-box-height' />
+                <Input
+                    type="text"
+                    placeholder="Enter your designation"
+                    value={updatedData.designation}
+                    name='designation'
+                    onChange={(e) => handleChangeData(e)}
+                />
                 <h6 className='mt-1 font-87-5 text-start'>Company</h6>
                 <Select
                     options={Constants?.company}

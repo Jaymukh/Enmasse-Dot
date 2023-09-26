@@ -1,5 +1,4 @@
 @import url("../../../styles/color.css");
-/* @import url("assets/fonts/fonts.css"); */
 
 .btn_primary{ /* (bordered) black button with black backgrount and with black border */
 	background-color: var(--black-1);

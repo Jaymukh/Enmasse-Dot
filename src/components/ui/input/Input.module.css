@@ -1,0 +1,9 @@
+@import url("../../../styles/color.css");
+
+.input {
+    border-radius: 0.3125rem;
+    border: 1px solid var(--black-5);
+    height: 3.0625rem;
+    padding: 0.88rem;
+    font-size: 0.875rem;
+}
