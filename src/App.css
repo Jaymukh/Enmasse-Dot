@@ -705,6 +705,10 @@ a {
 	color: var(--gray-color);
 }
 
+.fs-10 {
+	font-size: 0.625rem;
+}
+
 .fs-11 {
 	font-size: 0.688rem;
 }
@@ -1188,4 +1192,8 @@ th {
     height: 3rem;
     font-size: 0.875rem;
 	border: 1px solid rgba(0, 0, 0, 0.3);;
+}
+
+.table-row-height {
+	height: 3.94rem;
 }

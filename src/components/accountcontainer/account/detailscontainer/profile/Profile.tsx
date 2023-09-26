@@ -54,9 +54,9 @@ export default function Profile() {
     };
 
     return (
-        <div className='container bg-white mt-4 me-5' style={{ height: '90%' }}>
-            <div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
-                <h5 className='mt-2 col-2'>Profile</h5>
+        <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
+            <div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
+                <h5 className='mt-2 col-2 ms-3 text-start'>Profile</h5>
                 <Button
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
@@ -68,11 +68,11 @@ export default function Profile() {
                 </Button>
             </div>
             <hr />
-            <div className="row w-100">
+            <div className="row w-100 mx-3">
                 <div className="col-3 d-flex justify-content-center align-items-center fs-64 ms-3 mt-2 mb-4" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
                     {loggedUser?.img ? <img src={loggedUser.img} alt="Profile Photo" className='profile-image-box' /> : (loggedUser.initial)}
                 </div>
-                <div className="col-4">
+                <div className="col-4 ps-5">
                     <ul className='edit-profile-list'>
                         <li >
                             <p className="text-muted fs-6  mb-0">Name:</p>
