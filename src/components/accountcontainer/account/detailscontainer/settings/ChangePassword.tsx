@@ -98,10 +98,11 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                             type="password"
                             //name='current_password'
                             {...register("current_password")}
-                            className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14'
+                            className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
                             placeholder='Old password'
                         />
-                        {errors?.current_password?.message && <p className='text-danger m-0 p-0'>{errors?.current_password?.message}</p>}
+                        
+                        {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.current_password?.message}</p>}
                         <h5 className='fs-14 mx-0 mt-2 mb-0 text-start'>New Password</h5>
                         <input
                             type="password"
@@ -111,10 +112,10 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                                     handlePasswordChange(e)
                                 }
                             })}
-                            className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14'
+                            className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
                             placeholder='New password'
                         />
-                        {errors?.new_password?.message && <p className='text-danger m-0 p-0'>{errors?.new_password?.message}</p>}
+                        {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.new_password?.message}</p>}
                         <div className="row my-2">
                             <div className="d-flex pe-0 mb-1">
                                 {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
@@ -138,10 +139,10 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                             type="password"
                             //name='confirm_new_password'
                             {...register("confirm_new_password")}
-                            className='my-2 inputBoxHeight px-2 fs-14'
+                            className='my-2 inputBoxHeight px-2 fs-14 w-100'
                             placeholder='Confirm new password'
                         />
-                        {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0'>{errors?.confirm_new_password?.message}</p>}
+                        {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.confirm_new_password?.message}</p>}
                         <button
                             type="submit"
                             className='mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 bg-dark'

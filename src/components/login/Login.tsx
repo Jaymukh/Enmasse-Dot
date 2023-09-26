@@ -89,7 +89,7 @@ export default function Login() {
                                 // type="email"
                                 // name='email_id'
                                 {...register("email_id")}
-                                className='my-1 px-2 inputBoxHeight'
+                                className='my-1 px-2 inputBoxHeight w-100'
                                 placeholder='Enter your email id here' />
                             {errors?.email_id?.message && <p className='text-danger m-0 p-0'>{errors?.email_id?.message}</p>}
                             <div className='d-flex flex-row justify-content-between mt-3'>
@@ -110,7 +110,7 @@ export default function Login() {
                                 type='password'
                                 // name='password'
                                 {...register("password")}
-                                className='my-1 px-2 inputBoxHeight'
+                                className='my-1 px-2 inputBoxHeight w-100'
                                 placeholder='Enter your password here' />
                             {errors?.password?.message && <p className='text-danger m-0 p-0'>{errors?.password?.message}</p>}
                             <button

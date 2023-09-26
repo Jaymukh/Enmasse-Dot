@@ -4,9 +4,9 @@ import styles from "./Input.module.css";
 interface InputProps {
     type?: string;
     placeholder: string;
-    value: string | undefined;
+    value?: any;
     name?: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     classname?: string;
 }
 
