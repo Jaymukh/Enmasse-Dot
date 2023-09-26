@@ -113,7 +113,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
-                        variant={ButtonVariant.transparent}
+                        variant={ButtonVariant.bordered}
                         onClick={() => handleSubmitInviteNew()}
                         classname='mt-4 mb-3'
                     >

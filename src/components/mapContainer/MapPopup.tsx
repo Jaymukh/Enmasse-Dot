@@ -23,10 +23,10 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
 
     return (
         <div className="map-popup map-popup-grey-text rounded row h-100" onClick={() => handleFocused(index)}>
-            <div className="col-4 px-0">
+            <div className="col-5 px-0">
                 <img className="map-popup-story-img rounded" src={properties.image} alt="Story" />
             </div>
-            <div className="col-8 px-0 d-flex flex-column justify-content-start">
+            <div className="col-7 px-0 d-flex flex-column justify-content-start">
                 <p className="map-popup-description text-start my-0">{properties.family}</p>
                 <p className="map-popup-description text-start my-0">
                     <span className="green-text pe-1">{properties.annualSpend} </span>

@@ -63,7 +63,7 @@ export default function Profile() {
                     variant={ButtonVariant.contained}
                     onClick={() => handleOpen(true)}
                 >
-                    <MdModeEdit className='mx-1 mb-1 color-black' />
+                    <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
                     Edit Profile
                 </Button>
             </div>
