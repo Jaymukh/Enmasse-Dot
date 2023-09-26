@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Input } from '../ui/input/Input';
 
 interface ForgotPasswordProps {
     showModal: boolean;
@@ -38,12 +39,12 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                             <p className='Dialog-p'>Enter your email, we will send you instructions.</p>
                             <div className=" d-flex flex-column justify-content-start my-2" >
                                 <h5 className='d-flex justify-content-start'>Email</h5>
-                                <input
+                                
+                                <Input
                                     type="email"
-                                    name='email_id'
+                                    placeholder="Enter your email id here"
                                     value={email}
-                                    className='my-1 px-2 inputBoxHeight'
-                                    placeholder='Enter your email id here'
+                                    name='email_id'
                                     onChange={(e) => handleEmailChange(e.target.value)}
                                 />
                                 <Button

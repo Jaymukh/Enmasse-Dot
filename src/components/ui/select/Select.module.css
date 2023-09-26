@@ -1,3 +1,5 @@
+@import url("../../../styles/color.css");
+
 .select_small {
     border-radius: 2px;
     border-color: var(--black-5);

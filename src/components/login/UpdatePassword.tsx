@@ -102,7 +102,7 @@ const UpdatePassword = () => {
                                 handlePasswordChange(e)
                             }
                         })}
-                        className='my-1 px-2 inputBoxHeight'
+                        className='my-1 px-2 inputBoxHeight w-100'
                         placeholder='Enter your password here' />
                     {errors?.password?.message && <p className='text-danger m-0 p-0'>{errors?.password?.message}</p>}
                     <div className="row my-2">
@@ -132,7 +132,7 @@ const UpdatePassword = () => {
                                 handlePasswordChange(e)
                             }
                         })}
-                        className='my-1 px-2 inputBoxHeight'
+                        className='my-1 px-2 inputBoxHeight w-100'
                         placeholder='Re enter your password here' />
                     {errors?.confirm_password?.message && <p className='text-danger m-0 p-0'>{errors?.confirm_password?.message}</p>}
                     {/* <button type="submit" className='mb-2 mt-4 inputBoxHeight login-btn bg-dark text-white fs-6' >

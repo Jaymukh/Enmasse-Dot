@@ -93,9 +93,9 @@ export default function Invite() {
 	};
 
 	return (
-		<div className='container bg-white mt-4 me-5' style={{ height: '90%' }}>
-			<div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
-				<h5 className='mt-2 col-2'>Invite</h5>
+		<div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
+			<div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pe-4">
+				<h5 className='mt-2 col-2 ms-3 text-start'>Invite</h5>
 				<Button
 					theme={ButtonTheme.secondary}
 					size={ButtonSize.default}
@@ -106,28 +106,29 @@ export default function Invite() {
 					Invite New
 				</Button>
 			</div>
-			<hr />
-			<div className="w-100 d-flex justify-content-center m-auto">
+			<hr className='mb-4'/>
+			<div className="w-auto mx-4 d-flex justify-content-center m-auto">
 				<div className='dashboard-table-container w-100'>
 					<table className=''>
 						<thead>
 							<tr>
-								<th className='text-start'>Name</th>
-								<th className='text-center'>Role</th>
-								<th className='text-center'>Company</th>
-								<th className='text-center'>Company Type</th>
-								<th className='text-center'>Action</th>
+								<th className='text-start fs-12'>Name</th>
+								<th className='text-center fs-12'>Role</th>
+								<th className='text-center fs-12'>Company</th>
+								<th className='text-center fs-12'>Company type</th>
+								<th className='text-center fs-12'>Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							{users.map((row) => (
 								<tr
 									key={row.name}
+									className='table-row-height'
 								>
-									<td className='text-start'>{row.name}<br />{row.email_id} </td>
-									<td className='text-center'><div className='color-green'>{row.role}</div></td>
-									<td className='text-center'>{row.company}</td>
-									<td className='text-center'>{row.company_type}</td>
+									<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
+									<td className='text-center fs-12'><div className='color-green'>{row.role}</div></td>
+									<td className='text-center fs-14'>{row.company}</td>
+									<td className='text-center fs-14'>{row.company_type}</td>
 									<td className='text-center'>
 										<Button
 											theme={ButtonTheme.muted}

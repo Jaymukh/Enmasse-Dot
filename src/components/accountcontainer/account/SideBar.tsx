@@ -20,7 +20,7 @@ const SideBar = () => {
     return (
         <div className='account-sidebar col-3 p-0 pe-3 h-100'>
             <div className="h-100 bg-white full-height d-flex flex-column justify-content-between w-100" style={{ height: '81.5vh' }}>
-                <ul>
+                <ul className='sidebar-ul'>
                     {Constants.sidebarData.map((data, index) => (
                         <li className='p-0 m-0' key={index}>
                             <button
