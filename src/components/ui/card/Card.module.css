@@ -6,7 +6,7 @@
     transparent,
     bordered */
 
-	.card_bordered{ /* with border and background color */
+.card_bordered{ /* with border and background color */
 	background-color: var(--white-1);
 	border-color: var(--black-6);
 	border-radius: 5px;

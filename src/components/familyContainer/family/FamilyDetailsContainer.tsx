@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 
 interface FamilyDetailsContainerProps {
     selectedData: any; // Update with appropriate type
@@ -7,7 +8,8 @@ interface FamilyDetailsContainerProps {
 const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
     return (
         <div className='col-6 py-2 my-3' style={{ height: '98%', overflow: 'auto' }}>
-            <div className="card fam-details-card white-bg mb-3 OneFamilySidePanelWidth py-3 my-1">
+            {/* <div className="card fam-details-card white-bg mb-3 OneFamilySidePanelWidth py-3 my-1"> */}
+            <Card size={CardSize.default} variant={CardVariant.bordered} classname='mb-3 py-3 my-1'>
                 <div className='d-flex flex-row mx-2 px-2 pb-1'>
                     <h5 className="card-title fs-18">{selectedData.properties.familyName}</h5>
                     <h6 className="card-title text-muted mx-2 my-1 fs-14">{selectedData.properties.district}, {selectedData.properties.state}, {selectedData.properties.country}</h6>
@@ -37,7 +39,8 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     </div>
                     <p className="card-text OneFamilyCardText p-1 my-2 fs-12 text-start">{selectedData.properties.familyDetails.detail2}</p>
                 </div>
-            </div>
+            {/* </div> */}
+            </Card>
         </div>
     );
 };
