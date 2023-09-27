@@ -4,7 +4,7 @@ import StaticMap from "../StaticMap";
 
 const OverViewMap = () => {
     return (
-        <div className="white-bg dashboard-col mx-4 p-3 h-100">
+        <div className="white-bg dashboard-col me-4 p-3 h-100">
             <h5 className="pb-2 text-start fs-14">Overall Information</h5>
             <div className='row d-flex justify-content-between'>
                 <div className="col-7 d-flex align-items-center justify-content-center static-map">

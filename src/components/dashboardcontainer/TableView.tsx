@@ -6,7 +6,7 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 
 const TableView = () => {
     return (
-        <div className='white-bg pt-4 pb-5 dashboard-col px-4 ms-4'>
+        <div className='white-bg pt-4 pb-5 dashboard-col px-4'>
             <h2 className="text-start fs-14 mb-3">State wise metric breakdown</h2>
             <div className='dashboard-table-container'>
                 <table>

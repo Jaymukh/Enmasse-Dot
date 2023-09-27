@@ -2,7 +2,7 @@ import { FiArrowRight } from 'react-icons/fi';
 
 const FamilyDetails = () => {
     return (
-        <div className='my-4 ms-4'>
+        <div className='my-4 mx-0'>
             <h4 className='text-start fs-1125'>India</h4>
             <div className='row mt-3 mx-0'>
                 <img className='col-2 pe-0 ps-0'></img>

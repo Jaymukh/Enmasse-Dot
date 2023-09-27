@@ -8,7 +8,7 @@ import TableView from './TableView';
   
   const DashBoard = () => {
     return (
-        <div className='row w-100 primary-bg m-0 pb-5' style={{height: '100vh', overflow: 'auto'}}>
+        <div className='row w-100 primary-bg m-0 px-4 pb-5' style={{height: '100vh', overflow: 'auto'}}>
             <div className='col-12 p-0'>
                 <FamilyDetails />
             </div>

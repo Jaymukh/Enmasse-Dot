@@ -34,7 +34,7 @@ const BubbleGraph = () => {
 	const root = packGenerator(hierarchy);
 
 	return (
-		<div className="white-bg py-3 dashboard-col m-4 px-4">
+		<div className="white-bg py-3 dashboard-col my-4 me-4 px-4">
 			<div className='row px-4 pt-2 d-flex justify-content-between'>
 				<h5 className="col-4 mb-0 text-start fs-14">Core Solutions by EH</h5>
 				<div className='col-2'>
@@ -42,8 +42,8 @@ const BubbleGraph = () => {
 						options={options}
 						onChange={handleChangeYear}
 						value={selectedYear}
-						labelKey='name'
-						valueKey='name'
+						labelKey='value'
+						valueKey='value'
 						size={SelectSize.small}
 					/>
 				</div>

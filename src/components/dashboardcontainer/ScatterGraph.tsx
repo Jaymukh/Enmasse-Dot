@@ -72,8 +72,8 @@ const DashboardContainer = () => {
                         options={options}
                         onChange={handleChangeYear}
                         value={selectedYear}
-                        labelKey='name'
-                        valueKey='name'
+                        labelKey='value'
+                        valueKey='value'
                         size={SelectSize.small}
                     />
                 </div>
