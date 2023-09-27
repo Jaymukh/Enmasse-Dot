@@ -6,7 +6,7 @@
     transparent,
     bordered */
 
-	.card_bordered{ /* with border and background color */
+.card_bordered{ /* with border and background color */
 	background-color: var(--white-1);
 	border-color: var(--black-6);
 	border-radius: 5px;
@@ -17,26 +17,28 @@
 	border: none;
 	border-radius: 5px;
 	color: var(--black-0);
+	padding: 1rem;
 }
 
-.card_contained { /* without border and without background color */
+.card_transparent { /* without border and without background color */
 	background-color: transparent;
 	border: none;
 	border-radius: 5px;
 	color: var(--black-0);
+	padding: 1rem;
 }
 
 /* CardSize */
 
 .card_default {
-	width: 40.5rem;
+	width: 100%;
 }
 .card_small {
 	width: 20.875rem;
 }
 
 .card_medium {
-	width: 20.875rem;
+	width: 90%;
 }
 
 /* .card_large {

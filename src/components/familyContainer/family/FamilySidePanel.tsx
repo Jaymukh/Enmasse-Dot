@@ -5,6 +5,8 @@ import { MdOutlineArrowForward } from 'react-icons/md';
 import { families } from '../../../utils/constants/Constants';
 import { FiArrowRight } from 'react-icons/fi';
 import FamiliesSidePanel from '../families/FamiliesSidePanel';
+import StaticMap from '../../StaticMap';
+import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 
 interface FamilySidePanelProps {
     selectedFamily: number;
@@ -13,10 +15,13 @@ interface FamilySidePanelProps {
 
 const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handleCarouselSlide }) => {
     return (
-        <div className='col-3 d-flex mt-1 flex-column'>
-            <div style={{width: '18rem'}}>
-            <FamiliesSidePanel />
-            </div>
+        <div className='col-3 d-flex flex-column  my-3 h-auto'>
+            <Card size={CardSize.medium} variant={CardVariant.contained} classname='mb-5 py-3 mt-1 mx-3 white-bg'>
+                <h6 className='fs-14 pt-4 text-start'>India</h6>
+                <div className='map-container-sm d-flex mx-auto justify-content-start'>
+                    <StaticMap />
+                </div>
+            </Card>
             <div id="carouselExampleControlsNoTouching" className="carousel slide bgcolor d-flex justify-content-between custom-carousel bg-white m-3" data-bs-touch="false" data-bs-interval="false" style={{ height: "8vw" }} >
                 <div className="carousel-inner">
                     {families.family.map((data, index) => (

@@ -124,7 +124,7 @@ export default function Login() {
                         </form>
                         <p className='text-muted mb-0 mt-2 login-p'>By clicking on continue you are agreeing to the Enmasse
                             <Button
-                                    theme={ButtonTheme.secondary}
+                                    theme={ButtonTheme.primary}
                                     size={ButtonSize.small}
                                     variant={ButtonVariant.transparent}
                                     onClick={() => handleModal({ tncModal: true })}
@@ -134,7 +134,7 @@ export default function Login() {
                             </Button>
                             and
                             <Button
-                                    theme={ButtonTheme.secondary}
+                                    theme={ButtonTheme.primary}
                                     size={ButtonSize.small}
                                     variant={ButtonVariant.transparent}
                                     onClick={() => handleModal({ tncModal: true })}
