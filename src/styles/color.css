@@ -1,18 +1,21 @@
 /* include all the color variable */
 
 html {
-    --black-0: #000000;
-    --black-1: #111827;
+    --black-0: rgba(0, 0, 0, 1);    
     --black-2: #565657;
-    --black-3: #0D0B0B; /*select large border */
-    --black-4: #1118261A; /* select small border */
+    --black-3: #0D0B0B;
+    /*select large border */
+    --black-4: #1118261A;
+    /* select small border */
     --black-5: rgba(0, 0, 0, 0.3);
-    --black-6: rgba(17, 24, 39, 0.50); /* login muted */
-    --black-7: #D9D9D9; /* settings li border */
+    --black-6: rgba(17, 24, 39, 0.50);
+    /* login muted */
+    --black-7: #D9D9D9;
+    /* settings li border */
     --black-8: rgba(0, 0, 0, 0.8);
     --white-1: #FFFFFF;
     --warning-0: #D55038;
-    --warning-1: #B4331C;
+    --warning-1: rgba(180, 51, 28, 1);
     --bs-btn-disabled-bg: rgba(17, 24, 39, 0.50);
     --green-0: rgba(16, 128, 65, 1);
     --green-1: rgba(16, 128, 65, 0.8);
@@ -22,4 +25,13 @@ html {
     --green-5: rgba(16, 128, 65, 0.3);
     --green-6: rgba(16, 128, 65, 0.2);
     --green-7: rgba(16, 128, 65, 0.1);
+
+    --blue-0: rgba(17, 24, 39, 1);
+    --blue-1: rgba(17, 24, 39, 0.8);
+    --blue-2: rgba(17, 24, 39, 0.6);
+    --blue-3: rgba(17, 24, 39, 0.5);
+    --blue-4: rgba(17, 24, 39, 0.4);
+    --blue-5: rgba(17, 24, 39, 0.3);
+    --blue-6: rgba(17, 24, 39, 0.2);
+    --blue-7: rgba(17, 24, 39, 0.1);
 }

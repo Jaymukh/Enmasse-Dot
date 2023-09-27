@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useRef } from 'react';
 import '../../App.css';
 import * as Constants from '../../utils/constants/Constants';
 import { MdLogout } from 'react-icons/md';
@@ -13,7 +14,7 @@ import { visiblePanelState } from '../../states';
 
 
 const AccountOptions = () => {
-
+	const menuRef = useRef<HTMLDivElement | null>(null);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const navigate = useNavigate();
 	const userService = useUserService();
@@ -22,7 +23,6 @@ const AccountOptions = () => {
 
 	useEffect(() => {
 		userService.getUserDetails();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -42,10 +42,24 @@ const AccountOptions = () => {
 	const handleLogout = () => {
 		userService.logout();
 		handleClose();
-	}
+	}	
+
+    const handleClickOutside = (event: { target: any; }) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            handleClose();
+        }
+    };
+
+	useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
 	return (
-		<div className='account-menu z-index-2'>
+		<div className='account-menu z-index-2' ref={menuRef}>
 			<ButtonAvatar
 				onClick={handleClick}
 				image=''
