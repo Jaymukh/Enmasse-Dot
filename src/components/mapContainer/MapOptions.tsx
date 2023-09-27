@@ -46,7 +46,7 @@ function MapOptions({
     };
 
     return (
-        <div className='row justify-content-around align-items-center border-bottom bg-white mx-0' style={{ height: '7.5vh' }}>
+        <div className='justify-content-around align-items-center border-bottom bg-white mx-0' style={{ height: '7.5vh' }}>
             <div className='col-xl-7 col-md-7 justify-content-start d-flex flex-wrap h-100'>
                 <div className='select-right-margin py-1'>
                     <Button
@@ -54,7 +54,7 @@ function MapOptions({
 							size={ButtonSize.medium}
 							variant={ButtonVariant.transparent}
 							onClick={handleGlobal}
-                            classname='w-auto'
+                            classname='w-auto ms-2 me-5'
 						>
 							Global
 						</Button>
