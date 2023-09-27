@@ -1,6 +1,6 @@
 import './Typography.module.css';
 
-export const HeadingTwo = () => {
+export const HeadingPrimary = () => {
     return(
         <div>
 

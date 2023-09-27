@@ -1,2 +1,22 @@
 @import url("../../../styles/color.css");
 /* @import url("../../../utils/fonts/fonts.css"); */
+
+.h1 {
+    font-size: 2rem;
+}
+
+.h2 {
+    font-size: 1.625rem;
+}
+
+.primary {
+    color: var(--green-0);
+}
+
+.secondary {
+    color: var(--blue-0);
+}
+
+.dark {
+    color: var(--black-0);
+}
