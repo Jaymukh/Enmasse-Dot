@@ -1,5 +1,6 @@
 import '../../App.css';
 import React, { useState } from 'react';
+import Logo from '../../utils/images/Enmasse DOTS logo 1.png';
 import { MdLiveHelp, MdNotifications } from 'react-icons/md';
 import AccountOptions from './AccountOptions';
 import RequestDetails from './RequestDetails';
@@ -16,6 +17,9 @@ function Header() {
 	const navigate = useNavigate();
 	const setOverlay = useSetRecoilState(overlayState);
 	const setShow = useSetRecoilState(showHelpState);
+	const onLogoClick = () => {
+		navigate(RouteConstants.root);
+	}
 	const handleHelpClick = () => {
 		navigate(RouteConstants.root);
 		setOverlay(true);
@@ -38,9 +42,10 @@ function Header() {
 	return (
 		<div className="d-flex flex-wrap justify-content-between border-bottom bg-white py-3 my-0 w-100" style={{ height: '11.5vh' }} >
 			<div className="d-flex flex-wrap mx-3 align-items-center">
-				<h3 className='mx-3 enmasse-logo-font'>enmasse</h3>
+				<img src={Logo} alt="logo" onClick={onLogoClick} />
+				{/* <h3 className='mx-3 enmasse-logo-font'>enmasse</h3>
 				<div className='enmasse-circle'></div>
-				<h6 className='enmasse-logo-font mx-3 mt-2'>D.O.T.S</h6>
+				<h6 className='enmasse-logo-font mx-3 mt-2'>D.O.T.S</h6> */}
 			</div>
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />
