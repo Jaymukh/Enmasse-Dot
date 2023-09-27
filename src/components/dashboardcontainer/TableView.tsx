@@ -18,7 +18,7 @@ const TableView = () => {
                                         <p className='pt-3 pe-2'>{item}</p>
                                         <div className='d-flex flex-column pb-2'>
                                             <Button
-                                                theme={ButtonTheme.secondary}
+                                                theme={ButtonTheme.primary}
                                                 size={ButtonSize.default}
                                                 variant={ButtonVariant.transparent}
                                                 classname='h-auto'

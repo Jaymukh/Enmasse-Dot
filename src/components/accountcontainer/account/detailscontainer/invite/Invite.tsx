@@ -93,9 +93,9 @@ export default function Invite() {
 	};
 
 	return (
-		<div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
-			<div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pe-4">
-				<h5 className='mt-2 col-2 ms-3 text-start'>Invite</h5>
+		<div className='col-9 container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
+			<div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pe-4">
+				<h5 className=' col-2 ms-3 text-start'>Invite</h5>
 				<Button
 					theme={ButtonTheme.secondary}
 					size={ButtonSize.default}
@@ -112,11 +112,11 @@ export default function Invite() {
 					<table className=''>
 						<thead>
 							<tr>
-								<th className='text-start fs-12'>Name</th>
-								<th className='text-center fs-12'>Role</th>
-								<th className='text-center fs-12'>Company</th>
-								<th className='text-center fs-12'>Company type</th>
-								<th className='text-center fs-12'>Action</th>
+								<th className='text-start fs-14 font-weight-bold'>Name</th>
+								<th className='text-center fs-14 font-weight-bold'>Role</th>
+								<th className='text-center fs-14 font-weight-bold'>Company</th>
+								<th className='text-center fs-14 font-weight-bold'>Company type</th>
+								<th className='text-center fs-14 font-weight-bold'>Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -126,7 +126,7 @@ export default function Invite() {
 									className='table-row-height'
 								>
 									<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
-									<td className='text-center fs-12'><div className='color-green'>{row.role}</div></td>
+									<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
 									<td className='text-center fs-14'>{row.company}</td>
 									<td className='text-center fs-14'>{row.company_type}</td>
 									<td className='text-center'>
