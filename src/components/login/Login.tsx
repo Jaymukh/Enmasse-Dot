@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { useUserService } from '../../services';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 interface IFormValues {
     email_id: string;
@@ -80,11 +81,19 @@ export default function Login() {
                 </div>
                 <div className='col-md-6 col-md-6 login-update-box whiteBackground'>
                     <div className='loginCardAlign' >
-                        <h3 className='login-header'>Login</h3>
+                        <Heading
+                            title='Login'
+                            type={TypographyType.h2}
+                            colour={TypographyColor.dark}
+                        />
                         <p className='text-muted mb-4 login-p'>Enter your email ID and Password to login
                         </p>
                         <form className='loginCardAlign w-100' onSubmit={handleSubmit(onSubmit)}>
-                            <h5 className='fs-6'>Email</h5>
+                            <Heading
+                                title='Email'
+                                type={TypographyType.h4}
+                                colour={TypographyColor.dark}
+                            />
                             <input
                                 // type="email"
                                 // name='email_id'
@@ -93,7 +102,11 @@ export default function Login() {
                                 placeholder='Enter your email id here' />
                             {errors?.email_id?.message && <p className='text-danger m-0 p-0'>{errors?.email_id?.message}</p>}
                             <div className='d-flex flex-row justify-content-between align-items-center mt-3'>
-                                <h5 className='fs-6'>Password</h5>
+                                <Heading
+                                    title='Password'
+                                    type={TypographyType.h4}
+                                    colour={TypographyColor.dark}
+                                />
                                 {/* <a href='' onClick={() => handleModal({ passwordModal: true })}>Forgot password?</a> */}
                                 <Button
                                     type='button'
@@ -124,22 +137,22 @@ export default function Login() {
                         </form>
                         <p className='text-muted mb-0 mt-2 login-p'>By clicking on continue you are agreeing to the Enmasse
                             <Button
-                                    theme={ButtonTheme.secondary}
-                                    size={ButtonSize.small}
-                                    variant={ButtonVariant.transparent}
-                                    onClick={() => handleModal({ tncModal: true })}
-                                    classname='underline-text h-auto ps-0 pe-1 black'
-                                >
+                                theme={ButtonTheme.secondary}
+                                size={ButtonSize.small}
+                                variant={ButtonVariant.transparent}
+                                onClick={() => handleModal({ tncModal: true })}
+                                classname='underline-text h-auto ps-0 pe-1 black'
+                            >
                                 Terms & conditions
                             </Button>
                             and
                             <Button
-                                    theme={ButtonTheme.secondary}
-                                    size={ButtonSize.small}
-                                    variant={ButtonVariant.transparent}
-                                    onClick={() => handleModal({ tncModal: true })}
-                                    classname='underline-text h-auto ps-1 black'
-                                >
+                                theme={ButtonTheme.secondary}
+                                size={ButtonSize.small}
+                                variant={ButtonVariant.transparent}
+                                onClick={() => handleModal({ tncModal: true })}
+                                classname='underline-text h-auto ps-1 black'
+                            >
                                 Privacy policies
                             </Button>
                         </p>
