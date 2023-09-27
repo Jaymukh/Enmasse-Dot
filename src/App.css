@@ -1205,3 +1205,16 @@ th {
 .table-row-height {
 	height: 3.94rem;
 }
+
+.input-wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.eye-icon {
+	position: absolute;
+	top: 50%;
+	right: 1rem;
+	transform: translateY(-50%);
+	cursor: pointer;
+}

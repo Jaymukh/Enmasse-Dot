@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import { useUserService } from '../../services';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import { FaEye } from 'react-icons/fa';
+import { FaEyeSlash } from 'react-icons/fa';
 
 interface IFormValues {
     email_id: string;
@@ -63,6 +65,11 @@ export default function Login() {
     const handleSendEmail = () => {
         setEmail('');
         handleModal({ passwordModal: false });
+    }
+
+    const [isVisible, setIsVisible] = useState(false);
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
     }
 
     return (
@@ -119,12 +126,18 @@ export default function Login() {
                                     Forgot password?
                                 </Button>
                             </div>
-                            <input
-                                type='password'
-                                // name='password'
-                                {...register("password")}
-                                className='my-1 px-2 inputBoxHeight w-100'
-                                placeholder='Enter your password here' />
+                            <div className='input-wrapper'>
+                                <input
+                                    type={isVisible ? 'text' : 'password'}
+                                    // name='password'
+                                    {...register("password")}
+                                    className='my-1 px-2 inputBoxHeight w-100'
+                                    placeholder='Enter your password here'
+                                />
+                                <span className="eye-icon" onClick={toggleVisibility}>
+                                    {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}
+                                </span>
+                            </div>
                             {errors?.password?.message && <p className='text-danger m-0 p-0'>{errors?.password?.message}</p>}
                             <button
                                 type='submit'
@@ -137,53 +150,59 @@ export default function Login() {
                         </form>
                         <p className='text-muted mb-0 mt-2 login-p'>By clicking on continue you are agreeing to the Enmasse
                             <Button
-                                    theme={ButtonTheme.primary}
-                                    size={ButtonSize.small}
-                                    variant={ButtonVariant.transparent}
-                                    onClick={() => handleModal({ tncModal: true })}
-                                    classname='underline-text h-auto ps-0 pe-1 black'
-                                >
+                                theme={ButtonTheme.primary}
+                                size={ButtonSize.small}
+                                variant={ButtonVariant.transparent}
+                                onClick={() => handleModal({ tncModal: true })}
+                                classname='underline-text h-auto ps-0 pe-1 black'
+                            >
                                 Terms & conditions
                             </Button>
                             and
                             <Button
-                                    theme={ButtonTheme.primary}
-                                    size={ButtonSize.small}
-                                    variant={ButtonVariant.transparent}
-                                    onClick={() => handleModal({ tncModal: true })}
-                                    classname='underline-text h-auto ps-1 black'
-                                >
+                                theme={ButtonTheme.primary}
+                                size={ButtonSize.small}
+                                variant={ButtonVariant.transparent}
+                                onClick={() => handleModal({ tncModal: true })}
+                                classname='underline-text h-auto ps-1 black'
+                            >
                                 Privacy policies
                             </Button>
                         </p>
                     </div>
                 </div>
 
-                {showModal?.passwordModal && (
-                    <ForgotPassword
-                        showModal={showModal?.passwordModal}
-                        handleModal={handleModal}
-                        email={email}
-                        handleEmailChange={handleEmailChange}
-                        handleSendEmail={handleSendEmail}
-                    />
-                )}
+                {
+                    showModal?.passwordModal && (
+                        <ForgotPassword
+                            showModal={showModal?.passwordModal}
+                            handleModal={handleModal}
+                            email={email}
+                            handleEmailChange={handleEmailChange}
+                            handleSendEmail={handleSendEmail}
+                        />
+                    )
+                }
 
-                {showModal?.sendMailModal && (
-                    <EmailSent
-                        showModal={showModal?.sendMailModal}
-                        handleModal={handleModal}
-                        email={email}
-                    />
-                )}
+                {
+                    showModal?.sendMailModal && (
+                        <EmailSent
+                            showModal={showModal?.sendMailModal}
+                            handleModal={handleModal}
+                            email={email}
+                        />
+                    )
+                }
 
-                {showModal?.tncModal && (
-                    <TermsAndConditions
-                        showModal={showModal?.tncModal}
-                        handleModal={handleModal}
-                    />
-                )}
-            </div>
-        </div>
+                {
+                    showModal?.tncModal && (
+                        <TermsAndConditions
+                            showModal={showModal?.tncModal}
+                            handleModal={handleModal}
+                        />
+                    )
+                }
+            </div >
+        </div >
     )
 }
