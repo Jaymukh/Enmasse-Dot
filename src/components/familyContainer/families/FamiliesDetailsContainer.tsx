@@ -8,7 +8,7 @@ interface FamiliesDetailsContainerProps {
 
 const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ handleFamilyVisible }) => {
     return (
-        <div className='col-9 ps-2 mb-6 h-100'>
+        <div className='col-9 ps-2 mb-5 h-100'>
             <h5 className="text-start mt-4 fs-21">Families in {families.place}</h5>
             <div className='w-100 h-100 mb-6 w-100 d-flex justify-content-around' style={{ overflow: 'auto' }}>
                 <div className='row mb-6 w-100' style={{ marginBottom: '5rem' }}>
