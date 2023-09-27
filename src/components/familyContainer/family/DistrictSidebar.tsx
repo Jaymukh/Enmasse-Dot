@@ -123,17 +123,18 @@ const DistrictSidebar = () => {
                         <p className='fs-11 m-0'>Informal Sources</p>
                     </div>
                 </div>
+                <Button
+                    theme={ButtonTheme.primary}
+                    size={ButtonSize.large}
+                    variant={ButtonVariant.bordered}
+                    onClick={() => handleExploreMore()}
+                    classname='my-4'
+                >
+                    Explore More
+                    <PiArrowRightBold className='ms-2' />
+                </Button>
             </div>
-            <Button
-                theme={ButtonTheme.primary}
-                size={ButtonSize.large}
-                variant={ButtonVariant.bordered}
-                onClick={() => handleExploreMore()}
-                classname='my-4'
-            >
-                Explore More
-                <PiArrowRightBold className='ms-2' />
-            </Button>
+
         </div>
     );
 }
