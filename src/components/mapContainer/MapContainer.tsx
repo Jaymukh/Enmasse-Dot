@@ -58,7 +58,7 @@ function MapContainer() {
     };
 
     return (
-        <div className='MapContainer mx-0'>
+        <div className='MapContainer mx-0 fixed-top header2'>
             <MapOptions
                 handleGlobal={handleGlobal}
                 handleCountryChange={handleCountryChange}

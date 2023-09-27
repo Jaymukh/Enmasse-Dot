@@ -279,6 +279,14 @@ a {
 	border-radius: 100%;
 }
 
+.header {
+    margin-bottom: 11.5vh; /* Adjust as needed */
+}
+
+.header2 {
+    margin-top: 11.5vh; /* Adjust as needed */
+}
+
 /* login page css */
 
 .login-header {
@@ -844,26 +852,24 @@ th {
 } */
 
 .PrevBtn {
-	left: -1.2rem;
+	margin-left: -1.2rem;
 	background-color: white;
-	height: 36%;
-	border-radius: 7.5rem;
+	height: 2rem;
+    width: 2rem;
 	margin-top: 2rem;
 	opacity: unset;
-	width: 11%;
 	box-shadow: 0rem 0rem 3rem #00000029;
 
-}
+} 
 
 .NextBtn {
-	right: -1.2rem;
+	margin-right: -1.2rem;
 	background-color: white;
-	height: 36%;
-	border-radius: 7.5rem;
+	height: 2rem;
+    width: 2rem;
 	margin-top: 2rem;
 	border-style: groove;
 	opacity: unset;
-	width: 11%;
 }
 
 .iconNextPrev {

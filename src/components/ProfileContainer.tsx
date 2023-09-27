@@ -1,12 +1,13 @@
+import '../App.css';
 import Header from './headercontainer/Header';
 import AccountHeader from './accountcontainer/AccountHeader';
 import Account from './accountcontainer/account/Account';
 
 const ProfileContainer = () => {
 	return (
-		<div className='w-100 primary-bg'>
+		<div className='w-100 primary-bg fixed-top header2'>
 			<Header	/>
-			<div className="w-100 h-90 fixed-bottom m-0 z-index-0" style={{ height: '88.5vh', position: 'inherit' }}>
+			<div className="w-100 m-0 border-top z-index-0" style={{ height: '88.5vh', position: 'inherit' }}>
 				<AccountHeader />
 				<Account />
 			</div>
