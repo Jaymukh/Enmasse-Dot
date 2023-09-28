@@ -64,7 +64,7 @@ const Map: React.FC<MapProps> =({
     };
 
     return (
-        <div>
+        <div style={{position: 'inherit'}}>
             {global ? (
                 <GlobalMap
                     features={features}

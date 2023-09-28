@@ -7,7 +7,7 @@ const DashBoardContainer = () => {
 	return (
 		<div className='w-100 h-100 primary-bg'>
 			<Header />
-			<div className='fixed-top header2'>
+			<div className='fixed-header header2'>
 				<AccountHeader />
 				<DashBoard />
 			</div>

@@ -5,7 +5,7 @@ import Account from './accountcontainer/account/Account';
 
 const ProfileContainer = () => {
 	return (
-		<div className='w-100 primary-bg fixed-top header2'>
+		<div className='w-100 primary-bg fixed-header header2'>
 			<Header	/>
 			<div className="w-100 m-0 border-top z-index-0" style={{ height: '88.5vh', position: 'inherit' }}>
 				<AccountHeader />
