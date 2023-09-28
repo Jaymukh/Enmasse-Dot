@@ -8,13 +8,13 @@ interface FamiliesDetailsContainerProps {
 
 const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ handleFamilyVisible }) => {
     return (
-        <div className='col-9 ps-2 mb-5 h-100'>
+        <div className='col-9 ps-2 mb-5 pb-5 h-100'>
             <h5 className="text-start mt-4 fs-21">Families in {families.place}</h5>
-            <div className='w-100 h-100 mb-6 w-100 d-flex justify-content-around' style={{ overflow: 'auto' }}>
-                <div className='row mb-6 w-100' style={{ marginBottom: '5rem' }}>
+            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex justify-content-around' style={{ overflow: 'auto' }}>
+                <div className='row mb-5 pb-5 w-100' style={{ marginBottom: '5rem' }}>
                     {families.family.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
-                            <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2' onClick={() => handleFamilyVisible(index)}>
+                            <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(index)}>
                                 <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover' }} src={data.properties.image} alt="Family image" />
                                 <div className="text-start p-3">
                                     <h5 className="card-title text-left fs-18">{data.properties.familyName}</h5>
