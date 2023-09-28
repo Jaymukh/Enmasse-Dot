@@ -181,8 +181,8 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [selectedCountry, selectedState, selectedDistrict]);
 
     return (
-        <div className='row'
-            style={{ height: '81vh', width: '100vw', zIndex: 999 }}>
+        <div className='row mx-0'
+            style={{ height: '81vh', zIndex: 999 }}>
             <div className='col-9 p-0 h-100' style={{ position: 'relative' }}>
                 {apiKey && (
                     <LoadScript
