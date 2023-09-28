@@ -24,7 +24,7 @@ import TableView from './TableView';
             <div className='col-6 p-0 my-2'>
                 <LineGraph />
             </div>
-            <div className='col-12 p-0 my-2 mb-5'>
+            <div className='col-12 p-0 my-2 mb-5 pb-5'>
                 <TableView />
             </div>
         </div>
