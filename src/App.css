@@ -554,6 +554,10 @@ a {
 	background-color: #10810b;
 }
 
+.primary-bgColor {
+	background-color: rgba(17, 24, 39, 1)
+}
+
 /* accountcontainer/account/SideBar class for ListItemButton */
 .account-sidebar .css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root {
 	height: 70px;

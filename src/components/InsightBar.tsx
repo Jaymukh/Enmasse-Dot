@@ -46,28 +46,33 @@ export default function InsightBar() {
             {Constants.countryData.map((data) => (
                 <>
                     <h6 className='fs-16 text-start px-3 my-1 ms-1'>{data.country}</h6>
-                    <div className="row d-flex justify-content-center py-2">
-                        <div className='col-sm-11 col-md-11 col-lg-5 col-xl-5 mx-2 my-2 card py-2 d-flex align-items-start text-start' >
-                            <h6 className='fs-14'>{data.households}</h6>
-                            <p className='fs-11 m-0'>Total Households</p>
-                        </div>
-                        <div className='col-sm-11 col-md-11	col-lg-5 col-xl-5 mx-2 my-2 card py-2 d-flex align-items-start text-start'>
-                            <h6 className='fs-14'>{data.population}</h6>
-                            <p className='fs-11 m-0'>Total Population</p>
-                        </div>
-                        <div className='col-11 p-0 d-flex flex-column align-items-center justify-content-center text-start py-2'>
-                            <div className='tam-info-grey p-2 d-flex flex-column justify-content-center'>
-                                <h6 className='text-left fs-18'>{data.tam}</h6>
-                                <p className='fs-11 m-0'>Total Addressable Market</p>
+                    <div className="row d-flex justify-content-center py-2 mx-0 px-4">
+                        <div className='row card px-3 d-flex flex-row mx-0 my-2'>
+                            <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
+                                <h6 className='fs-14'>{data.households}</h6>
+                                <p className='fs-11 m-0'>Total Households</p>
+                            </div>
+                            <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
+                                <h6 className='fs-14'>{data.population}</h6>
+                                <p className='fs-11 m-0'>Total Population</p>
                             </div>
                         </div>
-                        <div className='col-sm-11 col-md-11 col-lg-5 col-xl-5 mx-2 my-2 card py-2 d-flex align-items-start text-start' >
-                            <h6 className='fs-14 insight-bar-green-color'>{data.entrepreneurialHouseholds}</h6>
-                            <p className='fs-11 m-0'>Number of Entrepreneurial Households (EH)</p>
-                        </div>
-                        <div className='col-sm-11 col-md-11	col-lg-5 col-xl-5 mx-2 my-2 card py-2 d-flex align-items-start text-start'>
-                            <h6 className='fs-14 insight-bar-green-color'>{data.medianSpendonCoreSoln}</h6>
-                            <p className='fs-11 m-0'>Median Annual EH Household Spend</p>
+                        <div className='row card d-flex flex-row mx-0 my-2 px-0'>
+                            <div className='col-12 p-0 d-flex flex-column align-items-center justify-content-center text-start py-2 border-bottom'>
+                                {/* <div className='tam-info-grey p-2 d-flex flex-column justify-content-center'> */}
+                                <h6 className='text-left fs-18 m-0'>{data.tam}</h6>
+                                <p className='fs-11 m-0'>Total Addressable Market</p>
+                                {/* </div> */}
+                            </div>
+                            <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start justify-content-center text-start border-end' >
+                                <h6 className='fs-14 m-0'>{data.entrepreneurialHouseholds}</h6>
+                                <p className='fs-11 m-0'>Number of Entrepreneurial Households (EH)</p>
+                            </div>
+                            <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start text-start'>
+                                <h6 className='fs-14 m-0'>{data.medianSpendonCoreSoln}</h6>
+                                <p className='fs-11 m-0'>Median Annual EH Household Spend</p>
+                            </div>
+                            
                         </div>
                     </div>
                 </>))

@@ -2,7 +2,7 @@
   "name": "enmasse-dot",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://35.185.89.0",
+  "proxy": "http://34.74.103.54",
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",
     "@react-google-maps/api": "^2.19.2",

@@ -29,11 +29,6 @@ function Header() {
 	const [open, setOpen] = useState(false);
 	const [title, setTitle] = useState('');
 
-	const openWIPDrawer = (title: string) => {
-		setOpen(true);
-		setTitle(title);
-	};
-
 	const closeWIPDrawer = () => {
 		setOpen(false);
 		setTitle('');

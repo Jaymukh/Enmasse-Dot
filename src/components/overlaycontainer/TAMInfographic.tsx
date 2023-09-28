@@ -5,11 +5,7 @@ import { useSetRecoilState } from "recoil";
 import { overlayState } from '../../states';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
-interface TAMInfographicProps {
-}
-
-const TAMInfographic: React.FC<TAMInfographicProps> = ({
-}) => {
+const TAMInfographic = () => {
 	const setOverlay = useSetRecoilState(overlayState);
 	return (
 		<div className=''>
