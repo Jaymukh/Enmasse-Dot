@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -101,9 +102,11 @@ const options = {
 
 const LineGraph = () => {
     return (
-        <div className='white-bg py-3 dashboard-col px-4 h-100'>
-            <h6 className='text-start fs-14 mb-3'>EH Population Growth</h6>
-            <Line data={data} options={options} />
+        <div className='h-100'>
+            <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
+                <h6 className='text-start fs-14 mb-3'>EH Population Growth</h6>
+                <Line data={data} options={options} />
+            </Card>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 import Select, { SelectSize } from '../ui/select/Select';
+import { Card, CardSize, CardVariant } from '../ui/card/Card';
 
 const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
     return (
@@ -40,7 +41,7 @@ const ReverseArrowMarker = () => (
     </marker>
 )
 
-const DashboardContainer = () => {
+const ScatterGraph = () => {
 
     const options: any[] = [];
     const currentYear = new Date().getFullYear();
@@ -64,54 +65,56 @@ const DashboardContainer = () => {
     ]
 
     return (
-        <div className='white-bg py-3 dashboard-col'>
-            <div className='row px-4 pt-2 d-flex justify-content-between'>
-                <h6 className='col-3 text-start fs-14' >EH Income and Expense</h6>
-                <div className='col-2'>
-                    <Select
-                        options={options}
-                        onChange={handleChangeYear}
-                        value={selectedYear}
-                        labelKey='value'
-                        valueKey='value'
-                        size={SelectSize.small}
-                    />
+        <div className='h-100'>
+            <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
+                <div className='row px-4 pt-2 d-flex justify-content-between'>
+                    <h6 className='col-3 text-start fs-14' >EH Income and Expense</h6>
+                    <div className='col-2'>
+                        <Select
+                            options={options}
+                            onChange={handleChangeYear}
+                            value={selectedYear}
+                            labelKey='value'
+                            valueKey='value'
+                            size={SelectSize.small}
+                        />
+                    </div>
                 </div>
-            </div>
 
-            <ScatterChart width={750} height={375} margin={{ top: 60, right: 20, bottom: 20, left: 20 }}>
-                <defs>
-                    <ArrowMarker />
-                </defs>
-                <defs>
-                    <ReverseArrowMarker />
-                </defs>
-                <XAxis type="number" dataKey="x" name="x" strokeWidth='0.35' strokeOpacity='0.5' >
-                    <Label value="EXPENSE" position="bottom" offset={0} fontWeight={500} fill='000000' fontSize={13} />
-                </XAxis>
-                <YAxis type="number" dataKey="y" name="y" strokeWidth='0.35' strokeOpacity='0.5' >
-                    <Label angle={-90} value="INCOME" position="left" offset={0} fontWeight={500} fill='000000' fontSize={13} />
-                </YAxis>
-                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter data={data} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
+                <ScatterChart width={750} height={375} margin={{ top: 60, right: 20, bottom: 20, left: 20 }}>
+                    <defs>
+                        <ArrowMarker />
+                    </defs>
+                    <defs>
+                        <ReverseArrowMarker />
+                    </defs>
+                    <XAxis type="number" dataKey="x" name="x" strokeWidth='0.35' strokeOpacity='0.5' >
+                        <Label value="EXPENSE" position="bottom" offset={0} fontWeight={500} fill='000000' fontSize={13} />
+                    </XAxis>
+                    <YAxis type="number" dataKey="y" name="y" strokeWidth='0.35' strokeOpacity='0.5' >
+                        <Label angle={-90} value="INCOME" position="left" offset={0} fontWeight={500} fill='000000' fontSize={13} />
+                    </YAxis>
+                    <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                    <Scatter data={data} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
 
-                <ReferenceLine x={0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                <ReferenceLine y={0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                <text x={90} y={60} textAnchor="start" fill="#000000" fontSize={10}>
-                    Low Income & High Expense
-                </text>
-                <text x={725} y={60} textAnchor="end" fill="#000000" fontSize={10}>
-                    High Income & Expense
-                </text>
-                <text x={90} y={315} textAnchor="start" fill="#000000" fontSize={10}>
-                    Low Income & Expense
-                </text>
-                <text x={725} y={315} textAnchor="end" fill="#000000" fontSize={10}>
-                    High Income & Low Expense
-                </text>
-            </ScatterChart>
+                    <ReferenceLine x={0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
+                    <ReferenceLine y={0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
+                    <text x={90} y={60} textAnchor="start" fill="#000000" fontSize={10}>
+                        Low Income & High Expense
+                    </text>
+                    <text x={725} y={60} textAnchor="end" fill="#000000" fontSize={10}>
+                        High Income & Expense
+                    </text>
+                    <text x={90} y={315} textAnchor="start" fill="#000000" fontSize={10}>
+                        Low Income & Expense
+                    </text>
+                    <text x={725} y={315} textAnchor="end" fill="#000000" fontSize={10}>
+                        High Income & Low Expense
+                    </text>
+                </ScatterChart>
+            </Card>
         </div>
     )
 }
 
-export default DashboardContainer;
+export default ScatterGraph;

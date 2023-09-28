@@ -4,9 +4,9 @@ import Navale from '../../utils/images/Navale.png'
 
 const FamilyDetails = () => {
     return (
-        <div className='my-4 mx-0'>
+        <div className='mx-0'>
             <h4 className='text-start fs-1125'>India</h4>
-            <Card size={CardSize.default} variant={CardVariant.bordered} classname='mt-3 mx-0 row'>
+            <Card size={CardSize.default} variant={CardVariant.bordered} classname='mx-0 mt-2 row'>
             {/* <div className='row mt-3 mx-0'> */}
                 <img className='col-2 pe-0 ps-0 rounded-start' src={Navale}></img>
                 <div className='col-10 white-bg py-4 px-4 rounded-end'>
