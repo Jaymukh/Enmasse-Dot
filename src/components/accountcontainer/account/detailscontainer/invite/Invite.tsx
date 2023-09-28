@@ -21,8 +21,8 @@ export default function Invite() {
 	const [selectedUserId, setSelectedUserId] = useState<string>('');
 
 	// all user's data
-	const [users, setUsers] = useRecoilState(usersState);
 	const userService = useUserService();
+	const [users, setUsers] = useRecoilState(usersState);	
 	const [spinner, setSpinner] = useRecoilState(spinnerState);
 
 	//function to get all the users

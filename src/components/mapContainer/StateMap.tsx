@@ -97,6 +97,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         if (map && features) {
+            setIsChecked({...isChecked, coreSolution: true});
             map.data.forEach((feature) => {
                 map.data.remove(feature);
             });
