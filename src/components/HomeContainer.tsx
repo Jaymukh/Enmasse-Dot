@@ -11,7 +11,7 @@ const HomeContainer = () => {
 
 	return (
 		<>
-			<div className='w-100 primary-bg'>
+			<div className='w-100 primary-bg fixed-top'>
 				<Header	/>
 				<MapContainer />
 			</div>

@@ -1,12 +1,15 @@
 import { FiArrowRight } from 'react-icons/fi';
+import { Card, CardSize, CardVariant } from '../ui/card/Card';
+import Navale from '../../utils/images/Navale.png'
 
 const FamilyDetails = () => {
     return (
         <div className='my-4 mx-0'>
             <h4 className='text-start fs-1125'>India</h4>
-            <div className='row mt-3 mx-0'>
-                <img className='col-2 pe-0 ps-0'></img>
-                <div className='col-10 white-bg py-4 px-4'>
+            <Card size={CardSize.default} variant={CardVariant.bordered} classname='mt-3 mx-0 row'>
+            {/* <div className='row mt-3 mx-0'> */}
+                <img className='col-2 pe-0 ps-0 rounded-start' src={Navale}></img>
+                <div className='col-10 white-bg py-4 px-4 rounded-end'>
                     <div className='d-flex flex-row'>
                         <h6 className='fs-18'>Ashe Family</h6>
                         <p className='ms-3 fs-14'>Kutch, Gujarat, India</p>
@@ -24,7 +27,8 @@ const FamilyDetails = () => {
                         <button className='rounded text-start ps-0 border-0 fs-12 white-bg fw-bold green-text' >View all families<FiArrowRight className='ms-2' /></button>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
+            </Card>
         </div>
     )
 }

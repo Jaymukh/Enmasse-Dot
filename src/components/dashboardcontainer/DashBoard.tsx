@@ -3,7 +3,7 @@ import FamilyDetails from './FamilyDetails';
 import LineGraph from './LineGraph';
 import OverViewMap from './OverViewMap';
 import ScatterGraph from './ScatterGraph';
-// import TableView from './TableView';
+import TableView from './TableView';
 
   
   const DashBoard = () => {
@@ -24,9 +24,9 @@ import ScatterGraph from './ScatterGraph';
             <div className='col-6 p-0 my-4'>
                 <LineGraph />
             </div>
-            {/* <div className='col-12 p-0'>
+            <div className='col-12 p-0'>
                 <TableView />
-            </div> */}
+            </div>
         </div>
     )
 }

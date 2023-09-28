@@ -278,22 +278,22 @@ a {
 	background-color: #108041;
 	border-radius: 100%;
 }
-
+/* 
 .fixed-header {
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
-    z-index: 999;
+    z-index: 0;
 }
 
 .header {
-    margin-bottom: 11.5vh; /* Adjust as needed */
+    margin-bottom: 11.5vh; 
 }
 
 .header2 {
-    margin-top: 11.5vh; /* Adjust as needed */
-}
+    margin-top: 11.5vh; 
+} */
 
 /* login page css */
 
