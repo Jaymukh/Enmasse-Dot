@@ -9,20 +9,6 @@ import Ashe from '../images/Ashe.png'
 import Joshi from '../images/Joshi.png'
 import Shah from '../images/Shah.png'
 
-export const TOKEN: string =
-    'pk.eyJ1IjoiZGF5YW5hZWR3aW4iLCJhIjoiY2xqbnpmcW91MDl0dDNkcGp3eDJ4cGE5cSJ9.q2SWsgW4OxyhoosSjKsANQ';
-export const transparentMapStyle: string =
-    'mapbox://styles/dayanaedwin/cljoaqv3800kl01pj2o567vfj';
-export const localMapStyle: string = 'mapbox://styles/dayanaedwin/cljwfg4zh022b01pq8n4kgcxw';
-
-export const transparentMapStyleV2: string = 'mapbox://styles/dayanaedwin/clk9irdd300pf01pd0l8q9uxx';
-
-export const mapStyle: string = 'mapbox://styles/dayanaedwin/cljoaqv3800kl01pj2o567vfj';
-
-export const API_KEY: string = 'RGb6AwVV6Tr7NvKYBvBPJH1Qi2nDcVS0egmZgUQX8nM';
-
-export const revgeocodeURL: string = 'https://revgeocode.search.hereapi.com/v1/revgeocode?at=';
-
 //
 export interface Option {
     key: number;
