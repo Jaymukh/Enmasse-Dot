@@ -15,6 +15,7 @@ export const showHelpState = atom({
     default: 0,
 });
 
-// const [visiblePanel, setVisiblePanel] = useState(0);
-// const [overlay, setOverlay] = useState(true);
-// const [showInfographic, setShowInfographic] = useState(0);
+export const spinnerState = atom({
+    key: 'spinner',
+    default: false,
+})

@@ -1,6 +1,6 @@
 import { useSetRecoilState, useRecoilState } from 'recoil';
 import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
-import { authState, loggedUserState } from '../states';
+import { authState, loggedUserState, spinnerState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { APIS, RouteConstants } from '../constants';
 import { toast } from "react-toastify";
@@ -10,15 +10,18 @@ const useUserService = () => {
     const fetchWrapper = useFetchWrapper();
     const [auth, setAuth] = useRecoilState(authState);
     const setLoggedUser = useSetRecoilState(loggedUserState);
+    const setSpinner = useSetRecoilState(spinnerState);
     const navigate = useNavigate();
     const location = useLocation();
 
     const login = (data: any) => {
+        setSpinner(true);
         return fetchWrapper.post(APIS.USERS.LOGIN, data)
             .then(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 setAuth(user);
+                setSpinner(false);
                 getUserDetails();
                 // get return url from location state or default to home page
                 const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.root : location.pathname;
@@ -30,6 +33,7 @@ const useUserService = () => {
                 }
             })
             .catch(error => {
+                setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });
@@ -37,15 +41,18 @@ const useUserService = () => {
     }
 
     const logout = () => {
+        setSpinner(true);
         const refresh = auth?.tokens?.refresh;
         return fetchWrapper.post(APIS.USERS.LOGOUT, { refresh })
             .then(response => {
                 // remove user from local storage, set auth state to null and redirect to login page
                 localStorage.removeItem('user');
                 setAuth({});
+                setSpinner(false);
                 navigate(RouteConstants.login);
             })
             .catch(error => {
+                setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });
@@ -57,12 +64,15 @@ const useUserService = () => {
     };
 
     const getUserDetails = () => {
+        setSpinner(true);
         return fetchWrapper.get(APIS.USERS.GET_LOGGED_USER).then(data => {
             const initial = initialGenerator(data.name);
             const userHSL = generateHSL(data.name);
             setLoggedUser({ ...data, initial: initial, userHSL: userHSL });
+            setSpinner(false);
         })
             .catch(error => {
+                setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });

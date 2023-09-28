@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../styles/main.css';
 import * as Constants from '../../../utils/constants/Constants';
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { useNavigate } from 'react-router-dom';
 import { visiblePanelState } from '../../../states';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
@@ -9,8 +9,7 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 
 const SideBar = () => {
     const navigate = useNavigate();
-    const visiblePanel = useRecoilValue(visiblePanelState);
-    const setVisiblePanel = useSetRecoilState(visiblePanelState);
+    const [visiblePanel, setVisiblePanel] = useRecoilState(visiblePanelState);
 
     const handleItemClick = (data: string) => {
         setVisiblePanel('/' + data);

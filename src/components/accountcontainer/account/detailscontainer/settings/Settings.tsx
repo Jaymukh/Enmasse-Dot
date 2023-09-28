@@ -7,8 +7,8 @@ import ChangePassword from './ChangePassword';
 import UpdateSuccessModal from './UpdateSuccessModel';
 import { RouteConstants } from '../../../../../constants';
 import { useNavigate } from 'react-router-dom';
-import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { AllSettingsState, UserSettingsState, SettingsData, UserSettings, spinnerState } from "../../../../../states";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 import Select, { SelectSize } from '../../../../ui/select/Select';
@@ -30,6 +30,7 @@ const Settings: React.FC<SettingsProps> = () => {
     const [usersettings, setUserSettings] = useRecoilState<UserSettings>(UserSettingsState);
     const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
     const settingsService = useSettingsService();
+    const setSpinner = useSetRecoilState(spinnerState);
 
     const handleUpdateClick = () => {
         handleDrawer(false);
@@ -44,10 +45,14 @@ const Settings: React.FC<SettingsProps> = () => {
     };
     //function to get logged users
     const getLoggedUserSettings = () => {
+        setSpinner(true);
         settingsService.getUserSettings().then((response) => {
             if (response) {
                 setUserSettings(response);
+                setSpinner(false);
             }
+        }).catch(error => {
+            setSpinner(false);
         });
     };
     const handleShowModal = (flag: boolean, navigateFlag?: boolean) => {

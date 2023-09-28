@@ -7,12 +7,12 @@ import ConfirmDelete from './ConfirmDelete';
 import { IoMdAdd } from 'react-icons/io';
 import { MdModeEdit } from 'react-icons/md';
 import { MdDeleteSweep } from 'react-icons/md';
-import { usersState, User } from "../../../../../states";
-import { useRecoilState } from "recoil";
+import { usersState, User, spinnerState } from "../../../../../states";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
-import { Spinner } from '../../../../ui/spinner/Spinner';
+import { error } from 'console';
 
 export default function Invite() {
 	const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -23,12 +23,19 @@ export default function Invite() {
 	// all user's data
 	const [users, setUsers] = useRecoilState(usersState);
 	const userService = useUserService();
+	const [spinner, setSpinner] = useRecoilState(spinnerState);
 
 	//function to get all the users
 	useEffect(() => {
+		setSpinner(true);
 		userService.getAll().then(response => {
 			setUsers(response);
-		});
+			setSpinner(false);
+		}).catch(error => {
+			setSpinner(false);
+			const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+			toast.error(errorMsg);
+		})
 	}, []);
 
 	const handleEditClick = (row: User) => {
@@ -38,21 +45,24 @@ export default function Invite() {
 		setSelectedData(null);
 	};
 	const handleUpdate = (updatedRow: User) => {
+		setSpinner(true);
 		userService.editInvite(updatedRow)
 			.then((response) => {
 				if (response) {
-					console.log('response', response);
 					setUsers((prevData) =>
 						prevData.map((row) => (
 							row.user_id === updatedRow.user_id ? updatedRow : row
 						))
 					);
+					setSpinner(false);
 					userService.getAll();
 					handleCloseDialog();
 					toast.success('Successfully Updated.');
+
 				}
 			})
 			.catch(error => {
+				setSpinner(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 				toast.error(errorMsg);
 			});
@@ -78,18 +88,19 @@ export default function Invite() {
 
 	// function for Delete
 	const handleDeleteClick = () => {
+		setSpinner(true);
 		userService.deleteInvite(selectedUserId!)
 			.then((response) => {
 				if (response) {
 					userService.getAll();
+					setSpinner(false);
 					setShowConfirmDeleteModal(false);
 				}
 			})
 			.catch(error => {
-				{
-					const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-					toast.error(errorMsg);
-				};
+				setSpinner(false);
+				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+				toast.error(errorMsg);
 			});
 	};
 
@@ -107,9 +118,9 @@ export default function Invite() {
 					Invite New
 				</Button>
 			</div>
-			<hr className='mb-4'/>
+			<hr className='mb-4' />
 			<div className="w-auto mx-4 d-flex justify-content-center m-auto">
-				<div className='dashboard-table-container w-100'>
+				{!spinner && <div className='dashboard-table-container w-100'>
 					<table className=''>
 						<thead>
 							<tr>
@@ -152,7 +163,7 @@ export default function Invite() {
 							))}
 						</tbody>
 					</table>
-				</div>
+				</div>}
 			</div>
 			{selectedData &&
 				<EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}

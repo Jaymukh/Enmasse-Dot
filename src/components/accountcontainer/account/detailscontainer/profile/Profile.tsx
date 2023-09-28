@@ -2,26 +2,23 @@ import React, { useState, useEffect } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
-import { useRecoilValue } from "recoil";
-import { loggedUserState, User } from "../../../../../states";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { loggedUserState, spinnerState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 
 export default function Profile() {
-
     const [selectedData, setSelectedData] = useState<User | null>(null);
     const [open, setOpen] = useState<boolean>(false);
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
-    useEffect(() => {
-        userService.getUserDetails();
-        console.log('loggedUser', loggedUser);
-    }, []);
+    const setSpinner = useSetRecoilState(spinnerState);
 
-    const handleEditClick = () => {
-        setSelectedData(loggedUser);
-    };
+
+    // useEffect(() => {
+    //     userService.getUserDetails();
+    // }, []);
 
     const handleOpen = (flag?: boolean) => {
         if (flag) {
@@ -38,16 +35,18 @@ export default function Profile() {
     };
 
     const handleUpdate = (updatedData: any) => {
+        setSpinner(true);
         const payload = { ...updatedData, country: 'India' };
         userService.updateUserDetails(payload)
             .then((response) => {
                 if (response) {
                     handleCloseDialog();
+                    setSpinner(false);
                     userService.getUserDetails();
-                    console.log('Successfully Updated.', response);
                 }
             })
             .catch(error => {
+                setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });
