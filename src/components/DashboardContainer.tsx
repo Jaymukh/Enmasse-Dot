@@ -5,9 +5,9 @@ import AccountHeader from './accountcontainer/AccountHeader';
 
 const DashBoardContainer = () => {
 	return (
-		<div className='w-100 h-100 primary-bg'>
+		<div className='w-100 h-100 primary-bg fixed-top'>
 			<Header />
-			<div className='fixed-header header2'>
+			<div className='fixed-header header2' style={{position: 'inherit'}}>
 				<AccountHeader />
 				<DashBoard />
 			</div>

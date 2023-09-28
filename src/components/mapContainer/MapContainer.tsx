@@ -58,7 +58,7 @@ function MapContainer() {
     };
 
     return (
-        <div className='MapContainer mx-0 fixed-header header2' style={{ height: '88.5vh', position: 'inherit' }}>
+        <div className='MapContainer mx-0 fixed-header header2' style={{ height: '88.5vh' }}>
             <MapOptions
                 handleGlobal={handleGlobal}
                 handleCountryChange={handleCountryChange}

@@ -4,7 +4,7 @@ import FamilyContainer from './familyContainer/FamilyContainer';
 
 const StoryContainer = () => {
     return (
-        <div className='w-100 primary-bg'>
+        <div className='w-100 primary-bg fixed-top'>
             <Header />
             <FamilyContainer />
         </div>
