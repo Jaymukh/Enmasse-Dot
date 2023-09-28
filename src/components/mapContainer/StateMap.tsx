@@ -49,8 +49,8 @@ const StateMap: React.FC<StateMapProps> = ({
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const center = {
-        lat: 20.5937,
-        lng: 78.9629
+        lat: 22.7196,
+        lng: 73.97449
     };
 
     const mapOptions = {
@@ -129,6 +129,7 @@ const StateMap: React.FC<StateMapProps> = ({
             features.features.forEach((feature: Feature) => {
                 processCoordinates(feature.geometry.coordinates);
             });
+            map.getCenter();
 
             // Set map center and zoom level based on bounding box
             map.fitBounds(bounds);

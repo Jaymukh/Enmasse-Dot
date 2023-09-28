@@ -29,7 +29,7 @@ const Map: React.FC<MapProps> =({
                 const module = await import('../../utils/json/geojson/countries/' + code + '.geo.json');
                 setFeatures(module.default);
             } else {
-                if (!selectedState && selectedCountry) {
+                if (!selectedState && selectedCountry && selectedCountry !== 'SELECT') {
                     const module = await import(
                         '../../utils/json/geojson/countries/' + selectedCountryCode + '.geo.json'
                     );
@@ -39,7 +39,7 @@ const Map: React.FC<MapProps> =({
                         return turf.point(centroid.geometry.coordinates, feature.properties);
                     });
                     setPointFeatures(pointFeatures);
-                } else if (!selectedDistrict && selectedState) {
+                } else if (!selectedDistrict && selectedState  && selectedDistrict!== 'SELECT') {
                     const state = selectedState.toUpperCase();
                     const module = await import(
                         '../../utils/json/geojson/states/' + state + '_STATE.geojson'
