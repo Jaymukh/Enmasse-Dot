@@ -79,7 +79,11 @@ export default function Login() {
                     <div className='loginCardAlign'>
                         <img src={globe} alt='enmasse' />
                         <div>
-                            <h3>enmasse</h3>
+                            <Heading
+                                title='enmasse'
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                             <p className='text-muted login-p'>
                                 Our team of skilled professionals id committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
                             </p>

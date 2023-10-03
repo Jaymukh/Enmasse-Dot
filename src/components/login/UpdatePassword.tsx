@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { toast } from "react-toastify";
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 const UpdatePassword = () => {
     const navigate = useNavigate();
@@ -81,7 +82,11 @@ const UpdatePassword = () => {
                     <div className='loginCardAlign my-5'>
                         <img src={globe} alt='enmasse' />
                         <div>
-                            <h3>enmasse</h3>
+                            <Heading
+                                title='enmasse'
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                             <p className='text-muted login-p'>
                                 Our team of skilled professionals id committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
                             </p>

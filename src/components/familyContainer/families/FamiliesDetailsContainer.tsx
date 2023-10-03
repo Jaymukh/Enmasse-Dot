@@ -19,11 +19,11 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                                 <div className="text-start p-3">
                                     <h5 className="card-title text-left fs-18">{data.properties.familyName}</h5>
                                     <p className="card-text text-left fs-14 my-2">{data.properties.district}, {data.properties.state}, {data.properties.country}</p>
-                                    {(data.properties.familyDetails.familyMembers) &&
+                                    {(data.properties.familyDetails) &&
                                         (<div>
-                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text'>{data.properties.familyDetails.familyMembers}</span> Family Members</p>
-                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text  color-green'>{data.properties.familyDetails.householdSpend}</span> Household Spend</p>
-                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text'>{data.properties.familyDetails.householdIncome}</span> Household Income</p>
+                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text'>{data.properties.familyDetails.familyMembers? data.properties.familyDetails.familyMembers : '_ _' }</span> Family Members</p>
+                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text  color-green'>{data.properties.familyDetails.householdSpend? data.properties.familyDetails.householdSpend : '_ _'}</span> Household Spend</p>
+                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text'>{data.properties.familyDetails.householdIncome? data.properties.familyDetails.householdIncome : '_ _'}</span> Household Income</p>
                                         </div>)
                                     }
                                 </div>

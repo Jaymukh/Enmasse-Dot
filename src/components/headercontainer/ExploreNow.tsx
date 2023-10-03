@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Search from '../ui/search/Search';
 
 const ExploreNow = () => {
@@ -68,7 +69,11 @@ const ExploreNow = () => {
 					<div className='modal-content' >
 						<div className='modal-body d-flex flex-column justify-content-center m-4' >
 							<div className='d-flex flex-row justify-content-between'>
-								<h5>Explore Now</h5>
+								<Heading
+                            title='Explore Now'
+                            type={TypographyType.h5}
+                            colour={TypographyColor.dark}
+                        />
 								<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
 							</div>
 							<div className='modal-dialog-scrollable'>
