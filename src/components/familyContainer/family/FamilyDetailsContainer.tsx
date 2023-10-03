@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 
 interface FamilyDetailsContainerProps {
     selectedData: any; // Update with appropriate type
@@ -10,7 +11,11 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
         <div className='col-6 py-2 my-3' style={{ height: '98%', overflow: 'auto' }}>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='mb-5 mt-1 p-3'>
                 <div className='d-flex flex-row pb-1'>
-                    <h5 className="fs-18">{selectedData.properties.familyName}</h5>
+                    <Heading
+                        title={selectedData.properties.familyName}
+                        type={TypographyType.h3}
+                        colour={TypographyColor.dark}
+                    />
                     <h6 className="text-muted mx-2 my-1 fs-14">{selectedData.properties.district}, {selectedData.properties.state}, {selectedData.properties.country}</h6>
                 </div>
                 <div className="row my-2">

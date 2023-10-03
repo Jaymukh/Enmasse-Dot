@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../App.css'
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button'
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 interface TermsAndConditionsProps {
 	showModal: boolean;
@@ -18,7 +19,12 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 					<div className="modal-content p-6">
 						<div className=' modal-header d-flex flex-row justify-content-between w-100'>
 							<div className="d-flex flex-row">
-								<h5 >Terms and Conditions</h5>
+								<Heading
+									title='Terms and Conditions'
+									type={TypographyType.h3}
+									colour={TypographyColor.dark}
+									classname='col-2 ms-3 text-start'
+								/>
 								<p className=' mx-2 Dialog-p'>Last updated: DD/MM/YYYY</p>
 							</div>
 							{/* <button type="button" className="btn-close" onClick={() => handleModal({ tncModal: false })} /> */}

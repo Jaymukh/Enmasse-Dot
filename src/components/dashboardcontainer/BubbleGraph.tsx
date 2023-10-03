@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import { bubbleData } from '../../utils/constants/Constants';
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 interface BubbleNode {
 	name: string;
@@ -38,7 +39,12 @@ const BubbleGraph = () => {
 		<div className="h-100 me-3">
 			<Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
 				<div className='row px-4 pt-2 d-flex justify-content-between'>
-					<h5 className="col-4 mb-0 text-start fs-14">Core Solutions by EH</h5>
+					<Heading
+						title='Core Solutions by EH'
+						type={TypographyType.h4}
+						colour={TypographyColor.dark}
+						classname='col-4 text-start'
+					/>
 					<div className='col-2'>
 						<Select
 							options={options}

@@ -10,10 +10,11 @@ import { useUserService } from '../../../../../services';
 import { useRecoilValue } from 'recoil';
 import { toast } from "react-toastify";
 import { authState } from '../../../../../states';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 
 interface ChangePasswordProps {
-    open: boolean, 
-    handleUpdateClick: () => void, 
+    open: boolean,
+    handleUpdateClick: () => void,
     handleDrawer: (open: boolean) => void
     handleShowModal: (flag: boolean) => void;
 }
@@ -85,76 +86,91 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
 
     return (
         <Drawer
-                id='change-password'
-                title='Change Password'
-                isOpen={open}
-                toggleFunction={handleDrawer}
-            >
-                <div className='mx-3'>
-                    <p className='text-muted fs-14 text-start'>You will be required to re-login after updating the password.</p>
-                    <form className='d-flex justify-content-center flex-column' onSubmit={handleSubmit(onSubmit)}>
-                        <h5 className='fs-14 m-0 text-start'>Old Password</h5>
-                        <input
-                            type="password"
-                            //name='current_password'
-                            {...register("current_password")}
-                            className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
-                            placeholder='Old password'
-                        />
-                        
-                        {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.current_password?.message}</p>}
-                        <h5 className='fs-14 mx-0 mt-2 mb-0 text-start'>New Password</h5>
-                        <input
-                            type="password"
-                            //name='new_password'
-                            {...register("new_password", {
-                                onChange: (e) => {
-                                    handlePasswordChange(e)
-                                }
-                            })}
-                            className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
-                            placeholder='New password'
-                        />
-                        {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.new_password?.message}</p>}
-                        <div className="row my-2">
-                            <div className="d-flex pe-0 mb-1">
-                                {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                                <p className='fs-12 ms-2 mb-1'>8 Characters</p>
-                            </div>
-                            <div className="d-flex pe-0 mb-1">
-                                {conditions.uppercase ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                                <p className='fs-12 ms-2 mb-1'>Contains Uppercase</p>
-                            </div>
-                            <div className="d-flex pe-0 mb-1">
-                                {conditions.specialChar ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                                <p className='fs-12 ms-2 mb-1'>Contains Special character</p>
-                            </div>
-                            <div className="d-flex pe-0 mb-1">
-                                {conditions.number ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                                <p className='fs-12 ms-2 mb-1'>Contains Number</p>
-                            </div>
+            id='change-password'
+            title='Change Password'
+            isOpen={open}
+            toggleFunction={handleDrawer}
+        >
+            <div className='mx-3'>
+                <p className='text-muted fs-14 text-start'>You will be required to re-login after updating the password.</p>
+                <form className='d-flex justify-content-center flex-column' onSubmit={handleSubmit(onSubmit)}>
+                    <Heading
+                        title='Old Password'
+                        type={TypographyType.h5}
+                        colour={TypographyColor.dark}
+                        classname='text-start'
+                    />
+                    <input
+                        type="password"
+                        //name='current_password'
+                        {...register("current_password")}
+                        className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
+                        placeholder='Old password'
+                    />
+
+                    {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.current_password?.message}</p>}
+                    <Heading
+                        title='New Password'
+                        type={TypographyType.h5}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 text-start'
+                    />
+                    <input
+                        type="password"
+                        //name='new_password'
+                        {...register("new_password", {
+                            onChange: (e) => {
+                                handlePasswordChange(e)
+                            }
+                        })}
+                        className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
+                        placeholder='New password'
+                    />
+                    {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.new_password?.message}</p>}
+                    <div className="row my-2">
+                        <div className="d-flex pe-0 mb-1">
+                            {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                            <p className='fs-12 ms-2 mb-1'>8 Characters</p>
                         </div>
-                        <h5 className='fs-14 m-0 text-start'>Re enter new password</h5>
-                        <input
-                            type="password"
-                            //name='confirm_new_password'
-                            {...register("confirm_new_password")}
-                            className='my-2 inputBoxHeight px-2 fs-14 w-100'
-                            placeholder='Confirm new password'
-                        />
-                        {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.confirm_new_password?.message}</p>}
-                        <button
-                            type="submit"
-                            className='mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 bg-dark'
-                        // className={`mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 ${(filledInputCount < 3) ? 'bg-secondary' : 'bg-dark'}`}
-                        // disabled={filledInputCount < 3} 
-                        >
-                            {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
-                            Update
-                        </button>
-                    </form>
-                </div>
-            </Drawer>
+                        <div className="d-flex pe-0 mb-1">
+                            {conditions.uppercase ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                            <p className='fs-12 ms-2 mb-1'>Contains Uppercase</p>
+                        </div>
+                        <div className="d-flex pe-0 mb-1">
+                            {conditions.specialChar ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                            <p className='fs-12 ms-2 mb-1'>Contains Special character</p>
+                        </div>
+                        <div className="d-flex pe-0 mb-1">
+                            {conditions.number ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                            <p className='fs-12 ms-2 mb-1'>Contains Number</p>
+                        </div>
+                    </div>
+                    <Heading
+                        title='Re enter new password'
+                        type={TypographyType.h5}
+                        colour={TypographyColor.dark}
+                        classname='text-start'
+                    />
+                    <input
+                        type="password"
+                        //name='confirm_new_password'
+                        {...register("confirm_new_password")}
+                        className='my-2 inputBoxHeight px-2 fs-14 w-100'
+                        placeholder='Confirm new password'
+                    />
+                    {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.confirm_new_password?.message}</p>}
+                    <button
+                        type="submit"
+                        className='mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 bg-dark'
+                    // className={`mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 ${(filledInputCount < 3) ? 'bg-secondary' : 'bg-dark'}`}
+                    // disabled={filledInputCount < 3} 
+                    >
+                        {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
+                        Update
+                    </button>
+                </form>
+            </div>
+        </Drawer>
     );
 }
 export default ChangePassword;

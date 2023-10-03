@@ -13,9 +13,12 @@ html {
     --black-7: #D9D9D9;
     /* settings li border */
     --black-8: rgba(0, 0, 0, 0.8);
+
     --white-1: #FFFFFF;
+
     --warning-0: #D55038;
     --warning-1: rgba(180, 51, 28, 1);
+    
     --bs-btn-disabled-bg: rgba(17, 24, 39, 0.50);
     --green-0: rgba(16, 128, 65, 1);
     --green-1: rgba(16, 128, 65, 0.8);

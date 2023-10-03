@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 import animationData from '../../../utils/lotties/lotties.json';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 
 
 interface FamilyDetailsEmptyContainerProps {
@@ -25,7 +26,11 @@ const FamilyDetailsEmptyContainer: React.FC<FamilyDetailsEmptyContainerProps> = 
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='mb-5 py-3 mt-1'>
             {/* <div className='card fam-details-card white-bg mb-3 my-4'> */}
                 <div className='d-flex flex-row mx-2 p-3'>
-                    <h5 className="card-title">{selectedData.properties.familyName}</h5>
+                    <Heading
+                        title={selectedData.properties.familyName}
+                        type={TypographyType.h3}
+                        colour={TypographyColor.dark}
+                    />
                     <h6 className="card-title text-muted mx-2 my-1">{selectedData.address}</h6>
                 </div>
                 <div className="card-body d-flex flex-column justify-content-center align-items-center pt-0">

@@ -2,15 +2,19 @@ import React from 'react';
 import { useSetRecoilState } from "recoil";
 import { overlayState, showHelpState } from '../../states';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 const LandingPage = () => {
 	const setOverlay = useSetRecoilState(overlayState);
 	const setShow = useSetRecoilState(showHelpState);
 	return (
 		<div className='w-100'>
-			<h4 className='text-white mb-3'>
-				Hello! Welcome to Enmasse | D.O.T.S
-			</h4>
+			<Heading
+				title='Hello! Welcome to Enmasse | D.O.T.S'
+				type={TypographyType.h2}
+				colour={TypographyColor.secondary}
+				classname='mb-3'
+			/>
 			<div className='d-flex flex-column justify-content-center m-auto w-100'>
 				<Button
 					theme={ButtonTheme.secondary}

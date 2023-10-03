@@ -68,23 +68,27 @@ const ExploreNow = () => {
 				>
 					<div className='modal-content' >
 						<div className='modal-body d-flex flex-column justify-content-center m-4' >
-							<div className='d-flex flex-row justify-content-between'>
+							<div className='d-flex flex-row justify-content-between mb-2'>
 								<Heading
-                            title='Explore Now'
-                            type={TypographyType.h5}
-                            colour={TypographyColor.dark}
-                        />
+									title='Explore Now'
+									type={TypographyType.h2}
+									colour={TypographyColor.dark}
+								/>
 								<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
 							</div>
 							<div className='modal-dialog-scrollable'>
 								<p className='text-muted text-start fs-14'>
 									Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
 								</p>
-								<div className='d-flex flex-row justify-content-start'>
+								<div className='d-flex flex-row justify-content-start mb-2'>
 									{Object.values(selectedValue)?.map((item, index) => (
 										item &&
 										(<>
-											<h5 className='fs-14'>{item}</h5>
+											<Heading
+												title={item}
+												type={TypographyType.h3}
+												colour={TypographyColor.dark}
+											/>
 											<button
 												type='button'
 												className='btn-close mx-2 fs-12'
@@ -105,7 +109,12 @@ const ExploreNow = () => {
 									<div>
 										{results.map((item: any) => (
 											<div key={item.name} className='my-2'>
-												<h5 className='d-flex justify-content-start fs-18 mb-0'>{item.name}</h5>
+												<Heading
+												title={item.name}
+												type={TypographyType.h3}
+												colour={TypographyColor.dark}
+												classname='text-start'
+											/>
 												<hr className='mt-0'></hr>
 												<div className='row'>
 													{item.districts.map((district: any) => (

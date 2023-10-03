@@ -2,12 +2,18 @@ import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi';
 import { headers } from '../../utils/constants/Constants';
 import { dashboardTableData } from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 
 const TableView = () => {
     return (
         <div className='white-bg pt-4 pb-5 dashboard-col px-4'>
-            <h2 className="text-start fs-14 mb-3">State wise metric breakdown</h2>
+            <Heading
+                title='State wise metric breakdown'
+                type={TypographyType.h4}
+                colour={TypographyColor.dark}
+                classname='text-start mb-3'
+            />
             <div className='dashboard-table-container'>
                 <table>
                     <thead>
@@ -31,7 +37,7 @@ const TableView = () => {
                                                 variant={ButtonVariant.transparent}
                                                 classname='h-auto'
                                             >
-                                                <BiSolidDownArrow fontSize={12} color='#367A2B'  />
+                                                <BiSolidDownArrow fontSize={12} color='#367A2B' />
                                             </Button>
                                         </div>
                                     </div>

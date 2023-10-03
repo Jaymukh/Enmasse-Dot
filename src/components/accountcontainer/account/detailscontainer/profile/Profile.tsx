@@ -7,6 +7,7 @@ import { loggedUserState, spinnerState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -55,7 +56,12 @@ export default function Profile() {
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
             <div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pe-4">
-                <h5 className='mt-2 col-2 ms-3 text-start'>Profile</h5>
+                <Heading
+					title='Profile'
+					type={TypographyType.h2}
+					colour={TypographyColor.dark}
+					classname='mt-2 col-2 ms-3 text-start'
+				/>
                 <Button
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}

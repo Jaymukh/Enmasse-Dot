@@ -12,6 +12,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import { error } from 'console';
 
 export default function Invite() {
@@ -22,7 +23,7 @@ export default function Invite() {
 
 	// all user's data
 	const userService = useUserService();
-	const [users, setUsers] = useRecoilState(usersState);	
+	const [users, setUsers] = useRecoilState(usersState);
 	const [spinner, setSpinner] = useRecoilState(spinnerState);
 
 	//function to get all the users
@@ -107,7 +108,12 @@ export default function Invite() {
 	return (
 		<div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
 			<div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pe-4">
-				<h5 className=' col-2 ms-3 text-start'>Invite</h5>
+				<Heading
+					title='Invite'
+					type={TypographyType.h2}
+					colour={TypographyColor.dark}
+					classname='col-2 ms-3 text-start'
+				/>
 				<Button
 					theme={ButtonTheme.secondary}
 					size={ButtonSize.default}

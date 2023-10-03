@@ -19,7 +19,8 @@ export enum TypographyType {
 interface HeadingOne {
     title: string;
     type: TypographyType;
-    colour: TypographyColor
+    colour: TypographyColor;
+    classname?: string;
 }
 
 const getColor = (color: TypographyColor) => {
@@ -63,8 +64,8 @@ const getType = (type: TypographyType) => {
     return className;
 }
 
-export const Heading = ({type, colour, title }: HeadingOne) => {
+export const Heading = ({type, colour, title, classname }: HeadingOne) => {
     return (
-        <h1 className={`${getType(type)} ${getColor(colour)} m-0`}>{title}</h1>
+        <h1 className={`${getType(type)} ${getColor(colour)} ${classname} m-0`}>{title}</h1>
     )
 }

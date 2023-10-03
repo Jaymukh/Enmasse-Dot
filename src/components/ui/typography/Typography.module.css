@@ -52,9 +52,10 @@
 }
 
 .secondary {
-    color: var(--blue-0);
+    color: var(--white-1);
 }
 
 .dark {
     color: var(--black-0);
 }
+

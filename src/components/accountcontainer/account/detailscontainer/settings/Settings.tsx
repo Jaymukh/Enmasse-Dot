@@ -13,6 +13,7 @@ import { useSettingsService } from '../../../../../services';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 
 interface SettingsProps { }
 
@@ -75,7 +76,13 @@ const Settings: React.FC<SettingsProps> = () => {
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
             <div className="row w-100 mx-0 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pe-4">
-                <h5 className='mt-2 col-2 ms-3 text-start'>Settings</h5>
+                {/* <h5 className='mt-2 col-2 ms-3 text-start'>Settings</h5> */}
+                <Heading
+					title='Settings'
+					type={TypographyType.h2}
+					colour={TypographyColor.dark}
+					classname='col-2 ms-3 mt-2 text-start'
+				/>
                 <div className='mt-2 col-9 d-flex justify-content-end '>
                     <Button
                         theme={ButtonTheme.secondary}

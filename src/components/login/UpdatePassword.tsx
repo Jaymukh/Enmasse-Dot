@@ -98,7 +98,12 @@ const UpdatePassword = () => {
                 <form className='loginCardAlign' onSubmit={handleSubmit(onSubmit)}>
                     <h6 className='fs-27 mb-2'>Update Password</h6>
                     <p className='fs-14 text-muted mb-3'>Update password for your account.</p>
-                    <h5 className='fs-16 mt-3'>Password</h5>
+                    <Heading
+                        title='Password'
+                        type={TypographyType.h3}
+                        colour={TypographyColor.dark}
+                        classname='mt-3 text-start'
+                    />
                     <input
                         type="password"
                         // name='password'
@@ -128,7 +133,12 @@ const UpdatePassword = () => {
                             <p className='fs-12 ms-2'>Contains Number</p>
                         </div>
                     </div>
-                    <h5 className='fs-16'>Confirm password</h5>
+                    <Heading
+                        title='Confirm password'
+                        type={TypographyType.h3}
+                        colour={TypographyColor.dark}
+                        classname='col-2 ms-3 text-start'
+                    />
                     <input
                         type="password"
                         // name="confirm_password"

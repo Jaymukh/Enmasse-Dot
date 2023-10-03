@@ -1,4 +1,5 @@
 import React from 'react';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 interface DrawerProps {
     id: string;
@@ -12,7 +13,12 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
     return (
         <div className={`offcanvas offcanvas-end h-100 drawer-shadow border-0 ${isOpen ? 'show' : ''}`} id={id}>
             <div className="offcanvas-header pt-4 pb-0 px-4">
-                <h5 className='fs-21 px-1'>{title}</h5>
+                <Heading
+                    title={title}
+                    type={TypographyType.h2}
+                    colour={TypographyColor.dark}
+                    classname='px-1'
+                />
                 <button
                     type="button"
                     className="btn-close text-reset mx-1"

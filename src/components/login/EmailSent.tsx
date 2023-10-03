@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 interface EmailSentProps {
     showModal: boolean;
@@ -30,7 +31,12 @@ const EmailSent: React.FC<EmailSentProps> = ({
                                 />
                             </div>
                             <div className=" d-flex flex-column justify-content-center my-2">
-                                <h5 className='text-start'>Email sent</h5>
+                                <Heading
+                                    title='Email sent'
+                                    type={TypographyType.h3}
+                                    colour={TypographyColor.dark}
+                                    classname='text-start'
+                                />
                                 <p className=' Dialog-p '>
                                     Email sent {email} with further instructions.
                                 </p>

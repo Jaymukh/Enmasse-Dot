@@ -1,13 +1,19 @@
 import { FiArrowRight } from 'react-icons/fi';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import Navale from '../../utils/images/Navale.png'
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 const FamilyDetails = () => {
     return (
         <div className='mx-0'>
-            <h4 className='text-start fs-1125'>India</h4>
+            <Heading
+                title='India'
+                type={TypographyType.h2}
+                colour={TypographyColor.dark}
+                classname='text-start'
+            />
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='mx-0 mt-2 row'>
-            {/* <div className='row mt-3 mx-0'> */}
+                {/* <div className='row mt-3 mx-0'> */}
                 <img className='col-2 pe-0 ps-0 rounded-start' src={Navale}></img>
                 <div className='col-10 white-bg py-4 px-4 rounded-end'>
                     <div className='d-flex flex-row'>
@@ -27,7 +33,7 @@ const FamilyDetails = () => {
                         <button className='rounded text-start ps-0 border-0 fs-12 white-bg fw-bold green-text' >View all families<FiArrowRight className='ms-2' /></button>
                     </div>
                 </div>
-            {/* </div> */}
+                {/* </div> */}
             </Card>
         </div>
     )
