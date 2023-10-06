@@ -1,7 +1,7 @@
 import React from 'react';
-import Lottie from 'react-lottie';
 import checkAnimation from '../../../../../utils/lotties/checklotties.json';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import CheckGIF from "../../../../../utils/images/CheckMarkGIF.gif";
 
 interface UpdateSuccessModalProps {
     showModal: boolean;
@@ -27,12 +27,10 @@ const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, hand
                     className='modal-dialog modal-dialog-centered modal-dialog-scrollable'
                 >
                     <div className='modal-content p-3'>
-                        <Lottie
-                            options={defaultOptions}
-                            height={200}
-                            width={200}
-                        />
-
+                        <div className='d-flex justify-content-center'>
+                            <img src={CheckGIF} alt="Created Successfully GIF" height={200} width={200} ></img>
+                        </div>
+                        
                         <div className="modal-body m-2 py-0">
                             <h6 className='fs-21'>Password changed</h6>
                             <p className='fs-14'>Password for your account updated successfully</p>

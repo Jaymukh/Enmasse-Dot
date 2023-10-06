@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { GiPlainCircle } from 'react-icons/gi';
 import { GoCheckCircleFill } from 'react-icons/go';
 import { IoMdArrowBack } from 'react-icons/io';
+import { FaEye } from 'react-icons/fa';
+import { FaEyeSlash } from 'react-icons/fa';
 import globe from '../../utils/images/globe.png';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,19 +14,23 @@ import { RouteConstants } from '../../constants';
 import { toast } from "react-toastify";
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import CheckGIF from "../../utils/images/CheckMarkGIF.gif";
 
 const UpdatePassword = () => {
     const navigate = useNavigate();
     const userService = useUserService();
+    const arr = window.location.href.split("=");
+    const token = arr.pop();
+    const [passwordCreated, setPasswordCreated] = useState(false);
     const validationSchema = Yup.object().shape({
-        password: Yup.string()
+        new_password: Yup.string()
             .required('Password is required')
             .min(8, 'Password must be at least 8 characters')
             .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
             .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Password must contain at least one special character')
             .matches(/[0-9]/, 'Password must contain at least one number'),
-        confirm_password: Yup.string()
-            .oneOf([Yup.ref('password')], 'Passwords must match')
+        confirm_new_password: Yup.string()
+            .oneOf([Yup.ref('new_password')], 'Passwords must match')
             .required('Confirm password is required'),
     });
 
@@ -40,7 +46,7 @@ const UpdatePassword = () => {
         number: false,
     });
 
-    const password = watch('password');
+    const new_password = watch('new_password');
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newPassword = e.target.value;
@@ -52,33 +58,45 @@ const UpdatePassword = () => {
         });
     };
 
+    const [isVisible, setIsVisible] = useState(false);
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
+    }
+
     const onSubmit = (values: any) => {
         if (Object.values(errors).length > 0) {
             return;
         }
-        userService.setNewPassword({ ...values, token: "c2276236f0824f5dbd9b054e741954c3" })
-            .then(response => console.log(response))
+        userService.setNewPassword({ ...values, token: token })
+            .then(response => {
+                setPasswordCreated(true);
+            })
             .catch(error => {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });
     };
-
-    const handleSkip = () => {
-        navigate(RouteConstants.root);
-    }
-
-    const handleNavigateBack = () => {
+    const handleContinue = () => {
         navigate(RouteConstants.login);
     }
+
+
+    //     const handleSkip = () => {
+    //         navigate(RouteConstants.root);
+    //     }
+    // 
+    //     const handleNavigateBack = () => {
+    //         navigate(RouteConstants.login);
+    //     }
+
 
     return (
         <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
             <div className='col-md-6 col-xl-6 login-update-box lightGrayBackground'>
                 <div className='col-12 my-5 d-flex flex-column align-items-start'>
-                    <button className='border-0 mx-5' onClick={handleNavigateBack}>
+                    {/* <button className='border-0 mx-5' onClick={handleNavigateBack}>
                         <IoMdArrowBack />Back
-                    </button>
+                    </button> */}
                     <div className='loginCardAlign my-5'>
                         <img src={globe} alt='enmasse' />
                         <div>
@@ -95,79 +113,91 @@ const UpdatePassword = () => {
                 </div>
             </div>
             <div className='col-md-6 col-md-6 login-update-box whiteBackground'>
-                <form className='loginCardAlign' onSubmit={handleSubmit(onSubmit)}>
-                    <h6 className='fs-27 mb-2'>Update Password</h6>
-                    <p className='fs-14 text-muted mb-3'>Update password for your account.</p>
-                    <Heading
-                        title='Password'
-                        type={TypographyType.h3}
-                        colour={TypographyColor.dark}
-                        classname='mt-3 text-start'
-                    />
-                    <input
-                        type="password"
-                        // name='password'
-                        {...register("password", {
-                            onChange: (e) => {
-                                handlePasswordChange(e)
-                            }
-                        })}
-                        className='my-1 px-2 inputBoxHeight w-100'
-                        placeholder='Enter your password here' />
-                    {errors?.password?.message && <p className='text-danger m-0 p-0'>{errors?.password?.message}</p>}
-                    <div className="row my-2">
-                        <div className="col-7 d-flex pe-0">
-                            {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <p className='fs-12 ms-2'>8 Characters</p>
+                {passwordCreated ?
+                    <div className='loginCardAlign'>
+                        <img src={CheckGIF} alt="Created Successfully GIF"></img>
+                        <h6 className='fs-27 mb-2'>Created Successfully</h6>
+                        <p className='fs-14 text-muted mb-3'>Password created successfully!</p>
+                        <Button
+                            theme={ButtonTheme.primary}
+                            size={ButtonSize.large}
+                            variant={ButtonVariant.bordered}
+                            type='button'
+                            onClick={handleContinue}
+
+                            classname='mt-3'
+                        >
+                            Continue
+                        </Button>
+                    </div> :
+                    <form className='loginCardAlign' onSubmit={handleSubmit(onSubmit)}>
+                        <h6 className='fs-27 mb-2'>Create Password</h6>
+                        <p className='fs-14 text-muted mb-3'>Create password for your account.</p>
+                        <Heading
+                            title='Password'
+                            type={TypographyType.h3}
+                            colour={TypographyColor.dark}
+                            classname='mt-3 text-start'
+                        />
+                        <div className='input-wrapper'>
+                            <input
+                                type={isVisible ? 'text' : 'password'}
+                                // name='new_password'
+                                {...register("new_password", {
+                                    onChange: (e) => {
+                                        handlePasswordChange(e)
+                                    }
+                                })}
+                                className='my-1 px-2 inputBoxHeight w-100'
+                                placeholder='Enter your password here'
+                            />
+                            <span className="eye-icon" onClick={toggleVisibility}>
+                                {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}
+                            </span>
                         </div>
-                        <div className="col-5 d-flex pe-0">
-                            {conditions.uppercase ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <p className='fs-12 ms-2'>Contains Uppercase</p>
+                        {errors?.new_password?.message && <p className='text-danger m-0 p-0'>{errors?.new_password?.message}</p>}
+                        <div className="row my-2">
+                            <div className="col-7 d-flex pe-0">
+                                {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                                <p className='fs-12 ms-2'>8 Characters</p>
+                            </div>
+                            <div className="col-5 d-flex pe-0">
+                                {conditions.uppercase ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                                <p className='fs-12 ms-2'>Contains Uppercase</p>
+                            </div>
+                            <div className="col-7 d-flex pe-0">
+                                {conditions.specialChar ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                                <p className='fs-12 ms-2'>Contains Special character</p>
+                            </div>
+                            <div className="col-5 d-flex pe-0">
+                                {conditions.number ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                                <p className='fs-12 ms-2'>Contains Number</p>
+                            </div>
                         </div>
-                        <div className="col-7 d-flex pe-0">
-                            {conditions.specialChar ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <p className='fs-12 ms-2'>Contains Special character</p>
-                        </div>
-                        <div className="col-5 d-flex pe-0">
-                            {conditions.number ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <p className='fs-12 ms-2'>Contains Number</p>
-                        </div>
-                    </div>
-                    <Heading
-                        title='Confirm password'
-                        type={TypographyType.h3}
-                        colour={TypographyColor.dark}
-                        classname='col-2 ms-3 text-start'
-                    />
-                    <input
-                        type="password"
-                        // name="confirm_password"
-                        {...register("confirm_password", {
-                            onChange: (e) => {
-                                handlePasswordChange(e)
-                            }
-                        })}
-                        className='my-1 px-2 inputBoxHeight w-100'
-                        placeholder='Re enter your password here' />
-                    {errors?.confirm_password?.message && <p className='text-danger m-0 p-0'>{errors?.confirm_password?.message}</p>}
-                    {/* <button type="submit" className='mb-2 mt-4 inputBoxHeight login-btn bg-dark text-white fs-6' >
-                        {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
-                        Update Password
-                    </button> */}
-                    <Button
-                        theme={ButtonTheme.primary}
-                        size={ButtonSize.large}
-                        variant={ButtonVariant.bordered}
-                        type='submit'
-                        classname='m-auto'
-                    >
-                        {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
-                        Update Password
-                    </Button>
-                    {/* <button className='bg-transparent black underline-text border-0 mt-3' onClick={() => handleSkip()}>
-                    Skip
-                    </button> */}
-                    <Button
+                        <Heading
+                            title='Confirm password'
+                            type={TypographyType.h3}
+                            colour={TypographyColor.dark}
+                            classname='text-start'
+                        />
+                        <input
+                            type="password"
+                            // name="confirm_new_password"
+                            {...register("confirm_new_password")}
+                            className='my-1 px-2 inputBoxHeight w-100'
+                            placeholder='Re enter your password here' />
+                        {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0'>{errors?.confirm_new_password?.message}</p>}
+                        <Button
+                            theme={ButtonTheme.primary}
+                            size={ButtonSize.large}
+                            variant={ButtonVariant.bordered}
+                            type='submit'
+                            classname='mt-3'
+                        >
+                            {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
+                            Create Password
+                        </Button>
+                        {/* <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
                         variant={ButtonVariant.transparent}
@@ -176,8 +206,9 @@ const UpdatePassword = () => {
                         classname='text-decoration-underline mt-3'
                     >
                         Skip
-                    </Button>
-                </form>
+                    </Button> */}
+                    </form>
+                }
             </div>
         </div>
     )

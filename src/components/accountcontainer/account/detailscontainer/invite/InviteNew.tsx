@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Input } from '../../../../ui/input/Input';
-
 interface NewData {
     name: string | undefined;
     email_id: string | undefined;
@@ -20,46 +19,47 @@ interface NewData {
 interface InviteNewProps {
     openInviteNew: boolean;
     handleCloseInviteNew: () => void;
+    setOpenInviteSent: (openInviteSent: boolean) => void;
+    newData: NewData;
+    handleChangeData : (event: any) => void;
 }
 
 const InviteNew: React.FC<InviteNewProps> = ({
     openInviteNew,
-    handleCloseInviteNew
+    handleCloseInviteNew,
+    setOpenInviteSent,
+    newData,
+    handleChangeData
 }) => {
 
 
-    const [newData, setNewData] = useState<NewData>({
-        name: undefined,
-        email_id: undefined,
-        role: 'Admin',
-        company: 'enmasse',
-        company_type: 'Enmasse',
-    });
+    
     const userService = useUserService();
     const loggedUser = useRecoilValue(loggedUserState);
     const settings = useRecoilValue(AllSettingsState);
     const settingsService = useSettingsService();
-
-    const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        e.preventDefault();
-        var name = e.target.name;
-        var value = e.target.value;
-        setNewData({ ...newData, [name]: value });
-    }
+    
+    
     const handleSubmitInviteNew = () => {
-        var payload = { ...newData, user_id: loggedUser.user_id, designation: 'Manager', country: 'India', phone_number: 5436525362, status: 'Invited' };
-        userService.inviteNew(payload)
-            .then((response) => {
-                if (response) {
-                    toast.success('Successfully Invited.');
-                    userService.getAll();
-                }
-            })
-            .catch(error => {
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
-            });
-        handleCloseInviteNew();
+        if (newData.name && newData.email_id) {
+            var payload = { ...newData, user_id: loggedUser.user_id, designation: 'Manager', country: 'India', phone_number: 5436525362, status: 'Invited' };
+            userService.inviteNew(payload)
+                .then((response) => {
+                    if (response) {
+                        toast.success('Successfully Invited.');
+                        userService.getAll();
+                        setOpenInviteSent(true);
+                    }
+                })
+                .catch(error => {
+                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    toast.error(errorMsg);
+                });
+            handleCloseInviteNew();
+        }
+        else{
+            toast.error("All fields are mendatory!");
+        }
     };
 
     //function to get all the settings details
@@ -132,6 +132,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     </Button>
                 </div>
             </Drawer>
+            
         </>
     );
 }
