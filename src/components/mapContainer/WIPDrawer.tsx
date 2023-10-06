@@ -30,7 +30,7 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer }) =>
 								colour={TypographyColor.dark}
 								classname='pt-5'
 							/>
-							<p className="text-center fs-12">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
+							<p className="text-center fs-12 my-2">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
 						</div>
 					</div>
 				</div>

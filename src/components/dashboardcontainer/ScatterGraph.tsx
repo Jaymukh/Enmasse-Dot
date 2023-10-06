@@ -68,7 +68,7 @@ const ScatterGraph = () => {
         <div className='h-100'>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
                 <div className='row px-4 pt-2 d-flex justify-content-between'>
-                    <h6 className='col-3 text-start fs-14' >EH Income and Expense</h6>
+                    <h6 className='col-4 text-start fs-14' >EH Income and Expense</h6>
                     <div className='col-2'>
                         <Select
                             options={options}

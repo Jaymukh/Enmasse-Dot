@@ -104,7 +104,7 @@ const LineGraph = () => {
     return (
         <div className='h-100'>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
-                <h6 className='text-start fs-14 mb-3'>EH Population Growth</h6>
+                <h6 className='text-start fs-14 mb-3 mt-2'>EH Population Growth</h6>
                 <Line data={data} options={options} />
             </Card>
         </div>
