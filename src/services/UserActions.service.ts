@@ -1,6 +1,6 @@
 import { useSetRecoilState, useRecoilState } from 'recoil';
 import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
-import { authState, loggedUserState, spinnerState } from '../states';
+import { authState, loggedUserState, usersState, spinnerState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { APIS, RouteConstants } from '../constants';
 import { toast } from "react-toastify";
@@ -10,6 +10,7 @@ const useUserService = () => {
     const fetchWrapper = useFetchWrapper();
     const [auth, setAuth] = useRecoilState(authState);
     const setLoggedUser = useSetRecoilState(loggedUserState);
+    const setUsers = useSetRecoilState(usersState);
     const setSpinner = useSetRecoilState(spinnerState);
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,11 +27,9 @@ const useUserService = () => {
                 // get return url from location state or default to home page
                 const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.root : location.pathname;
                 if (user.is_first_login) {
-                    acceptAgreement();
-                    navigate(RouteConstants.update_password);
-                } else {
-                    navigate(from);
+                    acceptAgreement();                    
                 }
+                navigate(from);
             })
             .catch(error => {
                 setSpinner(false);
@@ -60,7 +59,14 @@ const useUserService = () => {
     }
 
     const getAll = () => {
-        return fetchWrapper.get(APIS.USERS.GET_ALL_USERS);
+        return fetchWrapper.get(APIS.USERS.GET_ALL_USERS).then(response => {
+			setUsers(response);
+			setSpinner(false);
+		}).catch(error => {
+			setSpinner(false);
+			const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+			toast.error(errorMsg);
+		})
     };
 
     const getUserDetails = () => {
@@ -82,7 +88,7 @@ const useUserService = () => {
     }
 
     const setNewPassword = (data: any) => {
-        return fetchWrapper.post(APIS.USERS.SET_NEW_PASSWORD);
+        return fetchWrapper.post(APIS.USERS.SET_NEW_PASSWORD, data);
     }
 
     const changePassword = (data: any) => {
