@@ -102,7 +102,7 @@ export default function Invite() {
 		setSearchTerm(value);
 		// Filter the suggestions based on the input value
 		const filteredSuggestions = users.filter((data) =>
-			data.name.toLowerCase().includes(value.toLowerCase())
+			data.name.toLowerCase().includes(value.toLowerCase()) || data.company.toLowerCase().includes(value.toLowerCase()) || data.company_type.toLowerCase().includes(value.toLowerCase()) || data.email_id.toLowerCase().includes(value.toLowerCase()) || data.role.toLowerCase().includes(value.toLowerCase())
 		);
 		setSuggestions(filteredSuggestions);
 	};
@@ -149,7 +149,7 @@ export default function Invite() {
 						value={searchTerm}
 						suggestions={suggestions}
 						hideSuggestionBox={true}
-						placeholderValue= 'Search by Name'
+						placeholderValue= 'Search'
 					/>
 					<Button
 						theme={ButtonTheme.secondary}
