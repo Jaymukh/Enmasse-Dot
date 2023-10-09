@@ -12,9 +12,9 @@ interface MapOptionsProps {
     handleStateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     handleDistrictChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     global: boolean;
-    selectedCountry: string;
-    selectedState: string;
-    selectedDistrict: string;
+    selectedCountry: string | null;
+    selectedState: string | null;
+    selectedDistrict: string | null;
     countries: any;
     states: any;
     districts: any;
@@ -35,6 +35,7 @@ function MapOptions({
 }: MapOptionsProps) {
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useState('');
+    
 
     const openWIPDrawer = (title: string) => {
         setOpen(true);
@@ -60,7 +61,7 @@ function MapOptions({
                 </div>
                 {!global ? (
                     <div className='select-right-margin ms-2 py-1'>
-                        <p className='country-text'>COUNTRY</p>
+                        <p className='country-text mx-1'>COUNTRY</p>
                         <Select
                             options={countries}
                             onChange={handleCountryChange}
@@ -76,7 +77,7 @@ function MapOptions({
                 )}
                 {!global && selectedCountry ? (
                     <div className='select-right-margin ms-2 py-1'>
-                        <p className='country-text'>STATE</p>
+                        <p className='country-text mx-1'>STATE</p>
                         <Select
                             options={states}
                             onChange={handleStateChange}
@@ -92,7 +93,7 @@ function MapOptions({
                 )}
                 {!global && selectedState ? (
                     <div className='select-right-margin ms-2 py-1'>
-                        <p className='country-text'>DISTRICT</p>
+                        <p className='country-text mx-1'>DISTRICT</p>
                         <Select
                             options={districts}
                             onChange={handleDistrictChange}

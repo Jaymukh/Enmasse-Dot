@@ -1,5 +1,4 @@
 import React from 'react';
-import checkAnimation from '../../../../../utils/lotties/checklotties.json';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import CheckGIF from "../../../../../utils/images/CheckMarkGIF.gif";
 
@@ -8,14 +7,6 @@ interface UpdateSuccessModalProps {
     handleShowModal: (show: boolean, navigateFlag: boolean) => void;
 }
 const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, handleShowModal }) => {
-    const defaultOptions = {
-        loop: false,
-        autoplay: true,
-        animationData: checkAnimation,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice"
-        }
-    }
     return (
         <>
             <div className={`modal ${showModal ? 'show' : ''}`}

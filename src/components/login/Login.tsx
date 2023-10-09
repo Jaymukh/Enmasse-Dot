@@ -112,7 +112,7 @@ export default function Login() {
                                 className='my-1 px-2 inputBoxHeight w-100'
                                 placeholder='Enter your email id here' />
                             {errors?.email_id?.message && <p className='text-danger m-0 p-0'>{errors?.email_id?.message}</p>}
-                            <div className='d-flex flex-row justify-content-between align-items-center mt-3'>
+                            <div className='d-flex flex-row justify-content-between align-items-center mt-2'>
                                 <Heading
                                     title='Password'
                                     type={TypographyType.h4}
@@ -125,7 +125,7 @@ export default function Login() {
                                     size={ButtonSize.default}
                                     variant={ButtonVariant.transparent}
                                     onClick={() => handleModal({ passwordModal: true })}
-                                    classname='fw-bold text-decoration-underline'
+                                    classname='fw-bold text-decoration-underline h-50'
                                 >
                                     Forgot password?
                                 </Button>
@@ -149,7 +149,7 @@ export default function Login() {
                             //className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-secondary ${(filledInputCount < 2) ? 'bg-secondary' : 'bg-dark'}`}
                             //disabled={filledInputCount < 2}
                             >
-                                {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Continue
+                                {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Login
                             </button>
                         </form>
                         <p className='text-muted mb-0 mt-2 login-p'>By clicking on continue you are agreeing to the Enmasse

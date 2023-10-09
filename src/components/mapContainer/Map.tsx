@@ -7,10 +7,10 @@ import StateMap from './StateMap';
 
 interface MapProps {
     global: boolean;
-    selectedCountry: string;
-    selectedCountryCode: string;
-    selectedState: string;
-    selectedDistrict: string;
+    selectedCountry: string | null;
+    selectedCountryCode: string | null;
+    selectedState: string | null;
+    selectedDistrict: string | null;
 }
 
 const Map: React.FC<MapProps> =({

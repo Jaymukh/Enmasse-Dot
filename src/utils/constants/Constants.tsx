@@ -20,7 +20,7 @@ export const options: Option[] = [
     { key: 1, label: 'Healthcare', type: 'radius_edu' },
     { key: 2, label: 'Education', type: 'radius_agri' },
     { key: 3, label: 'Agri Markets', type: 'radius_healthcare' },
-    { key: 4, label: 'Financial', type: 'radius_fin' },
+    { key: 4, label: 'Financial Solutions', type: 'radius_fin' },
 ];
 
 // Enmasse-Dot\src\components\InsightBar.tsx

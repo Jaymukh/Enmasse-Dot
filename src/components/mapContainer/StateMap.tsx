@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import '../../App.css';
-import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, InfoWindow, Marker } from '@react-google-maps/api';
 import * as MapConstants from '../../utils/json/googlemapstyle'
 import * as Constants from '../../utils/constants/Constants';
 import CoreSolutions from './CoreSolutions';
@@ -12,9 +12,9 @@ import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 interface StateMapProps {
     features: any;
     handleImportFeature: (code?: string | undefined) => void;
-    selectedCountry: string;
-    selectedState: string;
-    selectedDistrict: string;
+    selectedCountry: string | null;
+    selectedState: string | null;
+    selectedDistrict: string | null;
     pointFeatures: any[];
 }
 
@@ -49,10 +49,10 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-    const center = {
+    const [center, setCenter] = useState({
         lat: 22.7196,
         lng: 73.97449
-    };
+    });
 
     const mapOptions = {
         // disableDefaultUI: true,
@@ -98,7 +98,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         if (map && features) {
-            setIsChecked({...isChecked, coreSolution: true});
+            setIsChecked({ ...isChecked, coreSolution: true });
             map.data.forEach((feature) => {
                 map.data.remove(feature);
             });
@@ -131,10 +131,10 @@ const StateMap: React.FC<StateMapProps> = ({
             features.features.forEach((feature: Feature) => {
                 processCoordinates(feature.geometry.coordinates);
             });
-            map.getCenter();
 
             // Set map center and zoom level based on bounding box
             map.fitBounds(bounds);
+            setCenter({ lat: bounds.getCenter().lat(), lng: bounds.getCenter().lng() });
         }
     }, [map, features]);
 
@@ -185,46 +185,50 @@ const StateMap: React.FC<StateMapProps> = ({
     return (
         <div className='row mx-0'
             style={{ height: '81vh', zIndex: 999 }}>
-            <div className='col-9 p-0 h-100' style={{ position: 'relative' }}>
-                {apiKey && (
-                    <LoadScript
-                        googleMapsApiKey={apiKey}
-                    // libraries={["drawing", "visualization", "geometry", "places"]}
-                    >
-                        <GoogleMap
-                            ref={mapRef}
-                            zoom={6}
-                            mapContainerStyle={MapConstants.containerStyle}
-                            center={center}
-                            onLoad={handleMapLoad}
-                            options={mapOptions}
-                            //isFractionalZoomEnabled={true}
+            <div className='col-9 row p-0 m-0'>
+                <div className='col-3 p-0' style={{backgroundColor: '#F4F6F8'}}>
+                    <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
+                    {/* </div>
+            <div className='col-7 p-0 h-100' style={{ position: 'relative' }}> */}
+                </div>
+                <div className='col-9 p-0'>
+                    {apiKey && (
+                        <LoadScript
+                            googleMapsApiKey={apiKey}
                         >
-                            {Constants.storyFeatures && isChecked?.viewStories && (
-                                Constants.storyFeatures.map((feature, index) => (
-                                    <InfoWindow
-                                        position={feature.position}
-                                        // onClose={handleHoverEnd}
-                                        // closeButton={false}
-                                        options={{
-                                            padding: 0,
-                                            maxWidth: 250,
-                                            borderRadius: 0,
-                                            zIndex: focused === index ? 1000 : 0
-                                        } as any}
-                                    >
-                                        <MapPopup
-                                            properties={feature.properties}
-                                            handleFocused={handleFocused}
-                                            index={index}
-                                        />
-                                    </InfoWindow>
-                                ))
-                            )}
-                        </GoogleMap>
-                    </LoadScript>
-                )}
-                <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
+                            <GoogleMap
+                                ref={mapRef}
+                                zoom={6}
+                                mapContainerStyle={MapConstants.containerStyle}
+                                center={center}
+                                onLoad={handleMapLoad}
+                                options={mapOptions}
+                            >
+                                {Constants.storyFeatures && isChecked?.viewStories && (
+                                    Constants.storyFeatures.map((feature, index) => (
+                                        <InfoWindow
+                                            position={feature.position}
+                                            // onClose={handleHoverEnd}
+                                            // closeButton={false}
+                                            options={{
+                                                padding: 0,
+                                                maxWidth: 250,
+                                                borderRadius: 0,
+                                                zIndex: focused === index ? 1000 : 0
+                                            } as any}
+                                        >
+                                            <MapPopup
+                                                properties={feature.properties}
+                                                handleFocused={handleFocused}
+                                                index={index}
+                                            />
+                                        </InfoWindow>
+                                    ))
+                                )}
+                            </GoogleMap>
+                        </LoadScript>
+                    )}
+                </div>
             </div>
             <div className='col-3 p-0 h-100'>
                 <DistrictSideBar />

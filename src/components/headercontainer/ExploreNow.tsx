@@ -118,7 +118,7 @@ const ExploreNow = () => {
 												<hr className='mt-0'></hr>
 												<div className='row'>
 													{item.districts.map((district: any) => (
-														<p className='col-4 text-start mb-1 color-green fs-16'>{district.name}</p>
+														<p className='col-4 text-start mb-1 color-green fs-16' key={district.name}>{district.name}</p>
 													))}
 												</div>
 											</div>
