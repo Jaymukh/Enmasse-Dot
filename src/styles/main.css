@@ -32,7 +32,7 @@ ul {
 
 .li-selected {
     background-color: var(--green-7);
-	border-left: 4px solid var(--green-0);
+    border-left: 4px solid var(--green-0);
 }
 
 .sidebar-ul {
