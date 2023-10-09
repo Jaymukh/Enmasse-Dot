@@ -68,7 +68,7 @@ function MapOptions({
                                 size={ButtonSize.large}
                                 variant={ButtonVariant.transparent}
                                 onClick={handleCountryChange}
-                                classname='h-auto'
+                                classname='h-auto text-start px-2'
                             >
                                 India
                             </Button>
