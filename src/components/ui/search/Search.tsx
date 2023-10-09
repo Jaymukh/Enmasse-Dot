@@ -4,18 +4,28 @@ import styles from './Search.module.css';
 
 interface SearchProps {
     handleInputChange: (value: string) => void;
-    handleSelectValue: (value: string) => void;
-    data: any;
+    handleSelectValue?: (value: string) => void;
+    data?: any;
     value: string;
-    suggestions: any;
+    suggestions?: any;
+    hideSuggestionBox: boolean;
+    placeholderValue: string;
+    classname?: string,
+
     // results: any;
     // handleChangeResults: (data: any, value: string) => void;
-    
+
     // handleSelectedValue: (data: any, value: string) => void;
 }
 
-const Search = ( { handleInputChange, handleSelectValue, data, value, suggestions }: SearchProps ) => {
+const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions, hideSuggestionBox, placeholderValue, classname }: SearchProps) => {
     const [hideSuggestions, setHideSuggestions] = useState<boolean>(true);
+
+    const handleSelectOption = (value: any) => {
+        if(handleSelectValue) {
+            handleSelectValue(value);
+        }
+    }
     // const [value, setValue] = useState<string>('');
     // const [results, setResults] = useState(
     //     [
@@ -85,7 +95,7 @@ const Search = ( { handleInputChange, handleSelectValue, data, value, suggestion
     //     ]);
 
     // const [suggestions, setSuggestions] = useState(data);
-        
+
 
 
     // const handleInputChange = (value: string) => {
@@ -117,25 +127,27 @@ const Search = ( { handleInputChange, handleSelectValue, data, value, suggestion
                     }, 200);
                 }}
                 type="text"
-                placeholder="Search by state"
+                placeholder={placeholderValue}
                 value={value}
                 onChange={(e) => {
                     handleInputChange(e.target.value);
                 }}
             />
             <span className={styles.icon}><GoSearch fontSize={22} /></span>
-            <div
-                className={`py-1 ${hideSuggestions ? styles.suggestions_hidden : styles.suggestions_visible}`}
-            >
-                {suggestions.map((suggestion: any) => (
-                    <div
-                        className={`text-start py-1 ${styles.suggestions_item}`}
-                        onClick={() => handleSelectValue(suggestion.name)}
-                    >
-                        <p className='px-3 m-0'>{suggestion.name}</p>
-                    </div>
-                ))}
-            </div>
+            {!hideSuggestionBox &&
+                <div
+                    className={`py-1 ${classname} ${hideSuggestions ? styles.suggestions_hidden : styles.suggestions_visible}`}
+                >
+                    {suggestions.map((suggestion: any) => (
+                        <div
+                            className={`text-start py-1 ${styles.suggestions_item}`}
+                            onClick={() => handleSelectOption(suggestion.name)}
+                        >
+                            <p className='px-3 m-0'>{suggestion.name}</p>
+                        </div>
+                    ))}
+                </div>
+            }
         </div>
     )
 }

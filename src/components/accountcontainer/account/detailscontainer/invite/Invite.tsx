@@ -13,15 +13,15 @@ import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
-import InviteSent from './InviteSent';
+import InviteSent from './InviteSent'; import Search from '../../../../ui/search/Search';
 import { error } from 'console';
 
 interface NewData {
-    name: string | undefined;
-    email_id: string | undefined;
-    role: string | undefined;
-    company: string | undefined;
-    company_type: string | undefined;
+	name: string | undefined;
+	email_id: string | undefined;
+	role: string | undefined;
+	company: string | undefined;
+	company_type: string | undefined;
 }
 
 export default function Invite() {
@@ -30,12 +30,12 @@ export default function Invite() {
 	const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
 	const [selectedUserId, setSelectedUserId] = useState<string>('');
 	const [newData, setNewData] = useState<NewData>({
-        name: undefined,
-        email_id: undefined,
-        role: 'Admin',
-        company: 'enmasse',
-        company_type: 'Enmasse',
-    });
+		name: undefined,
+		email_id: undefined,
+		role: 'Admin',
+		company: 'enmasse',
+		company_type: 'Enmasse',
+	});
 
 	// all user's data
 	const userService = useUserService();
@@ -44,11 +44,11 @@ export default function Invite() {
 	const [spinner, setSpinner] = useRecoilState(spinnerState);
 
 	const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        e.preventDefault();
-        var name = e.target.name;
-        var value = e.target.value;
-        setNewData({ ...newData, [name]: value });
-    }
+		e.preventDefault();
+		var name = e.target.name;
+		var value = e.target.value;
+		setNewData({ ...newData, [name]: value });
+	}
 	//function to get all the users
 	useEffect(() => {
 		setSpinner(true);
@@ -94,6 +94,19 @@ export default function Invite() {
 		setOpenInviteNew(false);
 	};
 
+	// searchbar function
+	const [searchTerm, setSearchTerm] = useState('');
+	const [suggestions, setSuggestions] = useState<User[]>([]);
+
+	const handleInputChange = (value: string) => {
+		setSearchTerm(value);
+		// Filter the suggestions based on the input value
+		const filteredSuggestions = users.filter((data) =>
+			data.name.toLowerCase().includes(value.toLowerCase())
+		);
+		setSuggestions(filteredSuggestions);
+	};
+
 	// Confirm Delete Model
 	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
 		setShowConfirmDeleteModal(showConfirmDeleteModal);
@@ -130,15 +143,25 @@ export default function Invite() {
 					colour={TypographyColor.dark}
 					classname='col-2 ms-3 text-start'
 				/>
-				<Button
-					theme={ButtonTheme.secondary}
-					size={ButtonSize.default}
-					variant={ButtonVariant.contained}
-					onClick={() => handleOpenInviteNew()}
-				>
-					<IoMdAdd className='me-1' fontSize={22} />
-					Invite New
-				</Button>
+				<div className='col-8 d-flex flex-row justify-content-end align-items-center'>
+					<Search
+						handleInputChange={handleInputChange}
+						value={searchTerm}
+						suggestions={suggestions}
+						hideSuggestionBox={true}
+						placeholderValue= 'Search by Name'
+					/>
+					<Button
+						theme={ButtonTheme.secondary}
+						size={ButtonSize.default}
+						variant={ButtonVariant.contained}
+						onClick={() => handleOpenInviteNew()}
+						classname='ms-2'
+					>
+						<IoMdAdd className='me-1' fontSize={22} />
+						Invite New
+					</Button>
+				</div>
 			</div>
 			<hr className='mb-4' />
 			<div className="w-auto mx-4 d-flex justify-content-center m-auto">
@@ -154,36 +177,69 @@ export default function Invite() {
 							</tr>
 						</thead>
 						<tbody>
-							{users.map((row) => (
-								<tr
-									key={row.name}
-									className='table-row-height'
-								>
-									<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
-									<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
-									<td className='text-center fs-14'>{row.company}</td>
-									<td className='text-center fs-14'>{row.company_type}</td>
-									<td className='text-center'>
-										<Button
-											theme={ButtonTheme.muted}
-											size={ButtonSize.default}
-											variant={ButtonVariant.transparent}
-											onClick={() => handleEditClick(row)}
-										>
-											<MdModeEdit fontSize={20} />
-										</Button>
-										<Button
-											theme={ButtonTheme.warning}
-											size={ButtonSize.default}
-											variant={ButtonVariant.transparent}
-											onClick={() => openConfirmDeleteModal(true, row.user_id)}
-										>
-											<MdDeleteSweep fontSize={20} />
-										</Button>
-									</td>
-								</tr>
-							))}
+							{suggestions.length > 0 ? (
+								suggestions.map((row) => (
+									<tr
+										key={row.name}
+										className='table-row-height'
+									>
+										<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
+										<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
+										<td className='text-center fs-14'>{row.company}</td>
+										<td className='text-center fs-14'>{row.company_type}</td>
+										<td className='text-center'>
+											<Button
+												theme={ButtonTheme.muted}
+												size={ButtonSize.default}
+												variant={ButtonVariant.transparent}
+												onClick={() => handleEditClick(row)}
+											>
+												<MdModeEdit fontSize={20} />
+											</Button>
+											<Button
+												theme={ButtonTheme.warning}
+												size={ButtonSize.default}
+												variant={ButtonVariant.transparent}
+												onClick={() => openConfirmDeleteModal(true, row.user_id)}
+											>
+												<MdDeleteSweep fontSize={20} />
+											</Button>
+										</td>
+									</tr>
+								))
+							) : (
+								users.map((row) => (
+									<tr
+										key={row.name}
+										className='table-row-height'
+									>
+										<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
+										<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
+										<td className='text-center fs-14'>{row.company}</td>
+										<td className='text-center fs-14'>{row.company_type}</td>
+										<td className='text-center'>
+											<Button
+												theme={ButtonTheme.muted}
+												size={ButtonSize.default}
+												variant={ButtonVariant.transparent}
+												onClick={() => handleEditClick(row)}
+											>
+												<MdModeEdit fontSize={20} />
+											</Button>
+											<Button
+												theme={ButtonTheme.warning}
+												size={ButtonSize.default}
+												variant={ButtonVariant.transparent}
+												onClick={() => openConfirmDeleteModal(true, row.user_id)}
+											>
+												<MdDeleteSweep fontSize={20} />
+											</Button>
+										</td>
+									</tr>
+								))
+							)}
 						</tbody>
+
 					</table>
 				</div>}
 			</div>
@@ -193,7 +249,7 @@ export default function Invite() {
 			{openInviteNew &&
 				<InviteNew openInviteNew={openInviteNew} newData={newData} handleChangeData={handleChangeData} handleCloseInviteNew={handleCloseInviteNew} setOpenInviteSent={setOpenInviteSent} />}
 
-			{openInviteSent && 
+			{openInviteSent &&
 				<InviteSent openInviteSent={openInviteSent} setOpenInviteSent={setOpenInviteSent} email={newData.email_id} />}
 
 			{showConfirmDeleteModal &&

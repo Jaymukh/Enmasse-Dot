@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import CheckGIF from "../../../../../utils/images/CheckMarkGIF.gif";
 
 interface InviteSentProps {
     openInviteSent: boolean;
@@ -16,8 +17,8 @@ const InviteSent: React.FC<InviteSentProps> = ({
 
     const handleInviteSentModal = () => {
         setOpenInviteSent(false);
-
     }
+
     return (
         <div>
             <div className={`modal ${openInviteSent ? 'show' : ''}`} tabIndex={-1} role="dialog" style={{ display: openInviteSent ? 'block' : 'none' }}>
@@ -34,7 +35,8 @@ const InviteSent: React.FC<InviteSentProps> = ({
                                     classname='btn-close mx-3 w-auto my-auto'
                                 />
                             </div>
-                            <div className=" d-flex flex-column justify-content-center my-2">
+                            <div className="d-flex flex-column justify-content-center my-2">
+                                <img src={CheckGIF} alt="Created Successfully GIF" width={319} height={319}></img>
                                 <Heading
                                     title='Invite sent'
                                     type={TypographyType.h2}

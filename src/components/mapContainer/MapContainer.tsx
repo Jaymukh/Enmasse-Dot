@@ -33,8 +33,18 @@ function MapContainer() {
         setSelectedDistrict('');
     };
 
-    const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const value = event.target.value;
+    // const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    //     const value = event.target.value;
+    //     const selectedItem = countries.find((item: any) => item.name === value);
+    //     if (selectedItem) {
+    //         setStates(State.getStatesOfCountry(selectedItem.isoCode));
+    //         setSelectedCountry(selectedItem);
+    //         setSelectedState(undefined);
+    //         setSelectedDistrict('');
+    //     }
+    // };
+    const handleCountryChange = () => {
+        const value = 'India';
         const selectedItem = countries.find((item: any) => item.name === value);
         if (selectedItem) {
             setStates(State.getStatesOfCountry(selectedItem.isoCode));

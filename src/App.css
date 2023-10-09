@@ -1028,9 +1028,8 @@ th {
 .country-text {
 	font-size: 0.6rem;
 	color: #797C85;
-	;
-	margin-left: 0rem;
-	margin-bottom: 0.1rem;
+	margin-left: 0.1rem;
+	margin-bottom: 0;
 	width: 1px;
 }
 

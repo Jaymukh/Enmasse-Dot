@@ -84,6 +84,7 @@ export default function EditProfile({
                     labelKey='name'
                     valueKey='name'
                     size={SelectSize.large}
+                    onChange={(e) => handleChangeData(e)}
                     name='role'
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Designation</h6>
@@ -101,6 +102,7 @@ export default function EditProfile({
                     labelKey='value'
                     valueKey='value'
                     size={SelectSize.large}
+                    onChange={(e) => handleChangeData(e)}
                     name='company'
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
@@ -110,6 +112,7 @@ export default function EditProfile({
                     labelKey='name'
                     valueKey='name'
                     size={SelectSize.large}
+                    onChange={(e) => handleChangeData(e)}
                     name='company_type'
                 />
                 <Button
