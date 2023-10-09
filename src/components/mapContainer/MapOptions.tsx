@@ -8,7 +8,7 @@ import Select, { SelectSize } from '../ui/select/Select';
 
 interface MapOptionsProps {
     handleGlobal: () => void;
-    handleCountryChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    handleCountryChange: () => void;
     handleStateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     handleDistrictChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     global: boolean;
@@ -49,32 +49,45 @@ function MapOptions({
     return (
         <div className='d-flex justify-content-around align-items-center border-bottom bg-white mx-0' style={{ height: '7.5vh' }}>
             <div className='col-xl-7 col-md-7 justify-content-start d-flex flex-wrap h-100'>
-                <div className='select-right-margin py-1' style={{width: '10vw'}}>
+                <div className='select-right-margin py-1' style={{ width: '10vw' }}>
                     <Button
-							theme={ButtonTheme.primary}
-							size={ButtonSize.large}
-							variant={ButtonVariant.transparent}
-							onClick={handleGlobal}
-						>
-							Global
-						</Button>
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.large}
+                        variant={ButtonVariant.transparent}
+                        onClick={handleGlobal}
+                    >
+                        Global
+                    </Button>
                 </div>
-                {!global ? (
-                    <div className='select-right-margin ms-2 py-1'>
-                        <p className='country-text mx-1'>COUNTRY</p>
-                        <Select
-                            options={countries}
-                            onChange={handleCountryChange}
-                            value={selectedCountry}
-                            labelKey='name'
-                            valueKey='name'
-                            size={SelectSize.medium}
-                            placeholder='SELECT'
-                        />
-                    </div>
-                ) : (
-                    ''
-                )}
+                {
+                    !global ? (
+                        <div className='select-right-margin py-1' style={{ width: '10vw' }}>
+                            <p className='country-text ms-2 '>COUNTRY</p>
+                            <Button
+                                theme={ButtonTheme.primary}
+                                size={ButtonSize.large}
+                                variant={ButtonVariant.transparent}
+                                onClick={handleCountryChange}
+                                classname='h-auto'
+                            >
+                                India
+                            </Button>
+                        </div>
+                        // <div className='select-right-margin ms-2 py-1'>
+                        //     <p className='country-text'>COUNTRY</p>
+                        //     <Select
+                        //         options={countries}
+                        //         onChange={handleCountryChange}
+                        //         value={selectedCountry}
+                        //         labelKey='name'
+                        //         valueKey='name'
+                        //         size={SelectSize.medium}
+                        //         placeholder='SELECT'
+                        //     />
+                        // </div>
+                    ) :
+                        ('')
+                }
                 {!global && selectedCountry ? (
                     <div className='select-right-margin ms-2 py-1'>
                         <p className='country-text mx-1'>STATE</p>

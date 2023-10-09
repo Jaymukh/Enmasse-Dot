@@ -1,5 +1,5 @@
 import '../../App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import globe from '../../utils/images/globe.png';
 import ForgotPassword from './ForgotPassword';
 import EmailSent from './EmailSent';
@@ -12,6 +12,7 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
+import * as Constants from '../../utils/constants/Constants';
 
 interface IFormValues {
     email_id: string;
@@ -81,7 +82,7 @@ export default function Login() {
                         <div>
                             <Heading
                                 title='enmasse'
-                                type={TypographyType.h3}
+                                type={TypographyType.h2}
                                 colour={TypographyColor.dark}
                             />
                             <p className='text-muted login-p'>
@@ -117,6 +118,7 @@ export default function Login() {
                                     title='Password'
                                     type={TypographyType.h4}
                                     colour={TypographyColor.dark}
+                                    classname='mb-0'
                                 />
                                 {/* <a href='' onClick={() => handleModal({ passwordModal: true })}>Forgot password?</a> */}
                                 <Button

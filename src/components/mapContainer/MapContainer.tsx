@@ -37,21 +37,22 @@ function MapContainer() {
         setSelectedDistrict('');
     };
 
-    const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    // const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    //     const value = event.target.value;
+    //     const selectedItem = countries.find((item: any) => item.name === value);
+    //     if (selectedItem) {
+    //         setStates(State.getStatesOfCountry(selectedItem.isoCode));
+    //         setSelectedCountry(selectedItem);
+    //         setSelectedState(undefined);
+    //         setSelectedDistrict('');
+    //     }
+    // };
+    const handleCountryChange = () => {
         setStates(State.getStatesOfCountry('IN'));
         setSelectedCountry(countries[0]);
         setSelectedState(undefined);
         setSelectedDistrict('');
         setSearchParams({ country: 'IN'});
-        // const value = event.target.value;
-        // const selectedItem = countries.find((item: any) => item.name === value);
-        // if (selectedItem) {
-        //     setStates(State.getStatesOfCountry(selectedItem.isoCode));
-        //     setSelectedCountry(selectedItem);
-        //     setSelectedState(undefined);
-        //     setSelectedDistrict('');
-        //     setSearchParams({ country: selectedItem.isoCode });
-        // }
     };
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { GiPlainCircle } from 'react-icons/gi';
 import { GoCheckCircleFill } from 'react-icons/go';
 import { IoMdArrowBack } from 'react-icons/io';
@@ -19,8 +20,11 @@ import CheckGIF from "../../utils/images/CheckMarkGIF.gif";
 const UpdatePassword = () => {
     const navigate = useNavigate();
     const userService = useUserService();
-    const arr = window.location.href.split("=");
-    const token = arr.pop();
+    // const arr = window.location.href.split("=");
+    // const token = arr.pop();
+    const [searchParams] = useSearchParams();
+    console.log(searchParams.get('token'));
+    const token = searchParams.get('token');
     const [passwordCreated, setPasswordCreated] = useState(false);
     const validationSchema = Yup.object().shape({
         new_password: Yup.string()
@@ -102,7 +106,7 @@ const UpdatePassword = () => {
                         <div>
                             <Heading
                                 title='enmasse'
-                                type={TypographyType.h3}
+                                type={TypographyType.h2}
                                 colour={TypographyColor.dark}
                             />
                             <p className='text-muted login-p'>
@@ -115,23 +119,35 @@ const UpdatePassword = () => {
             <div className='col-md-6 col-md-6 login-update-box whiteBackground'>
                 {passwordCreated ?
                     <div className='loginCardAlign'>
-                        <img src={CheckGIF} alt="Created Successfully GIF"></img>
-                        <h6 className='fs-27 mb-2'>Created Successfully</h6>
-                        <p className='fs-14 text-muted mb-3'>Password created successfully!</p>
+                        <div className='d-flex justify-content-center'>
+                            <img src={CheckGIF} alt="Created Successfully GIF" width={319} height={319}></img>
+                        </div>
+                        <Heading
+                            title='Created Successfully'
+                            type={TypographyType.h2}
+                            colour={TypographyColor.dark}
+                            classname='text-center mb-2'
+                        />
+                        <p className='fs-14 text-muted mb-3 text-center'>Password created successfully!</p>
                         <Button
                             theme={ButtonTheme.primary}
                             size={ButtonSize.large}
                             variant={ButtonVariant.bordered}
                             type='button'
                             onClick={handleContinue}
-
                             classname='mt-3'
                         >
                             Continue
                         </Button>
-                    </div> :
+                    </div>
+                    :
                     <form className='loginCardAlign' onSubmit={handleSubmit(onSubmit)}>
-                        <h6 className='fs-27 mb-2'>Create Password</h6>
+                        <Heading
+                            title='Create a Password'
+                            type={TypographyType.h2}
+                            colour={TypographyColor.dark}
+                            classname='mb-2'
+                        />
                         <p className='fs-14 text-muted mb-3'>Create password for your account.</p>
                         <Heading
                             title='Password'
@@ -198,15 +214,15 @@ const UpdatePassword = () => {
                             Create Password
                         </Button>
                         {/* <Button
-                        theme={ButtonTheme.primary}
-                        size={ButtonSize.large}
-                        variant={ButtonVariant.transparent}
-                        onClick={() => handleSkip()}
-                        type='button'
-                        classname='text-decoration-underline mt-3'
-                    >
-                        Skip
-                    </Button> */}
+                            theme={ButtonTheme.primary}
+                            size={ButtonSize.large}
+                            variant={ButtonVariant.transparent}
+                            onClick={() => handleSkip()}
+                            type='button'
+                            classname='text-decoration-underline mt-3'
+                        >
+                            Skip
+                                </Button> */}
                     </form>
                 }
             </div>

@@ -22,7 +22,7 @@ const FamilyDetailsEmptyContainer: React.FC<FamilyDetailsEmptyContainerProps> = 
                         type={TypographyType.h3}
                         colour={TypographyColor.dark}
                     />
-                    <h6 className="card-title text-muted mx-2 my-1">{selectedData.address}</h6>
+                    <h6 className="text-muted mx-2 my-1 fs-14">{selectedData.properties.district}, {selectedData.properties.state}, {selectedData.properties.country}</h6>
                 </div>
                 <div className="card-body d-flex flex-column justify-content-center align-items-center pt-0">
                     <div className='d-flex justify-content-center'>

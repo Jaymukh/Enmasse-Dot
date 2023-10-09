@@ -104,6 +104,8 @@ const ExploreNow = () => {
 									data={Constants.explorePlaces}
 									value={value}
 									suggestions={suggestions}
+									hideSuggestionBox={false}
+									placeholderValue='Search by State'
 								/>
 								<div className='my-4'>
 									<div>
