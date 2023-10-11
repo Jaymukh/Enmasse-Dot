@@ -59,8 +59,7 @@ function MapOptions({
                         Global
                     </Button>
                 </div>
-                {
-                    !global ? (
+                
                         <div className='select-right-margin py-1' style={{ width: '10vw' }}>
                             <p className='country-text ms-2 '>COUNTRY</p>
                             <Button
@@ -70,24 +69,10 @@ function MapOptions({
                                 onClick={handleCountryChange}
                                 classname='h-auto text-start px-2'
                             >
-                                India
+                                {global ? 'SELECT' : 'India'}
                             </Button>
                         </div>
-                        // <div className='select-right-margin ms-2 py-1'>
-                        //     <p className='country-text'>COUNTRY</p>
-                        //     <Select
-                        //         options={countries}
-                        //         onChange={handleCountryChange}
-                        //         value={selectedCountry}
-                        //         labelKey='name'
-                        //         valueKey='name'
-                        //         size={SelectSize.medium}
-                        //         placeholder='SELECT'
-                        //     />
-                        // </div>
-                    ) :
-                        ('')
-                }
+                   
                 {!global && selectedCountry ? (
                     <div className='select-right-margin ms-2 py-1'>
                         <p className='country-text mx-1'>STATE</p>
@@ -96,7 +81,7 @@ function MapOptions({
                             onChange={handleStateChange}
                             value={selectedState}
                             labelKey='name'
-                            valueKey='name'
+                            valueKey='geo_id'
                             size={SelectSize.medium}
                             placeholder='SELECT'
                         />
@@ -112,7 +97,7 @@ function MapOptions({
                             onChange={handleDistrictChange}
                             value={selectedDistrict}
                             labelKey='name'
-                            valueKey='name'
+                            valueKey='geo_id'
                             size={SelectSize.medium}
                             placeholder='SELECT'
                         />

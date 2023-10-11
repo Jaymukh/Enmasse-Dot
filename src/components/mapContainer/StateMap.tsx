@@ -1,21 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import '../../App.css';
-import { GoogleMap, LoadScript, InfoWindow, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api';
 import * as MapConstants from '../../utils/json/googlemapstyle'
 import * as Constants from '../../utils/constants/Constants';
 import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { geoJsonState } from '../../states/GeoJSONState';
+import { Spinner } from '../ui/spinner/Spinner';
 
 
 interface StateMapProps {
-    features: any;
-    handleImportFeature: (code?: string | undefined) => void;
+    features?: any;
+    handleImportFeature?: (code?: string | undefined) => void;
     selectedCountry: string | null;
     selectedState: string | null;
     selectedDistrict: string | null;
-    pointFeatures: any[];
+    pointFeatures?: any[];
 }
 
 interface Feature {
@@ -28,8 +31,8 @@ interface Feature {
 }
 
 const StateMap: React.FC<StateMapProps> = ({
-    features,
-    handleImportFeature,
+    //features,
+    //handleImportFeature,
     selectedCountry,
     selectedState,
     selectedDistrict,
@@ -42,11 +45,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const [selectedCoreSoln, setSelectedCoreSoln] = useState({ key: 0, label: 'All', type: 'radius_all' });
     const [focused, setFocused] = useState(0);
     const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
-
-    const toggleSwitch = (event?: React.ChangeEvent<HTMLInputElement>) => {
-        const name: string = event?.target?.name!;
-        setIsChecked({ ...isChecked, [name]: !isChecked[name] });
-    };
+    const geoJSON = useRecoilValue(geoJsonState);
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const [center, setCenter] = useState({
@@ -60,7 +59,13 @@ const StateMap: React.FC<StateMapProps> = ({
         mapTypeControl: false,
         streetViewControl: false,
         styles: MapConstants.NonGlobalMapStyle,
-        isFractionalZoomEnabled: true
+        isFractionalZoomEnabled: true,
+        keyboardShortcuts: false
+    };
+
+    const toggleSwitch = (event?: React.ChangeEvent<HTMLInputElement>) => {
+        const name: string = event?.target?.name!;
+        setIsChecked({ ...isChecked, [name]: !isChecked[name] });
     };
 
     const handleMapLoad = useCallback((mapInstance: google.maps.Map) => {
@@ -97,16 +102,16 @@ const StateMap: React.FC<StateMapProps> = ({
     }
 
     useEffect(() => {
-        if (map && features) {
+        if (map && Object.keys(geoJSON).length) {
+            
             setIsChecked({ ...isChecked, coreSolution: true });
             map.data.forEach((feature) => {
                 map.data.remove(feature);
             });
-            map.data.addGeoJson(features);
+            map.data.addGeoJson(geoJSON);
 
             map.data.setStyle((feature) => {
-                const population = feature.getProperty('population');
-                const fillColor = getColorBasedOnPopulation(population);
+                const fillColor = feature.getProperty('Color');
                 return {
                     fillColor,
                     fillOpacity: 0.7,
@@ -128,7 +133,7 @@ const StateMap: React.FC<StateMapProps> = ({
             };
 
             const bounds = new window.google.maps.LatLngBounds();
-            features.features.forEach((feature: Feature) => {
+            geoJSON.features.forEach((feature: any) => {
                 processCoordinates(feature.geometry.coordinates);
             });
 
@@ -136,7 +141,7 @@ const StateMap: React.FC<StateMapProps> = ({
             map.fitBounds(bounds);
             setCenter({ lat: bounds.getCenter().lat(), lng: bounds.getCenter().lng() });
         }
-    }, [map, features]);
+    }, [map, geoJSON]);
 
     useEffect(() => {
         if (!isChecked.coreSolution) {
@@ -178,7 +183,7 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [map, pointFeatures, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
-        handleImportFeature();
+        //handleImportFeature();
         clearCircles();
     }, [selectedCountry, selectedState, selectedDistrict]);
 
