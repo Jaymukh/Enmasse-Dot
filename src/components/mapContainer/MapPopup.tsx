@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
@@ -15,10 +15,14 @@ interface MapPopupProps {
 }
 
 const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index }) => {
-    const navigate = useNavigate();
+    const history = useNavigate();
 
     const handlePopupClick = () => {
-        navigate(RouteConstants.stories);
+        const geoCode = '11';
+        history({
+            pathname: RouteConstants.stories,
+            search: `?geo_code=${geoCode}`,
+        });
     };
 
     return (

@@ -14,8 +14,11 @@ const APIS: any = {
         ACCEPT_AGREEMENT: '/users/accept-agreement/',
     },
     SETTINGS: {
-        GET_ALL_SETTINGS : '/users/settings/details/',
+        GET_ALL_SETTINGS: '/users/settings/details/',
         GET_USER_SETTINGS: '/users/settings/',
+    },
+    STORIES: {
+        GET_ALL_STORIES: '/story/viewstory'
     }
 }
 
