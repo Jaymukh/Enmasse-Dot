@@ -7,35 +7,20 @@ import * as Constants from '../../utils/constants/Constants';
 import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { geoJsonState } from '../../states/GeoJSONState';
-import { Spinner } from '../ui/spinner/Spinner';
+import { Breadcrumb } from '../ui/breadcrumb/Breadcrumb';
 
 
 interface StateMapProps {
     features?: any;
     handleImportFeature?: (code?: string | undefined) => void;
-    selectedCountry: string | null;
-    selectedState: string | null;
-    selectedDistrict: string | null;
+    selected: any;
     pointFeatures?: any[];
 }
 
-interface Feature {
-    type: string;
-    id: number;
-    geometry: {
-        type: string;
-        coordinates: any;
-    };
-}
-
 const StateMap: React.FC<StateMapProps> = ({
-    //features,
-    //handleImportFeature,
-    selectedCountry,
-    selectedState,
-    selectedDistrict,
+    selected,
     pointFeatures
 }) => {
     const mapRef = useRef(null);
@@ -78,20 +63,6 @@ const StateMap: React.FC<StateMapProps> = ({
         setSelectedCoreSoln(option);
     };
 
-    const getColorBasedOnPopulation = (population: number) => {
-        if (population <= 100000) {
-            return '#D4E2DB';
-        } else if (population <= 5000000) {
-            return '#83BFA1';
-        } else if (population <= 10000000) {
-            return '#429C6B';
-        } else if (population <= 50000000) {
-            return '#108041';
-        } else {
-            return '#D4E2DB';
-        }
-    };
-
     const clearCircles = () => {
         circles.forEach((circle) => circle.setMap(null));
         setCircles([]);
@@ -103,7 +74,6 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
-            
             setIsChecked({ ...isChecked, coreSolution: true });
             map.data.forEach((feature) => {
                 map.data.remove(feature);
@@ -149,7 +119,6 @@ const StateMap: React.FC<StateMapProps> = ({
         }
         else if (map && pointFeatures && isChecked.coreSolution) {
             clearCircles();
-
             const newCircles = pointFeatures.map((feature) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
@@ -165,14 +134,12 @@ const StateMap: React.FC<StateMapProps> = ({
                     return new window.google.maps.Circle({
                         center: center,
                         radius: feature.properties[radius],
-                        // options: {
                         fillColor: '#FFFFFF',
                         fillOpacity: fillOpacity,
                         strokeColor: '#FFFFFF',
                         strokeOpacity: 1,
                         strokeWeight: 1,
                         zIndex: 100,
-                        // },
                         map: map,
                     });
                 });
@@ -185,16 +152,17 @@ const StateMap: React.FC<StateMapProps> = ({
     useEffect(() => {
         //handleImportFeature();
         clearCircles();
-    }, [selectedCountry, selectedState, selectedDistrict]);
+    }, [selected.country, selected.state, selected.district]);
 
     return (
         <div className='row mx-0'
             style={{ height: '81vh', zIndex: 999 }}>
             <div className='col-9 row p-0 m-0'>
-                <div className='col-3 p-0' style={{backgroundColor: '#F4F6F8'}}>
+                {/* <div className='col-12'>
+                    <Breadcrumb />
+                </div> */}
+                <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8' }}>
                     <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
-                    {/* </div>
-            <div className='col-7 p-0 h-100' style={{ position: 'relative' }}> */}
                 </div>
                 <div className='col-9 p-0'>
                     {apiKey && (

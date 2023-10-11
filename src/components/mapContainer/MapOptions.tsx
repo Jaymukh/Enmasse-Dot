@@ -11,12 +11,10 @@ interface MapOptionsProps {
     handleStateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     handleDistrictChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     global: boolean;
-    selectedCountry: string | null;
-    selectedState: string | null;
-    selectedDistrict: string | null;
     countries: any;
     states: any;
     districts: any;
+    selected: any
 }
 
 function MapOptions({
@@ -24,12 +22,9 @@ function MapOptions({
     handleStateChange,
     handleDistrictChange,
     global,
-    selectedCountry,
-    selectedState,
-    selectedDistrict,
-    countries,
     states,
-    districts
+    districts,
+    selected
 }: MapOptionsProps) {
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useState('');
@@ -71,13 +66,13 @@ function MapOptions({
                             </Button>
                         </div>
                    
-                {!global && selectedCountry ? (
+                {!global && selected.country ? (
                     <div className='select-right-margin ms-2 py-1'>
                         <p className='country-text mx-1'>STATE</p>
                         <Select
                             options={states}
                             onChange={handleStateChange}
-                            value={selectedState}
+                            value={selected.state}
                             labelKey='name'
                             valueKey='geo_id'
                             size={SelectSize.medium}
@@ -87,13 +82,13 @@ function MapOptions({
                 ) : (
                     ''
                 )}
-                {!global && selectedState ? (
+                {!global && selected.state ? (
                     <div className='select-right-margin ms-2 py-1'>
                         <p className='country-text mx-1'>DISTRICT</p>
                         <Select
                             options={districts}
                             onChange={handleDistrictChange}
-                            value={selectedDistrict}
+                            value={selected.district}
                             labelKey='name'
                             valueKey='geo_id'
                             size={SelectSize.medium}

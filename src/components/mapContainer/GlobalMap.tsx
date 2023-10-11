@@ -53,7 +53,6 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
 			</div>
 			<LoadScript googleMapsApiKey={apiKey}>
 				<GoogleMap mapContainerStyle={MapConstants.containerStyle} center={center} zoom={1.5} options={mapOptions} onClick={handleMapClick}>
-					{/* Additional components and markers can be added here */}
 				</GoogleMap>
 			</LoadScript>
 		</div>

@@ -7,7 +7,8 @@ import { RouteConstants } from '../../constants';
 import { useMapsService } from '../../services';
 import { geoJsonState, spinnerState } from '../../states';
 import MapOptions from './MapOptions';
-import Map from './Map';
+import GlobalMap from './GlobalMap';
+import StateMap from './StateMap';
 
 const countries = [{ geo_id: 1, name: 'India' }];
 
@@ -20,12 +21,10 @@ function MapContainer() {
     const routeFlag = window.location.pathname === '/' ? true : false;
 
     const [global, setGlobal] = useState<boolean>(routeFlag);
-    const [selectedCountry, setSelectedCountry] = useState<any>(countries[0]); // Initialize with undefined
-    const [selectedState, setSelectedState] = useState<any>({}); // Initialize with undefined
-    const [selectedDistrict, setSelectedDistrict] = useState<any>({});
     const [states, setStates] = useState<any>([]);
     const [districts, setDistricts] = useState<any>([]);
     const setGeoJSON = useSetRecoilState(geoJsonState);
+
     const getSelectedObject = () => {
         const params: Record<string, string> = {};
         searchParams.toString().split('&').forEach((param) => {
@@ -37,15 +36,20 @@ function MapContainer() {
     const [selected, setSelected] = useState<any>(getSelectedObject());
 
     const handleCountryChange = () => {
-        global ? navigate(RouteConstants.explore) : navigate(RouteConstants.root);
         setGlobal(!global);
-        // setSelectedState({});
-        // setSelectedDistrict({});
-        setSearchParams({ country: '1' });
+        setTimeout(() => {
+            if (global) {
+                navigate(`${RouteConstants.explore}?country=1`);               
+            } else {
+                navigate(RouteConstants.root);
+            }
+        });
+        setSelected({ country: 1 });
     };
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
+        delete selected['district'];
         setSelected({ ...selected, state: value })
         updateSearchParams('state', value);
     };
@@ -74,8 +78,21 @@ function MapContainer() {
     }
 
     useEffect(() => {
-        console.log(selected);
         if (selected.district) {
+            if (selected.state) {
+                mapServices.getDropdownList(selected.state).then(data => {
+                    setDistricts(data.children);
+                }).catch(error => {
+                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    toast.error(errorMsg);
+                });
+                mapServices.getDropdownList(selected.country).then(data => {
+                    setStates(data.children);
+                }).catch(error => {
+                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    toast.error(errorMsg);
+                });
+            }
             setSpinner(true);
             getGeoJsonData(selected.district);
         } else if (selected.state) {
@@ -99,8 +116,8 @@ function MapContainer() {
             });
             getGeoJsonData(selected.country);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected.country, selected.state, selected.district]);
-
     return (
         <div className='MapContainer mx-0  header2' style={{ height: '88.5vh' }}>
             <MapOptions
@@ -108,20 +125,18 @@ function MapContainer() {
                 handleStateChange={handleStateChange}
                 handleDistrictChange={handleDistrictChange}
                 global={global}
-                selectedCountry={selected.country}
-                selectedState={selected.state}
-                selectedDistrict={selected.district}
                 countries={countries}
                 states={states}
                 districts={districts}
+                selected={selected}
             />
-            <Map
-                global={global}
-                selectedCountry={selected.country}
-                selectedState={selected.state}
-                selectedCountryCode={selected.country}
-                selectedDistrict={selected.district}
-            />
+            {global ? (
+                <GlobalMap />
+            ) : (
+                <StateMap
+                    selected={selected}
+                />
+            )}
         </div>
     );
 }

@@ -28,7 +28,6 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
         <div className="ms-4 h-100">
             <div className='d-flex flex-column justify-content-between h-100'>
                 <div>
-                    {/* <div className="ms-4 top-0 start-0" style={{ position: "absolute" }}> */}
                     <div className="mt-4 bg-white px-3 py-2">
                         <div className='d-flex align-items-center justify-content-between'>
                             <PiRadioButtonLight fontSize={22} />
@@ -39,7 +38,9 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 name='coreSolution'
                             />
                         </div>
-                        {isChecked?.coreSolution && <div className="pe-3 mt-1">
+                    </div>
+                    {isChecked?.coreSolution &&
+                        <div className="bg-white mt-2 py-3 px-3">
                             {options.map((option) => (
                                 <div className="d-flex flex-row justify-content-start ms-1" key={option.label}>
                                     <label className="my-1 fs-14">
@@ -56,8 +57,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 </div>
                             ))}
                         </div>}
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center bg-white mt-2 px-3 py-2">
+                    <div className="d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2">
                         <div className='d-flex'>
                             <BsFillChatLeftTextFill className='me-1' fontSize={20} />
                             <h6 className="my-0 fs-16 ms-2">View Stories</h6>
@@ -68,7 +68,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             name='viewStories'
                         />
                     </div>
-                    <div className="d-flex justify-content-between align-items-center bg-white mt-2 px-3 py-2">
+                    <div className="d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2">
                         <MdLayers fontSize={22} />
                         <h6 className="my-0 fs-16">Request Layers</h6>
                         <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
