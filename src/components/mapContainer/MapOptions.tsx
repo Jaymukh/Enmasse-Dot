@@ -7,7 +7,6 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 import Select, { SelectSize } from '../ui/select/Select';
 
 interface MapOptionsProps {
-    handleGlobal: () => void;
     handleCountryChange: () => void;
     handleStateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     handleDistrictChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -21,7 +20,6 @@ interface MapOptionsProps {
 }
 
 function MapOptions({
-    handleGlobal,
     handleCountryChange,
     handleStateChange,
     handleDistrictChange,
@@ -54,7 +52,7 @@ function MapOptions({
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
                         variant={ButtonVariant.transparent}
-                        onClick={handleGlobal}
+                        // onClick={handleGlobal}
                     >
                         Global
                     </Button>

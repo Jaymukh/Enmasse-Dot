@@ -1,15 +1,13 @@
 import '../../App.css';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useSetRecoilState } from 'recoil';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { RouteConstants } from '../../constants';
+import { useMapsService } from '../../services';
+import { geoJsonState, spinnerState } from '../../states';
 import MapOptions from './MapOptions';
 import Map from './Map';
-import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../constants';
-import { useSearchParams } from 'react-router-dom';
-import { useMapsService } from '../../services';
-import { toast } from 'react-toastify';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { geoJsonState } from '../../states/GeoJSONState';
-import { spinnerState } from '../../states';
 
 const countries = [{ geo_id: 1, name: 'India' }];
 
@@ -17,6 +15,7 @@ function MapContainer() {
     const navigate = useNavigate();
     const mapServices = useMapsService();
     const setSpinner = useSetRecoilState(spinnerState);
+    const [searchParams, setSearchParams] = useSearchParams({ country: '1' });
 
     const routeFlag = window.location.pathname === '/' ? true : false;
 
@@ -26,23 +25,16 @@ function MapContainer() {
     const [selectedDistrict, setSelectedDistrict] = useState<any>({});
     const [states, setStates] = useState<any>([]);
     const [districts, setDistricts] = useState<any>([]);
+    const [selected, setSelected] = useState({ country: searchParams.get('country'), state: searchParams.get('state'), district: searchParams.get('district') })
 
-    const [searchParams, setSearchParams] = useSearchParams({ country: '1' });
     const setGeoJSON = useSetRecoilState(geoJsonState);
-
-    const handleGlobal = () => {
-        // global ? navigate(RouteConstants.explore) : navigate(RouteConstants.root);
-        // setGlobal(!global);
-        // setSelectedState({});
-        // setSelectedDistrict('');
-    };
 
     const handleCountryChange = () => {
         global ? navigate(RouteConstants.explore) : navigate(RouteConstants.root);
         setGlobal(!global);
         setSelectedState({});
         setSelectedDistrict({});
-        setSearchParams({country: 'IN'});
+        setSearchParams({ country: 'IN' });
     };
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -69,22 +61,16 @@ function MapContainer() {
         setSearchParams(currentParams);
     }
 
-    // useEffect(() => {
-    //     if (searchParams) {
-    //         if (countries) {
-    //             const selectedItem = countries.find((item: any) => item.geo_id === searchParams.get('country'));
-    //             setSelectedCountry(selectedItem);
-    //         }
-    //         if (states) {
-    //             const selectedItem = states.find((item: any) => item.geo_id === searchParams.get('state'));
-    //             setSelectedState(selectedItem);
-    //         }
-    //         if (districts) {
-    //             const selectedItem = districts.find((item: any) => item.geo_id === searchParams.get('district'));
-    //             setSelectedDistrict(selectedItem);
-    //         }
-    //     }
-    // }, []);
+    const getGeoJsonData = (geo_id: number) => {
+        mapServices.getMaps(geo_id).then(data => {
+            setSpinner(false);
+            setGeoJSON(data);
+        }).catch(error => {
+            setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            toast.error(errorMsg);
+        });
+    }
 
     useEffect(() => {
         if (selectedCountry?.geo_id) {
@@ -96,19 +82,12 @@ function MapContainer() {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });
-            mapServices.getMaps(selectedCountry.geo_id).then(data => {
-                setSpinner(false);
-                setGeoJSON(data);
-            }).catch(error => {
-                setSpinner(false);
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
-            });
+            getGeoJsonData(selectedCountry.geo_id);
         }
     }, [selectedCountry?.geo_id]);
 
     useEffect(() => {
-        if (selectedState.geo_id) {
+        if (selectedState?.geo_id) {
             setSpinner(true);
             updateSearchParams('state', selectedState.geo_id);
             mapServices.getDropdownList(selectedState.geo_id).then(data => {
@@ -117,35 +96,20 @@ function MapContainer() {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });
-            mapServices.getMaps(selectedState.geo_id).then(data => {
-                setSpinner(false);
-                setGeoJSON(data);
-            }).catch(error => {
-                setSpinner(false);
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
-            });
+            getGeoJsonData(selectedState.geo_id);
         }
     }, [selectedState?.geo_id]);
 
     useEffect(() => {
         if (selectedDistrict?.geo_id) {
             setSpinner(true);
-            mapServices.getMaps(selectedDistrict.geo_id).then(data => {
-                setSpinner(false);
-                setGeoJSON(data);
-            }).catch(error => {
-                setSpinner(false);
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
-            });
+            getGeoJsonData(selectedDistrict.geo_id);
         }
     }, [selectedDistrict?.geo_id]);
 
     return (
         <div className='MapContainer mx-0  header2' style={{ height: '88.5vh' }}>
             <MapOptions
-                handleGlobal={handleGlobal}
                 handleCountryChange={handleCountryChange}
                 handleStateChange={handleStateChange}
                 handleDistrictChange={handleDistrictChange}
