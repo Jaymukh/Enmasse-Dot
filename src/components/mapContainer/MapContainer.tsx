@@ -25,34 +25,35 @@ function MapContainer() {
     const [selectedDistrict, setSelectedDistrict] = useState<any>({});
     const [states, setStates] = useState<any>([]);
     const [districts, setDistricts] = useState<any>([]);
-    const [selected, setSelected] = useState({ country: searchParams.get('country'), state: searchParams.get('state'), district: searchParams.get('district') })
-
     const setGeoJSON = useSetRecoilState(geoJsonState);
+    const getSelectedObject = () => {
+        const params: Record<string, string> = {};
+        searchParams.toString().split('&').forEach((param) => {
+            const [key, value] = param.split('=');
+            params[key] = value;
+        });
+        return params;
+    }
+    const [selected, setSelected] = useState<any>(getSelectedObject());
 
     const handleCountryChange = () => {
         global ? navigate(RouteConstants.explore) : navigate(RouteConstants.root);
         setGlobal(!global);
-        setSelectedState({});
-        setSelectedDistrict({});
-        setSearchParams({ country: 'IN' });
+        // setSelectedState({});
+        // setSelectedDistrict({});
+        setSearchParams({ country: '1' });
     };
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const value = Number(event.target.value);
-        if (states) {
-            const selectedItem = states.find((item: any) => item.geo_id === value);
-            setSelectedState(selectedItem);
-            updateSearchParams('state', selectedItem.geo_id);
-        }
+        const value = event.target.value;
+        setSelected({ ...selected, state: value })
+        updateSearchParams('state', value);
     };
 
     const handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const value = Number(event.target.value);
-        if (districts) {
-            const selectedItem = districts.find((item: any) => item.geo_id === value);
-            setSelectedDistrict(selectedItem);
-            updateSearchParams('district', selectedItem.geo_id);
-        }
+        const value = event.target.value;
+        setSelected({ ...selected, district: value })
+        updateSearchParams('district', value);
     };
 
     const updateSearchParams = (name: string, value: string) => {
@@ -61,8 +62,8 @@ function MapContainer() {
         setSearchParams(currentParams);
     }
 
-    const getGeoJsonData = (geo_id: number) => {
-        mapServices.getMaps(geo_id).then(data => {
+    const getGeoJsonData = (geo_id: string) => {
+        mapServices.getMaps(Number(geo_id)).then(data => {
             setSpinner(false);
             setGeoJSON(data);
         }).catch(error => {
@@ -73,39 +74,32 @@ function MapContainer() {
     }
 
     useEffect(() => {
-        if (selectedCountry?.geo_id) {
+        console.log(selected);
+        if (selected.district) {
             setSpinner(true);
-            updateSearchParams('country', selectedCountry.geo_id);
-            mapServices.getDropdownList(selectedCountry.geo_id).then(data => {
-                setStates(data.children);
-            }).catch(error => {
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
-            });
-            getGeoJsonData(selectedCountry.geo_id);
-        }
-    }, [selectedCountry?.geo_id]);
-
-    useEffect(() => {
-        if (selectedState?.geo_id) {
+            getGeoJsonData(selected.district);
+        } else if (selected.state) {
             setSpinner(true);
-            updateSearchParams('state', selectedState.geo_id);
-            mapServices.getDropdownList(selectedState.geo_id).then(data => {
+            updateSearchParams('state', selected.state);
+            mapServices.getDropdownList(selected.state).then(data => {
                 setDistricts(data.children);
             }).catch(error => {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
             });
-            getGeoJsonData(selectedState.geo_id);
-        }
-    }, [selectedState?.geo_id]);
-
-    useEffect(() => {
-        if (selectedDistrict?.geo_id) {
+            getGeoJsonData(selected.state);
+        } else if (selected.country) {
             setSpinner(true);
-            getGeoJsonData(selectedDistrict.geo_id);
+            updateSearchParams('country', selected.country);
+            mapServices.getDropdownList(selected.country).then(data => {
+                setStates(data.children);
+            }).catch(error => {
+                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                toast.error(errorMsg);
+            });
+            getGeoJsonData(selected.country);
         }
-    }, [selectedDistrict?.geo_id]);
+    }, [selected.country, selected.state, selected.district]);
 
     return (
         <div className='MapContainer mx-0  header2' style={{ height: '88.5vh' }}>
@@ -114,19 +108,19 @@ function MapContainer() {
                 handleStateChange={handleStateChange}
                 handleDistrictChange={handleDistrictChange}
                 global={global}
-                selectedCountry={selectedCountry?.geo_id}
-                selectedState={selectedState?.geo_id}
-                selectedDistrict={selectedDistrict?.geo_id}
+                selectedCountry={selected.country}
+                selectedState={selected.state}
+                selectedDistrict={selected.district}
                 countries={countries}
                 states={states}
                 districts={districts}
             />
             <Map
                 global={global}
-                selectedCountry={selectedCountry?.geo_id}
-                selectedState={selectedState?.geo_id}
-                selectedCountryCode={selectedCountry?.geo_id}
-                selectedDistrict={selectedDistrict?.geo_id}
+                selectedCountry={selected.country}
+                selectedState={selected.state}
+                selectedCountryCode={selected.country}
+                selectedDistrict={selected.district}
             />
         </div>
     );
