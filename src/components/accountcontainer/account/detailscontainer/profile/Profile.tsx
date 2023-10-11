@@ -8,6 +8,7 @@ import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+// import UploadImage from './UploadImage';
 
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -15,11 +16,7 @@ export default function Profile() {
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
-
-
-    // useEffect(() => {
-    //     userService.getUserDetails();
-    // }, []);
+    // const [openUploadImageModal, setOpenUploadImageModal] = useState(false);
 
     const handleOpen = (flag?: boolean) => {
         if (flag) {
@@ -29,17 +26,20 @@ export default function Profile() {
             setSelectedData(null);
             setOpen(flag!);
         }
-    }
+    };
 
     const handleCloseDialog = () => {
         setSelectedData(null);
     };
+    // const handleUploadImageModal = (openUploadImageModal: boolean) => {
+    //     setOpenUploadImageModal(openUploadImageModal);
+    // };
 
     const handleUpdate = (updatedData: any) => {
         setSpinner(true);
         const payload = { ...updatedData, country: 'India' };
         userService.updateUserDetails(payload)
-            .then((response) => {
+            .then((response: any) => {
                 if (response) {
                     handleCloseDialog();
                     setSpinner(false);
@@ -57,11 +57,11 @@ export default function Profile() {
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
             <div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pe-4">
                 <Heading
-					title='Profile'
-					type={TypographyType.h2}
-					colour={TypographyColor.dark}
-					classname='mt-2 col-2 ms-3 text-start'
-				/>
+                    title='Profile'
+                    type={TypographyType.h2}
+                    colour={TypographyColor.dark}
+                    classname='mt-2 col-2 ms-3 text-start'
+                />
                 <Button
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
@@ -74,8 +74,21 @@ export default function Profile() {
             </div>
             <hr />
             <div className="row w-100 mx-3">
-                <div className="col-3 d-flex justify-content-center align-items-center fs-64" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
-                    {loggedUser?.img ? <img src={loggedUser.img} alt="Profile Photo" className='profile-image-box' /> : (loggedUser.initial)}
+                <div className="col-3  fs-64" >
+                    <div className='position-relative'>
+                        <div className="profile-image-box" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
+                            {loggedUser?.img ? <img src={loggedUser.img} alt="Profile Photo" className='position-absolute w-100 h-100' /> : <span className='position-absolute profileImageAlignment text-center'>{loggedUser.initial}</span>}
+                            <Button
+                                theme={ButtonTheme.secondary}
+                                size={ButtonSize.small}
+                                variant={ButtonVariant.contained}
+                                onClick={() => handleOpen(true)}
+                                classname='position-absolute rounded-circle editImageBtn'
+                            >
+                                <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
+                            </Button>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-4 ps-5">
                     <ul className='edit-profile-list'>
@@ -122,6 +135,7 @@ export default function Profile() {
                     handleOpen={handleOpen}
                 />
             )}
+            {/* {openUploadImageModal && <UploadImage  />} */}
         </div>
     )
 }

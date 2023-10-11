@@ -21,6 +21,18 @@
 	--pink-color: #f45eac;
 
 }
+.width-5 {
+	width: 5rem !important;
+}
+
+
+.width-10 {
+	width: 10rem !important;
+}
+
+.width-fit-content {
+	width: fit-content !important;
+}
 
 /*background color  */
 .App {
@@ -280,11 +292,11 @@ a {
 }
 
 .fixed-header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    /* z-index: 0; */
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	/* z-index: 0; */
 }
 
 /* .header {
@@ -528,6 +540,20 @@ a {
 }
 
 /* profile page css */
+.editImageBtn {
+    margin: auto;
+    padding: auto !important;
+    height: 2rem !important;
+    width: 2rem !important;
+    padding: 0;
+    right: 62px;
+    bottom: 9px !important;
+}
+.profileImageAlignment {
+	right: 45%!important;
+    bottom: 30%!important;
+}
+
 .edit-profile-list {
 	list-style: none;
 	text-align: start;
@@ -581,9 +607,7 @@ a {
 	height: 100% !important;
 }
 
-.width-fit-content-button {
-	width: fit-content;
-}
+
 
 .full-height {
 	height: 100% !important;
@@ -690,8 +714,10 @@ a {
 .profile-image-box {
 	top: 214px;
 	left: 377px;
-	width: 200px;
-	height: 200px;
+	/* width: 200px;
+	height: 200px; */
+	width: 12.5rem;
+	height: 12.5rem;
 	background: #E6E7E9 0% 0% no-repeat padding-box;
 	opacity: 1;
 }
@@ -867,18 +893,18 @@ th {
 	margin-left: -1.2rem;
 	background-color: white;
 	height: 2rem;
-    width: 2rem;
+	width: 2rem;
 	margin-top: 2rem;
 	opacity: unset;
 	box-shadow: 0rem 0rem 3rem #00000029;
 
-} 
+}
 
 .NextBtn {
 	margin-right: -1.2rem;
 	background-color: white;
 	height: 2rem;
-    width: 2rem;
+	width: 2rem;
 	margin-top: 2rem;
 	border-style: groove;
 	opacity: unset;
@@ -1176,13 +1202,12 @@ th {
 .account-menu-dropdown {
 	position: absolute;
 	top: 100%;
-	left: 0;
+	right: 0;
 	background-color: #fff;
 	z-index: 1000 !important;
 	border-radius: 0.3125rem;
 	background: #FFF;
-	width: 200px;
-	margin-left: -10rem;
+	min-width: 300px;
 	padding: 0;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	border: 1px solid #ccc;
@@ -1191,7 +1216,7 @@ th {
 .menu-item {
 	padding: 15px;
 	width: 100%;
-	height: 50px;
+	min-height: 50px;
 	display: flex;
 	align-items: center;
 	cursor: pointer;
