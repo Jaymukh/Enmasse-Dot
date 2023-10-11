@@ -67,17 +67,17 @@ const Map: React.FC<MapProps> =({
         <div>
             {global ? (
                 <GlobalMap
-                    features={features}
-                    handleImportFeature={handleImportFeature}
+                    //features={features}
+                    //handleImportFeature={handleImportFeature}
                     />
             ) : (
                 <StateMap
-                    features={features}
-                    handleImportFeature={handleImportFeature}
+                    //features={features}
+                    //handleImportFeature={handleImportFeature}
                     selectedCountry={selectedCountry}
                     selectedState={selectedState}
                     selectedDistrict={selectedDistrict}
-                    pointFeatures={pointFeatures}
+                    //pointFeatures={pointFeatures}
                 />
             )}
         </div>

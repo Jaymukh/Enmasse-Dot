@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react';
 import './Spinner.module.css';
-
 import { spinnerState } from '../../../states';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 export const Spinner = () => {
-    const spinner = useRecoilValue(spinnerState);
-
+    const [spinner] = useRecoilState(spinnerState);
     return (
         <>
             {spinner &&
@@ -18,6 +15,6 @@ export const Spinner = () => {
                     </div>
                 </div>
             }
-        </>    
+        </>
     )
 }

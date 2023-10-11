@@ -6,8 +6,8 @@ import InsightBar from '../InsightBar';
 import { toast } from 'react-toastify';
 
 interface GlobalMapProps {
-	features: any; // Replace 'any' with the actual type of 'features' if available
-	handleImportFeature: (code: string) => void;
+	features?: any; // Replace 'any' with the actual type of 'features' if available
+	handleImportFeature?: (code: string) => void;
 }
 
 const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) => {
@@ -24,7 +24,7 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
 				const country = results.find((component) => component.types.includes('country'));
 				if (country) {
 					const countryCode = country.address_components?.[0]?.short_name || '';
-					handleImportFeature(countryCode);
+					//handleImportFeature(countryCode);
 				}
 			} else {
 				toast.error('Geocode was not successful');
