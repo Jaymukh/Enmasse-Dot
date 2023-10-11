@@ -1,8 +1,8 @@
 @import url("../../../styles/color.css");
 
 input {
-    width: 26.625rem;
-    height: 3.0625rem;
+    width: fit-content;
+    height: 3rem;
     border-radius: 0.3125rem;
     border: 1px solid var(--black-5);
     padding: 0rem 2.5rem;

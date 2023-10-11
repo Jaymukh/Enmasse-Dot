@@ -1,0 +1,41 @@
+import { atom } from "recoil";
+
+interface FamilyDetails {
+    familyMembers: string;
+    householdSpend: string;
+    spendUOM: string;
+    householdIncome: string;
+    incomeUOM: string;
+    householdBorrowing: string;
+    borrowUOM: string;
+}
+
+interface Family {
+    type: string;
+    properties: {
+        description: string;
+        image: string;
+        familyName : string;
+        district: string;
+        state: string;
+        country: string;
+        address: string;
+        familyDetails: FamilyDetails;
+    };
+    geometry: {
+        type: string;
+        coordinates: [number, number];
+    };
+}
+
+export interface Stories {
+    type: string;
+    page: string;
+    family: Family[];
+}
+
+
+export const storiesState = atom({
+    key: 'stories',
+    default: {} as Stories,
+});

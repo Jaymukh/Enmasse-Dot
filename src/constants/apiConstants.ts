@@ -14,12 +14,15 @@ const APIS: any = {
         ACCEPT_AGREEMENT: '/users/accept-agreement/',
     },
     SETTINGS: {
-        GET_ALL_SETTINGS : '/users/settings/details/',
+        GET_ALL_SETTINGS: '/users/settings/details/',
         GET_USER_SETTINGS: '/users/settings/',
     },
     MAPS: {
         GET_DROPDOWN: '/maps/dropdown',
         GET_MAPS: '/maps/getmap',
+    },
+    STORIES: {
+        GET_ALL_STORIES: '/story/viewstory'
     }
 }
 
