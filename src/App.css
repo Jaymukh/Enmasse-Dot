@@ -558,6 +558,11 @@ a {
 	list-style: none;
 	text-align: start;
 }
+.upload-image-box {
+	width: 15rem;
+	height: 15rem;
+	overflow: hidden;
+}
 
 .font-weight-500 {
 	font-weight: 900;
@@ -714,8 +719,6 @@ a {
 .profile-image-box {
 	top: 214px;
 	left: 377px;
-	/* width: 200px;
-	height: 200px; */
 	width: 12.5rem;
 	height: 12.5rem;
 	background: #E6E7E9 0% 0% no-repeat padding-box;
