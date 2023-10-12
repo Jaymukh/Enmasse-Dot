@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
@@ -8,7 +8,7 @@ import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
-// import UploadImage from './UploadImage';
+import UploadImage from './UploadImage';
 
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -16,7 +16,10 @@ export default function Profile() {
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
-    // const [openUploadImageModal, setOpenUploadImageModal] = useState(false);
+    const [showUploadImageModal, setShowUploadImageModal] = useState(false);
+    const [profileImage, setProfileImage] = useState<string | undefined>(loggedUser?.img);
+    const [newImage, setNewImage] = useState<string | undefined>(undefined);    
+    const [zoomLevel, setZoomLevel] = useState<number>(100);
 
     const handleOpen = (flag?: boolean) => {
         if (flag) {
@@ -31,9 +34,6 @@ export default function Profile() {
     const handleCloseDialog = () => {
         setSelectedData(null);
     };
-    // const handleUploadImageModal = (openUploadImageModal: boolean) => {
-    //     setOpenUploadImageModal(openUploadImageModal);
-    // };
 
     const handleUpdate = (updatedData: any) => {
         setSpinner(true);
@@ -52,6 +52,29 @@ export default function Profile() {
                 toast.error(errorMsg);
             });
     };
+
+    // functions for Upload Image Modal
+
+    const openUploadImageModal = () => {
+        setShowUploadImageModal(true);
+    };
+    const closeUploadImageModal = () => {
+        setShowUploadImageModal(false);
+        setNewImage(undefined);
+        
+    };
+    const handleImageChange = (e: any) => {
+        const selectedImage = e.target.files[0];
+        setNewImage(URL.createObjectURL(selectedImage));
+        //setProfileImage(URL.createObjectURL(selectedImage));
+    };
+    const handleSaveImage = () => {
+        if (newImage) {
+            setProfileImage(newImage);
+            setNewImage(undefined);
+        }
+        setShowUploadImageModal(false);
+    }
 
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
@@ -77,12 +100,13 @@ export default function Profile() {
                 <div className="col-3  fs-64" >
                     <div className='position-relative'>
                         <div className="profile-image-box" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
-                            {loggedUser?.img ? <img src={loggedUser.img} alt="Profile Photo" className='position-absolute w-100 h-100' /> : <span className='position-absolute profileImageAlignment text-center'>{loggedUser.initial}</span>}
+                            {profileImage ? <img src={profileImage} alt="Profile Photo" className='w-100 h-100' style={{ width: `${zoomLevel}%` }} /> : <span className='position-absolute profileImageAlignment text-center'>{loggedUser.initial}</span>}
+
                             <Button
                                 theme={ButtonTheme.secondary}
                                 size={ButtonSize.small}
                                 variant={ButtonVariant.contained}
-                                onClick={() => handleOpen(true)}
+                                onClick={() => openUploadImageModal()}
                                 classname='position-absolute rounded-circle editImageBtn'
                             >
                                 <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
@@ -135,7 +159,19 @@ export default function Profile() {
                     handleOpen={handleOpen}
                 />
             )}
-            {/* {openUploadImageModal && <UploadImage  />} */}
+            {openUploadImageModal &&
+                <UploadImage
+                    showUploadImageModal={showUploadImageModal}
+                    setShowUploadImageModal={setShowUploadImageModal}
+                    openUploadImageModal={openUploadImageModal}
+                    closeUploadImageModal={closeUploadImageModal}
+                    profileImage={profileImage}
+                    handleImageChange={handleImageChange}
+                    zoomLevel={zoomLevel}
+                    setZoomLevel={setZoomLevel}
+                    newImage={newImage}
+                    handleSaveImage={handleSaveImage}
+                />}
         </div>
     )
 }
