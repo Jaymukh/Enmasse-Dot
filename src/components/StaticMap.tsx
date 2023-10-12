@@ -19,20 +19,20 @@ const StaticMap: React.FC = () => {
 		styles: MapConstants.staticMapStyle,
 	};
 
-	const loadGeoJSON = async (map: google.maps.Map) => {
-		try {
-			const module = await import('./../utils/json/geojson/countries/IN.geo.json');
-			const data = module.default;
-			setGeoJSON(data);
-			map.data.forEach((feature) => {
-				map.data.remove(feature);
-			});
-			map.data.addGeoJson(data);
-			setFeatureStyle(map);
-		} catch (error) {
-			console.error('Error importing file', error);
-		}
-	};
+	// const loadGeoJSON = async (map: google.maps.Map) => {
+	// 	try {
+	// 		const module = await import('./../utils/json/geojson/countries/IN.geo.json');
+	// 		const data = module.default;
+	// 		setGeoJSON(data);
+	// 		map.data.forEach((feature) => {
+	// 			map.data.remove(feature);
+	// 		});
+	// 		map.data.addGeoJson(data);
+	// 		setFeatureStyle(map);
+	// 	} catch (error) {
+	// 		console.error('Error importing file', error);
+	// 	}
+	// };
 
 	const getColorBasedOnPopulation = (population: number) => {
 		if (population <= 100000) {
@@ -62,7 +62,7 @@ const StaticMap: React.FC = () => {
 	};
 
 	const handleMapLoad = useCallback((mapInstance: google.maps.Map) => {
-		loadGeoJSON(mapInstance);
+		//loadGeoJSON(mapInstance);
 	}, []);
 
 	return (

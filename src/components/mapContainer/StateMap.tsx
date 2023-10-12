@@ -150,7 +150,6 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [map, pointFeatures, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
-        //handleImportFeature();
         clearCircles();
     }, [selected.country, selected.state, selected.district]);
 
