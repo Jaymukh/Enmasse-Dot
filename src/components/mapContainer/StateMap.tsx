@@ -84,9 +84,9 @@ const StateMap: React.FC<StateMapProps> = ({
                 const fillColor = feature.getProperty('Color');
                 return {
                     fillColor,
-                    fillOpacity: 0.7,
-                    strokeColor: fillColor,
-                    strokeWeight: 0.35,
+                    fillOpacity: 1,
+                    strokeColor: '#ffffff',
+                    strokeWeight: 0.75,                    
                 };
             });
 

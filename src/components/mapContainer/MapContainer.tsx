@@ -15,8 +15,7 @@ const countries = [{ geo_id: 1, name: 'India' }];
 function MapContainer() {
     const navigate = useNavigate();
     const mapServices = useMapsService();
-    const setSpinner = useSetRecoilState(spinnerState);
-    const [searchParams, setSearchParams] = useSearchParams({ country: '1' });
+    const setSpinner = useSetRecoilState(spinnerState);    
 
     const routeFlag = window.location.pathname === '/' ? true : false;
 
@@ -25,9 +24,17 @@ function MapContainer() {
     const [districts, setDistricts] = useState<any>([]);
     const setGeoJSON = useSetRecoilState(geoJsonState);
 
+    const getSearchParams = () => {
+        if(global) {
+            return { country: '1' };
+        }
+    }
+
+    const [searchParams, setSearchParams] = useSearchParams(getSearchParams());
+
     const getSelectedObject = () => {
         const params: Record<string, string> = {};
-        searchParams.toString().split('&').forEach((param) => {
+        searchParams?.toString().split('&').forEach((param) => {
             const [key, value] = param.split('=');
             params[key] = value;
         });
@@ -38,19 +45,16 @@ function MapContainer() {
     const handleCountryChange = () => {
         setGlobal(!global);
         setTimeout(() => {
-            if (global) {
-                navigate(`${RouteConstants.explore}?country=1`);               
-            } else {
-                navigate(RouteConstants.root);
-            }
+            navigate(global ? `${RouteConstants.explore}?country=1` : RouteConstants.root);
         });
         setSelected({ country: 1 });
     };
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
-        delete selected['district'];
-        setSelected({ ...selected, state: value })
+        setSelected({ ...selected, state: value, district: '' });
+        searchParams.delete('district');
+        //setSearchParams(searchParams);
         updateSearchParams('state', value);
     };
 
@@ -72,10 +76,16 @@ function MapContainer() {
             setGeoJSON(data);
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-            toast.error(errorMsg);
+            errorHandler(error);
+            // const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            // toast.error(errorMsg);
         });
     }
+
+    const errorHandler = (error: any) => {
+        const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+        toast.error(errorMsg);
+    };
 
     useEffect(() => {
         if (selected.district) {
@@ -83,14 +93,12 @@ function MapContainer() {
                 mapServices.getDropdownList(selected.state).then(data => {
                     setDistricts(data.children);
                 }).catch(error => {
-                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                    toast.error(errorMsg);
+                    errorHandler(error);
                 });
                 mapServices.getDropdownList(selected.country).then(data => {
                     setStates(data.children);
                 }).catch(error => {
-                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                    toast.error(errorMsg);
+                    errorHandler(error);
                 });
             }
             setSpinner(true);
@@ -101,8 +109,7 @@ function MapContainer() {
             mapServices.getDropdownList(selected.state).then(data => {
                 setDistricts(data.children);
             }).catch(error => {
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                errorHandler(error);
             });
             getGeoJsonData(selected.state);
         } else if (selected.country) {
@@ -111,15 +118,14 @@ function MapContainer() {
             mapServices.getDropdownList(selected.country).then(data => {
                 setStates(data.children);
             }).catch(error => {
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                errorHandler(error);
             });
             getGeoJsonData(selected.country);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected.country, selected.state, selected.district]);
     return (
-        <div className='MapContainer mx-0  header2' style={{ height: '88.5vh' }}>
+        <div className='MapContainer mx-0 header2' style={{ height: '88.5vh' }}>
             <MapOptions
                 handleCountryChange={handleCountryChange}
                 handleStateChange={handleStateChange}
