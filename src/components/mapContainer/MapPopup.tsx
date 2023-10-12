@@ -15,11 +15,11 @@ interface MapPopupProps {
 }
 
 const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index }) => {
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const handlePopupClick = () => {
         const geoCode = '11';
-        history({
+        navigate({
             pathname: RouteConstants.stories,
             search: `?geo_code=${geoCode}`,
         });

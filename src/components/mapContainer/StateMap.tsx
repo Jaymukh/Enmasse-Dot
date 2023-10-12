@@ -45,7 +45,9 @@ const StateMap: React.FC<StateMapProps> = ({
         streetViewControl: false,
         styles: MapConstants.NonGlobalMapStyle,
         isFractionalZoomEnabled: true,
-        keyboardShortcuts: false
+        keyboardShortcuts: false,
+        // gestureHandling: "none", //manual zoom handling
+        // zoomControl: false,
     };
 
     const toggleSwitch = (event?: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +88,7 @@ const StateMap: React.FC<StateMapProps> = ({
                     fillColor,
                     fillOpacity: 1,
                     strokeColor: '#ffffff',
-                    strokeWeight: 0.75,                    
+                    strokeWeight: 0.5,
                 };
             });
 
@@ -153,53 +155,62 @@ const StateMap: React.FC<StateMapProps> = ({
         clearCircles();
     }, [selected.country, selected.state, selected.district]);
 
+    const breadcrumbItems = [
+        { label: 'Global', link: '/' },
+        { label: 'India', link: '/products' },
+        { label: 'Gujarat', link: '/products/electronics' },
+        { label: 'Kutchh' },
+    ];
+
     return (
         <div className='row mx-0'
             style={{ height: '81vh', zIndex: 999 }}>
-            <div className='col-9 row p-0 m-0'>
-                {/* <div className='col-12'>
-                    <Breadcrumb />
-                </div> */}
-                <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8' }}>
-                    <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
+            <div className='col-9 m-0 p-0'>                
+                <div className='row m-0 p-0 h-100'>
+                <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '2.625rem' }}>
+                    <Breadcrumb items={breadcrumbItems} />
                 </div>
-                <div className='col-9 p-0'>
-                    {apiKey && (
-                        <LoadScript
-                            googleMapsApiKey={apiKey}
-                        >
-                            <GoogleMap
-                                ref={mapRef}
-                                zoom={6}
-                                mapContainerStyle={MapConstants.containerStyle}
-                                center={center}
-                                onLoad={handleMapLoad}
-                                options={mapOptions}
+                    <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8' }}>
+                        <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
+                    </div>
+                    <div className='col-9 p-0'>
+                        {apiKey && (
+                            <LoadScript
+                                googleMapsApiKey={apiKey}
                             >
-                                {Constants.storyFeatures && isChecked?.viewStories && (
-                                    Constants.storyFeatures.map((feature, index) => (
-                                        <InfoWindow
-                                            position={feature.position}
-                                            // onClose={handleHoverEnd}
-                                            // closeButton={false}
-                                            options={{
-                                                padding: 0,
-                                                maxWidth: 250,
-                                                borderRadius: 0,
-                                                zIndex: focused === index ? 1000 : 0
-                                            } as any}
-                                        >
-                                            <MapPopup
-                                                properties={feature.properties}
-                                                handleFocused={handleFocused}
-                                                index={index}
-                                            />
-                                        </InfoWindow>
-                                    ))
-                                )}
-                            </GoogleMap>
-                        </LoadScript>
-                    )}
+                                <GoogleMap
+                                    ref={mapRef}
+                                    zoom={6}
+                                    mapContainerStyle={MapConstants.containerStyle}
+                                    center={center}
+                                    onLoad={handleMapLoad}
+                                    options={mapOptions}
+                                >
+                                    {Constants.storyFeatures && isChecked?.viewStories && (
+                                        Constants.storyFeatures.map((feature, index) => (
+                                            <InfoWindow
+                                                position={feature.position}
+                                                // onClose={handleHoverEnd}
+                                                // closeButton={false}
+                                                options={{
+                                                    padding: 0,
+                                                    maxWidth: 250,
+                                                    borderRadius: 0,
+                                                    zIndex: focused === index ? 1000 : 0
+                                                } as any}
+                                            >
+                                                <MapPopup
+                                                    properties={feature.properties}
+                                                    handleFocused={handleFocused}
+                                                    index={index}
+                                                />
+                                            </InfoWindow>
+                                        ))
+                                    )}
+                                </GoogleMap>
+                            </LoadScript>
+                        )}
+                    </div>
                 </div>
             </div>
             <div className='col-3 p-0 h-100'>

@@ -48,12 +48,13 @@ function MapOptions({
                         size={ButtonSize.large}
                         variant={ButtonVariant.transparent}
                         // onClick={handleGlobal}
+                        classname='h-100 text-start'
                     >
                         Global
                     </Button>
                 </div>
                 
-                        <div className='select-right-margin py-1' style={{ width: '10vw' }}>
+                        <div className='select-right-margin py-1 h-100' style={{ width: '10vw' }}>
                             <p className='country-text ms-2 '>COUNTRY</p>
                             <Button
                                 theme={ButtonTheme.primary}
@@ -67,7 +68,7 @@ function MapOptions({
                         </div>
                    
                 {!global && selected.country ? (
-                    <div className='select-right-margin ms-2 py-1'>
+                    <div className='select-right-margin ms-2 py-1 h-100'>
                         <p className='country-text mx-1'>STATE</p>
                         <Select
                             options={states}
@@ -83,7 +84,7 @@ function MapOptions({
                     ''
                 )}
                 {!global && selected.state ? (
-                    <div className='select-right-margin ms-2 py-1'>
+                    <div className='select-right-margin ms-2 py-1 h-100'>
                         <p className='country-text mx-1'>DISTRICT</p>
                         <Select
                             options={districts}
