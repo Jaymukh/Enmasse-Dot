@@ -25,7 +25,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     const options = Constants.options;
 
     return (
-            <div className='ms-4 d-flex flex-column justify-content-between h-100'>
+            <div className='ms-4 d-flex flex-column justify-content-between h-100' >
                 <div>
                     <div className="mt-4 bg-white px-3 py-2">
                         <div className='d-flex align-items-center justify-content-between'>

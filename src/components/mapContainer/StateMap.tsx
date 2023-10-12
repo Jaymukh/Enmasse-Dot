@@ -170,7 +170,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '2.625rem' }}>
                     <Breadcrumb items={breadcrumbItems} />
                 </div>
-                    <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8' }}>
+                    <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8', height: '30rem' }}>
                         <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
                     </div>
                     <div className='col-9 p-0'>
