@@ -40,36 +40,36 @@ function MapOptions({
     };
 
     return (
-        <div className='d-flex justify-content-around align-items-center border-bottom bg-white mx-0' style={{ height: '7.5vh' }}>
+        <div className='d-flex justify-content-around align-items-center border-bottom bg-white mx-0' style={{ height: '6.25vh' }}>
             <div className='col-xl-7 col-md-7 justify-content-start d-flex flex-wrap h-100'>
-                <div className='select-right-margin py-1' style={{ width: '10vw' }}>
+                <div className='select-right-margin py-0 h-100 px-3'>
                     <Button
                         theme={ButtonTheme.primary}
-                        size={ButtonSize.large}
+                        size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
                         // onClick={handleGlobal}
-                        classname='h-100 text-start'
+                        classname='h-100 text-start ps-0 py-0'
                     >
                         Global
                     </Button>
                 </div>
                 
-                        <div className='select-right-margin py-1 h-100' style={{ width: '10vw' }}>
-                            <p className='country-text ms-2 '>COUNTRY</p>
+                        <div className='select-right-margin py-0 h-100'>
+                            <p className='country-text m-0 text-start'>Country</p>
                             <Button
                                 theme={ButtonTheme.primary}
-                                size={ButtonSize.large}
+                                size={ButtonSize.medium}
                                 variant={ButtonVariant.transparent}
                                 onClick={handleCountryChange}
-                                classname='h-auto text-start px-2'
+                                classname='h-auto text-start ps-0 py-0'
                             >
-                                {global ? 'SELECT' : 'India'}
+                                {global ? 'Select' : 'India'}
                             </Button>
                         </div>
                    
                 {!global && selected.country ? (
-                    <div className='select-right-margin ms-2 py-1 h-100'>
-                        <p className='country-text mx-1'>STATE</p>
+                    <div className='select-right-margin py-0 h-100'>
+                        <p className='country-text m-0 text-start'>State</p>
                         <Select
                             options={states}
                             onChange={handleStateChange}
@@ -77,15 +77,16 @@ function MapOptions({
                             labelKey='name'
                             valueKey='geo_id'
                             size={SelectSize.medium}
-                            placeholder='SELECT'
+                            placeholder='Select'
+                            classname='text-start'
                         />
                     </div>
                 ) : (
                     ''
                 )}
                 {!global && selected.state ? (
-                    <div className='select-right-margin ms-2 py-1 h-100'>
-                        <p className='country-text mx-1'>DISTRICT</p>
+                    <div className='select-right-margin py-0 h-100'>
+                        <p className='country-text m-0 text-start'>District</p>
                         <Select
                             options={districts}
                             onChange={handleDistrictChange}
@@ -93,7 +94,8 @@ function MapOptions({
                             labelKey='name'
                             valueKey='geo_id'
                             size={SelectSize.medium}
-                            placeholder='SELECT'
+                            placeholder='Select'
+                            classname='text-start'
                         />
                     </div>
                 ) : (

@@ -41,19 +41,23 @@ const getSizeClass = (size: SelectSize) => {
     return className;
 }
 
+const getTextColor = (value: any) => {
+    return value ? `${styles.select_text_selcted}` : `${styles.select_text_not_selected}` ;
+}
+
 const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name, placeholder }: SelectProps<any>) => {
     return (
         <select
-            className={`${getSizeClass(size)} ${classname} w-100`}
+            className={`${getSizeClass(size)} ${classname} w-100 ${styles.select} ${getTextColor(value)}`}
             value={value}
             onChange={onChange}
             disabled={disabled}
             name={name}
             placeholder={placeholder}
         >
-            {placeholder && <option value="" selected disabled>SELECT</option>}
+            {placeholder && <option value="" selected disabled>Select</option>}
             {options?.map((option: any, key: number) => (
-                <option key={key} value={option[valueKey] as any}>
+                <option key={key} value={option[valueKey] as any} className={`${styles.select_text_selcted}`}>
                     {option[labelKey]}
                 </option>
             ))}

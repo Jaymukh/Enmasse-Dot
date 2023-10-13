@@ -8,7 +8,7 @@ interface FamiliesProps {
 
 const Families: React.FC<FamiliesProps> = ({ handleFamilyVisible }) => {
     return (
-        <div className='row w-100' style={{ height: '82.5vh' }}>
+        <div className='row w-100' style={{ height: '86.25vh' }}>
             <FamiliesSidePanel />
             <FamiliesDetailsContainer handleFamilyVisible={handleFamilyVisible} />
         </div>

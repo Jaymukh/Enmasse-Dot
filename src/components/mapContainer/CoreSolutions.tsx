@@ -26,8 +26,8 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
 
     return (
             <div className='ms-4 d-flex flex-column justify-content-between h-100' >
-                <div>
-                    <div className="mt-4 bg-white px-3 py-2">
+                <div className='mt-3'>
+                    <div className="mt-1 bg-white px-3 py-2">
                         <div className='d-flex align-items-center justify-content-between'>
                             <PiRadioButtonLight fontSize={22} />
                             <h6 className="ms-2 my-0 pe-2 text-start fs-16">Core Solutions</h6>
@@ -74,7 +74,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         <IoIosArrowForward fontSize={22} />
                     </div>
                 </div>
-                <div className='mb-4'>
+                <div className='mb-3'>
                     <Legend />
                 </div>
             </div>

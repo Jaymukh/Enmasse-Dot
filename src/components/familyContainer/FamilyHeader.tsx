@@ -16,7 +16,7 @@ function FamilyHeader({ handleBackClick, selectedData }: FamilyHeaderProps) {
     }
 
     return (
-        <div className="w-100 d-flex align-items-center bg-white mx-0 ps-6 border-bottom z-index-0" style={{ height: '6vh' }}>
+        <div className="w-100 d-flex align-items-center bg-white mx-0 ps-6 border-bottom z-index-0" style={{ height: '5.5vh' }}>
             <Button
                 theme={ButtonTheme.primary}
                 size={ButtonSize.default}

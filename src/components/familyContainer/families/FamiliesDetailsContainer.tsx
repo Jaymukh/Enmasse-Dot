@@ -17,7 +17,6 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
     //function to get all the stories
 	const storiesService = useStoriesService();
 	const [stories] = useRecoilState(storiesState);
-    console.log(stories);
     const [spinner, setSpinner] = useRecoilState(spinnerState);
 
     const [paginationData, setPaginationData]= useState<{geoCode: number, pageNumber: number, storiesPerPage: number}>({ geoCode: 1, pageNumber: 1, storiesPerPage: 25});

@@ -123,7 +123,7 @@ function MapContainer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected.country, selected.state, selected.district]);
     return (
-        <div className='MapContainer mx-0 header2' style={{ height: '88.5vh' }}>
+        <div className='MapContainer mx-0 header2' style={{ height: '91.75vh' }}>
             <MapOptions
                 handleCountryChange={handleCountryChange}
                 handleStateChange={handleStateChange}

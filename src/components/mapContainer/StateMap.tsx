@@ -164,16 +164,16 @@ const StateMap: React.FC<StateMapProps> = ({
 
     return (
         <div className='row mx-0'
-            style={{ height: '81vh', zIndex: 999 }}>
+            style={{ height: '85.5vh', zIndex: 999 }}>
             <div className='col-9 m-0 p-0'>                
                 <div className='row m-0 p-0 h-100'>
-                <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '2.625rem' }}>
+                <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '5.25vh' }}>
                     <Breadcrumb items={breadcrumbItems} />
                 </div>
-                    <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8', height: '30rem' }}>
+                    <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8', height: '80.25vh' }}>
                         <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
                     </div>
-                    <div className='col-9 p-0'>
+                    <div className='col-9 p-0' style={{height: '80.25vh'}}>
                         {apiKey && (
                             <LoadScript
                                 googleMapsApiKey={apiKey}
