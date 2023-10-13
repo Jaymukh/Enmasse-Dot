@@ -32,8 +32,7 @@ const DistrictSidebar = () => {
         <div className='py-2 bg-white px-0 h-100 me-0' style={{ overflow: 'auto' }}>
             <div className='row d-flex justify-content-between align-items-start px-3'>
                 <div className='col-8 d-flex flex-column align-items-start'>
-                    <h6 className='fs-18'>Kutch</h6>
-                    <p className='fs-14 mx-0 my-0'>Gujarat</p>
+                    <h6 className='fs-16'>Kutch</h6>
                 </div>
                 <div className='col-4'>
                     <Select
