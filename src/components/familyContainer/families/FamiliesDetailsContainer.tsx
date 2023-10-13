@@ -8,6 +8,7 @@ import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { useStoriesService } from '../../../services';
 import { storiesState, Stories, spinnerState } from "../../../states";
 import { useRecoilState, useSetRecoilState } from "recoil";
+import familySkeleton from '../../../utils/images/family-skeleton.png';
 interface FamiliesDetailsContainerProps {
     handleFamilyVisible: (index: number) => void;
 }
@@ -48,7 +49,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
                             <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(index)}>
-                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover' }} src={data.properties.image} alt="Family image" />
+                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover' }} src={data.properties.image? data.properties.image : familySkeleton } alt="Family image" />
                                 <div className="text-start p-3">
                                     <Heading
                                         title={data.properties.familyName}

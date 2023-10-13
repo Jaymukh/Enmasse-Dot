@@ -21,6 +21,9 @@
 	--pink-color: #f45eac;
 
 }
+.height-3{
+	height: 3rem;
+}
 .width-5 {
 	width: 5rem !important;
 }
@@ -541,18 +544,17 @@ a {
 
 /* profile page css */
 .editImageBtn {
-    margin: auto;
     padding: auto !important;
     height: 2rem !important;
     width: 2rem !important;
     padding: 0;
-    right: 62px;
-    bottom: 9px !important;
+	margin-right: 1rem;
+    margin-top: -3rem;
 }
-.profileImageAlignment {
+/* .profileImageAlignment {
 	right: 45%!important;
     bottom: 30%!important;
-}
+} */
 
 .edit-profile-list {
 	list-style: none;
@@ -719,9 +721,9 @@ a {
 .profile-image-box {
 	top: 214px;
 	left: 377px;
-	width: 12.5rem;
-	height: 12.5rem;
-	background: #E6E7E9 0% 0% no-repeat padding-box;
+	width: 15rem !important;
+	height: 15rem !important;
+	overflow: hidden;
 	opacity: 1;
 }
 
