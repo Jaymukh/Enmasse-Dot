@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import UploadImage from './UploadImage';
+import DeleteImage from './DeleteImage';
 
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -17,9 +18,12 @@ export default function Profile() {
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
     const [showUploadImageModal, setShowUploadImageModal] = useState(false);
+    const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
     const [profileImage, setProfileImage] = useState<string | undefined>(loggedUser?.img);
-    const [newImage, setNewImage] = useState<string | undefined>(undefined);    
+    const [newImage, setNewImage] = useState<string | undefined>(undefined);
     const [zoomLevel, setZoomLevel] = useState<number>(100);
+    const minZoom = 50;
+    const maxZoom = 200;
 
     const handleOpen = (flag?: boolean) => {
         if (flag) {
@@ -61,12 +65,11 @@ export default function Profile() {
     const closeUploadImageModal = () => {
         setShowUploadImageModal(false);
         setNewImage(undefined);
-        
+
     };
     const handleImageChange = (e: any) => {
         const selectedImage = e.target.files[0];
         setNewImage(URL.createObjectURL(selectedImage));
-        //setProfileImage(URL.createObjectURL(selectedImage));
     };
     const handleSaveImage = () => {
         if (newImage) {
@@ -74,6 +77,37 @@ export default function Profile() {
             setNewImage(undefined);
         }
         setShowUploadImageModal(false);
+        // toast.success('Successfully Updated.');
+        toast.success('Successfully Updated.', {
+            position: toast.POSITION.BOTTOM_CENTER
+          });
+    }
+
+    // Function to handle zoom slider changes
+    const handleZoomIn = () => {
+        if (zoomLevel < maxZoom) {
+            setZoomLevel(zoomLevel + 10);
+        }
+    };
+
+    const handleZoomOut = () => {
+        if (zoomLevel > minZoom) {
+            setZoomLevel(zoomLevel - 10);
+        }
+    };
+
+    const handleSliderChange = (e: any) => {
+        setZoomLevel(parseInt(e.target.value, 10));
+    };
+
+    const handleDeleteModel = (showDeleteImageModal: boolean) => {
+        setShowUploadImageModal(false);
+        setShowDeleteImageModal(showDeleteImageModal);
+    }
+
+    const handleDeleteClick = () => {
+        setShowDeleteImageModal(false);
+        setProfileImage(undefined);
     }
 
     return (
@@ -98,21 +132,46 @@ export default function Profile() {
             <hr />
             <div className="row w-100 mx-3">
                 <div className="col-3  fs-64" >
-                    <div className='position-relative'>
-                        <div className="profile-image-box" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
-                            {profileImage ? <img src={profileImage} alt="Profile Photo" className='w-100 h-100' style={{ width: `${zoomLevel}%` }} /> : <span className='position-absolute profileImageAlignment text-center'>{loggedUser.initial}</span>}
+                    <div className='d-flex flex-column justify-content-end align-items-end'>
+                        <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
+                            {profileImage ? <img src={profileImage} alt="Profile Photo" className='' style={{ width: `${zoomLevel}%` }} /> : <span className='text-center top-50'>{loggedUser.initial}</span>}
+                        </div>
+                        <Button
+                            theme={ButtonTheme.secondary}
+                            size={ButtonSize.small}
+                            variant={ButtonVariant.contained}
+                            onClick={() => openUploadImageModal()}
+                            classname='rounded-circle editImageBtn align-self-end'
+                        >
+                            <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
+                        </Button>
+
+                    </div>
+                    {/* <div className='d-flex align-items-center justify-content-center'>
+                        <div className="profile-image-box d-flex flex-column" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
+                            {profileImage ? (
+                                <div className="image-container" >
+                                    <img src={profileImage} alt="Profile Photo" style={{ width: `${zoomLevel}%` }} />
+                                    <span className='text-center' style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                                        {loggedUser.initial}
+                                    </span>
+                                </div>
+                            ) : (
+                                <span className='text-center'>{loggedUser.initial}</span>
+                            )}
 
                             <Button
                                 theme={ButtonTheme.secondary}
                                 size={ButtonSize.small}
                                 variant={ButtonVariant.contained}
                                 onClick={() => openUploadImageModal()}
-                                classname='position-absolute rounded-circle editImageBtn'
+                                classname='rounded-circle editImageBtn align-self-end position-absolute bottom-0 right-0'
                             >
                                 <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
                             </Button>
                         </div>
-                    </div>
+                    </div> */}
+
                 </div>
                 <div className="col-4 ps-5">
                     <ul className='edit-profile-list'>
@@ -171,7 +230,17 @@ export default function Profile() {
                     setZoomLevel={setZoomLevel}
                     newImage={newImage}
                     handleSaveImage={handleSaveImage}
+                    handleZoomIn={handleZoomIn}
+                    handleZoomOut={handleZoomOut}
+                    handleSliderChange={handleSliderChange}
+                    minZoom={minZoom}
+                    maxZoom={maxZoom}
+                    handleDeleteModel={handleDeleteModel}
                 />}
+
+            {showDeleteImageModal && <DeleteImage showDeleteImageModal={showDeleteImageModal}
+                handleDeleteModel={handleDeleteModel}
+                handleDeleteClick={handleDeleteClick} />}
         </div>
     )
 }
