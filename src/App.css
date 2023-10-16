@@ -102,8 +102,7 @@ a {
 
 .select-right-margin {
 	border-right: 0.5px solid #D2D4D6;
-	width: 11.25rem;
-    padding: 0 0.5rem 0 0.63rem;
+	width: 11.25rem;    
 }
 
 .primary-select-box .css-1t0qkoj-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
@@ -1061,6 +1060,7 @@ th {
 .country-text {
 	font-size: 0.625rem;
 	color: var(--black-8);
+	padding: 0 0.5rem 0 0.63rem;
 }
 
 .secondary-select {

@@ -16,13 +16,11 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb m-0">
                 {items.map((item: any, index: number) => (
-                    <li key={index} className={`breadcrumb-item fs-12 ${index === items.length - 1 ? 'active' : ''}`} aria-current={index === items.length - 1 ? 'page' as AriaCurrent : undefined}>
+                    item.label && <li key={index} className={`breadcrumb-item fs-12 ${index === items.length - 1 ? 'active' : ''}`} aria-current={index === items.length - 1 ? 'page' as AriaCurrent : undefined}>
                         {index === items.length - 1 ? (
                             item.label
                         ) : (
-                            <a 
-                            // href={item.link}
-                            >{item.label}</a>
+                            <a href={item.link} >{item.label}</a>
                         )}
                     </li>
                 ))}

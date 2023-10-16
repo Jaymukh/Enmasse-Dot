@@ -19,7 +19,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     handleChangeRb,
     selectedRb,
     isChecked,
-    toggleSwitch
+    toggleSwitch,
 }) => {
 
     const options = Constants.options;

@@ -17,10 +17,11 @@ const options = [
         currency: "Indian Rupee",
         symbol: '₹'
     }
-]
+];
+
 const DistrictSidebar = () => {
     const navigate = useNavigate();
-    const [currency, setCurrency] = useState<string>("US Dollar");
+    const [currency, setCurrency] = useState<string>("$");
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
@@ -30,16 +31,14 @@ const DistrictSidebar = () => {
     }
     return (
         <div className='py-2 bg-white px-0 h-100 me-0' style={{ overflow: 'auto' }}>
-            <div className='row d-flex justify-content-between align-items-start px-3'>
-                <div className='col-8 d-flex flex-column align-items-start'>
-                    <h6 className='fs-16'>Kutch</h6>
-                </div>
-                <div className='col-4'>
+            <div className='row d-flex justify-content-between align-items-center px-3 pt-2'>
+                <h6 className='col-6 text-start m-0 fs-16'>Kutch</h6>
+                <div className='col-6'>
                     <Select
                         options={options}
                         value={currency}
                         labelKey='currency'
-                        valueKey='currency'
+                        valueKey='symbol'
                         size={SelectSize.small}
                         onChange={handleChangeCurrency}
                     />

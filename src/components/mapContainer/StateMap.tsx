@@ -13,15 +13,15 @@ import { Breadcrumb } from '../ui/breadcrumb/Breadcrumb';
 
 
 interface StateMapProps {
-    features?: any;
-    handleImportFeature?: (code?: string | undefined) => void;
     selected: any;
     pointFeatures?: any[];
+    breadcrumbs: any;
 }
 
 const StateMap: React.FC<StateMapProps> = ({
     selected,
-    pointFeatures
+    pointFeatures,
+    breadcrumbs
 }) => {
     const mapRef = useRef(null);
     const [map, setMap] = useState<google.maps.Map | null>(null);
@@ -72,7 +72,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
     const handleFocused = (index: number) => {
         setFocused(index);
-    }
+    };   
 
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
@@ -168,7 +168,7 @@ const StateMap: React.FC<StateMapProps> = ({
             <div className='col-9 m-0 p-0'>                
                 <div className='row m-0 p-0 h-100'>
                 <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '5.25vh' }}>
-                    <Breadcrumb items={breadcrumbItems} />
+                    <Breadcrumb items={breadcrumbs} />
                 </div>
                     <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8', height: '80.25vh' }}>
                         <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />

@@ -28,16 +28,16 @@ export default function InsightBar() {
     return (
         <div className='sideBar-parent-expended py-4 px-0 z-index-1' style={{ overflow: 'auto', overflowX: 'hidden', position: 'inherit' }} >
             <div className='row d-flex justify-content-between align-items-start px-3'>
-                <div className='col-8 d-flex justify-content-start'>
-                    <h6 className='me-2 ms-1 fs-18'>EnMasses Thesis</h6>
-                    <AiOutlineInfoCircle fontSize={20} color='#606060' />
+                <div className='col-6 d-flex justify-content-start'>
+                    <h6 className='ms-1 fs-16'>EnMasses Thesis</h6>
+                    {/* <AiOutlineInfoCircle fontSize={15} color='#606060' /> */}
                 </div>
-                <div className='col-4'>
+                <div className='col-5'>
                     <Select
                         options={options}
                         value={currency}
                         labelKey='currency'
-                        valueKey='currency'
+                        valueKey='symbol'
                         size={SelectSize.small}
                         onChange={handleChangeCurrency}
                     />
