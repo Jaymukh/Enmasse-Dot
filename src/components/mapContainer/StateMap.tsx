@@ -155,13 +155,6 @@ const StateMap: React.FC<StateMapProps> = ({
         clearCircles();
     }, [selected.country, selected.state, selected.district]);
 
-    const breadcrumbItems = [
-        { label: 'Global', link: '/' },
-        { label: 'India', link: '/products' },
-        { label: 'Gujarat', link: '/products/electronics' },
-        { label: 'Kutchh' },
-    ];
-
     return (
         <div className='row mx-0'
             style={{ height: '85.5vh', zIndex: 999 }}>

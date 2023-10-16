@@ -53,7 +53,7 @@ function MapContainer() {
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
-        setSelected({ ...selected, state: value, district: ''});
+        setSelected({ ...selected, state: value, district: '' });
         searchParams.delete('district');
         updateSearchParams('state', value);
     };
@@ -66,7 +66,7 @@ function MapContainer() {
 
     const updateBreadcrumb = () => {
         const keys = Object.keys(selected).filter(key => selected[key]);
-        const resultArray: { key: string; geo_id: any; label: string; link: string; }[] = [];
+        const resultArray: { key: string; geo_id: any; label: string; link: string; }[] = [{ key: 'global', geo_id: null, label: 'Global', link: '/' }];
 
         let link = '?';
         keys.forEach((key, index) => {
@@ -79,6 +79,7 @@ function MapContainer() {
                     : districts?.find((district: any) => district.geo_id === geo_id)?.name;
             resultArray.push({ key, geo_id, label, link });
         });
+        console.log(resultArray)
         setBreadcrumbList(resultArray);
     };
 
@@ -91,7 +92,7 @@ function MapContainer() {
     const getGeoJsonData = (geo_id: string) => {
         mapServices.getMaps(Number(geo_id)).then(data => {
             setSpinner(false);
-            setGeoJSON(data);            
+            setGeoJSON(data);
         }).catch(error => {
             setSpinner(false);
             errorHandler(error);
@@ -134,7 +135,7 @@ function MapContainer() {
             setSpinner(true);
             updateSearchParams('country', selected.country);
             getGeoJsonData(selected.country);
-        }        
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected.country, selected.state, selected.district]);
     return (
