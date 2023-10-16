@@ -38,3 +38,16 @@ ul {
 .sidebar-ul {
     margin-left: 0.75rem;
 }
+
+.breadcrumb-item {
+    font-size: 0.75rem;
+}
+
+.breadcrumb-item.active {
+    color: var(--black-0);
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: var(--black-9);
+}

@@ -53,7 +53,7 @@ function MapContainer() {
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
-        setSelected({ ...selected, state: value, district: '' });
+        setSelected({ ...selected, state: value, district: ''});
         searchParams.delete('district');
         updateSearchParams('state', value);
     };
@@ -65,7 +65,7 @@ function MapContainer() {
     };
 
     const updateBreadcrumb = () => {
-        const keys = Object.keys(selected);
+        const keys = Object.keys(selected).filter(key => selected[key]);
         const resultArray: { key: string; geo_id: any; label: string; link: string; }[] = [];
 
         let link = '?';
@@ -73,10 +73,10 @@ function MapContainer() {
             link += `&${key}=${selected[key]}`;
             const geo_id = Number(selected[key]);
             const label = key === 'country'
-                ? countries.find((country: any) => country.geo_id === geo_id)?.name
+                ? countries?.find((country: any) => country.geo_id === geo_id)?.name
                 : key === 'state'
-                    ? states.find((state: any) => state.geo_id === geo_id)?.name
-                    : districts.find((district: any) => district.geo_id === geo_id)?.name;
+                    ? states?.find((state: any) => state.geo_id === geo_id)?.name
+                    : districts?.find((district: any) => district.geo_id === geo_id)?.name;
             resultArray.push({ key, geo_id, label, link });
         });
         setBreadcrumbList(resultArray);
