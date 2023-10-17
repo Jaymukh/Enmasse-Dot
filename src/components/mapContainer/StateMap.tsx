@@ -116,12 +116,9 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [map, geoJSON]);
 
     useEffect(() => {
-        if (!isChecked.coreSolution) {
-            clearCircles();
-        }
-        else if (map && mapFeatures.circles && isChecked.coreSolution) {
-            clearCircles();
-            const newCircles = mapFeatures.circles.map((feature: any) => {
+        clearCircles();
+        if (map && mapFeatures.circles && isChecked.coreSolution) {            
+            const newCircles = mapFeatures.circles?.map((feature: any) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
                     lng: feature.geometry.coordinates[0],
@@ -129,10 +126,12 @@ const StateMap: React.FC<StateMapProps> = ({
                 const type = selectedCoreSoln.type;
 
                 const radii = type !== 'all' ? ['all', type] : [type];
+                const zoom = map?.getZoom() ?? 0; // Use 0 if map or zoom is undefined
+                console.log(Math.floor(zoom))
 
-                return radii.map((radius, i) => {
+                return radii.map((radius, i) => {                     
                     const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-                    const circleRadius = Number(feature.properties[radius] * 10000);
+                    const circleRadius = Number(feature.properties[radius] * (10000));
 
                     return new window.google.maps.Circle({
                         center,

@@ -91,9 +91,9 @@ function MapContainer() {
     }
 
     const getGeoJsonData = (geo_id: string) => {
-        mapServices.getMaps(Number(geo_id)).then(data => {
-            setSpinner(false);
+        mapServices.getMaps(Number(geo_id)).then(data => {            
             setGeoJSON(data);
+            setSpinner(false);
         }).catch(error => {
             setSpinner(false);
             errorHandler(error);
@@ -101,12 +101,12 @@ function MapContainer() {
     }
 
     const fetchMapCircles = (geo_id: string) => {
-        mapServices.getCircle(Number(geo_id)).then(data => {
-            setSpinner(false);
+        mapServices.getCircle(Number(geo_id)).then(data => {            
             setMapFeatures({ ...mapFeatures, circles: data });
+            setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            errorHandler(error);
+            //errorHandler(error);
         });
     }
 
@@ -143,7 +143,7 @@ function MapContainer() {
                 errorHandler(error);
             });
             getGeoJsonData(selected.state);
-            fetchMapCircles(selected.district);
+            fetchMapCircles(selected.state);
         } else if (selected.country) {
             setSpinner(true);
             updateSearchParams('country', selected.country);

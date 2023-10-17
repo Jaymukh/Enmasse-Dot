@@ -31,7 +31,7 @@ ul {
 }
 
 .li-selected {
-    background-color: var(--green-7);
+    background-color: var(--green-1);
     border-left: 4px solid var(--green-0);
 }
 
@@ -55,4 +55,20 @@ ul {
 .data-card {
     border-radius: 0.5rem;
     border: 1px solid var(--black-1);
+}
+
+.card-green-bg {
+    background-color: var(--green-0);
+}
+
+.font-rejected {
+    color: var(--rejected-1);
+}
+
+.font-primary-green {
+    color: var(--green-0);
+}
+
+.data-card-normal-font {
+    color: var(--grey-0);
 }
