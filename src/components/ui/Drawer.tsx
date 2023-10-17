@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface DrawerProps {
-    id: string,
+    id: string;
     title: string;
     isOpen: boolean;
-    toggleFunction: (flag?: boolean) => void;
-    children?: React.ReactNode,
+    toggleFunction: (isOpen: boolean) => void;
+    children?: React.ReactNode;
 }
 
 const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, children }) => {

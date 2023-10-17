@@ -36,6 +36,7 @@ export default function EditProfile({
         const name = e.target.name as keyof User;
         const value = e.target.value;
         setUpdatedData({ ...updatedData, [name]: value });
+        
     };
 
     const handleUpdateClick = () => {
@@ -49,13 +50,14 @@ export default function EditProfile({
                 open={selectedData !== null}
                 onClose={handleCloseDialog}
                 className='edit-profile-drawer-width edit-profile-drawer-padding'
+                data-testid="EditProfileId"
             >
                 <Box className='d-flex flex-wrap justify-content-between mb-2'>
                     <h5 className=''>
                         Edit Profile
                     </h5>
-                    <button className='bg-white border-0' data-testid="CloseButton">
-                        <CloseIcon onClick={handleCloseDialog} />
+                    <button className='bg-white border-0'>
+                        <CloseIcon  data-testid="CloseButton" onClick={handleCloseDialog} />
                     </button>
                 </Box>
                 <Box className='d-flex justify-content-center flex-column'>
@@ -69,7 +71,7 @@ export default function EditProfile({
                     <input type="tel" maxLength={10} placeholder="Enter your Phone number" name='phone_number' value={updatedData.phone_number}
                         onChange={(e) => handleChangeData(e)} className='my-2  p-2 btn-outline-black inputBoxHeight' />
                     <h6 className='my-2'>Role</h6>
-                    <select name='role' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={updatedData.role} onChange={(e) => handleChangeData(e)} >
+                    <select name='role' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={updatedData.role} onChange={(e) => handleChangeData(e)} data-testid='selectRoleId'>
                         {settings?.roles?.map((role) => (
                             <option key={role.id} value={role.name}>{role.name}</option>
                         ))}
@@ -78,13 +80,13 @@ export default function EditProfile({
                     <input type="text" placeholder="Enter your designation" name='designation' value={updatedData.designation}
                         onChange={(e) => handleChangeData(e)} className='my-2  p-2 btn-outline-black inputBoxHeight' />
                     <h6 className='my-2'>Company</h6>
-                    <select name='company' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={updatedData.company} onChange={(e) => handleChangeData(e)} >
+                    <select name='company' className='mb-2 btn-outline-black inputBoxHeight text-left' data-testid="company-placeholder" value={updatedData.company} onChange={(e) => handleChangeData(e)} >
                     {Constants.company.map((company) => (
                             <option key={company.key} value={company.value}>{company.value}</option>
                         ))}
                     </select>
                     <h6 className='my-2'>Company Type</h6>
-                    <select name='company_type' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={updatedData.company_type} onChange={(e) => handleChangeData(e)} >
+                    <select name='company_type' className='mb-2 btn-outline-black inputBoxHeight text-left' data-testid="companytype-placeholder" value={updatedData.company_type} onChange={(e) => handleChangeData(e)} >
                         {settings?.company_types?.map((company_type) => (
                             <option key={company_type.id} value={company_type.name}>{company_type.name}</option>
                         ))}

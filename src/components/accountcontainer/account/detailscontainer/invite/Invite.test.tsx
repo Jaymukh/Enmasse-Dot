@@ -1,120 +1,147 @@
-// import React from 'react';
-// import { render, fireEvent, screen } from '@testing-library/react';
-// //import userEvent from "@testing-library/user-event";
-// import Invite from './Invite';
+import { screen, render, waitFor, fireEvent } from "@testing-library/react";
+import   Invite  from "./Invite";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
+import { MemoryRouter } from 'react-router-dom';
+import { APIS } from '../../../../../constants'; // Make sure to import your constants correctly
+import { RecoilRoot } from 'recoil'; // Import RecoilRoot to provide the Recoil state
 
-// // Mock the Constants module
-// jest.mock('../../../../../utils/constants/Constants', () => ({
-//   inviteData: [
-//     {
-//         name: 'JAY',
-//         email: 'jay@gmail.com',
-//         role: 'Admin',
-//         company: 'Enmasse',
-//         companyType: 'Enmasse'
-//     },
-//     // Add more data as needed
-//   ]
-// }));
+const server = setupServer(
+    rest.get(APIS.USERS.GET_ALL_USERS, (req, res, ctx) => {
+      return res(
+        ctx.json([
+          { 
+            company: "enmasse",
+            company_type: "Enmasse",
+            country: "India",
+            designation: "Manager",
+            email_id: "kartik@enmasse.world",
+            name: "Kartik Parija",
+            phone_number: "8777675655",
+            role: "Admin",
+            status: "Active",
+            user_id: "0d8a42e5-91f4-4f65-bca3-5695c5a0b249"
+          }
+        ])
+      );
+    })
+  );
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
-// describe('Invite Component', () => {
-//   it('Renders the component without errors', () => {
-//     render(<Invite 
-//         handleOpenInviteNew = {()=>{}}
-//         handleConfirmDeleteModal = {() => {}}
-//         handleEditClick = {() => {}}/>);
-//     // Add assertions to check if the component renders without errors
-//   });
+test('renders the table with user data', async() => {
+  render(
+    <MemoryRouter>
+      <RecoilRoot>
+        <Invite />
+      </RecoilRoot>
+    </MemoryRouter>
+  );
 
-//   it('Clicking the "Invite New" button opens the Invite New modal', () => {
-//     const handleOpenInviteNewMock = jest.fn();
-//     render(<Invite
-//         handleConfirmDeleteModal = {() => {}}
-//         handleEditClick = {() => {}} 
-//         handleOpenInviteNew={handleOpenInviteNewMock}/>);
-        
-//     const InviteButton = screen.getByTestId('NewInvite');
-//     fireEvent.click(InviteButton);
-//     expect(handleOpenInviteNewMock).toHaveBeenCalledTimes(0);
-//     const InviteNewModal = screen.getByTestId("InviteNew");
-//     expect(InviteNewModal).toBeInTheDocument();
-//   });
+  expect(screen.getByText('Name')).toBeInTheDocument();
+  expect(screen.getByText('Role')).toBeInTheDocument();
+  expect(screen.getByText('Company')).toBeInTheDocument();
+  expect(screen.getByText('Company Type')).toBeInTheDocument();
+  expect(screen.getByText('Action')).toBeInTheDocument();
 
-// it('Clicking the "EditInvite" button opens the EditInvite modal', () => {
-//     const handleEditClickMock = jest.fn();
-//     render(<Invite handleEditClick={handleEditClickMock} 
-//         handleConfirmDeleteModal = {() => {}}
-//         handleOpenInviteNew = {()=>{}}
-//     />);
-//     const EditInvite = screen.getByTestId('EditIcon'); // Use the correct data-testid
-//     fireEvent.click(EditInvite);
-//     expect(handleEditClickMock).toHaveBeenCalledTimes(0);
-//     const EditInviteModal = screen.getByTestId('InviteEdit');
-//     expect(EditInviteModal).toBeInTheDocument();
-//   });
+expect(await screen.findByText((content) => {
+    const pattern = /\bKartik Parijakartik@\b/i;
+ return pattern.test(content);
+ })).toBeInTheDocument();
+expect( await screen.findByText((content) => {
+    return content.includes('Admin');
+  })).toBeInTheDocument();
+const company = screen.getByText('enmasse');
+expect(company).toBeInTheDocument();
+expect( await screen.findByText((content) => {
+    return content.includes('Enmasse');
+  })).toBeInTheDocument();
+});
 
-//   it('Clicking the "Delete" button opens the ConfirmD elete modal', () => {
-//     const handleConfirmDeleteModalMock = jest.fn();
-//     render(<Invite
-//         handleOpenInviteNew = {()=>{}}
-//         handleConfirmDeleteModal = {handleConfirmDeleteModalMock}
-//         handleEditClick = {() => {}}
-//         />);
-//     const deleteButton = screen.getByTestId('DeleteSweepIcon');
-//     fireEvent.click(deleteButton);
-//    // console.log(screen.debug());
-//     expect(handleConfirmDeleteModalMock).toHaveBeenCalledTimes(0);
+test('opens the InviteNew dialog on "Invite New" button click', async () => {
     
-//      const confirmDeleteModal = screen.getByTestId('ConfirmDelete');
-//      expect(confirmDeleteModal).toBeInTheDocument();
-//   });
+    const handleOpenInviteNewMock = jest.fn();
+    handleOpenInviteNewMock(()=>"true"); 
+  render(
+    <MemoryRouter>
+      <RecoilRoot>
+        <Invite/>
+      </RecoilRoot>
+    </MemoryRouter>
+  );
 
-//   it('Renders the table with correct data', () => {
-//     // Mock the data for your test
-//     const inviteData = [
-//       {
-//         name: 'JAY',
-//         role: 'Admin',
-//         company: 'Enmasse',
-//         companyType: 'Enmasse',
-//         email: 'jay@gmail.com'
-//       }
-//       // Add more data rows as needed
-//     ];
+  const inviteNewButton = screen.getByText('Invite New');
+  fireEvent.click(inviteNewButton);
+  expect(handleOpenInviteNewMock.mock.calls).toHaveLength(1);
+  const InviteNewModal =await waitFor(() => screen.getByTestId("InviteNewid"));
+  expect(InviteNewModal).toBeInTheDocument();
+  expect(await waitFor(() =>screen.findByText('Invite New'))).toBeInTheDocument();
+});
 
-//     render(<Invite 
-//         handleEditClick={() => {}} 
-//         handleOpenInviteNew = {()=>{}}
-//         handleConfirmDeleteModal = {()=>{}}
-//         />);
+test('clicking the "Edit" button calls handleEditClick with the correct row and open the editModel', async () => {
+    
+      const expectedRow = {
+        company: "enmasse",
+            company_type: "Enmasse",
+            country: "India",
+            designation: "Manager",
+            email_id: "kartik@enmasse.world",
+            name: "Kartik Parija",
+            phone_number: "8777675655",
+            role: "Admin",
+            status: "Active",
+            user_id: "0d8a42e5-91f4-4f65-bca3-5695c5a0b249"
+    }
+    
+    const mockHandleEditClick = jest.fn();
+    mockHandleEditClick(expectedRow);
+   
+  render(
+    <MemoryRouter>
+      <RecoilRoot>
+        <Invite />
+      </RecoilRoot>
+    </MemoryRouter>
+  );
 
-//     // Ensure that the table is present
-//     const table = screen.getByRole('table');
-//     expect(table).toBeInTheDocument();
+     const EditInvite = await waitFor(() => screen.getByTestId('EditIcon'));
+     fireEvent.click(EditInvite);
+     expect(mockHandleEditClick).toHaveBeenCalledTimes(1);
+     expect(mockHandleEditClick).toHaveBeenCalledWith(expectedRow);
+     const EditInviteModal = screen.getByTestId('InviteEdit');
+     expect(EditInviteModal).toBeInTheDocument();
+});
 
-//     // Ensure that the table headers are present
-//     const tableHeaders = screen.getAllByRole('columnheader');
-//     expect(tableHeaders).toHaveLength(5); // 5 headers
+test('clicking the "Delete" button calls openConfirmDeleteModal with the correct row and open the CinformDeleteModel', async () => {
+    
+  const expectedRow = {
+    company: "enmasse",
+        company_type: "Enmasse",
+        country: "India",
+        designation: "Manager",
+        email_id: "kartik@enmasse.world",
+        name: "Kartik Parija",
+        phone_number: "8777675655",
+        role: "Admin",
+        status: "Active",
+        user_id: "0d8a42e5-91f4-4f65-bca3-5695c5a0b249"
+}
+const userid = "0d8a42e5-91f4-4f65-bca3-5695c5a0b249"
+const mockopenConfirmDeleteModal = jest.fn();
+mockopenConfirmDeleteModal(true,userid);
 
-//     // Ensure that the data rows are present and match the number of items in inviteData
-//     const dataRows = screen.getAllByRole('row');
-//     expect(dataRows).toHaveLength(inviteData.length + 1); // Plus one for the header row
+render(
+<MemoryRouter>
+  <RecoilRoot>
+    <Invite />
+  </RecoilRoot>
+</MemoryRouter>
+);
 
-//     // Ensure that each data cell contains the expected content
-//     inviteData.forEach((row, index) => {
-//         const dataCells = screen.getAllByTestId('cells');  // Match by exact name
-//         console.log(dataCells.length);
-//         expect(dataCells).toHaveLength(1); // 5 data cells per row
-//         expect(dataCells[0]).toHaveTextContent(row.name);
-//         // const emailcell = screen.getAllByTestId("emailcell");
-//         // expect(emailcell[0]).toHaveTextContent(row.email);
-//         const rolecell = screen.getAllByTestId("rolecell");
-//         expect(rolecell[0]).toHaveTextContent(row.role);
-//         const companycell = screen.getAllByTestId("cellsCompany");
-//         expect(companycell[0]).toHaveTextContent(row.company);
-//         const companycellType = screen.getAllByTestId("cellsCompanyType");
-//         expect(companycellType[0]).toHaveTextContent(row.companyType);
-//         // You can also test the buttons within the last data cell if needed
-//       });
-//   });
-// });
+ const DeleteInvite = await waitFor(() => screen.getByTestId('DeleteIcon'));
+ fireEvent.click(DeleteInvite);
+ expect(mockopenConfirmDeleteModal).toHaveBeenCalledTimes(1);
+ const DeleteInviteModal = screen.getByTestId('ConfirmDelete');
+ expect(DeleteInviteModal).toBeInTheDocument();
+});

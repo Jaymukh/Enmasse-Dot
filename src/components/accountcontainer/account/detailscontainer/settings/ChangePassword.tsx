@@ -91,6 +91,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                 open={open}
                 onClose={() => handleDrawer(false)}
                 className='edit-profile-drawer-width edit-profile-drawer-padding'
+                data-testid="ChangePasswordId"
             >
                 <Box className='d-flex flex-wrap justify-content-between mb-2'>
                     <h5 className=''>
@@ -110,13 +111,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     <div className="row align-items-start my-2" >
                         <div className='col'>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" onChange={handleNewPasswordChange} checked={checkedCharacters} />
+                                <input className="form-check-input" type="checkbox" data-testid="charactersId" onChange={handleNewPasswordChange} checked={checkedCharacters} />
                                 <label className="form-check-label text-muted" htmlFor="flexCheckDefault">
                                     8 Characters
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="flexCheckChecked" onChange={handleNewPasswordChange} checked={checkedSpecial} />
+                                <input className="form-check-input" type="checkbox" data-testid="SpecialcharactersId" id="flexCheckChecked" onChange={handleNewPasswordChange} checked={checkedSpecial} />
                                 <label className="form-check-label text-muted" htmlFor="flexCheckChecked">
                                     Contains special character
                                 </label>
@@ -124,13 +125,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         </div>
                         <div className='col'>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={handleNewPasswordChange} checked={checkedUppercase} />
+                                <input className="form-check-input" type="checkbox" value="" data-testid="UppercaseId" id="flexCheckDefault" onChange={handleNewPasswordChange} checked={checkedUppercase} />
                                 <label className="form-check-label text-muted" htmlFor="flexCheckDefault">
                                     Contains Uppercase
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onChange={handleNewPasswordChange} checked={checkedNumbers} />
+                                <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" data-testid="NumbersId" onChange={handleNewPasswordChange} checked={checkedNumbers} />
                                 <label className="form-check-label text-muted" htmlFor="flexCheckChecked">
                                     Contains Numbers
                                 </label>

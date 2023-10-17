@@ -1,4 +1,4 @@
-import '../../styles/mapcontainer/MapContainer.css';
+import '../../App.css';
 import React, { useState } from 'react';
 import MapOptions from './mapOptions/MapOptions';
 import Map from './map/Map';

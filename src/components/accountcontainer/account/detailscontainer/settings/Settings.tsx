@@ -125,19 +125,19 @@ const Settings: React.FC<SettingsProps> = () => {
             <div className="row w-100 h-90">
                 <div className='col-5 d-flex justify-content-start flex-column text-justify m-4'>
                     <h6 className='mt-2 text-start'>Language</h6>
-                    <select name='language' className='mb-2 btn-outline-black inputBoxHeight text-left' value={usersettings?.language} disabled={isDisabled} >
+                    <select name='language' className='mb-2 btn-outline-black inputBoxHeight text-left' value={usersettings?.language} disabled={isDisabled} data-testid="languageId">
                         {settings?.languages?.map((data) => (
                             <option key={data.code} value={data.name}>{data.name}</option>
                         ))}
                     </select>
                     <h6 className='mt-2 text-start'>Currency</h6>
-                    <select name='currency' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={usersettings?.currency} disabled={isDisabled} >
+                    <select name='currency' className='mb-2 btn-outline-black inputBoxHeight text-left ' data-testid="currencyId" value={usersettings?.currency} disabled={isDisabled} >
                         {settings?.currencies?.map((data) => (
                             <option key={data.code} value={data.name}>{data.name}</option>
                         ))}
                     </select>
                     <h6 className='mt-2 text-start'>Location</h6>
-                    <select name='location' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={usersettings?.location} disabled={isDisabled} >
+                    <select name='location' className='mb-2 btn-outline-black inputBoxHeight text-left ' value={usersettings?.location} disabled={isDisabled} data-testid="locationId">
                         {settings?.locations?.map((data) => (
                             <option key={data.code} value={data.name}>{data.name}</option>
                         ))}

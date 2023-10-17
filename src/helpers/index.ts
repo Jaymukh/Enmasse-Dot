@@ -1,2 +1,2 @@
 export * from './fetchWrapper';
-export * from './initialGenerator';
+export * from './profileOptionGenerator';

@@ -1,163 +1,141 @@
-// import React from 'react';
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
-// import InviteNew from './InviteNew';
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import InviteNew from './InviteNew';
+import { RecoilRoot } from 'recoil';
+import { APIS } from '../../../../../constants';
+import { setupServer } from "msw/node";
+import { MemoryRouter } from 'react-router-dom';
+import { rest } from "msw";
+import { act } from 'react-dom/test-utils';
+const server = setupServer(
+  rest.post(APIS.USERS.INVITE_NEW, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ message: 'Post request successful' }));
+  }),
+  rest.get(APIS.SETTINGS.GET_ALL_SETTINGS, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        company_types: [
+          {
+            id: 1,
+            name: "Enmasse",
+            hq: "Singapore",
+            company_size: 40,
+            website: "https://enmasse.world",
+            no_of_users: 40,
+            description: "Enmasse World"
+          }
+        ],
+        roles: [
+          {
+            id: 1,
+            name: "Admin",
+            description: "Administrator with full access rights"
+          },
+          {
+            id: 2,
+            name: "User",
+            description: "User with partial access rights"
+          }
+        ]
+      })
 
-// describe('InviteNew component', () => {
-//     // const selectedData = {
-//     //   name: 'Kartik Parija',
-//     //   email: 'kartik@enmasse.world',
-//     //   company: 'Enmasse',
-//     //   companyType: 'Enmasse',
-//     //   role: 'Admin'
-//     // };
+    );
+  })
+);
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
-//     it('renders without errors', () => {
-//         render(
-//             <InviteNew
-//                 openInviteNew={true}
-//                 handleCloseInviteNew={() => { }}
-//                 inviteData={[]}
-//                 setInviteData={() => { }}
-//             />
-//         );
+describe('EditInvite component', () => {
+  const handleCloseInviteNew = jest.fn();
+  it('rendered without error', async () => {
+    const { getByTestId, getByPlaceholderText, getByText, getByDisplayValue } = render(
+      <MemoryRouter>
+        <RecoilRoot>
+          <InviteNew handleCloseInviteNew={handleCloseInviteNew} openInviteNew={true}/>
+        </RecoilRoot>
+      </MemoryRouter>
+    );
+    expect(getByPlaceholderText('Enter your name')).toBeInTheDocument;
+    expect(getByPlaceholderText('Enter your Email ID')).toBeInTheDocument;
+    expect(await waitFor(() => screen.getByTestId('companytypeId') as HTMLSelectElement)).toBeInTheDocument;
+    expect(await waitFor(() => screen.getByTestId('roleId') as HTMLSelectElement)).toBeInTheDocument;
+    expect(screen.getByTestId('BtnInvite')).toBeInTheDocument;
+    expect(screen.getByText('Note: Admins will be able to invite users to the platform')).toBeInTheDocument
+  });
 
-//         // Assertions for elements
-//         expect(screen.getByTestId('IdInvite')).toBeInTheDocument();
-//         expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument();
-//         expect(screen.getByPlaceholderText('Enter your Email ID')).toBeInTheDocument();
-//         // Add similar assertions for other elements
-//     });
-//     it('updates name input correctly', () => {
+  it('updates input fields and triggers handleUpdateClick', async () => {
+    const newData = {
+      email_id: "test@gmail.com",
+        name: "test",
+        company: "xyz",
+        designation: "xyz",
+        country: "India",
+        company_type: "Tech Corp",
+        phone_number: "8919682369",
+        role: "User"
+    };
+    const inviteNewMock = jest.fn();
+    inviteNewMock(newData);
+    const mockhandleSubmitInviteNew = jest.fn();
+    mockhandleSubmitInviteNew();
+    const { getByTestId, getByPlaceholderText, getByText, getByDisplayValue } = render(
+      <MemoryRouter>
+        <RecoilRoot>
+          <InviteNew handleCloseInviteNew={handleCloseInviteNew} openInviteNew={true} />
+        </RecoilRoot>
+      </MemoryRouter>
+    );
+    const nameInput = getByPlaceholderText('Enter your name');
+    act(() => {
+      fireEvent.change(nameInput, { target: { value: 'test1' } });
+    });
 
-//         render(
-//             <InviteNew
-//                 openInviteNew={true}
-//                 handleCloseInviteNew={() => { }}
-//                 inviteData={[]}
-//                 setInviteData={() => { }}
-//             />
-//         );
+    const emailInput = getByPlaceholderText('Enter your Email ID');
+    act(() => {
+      fireEvent.change(emailInput, { target: { value: 'test@gmail.com' } });
+    });
 
-//         const nameInput = screen.getByPlaceholderText('Enter your name');
-//         userEvent.clear(nameInput);
-//         userEvent.type(nameInput, 'Kartik Parija');
-//         // Assertion for updated value
-//         expect(nameInput).toHaveValue('Kartik Parija');
-//     });
-//     it('updates email input correctly', () => {
-//         render(
-//             <InviteNew
-//                 openInviteNew={true}
-//                 handleCloseInviteNew={() => { }}
-//                 inviteData={[]}
-//                 setInviteData={() => { }}
-//             />
-//         );
 
-//         const emailInput = screen.getByPlaceholderText('Enter your Email ID');
-//         userEvent.clear(emailInput);
-//         userEvent.type(emailInput, 'kartik@enmasse.world');
-//         // Assertion for updated value
-//         expect(emailInput).toHaveValue('kartik@enmasse.world');
-//     });
-//     it('updates role input correctly', () => {
-//         render(
-//             <InviteNew
-//                 openInviteNew={true}
-//                 handleCloseInviteNew={() => { }}
-//                 inviteData={[]}
-//                 setInviteData={() => { }}
-//             />
-//         );
+    const roleSelect = await waitFor(() =>
+      screen.getByText('Admin') as HTMLSelectElement
+    );
 
-//         const emailInput = screen.getByPlaceholderText('Enter your role');
-//         userEvent.clear(emailInput);
-//         userEvent.type(emailInput, 'Admin');
-//         // Assertion for updated value
-//         expect(emailInput).toHaveValue('Admin');
-//     });
-//     it('Selecting an option company', () => {
-//         render(
-//             <InviteNew
-//                 openInviteNew={true}
-//                 handleCloseInviteNew={() => { }}
-//                 inviteData={[]}
-//                 setInviteData={() => { }}
-//             />
-//         );
-//         const selectBox = screen.getByTestId('SelectCompanyId') as HTMLSelectElement;
-//         // Simulate selecting an option
-//         fireEvent.change(selectBox, { target: { value: 'Enmasse' } });
+    act(() => {
+      fireEvent.change(roleSelect, { target: { value: 'User' } });
+    });
+    const selectBox = getByTestId('companyId');
+    act(() => {
+      fireEvent.change(selectBox, { target: { value: 'xyz' } });
+    });
 
-//         // Verify that the option has been selected
-//         expect(selectBox.value).toBe('Enmasse');
-//     });
+    const companyTypeSelect = await waitFor(() =>
+      screen.getByTestId('companytypeId') as HTMLSelectElement
+    );
+    act(() => {
+      fireEvent.change(companyTypeSelect, { target: { value: 'Tech Corp' } });
+    });
 
-//     it('Selecting an option companyType', () => {
-//         render(
-//             <InviteNew
-//             openInviteNew={true}
-//             handleCloseInviteNew={() => { }}
-//             inviteData={[]}
-//             setInviteData={() => { }}
-//         />
-//         );
-//         const selectBox = screen.getByTestId('SelectCompanyTypeId') as HTMLSelectElement;
-//         // Simulate selecting an option
-//         fireEvent.change(selectBox, { target: { value: 'Enmasse' } });
+    const inviteButton = getByTestId('BtnInvite');
+    act(() => {
+      fireEvent.click(inviteButton);
       
-//         // Verify that the option has been selected
-//         expect(selectBox.value).toBe('Enmasse');
-//       });
+      expect(inviteNewMock).toHaveBeenCalledWith({
+        ...newData,
+        email_id: "test@gmail.com",
+        name: "test",
+        company: "xyz",
+        designation: "xyz",
+        country: "India",
+        company_type: "Tech Corp",
+        phone_number: "8919682369",
+        role: "User"
+      });
+      expect(mockhandleSubmitInviteNew).toHaveBeenCalledTimes(1);
+      expect(handleCloseInviteNew).toHaveBeenCalledTimes(1);
+    });
+  });
 
-//       it('Handles form submission correctly', () => {
-//         const setInviteDataMock = jest.fn();
-//         const handleCloseInviteNewMock = jest.fn();
-    
-//         render(
-//           <InviteNew
-//             openInviteNew={true}
-//             handleCloseInviteNew={handleCloseInviteNewMock}
-//             inviteData={[]}
-//             setInviteData={setInviteDataMock}
-//           />
-//         );
-    
-//         // Get the "Invite" button
-//         const inviteButton = screen.getByTestId('InviteNewBtn');
-    
-//         // Simulate user input
-//         fireEvent.change(screen.getByPlaceholderText('Enter your name'), {
-//           target: { value: 'John Doe' },
-//         });
-//         fireEvent.change(screen.getByPlaceholderText('Enter your Email ID'), {
-//           target: { value: 'john@example.com' },
-//         });
-//         fireEvent.change(screen.getByPlaceholderText('Enter your role'), {
-//           target: { value: 'Admin' },
-//         });
-    
-//         fireEvent.change(screen.getByTestId('SelectCompanyId'), {
-//           target: { value: 'Enmasse' },
-//         });
-//         fireEvent.change(screen.getByTestId('SelectCompanyTypeId'), {
-//           target: { value: 'Enmasse' },
-//         });
-    
-//         // Simulate form submission
-//         fireEvent.click(inviteButton);
-    
-//         // Assert that the setInviteDataMock and handleCloseInviteNewMock were called
-//         expect(setInviteDataMock).toHaveBeenCalledWith([
-//           {
-//             name: 'John Doe',
-//             email: 'john@example.com',
-//             company: 'Enmasse',
-//             companyType: 'Enmasse',
-//             role: 'Admin',
-//           },
-//         ]);
-//         expect(handleCloseInviteNewMock).toHaveBeenCalled();
-//       });
-// });
+});
+

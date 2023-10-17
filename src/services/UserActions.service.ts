@@ -1,5 +1,5 @@
 import { useSetRecoilState, useRecoilState } from 'recoil';
-import { useFetchWrapper } from '../helpers';
+import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
 import { authState, loggedUserState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { APIS, RouteConstants } from '../constants';
@@ -29,7 +29,11 @@ const useUserService = () => {
                     navigate(from);
                 }
             })
-            .catch(error => toast.error(error));
+            .catch(error => {
+                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."                
+                toast.error(errorMsg);
+            });
+                
     }
 
     const logout = () => {
@@ -41,7 +45,10 @@ const useUserService = () => {
                 setAuth({});
                 navigate(RouteConstants.login);
             })
-            .catch(error => toast.error(error));
+            .catch(error => { 
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."                
+            toast.error(errorMsg);
+        });
 
     }
 
@@ -51,7 +58,9 @@ const useUserService = () => {
 
     const getUserDetails = () => {
         return fetchWrapper.get(APIS.USERS.GET_LOGGED_USER).then(data => {
-            setLoggedUser(data);
+            const initial = initialGenerator(data.name);
+            const userHSL = generateHSL(data.name);
+            setLoggedUser({...data, initial: initial, userHSL: userHSL});
         })
         .catch(error => {
             console.log(error);
@@ -61,7 +70,7 @@ const useUserService = () => {
         return fetchWrapper.put(APIS.USERS.UPDATE_LOGGED_USER, updatedData);
     }
 
-    const setNewPassword = () => {
+    const setNewPassword = (data: any) => {
         return fetchWrapper.post(APIS.USERS.SET_NEW_PASSWORD);
     }
 

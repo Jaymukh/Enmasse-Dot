@@ -1,10 +1,11 @@
-import '../../../styles/mapcontainer/mapoptions/MapOptions.css';
-import React, { useState, ChangeEvent } from 'react';
+import '../../../App.css';
+import { useState } from 'react';
 import SelectBox from './SelectBox';
 import { FiDownload } from 'react-icons/fi';
 import { MdBookmarks } from 'react-icons/md';
 import WIPDrawer from './WIPDrawer';
 import { SelectChangeEvent } from '@mui/material';
+import { Button, ButtonType, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 
 interface MapOptionsProps {
     handleGlobal: () => void;
@@ -96,12 +97,15 @@ function MapOptions({
                 )}
             </div>
             <div className='col-xl-5 col-md-5 d-flex flex-wrap justify-content-end align-items-center'>
-                <button className='subheader-btn' onClick={() => openWIPDrawer("Download data")}>
-                    <div className='d-flex flex-wrap'>
-                        <FiDownload className='mt-1' />
-                        <p className='px-2 my-1 fs-12'>Download data</p>
-                    </div>
-                </button>
+                <Button
+                    type={ButtonType.secondary}
+                    size={ButtonSize.small}
+                    variant={ButtonVariant.transparent}
+                    onClick={() => openWIPDrawer("Download data")}
+                >
+                    <FiDownload className='me-2' fontSize={15} />
+                    Download data
+                </Button>
                 <button
                     className='btn-white px-1'
                     onClick={() => openWIPDrawer("Bookmarks")}

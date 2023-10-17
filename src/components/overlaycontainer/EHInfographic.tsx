@@ -6,8 +6,10 @@ interface EHInfographicProps {
   handleOverlay: (overlay: boolean) => void;
 }
 
-const EHInfographic: React.FC<EHInfographicProps> = ({ handleInfographic, handleOverlay }) => {
-
+const EHInfographic: React.FC<EHInfographicProps> = ({ 
+  handleInfographic, 
+  handleOverlay 
+}) => {
   return (
     <div className=''>
       <div className='bg-black-opacity d-flex flex-row justify-content-center'>
@@ -19,7 +21,7 @@ const EHInfographic: React.FC<EHInfographicProps> = ({ handleInfographic, handle
             <button className="btn btn-light btn-height" onClick={() => handleInfographic(2)}>Next</button>
           </div>
         </div>
-        <img src={img4} alt="Girl in a jacket" width="300" height="300" className='imgBorderRadiousinfograpic' />
+        <img src={img4} alt="image" width="300" height="300" className='imgBorderRadiousinfograpic' />
       </div>
     </div>
   );

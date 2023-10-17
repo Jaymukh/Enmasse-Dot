@@ -13,11 +13,15 @@ import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 
 
-export default function Invite() {
+// interface InviteProps {
+// 	handleOpenInviteNew: () => void; // Define the prop type
+//   }
+
+export default function Invite({}) {
 	const [selectedData, setSelectedData] = useState<User | null>(null);
 	const [openInviteNew, setOpenInviteNew] = useState(false);
 	const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
-	const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+	const [selectedUserId, setSelectedUserId] = useState<string>('');
 
 	// all user's data
 	const [users, setUsers] = useRecoilState(usersState);
@@ -26,30 +30,18 @@ export default function Invite() {
 
 	//function to get all the users
 	useEffect(() => {
-		getUsers();
-	}, []);
-
-	const getUsers = () => {
-		userService.getAll()
-			.then((response) => {
-				if (response) {
-					setUsers(response);
-					console.log('All invited users:', response);
-				}
-			})
-			.catch(error => {
-				toast.error(error);
-			});
-
-	};
-
-	const handleEditClick = (row: User) => {
+        userService.getAll().then(response => {
+            setUsers(response);
+        });
+    }, []);
+	 const handleEditClick = (row: User) => {
 		setSelectedData(row);
 	};
+	
 	const handleCloseDialog = () => {
 		setSelectedData(null);
 	};
-	const handleUpdate = (updatedRow:User) => {
+	const handleUpdate = (updatedRow: User) => {
 		userService.editInvite(updatedRow)
 			.then((response) => {
 				if (response) {
@@ -59,13 +51,14 @@ export default function Invite() {
 							row.user_id === updatedRow.user_id ? updatedRow : row
 						))
 					);
-					getUsers();
+					userService.getAll();
 					handleCloseDialog();
 					toast.success('Successfully Updated.');
 				}
 			})
 			.catch(error => {
-				toast.error(error);
+				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+				toast.error(errorMsg);
 			});
 	};
 
@@ -79,33 +72,41 @@ export default function Invite() {
 	};
 
 	// Confirm Delete Model
-	const handleConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
+	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
 		setShowConfirmDeleteModal(showConfirmDeleteModal);
 		setSelectedUserId(user_id);
 	};
+	const closeConfirmDeleteModal = () => {
+		setShowConfirmDeleteModal(false);
+	};
+
 	// function for Delete
 	const handleDeleteClick = () => {
-		userService.deleteInvite(selectedUserId)
+		userService.deleteInvite(selectedUserId!)
 			.then((response) => {
 				if (response) {
-					getUsers();
+					userService.getAll();
 					setShowConfirmDeleteModal(false);
 				}
 			})
 			.catch(error => {
-				toast.error(error);
+				{
+					const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+					toast.error(errorMsg);
+				};
 			});
 	};
+	
 
 	return (
 		<div className='container bg-white w-90 h-100 mt-4 detail-container me-5'>
 			<div className="row w-100 h-10 d-flex flex-row justify-content-between pt-3 pl-4">
 				<h5 className='mt-2 col-2'>Invite</h5>
-				<button className='btn btn-outline-secondary width-fit-content-button' onClick={handleOpenInviteNew} ><IoMdAdd className='me-1 text-dark' fontSize={22} />Invite New</button>
+				<button className='btn btn-outline-secondary width-fit-content-button' onClick={handleOpenInviteNew} data-testid="invitenewbtnid"><IoMdAdd className='me-1 text-dark' fontSize={22} />Invite New</button>
 			</div>
 			<hr />
 			<div className="row w-100 d-flex justify-content-center m-auto invite-table-drawer">
-				<TableContainer component={Paper} className='invite-table-width '>
+				<TableContainer component={Paper} className='invite-table-width ' data-testid="tableCantainer">
 					<Table sx={{ minWidth: 650, marginBottom: '5rem' }} aria-label="simple table">
 						<TableHead>
 							<TableRow>
@@ -116,22 +117,22 @@ export default function Invite() {
 								<TableCell align="center" variant='head' sx={{ fontWeight: '600' }}>Action</TableCell>
 							</TableRow>
 						</TableHead>
-						<TableBody>
-							{users.map((row, index) => (
+						<TableBody data-testid="tableBody">
+							{users.map((row) => (
 								<TableRow
-								data-testid="cells"
+								data-testid="table-row"
 									key={row.name}
 									sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 								>
-									<TableCell component="th" scope="row">{row.name}<br />{row.email_id} </TableCell>
+									<TableCell component="th" scope="row" data-testid="nameid">{row.name}<br/>{row.email_id} </TableCell>
 									<TableCell component="th" align="center" scope="row" sx={{ fontSize: '16px' }}><div className='color-green'>{row.role}</div></TableCell>
 									<TableCell component="th" align="center" scope="row">{row.company}</TableCell>
 									<TableCell component="th" align="center" scope="row">{row.company_type}</TableCell>
 									<TableCell align="center" className='' >
-									<button type='submit' className='btn-white' onClick={() => handleEditClick(row)}>
-											<MdModeEdit className='color-gray' fontSize={20} />
+										<button data-testid='EditIcon' type='submit' className='btn-white' onClick={() => handleEditClick(row)}>
+											<MdModeEdit className='color-gray' fontSize={20}  />
 										</button>
-										<button type='submit' className='btn-white' onClick={() => handleConfirmDeleteModal(true, row.user_id)}>
+										<button data-testid='DeleteIcon' type='submit' className='btn-white' onClick={() => openConfirmDeleteModal(true, row.user_id)}>
 											<MdDeleteSweep className='color-orange ms-2' fontSize={20} />
 										</button>
 									</TableCell>
@@ -145,13 +146,15 @@ export default function Invite() {
 				<EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
 
 			{openInviteNew &&
-				<InviteNew openInviteNew={openInviteNew} setOpenInviteNew={setOpenInviteNew} handleOpenInviteNew={handleOpenInviteNew} handleCloseInviteNew={handleCloseInviteNew} getUsers={getUsers} />}
+				<InviteNew openInviteNew={openInviteNew} handleCloseInviteNew={handleCloseInviteNew} />}
 
 			{showConfirmDeleteModal &&
 				<ConfirmDelete showConfirmDeleteModal={showConfirmDeleteModal}
-					handleConfirmDeleteModal={handleConfirmDeleteModal} handleDeleteClick={handleDeleteClick} />}
+					closeConfirmDeleteModal={closeConfirmDeleteModal} handleDeleteClick={handleDeleteClick} />}
 		</div>
 
 	)
+	
 }
+
 

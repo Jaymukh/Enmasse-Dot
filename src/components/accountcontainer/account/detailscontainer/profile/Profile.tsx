@@ -49,14 +49,14 @@ export default function Profile() {
             </div>
             <hr />
             <div className="row w-100">
-                <div className="col-3 d-flex justify-content-center">
-                    <img src="" alt="Profile Photo" className='profile-image-box'/>
+            <div data-testid="loggedUser" className="col-3 d-flex justify-content-center align-items-center fs-64 ms-3 mt-2 mb-4" style={{backgroundColor: loggedUser.userHSL, color: '#ffffff'}}>
+                    {loggedUser?.img ? <img src="" alt="Profile Photo" className='profile-image-box' /> : (loggedUser.initial)}
                 </div>
                 <div className="col-4">
                     <ul className='edit-profile-list'>
                         <li >
                             <p className="text-muted fs-6  mb-0">Name:</p>
-                            <p className="color-black">{loggedUser.name}</p>
+                            <p className="color-black" data-testid="NameId">{loggedUser.name}</p>
                         </li>
                         <li >
                             <p className="text-muted fs-6  mb-0">Phone:</p>
@@ -84,7 +84,7 @@ export default function Profile() {
                         </li>
                         <li >
                             <p className="text-muted fs-6  mb-0">Country:</p>
-                            <p className="color-black">{loggedUser.country}</p>
+                            <p className="color-black" >{loggedUser.country}</p>
                         </li>
                     </ul>
                 </div>

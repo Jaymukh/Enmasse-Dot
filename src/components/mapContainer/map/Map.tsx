@@ -1,4 +1,4 @@
-import '../../../styles/mapcontainer/map/Map.css';
+import '../../../App.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React, { useState } from 'react';
 import GlobalMap from './GlobalMap';
@@ -82,9 +82,6 @@ const Map: React.FC<MapProps> =({
                     pointFeatures={pointFeatures}
                 />
             )}
-            <div className='d-flex flex-row bottom-0 end-0 position-fixed' style={{ zIndex: 998 }}>
-                <InsightBar />
-            </div>
         </div>
     );
 }

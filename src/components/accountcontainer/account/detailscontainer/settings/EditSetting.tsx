@@ -18,13 +18,14 @@ const EditSetting: React.FC<EditSettingProps> = ({ editMode, handleEditClick }) 
                 open={editMode}
                 onClose={() => handleEditClick(false)}
                 className='edit-profile-drawer-width edit-profile-drawer-padding'
+                data-testid="EditSettingId"
             >
                 <Box className='d-flex flex-wrap justify-content-between mb-2'>
                     <h5 className=''>
                         Edit Setting
                     </h5>
                     <button className='bg-white border-0'>
-                        <CloseIcon onClick={() => handleEditClick(false)} />
+                        <CloseIcon data-testid="closeBtnId" onClick={() => handleEditClick(false)} />
                     </button>
                 </Box>
                 <Box className='d-flex justify-content-center flex-column'>

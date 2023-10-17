@@ -110,11 +110,6 @@ const StateMap: React.FC<StateMapProps> = ({
                 };
             });
 
-            const bounds = new window.google.maps.LatLngBounds();
-            features.features.forEach((feature: Feature) => {
-                processCoordinates(feature.geometry.coordinates);
-            });
-
             const processCoordinates = (coordinates: any) => {
                 if (Array.isArray(coordinates[0])) {
                     // Multi-part geometry, like a polygon with holes or a multi-line string
@@ -126,6 +121,11 @@ const StateMap: React.FC<StateMapProps> = ({
                     bounds.extend(new window.google.maps.LatLng(coordinates[1], coordinates[0]));
                 }
             };
+
+            const bounds = new window.google.maps.LatLngBounds();
+            features.features.forEach((feature: Feature) => {
+                processCoordinates(feature.geometry.coordinates);
+            });
 
             // Set map center and zoom level based on bounding box
             map.fitBounds(bounds);
@@ -203,11 +203,11 @@ const StateMap: React.FC<StateMapProps> = ({
                                             zIndex: focused === index ? 1000 : 0
                                         } as any}
                                     >
-                                            <MapPopup
-                                                properties={feature.properties}
-                                                handleFocused={handleFocused}
-                                                index={index}
-                                            />
+                                        <MapPopup
+                                            properties={feature.properties}
+                                            handleFocused={handleFocused}
+                                            index={index}
+                                        />
                                     </InfoWindow>
                                 ))
                             )}

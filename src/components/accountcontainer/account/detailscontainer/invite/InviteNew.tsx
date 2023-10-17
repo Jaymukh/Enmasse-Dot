@@ -1,115 +1,120 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CloseIcon from '@mui/icons-material/Close';
-import Select from '@mui/material/Select';
-import { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import React, { useState, useEffect } from 'react';
+import Drawer from '../../../../ui/Drawer';
 import * as Constants from '../../../../../utils/constants/Constants';
 import '../../../../../App.css';
+import { useRecoilValue } from "recoil";
+import { useUserService, useSettingsService } from '../../../../../services';
+import { loggedUserState, AllSettingsState, User } from "../../../../../states";
+import { toast } from "react-toastify";
+import Select, { SelectSize } from '../../../../ui/select/Select';
 
-interface ProfileData {
-    name: string;
-    email: string;
-    company: string;
-    companyType: string;
-    role: string;
+interface NewData {
+    name: string | undefined;
+    email_id: string | undefined;
+    role: string | undefined;
+    company: string | undefined;
+    company_type: string | undefined;
 }
-
 interface InviteNewProps {
     openInviteNew: boolean;
     handleCloseInviteNew: () => void;
-    inviteData: ProfileData[];
-    setInviteData: React.Dispatch<React.SetStateAction<ProfileData[]>>;
 }
 
 const InviteNew: React.FC<InviteNewProps> = ({
     openInviteNew,
-    handleCloseInviteNew,
-    inviteData,
-    setInviteData
+    handleCloseInviteNew
 }) => {
 
 
-    const [newData, setNewData] = useState<ProfileData>({
-        name: '',
-        email: '',
-        company: '',
-        companyType: '',
-        role: ''
+    const [newData, setNewData] = useState<NewData>({
+        name: undefined,
+        email_id: undefined,
+        role: undefined,
+        company: undefined,
+        company_type: undefined,
     });
+    const userService = useUserService();
+    const loggedUser = useRecoilValue(loggedUserState);
+    const settings = useRecoilValue(AllSettingsState);
+    const settingsService = useSettingsService();
 
-
-    const handleChangeData = (e: React.ChangeEvent<{ name?: string; value: unknown }> | SelectChangeEvent<string>) => {
+    const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault();
-        var name = e.target.name as keyof ProfileData;;
+        var name = e.target.name;
         var value = e.target.value;
         setNewData({ ...newData, [name]: value });
-    };
+    }
     const handleSubmitInviteNew = () => {
-        setInviteData([...inviteData, newData]);
+        var payload = { ...newData, user_id: loggedUser.user_id, designation: 'Manager', country: 'India', phone_number: 5436525362, status: 'Invited' };
+        userService.inviteNew(payload)
+            .then((response) => {
+                if (response) {
+                    toast.success('Successfully Invited.');
+                    userService.getAll();
+                }
+            })
+            .catch(error => { 
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."                
+            toast.error(errorMsg);
+        });
         handleCloseInviteNew();
     };
 
+    //function to get all the settings details
+    useEffect(() => {
+        settingsService.getAllSettings();
+    }, []);
+
     return (
-        <div className='' data-testid="InviteNew">
+        <div data-testid="InviteNewid">
             <Drawer
-                anchor='right'
-                open={openInviteNew}
-                onClose={handleCloseInviteNew}
-                className='edit-profile-drawer-width edit-profile-drawer-padding'
+                id='invite'
+                title='Invite'
+                isOpen={openInviteNew}
+                toggleFunction={handleCloseInviteNew}
+                
             >
-                <Box className='d-flex flex-wrap justify-content-between mb-2'>
-                    <h5 data-testid="IdInvite" className=''>
-                        Invite
-                    </h5>
-                    <button className='bg-white border-0'>
-                        <CloseIcon onClick={handleCloseInviteNew} />
-                    </button>
-                </Box>
-                <Box className='d-flex justify-content-center flex-column'>
-                    <h6 className='my-1 font-87-5'>Name</h6>
+                <div className='d-flex justify-content-center flex-column px-3'>
+                    <h6 className='mt-1 font-87-5 text-start'>Name</h6>
                     <input type="text" placeholder="Enter your name" value={newData.name} name='name'
-                        onChange={(e) => handleChangeData(e)} className='my-2  p-2 btn-outline-black drawer-input-box-height' />
-                    <h6 className='my-1 font-87-5'>Email</h6>
-                    <input type="email" placeholder="Enter your Email ID" value={newData.email} name='email'
-                        onChange={(e) => handleChangeData(e)} className='my-2  p-2 btn-outline-black drawer-input-box-height' />
-                    <h6 className='my-1 font-87-5'>Role</h6>
-                    <input type="tel" maxLength={10} placeholder="Enter your role" value={newData.role} name='role'
-                        onChange={(e) => handleChangeData(e)} className='my-2  p-2 btn-outline-black drawer-input-box-height' />
-                    <h6 className='my-1 font-87-5' data-testid="SelectCompany">Company</h6>
-                    <Select
-                        value={newData.company}
-                        name='company'
-                        displayEmpty
-                        inputProps={{ 'data-testid': 'SelectCompanyId' }}
-                        className='btn-outline-black drawer-input-box-height p-0'
-                        onChange={(e) => handleChangeData(e)}
-                    >
-                        {Constants.company?.map((company) => (
-                            <MenuItem value={company.key}>{company.value}</MenuItem>
+                        onChange={(e) => handleChangeData(e)} className='mb-2 p-2 btn-outline-black drawer-input-box-height' />
+                    <h6 className='mt-1 font-87-5 text-start'>Email</h6>
+                    <input type="email" placeholder="Enter your Email ID" value={newData.email_id} name='email_id'
+                        onChange={(e) => handleChangeData(e)} className='mb-2  p-2 btn-outline-black drawer-input-box-height' />
+                    <h6 className='my-1 font-87-5 text-start'>Role</h6>
+                    {/* <select name='role' className='mb-2 btn-outline-black drawer-input-box-height text-left' value={newData.role} onChange={(e) => handleChangeData(e)} >
+                        {settings?.roles?.map((role) => (
+                            <option key={role.id} value={role.name}>{role.name}</option>
                         ))}
-                    </Select>
-                    <h6 className='my-1 font-87-5 font-87-5' >Company type</h6>
+                    </select> */}
                     <Select
-                        value={newData.companyType}
-                        name='companyType'
-                        displayEmpty
-                        inputProps={{ 'data-testid': 'SelectCompanyTypeId' }}
-                        className='btn-outline-black drawer-input-box-height p-0'
+                        options={settings?.roles}
                         onChange={(e) => handleChangeData(e)}
-                        
-                    >
-                        {Constants.companyType?.map((companyType) => (
-                            <MenuItem value={companyType.key}>{companyType.value}</MenuItem>
+                        value={newData?.role}
+                        labelKey='name'
+                        valueKey='name'
+                        size={SelectSize.large}
+                        name='role'
+                        datatestid='roleId'   
+                    />
+                    <h6 className='mt-1 font-87-5 text-start'>Company</h6>
+                    <select name='company' className='mb-2 btn-outline-black drawer-input-box-height text-left' data-testid="companyId"  value={newData.company} onChange={(e) => handleChangeData(e)} >
+                        {Constants?.company?.map((company) => (
+                            <option key={company.key} value={company.value}>{company.value}</option>
                         ))}
-                    </Select>
-                    <p className='my-3 Note  d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p>
-                    <button className='btn-black drawer-input-box-height mt-2 mb-3' data-testid="InviteNewBtn" onClick={handleSubmitInviteNew}>Invite</button>
-                </Box>
+                    </select>
+                    <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
+                    <select name='company_type' className='mb-2 btn-outline-black drawer-input-box-height text-left' data-testid ="companytypeId" value={newData.company_type} onChange={(e) => handleChangeData(e)} >
+                        {settings?.company_types?.map((company_type) => (
+                            <option key={company_type.id} value={company_type.name}>{company_type.name}</option>
+                        ))}
+                    </select>
+                    <p className='my-3 Note d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p>
+                    <button className='btn-black bg-dark border-0 drawer-input-box-height mt-2 mb-3' data-testid="BtnInvite" onClick={handleSubmitInviteNew}>Invite</button>
+                </div>
             </Drawer>
         </div>
     );
 }
 
-export default InviteNew
+export default InviteNew;

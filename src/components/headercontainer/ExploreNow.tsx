@@ -1,23 +1,20 @@
+import '../../App.css';
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
-import { RouteConstants } from '../../utils/constants/routeConstants';
-import { useNavigate } from 'react-router-dom';
+import { Button, ButtonType, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
-interface ExploreNowProps {}
-
-const ExploreNow: React.FC<ExploreNowProps> = () => {
+const ExploreNow = () => {
   const [selectedValue, setSelectedValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedshowDiv, setSelectedshowDiv] = useState<boolean>(true);
-  const [selectedDistricts, setSelectedDistricts] = useState<Constants.ExplorePlace[]>([]);
+  const [selectedDistricts, setSelectedDistricts] = useState<any>([]);
   const [selectedDistrictOptions, setSelectedDistrictOptions] = useState<string[]>([]);
   const [selectedPlaceType, setSelectedPlaceType] = useState<string>('state');
   const [showExploreNowModal, setShowExploreNowModal] = useState<boolean>(false); // explore now dialog
-  const navigate = useNavigate();
 
   // explore now dialog open and close functions
   const openExploreNowModal = () => {
@@ -87,10 +84,16 @@ const ExploreNow: React.FC<ExploreNowProps> = () => {
 
   return (
     <div>
-      <button className='btn btn-black me-2' onClick={openExploreNowModal}>
+      {/* <button className='header-btns btn-black me-2 fs-13 grayBtnClr' onClick={openExploreNowModal}> */}
+      <Button
+        type={ButtonType.primary}
+        size={ButtonSize.default}
+        variant={ButtonVariant.contained}
+        onClick={openExploreNowModal}>
         <MdOutlineTravelExplore className='me-2' fontSize={20} />
         Explore Now
-      </button>
+      </Button>
+      {/* </button> */}
       <div
         className={`modal ${showExploreNowModal ? 'show' : ''}`}
         tabIndex={-1}
@@ -152,7 +155,7 @@ const ExploreNow: React.FC<ExploreNowProps> = () => {
                           <h5 className='d-flex justify-content-start'>{item.state}</h5>
                           <hr></hr>
                           <div className='row'>
-                            {item.districts.map((district) => (
+                            {item.districts.map((district: string) => (
                               <div className='col-4 d-flex justify-content-start' key={district}>
                                 <p className='color-green'>{district}</p>
                               </div>
@@ -167,8 +170,8 @@ const ExploreNow: React.FC<ExploreNowProps> = () => {
                       <h5 className='d-flex justify-content-start'>{selectedValue}</h5>
                       <hr></hr>
                       <div className='row'>
-                        {selectedDistricts.map((district) => (
-                          <div className='col-4 d-flex justify-content-start' key={district}>
+                        {selectedDistricts.map((district: string) => (
+                          <div className='col-4 d-flex justify-content-start'>
                             <p className='color-green'>{district}</p>
                           </div>
                         ))}

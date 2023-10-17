@@ -6,22 +6,25 @@ import DistrictSidebar from './DistrictSidebar';
 import '../../../App.css';
 
 interface FamilyProps {
-    selectedFamily: number; // Update with appropriate type
-    handleCarouselSlide: (selectedFamily: number) => void; // Update with appropriate type
-    selectedData: any; // Update with appropriate type
+    selectedFamily: number;
+    handleCarouselSlide: (selectedFamily: number) => void;
+    selectedData: any;
+    handleBackClick: () => void;
 }
 
-function Family({ selectedFamily, handleCarouselSlide, selectedData }: FamilyProps) {
+function Family({ selectedFamily, selectedData, handleCarouselSlide, handleBackClick }: FamilyProps) {
     return (
         <>
             <FamilySidePanel selectedFamily={selectedFamily} handleCarouselSlide={handleCarouselSlide} />
 
             {selectedData.properties.familyDetails ?
                 <FamilyDetailsContainer selectedData={selectedData} /> :
-                <FamilyDetailsEmptyContainer selectedData={selectedData}  />
+                <FamilyDetailsEmptyContainer selectedData={selectedData} handleBackClick={handleBackClick} />
             }
 
-            <DistrictSidebar selectedData={selectedData} />
+            <div className='col-3 py-4 px-2 bg-white px-0' style={{ height: '98%', overflow: 'auto' }}>
+                <DistrictSidebar  />
+            </div>
         </>
     );
 }

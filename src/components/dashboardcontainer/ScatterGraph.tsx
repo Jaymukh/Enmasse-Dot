@@ -1,6 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 import SelectYear from './SelectYear';
+import Select, { SelectSize } from '../ui/select/Select';
 
 const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
     return (
@@ -42,6 +43,20 @@ const ReverseArrowMarker = () => (
 
 const DashboardContainer = () => {
 
+    const options: any[] = [];
+    const currentYear = new Date().getFullYear();
+
+    for (let year = currentYear - 10; year <= currentYear; year++) {
+        options.push({ key: year, value: year.toString() });
+    }
+
+    const [selectedYear, setSelctedYear] = useState(currentYear);
+
+    const handleChangeYear = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        setSelctedYear(value);
+    }
+
     const data = [
         { x: 70, y: -90, label: "Kerala" },
         { x: 56, y: 36, label: "Arunachal Pradesh" },
@@ -51,9 +66,17 @@ const DashboardContainer = () => {
 
     return (
         <div className='white-bg py-3 dashboard-col'>
-            <div className='px-4 pt-2 d-flex justify-content-between'>
-                <h6 className='text-start fs-14' >EH Income and Expense</h6>
-                <SelectYear />
+            <div className='row px-4 pt-2 d-flex justify-content-between'>
+                <h6 className='col-3 text-start fs-14' >EH Income and Expense</h6>
+                <div className='col-2'><Select
+                    options={options}
+                    onChange={handleChangeYear}
+                    value={selectedYear}
+                    labelKey='name'
+                    valueKey='name'
+                    size={SelectSize.small}
+                /></div>
+                
             </div>
 
             <ScatterChart width={750} height={375} margin={{ top: 60, right: 20, bottom: 20, left: 20 }}>

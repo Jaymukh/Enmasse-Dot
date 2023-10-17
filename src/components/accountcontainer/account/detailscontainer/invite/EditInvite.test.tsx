@@ -1,135 +1,193 @@
-// import React from 'react';
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
-// import EditInvite from './EditInvite';
-
-// describe('EditInvite component', () => {
-//   const selectedData = {
-//     name: 'Kartik Parija',
-//     email: 'kartik@enmasse.world',
-//     company: 'Enmasse',
-//     companyType: 'Enmasse',
-//     role: 'Admin'
-//   };
-
-//   it('renders without errors', () => {
-//     render(
-//       <EditInvite
-//         selectedData={selectedData}
-//         handleCloseDialog={() => {}}
-//         handleUpdate={() => {}}
-//       />
-//     );
-
-//     // Assertions for elements
-//     expect(screen.getByText('Edit')).toBeInTheDocument();
-//     expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument();
-//     expect(screen.getByPlaceholderText('Enter your Email ID')).toBeInTheDocument();
-//     // Add similar assertions for other elements
-//   });
-
-//   it('updates name input correctly', () => {
-  
-//     render(
-//       <EditInvite
-//         selectedData={selectedData}
-//         handleCloseDialog={() => {}}
-//         handleUpdate={() => {}}
-//       />
-//     );
-
-//     const nameInput = screen.getByPlaceholderText('Enter your name');
-//     userEvent.clear(nameInput);
-//     userEvent.type(nameInput, 'Kartik Parija');
-//     // Assertion for updated value
-//     expect(nameInput).toHaveValue('Kartik Parija');
-//   });
-  
- 
-
-//   it('updates email input correctly', () => {
-//     render(
-//       <EditInvite
-//         selectedData={selectedData}
-//         handleCloseDialog={() => {}}
-//         handleUpdate={() => {}}
-//       />
-//     );
-
-//     const emailInput = screen.getByPlaceholderText('Enter your Email ID');
-//     userEvent.clear(emailInput);
-//     userEvent.type(emailInput, 'kartik@enmasse.world');
-
-//     // Assertion for updated value
-//     expect(emailInput).toHaveValue('kartik@enmasse.world');
-//   });
-
-//   it('updates role input correctly', () => {
-//     render(
-//       <EditInvite
-//         selectedData={selectedData}
-//         handleCloseDialog={() => {}}
-//         handleUpdate={() => {}}
-//       />
-//     );
-
-//     const emailInput = screen.getByPlaceholderText('Enter your role');
-//     userEvent.clear(emailInput);
-//     userEvent.type(emailInput, 'Admin');
-
-//     // Assertion for updated value
-//     expect(emailInput).toHaveValue('Admin');
-//   });
-
-//   it('Selecting an option company', () => {
-//     render(
-//       <EditInvite
-//         selectedData={selectedData}
-//         handleCloseDialog={() => {}}
-//         handleUpdate={() => {}}
-//       />
-//     );
-//     const selectBox = screen.getByTestId('company-placeholder') as HTMLSelectElement;
-//     // Simulate selecting an option
-//     fireEvent.change(selectBox, { target: { value: 'Enmasse' } });
-  
-//     // Verify that the option has been selected
-//     expect(selectBox.value).toBe('Enmasse');
-//   });
-//   it('Selecting an option companyType', () => {
-//     render(
-//       <EditInvite
-//         selectedData={selectedData}
-//         handleCloseDialog={() => {}}
-//         handleUpdate={() => {}}
-//       />
-//     );
-//     const selectBox = screen.getByTestId('companytype-placeholder') as HTMLSelectElement;
-//     // Simulate selecting an option
-//     fireEvent.change(selectBox, { target: { value: 'Enmasse' } });
-  
-//     // Verify that the option has been selected
-//     expect(selectBox.value).toBe('Enmasse');
-//   });
-
-//   it('Clicking the "Update" button triggers the handleUpdateClick function', () => {
-//     const handleUpdateMock = jest.fn();
-  
-//     render(
-//       <EditInvite 
-//       handleUpdate={handleUpdateMock} 
-//       selectedData={selectedData}
-//       handleCloseDialog={() => {}}
-//       />
-//     );
-//     const updateButton = screen.getByText('Update');
-//     // Simulate a click event on the button 
-//     fireEvent.click(updateButton);
-//     // Assert that handleUpdateMock was called
-//     expect(handleUpdateMock).toHaveBeenCalledTimes(1);
-//   });
+import React from 'react';
+import { render, screen, fireEvent, waitFor, getByTestId, queryAllByTestId, getAllByTestId } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import EditInvite from './EditInvite';
+import { APIS } from '../../../../../constants';
+import { setupServer } from "msw/node";
+import { MemoryRouter } from 'react-router-dom';
+import { rest } from "msw";
+import { act } from 'react-dom/test-utils';
+import { RecoilRoot } from 'recoil'; // Import RecoilRoot to provide the Recoil state
 
 
-// });
+const server = setupServer(
+    rest.get(APIS.SETTINGS.GET_ALL_SETTINGS, (req, res, ctx) => {
+        return res(
+            ctx.json({
+                company_types: [
+                    {
+                        id: 1,
+                        name: "Enmasse",
+                        hq: "Singapore",
+                        company_size: 40,
+                        website: "https://enmasse.world",
+                        no_of_users: 40,
+                        description: "Enmasse World"
+                    }
+                ],
+                roles: [
+                    {
+                        id: 1,
+                        name: "Admin",
+                        description: "Administrator with full access rights"
+                    },
+                    {
+                        id: 2,
+                        name: "User",
+                        description: "User with partial access rights"
+                    }
+                ]
+            })
+
+        );
+    })
+
+);
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+describe('EditInvite component', () => {
+    const selectedData = {
+        name: 'Kartik Parija',
+        email_id: 'kartik@enmasse.world',
+        company: 'Enmasse',
+        company_type: 'Enmasse',
+        role: 'Admin',
+        phone_number: 6526256278,
+        designation: 'Manager',
+        country: 'India',
+        user_id: '1',
+        status: 'Active',
+    };
+
+    const handleCloseDialog = jest.fn();
+    const handleUpdate = jest.fn();
+    it('renders without errors and with row data', async () => {
+        render(
+            <MemoryRouter>
+                <RecoilRoot>
+                    <EditInvite
+                        selectedData={selectedData}
+                        handleCloseDialog={() => { }}
+                        handleUpdate={() => { }}
+                    />
+                </RecoilRoot>
+            </MemoryRouter>
+        );
+        // Assertions for elements
+        expect(screen.getByText('Edit')).toBeInTheDocument();
+        const nameInput = screen.getByPlaceholderText('Enter your name');
+        act(() => {
+            userEvent.clear(nameInput);
+        userEvent.type(nameInput, 'Kartik Parija1');
+        expect(nameInput).toHaveValue('Kartik Parija1');
+          });
+        const emailInput = screen.getByPlaceholderText('Enter your Email ID');
+        act(() => {
+            userEvent.clear(emailInput);
+        userEvent.type(emailInput, 'kartik@enmasse.world');
+        expect(emailInput).toHaveValue('kartik@enmasse.world');
+          });
+        const selectBox = screen.getByTestId('company-placeholder') as HTMLSelectElement;
+        act(() => {
+            fireEvent.change(selectBox, { target: { value: 'Enmasse' } });
+        expect(selectBox.value).toBe('Enmasse');
+          });
+        
+        expect(await screen.findByText('Admin')).toBeInTheDocument();
+        const companyTypeSelect = await waitFor(() =>
+            screen.getByTestId('companytype-placeholder') as HTMLSelectElement
+        );
+        act(() => {
+            fireEvent.change(companyTypeSelect, { target: { value: 'Enmasse' } });
+            expect(companyTypeSelect.value).toBe('Enmasse');
+          });
+       
+
+    });
+
+    it('Clicking the "Update" button triggers the handleUpdateClick function', () => {
+        const handleUpdateMock = jest.fn();
+        const updatedData = {
+            company: "enmasse",
+            company_type: "Enmasse",
+            country: "India",
+            designation: "Manager",
+            email_id: "kartik@enmasse.world",
+            name: "Kartik Parija",
+            phone_number: "8777675655",
+            role: "Admin",
+            status: "Active",
+            user_id: "0d8a42e5-91f4-4f65-bca3-5695c5a0b249"
+        }
+        const handleUpdateClickMock = jest.fn();
+        handleUpdateClickMock();
+        render(
+            <RecoilRoot>
+                <EditInvite
+                    handleUpdate={handleUpdateMock}
+                    selectedData={selectedData}
+                    handleCloseDialog={() => { }}
+                />
+            </RecoilRoot>
+        );
+        const updateButton = screen.getByText('Update');
+        act(() => {
+            fireEvent.click(updateButton);
+            expect(handleUpdateClickMock).toHaveBeenCalledTimes(1);
+          });
+        
+    });
+
+    it('updates input fields and triggers handleUpdateClick', async () => {
+        
+        const { getByTestId, getByPlaceholderText, getByText, getByDisplayValue } = render(
+
+            <RecoilRoot>
+                <EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />
+            </RecoilRoot>
+        );
+        const nameInput = getByPlaceholderText('Enter your name');
+        act(() => {
+            fireEvent.change(nameInput, { target: { value: 'New Name' } });
+          });
+        
+        const emailInput = getByPlaceholderText('Enter your Email ID');
+        act(() => {
+            fireEvent.change(emailInput, { target: { value: 'newemail@example.com' } });
+          });
+        const roleSelect = await waitFor(() =>
+            screen.getByText('Admin') as HTMLSelectElement
+        );
+        act(() => {
+            fireEvent.change(roleSelect, { target: { value: 'Admin' } });
+          });
+        const selectBox = getByTestId('company-placeholder');
+        act(() => {
+            fireEvent.change(selectBox, { target: { value: 'Enmasse' } });
+          });
+        const companyTypeSelect = await waitFor(() =>
+            screen.getByTestId('companytype-placeholder') as HTMLSelectElement
+        );
+        act(() => {
+            fireEvent.change(companyTypeSelect, { target: { value: 'Enmasse' } });
+          });
+        const updateButton = getByText('Update');
+        act(() => {
+            fireEvent.click(updateButton);
+            expect(handleUpdate).toHaveBeenCalledWith({
+                ...selectedData,
+                name: 'New Name',
+                email_id: 'newemail@example.com',
+                role: 'Admin',
+                company: 'Enmasse',
+                company_type: 'Enmasse',
+            });
+          });
+        
+        
+    });
+});
 
 

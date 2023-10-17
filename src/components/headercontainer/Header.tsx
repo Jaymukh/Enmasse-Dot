@@ -1,4 +1,3 @@
-import '../../styles/headercontainer/Header.css';
 import '../../App.css';
 import React, { useState } from 'react';
 import { MdLiveHelp, MdNotifications } from 'react-icons/md';
@@ -6,8 +5,8 @@ import AccountOptions from './AccountOptions';
 import MapYourBusiness from './MapYourBusiness';
 import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../utils/constants/routeConstants';
-import WIPDrawer from '../mapcontainer/mapOptions/WIPDrawer';
+import { RouteConstants } from '../../constants/routeConstants';
+import WIPDrawer from '../mapContainer/mapOptions/WIPDrawer';
 
 interface HeaderProps {
   handleVisiblePanel: (index: number) => void;
@@ -16,8 +15,8 @@ interface HeaderProps {
 }
 
 function Header({ handleVisiblePanel, handleOverlay, handleInfographic }: HeaderProps) {
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const handleHelp = () => {
     navigate(RouteConstants.root);
     handleOverlay(true);
@@ -49,9 +48,7 @@ function Header({ handleVisiblePanel, handleOverlay, handleInfographic }: Header
       <div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
         <ExploreNow />
         <MapYourBusiness />
-        <button className='border-0 btn-white' onClick={handleHelp} >
-          <MdLiveHelp fontSize={25} className='ms-4 me-3 mb-1 header-icon' />
-        </button>
+        <button className='border-0 btn-white' onClick={() => handleHelp()} ><MdLiveHelp fontSize={25} className='ms-4 me-3 mb-1 header-icon' /></button>
         <button className='border-0 btn-white' onClick={() => openWIPDrawer("Notifications")}>
           <MdNotifications fontSize={25} className='mb-1 header-icon' />
         </button>
@@ -59,6 +56,7 @@ function Header({ handleVisiblePanel, handleOverlay, handleInfographic }: Header
       </div>
 
       {open && <WIPDrawer open={open} title={title} closeWIPDrawer={closeWIPDrawer} />}
+
     </div>
   );
 }
