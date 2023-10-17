@@ -38,3 +38,12 @@ ul {
 .sidebar-ul {
     margin-left: 0.75rem;
 }
+
+.color-green-0 {
+    color: var(--green-0);
+}
+
+.bg-green-7 {
+    background-color: var(--green-7);
+
+}

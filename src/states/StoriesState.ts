@@ -31,6 +31,7 @@ interface Family {
 export interface Stories {
     type: string;
     page: string;
+    totalStories: number;
     family: Family[];
 }
 

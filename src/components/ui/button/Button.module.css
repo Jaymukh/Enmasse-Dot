@@ -46,7 +46,7 @@
 	background-color: transparent;
 	border: 0;
 	color: var(--black-0);
-	height: 2.25rem;
+	height: 2.25rem !important;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
