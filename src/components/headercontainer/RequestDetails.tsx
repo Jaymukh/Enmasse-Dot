@@ -17,9 +17,9 @@ const RequestDetails = () => {
 		<div >
 			<Button
 				theme={ButtonTheme.secondary}
-				size={ButtonSize.default}
+				size={ButtonSize.small}
 				variant={ButtonVariant.contained}
-				classname='ms-2'
+				classname='ms-4'
 				onClick={() => toggleDrawer()}>
 				<HiMiniPhone className='me-2' fontSize={20} />
 				Request Details

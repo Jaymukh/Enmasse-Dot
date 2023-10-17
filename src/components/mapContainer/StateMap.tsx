@@ -10,27 +10,27 @@ import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 import { useRecoilValue } from 'recoil';
 import { geoJsonState } from '../../states/GeoJSONState';
 import { Breadcrumb } from '../ui/breadcrumb/Breadcrumb';
+import { mapFeatureState } from '../../states/MapFeatureState';
 
 
 interface StateMapProps {
     selected: any;
-    pointFeatures?: any[];
     breadcrumbs: any;
 }
 
 const StateMap: React.FC<StateMapProps> = ({
     selected,
-    pointFeatures,
     breadcrumbs
 }) => {
     const mapRef = useRef(null);
     const [map, setMap] = useState<google.maps.Map | null>(null);
     const [circles, setCircles] = useState<google.maps.Circle[]>([]);
     const [selectedRb, setSelectedRb] = useState(0);
-    const [selectedCoreSoln, setSelectedCoreSoln] = useState({ key: 0, label: 'All', type: 'radius_all' });
+    const [selectedCoreSoln, setSelectedCoreSoln] = useState({ key: 0, label: 'All', type: 'all' });
     const [focused, setFocused] = useState(0);
     const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
     const geoJSON = useRecoilValue(geoJsonState);
+    const mapFeatures = useRecoilValue(mapFeatureState);
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const [center, setCenter] = useState({
@@ -72,8 +72,8 @@ const StateMap: React.FC<StateMapProps> = ({
 
     const handleFocused = (index: number) => {
         setFocused(index);
-    };   
-
+    };  
+    
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
             setIsChecked({ ...isChecked, coreSolution: true });
@@ -119,25 +119,26 @@ const StateMap: React.FC<StateMapProps> = ({
         if (!isChecked.coreSolution) {
             clearCircles();
         }
-        else if (map && pointFeatures && isChecked.coreSolution) {
+        else if (map && mapFeatures.circles && isChecked.coreSolution) {
             clearCircles();
-            const newCircles = pointFeatures.map((feature) => {
+            const newCircles = mapFeatures.circles.map((feature: any) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
                     lng: feature.geometry.coordinates[0],
                 };
                 const type = selectedCoreSoln.type;
 
-                const radii = type !== 'radius_all' ? ['radius_all', type] : [type];
+                const radii = type !== 'all' ? ['all', type] : [type];
 
                 return radii.map((radius, i) => {
                     const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
+                    const circleRadius = Number(feature.properties[radius] * 10000);
 
                     return new window.google.maps.Circle({
-                        center: center,
-                        radius: feature.properties[radius],
+                        center,
+                        radius: circleRadius,
+                        fillOpacity,
                         fillColor: '#FFFFFF',
-                        fillOpacity: fillOpacity,
                         strokeColor: '#FFFFFF',
                         strokeOpacity: 1,
                         strokeWeight: 1,
@@ -149,7 +150,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
             setCircles(newCircles.flat());
         }
-    }, [map, pointFeatures, selectedCoreSoln, isChecked.coreSolution]);
+    }, [map, mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
         clearCircles();

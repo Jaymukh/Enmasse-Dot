@@ -1,7 +1,7 @@
 import '../../App.css';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { useMapsService } from '../../services';
@@ -9,6 +9,7 @@ import { geoJsonState, spinnerState } from '../../states';
 import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
+import { mapFeatureState } from '../../states/MapFeatureState';
 
 const countries = [{ geo_id: 1, name: 'India' }];
 
@@ -23,6 +24,7 @@ function MapContainer() {
     const [states, setStates] = useState<any>([]);
     const [districts, setDistricts] = useState<any>([]);
     const setGeoJSON = useSetRecoilState(geoJsonState);
+    const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
 
     const getSearchParams = () => {
         if (global) {
@@ -79,7 +81,6 @@ function MapContainer() {
                     : districts?.find((district: any) => district.geo_id === geo_id)?.name;
             resultArray.push({ key, geo_id, label, link });
         });
-        console.log(resultArray)
         setBreadcrumbList(resultArray);
     };
 
@@ -93,6 +94,16 @@ function MapContainer() {
         mapServices.getMaps(Number(geo_id)).then(data => {
             setSpinner(false);
             setGeoJSON(data);
+        }).catch(error => {
+            setSpinner(false);
+            errorHandler(error);
+        });
+    }
+
+    const fetchMapCircles = (geo_id: string) => {
+        mapServices.getCircle(Number(geo_id)).then(data => {
+            setSpinner(false);
+            setMapFeatures({ ...mapFeatures, circles: data });
         }).catch(error => {
             setSpinner(false);
             errorHandler(error);
@@ -122,6 +133,7 @@ function MapContainer() {
             });
             setSpinner(true);
             getGeoJsonData(selected.district);
+            fetchMapCircles(selected.district);
         } else if (selected.state) {
             setSpinner(true);
             updateSearchParams('state', selected.state);
@@ -131,10 +143,12 @@ function MapContainer() {
                 errorHandler(error);
             });
             getGeoJsonData(selected.state);
+            fetchMapCircles(selected.district);
         } else if (selected.country) {
             setSpinner(true);
             updateSearchParams('country', selected.country);
             getGeoJsonData(selected.country);
+            fetchMapCircles(selected.country);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected.country, selected.state, selected.district]);

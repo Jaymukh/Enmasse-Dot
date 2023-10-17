@@ -49,5 +49,10 @@ ul {
 
 .breadcrumb-item a {
     text-decoration: none;
-    color: var(--black-9);
+    color: var(--black-6);
+}
+
+.data-card {
+    border-radius: 0.5rem;
+    border: 1px solid var(--black-1);
 }
