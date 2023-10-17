@@ -977,10 +977,19 @@ th {
 }
 
 ::-webkit-scrollbar {
-	width: 0px;
-	background: transparent;
-	/* make scrollbar transparent */
+	width: 0.25rem;
+		/* background-color: #000000; */
+	/* background: transparent; */
 }
+
+::-webkit-scrollbar-track {
+	background-color: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb);
+	border-radius: 0.3125rem;
+  }
 
 .font-lato {
 	font-family: 'Lato', sans-serif;

@@ -6,6 +6,7 @@
     -webkit-appearance: none;
     /* Safari and Chrome */
     appearance: none;
+    padding: 0rem 5rem;
 }
 
 .select_small {

@@ -54,4 +54,6 @@ html {
     --blue-9: rgba(17, 24, 39, 0.9);
 
     --grey-0: rgba(73, 73, 73, 1);
+    --scrollbar-track: rgba(217, 217, 217, 1);
+    --scrollbar-thumb:rgba(17, 24, 39, 1);
 }

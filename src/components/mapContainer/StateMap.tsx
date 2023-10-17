@@ -72,8 +72,8 @@ const StateMap: React.FC<StateMapProps> = ({
 
     const handleFocused = (index: number) => {
         setFocused(index);
-    };  
-    
+    };
+
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
             setIsChecked({ ...isChecked, coreSolution: true });
@@ -117,7 +117,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         clearCircles();
-        if (map && mapFeatures.circles && isChecked.coreSolution) {            
+        if (map && mapFeatures.circles && isChecked.coreSolution) {
             const newCircles = mapFeatures.circles?.map((feature: any) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
@@ -126,13 +126,18 @@ const StateMap: React.FC<StateMapProps> = ({
                 const type = selectedCoreSoln.type;
 
                 const radii = type !== 'all' ? ['all', type] : [type];
-                const zoom = map?.getZoom() ?? 0; // Use 0 if map or zoom is undefined
-                console.log(Math.floor(zoom))
 
-                return radii.map((radius, i) => {                     
+                let zoom = map?.getZoom() ?? 0; // Use 0 if map or zoom is undefined
+
+                return radii.map((radius, i) => {
+                    let zoomFactor = 4;
+                    if (zoom >= 7) {
+                        zoomFactor = 2;
+                    } else if (zoom >= 5) {
+                        zoomFactor = 3;
+                    }
+                    const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
                     const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-                    const circleRadius = Number(feature.properties[radius] * (10000));
-
                     return new window.google.maps.Circle({
                         center,
                         radius: circleRadius,
@@ -149,7 +154,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
             setCircles(newCircles.flat());
         }
-    }, [map, mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
+    }, [map, map?.getZoom(), mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
         clearCircles();
@@ -158,15 +163,15 @@ const StateMap: React.FC<StateMapProps> = ({
     return (
         <div className='row mx-0'
             style={{ height: '85.5vh', zIndex: 999 }}>
-            <div className='col-9 m-0 p-0'>                
+            <div className='col-9 m-0 p-0'>
                 <div className='row m-0 p-0 h-100'>
-                <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '5.25vh' }}>
-                    <Breadcrumb items={breadcrumbs} />
-                </div>
+                    <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '5.25vh' }}>
+                        <Breadcrumb items={breadcrumbs} />
+                    </div>
                     <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8', height: '80.25vh' }}>
                         <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
                     </div>
-                    <div className='col-9 p-0' style={{height: '80.25vh'}}>
+                    <div className='col-9 p-0' style={{ height: '80.25vh' }}>
                         {apiKey && (
                             <LoadScript
                                 googleMapsApiKey={apiKey}

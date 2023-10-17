@@ -1,0 +1,12 @@
+@import url("../../../styles/color.css");
+
+.progress_container {
+    padding: 0;
+    height: 0.3125rem;
+    background-color: var(--blue-1);
+    width: 100%;
+}
+
+.progressbar {
+    background-color: var(--blue-0);
+}
