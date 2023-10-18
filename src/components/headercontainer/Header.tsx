@@ -1,7 +1,8 @@
 import '../../App.css';
 import React, { useState } from 'react';
 import Logo from '../../utils/images/Enmasse DOTS logo 1.png';
-import { MdLiveHelp, MdNotifications } from 'react-icons/md';
+import { MdHelpCenter } from 'react-icons/md';
+import { BsFillBookmarksFill } from 'react-icons/bs';
 import AccountOptions from './AccountOptions';
 import RequestDetails from './RequestDetails';
 import ExploreNow from './ExploreNow';
@@ -44,23 +45,23 @@ function Header() {
 			</div>
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />
-				<RequestDetails />
+				{/* <RequestDetails /> */}
 				<Button
 					theme={ButtonTheme.primary}
 					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
 					onClick={() => handleHelpClick()}
-					classname='pe-0'
+					classname='ps-4 pe-0'
 				>
-					<MdLiveHelp fontSize={25} />
+					<MdHelpCenter fontSize={25} />
 				</Button>
 				<Button
 					theme={ButtonTheme.primary}
 					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
-					onClick={() => handleHelpClick()}
+					classname='px-4'
 				>
-					<MdNotifications fontSize={25} />
+					<BsFillBookmarksFill fontSize={20} />
 				</Button>
 				<AccountOptions />
 			</div>

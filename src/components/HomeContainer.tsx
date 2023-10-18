@@ -15,11 +15,11 @@ const HomeContainer = () => {
 				<Header	/>
 				<MapContainer />
 			</div>
-			{overlay &&
+			{/* {overlay &&
 				(<div className='overlay d-flex flex-wrap justify-content-center align-items-center'>
 					<OverlayContainer />
 				</div>)
-			}
+			} */}
 		</>
 	);
 };

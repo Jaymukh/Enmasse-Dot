@@ -4,7 +4,6 @@ import * as MapConstants from './../utils/json/googlemapstyle';
 
 
 const StaticMap: React.FC = () => {
-	const [geoJSON, setGeoJSON] = useState<any>(null); // Change 'any' to the actual GeoJSON type if available
 	const [map, setMap] = useState(null);
 	const [center, setCenter] = useState({
 		lat: 20.5937,
@@ -18,21 +17,6 @@ const StaticMap: React.FC = () => {
 		zoomControl: false,
 		styles: MapConstants.staticMapStyle,
 	};
-
-	// const loadGeoJSON = async (map: google.maps.Map) => {
-	// 	try {
-	// 		const module = await import('./../utils/json/geojson/countries/IN.geo.json');
-	// 		const data = module.default;
-	// 		setGeoJSON(data);
-	// 		map.data.forEach((feature) => {
-	// 			map.data.remove(feature);
-	// 		});
-	// 		map.data.addGeoJson(data);
-	// 		setFeatureStyle(map);
-	// 	} catch (error) {
-	// 		console.error('Error importing file', error);
-	// 	}
-	// };
 
 	const getColorBasedOnPopulation = (population: number) => {
 		if (population <= 100000) {
@@ -67,7 +51,7 @@ const StaticMap: React.FC = () => {
 
 	return (
 		<div style={{ height: '100%', width: '100%' }} className='d-flex flex-column align-items-center justify-content-center'>
-			<LoadScript googleMapsApiKey={MapConstants.googleMapsApiKey}>
+			{apiKey && (<LoadScript googleMapsApiKey={apiKey}>
 				<GoogleMap
 					zoom={3.5}
 					mapContainerStyle={MapConstants.containerStyle}
@@ -75,7 +59,7 @@ const StaticMap: React.FC = () => {
 					onLoad={handleMapLoad}
 					options={mapOptions}
 				/>
-			</LoadScript>
+			</LoadScript>)}
 		</div>
 	);
 };

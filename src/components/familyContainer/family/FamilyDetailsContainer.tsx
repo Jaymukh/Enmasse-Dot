@@ -8,7 +8,7 @@ interface FamilyDetailsContainerProps {
 
 const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
     return (
-        <div className='col-6 py-2 my-3' style={{ height: '98%', overflow: 'auto' }}>
+        <div className='col-6 py-2 my-3 no-scrollbar' style={{ height: '98%', overflow: 'auto' }}>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='mb-5 mt-1 p-3'>
                 <div className='d-flex flex-row pb-1'>
                     <Heading

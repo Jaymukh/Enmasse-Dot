@@ -14,14 +14,6 @@ export enum CardSize {
     default,
 }
 
-// export enum ButtonTheme {
-//     primary,
-//     secondary,
-//     muted,
-//     warning,
-//     success
-// }
-
 interface ButtonProps {
     onClick?: () => void;
     variant?: CardVariant,

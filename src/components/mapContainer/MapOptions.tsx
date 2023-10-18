@@ -40,7 +40,7 @@ function MapOptions({
     };
 
     return (
-        <div className='d-flex justify-content-around align-items-center border-bottom bg-white mx-0' style={{ height: '6.25vh' }}>
+        <div className='d-flex justify-content-start align-items-center border-bottom bg-white mx-0' style={{ height: '6.25vh' }}>
             <div className='col-xl-7 col-md-7 justify-content-start d-flex flex-wrap h-100'>
                 <div className='select-right-margin py-0 h-100 px-3'>
                     <Button
@@ -102,7 +102,7 @@ function MapOptions({
                     ''
                 )}
             </div>
-            <div className='col-xl-5 col-md-5 d-flex flex-wrap justify-content-end align-items-center'>
+            {/* <div className='col-xl-5 col-md-5 d-flex flex-wrap justify-content-end align-items-center'>
                 <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.small}
@@ -123,7 +123,7 @@ function MapOptions({
                     <MdBookmarks className='me-2' fontSize={15} />
                     Bookmarks
                 </Button>
-            </div>
+            </div> */}
             {open && <WIPDrawer open={open} title={title} closeWIPDrawer={closeWIPDrawer} />}
         </div>
     );

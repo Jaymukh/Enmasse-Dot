@@ -4,7 +4,6 @@ import { BiArrowBack } from 'react-icons/bi';
 import { MdOutlineArrowForward } from 'react-icons/md';
 import { families } from '../../../utils/constants/Constants';
 import { FiArrowRight } from 'react-icons/fi';
-import FamiliesSidePanel from '../families/FamiliesSidePanel';
 import StaticMap from '../../StaticMap';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
@@ -16,14 +15,14 @@ interface FamilySidePanelProps {
 
 const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handleCarouselSlide }) => {
     return (
-        <div className='col-3 d-flex flex-column my-3 h-auto'>
-            <Card size={CardSize.medium} variant={CardVariant.contained} classname='py-3 mt-1 mx-3 white-bg'>
-                <h6 className='fs-14 pt-4 text-start'>India</h6>
+        <div className='col-3 d-flex flex-column my-4 px-3 h-auto'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mt-1 mx-0 white-bg'>
+                <h6 className='fs-14 text-start'>India</h6>
                 <div className='map-container-sm d-flex mx-auto justify-content-start'>
                     <StaticMap />
                 </div>
             </Card>
-            <div id="carouselExampleControlsNoTouching" className="carousel slide  custom-carousel d-flex justify-content-center m-auto  bg-white align-items-center" data-bs-touch="false" data-bs-interval="false" style={{ height: "6vw" }} >
+            <div id="carouselExampleControlsNoTouching" className="carousel slide custom-carousel d-flex justify-content-center my-3 mx-auto bg-white align-items-center" data-bs-touch="false" data-bs-interval="false" style={{ height: "6vw" }} >
                 <div className="carousel-inner h-100">
                     {families.family.map((data, index) => (
                         <div className={`carousel-item h-100 ${index === selectedFamily ? ' active' : ''}`} key={index}>
@@ -36,7 +35,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handl
                                         colour={TypographyColor.dark}
                                     />
                                     <p className='carousel-caption-p text-p fs-14 text-start m-0 py-1'>{data.properties.district}, {data.properties.state}, {data.properties.country}</p>
-                                    <button className='border-0 bg-white carousel-caption-p color-green m-0 fs-12 p-0'>View all families<FiArrowRight className='ms-1' /></button>
+                                    <button className='border-0 bg-white carousel-caption-p color-green m-0 fs-12 p-0'>View all<FiArrowRight className='ms-1' /></button>
                                 </div>
                             </div>
                         </div>
