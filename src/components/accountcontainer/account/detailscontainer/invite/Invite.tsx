@@ -150,6 +150,7 @@ export default function Invite() {
 						suggestions={suggestions}
 						hideSuggestionBox={true}
 						placeholderValue= 'Search'
+						classname='height-2-25'
 					/>
 					<Button
 						theme={ButtonTheme.secondary}

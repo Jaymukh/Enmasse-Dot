@@ -119,7 +119,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                             Save
                                         </Button>
                                     </>) :
-                                    (profileImage ?
+                                    (profileImage ? 
                                         <div className="d-flex flex-row justify-content-between">
                                             <Button
                                                 theme={ButtonTheme.secondary}
@@ -132,15 +132,15 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                                 <MdDeleteSweep fontSize={20} className='color-orange' />
                                                 Delete
                                             </Button>
-                                            <label className="custom-file-input bg-dark rounded px-3 height-3 d-flex align-items-center justify-content-center m-auto">
+                                            <label className="bg-dark rounded px-3 height-2-25 d-flex align-items-center justify-content-center m-auto">
                                                 <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
-                                                <div className="file-input-content">
+                                                <div className="">
                                                     <BiUpload fontSize={20} className='me-2 text-white' />
                                                     <span className='text-white'>Upload new photo</span>
                                                 </div>
                                             </label>
                                         </div> :
-                                        <label className="custom-file-input bg-dark rounded p-3">
+                                        <label className="bg-dark rounded p-3 height-2-25 d-flex align-items-center justify-content-center m-auto">
                                             <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                             <div className="file-input-content">
                                                 <BiUpload fontSize={20} className='me-2 text-white' />

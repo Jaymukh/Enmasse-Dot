@@ -21,6 +21,9 @@
 	--pink-color: #f45eac;
 
 }
+.height-2-25{
+	height: 2.25rem !important;
+}
 .height-3{
 	height: 3rem;
 }
