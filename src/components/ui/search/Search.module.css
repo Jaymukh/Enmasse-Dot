@@ -4,7 +4,7 @@ input {
     width: fit-content;
     /* height: 3rem; */
     border-radius: 0.3125rem;
-    border: 1px solid var(--black-5);
+    border: 1px solid var(--black-3);
     padding: 0rem 2.5rem;
     position: relative;
     font-size: 0.875rem;

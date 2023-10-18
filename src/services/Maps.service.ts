@@ -9,12 +9,17 @@ const useMapsService = () => {
     }
 
     const getMaps = (geoCode: number) => {
-        return fetchWrapper.get(`${APIS.MAPS.GET_MAPS}?geo_code=${geoCode}`);
+        return fetchWrapper.get(`${APIS.MAPS.GET_MAPS}?geo-code=${geoCode}`);
+    }
+
+    const getCircle = (geoCode: number) => {
+        return fetchWrapper.get(`${APIS.MAPS.GET_CIRCLE}?geo-code=${geoCode}`);
     }
 
     return {
         getDropdownList,
         getMaps,
+        getCircle,
     }
 }
 

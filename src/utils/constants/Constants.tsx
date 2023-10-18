@@ -16,11 +16,11 @@ export interface Option {
     type: string;
 }
 export const options: Option[] = [
-    { key: 0, label: 'All', type: 'radius_all' },
-    { key: 1, label: 'Healthcare', type: 'radius_edu' },
-    { key: 2, label: 'Education', type: 'radius_agri' },
-    { key: 3, label: 'Agri Markets', type: 'radius_healthcare' },
-    { key: 4, label: 'Financial Solutions', type: 'radius_fin' },
+    { key: 0, label: 'All', type: 'all' },
+    { key: 1, label: 'Healthcare', type: 'health_care' },
+    { key: 2, label: 'Education', type: 'education' },
+    { key: 3, label: 'Agri Markets', type: 'agriculture_market' },
+    { key: 4, label: 'Financial Solutions', type: 'financial_solutions' },
 ];
 
 // Enmasse-Dot\src\components\InsightBar.tsx

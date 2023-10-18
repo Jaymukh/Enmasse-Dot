@@ -105,8 +105,7 @@ a {
 
 .select-right-margin {
 	border-right: 0.5px solid #D2D4D6;
-	width: 11.25rem;
-    padding: 0 0.5rem 0 0.63rem;
+	width: 11.25rem;    
 }
 
 .primary-select-box .css-1t0qkoj-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
@@ -126,7 +125,7 @@ a {
 
 /* sidebar css */
 .sideBar-parent-expended {
-	height: 81vh;
+	height: 85.5vh;
 	width: 25vw;
 	background-color: white;
 }
@@ -981,10 +980,19 @@ th {
 }
 
 ::-webkit-scrollbar {
-	width: 0px;
-	background: transparent;
-	/* make scrollbar transparent */
+	width: 0.25rem;
+		/* background-color: #000000; */
+	/* background: transparent; */
 }
+
+::-webkit-scrollbar-track {
+	background-color: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb);
+	border-radius: 0.3125rem;
+  }
 
 .font-lato {
 	font-family: 'Lato', sans-serif;
@@ -1064,6 +1072,7 @@ th {
 .country-text {
 	font-size: 0.625rem;
 	color: var(--black-8);
+	padding: 0 0.5rem 0 0.63rem;
 }
 
 .secondary-select {

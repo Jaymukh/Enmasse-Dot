@@ -12,7 +12,8 @@
 	font-family: "Poppins-Medium", sans-serif;
 }
 
-.btn_primary:hover { /* (bordered) hover */
+.btn_primary:hover {
+	/* (bordered) hover */
 	background-color: var(--white-1);
 	border-color: var(--black-0);
 	border-radius: 5px;
@@ -172,7 +173,7 @@
 .btn_muted_transparent:hover {
 	background-color: transparent;
 	border: none;
-	color: var(--black-5);
+	color: var(--black-3);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -223,7 +224,7 @@
 .btn_warning_transparent:hover {
 	background-color: transparent;
 	border: none !important;
-	color: var(--warning-1);
+	color: var(--rejected-1);
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -231,7 +232,7 @@
 .btn_success_transparent {
 	background-color: transparent;
 	border: none !important;
-	color: var(--green-1);
+	color: var(--green-0);
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -239,7 +240,7 @@
 .btn_success_transparent:hover {
 	background-color: transparent;
 	border: none !important;
-	color: var(--green-0);
+	color: var(--green-6);
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }

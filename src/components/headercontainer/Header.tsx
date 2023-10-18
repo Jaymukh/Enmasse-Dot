@@ -47,15 +47,16 @@ function Header() {
 				<RequestDetails />
 				<Button
 					theme={ButtonTheme.primary}
-					size={ButtonSize.default}
+					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
 					onClick={() => handleHelpClick()}
+					classname='pe-0'
 				>
 					<MdLiveHelp fontSize={25} />
 				</Button>
 				<Button
 					theme={ButtonTheme.primary}
-					size={ButtonSize.default}
+					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
 					onClick={() => handleHelpClick()}
 				>

@@ -61,7 +61,7 @@ function MapOptions({
                                 size={ButtonSize.medium}
                                 variant={ButtonVariant.transparent}
                                 onClick={handleCountryChange}
-                                classname='h-auto text-start ps-0 py-0'
+                                classname='h-auto text-start ps-2 py-0'
                             >
                                 {global ? 'Select' : 'India'}
                             </Button>
@@ -105,7 +105,7 @@ function MapOptions({
             <div className='col-xl-5 col-md-5 d-flex flex-wrap justify-content-end align-items-center'>
                 <Button
                     theme={ButtonTheme.primary}
-                    size={ButtonSize.default}
+                    size={ButtonSize.small}
                     variant={ButtonVariant.transparent}
                     classname='m-0 h-auto'
                     onClick={() => openWIPDrawer("Download data")}
@@ -115,7 +115,7 @@ function MapOptions({
                 </Button>
                 <Button
                     theme={ButtonTheme.primary}
-                    size={ButtonSize.default}
+                    size={ButtonSize.small}
                     variant={ButtonVariant.transparent}
                     classname='m-0 h-auto'
                     onClick={() => openWIPDrawer("Download data")}

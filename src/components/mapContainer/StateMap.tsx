@@ -10,27 +10,27 @@ import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 import { useRecoilValue } from 'recoil';
 import { geoJsonState } from '../../states/GeoJSONState';
 import { Breadcrumb } from '../ui/breadcrumb/Breadcrumb';
+import { mapFeatureState } from '../../states/MapFeatureState';
 
 
 interface StateMapProps {
-    features?: any;
-    handleImportFeature?: (code?: string | undefined) => void;
     selected: any;
-    pointFeatures?: any[];
+    breadcrumbs: any;
 }
 
 const StateMap: React.FC<StateMapProps> = ({
     selected,
-    pointFeatures
+    breadcrumbs
 }) => {
     const mapRef = useRef(null);
     const [map, setMap] = useState<google.maps.Map | null>(null);
     const [circles, setCircles] = useState<google.maps.Circle[]>([]);
     const [selectedRb, setSelectedRb] = useState(0);
-    const [selectedCoreSoln, setSelectedCoreSoln] = useState({ key: 0, label: 'All', type: 'radius_all' });
+    const [selectedCoreSoln, setSelectedCoreSoln] = useState({ key: 0, label: 'All', type: 'all' });
     const [focused, setFocused] = useState(0);
     const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
     const geoJSON = useRecoilValue(geoJsonState);
+    const mapFeatures = useRecoilValue(mapFeatureState);
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const [center, setCenter] = useState({
@@ -72,7 +72,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
     const handleFocused = (index: number) => {
         setFocused(index);
-    }
+    };
 
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
@@ -116,28 +116,33 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [map, geoJSON]);
 
     useEffect(() => {
-        if (!isChecked.coreSolution) {
-            clearCircles();
-        }
-        else if (map && pointFeatures && isChecked.coreSolution) {
-            clearCircles();
-            const newCircles = pointFeatures.map((feature) => {
+        clearCircles();
+        if (map && mapFeatures.circles && isChecked.coreSolution) {
+            const newCircles = mapFeatures.circles?.map((feature: any) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
                     lng: feature.geometry.coordinates[0],
                 };
                 const type = selectedCoreSoln.type;
 
-                const radii = type !== 'radius_all' ? ['radius_all', type] : [type];
+                const radii = type !== 'all' ? ['all', type] : [type];
+
+                let zoom = map?.getZoom() ?? 0; // Use 0 if map or zoom is undefined
 
                 return radii.map((radius, i) => {
+                    let zoomFactor = 4;
+                    if (zoom >= 7) {
+                        zoomFactor = 2;
+                    } else if (zoom >= 5) {
+                        zoomFactor = 3;
+                    }
+                    const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
                     const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-
                     return new window.google.maps.Circle({
-                        center: center,
-                        radius: feature.properties[radius],
+                        center,
+                        radius: circleRadius,
+                        fillOpacity,
                         fillColor: '#FFFFFF',
-                        fillOpacity: fillOpacity,
                         strokeColor: '#FFFFFF',
                         strokeOpacity: 1,
                         strokeWeight: 1,
@@ -149,31 +154,24 @@ const StateMap: React.FC<StateMapProps> = ({
 
             setCircles(newCircles.flat());
         }
-    }, [map, pointFeatures, selectedCoreSoln, isChecked.coreSolution]);
+    }, [map, map?.getZoom(), mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
         clearCircles();
     }, [selected.country, selected.state, selected.district]);
 
-    const breadcrumbItems = [
-        { label: 'Global', link: '/' },
-        { label: 'India', link: '/products' },
-        { label: 'Gujarat', link: '/products/electronics' },
-        { label: 'Kutchh' },
-    ];
-
     return (
         <div className='row mx-0'
             style={{ height: '85.5vh', zIndex: 999 }}>
-            <div className='col-9 m-0 p-0'>                
+            <div className='col-9 m-0 p-0'>
                 <div className='row m-0 p-0 h-100'>
-                <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '5.25vh' }}>
-                    <Breadcrumb items={breadcrumbItems} />
-                </div>
+                    <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '5.25vh' }}>
+                        <Breadcrumb items={breadcrumbs} />
+                    </div>
                     <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8', height: '80.25vh' }}>
                         <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
                     </div>
-                    <div className='col-9 p-0' style={{height: '80.25vh'}}>
+                    <div className='col-9 p-0' style={{ height: '80.25vh' }}>
                         {apiKey && (
                             <LoadScript
                                 googleMapsApiKey={apiKey}

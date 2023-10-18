@@ -20,9 +20,10 @@ const APIS: any = {
     MAPS: {
         GET_DROPDOWN: '/maps/dropdown',
         GET_MAPS: '/maps/getmap',
+        GET_CIRCLE: '/maps/getcircle',
     },
     STORIES: {
-        GET_ALL_STORIES: '/story/viewstory'
+        GET_ALL_STORIES: '/story/viewstory',
     }
 }
 

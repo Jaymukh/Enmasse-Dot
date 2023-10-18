@@ -48,7 +48,7 @@ const getTextColor = (value: any) => {
 const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name, placeholder }: SelectProps<any>) => {
     return (
         <select
-            className={`${getSizeClass(size)} ${classname} w-100 ${styles.select} ${getTextColor(value)}`}
+            className={`${getSizeClass(size)} ${classname} w-100 px-2 ${styles.select} ${getTextColor(value)}`}
             value={value}
             onChange={onChange}
             disabled={disabled}
@@ -58,7 +58,7 @@ const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classn
             {placeholder && <option value="" selected disabled>Select</option>}
             {options?.map((option: any, key: number) => (
                 <option key={key} value={option[valueKey] as any} className={`${styles.select_text_selcted}`}>
-                    {option[labelKey]}
+                    {option[labelKey]} {labelKey === 'currency' ? `(${option[valueKey]})` : ''}
                 </option>
             ))}
         </select>

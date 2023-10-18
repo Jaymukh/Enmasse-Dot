@@ -19,8 +19,12 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     handleChangeRb,
     selectedRb,
     isChecked,
-    toggleSwitch
+    toggleSwitch,
 }) => {
+
+    const handleClickRequestLayer = () => {
+
+    }
 
     const options = Constants.options;
 
@@ -71,7 +75,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         <MdLayers fontSize={22} />
                         <h6 className="my-0 fs-16">Request Layers</h6>
                         <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
-                        <IoIosArrowForward fontSize={22} />
+                        <IoIosArrowForward fontSize={22} onClick={handleClickRequestLayer} />
                     </div>
                 </div>
                 <div className='mb-3'>
