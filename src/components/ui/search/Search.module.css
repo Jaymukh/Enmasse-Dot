@@ -2,7 +2,7 @@
 
 input {
     width: fit-content;
-    height: 3rem;
+    /* height: 3rem; */
     border-radius: 0.3125rem;
     border: 1px solid var(--black-3);
     padding: 0rem 2.5rem;
@@ -13,7 +13,7 @@ input {
 
 .icon {
     position: absolute;
-    transform: translate(56%, 52%);
+    /* transform: translate(56%, 20%); */
 }
 
 .suggestions_hidden {

@@ -23,8 +23,6 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
     const [previousDisabled, setPreviousDisabled] = useState(true);
     const [nextDisabled, setNextDisabled] = useState(true);
     const [paginationData, setPaginationData] = useState<{ geoCode: number, pageNumber: number, storiesPerPage: number }>({ geoCode: 1, pageNumber: 1, storiesPerPage: 2 });
-    // const [minRange, setMinRange] = useState(1);
-    // const [maxRange, setMaxRange] = useState(paginationData.storiesPerPage);
     const [iterator, setIterator] = useState(0);
 
     const storiesSelectOptions = [

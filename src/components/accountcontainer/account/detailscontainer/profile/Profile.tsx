@@ -77,7 +77,6 @@ export default function Profile() {
             setNewImage(undefined);
         }
         setShowUploadImageModal(false);
-        // toast.success('Successfully Updated.');
         toast.success('Successfully Updated.', {
             position: toast.POSITION.BOTTOM_CENTER
           });
@@ -145,33 +144,7 @@ export default function Profile() {
                         >
                             <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
                         </Button>
-
                     </div>
-                    {/* <div className='d-flex align-items-center justify-content-center'>
-                        <div className="profile-image-box d-flex flex-column" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
-                            {profileImage ? (
-                                <div className="image-container" >
-                                    <img src={profileImage} alt="Profile Photo" style={{ width: `${zoomLevel}%` }} />
-                                    <span className='text-center' style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-                                        {loggedUser.initial}
-                                    </span>
-                                </div>
-                            ) : (
-                                <span className='text-center'>{loggedUser.initial}</span>
-                            )}
-
-                            <Button
-                                theme={ButtonTheme.secondary}
-                                size={ButtonSize.small}
-                                variant={ButtonVariant.contained}
-                                onClick={() => openUploadImageModal()}
-                                classname='rounded-circle editImageBtn align-self-end position-absolute bottom-0 right-0'
-                            >
-                                <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
-                            </Button>
-                        </div>
-                    </div> */}
-
                 </div>
                 <div className="col-4 ps-5">
                     <ul className='edit-profile-list'>
