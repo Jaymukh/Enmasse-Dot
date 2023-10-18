@@ -43,13 +43,16 @@ ul {
     font-size: 0.75rem;
 }
 
+.breadcrumb-item.inactive {
+    color: var(--green-1);
+}
+
 .breadcrumb-item.active {
     color: var(--black-0);
 }
 
 .breadcrumb-item a {
     text-decoration: none;
-    color: var(--black-6);
 }
 
 .data-card {
@@ -78,6 +81,5 @@ ul {
 }
 
 .bg-green-7 {
-    background-color: var(--green-7);
-
+    background-color: var(--green-1);
 }

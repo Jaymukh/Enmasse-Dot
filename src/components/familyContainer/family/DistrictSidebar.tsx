@@ -34,9 +34,9 @@ const DistrictSidebar = () => {
     }
     return (
         <div className='py-2 bg-white px-0 h-100 me-0' >
-            <div className='row d-flex justify-content-between align-items-center px-3 pt-2'>
+            <div className='row d-flex justify-content-between align-items-center px-3 py-2 me-1'>
                 <h6 className='col-6 text-start m-0 fs-16'>Kutch</h6>
-                <div className='col-6'>
+                <div className='col-6 p-0'>
                     <Select
                         options={options}
                         value={currency}
@@ -47,7 +47,7 @@ const DistrictSidebar = () => {
                     />
                 </div>
             </div>
-            <div className="row d-flex justify-content-center pt-2 mx-0 px-3 h-100 pb-5" style={{ overflow: 'auto' }}>
+            <div className="row d-flex justify-content-center pt-1 mx-0 px-3 h-100 pb-5" style={{ overflow: 'auto' }}>
                 <div className='row data-card px-3 d-flex flex-row mx-0 my-2'>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
                         <h6 className='fs-14'>2 Billion</h6>

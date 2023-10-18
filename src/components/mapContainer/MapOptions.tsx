@@ -61,7 +61,7 @@ function MapOptions({
                                 size={ButtonSize.medium}
                                 variant={ButtonVariant.transparent}
                                 onClick={handleCountryChange}
-                                classname='h-auto text-start ps-2 py-0'
+                                classname='h-auto text-start ps-2 pb-3'
                             >
                                 {global ? 'Select' : 'India'}
                             </Button>

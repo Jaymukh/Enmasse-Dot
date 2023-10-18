@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import '../../App.css';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -106,7 +107,6 @@ function MapContainer() {
             setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            //errorHandler(error);
         });
     }
 
@@ -150,7 +150,6 @@ function MapContainer() {
             getGeoJsonData(selected.country);
             fetchMapCircles(selected.country);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected.country, selected.state, selected.district]);
     return (
         <div className='MapContainer mx-0 header2' style={{ height: '91.75vh' }}>
