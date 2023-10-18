@@ -106,7 +106,7 @@ const ExploreNow = () => {
 									suggestions={suggestions}
 									hideSuggestionBox={false}
 									placeholderValue='Search by State'
-									classname='height-3'
+									classname='height-3 width-26-625'
 								/>
 								<div className='my-4'>
 									<div>

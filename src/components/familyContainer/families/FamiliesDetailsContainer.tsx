@@ -12,7 +12,7 @@ import { storiesState, spinnerState } from "../../../states";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import familySkeleton from '../../../utils/images/family-skeleton.png';
 interface FamiliesDetailsContainerProps {
-    handleFamilyVisible: (index: number) => void;
+    handleFamilyVisible: (data: any ,index: number) => void;
 }
 
 
@@ -96,7 +96,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                 <div className='row mb-5 pb-5 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
-                            <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(index)}>
+                            <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
                                 <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover' }} src={data.properties.image ? data.properties.image : familySkeleton} alt="Family image" />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">

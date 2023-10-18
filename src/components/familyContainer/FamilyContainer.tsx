@@ -3,18 +3,21 @@ import FamilyHeader from './FamilyHeader';
 import Families from './families/Families';
 import Family from './family/Family';
 import '../../App.css';
-import { families } from '../../utils/constants/Constants';
+// import { families } from '../../utils/constants/Constants';
+import { useStoriesService } from '../../services';
+import { storiesState, spinnerState } from "../../states";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 function FamilyContainer() {
     const [selectedFamily, setSelectedFamily] = useState<number>(0);
     const [selectedData, setSelectedData] = useState<any | null>(null);
+    //function to get all the stories
+    const storiesService = useStoriesService();
+    const [stories] = useRecoilState(storiesState);
 
-    const handleFamilyVisible = (index: number) => {
-        if (families && index >= 0) {
-            setSelectedFamily(index);
-            const data = families.family[index];
-            setSelectedData(data);
-        }
+    const handleFamilyVisible = (data: any, index: number) => {
+        setSelectedFamily(index);
+        setSelectedData(data);        
     };
 
     const handleBackClick = () => {
@@ -23,7 +26,7 @@ function FamilyContainer() {
 
     const handleCarouselSlide = (selectedFamily: number) => {
         setSelectedFamily(selectedFamily);
-        const data = families.family[selectedFamily];
+        const data = stories?.family[selectedFamily];
         setSelectedData(data);
     };
 

@@ -3,7 +3,7 @@ import FamiliesSidePanel from './FamiliesSidePanel';
 import FamiliesDetailsContainer from './FamiliesDetailsContainer';
 
 interface FamiliesProps {
-    handleFamilyVisible: (index: number) => void;
+    handleFamilyVisible: (data: any, index: number) => void;
 }
 
 const Families: React.FC<FamiliesProps> = ({ handleFamilyVisible }) => {
