@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../../App.css';
 import { families } from '../../../utils/constants/Constants';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
