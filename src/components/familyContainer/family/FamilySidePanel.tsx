@@ -7,6 +7,10 @@ import { FiArrowRight } from 'react-icons/fi';
 import StaticMap from '../../StaticMap';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import { useStoriesService } from '../../../services';
+import { storiesState, spinnerState } from "../../../states";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import familySkeleton from '../../../utils/images/family-skeleton.png';
 
 interface FamilySidePanelProps {
     selectedFamily: number;
@@ -14,6 +18,9 @@ interface FamilySidePanelProps {
 }
 
 const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handleCarouselSlide }) => {
+    //function to get all the stories
+    const storiesService = useStoriesService();
+    const [stories] = useRecoilState(storiesState);
     return (
         <div className='col-3 d-flex flex-column my-4 px-3 h-auto'>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mt-1 mx-0 white-bg'>
@@ -24,10 +31,10 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handl
             </Card>
             <div id="carouselExampleControlsNoTouching" className="carousel slide custom-carousel d-flex justify-content-center my-3 mx-auto bg-white align-items-center" data-bs-touch="false" data-bs-interval="false" style={{ height: "6vw" }} >
                 <div className="carousel-inner h-100">
-                    {families.family.map((data, index) => (
+                    {stories?.family.map((data, index) => (
                         <div className={`carousel-item h-100 ${index === selectedFamily ? ' active' : ''}`} key={index}>
                             <div className="d-flex flex-row align-items-center h-100">
-                                <img src={data.properties.image} width="100" height="100" className="d-block carousel-img" alt="Family Image" />
+                                <img src={data.properties.image? data.properties.image : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family Image" />
                                 <div className="d-flex flex-column align-items-start justify-content-center mx-2 w-100 h-100">
                                     <Heading
                                         title={data.properties.familyName}
@@ -43,7 +50,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handl
                 </div>
 
                 <button className="carousel-control-prev PrevBtn rounded-circle bg-white"
-                    onClick={() => handleCarouselSlide((selectedFamily - 1 + families.family.length) % families.family.length)}
+                    onClick={() => handleCarouselSlide((selectedFamily - 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                     data-bs-target="#carouselExampleControlsNoTouching"
                     data-bs-slide="prev"
@@ -52,7 +59,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handl
                 </button>
 
                 <button className="carousel-control-next NextBtn rounded-circle bg-white"
-                    onClick={() => handleCarouselSlide((selectedFamily + 1 + families.family.length) % families.family.length)}
+                    onClick={() => handleCarouselSlide((selectedFamily + 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                     data-bs-target="#carouselExampleControlsNoTouching"
                     data-bs-slide="next"

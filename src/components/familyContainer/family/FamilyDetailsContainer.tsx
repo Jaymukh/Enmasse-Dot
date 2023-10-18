@@ -10,36 +10,63 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
     return (
         <div className='col-6 py-2 my-3 no-scrollbar' style={{ height: '98%', overflow: 'auto' }}>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='mb-5 mt-1 p-3'>
-                <div className='d-flex flex-row pb-1'>
-                    <Heading
-                        title={selectedData.properties.familyName}
-                        type={TypographyType.h3}
-                        colour={TypographyColor.dark}
-                    />
-                    <h6 className="text-muted mx-2 my-1 fs-14">{selectedData.properties.district}, {selectedData.properties.state}, {selectedData.properties.country}</h6>
+                <div className='d-flex flex-row justify-content-between pb-1'>
+                    <div className="d-flex flex-column justify-content-start text-start">
+                        <Heading
+                            title={selectedData.properties.familyName}
+                            type={TypographyType.h3}
+                            colour={TypographyColor.dark}
+                        />
+                        <p className="card-text text-left fs-12">{selectedData.properties.district}, {selectedData.properties.state}, {selectedData.properties.country}</p>
+                    </div>
+                    <div className="d-flex flex-column justify-content-end text-end">
+                        <span className='fs-14 me-1 bold-text color-green-0'>${selectedData.properties.familyDetails.householdSpend}</span>
+                        <p className='mx-0 fs-10'>Annual Household Spend on Education</p>
+                    </div>
                 </div>
-                <div className="row my-2">
-                    <div className="col-3 d-flex flex-row">
-                        <b className="fs-14 me-1">{selectedData.properties.familyDetails.familyMembers}</b>
-                        <p className="card-title text-muted mx-1 fs-12">Family members</p>
-                    </div>
-                    <div className="col-4 d-flex flex-row">
-                        <b className="color-green fs-14 me-1">{selectedData.properties.familyDetails.householdSpend}</b>
-                        <p className="card-title text-muted mx-1 fs-12">Household Spend</p>
-                    </div>
-                    <div className="col-4 d-flex flex-row">
-                        <b className="fs-14 me-1">{selectedData.properties.familyDetails.householdIncome}</b>
-                        <p className="card-title text-muted mx-1 fs-12">Household Income</p>
-                    </div>
+                <div className="d-flex flex-row align-items-center justify-content-between my-2">
+                    {
+                        selectedData.properties.familyDetails.familyMembers &&
+                        <div className="d-flex flex-row align-items-center">
+                            <b className="fs-14 me-1">{selectedData.properties.familyDetails.familyMembers}</b>
+                            <p className="card-title text-muted mx-1 fs-10">Family members</p>
+                        </div>
+                    }
+                    {
+                        selectedData.properties.familyDetails.householdSpend &&
+                        <div className="d-flex flex-row align-items-center">
+                            <b className="fs-14 me-1">${selectedData.properties.familyDetails.householdSpend}</b>
+                            <p className="card-title text-muted mx-1 fs-10">Household Spend</p>
+                        </div>
+                    }
+                    {
+                        selectedData.properties.familyDetails.householdBorrowing &&
+                        <div className="d-flex flex-row align-items-center">
+                            <b className="fs-14 me-1">${selectedData.properties.familyDetails.householdBorrowing}</b>
+                            <p className="card-title text-muted mx-1 fs-10">Household Borrowing</p>
+                        </div>
+                    }
+                    {
+                        selectedData.properties.familyDetails.householdIncome &&
+                        <div className="d-flex flex-row align-items-center">
+                            <b className="fs-14 me-1">${selectedData.properties.familyDetails.householdIncome}</b>
+                            <p className="card-title text-muted mx-1 fs-10">Household Income</p>
+                        </div>
+                    }
                 </div>
                 <div className="card-body">
-                    <img src={selectedData.properties.image} alt="" width="100%" height="auto" className='imgBorderRadious my-2' />
-                    <p className="my-2 text-start fs-12">{selectedData.properties.familyDetails.detail1}</p>
+                    {selectedData.properties.image &&
+                        <img src={selectedData.properties.image} alt="Family image" width="100%" height="auto" className='imgBorderRadious my-2' />
+                    }
+                    <p className="text-start fs-12">{selectedData.properties.description}</p>
                     <div className='d-flex flex-row justify-content-around my-2'>
-                        <img src={selectedData.properties.image} alt="" width="50%" height="auto" className='imgBorderRadious me-1' />
-                        <img src={selectedData.properties.image} alt="" width="50%" height="auto" className='imgBorderRadious' />
+                        {selectedData.properties.image &&
+                            <img src={selectedData.properties.image} alt="Family image" width="50%" height="auto" className='imgBorderRadious me-1' />
+                        }
+                        {selectedData.properties.image &&
+                            <img src={selectedData.properties.image} alt="Family image" width="50%" height="auto" className='imgBorderRadious' />
+                        }
                     </div>
-                    <p className="my-2 fs-12 text-start">{selectedData.properties.familyDetails.detail2}</p>
                 </div>
             </Card>
         </div>

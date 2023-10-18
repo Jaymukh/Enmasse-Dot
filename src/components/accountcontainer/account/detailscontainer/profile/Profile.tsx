@@ -132,8 +132,8 @@ export default function Profile() {
             <div className="row w-100 mx-3">
                 <div className="col-3  fs-64" >
                     <div className='d-flex flex-column justify-content-end align-items-end'>
-                        <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
-                            {profileImage ? <img src={profileImage} alt="Profile Photo" className='' style={{ width: `${zoomLevel}%` }} /> : <span className='text-center top-50'>{loggedUser.initial}</span>}
+                        <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center" >
+                            {profileImage ? <img src={profileImage} alt="Profile Photo" className='' style={{ width: `${zoomLevel}%` }} /> : <span className='d-flex flex-column justify-content-center align-items-center w-100 h-100' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>}
                         </div>
                         <Button
                             theme={ButtonTheme.secondary}
