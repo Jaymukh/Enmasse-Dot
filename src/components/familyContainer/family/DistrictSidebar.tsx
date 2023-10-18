@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
@@ -8,7 +10,6 @@ import '../../../App.css';
 import '../../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
-
 
 const options = [
     {
@@ -79,7 +80,7 @@ const DistrictSidebar = () => {
                         </div>
                     </div>
                 </div>
-                <div className='row data-card d-flex flex-row mx-0 my-2 px-2 py-2'>
+                <div className='row data-card d-flex flex-row mx-0 my-2 px-2 pt-2 pb-3'>
                     <div className='d-flex justify-content-between align-items-center m-0 p-0'>
                         <div className='d-flex justify-content-start align-items-center m-0 px-0 pb-2'>
                             <h6 className='me-2 fs-13 my-0'>EI Coverage</h6>
@@ -90,7 +91,7 @@ const DistrictSidebar = () => {
                     <ProgressBar />
                 </div>
 
-                <div className='d-flex flex-column justify-content-center pb-1 px-0'>
+                <div className='d-flex flex-column justify-content-center pb-1 pt-2 px-0'>
                     <div className='d-flex justify-content-start align-items-center'>
                         <h6 className='me-2 fs-13 my-0'>EH Economic Activity Indicators</h6>
                         <AiOutlineInfoCircle fontSize={20} color='#606060' />

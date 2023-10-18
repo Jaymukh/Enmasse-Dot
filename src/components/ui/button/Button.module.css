@@ -232,7 +232,7 @@
 .btn_success_transparent {
 	background-color: transparent;
 	border: none !important;
-	color: var(--green-1);
+	color: var(--green-0);
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -240,7 +240,7 @@
 .btn_success_transparent:hover {
 	background-color: transparent;
 	border: none !important;
-	color: var(--green-0);
+	color: var(--green-6);
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
