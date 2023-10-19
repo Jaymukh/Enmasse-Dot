@@ -93,4 +93,9 @@ ul {
 
 .width-62-5.modal {
     --bs-modal-width: 62.5rem !important;
+    background-color: var(--green-1);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    width: 0rem;
 }

@@ -203,7 +203,6 @@ const DistrictSidebar = () => {
                         </div>
                     </div>
                 </div>
-
                 <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.large}

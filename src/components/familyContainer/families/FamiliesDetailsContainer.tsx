@@ -12,7 +12,7 @@ import { storiesState, spinnerState } from "../../../states";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import familySkeleton from '../../../utils/images/family-skeleton.png';
 interface FamiliesDetailsContainerProps {
-    handleFamilyVisible: (data: any ,index: number) => void;
+    handleFamilyVisible: (data: any, index: number) => void;
 }
 
 
@@ -63,13 +63,13 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
     };
     const handleNextClick = () => {
         paginationData.pageNumber = paginationData.pageNumber + 1;
-        setIterator(iterator+1);
+        setIterator(iterator + 1);
         storiesService.getAllStories(paginationData);
 
     };
     const handlePreviousClick = () => {
         paginationData.pageNumber = paginationData.pageNumber - 1;
-        setIterator(iterator-1);
+        setIterator(iterator - 1);
         storiesService.getAllStories(paginationData);
 
     };
@@ -82,18 +82,18 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
     }, [paginationData.storiesPerPage, paginationData.pageNumber]);
 
     return (
-        <div className='col-9 ps-2 mb-5 pb-5 h-100'>
+        <div className='col-9 ps-4 mb-5 py-0 h-100'>
             <div className="d-flex flex-row justify-content-between align-items-center">
                 <Heading
                     title={`Families in ${families.place}`}
                     type={TypographyType.h2}
                     colour={TypographyColor.dark}
-                    classname='text-start mt-4'
+                    classname='text-start mt-4 ms-2'
                 /><BiMenuAltLeft fontSize={22} />
             </div>
 
-            <div className='w-100 h-75 mb-5 pb-5 w-100 d-flex justify-content-around' style={{ overflow: 'auto' }}>
-                <div className='row mb-5 pb-5 w-100' style={{ marginBottom: '5rem' }}>
+            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-start no-scrollbar' style={{ overflow: 'auto' }}>
+                <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
                             <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
