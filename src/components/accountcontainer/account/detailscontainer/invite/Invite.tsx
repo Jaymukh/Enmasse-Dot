@@ -149,7 +149,7 @@ export default function Invite() {
 						value={searchTerm}
 						suggestions={suggestions}
 						hideSuggestionBox={true}
-						placeholderValue= 'Search'
+						placeholderValue='Search'
 						classname='height-2-25'
 					/>
 					<Button
@@ -166,83 +166,83 @@ export default function Invite() {
 			</div>
 			<hr className='mb-4' />
 			<div className="w-auto mx-4 d-flex justify-content-center m-auto">
-				{!spinner && <div className='dashboard-table-container w-100'>
-					<table className=''>
-						<thead>
-							<tr>
-								<th className='text-start fs-14 font-weight-bold'>Name</th>
-								<th className='text-center fs-14 font-weight-bold'>Role</th>
-								<th className='text-center fs-14 font-weight-bold'>Company</th>
-								<th className='text-center fs-14 font-weight-bold'>Company type</th>
-								<th className='text-center fs-14 font-weight-bold'>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							{suggestions.length > 0 ? (
-								suggestions.map((row) => (
-									<tr
-										key={row.name}
-										className='table-row-height'
-									>
-										<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
-										<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
-										<td className='text-center fs-14'>{row.company}</td>
-										<td className='text-center fs-14'>{row.company_type}</td>
-										<td className='text-center'>
-											<Button
-												theme={ButtonTheme.muted}
-												size={ButtonSize.default}
-												variant={ButtonVariant.transparent}
-												onClick={() => handleEditClick(row)}
-											>
-												<MdModeEdit fontSize={20} />
-											</Button>
-											<Button
-												theme={ButtonTheme.warning}
-												size={ButtonSize.default}
-												variant={ButtonVariant.transparent}
-												onClick={() => openConfirmDeleteModal(true, row.user_id)}
-											>
-												<MdDeleteSweep fontSize={20} />
-											</Button>
-										</td>
-									</tr>
-								))
-							) : (
-								users.map((row) => (
-									<tr
-										key={row.name}
-										className='table-row-height'
-									>
-										<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
-										<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
-										<td className='text-center fs-14'>{row.company}</td>
-										<td className='text-center fs-14'>{row.company_type}</td>
-										<td className='text-center'>
-											<Button
-												theme={ButtonTheme.muted}
-												size={ButtonSize.default}
-												variant={ButtonVariant.transparent}
-												onClick={() => handleEditClick(row)}
-											>
-												<MdModeEdit fontSize={20} />
-											</Button>
-											<Button
-												theme={ButtonTheme.warning}
-												size={ButtonSize.default}
-												variant={ButtonVariant.transparent}
-												onClick={() => openConfirmDeleteModal(true, row.user_id)}
-											>
-												<MdDeleteSweep fontSize={20} />
-											</Button>
-										</td>
-									</tr>
-								))
-							)}
-						</tbody>
-
-					</table>
-				</div>}
+				{!spinner &&
+					<div className='dashboard-table-container w-100 overflow-auto'>
+						<table className=''>
+							<thead>
+								<tr>
+									<th className='text-start fs-14 font-weight-bold'>Name</th>
+									<th className='text-center fs-14 font-weight-bold'>Role</th>
+									<th className='text-center fs-14 font-weight-bold'>Company</th>
+									<th className='text-center fs-14 font-weight-bold'>Company type</th>
+									<th className='text-center fs-14 font-weight-bold'>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								{suggestions.length > 0 ? (
+									suggestions.map((row) => (
+										<tr
+											key={row.name}
+											className='table-row-height'
+										>
+											<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
+											<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
+											<td className='text-center fs-14'>{row.company}</td>
+											<td className='text-center fs-14'>{row.company_type}</td>
+											<td className='text-center'>
+												<Button
+													theme={ButtonTheme.muted}
+													size={ButtonSize.default}
+													variant={ButtonVariant.transparent}
+													onClick={() => handleEditClick(row)}
+												>
+													<MdModeEdit fontSize={20} />
+												</Button>
+												<Button
+													theme={ButtonTheme.warning}
+													size={ButtonSize.default}
+													variant={ButtonVariant.transparent}
+													onClick={() => openConfirmDeleteModal(true, row.user_id)}
+												>
+													<MdDeleteSweep fontSize={20} />
+												</Button>
+											</td>
+										</tr>
+									))
+								) : (
+									users.map((row) => (
+										<tr
+											key={row.name}
+											className='table-row-height'
+										>
+											<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
+											<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
+											<td className='text-center fs-14'>{row.company}</td>
+											<td className='text-center fs-14'>{row.company_type}</td>
+											<td className='text-center'>
+												<Button
+													theme={ButtonTheme.muted}
+													size={ButtonSize.default}
+													variant={ButtonVariant.transparent}
+													onClick={() => handleEditClick(row)}
+												>
+													<MdModeEdit fontSize={20} />
+												</Button>
+												<Button
+													theme={ButtonTheme.warning}
+													size={ButtonSize.default}
+													variant={ButtonVariant.transparent}
+													onClick={() => openConfirmDeleteModal(true, row.user_id)}
+												>
+													<MdDeleteSweep fontSize={20} />
+												</Button>
+											</td>
+										</tr>
+									))
+								)}
+							</tbody>
+						</table>
+					</div>}
 			</div>
 			{selectedData &&
 				<EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}

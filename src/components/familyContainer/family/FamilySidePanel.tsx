@@ -41,7 +41,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, handl
                                         type={TypographyType.h3}
                                         colour={TypographyColor.dark}
                                     />
-                                    <p className='carousel-caption-p text-p fs-14 text-start m-0 py-1'>{data.properties.district}, {data.properties.state}, {data.properties.country}</p>
+                                    <p className='carousel-caption-p text-p fs-12 text-start m-0 py-1'>{data.properties.district}, {data.properties.state}, {data.properties.country}</p>
                                     <button className='border-0 bg-white carousel-caption-p color-green m-0 fs-12 p-0'>View all<FiArrowRight className='ms-1' /></button>
                                 </div>
                             </div>

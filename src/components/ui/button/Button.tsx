@@ -93,7 +93,7 @@ export const Button = ({
 }: ButtonProps) => {
     return (
         <button
-            className={`btn ${getTypeVariantClass(theme, variant)} ${getSizeClass(size)} ${classname}`}
+            className={`${getTypeVariantClass(theme, variant)} ${getSizeClass(size)} ${classname}`}
             onClick={onClick}
             disabled={disabled}
             type={type}

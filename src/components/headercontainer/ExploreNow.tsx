@@ -1,10 +1,12 @@
 import '../../App.css';
+import '../../styles/main.css';
 import React, { useState } from 'react';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Search from '../ui/search/Search';
+import Modal from '../ui/modal/Modal';
 
 const ExploreNow = () => {
 	const [showModal, setshowModal] = useState<boolean>(false);
@@ -58,82 +60,69 @@ const ExploreNow = () => {
 				<MdOutlineTravelExplore className='me-2' fontSize={20} />
 				Explore Now
 			</Button>
-			<div
-				className={`modal ${showModal ? 'show' : ''}`}
-				tabIndex={-1}
-				role='dialog'
-				style={{ display: showModal ? 'block' : 'none' }}
-			>
-				<div className='modal-dialog  modal-dialog-centered dialog-width'
-				>
-					<div className='modal-content' >
-						<div className='modal-body d-flex flex-column justify-content-center m-4' >
-							<div className='d-flex flex-row justify-content-between mb-2'>
+			<Modal showModal={showModal} classname='width-62-5'>
+				<div className='d-flex flex-row justify-content-between mb-2'>
+					<Heading
+						title='Explore Now'
+						type={TypographyType.h2}
+						colour={TypographyColor.dark}
+					/>
+					<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
+				</div>
+				<div className='modal-dialog-scrollable'>
+					<p className='text-muted text-start fs-14'>
+						Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
+					</p>
+					<div className='d-flex flex-row justify-content-start mb-2'>
+						{Object.values(selectedValue)?.map((item, index) => (
+							item &&
+							(<>
 								<Heading
-									title='Explore Now'
-									type={TypographyType.h2}
+									title={item}
+									type={TypographyType.h3}
 									colour={TypographyColor.dark}
 								/>
-								<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
-							</div>
-							<div className='modal-dialog-scrollable'>
-								<p className='text-muted text-start fs-14'>
-									Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
-								</p>
-								<div className='d-flex flex-row justify-content-start mb-2'>
-									{Object.values(selectedValue)?.map((item, index) => (
-										item &&
-										(<>
-											<Heading
-												title={item}
-												type={TypographyType.h3}
-												colour={TypographyColor.dark}
-											/>
-											<button
-												type='button'
-												className='btn-close mx-2 fs-12'
-												onClick={() => handleCloseSelected(index)}
-											/>
-										</>)
-									))}
-
-								</div>
-								<Search
-									handleInputChange={handleInputChange}
-									handleSelectValue={handleSelectValue}
-									data={Constants.explorePlaces}
-									value={value}
-									suggestions={suggestions}
-									hideSuggestionBox={false}
-									placeholderValue='Search by State'
-									classname='height-3 width-26-625'
+								<button
+									type='button'
+									className='btn-close mx-2 fs-12'
+									onClick={() => handleCloseSelected(index)}
 								/>
-								<div className='my-4'>
-									<div>
-										{results.map((item: any) => (
-											<div key={item.name} className='my-2'>
-												<Heading
-												title={item.name}
-												type={TypographyType.h3}
-												colour={TypographyColor.dark}
-												classname='text-start'
-											/>
-												<hr className='mt-0'></hr>
-												<div className='row'>
-													{item.districts.map((district: any) => (
-														<p className='col-4 text-start mb-1 color-green fs-16' key={district.name}>{district.name}</p>
-													))}
-												</div>
-											</div>
+							</>)
+						))}
+
+					</div>
+					<Search
+						handleInputChange={handleInputChange}
+						handleSelectValue={handleSelectValue}
+						data={Constants.explorePlaces}
+						value={value}
+						suggestions={suggestions}
+						hideSuggestionBox={false}
+						placeholderValue='Search by State'
+						classname='height-3 width-26-625'
+					/>
+					<div className='my-4'>
+						<div>
+							{results.map((item: any) => (
+								<div key={item.name} className='my-2'>
+									<Heading
+										title={item.name}
+										type={TypographyType.h3}
+										colour={TypographyColor.dark}
+										classname='text-start'
+									/>
+									<hr className='mt-0'></hr>
+									<div className='row'>
+										{item.districts.map((district: any) => (
+											<p className='col-4 text-start mb-1 color-green fs-16' key={district.name}>{district.name}</p>
 										))}
 									</div>
 								</div>
-							</div>
+							))}
 						</div>
 					</div>
 				</div>
-			</div>
-			{showModal && <div className=" modal-backdrop fade show"></div>}
+			</Modal>
 		</div>
 	);
 };

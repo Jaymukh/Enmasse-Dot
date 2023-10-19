@@ -11,7 +11,7 @@ interface ButtonAvatarProps {
 
 export const ButtonAvatar = ({ image, initial, onClick,  bgColor, classname, disabled }: ButtonAvatarProps) => {
     return (
-        <button className={`btn rounded-circle border-0 ${styles.btn_avatar} ${classname}`} style={{backgroundColor: bgColor}} onClick={onClick} disabled={disabled}>
+        <button className={`rounded-circle border-0 ${styles.btn_avatar} ${classname}`} style={{backgroundColor: bgColor}} onClick={onClick} disabled={disabled}>
             {image ? (
                 <img src={image} alt="Avatar" className="img-fluid rounded-circle" />
             ) : (

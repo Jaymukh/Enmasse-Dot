@@ -124,7 +124,7 @@ export default function Profile() {
                     variant={ButtonVariant.contained}
                     onClick={() => handleOpen(true)}
                 >
-                    <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
+                    <MdModeEdit className='mx-1 mb-1' fontSize={22} />
                     Edit Profile
                 </Button>
             </div>
@@ -132,17 +132,17 @@ export default function Profile() {
             <div className="row w-100 mx-3">
                 <div className="col-3  fs-64" >
                     <div className='d-flex flex-column justify-content-end align-items-end'>
-                        <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center" >
+                        <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center bg-light" >
                             {profileImage ? <img src={profileImage} alt="Profile Photo" className='' style={{ width: `${zoomLevel}%` }} /> : <span className='d-flex flex-column justify-content-center align-items-center w-100 h-100' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>}
                         </div>
                         <Button
                             theme={ButtonTheme.secondary}
                             size={ButtonSize.small}
-                            variant={ButtonVariant.contained}
+                            variant={ButtonVariant.bordered}
                             onClick={() => openUploadImageModal()}
-                            classname='rounded-circle editImageBtn align-self-end'
+                            classname='rounded-circle editImageBtn align-self-end p-0'
                         >
-                            <MdModeEdit className='mx-1 mb-1 color-black' fontSize={22} />
+                            <MdModeEdit className='mx-1 mb-1' fontSize={22} />
                         </Button>
                     </div>
                 </div>

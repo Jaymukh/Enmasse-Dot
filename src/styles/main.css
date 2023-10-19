@@ -83,3 +83,14 @@ ul {
 .bg-green-7 {
     background-color: var(--green-7);
 }
+/* modal width */
+.width-18-75.modal {
+    --bs-modal-width: 18.75rem !important;
+}
+.width-30.modal {
+    --bs-modal-width: 30rem !important;
+}
+
+.width-62-5.modal {
+    --bs-modal-width: 62.5rem !important;
+}

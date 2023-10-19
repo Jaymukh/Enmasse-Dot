@@ -137,7 +137,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                 </div>
                 <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
                     <Button
-                        theme={ButtonTheme.primary}
+                        theme={ previousDisabled? ButtonTheme.muted : ButtonTheme.primary }
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         disabled={previousDisabled}
@@ -151,7 +151,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                         <span className='border rounded mx-1 px-2 py-1'>{paginationData?.pageNumber}</span>  of {totalPages}
                     </div>
                     <Button
-                        theme={ButtonTheme.primary}
+                        theme={ nextDisabled ? ButtonTheme.muted : ButtonTheme.primary}
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         disabled={nextDisabled}

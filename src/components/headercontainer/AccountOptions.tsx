@@ -64,7 +64,7 @@ const AccountOptions = () => {
 				image=''
 				initial={loggedUser.initial}
 				bgColor={loggedUser.userHSL}
-				classname='account-menu-button'
+				classname=''
 			/>
 			{Boolean(anchorEl) &&
 				(<ul className='account-menu-dropdown z-index-2'>
@@ -73,7 +73,7 @@ const AccountOptions = () => {
 							image={loggedUser?.img}
 							initial={loggedUser.initial}
 							bgColor={loggedUser.userHSL}
-							classname='account-menu-button'
+							classname=''
 							disabled={false}
 						/>
 						<span>{loggedUser.name}</span>
