@@ -944,7 +944,7 @@ th {
 
 .static-map {
 	height: 20rem;
-	width: 20rem;
+	/* width: 20rem; */
 }
 
 .fam-side-map-div {

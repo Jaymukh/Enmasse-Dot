@@ -81,5 +81,9 @@ ul {
 }
 
 .bg-green-7 {
-    background-color: var(--green-7);
+    background-color: var(--green-1);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    width: 0rem;
 }

@@ -19,7 +19,7 @@ const OverViewMap = () => {
                     <div className="col-7 d-flex align-items-center justify-content-center static-map">
                         <StaticMap />
                     </div>
-                    <div className='col-4 d-flex flex-column'>
+                    <div className='col-5 d-flex flex-column'>
                         {dashboardCardInfo.map((item, index) => <StatisticsCard data={item} index={index} />)}
                     </div>
                 </div>
