@@ -16,10 +16,20 @@ const useMapsService = () => {
         return fetchWrapper.get(`${APIS.MAPS.GET_CIRCLE}?geo-code=${geoCode}`);
     }
 
+    const getCifData = (geoCode: number) => {
+        return fetchWrapper.get(`${APIS.MAPS.GET_CIF_DATA}?geo-code=${geoCode}`);
+    }
+
+    const getExploreNow = () => {
+        return fetchWrapper.get(APIS.MAPS.GET_EXPLORE_NOW);
+    }
+
     return {
         getDropdownList,
         getMaps,
         getCircle,
+        getCifData,
+        getExploreNow,
     }
 }
 

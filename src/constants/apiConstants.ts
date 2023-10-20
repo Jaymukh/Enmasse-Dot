@@ -21,6 +21,8 @@ const APIS: any = {
         GET_DROPDOWN: '/maps/dropdown',
         GET_MAPS: '/maps/getmap',
         GET_CIRCLE: '/maps/getcircle',
+        GET_CIF_DATA: '/maps/cif',
+        GET_EXPLORE_NOW: '/maps/explorenow',
     },
     STORIES: {
         GET_ALL_STORIES: '/story/viewstory',
