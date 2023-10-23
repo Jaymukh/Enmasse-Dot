@@ -1,24 +1,29 @@
 import '../../App.css';
 import '../../styles/main.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
+import { useRecoilValue } from 'recoil';
+import { mapFeatureState } from '../../states/MapFeatureState';
+import { useMapsService } from '../../services/Maps.service';
 
 const ExploreNow = () => {
+	const mapFeatures = useRecoilValue(mapFeatureState);
+    const mapsService = useMapsService();
 	const [showModal, setshowModal] = useState<boolean>(false);
-	const [results, setResults] = useState<any>(Constants.explorePlaces);
+	const [results, setResults] = useState<any>(mapFeatures.suggestions);
 	const [value, setValue] = useState<string>('');
 	const [selectedValue, setSelectedValue] = useState<{ state: string; district: string }>({ state: '', district: '' });
-	const [suggestions, setSuggestions] = useState<any>(Constants.explorePlaces);
+	const [suggestions, setSuggestions] = useState<any>(mapFeatures.suggestions);
 
 	const handleInputChange = (value: string) => {
 		setValue(value);
 		if (!value) {
-			setSuggestions(Constants.explorePlaces);
+			setSuggestions(mapFeatures.suggestions);
 		} else {
 			const result = suggestions.filter((item: any) => item.name.toLowerCase().includes(value.toLowerCase()));
 			setSuggestions(result);
@@ -41,13 +46,14 @@ const ExploreNow = () => {
 		const objKeys: Array<keyof typeof selectedValue> = ['state', 'district'];
 		setSelectedValue({ ...selectedValue, [objKeys[index]]: '' });
 		if (!index) {
-			setSuggestions(Constants.explorePlaces);
-			setResults(Constants.explorePlaces);
+			setSuggestions(mapFeatures.suggestions);
+			setResults(mapFeatures.suggestions);
 		}
 	}
 
 	const handleModalOpen = (flag: boolean) => {
 		setshowModal(flag);
+		mapsService.getExploreNow();
 	}
 
 	return (

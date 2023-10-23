@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
+
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, spinnerState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
+
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
@@ -14,9 +16,11 @@ import DeleteImage from './DeleteImage';
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
     const [open, setOpen] = useState<boolean>(false);
+    
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
+    
     const [showUploadImageModal, setShowUploadImageModal] = useState(false);
     const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
     const [profileImage, setProfileImage] = useState<string | undefined>(loggedUser?.img);
