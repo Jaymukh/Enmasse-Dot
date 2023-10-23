@@ -22,14 +22,14 @@ export default function InsightBar() {
     const [visible, setVisible] = useState(true);
     const [currency, setCurrency] = useState("US Dollar");
     const mapFeatures = useRecoilValue(mapFeatureState);
-    const mapsService = useMapsService();
+    const mapServices = useMapsService();
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
     }
     //function to get all the CIF data
     useEffect(() => {
-        mapsService.getCifData(1);
+        mapServices?.getCifData(1);
     }, []);
 
     return (

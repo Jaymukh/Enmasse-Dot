@@ -612,7 +612,7 @@ export interface ExplorePlace {
 }
 
 export const explorePlaces: ExplorePlace[] = [
-    {
+    {   
         code: 'AD',
         name: 'Andhra Pradesh',
         districts: [
