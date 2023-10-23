@@ -24,6 +24,7 @@ const APIS: any = {
     },
     STORIES: {
         GET_ALL_STORIES: '/story/viewstory',
+        GET_FEATURED_STORIES: '/story/featuredstory'
     }
 }
 

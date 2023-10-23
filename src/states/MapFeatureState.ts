@@ -5,6 +5,7 @@ const mapFeatureState = atom({
     default: {
         circles: [],
         stories: [],
+        featuredStories: [],
       }
 });
 

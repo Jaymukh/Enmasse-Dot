@@ -45,7 +45,7 @@ const ExploreNow = () => {
 	}
 
 	const handleModalOpen = (flag: boolean) => {
-		setshowModal(flag)
+		setshowModal(flag);
 	}
 
 	return (

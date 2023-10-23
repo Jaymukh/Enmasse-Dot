@@ -25,44 +25,49 @@ function useFetchWrapper() {
             if (config.url.includes(APIS.USERS.SET_NEW_PASSWORD)) {
                 config.headers['Authorization'] = '';
                 return config;
-            } 
-                // Add Bearer token if user is logged in and token is not expired
-                //const token = auth?.tokens?.access;
-                const user = localStorage.getItem('user');
-                if (user != null) {
-                    const token = JSON.parse(user)?.tokens?.access;
-                    const isLoggedIn = !!token;
-                    const isTokenExpired = checkTokenExpired(token);
-                    if (isLoggedIn && !isTokenExpired) {
-                        config.headers['Authorization'] = `Bearer ${token}`;
-                    } if (isLoggedIn && isTokenExpired) {
-                        try {
-                            getRefreshToken().then(data => {
-                                const newAccessToken = data.access;
-                                const updatedAuth = {
-                                    ...auth,
-                                    tokens: {
-                                        ...auth.tokens,
-                                        access: newAccessToken
-                                    }
-                                };
-                                setAuth(updatedAuth);
-                                localStorage.setItem('user', JSON.stringify(updatedAuth));
-                                config.headers['Authorization'] = `Bearer ${newAccessToken}`;
-                            });
-                        } catch (error: any) {
-                            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                            toast.error(errorMsg);
+            }
+            // Add Bearer token if user is logged in and token is not expired
+            //const token = auth?.tokens?.access;
+            const user = localStorage.getItem('user');
+            if (user != null) {
+                const token = JSON.parse(user)?.tokens?.access;
+                const isLoggedIn = !!token;
+                const isTokenExpired = checkTokenExpired(token);
+                if (isLoggedIn && !isTokenExpired) {
+                    config.headers['Authorization'] = `Bearer ${token}`;
+                } if (isLoggedIn && isTokenExpired) {
+                    try {
+                        getRefreshToken().then(data => {
+                            const newAccessToken = data.access;
+                            const updatedAuth = {
+                                ...auth,
+                                tokens: {
+                                    ...auth.tokens,
+                                    access: newAccessToken
+                                }
+                            };
+                            setAuth(updatedAuth);
+                            localStorage.setItem('user', JSON.stringify(updatedAuth));
+                            config.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                        }).catch(error => {
+                            console.log(error);
                             localStorage.removeItem('user');
                             setAuth({});
                             navigate(RouteConstants.login);
-                            // You can choose to log the user out or handle this error differently
-                        }
+                        });
+                    } catch (error: any) {
+                        const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                        toast.error(errorMsg);
+                        localStorage.removeItem('user');
+                        setAuth({});
+                        navigate(RouteConstants.login);
+                        // You can choose to log the user out or handle this error differently
                     }
-                    return config;
                 }
                 return config;
-            
+            }
+            return config;
+
         },
         (error: any) => {
             return Promise.reject(error);

@@ -16,10 +16,15 @@ const useMapsService = () => {
         return fetchWrapper.get(`${APIS.MAPS.GET_CIRCLE}?geo-code=${geoCode}`);
     }
 
+    const getFeaturedStories = (geoCode: number) => {
+        return fetchWrapper.get(`${APIS.STORIES.GET_FEATURED_STORIES}?geo-code=${geoCode}`)
+    }
+
     return {
         getDropdownList,
         getMaps,
         getCircle,
+        getFeaturedStories,
     }
 }
 

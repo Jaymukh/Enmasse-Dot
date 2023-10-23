@@ -92,7 +92,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                 /><BiMenuAltLeft fontSize={22} />
             </div>
 
-            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-start no-scrollbar' style={{ overflow: 'auto' }}>
+            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflow: 'auto' }}>
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
@@ -119,7 +119,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                         </div>
                     ))}
                 </div>
-                <div className="w-100 bg-white m-0 mb-5 d-flex flex-row justify-content-between rounded p-2">
+                <div className="w-100 bg-white m-0 mb-5 d-flex flex-row justify-content-between rounded p-2 ms-2">
                     <div className='w-auto d-flex flex-row justify-content-start align-items-center'>
                         <p className='fs-12 m-2'>Stories per page</p>
                         <Select
