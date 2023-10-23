@@ -160,6 +160,8 @@ const StateMap: React.FC<StateMapProps> = ({
         clearCircles();
     }, [selected.country, selected.state, selected.district]);
 
+    console.log(mapFeatures)
+
     return (
         <div className='row mx-0'
             style={{ height: '85.5vh', zIndex: 999 }}>
@@ -184,10 +186,10 @@ const StateMap: React.FC<StateMapProps> = ({
                                     onLoad={handleMapLoad}
                                     options={mapOptions}
                                 >
-                                    {Constants.storyFeatures && isChecked?.viewStories && (
-                                        Constants.storyFeatures.map((feature, index) => (
-                                            <InfoWindow
-                                                position={feature.position}
+                                    {mapFeatures?.featuredStories && isChecked?.viewStories && (
+                                        mapFeatures?.featuredStories.map((feature: any, index: number) => (
+                                            index && <InfoWindow
+                                                position={feature.family_data.properties.geometry.coordinates}
                                                 // onClose={handleHoverEnd}
                                                 // closeButton={false}
                                                 options={{
@@ -198,7 +200,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                                 } as any}
                                             >
                                                 <MapPopup
-                                                    properties={feature.properties}
+                                                    properties={feature.family_data.properties}
                                                     handleFocused={handleFocused}
                                                     index={index}
                                                 />

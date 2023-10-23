@@ -92,7 +92,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                 /><BiMenuAltLeft fontSize={22} />
             </div>
 
-            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-start no-scrollbar' style={{ overflow: 'auto' }}>
+            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflow: 'auto' }}>
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
@@ -119,36 +119,47 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                         </div>
                     ))}
                 </div>
-            </div>
-            <div className="w-100 bg-white my-5 d-flex flex-row justify-content-between rounded p-2">
-                <div className='w-auto d-flex flex-row justify-content-start align-items-center'>
-                    <p className='fs-12 m-2'>Stories per page</p>
-                    <Select
-                        options={storiesSelectOptions}
-                        onChange={(e) => handleChangeData(e)}
-                        value={paginationData.storiesPerPage}
-                        labelKey='key'
-                        valueKey='value'
-                        size={SelectSize.small}
-                        name='role'
-                        classname='width-5 ps-2'
-                    />
-                    <p className='fs-12 my-2 ms-2'>{iterator*paginationData.storiesPerPage+1} - {iterator*paginationData.storiesPerPage+paginationData.storiesPerPage} of {stories?.totalStories} items</p>
-                </div>
-                <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
-                    <Button
-                        theme={ previousDisabled? ButtonTheme.muted : ButtonTheme.primary }
-                        size={ButtonSize.default}
-                        variant={ButtonVariant.transparent}
-                        disabled={previousDisabled}
-                        onClick={() => handlePreviousClick()}
-                        classname='m-0 h-auto'
-                    >
-                        <BsArrowLeft className='me-2 mb-1' fontSize={22} />
-                        Previous
-                    </Button>
-                    <div className='d-flex flex-row justify-content-around align-items-center mx-2 h-auto fs-12'>
-                        <span className='border rounded mx-1 px-2 py-1'>{paginationData?.pageNumber}</span>  of {totalPages}
+                <div className="w-100 bg-white m-0 mb-5 d-flex flex-row justify-content-between rounded p-2 ms-2">
+                    <div className='w-auto d-flex flex-row justify-content-start align-items-center'>
+                        <p className='fs-12 m-2'>Stories per page</p>
+                        <Select
+                            options={storiesSelectOptions}
+                            onChange={(e) => handleChangeData(e)}
+                            value={paginationData.storiesPerPage}
+                            labelKey='key'
+                            valueKey='value'
+                            size={SelectSize.small}
+                            name='role'
+                            classname='width-5 ps-2'
+                        />
+                        <p className='fs-12 my-2 ms-2'>{iterator * paginationData.storiesPerPage + 1} - {iterator * paginationData.storiesPerPage + paginationData.storiesPerPage} of {stories?.totalStories} items</p>
+                    </div>
+                    <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
+                        <Button
+                            theme={ButtonTheme.primary}
+                            size={ButtonSize.default}
+                            variant={ButtonVariant.transparent}
+                            disabled={previousDisabled}
+                            onClick={() => handlePreviousClick()}
+                            classname='m-0 h-auto'
+                        >
+                            <BsArrowLeft className='me-2 mb-1' fontSize={22} />
+                            Previous
+                        </Button>
+                        <div className='d-flex flex-row justify-content-around align-items-center mx-2 h-auto fs-12'>
+                            <span className='border rounded mx-1 px-2 py-1'>{paginationData?.pageNumber}</span>  of {totalPages}
+                        </div>
+                        <Button
+                            theme={ButtonTheme.primary}
+                            size={ButtonSize.default}
+                            variant={ButtonVariant.transparent}
+                            disabled={nextDisabled}
+                            onClick={() => handleNextClick()}
+                            classname=' m-0'
+                        >
+                            Next
+                            <BsArrowRight className='ms-2 mb-1' fontSize={22} />
+                        </Button>
                     </div>
                     <Button
                         theme={ nextDisabled ? ButtonTheme.muted : ButtonTheme.primary}
