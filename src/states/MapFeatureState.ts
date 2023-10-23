@@ -6,6 +6,7 @@ const mapFeatureState = atom({
         circles: [],
         stories: [],
         cifData: {},
+        featuredStories: [],
       }
 });
 

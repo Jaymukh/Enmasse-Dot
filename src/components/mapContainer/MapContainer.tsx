@@ -104,9 +104,17 @@ function MapContainer() {
     const fetchMapCircles = (geo_id: string) => {
         mapServices.getCircle(Number(geo_id)).then(data => {            
             setMapFeatures({ ...mapFeatures, circles: data });
-            setSpinner(false);
+            //setSpinner(false);
         }).catch(error => {
-            setSpinner(false);
+            //setSpinner(false);
+        });
+    }
+
+    const fetchFeaturedStories = (geo_id: string) => {
+        mapServices.getFeaturedStories(Number(geo_id)).then(data => {
+            setMapFeatures({ ...mapFeatures, featuredStories: data });
+        }).catch(error => {
+            //setSpinner(false);
         });
     }
 
@@ -120,6 +128,7 @@ function MapContainer() {
     }, [selected, states, districts])
 
     useEffect(() => {
+        setSpinner(true);
         mapServices.getDropdownList(selected.country).then(data => {
             setStates(data.children);
         }).catch(error => {
@@ -130,12 +139,11 @@ function MapContainer() {
                 setDistricts(data.children);
             }).catch(error => {
                 errorHandler(error);
-            });
-            setSpinner(true);
+            });            
             getGeoJsonData(selected.district);
             fetchMapCircles(selected.district);
+            fetchFeaturedStories(selected.district);
         } else if (selected.state) {
-            setSpinner(true);
             updateSearchParams('state', selected.state);
             mapServices.getDropdownList(selected.state).then(data => {
                 setDistricts(data.children);
@@ -144,11 +152,12 @@ function MapContainer() {
             });
             getGeoJsonData(selected.state);
             fetchMapCircles(selected.state);
+            fetchFeaturedStories(selected.state);            
         } else if (selected.country) {
-            setSpinner(true);
             updateSearchParams('country', selected.country);
             getGeoJsonData(selected.country);
             fetchMapCircles(selected.country);
+            fetchFeaturedStories(selected.country);
         }
     }, [selected.country, selected.state, selected.district]);
     return (
