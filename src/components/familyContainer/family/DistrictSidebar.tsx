@@ -54,11 +54,11 @@ const DistrictSidebar = () => {
             <div className="row d-flex justify-content-center pt-1 mx-0 px-3 h-100 pb-5" style={{ overflow: 'auto' }}>
                 <div className='row data-card px-3 d-flex flex-row mx-0 my-2'>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
-                        <h6 className='fs-14'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                        <h6 className='fs-14'>{mapFeatures.cifData?.properties?.totalHouseholds ? mapFeatures.cifData?.properties?.totalHouseholds : "__"}</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Households</p>
                     </div>
                     <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
-                        <h6 className='fs-14'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                        <h6 className='fs-14'>{mapFeatures.cifData?.properties?.population ? mapFeatures.cifData?.properties?.population : "__"}</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Population</p>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ const DistrictSidebar = () => {
                             <h6 className='me-2 fs-13 my-0'>EI Coverage</h6>
                             <AiOutlineInfoCircle fontSize={20} color='#606060' />
                         </div>
-                        <p className='fs-10 m-0'>100 out 0f 753 Districts</p>
+                        <p className='fs-10 m-0'>{mapFeatures.cifData?.properties?.EICoverage?.covered ? mapFeatures.cifData?.properties?.EICoverage?.covered : "__"} out 0f {mapFeatures.cifData?.properties?.EICoverage?.total ? mapFeatures.cifData?.properties?.EICoverage?.total : "__"} Districts</p>
                     </div>
                     <ProgressBar />
                 </div>
@@ -130,7 +130,7 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.annualEHSpend ? mapFeatures.cifData?.properties?.EHSpend?.annualEHSpend : "__"}</h6>
+                            <h6 className='fs-14 m-0'>Annual EH Spend </h6>
                             <p className='fs-10 m-0'>Annual EH Spend</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
@@ -142,19 +142,19 @@ const DistrictSidebar = () => {
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Non-Core Solutions</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.healthcareMedianAnnualSpend ? mapFeatures.cifData?.properties?.EHSpend?.healthcareMedianAnnualSpend : "__"}</h6>
+                            <h6 className='fs-14 m-0'></h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Health</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.educationMedianAnnualSpend ? mapFeatures.cifData?.properties?.EHSpend?.educationMedianAnnualSpend : "__"}</h6>
+                            <h6 className='fs-14 m-0'></h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Education</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.agricultureMarketMedianAnnualSpend ? mapFeatures.cifData?.properties?.EHSpend?.agricultureMarketMedianAnnualSpend : "__"}</h6>
+                            <h6 className='fs-14 m-0'></h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Agriculture</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.financialSolutionsMedianAnnualSpend ? mapFeatures.cifData?.properties?.EHSpend?.financialSolutionsMedianAnnualSpend : "__"}</h6>
+                            <h6 className='fs-14 m-0'>m</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Financial Solutions</p>
                         </div>
                     </div>
