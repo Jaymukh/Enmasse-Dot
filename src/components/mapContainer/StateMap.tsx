@@ -134,6 +134,8 @@ const StateMap: React.FC<StateMapProps> = ({
         }
     }, [map, geoJSON]);
 
+    console.log(mapFeatures)
+
     useEffect(() => {
         clearCircles();
         if (map && mapFeatures.circles && isChecked.coreSolution) {
@@ -180,8 +182,6 @@ const StateMap: React.FC<StateMapProps> = ({
     useEffect(() => {
         clearCircles();
     }, [selected.country, selected.state, selected.district]);
-
-    console.log(mapFeatures)
 
     return (
         <div className='row mx-0'

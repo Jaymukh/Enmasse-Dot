@@ -9,6 +9,7 @@ export enum ButtonVariant {
 }
 
 export enum ButtonSize {
+    xsmall,
     small,
     medium,
     large,
@@ -37,6 +38,9 @@ interface ButtonProps {
 const getSizeClass = (size: ButtonSize) => {
     let className = "";
     switch (size) {
+        case ButtonSize.xsmall:
+            className = `${styles.btn_xsmall}`;
+            break;
         case ButtonSize.small:
             className = `${styles.btn_small}`;
             break;
