@@ -13,8 +13,6 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import { useRecoilValue } from 'recoil';
 import { mapFeatureState } from '../../../states/MapFeatureState';
-import { useMapsService } from '../../../services/Maps.service';
-
 
 const options = [
     {
@@ -30,7 +28,6 @@ const options = [
 const DistrictSidebar = () => {
     const navigate = useNavigate();
     const mapFeatures = useRecoilValue(mapFeatureState);
-    const mapsService = useMapsService();
     const [currency, setCurrency] = useState<string>("$");
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -39,10 +36,6 @@ const DistrictSidebar = () => {
     const handleExploreMore = () => {
         navigate(RouteConstants.dashboards);
     }
-    //function to get all the CIF data
-    useEffect(() => {
-        mapsService.getCifData(1);
-    }, []);
    
     return (
         <div className='py-2 bg-white px-0 h-100 me-0' >
