@@ -28,12 +28,18 @@ function Header() {
 	}
 
 	const [open, setOpen] = useState(false);
-	const [title, setTitle] = useState('');
+	const [text, setText] = useState<{title: string, description: string}>({title: '', description: ''});
+	const bookmarkDescription = 'Bookmarks can help you revisit your maps of interest and help you compare with other maps for quicker analysis!'
 
 	const closeWIPDrawer = () => {
 		setOpen(false);
-		setTitle('');
+		setText({title: '', description: ''});
 	};
+
+	const handleDrawer = (title: string) => {
+		setText({title: title, description: bookmarkDescription});
+		setOpen(true);
+	}
 
 	return (
 		<div className="d-flex flex-wrap justify-content-between align-items-center border-bottom bg-white w-100" style={{ height: '8.25vh' }} >
@@ -59,6 +65,7 @@ function Header() {
 					theme={ButtonTheme.primary}
 					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
+					onClick={() => handleDrawer('Add Bookmark')}
 					classname='px-4'
 				>
 					<BsFillBookmarksFill fontSize={20} />
@@ -66,7 +73,7 @@ function Header() {
 				<AccountOptions />
 			</div>
 
-			{open && <WIPDrawer open={open} title={title} closeWIPDrawer={closeWIPDrawer} />}
+			{open && <WIPDrawer open={open} title={text.title} description={text.description} closeWIPDrawer={closeWIPDrawer} />}
 
 		</div>
 	);

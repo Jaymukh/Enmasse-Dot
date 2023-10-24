@@ -23,6 +23,7 @@ const APIS: any = {
         GET_CIRCLE: '/maps/getcircle',
         GET_CIF_DATA: '/maps/cif',
         GET_EXPLORE_NOW: '/maps/explorenow',
+        GET_CORE_SOLUTIONS:  '/maps/coresolutionfilter',
     },
     STORIES: {
         GET_ALL_STORIES: '/story/viewstory',

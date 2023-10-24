@@ -2,15 +2,14 @@
 import '../../App.css';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { useMapsService } from '../../services';
-import { geoJsonState, spinnerState } from '../../states';
+import { geoJsonState, spinnerState, mapFeatureState } from '../../states';
 import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
-import { mapFeatureState } from '../../states/MapFeatureState';
 
 const countries = [{ geo_id: 1, name: 'India' }];
 
@@ -25,7 +24,7 @@ function MapContainer() {
     const [states, setStates] = useState<any>([]);
     const [districts, setDistricts] = useState<any>([]);
     const setGeoJSON = useSetRecoilState(geoJsonState);
-    const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
+    const setMapFeatures = useSetRecoilState(mapFeatureState);
 
     const getSearchParams = () => {
         if (global) {
@@ -91,8 +90,16 @@ function MapContainer() {
         setSearchParams(currentParams);
     }
 
-    const getGeoJsonData = (geo_id: string) => {
-        mapServices.getMaps(Number(geo_id)).then(data => {            
+    const fetchDropdownList = (geo_id: string, level: string) => {
+        mapServices.getDropdownList(Number(geo_id)).then(data => {
+            level === 'states' ? setStates(data.children) : setDistricts(data.children);
+        }).catch(error => {
+            errorHandler(error);
+        });
+    }
+
+    const fetchGeoJsonData = (geo_id: string) => {
+        mapServices.getMaps(Number(geo_id)).then(data => {
             setGeoJSON(data);
             setSpinner(false);
         }).catch(error => {
@@ -102,8 +109,11 @@ function MapContainer() {
     }
 
     const fetchMapCircles = (geo_id: string) => {
-        mapServices.getCircle(Number(geo_id)).then(data => {            
-            setMapFeatures({ ...mapFeatures, circles: data });
+        mapServices.getCircle(Number(geo_id)).then(data => {
+            setMapFeatures(prevMapFeatures => ({
+                ...prevMapFeatures,
+                circles: data
+            }));
             //setSpinner(false);
         }).catch(error => {
             //setSpinner(false);
@@ -112,7 +122,10 @@ function MapContainer() {
 
     const fetchFeaturedStories = (geo_id: string) => {
         mapServices.getFeaturedStories(Number(geo_id)).then(data => {
-            setMapFeatures({ ...mapFeatures, featuredStories: data });
+            setMapFeatures(prevMapFeatures => ({
+                ...prevMapFeatures,
+                featuredStories: data
+            }));
         }).catch(error => {
             //setSpinner(false);
         });
@@ -125,44 +138,33 @@ function MapContainer() {
 
     useEffect(() => {
         updateBreadcrumb();
-    }, [selected, states, districts])
+    }, [selected, states, districts]);
 
     useEffect(() => {
         setSpinner(true);
-        mapServices.getDropdownList(selected.country).then(data => {
-            setStates(data.children);
-        }).catch(error => {
-            errorHandler(error);
-        });
+        fetchDropdownList(selected.country, 'states');
         if (selected.district) {
-            mapServices.getDropdownList(selected.state).then(data => {
-                setDistricts(data.children);
-            }).catch(error => {
-                errorHandler(error);
-            });            
-            getGeoJsonData(selected.district);
+            fetchDropdownList(selected.state, 'districts');
+            fetchGeoJsonData(selected.district);
             fetchMapCircles(selected.district);
             fetchFeaturedStories(selected.district);
             mapServices?.getCifData(selected.district);
         } else if (selected.state) {
             updateSearchParams('state', selected.state);
-            mapServices.getDropdownList(selected.state).then(data => {
-                setDistricts(data.children);
-            }).catch(error => {
-                errorHandler(error);
-            });
-            getGeoJsonData(selected.state);
+            fetchDropdownList(selected.state, 'districts');
+            fetchGeoJsonData(selected.state);
             fetchMapCircles(selected.state);
             fetchFeaturedStories(selected.state); 
             mapServices?.getCifData(selected.state);           
         } else if (selected.country) {
             updateSearchParams('country', selected.country);
-            getGeoJsonData(selected.country);
+            fetchGeoJsonData(selected.country);
             fetchMapCircles(selected.country);
             fetchFeaturedStories(selected.country);
             mapServices?.getCifData(selected.country);
         }
     }, [selected.country, selected.state, selected.district]);
+
     return (
         <div className='MapContainer mx-0 header2' style={{ height: '91.75vh' }}>
             <MapOptions
