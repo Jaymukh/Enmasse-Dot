@@ -424,11 +424,11 @@ export const dashboardCardInfo: DashboardCardInfo[] = [
         value: '285 Million',
     },
     {
-        title: "Number of EH",
+        title: "Number of Entrepreneurial Households (EH)",
         value: '200 Million',
     },
     {
-        title: "Median Annual EH Household Spend",
+        title: "Average Annual EH Transactional Value",
         value: '$5000',
     },
     {

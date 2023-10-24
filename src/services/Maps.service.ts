@@ -23,8 +23,13 @@ const useMapsService = () => {
     const getExploreNow = () => {
         return fetchWrapper.get(APIS.MAPS.GET_EXPLORE_NOW);
     }
+
     const getFeaturedStories = (geoCode: number) => {
         return fetchWrapper.get(`${APIS.STORIES.GET_FEATURED_STORIES}?geo-code=${geoCode}`)
+    }
+
+    const getCoreSolutions = () => {
+        return fetchWrapper.get(APIS.MAPS.GET_CORE_SOLUTIONS);
     }
 
     return {
@@ -34,6 +39,7 @@ const useMapsService = () => {
         getCifData,
         getExploreNow,
         getFeaturedStories,
+        getCoreSolutions,
     }
 }
 

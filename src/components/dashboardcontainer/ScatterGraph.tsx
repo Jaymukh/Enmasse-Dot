@@ -67,7 +67,7 @@ const ScatterGraph = () => {
     return (
         <div className='h-100'>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
-                <div className='row px-4 pt-2 d-flex justify-content-between'>
+                <div className='row px-1 pt-2 d-flex justify-content-between'>
                     <h6 className='col-4 text-start fs-14' >EH Income and Expense</h6>
                     <div className='col-2'>
                         <Select
@@ -81,7 +81,7 @@ const ScatterGraph = () => {
                     </div>
                 </div>
 
-                <ScatterChart width={750} height={375} margin={{ top: 60, right: 20, bottom: 20, left: 20 }}>
+                <ScatterChart width={750} height={375} margin={{ top: 60, right: 20, bottom: 20, left: 20 }} className='px-1'>
                     <defs>
                         <ArrowMarker />
                     </defs>

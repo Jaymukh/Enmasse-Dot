@@ -38,7 +38,7 @@ const BubbleGraph = () => {
 	return (
 		<div className="h-100 me-3">
 			<Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
-				<div className='row px-4 pt-2 d-flex justify-content-between'>
+				<div className='row px-1 pt-2 d-flex justify-content-between'>
 					<Heading
 						title='Core Solutions by EH'
 						type={TypographyType.h4}

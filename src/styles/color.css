@@ -56,4 +56,7 @@ html {
     --grey-0: rgba(73, 73, 73, 1);
     --scrollbar-track: rgba(217, 217, 217, 1);
     --scrollbar-thumb:rgba(17, 24, 39, 1);
+
+    --bs-offcanvas-padding-x: 1rem;
+    --bs-offcanvas-padding-y: 1rem;
 }

@@ -686,7 +686,7 @@ a {
 }
 
 .green-text {
-	color: #108041;
+	color: var(--green-0);
 }
 
 .menu-font-size {
@@ -831,6 +831,7 @@ a {
 .dashboard-table-container {
 	border: 1px solid #0D0B0B33;
 	border-radius: 10px;
+	overflow-y: auto;
 }
 
 .dashboard-table-container table {
@@ -841,9 +842,13 @@ a {
 th {
 	height: 3.25rem;
 	text-align: start;
-	padding: 0rem 0.875rem;
-	border-bottom: 1px solid #ddd;
+	padding: 0rem 0.875rem;	
 	font-weight: 500;
+}
+
+.dashboard-table-container tr:not(:last-child) td,
+th {
+	border-bottom: 1px solid #ddd;
 }
 
 .dashboard-table-container th {
@@ -1278,3 +1283,4 @@ th {
 	transform: translateY(-50%);
 	cursor: pointer;
 }
+
