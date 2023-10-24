@@ -74,7 +74,7 @@ const DistrictSidebar = () => {
                             <p className='fs-10 m-0 text-white'>Total Addressable Market</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.enmasseThesis?.medianAnnualEHTransactionalValue ? mapFeatures.cifData?.properties?.enmasseThesis?.medianAnnualEHTransactionalValue : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Transactional Value</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
@@ -135,27 +135,27 @@ const DistrictSidebar = () => {
                             <p className='fs-10 m-0'>Annual EH Spend</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.medianAnnualAnnualEHSpendOnCore ? mapFeatures.cifData?.properties?.EHSpend?.medianAnnualAnnualEHSpendOnCore : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.medianAnnualEHSpendOnNonCoreSolutions ? mapFeatures.cifData?.properties?.EHSpend?.medianAnnualEHSpendOnNonCoreSolutions : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Non-Core Solutions</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                            <h6 className='fs-14 m-0'></h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.AvergeAnnualEHSpendOnHealthcare ? mapFeatures.cifData?.properties?.EHSpend?.AvergeAnnualEHSpendOnHealthcare : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Health</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                            <h6 className='fs-14 m-0'></h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.AvergeAnnualEHSpendOnEducation ? mapFeatures.cifData?.properties?.EHSpend?.AvergeAnnualEHSpendOnEducation : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Education</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                            <h6 className='fs-14 m-0'></h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.AvergeAnnualEHSpendOnAgricultureMarket ? mapFeatures.cifData?.properties?.EHSpend?.AvergeAnnualEHSpendOnAgricultureMarket : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Agriculture</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                            <h6 className='fs-14 m-0'>m</h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.AvergeAnnualEHSpendOnFinancialSolutions ? mapFeatures.cifData?.properties?.EHSpend?.AvergeAnnualEHSpendOnFinancialSolutions : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Financial Solutions</p>
                         </div>
                     </div>
@@ -168,15 +168,15 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHBorrow?.medianAnuualEHBorrowingFromFormalSources ? mapFeatures.cifData?.properties?.EHBorrow?.medianAnuualEHBorrowingFromFormalSources : "__"}</h6>
                             <p className='fs-10 m-0'>Median Annual EH Borrowing from Formal Sources</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0 font-primary-green'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0 font-primary-green'>{mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowing ? mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowing : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0 font-rejected'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0 font-rejected'>{mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources ? mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing from Informal Sources</p>
                         </div>
                     </div>
@@ -189,15 +189,15 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHIncome?.averageAnnualEHIncomeFromVariableSources ? mapFeatures.cifData?.properties?.EHIncome?.averageAnnualEHIncomeFromVariableSources : "__"}</h6>
                             <p className='fs-10 m-0'>Median Annual EH Income from Variable Sources</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0 font-primary-green'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0 font-primary-green'>{mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowing ? mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowing : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0 font-rejected'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='fs-14 m-0 font-rejected'>{mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources ? mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing from Informal Sources</p>
                         </div>
                     </div>
