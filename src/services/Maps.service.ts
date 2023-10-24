@@ -1,13 +1,13 @@
 import { useFetchWrapper } from '../helpers';
 import { APIS } from '../constants';
 import { mapFeatureState }  from "../states";
-import {useSetRecoilState} from 'recoil';
+import {useRecoilState} from 'recoil';
 
 
 
 const useMapsService = () => {
     const fetchWrapper = useFetchWrapper();
-    const setCifData = useSetRecoilState(mapFeatureState);
+    const [ mapFeatures, setMapFeatures ]= useRecoilState(mapFeatureState);
 
     const getDropdownList = (geoCode: number) => {
         return fetchWrapper.get(`${APIS.MAPS.GET_DROPDOWN}?geo-code=${geoCode}`);
@@ -25,7 +25,8 @@ const useMapsService = () => {
         return fetchWrapper.get(`${APIS.MAPS.GET_CIF_DATA}?geo-code=${geoCode}`)
         .then((response) => {
             if (response) {
-                setCifData(response);
+                setMapFeatures(prevMapFeatures => ({...prevMapFeatures, cifData: response }));
+                // setMapFeatures({ ...mapFeatures, cifData: response });
             }
         });
     }
