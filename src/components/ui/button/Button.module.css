@@ -253,29 +253,31 @@
 
 /* ButtonSize */
 
+.btn_xsmall {
+	font-size: 0.625rem !important; /* 10px */	
+	width: fit-content;
+	padding: 0 1rem;
+}
+
 .btn_small {
-	font-size: 0.75rem !important;
-	/* 12px */
+	font-size: 0.75rem !important;	/* 12px */
 	width: fit-content;
 	padding: 0 1rem;
 }
 
 .btn_default {
-	font-size: 0.813rem;
-	/* 13px */
+	font-size: 0.813rem;	/* 13px */
 	width: fit-content;
 	padding: 0 1rem;
 }
 
 .btn_medium {
-	font-size: 0.875rem !important;
-	/* 14px */
+	font-size: 0.875rem !important;	/* 14px */
 	width: 198px;
 }
 
 .btn_large {
-	font-size: 1rem !important;
-	/* 16px */
+	font-size: 1rem !important;	/* 16px */
 	width: 100%;
 }
 

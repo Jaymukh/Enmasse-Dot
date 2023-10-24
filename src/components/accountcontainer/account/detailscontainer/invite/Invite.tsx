@@ -168,7 +168,7 @@ export default function Invite() {
 			<hr className='mb-4' />
 			<div className="w-auto h-75 mx-4 d-flex justify-content-center m-auto overflow-hidden">
 				{!spinner &&
-					<div className='dashboard-table-container w-100 overflow-auto' style={{ height: '23.15rem' }}>
+					<div className='dashboard-table-container w-100'>
 						<table className=''>
 							<thead>
 								<tr>
