@@ -2,15 +2,14 @@
 import '../../App.css';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { useMapsService } from '../../services';
-import { geoJsonState, spinnerState } from '../../states';
+import { geoJsonState, spinnerState, mapFeatureState } from '../../states';
 import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
-import { mapFeatureState } from '../../states/MapFeatureState';
 
 const countries = [{ geo_id: 1, name: 'India' }];
 
@@ -25,7 +24,7 @@ function MapContainer() {
     const [states, setStates] = useState<any>([]);
     const [districts, setDistricts] = useState<any>([]);
     const setGeoJSON = useSetRecoilState(geoJsonState);
-    const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
+    const setMapFeatures = useSetRecoilState(mapFeatureState);
 
     const getSearchParams = () => {
         if (global) {

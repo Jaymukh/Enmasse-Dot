@@ -7,13 +7,15 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { mapFeatureState } from '../../states/MapFeatureState';
 import { useMapsService } from '../../services/Maps.service';
+import { spinnerState } from '../../states';
 
 const ExploreNow = () => {
-	const mapFeatures = useRecoilValue(mapFeatureState);
-    const mapsService = useMapsService();
+	const mapsService = useMapsService();
+	const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
+	const setSpinner = useSetRecoilState(spinnerState);    
 	const [showModal, setshowModal] = useState<boolean>(false);
 	const [results, setResults] = useState<any>(mapFeatures.suggestions);
 	const [value, setValue] = useState<string>('');
@@ -52,8 +54,19 @@ const ExploreNow = () => {
 	}
 
 	const handleModalOpen = (flag: boolean) => {
+		setSpinner(true);
 		setshowModal(flag);
-		mapsService.getExploreNow();
+		if(flag === true) {
+			mapsService.getExploreNow().then(data => {
+				setMapFeatures(prevMapFeatures => ({
+					...prevMapFeatures,
+					suggestions: data
+				}));
+				setSuggestions(data);
+				setResults(data);
+				setSpinner(false);
+			});
+		}		
 	}
 
 	return (
