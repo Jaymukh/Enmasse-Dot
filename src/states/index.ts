@@ -4,3 +4,4 @@ export * from './SettingsState';
 export * from './UiState';
 export * from './GeoJSONState';
 export * from './StoriesState';
+export * from './MapFeatureState';

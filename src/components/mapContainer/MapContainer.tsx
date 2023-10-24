@@ -143,7 +143,7 @@ function MapContainer() {
             getGeoJsonData(selected.district);
             fetchMapCircles(selected.district);
             fetchFeaturedStories(selected.district);
-            mapServices?.getCifData(1);
+            mapServices?.getCifData(selected.district);
         } else if (selected.state) {
             updateSearchParams('state', selected.state);
             mapServices.getDropdownList(selected.state).then(data => {
@@ -154,13 +154,13 @@ function MapContainer() {
             getGeoJsonData(selected.state);
             fetchMapCircles(selected.state);
             fetchFeaturedStories(selected.state); 
-            mapServices?.getCifData(1);           
+            mapServices?.getCifData(selected.state);           
         } else if (selected.country) {
             updateSearchParams('country', selected.country);
             getGeoJsonData(selected.country);
             fetchMapCircles(selected.country);
             fetchFeaturedStories(selected.country);
-            mapServices?.getCifData(1);
+            mapServices?.getCifData(selected.country);
         }
     }, [selected.country, selected.state, selected.district]);
     return (

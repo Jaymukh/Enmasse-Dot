@@ -4,8 +4,6 @@ import '../styles/main.css';
 import Select, { SelectSize } from './ui/select/Select';
 import { useRecoilValue } from 'recoil';
 import { mapFeatureState } from '../states/MapFeatureState';
-import { useMapsService } from '../services/Maps.service';
-
 
 const options = [
     {
@@ -22,15 +20,10 @@ export default function InsightBar() {
     const [visible, setVisible] = useState(true);
     const [currency, setCurrency] = useState("US Dollar");
     const mapFeatures = useRecoilValue(mapFeatureState);
-    const mapServices = useMapsService();
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
     }
-    //function to get all the CIF data
-    useEffect(() => {
-        mapServices?.getCifData(1);
-    }, []);
 
     return (
         <div className='sideBar-parent-expended py-4 px-0 z-index-1' style={{ overflow: 'auto', overflowX: 'hidden', position: 'inherit' }} >
