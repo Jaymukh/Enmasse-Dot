@@ -27,11 +27,11 @@ const InviteSent: React.FC<InviteSentProps> = ({
                 <div className='d-flex flex-row-reverse'>
                     <Button
                         theme={ButtonTheme.primary}
-                        size={ButtonSize.medium}
+                        size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         onClick={() => handleInviteSentModal()}
                         type='button'
-                        classname='btn-close mx-3 w-auto my-auto'
+                        classname='btn-close mx-3 my-auto'
                     />
                 </div>
                 <div className="d-flex flex-column justify-content-center align-items-center my-2">

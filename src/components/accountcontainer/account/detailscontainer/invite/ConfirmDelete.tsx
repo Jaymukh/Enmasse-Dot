@@ -23,7 +23,10 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                 <div className='d-flex flex-row justify-content-end w-100 pb-1'>
                     <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeConfirmDeleteModal()}></Button>
                 </div>
+                <div className='d-flex justify-content-center'>
                 <MdCancel className='text-center fontSizeXL color-orange' />
+                </div>
+                
                 <Heading
                     title='Are you sure?'
                     type={TypographyType.h5}

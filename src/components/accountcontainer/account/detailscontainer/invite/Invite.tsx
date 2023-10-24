@@ -99,10 +99,11 @@ export default function Invite() {
 	const [suggestions, setSuggestions] = useState<User[]>([]);
 
 	const handleInputChange = (value: string) => {
-		setSearchTerm(value);
-		// Filter the suggestions based on the input value
-		const filteredSuggestions = users.filter((data) =>
-			data.name.toLowerCase().includes(value.toLowerCase()) || data.company.toLowerCase().includes(value.toLowerCase()) || data.company_type.toLowerCase().includes(value.toLowerCase()) || data.email_id.toLowerCase().includes(value.toLowerCase()) || data.role.toLowerCase().includes(value.toLowerCase())
+		setSearchTerm(value.toLowerCase());
+		const filteredSuggestions = users?.filter(data =>
+			Object.values(data).some(prop =>
+				prop && prop.toString().toLowerCase().includes(searchTerm)
+			)
 		);
 		setSuggestions(filteredSuggestions);
 	};
@@ -165,9 +166,9 @@ export default function Invite() {
 				</div>
 			</div>
 			<hr className='mb-4' />
-			<div className="w-auto mx-4 d-flex justify-content-center m-auto">
+			<div className="w-auto h-75 mx-4 d-flex justify-content-center m-auto overflow-hidden">
 				{!spinner &&
-					<div className='dashboard-table-container w-100 overflow-auto'>
+					<div className='dashboard-table-container w-100'>
 						<table className=''>
 							<thead>
 								<tr>

@@ -831,6 +831,9 @@ a {
 .dashboard-table-container {
 	border: 1px solid #0D0B0B33;
 	border-radius: 10px;
+	overflow-y: scroll !important;
+	overflow-x: hidden;
+	height: auto;
 }
 
 .dashboard-table-container table {
