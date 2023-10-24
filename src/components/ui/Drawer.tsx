@@ -12,21 +12,21 @@ interface DrawerProps {
 const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, children }) => {
     return (
         <div className={`offcanvas offcanvas-end h-100 drawer-shadow border-0 ${isOpen ? 'show' : ''}`} id={id}>
-            <div className="offcanvas-header pt-4 pb-0 px-4">
+            <div className="offcanvas-header p-0">
                 <Heading
                     title={title}
-                    type={TypographyType.h2}
+                    type={TypographyType.h3}
                     colour={TypographyColor.dark}
-                    classname='px-1'
+                    classname='p-0'
                 />
                 <button
                     type="button"
-                    className="btn-close text-reset mx-1"
+                    className="btn-close text-reset m-0 p-0"
                     onClick={() => toggleFunction(false)}
                     aria-label="Close"
                 />
             </div>
-            <div className="offcanvas-body">
+            <div className="offcanvas-body px-0">
                 {children}
             </div>
         </div>

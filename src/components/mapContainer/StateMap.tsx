@@ -11,7 +11,14 @@ import { useRecoilValue } from 'recoil';
 import { geoJsonState } from '../../states/GeoJSONState';
 import { Breadcrumb } from '../ui/breadcrumb/Breadcrumb';
 import { mapFeatureState } from '../../states/MapFeatureState';
+import { useMapsService } from '../../services';
+import { toast } from 'react-toastify';
 
+interface Option {
+    label: string;
+    key: number;
+    type: string;
+}
 
 interface StateMapProps {
     selected: any;
@@ -23,10 +30,12 @@ const StateMap: React.FC<StateMapProps> = ({
     breadcrumbs
 }) => {
     const mapRef = useRef(null);
+    const mapServices = useMapsService();
     const [map, setMap] = useState<google.maps.Map | null>(null);
     const [circles, setCircles] = useState<google.maps.Circle[]>([]);
     const [selectedRb, setSelectedRb] = useState(0);
-    const [selectedCoreSoln, setSelectedCoreSoln] = useState({ key: 0, label: 'All', type: 'all' });
+    const [coreSolutions, setCoreSolutions] = useState<Option[]>([]);
+    const [selectedCoreSoln, setSelectedCoreSoln] = useState<Option>();
     const [focused, setFocused] = useState(0);
     const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
     const geoJSON = useRecoilValue(geoJsonState);
@@ -73,6 +82,16 @@ const StateMap: React.FC<StateMapProps> = ({
     const handleFocused = (index: number) => {
         setFocused(index);
     };
+
+    useEffect(() => {
+        mapServices.getCoreSolutions().then(data => {
+            setCoreSolutions(data);
+            setSelectedCoreSoln(data[0]);
+        }).catch(error => {
+            const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+            toast.error(errorMsg);
+        });
+    }, []);
 
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
@@ -123,36 +142,38 @@ const StateMap: React.FC<StateMapProps> = ({
                     lat: feature.geometry.coordinates[1],
                     lng: feature.geometry.coordinates[0],
                 };
-                const type = selectedCoreSoln.type;
+                const type = selectedCoreSoln?.type;
 
                 const radii = type !== 'all' ? ['all', type] : [type];
 
                 let zoom = map?.getZoom() ?? 0; // Use 0 if map or zoom is undefined
 
                 return radii.map((radius, i) => {
-                    let zoomFactor = 4;
-                    if (zoom >= 7) {
-                        zoomFactor = 2;
-                    } else if (zoom >= 5) {
-                        zoomFactor = 3;
+                    if (radius) {
+                        let zoomFactor = 4;
+                        if (zoom >= 7) {
+                            zoomFactor = 2;
+                        } else if (zoom >= 5) {
+                            zoomFactor = 3;
+                        }
+                        const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
+                        const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
+                        return new window.google.maps.Circle({
+                            center,
+                            radius: circleRadius,
+                            fillOpacity,
+                            fillColor: '#FFFFFF',
+                            strokeColor: '#FFFFFF',
+                            strokeOpacity: 1,
+                            strokeWeight: 1,
+                            zIndex: 100,
+                            map: map,
+                        });
                     }
-                    const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
-                    const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-                    return new window.google.maps.Circle({
-                        center,
-                        radius: circleRadius,
-                        fillOpacity,
-                        fillColor: '#FFFFFF',
-                        strokeColor: '#FFFFFF',
-                        strokeOpacity: 1,
-                        strokeWeight: 1,
-                        zIndex: 100,
-                        map: map,
-                    });
+                    return null;
                 });
             });
-
-            setCircles(newCircles.flat());
+            setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Circle[]);
         }
     }, [map, map?.getZoom(), mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
 
@@ -171,7 +192,13 @@ const StateMap: React.FC<StateMapProps> = ({
                         <Breadcrumb items={breadcrumbs} />
                     </div>
                     <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8', height: '80.25vh' }}>
-                        <CoreSolutions isChecked={isChecked} toggleSwitch={toggleSwitch} handleChangeRb={handleChangeRb} selectedRb={selectedRb} />
+                        <CoreSolutions
+                            isChecked={isChecked}
+                            toggleSwitch={toggleSwitch}
+                            handleChangeRb={handleChangeRb}
+                            selectedRb={selectedRb}
+                            options={coreSolutions}
+                        />
                     </div>
                     <div className='col-9 p-0' style={{ height: '80.25vh' }}>
                         {apiKey && (
@@ -186,21 +213,23 @@ const StateMap: React.FC<StateMapProps> = ({
                                     onLoad={handleMapLoad}
                                     options={mapOptions}
                                 >
-                                    {mapFeatures?.featuredStories && isChecked?.viewStories && (
-                                        mapFeatures?.featuredStories.map((feature: any, index: number) => (
-                                            index && <InfoWindow
-                                                position={feature.family_data.properties.geometry.coordinates}
-                                                // onClose={handleHoverEnd}
-                                                // closeButton={false}
+                                    {mapFeatures.featuredStories?.featuredStories && isChecked?.viewStories && (
+                                        mapFeatures.featuredStories?.featuredStories?.map((feature: any, index: number) => (
+                                            <InfoWindow
+                                                position={{
+                                                    lng: feature.properties.geometry.coordinates[0],
+                                                    lat: feature.properties.geometry.coordinates[1]
+                                                }}
+                                                // onClose={handleHoverEnd}                                                
                                                 options={{
                                                     padding: 0,
-                                                    maxWidth: 250,
+                                                    maxWidth: 206,
                                                     borderRadius: 0,
-                                                    zIndex: focused === index ? 1000 : 0
+                                                    zIndex: focused === index ? 1000 : 0,
                                                 } as any}
                                             >
                                                 <MapPopup
-                                                    properties={feature.family_data.properties}
+                                                    properties={feature.properties}
                                                     handleFocused={handleFocused}
                                                     index={index}
                                                 />

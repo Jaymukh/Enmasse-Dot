@@ -168,7 +168,11 @@ export default function Invite() {
 			<hr className='mb-4' />
 			<div className="w-auto h-75 mx-4 d-flex justify-content-center m-auto overflow-hidden">
 				{!spinner &&
+<<<<<<< HEAD
 					<div className='dashboard-table-container w-100'>
+=======
+					<div className='dashboard-table-container w-100 overflow-auto' style={{ height: '23.15rem' }}>
+>>>>>>> 599dc20e5c2aaa94393d38cbf5e92578c711bffa
 						<table className=''>
 							<thead>
 								<tr>
@@ -209,6 +213,7 @@ export default function Invite() {
 												</Button>
 											</td>
 										</tr>
+
 									))
 								) : (
 									users.map((row) => (

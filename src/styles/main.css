@@ -2,6 +2,10 @@
 /* eg: styles related to text, background colors of div, border etc */
 @import url("./color.css");
 
+.offcanvas {
+    padding: 1.25rem !important;
+}
+
 a {
     cursor: pointer;
 }
@@ -83,10 +87,12 @@ ul {
 .bg-green-7 {
     background-color: var(--green-7);
 }
+
 /* modal width */
 .width-18-75.modal {
     --bs-modal-width: 18.75rem !important;
 }
+
 .width-30.modal {
     --bs-modal-width: 30rem !important;
 }
@@ -98,4 +104,10 @@ ul {
 
 .no-scrollbar::-webkit-scrollbar {
     width: 0rem;
+}
+
+.coverage-div {
+    border-radius: 0.3125rem;
+    border: 1px solid var(--black-1);
+    background: var(--white-1);
 }

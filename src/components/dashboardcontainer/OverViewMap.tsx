@@ -13,9 +13,9 @@ const OverViewMap = () => {
 					title='Overall Information'
 					type={TypographyType.h4}
 					colour={TypographyColor.dark}
-					classname='pb-2 text-start'
+					classname='pb-2 text-start ps-1'
 				/>
-                <div className='row d-flex justify-content-between'>
+                <div className='row d-flex justify-content-between px-1'>
                     <div className="col-7 d-flex align-items-center justify-content-center static-map">
                         <StaticMap />
                     </div>

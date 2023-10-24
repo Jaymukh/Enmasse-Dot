@@ -7,14 +7,14 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 
 const TableView = () => {
     return (
-        <div className='white-bg pt-4 pb-5 dashboard-col px-4'>
+        <div className='white-bg pt-4 pb-5 dashboard-col p-3'>
             <Heading
                 title='State wise metric breakdown'
                 type={TypographyType.h4}
                 colour={TypographyColor.dark}
-                classname='text-start mb-3'
+                classname='text-start mb-3 px-1'
             />
-            <div className='dashboard-table-container'>
+            <div className='dashboard-table-container mx-1'>
                 <table>
                     <thead>
                         <tr>
@@ -22,23 +22,13 @@ const TableView = () => {
                                 <th className='fs-14 text-start'>
                                     <div className='d-flex flex-row align-items-center'>
                                         <p className='pt-3 pe-2'>{item}</p>
-                                        <div className='d-flex flex-column pb-2'>
-                                            <Button
-                                                theme={ButtonTheme.primary}
-                                                size={ButtonSize.default}
-                                                variant={ButtonVariant.transparent}
-                                                classname='h-auto'
-                                            >
-                                                <BiSolidUpArrow fontSize={12} />
-                                            </Button>
-                                            <Button
-                                                theme={ButtonTheme.secondary}
-                                                size={ButtonSize.default}
-                                                variant={ButtonVariant.transparent}
-                                                classname='h-auto'
-                                            >
-                                                <BiSolidDownArrow fontSize={12} color='#367A2B' />
-                                            </Button>
+                                        <div className='d-flex flex-column'>
+                                            <button className='border-0 bg-white py-0'>
+                                                <BiSolidUpArrow fontSize={9} />
+                                            </button>
+                                            <button className='border-0 bg-white py-0'>
+                                                <BiSolidDownArrow fontSize={9} color='#367A2B' />
+                                            </button>
                                         </div>
                                     </div>
                                 </th>

@@ -76,15 +76,20 @@ export interface CifData {
   };
 }
 
+export interface FeatureStories {
+	featuredStories: [],
+	geodata: []
+}
+
 const mapFeatureState = atom({
-    key: 'mapFeatures',
-    default: {
-        circles: [],
-        stories: [],
-        suggestions: [] as Suggestion[],
+	key: 'mapFeatures',
+	default: {
+		circles: [],
+		stories: [],
+		suggestions: [] as Suggestion[],
         cifData: {} as CifData,
-        featuredStories: [],
-      }
+		featuredStories: {} as FeatureStories,
+	}
 });
 
 export { mapFeatureState };
