@@ -91,13 +91,10 @@ export interface CifData {
     };
 }
 
-<<<<<<< HEAD
-=======
 export interface FeatureStories {
 	featuredStories: [],
 	geodata: []
 }
->>>>>>> c5af6095ef50224c29639c8292465405adf3dc13
 
 const mapFeatureState = atom({
 	key: 'mapFeatures',
@@ -106,13 +103,8 @@ const mapFeatureState = atom({
 		stories: [],
 		suggestions: [] as Suggestion[],
         cifData: {} as CifData,
-<<<<<<< HEAD
-        featuredStories: [],
-    }
-=======
 		featuredStories: {} as FeatureStories,
 	}
->>>>>>> c5af6095ef50224c29639c8292465405adf3dc13
 });
 
 export { mapFeatureState };
