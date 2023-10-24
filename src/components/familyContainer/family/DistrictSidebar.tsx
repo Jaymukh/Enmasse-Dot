@@ -193,12 +193,12 @@ const DistrictSidebar = () => {
                             <p className='fs-10 m-0'>Median Annual EH Income from Variable Sources</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0 font-primary-green'>{mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowing ? mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowing : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing</p>
+                            <h6 className='fs-14 m-0 font-primary-green'>..</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Income</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0 font-rejected'>{mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources ? mapFeatures.cifData?.properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing from Informal Sources</p>
+                            <h6 className='fs-14 m-0 font-rejected'>{mapFeatures.cifData?.properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources ? mapFeatures.cifData?.properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources : "__"}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Income from Informal Sources</p>
                         </div>
                     </div>
                 </div>
