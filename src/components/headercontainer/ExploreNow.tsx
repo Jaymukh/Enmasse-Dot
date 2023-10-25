@@ -27,7 +27,7 @@ const ExploreNow = () => {
 		if (!value) {
 			setSuggestions(mapFeatures.suggestions);
 		} else {
-			const result = suggestions.filter((item: any) => item.name.toLowerCase().includes(value.toLowerCase()));
+			const result = suggestions.filter((item: any) => item?.name?.toLowerCase().includes(value.toLowerCase()));
 			setSuggestions(result);
 		}
 	}
@@ -60,10 +60,10 @@ const ExploreNow = () => {
 			mapsService.getExploreNow().then(data => {
 				setMapFeatures(prevMapFeatures => ({
 					...prevMapFeatures,
-					suggestions: data
+					suggestions: data.children
 				}));
-				setSuggestions(data);
-				setResults(data);
+				setSuggestions(data.children);
+				setResults(data.children);
 				setSpinner(false);
 			});
 		}		
@@ -123,9 +123,9 @@ const ExploreNow = () => {
 					<div className='my-4'>
 						<div>
 							{results.map((item: any) => (
-								<div key={item.name} className='my-2'>
+								<div key={item.geo_id} className='my-2'>
 									<Heading
-										title={item.name}
+										title={item.geo_value}
 										type={TypographyType.h3}
 										colour={TypographyColor.dark}
 										classname='text-start'
@@ -133,7 +133,7 @@ const ExploreNow = () => {
 									<hr className='mt-0'></hr>
 									<div className='row'>
 										{item.children.map((district: any) => (
-											<p className='col-4 text-start mb-1 color-green fs-16' key={district.geo_id}>{district.name}</p>
+											<p className='col-4 text-start mb-1 color-green fs-16' key={district.geo_id}>{district.geo_value}</p>
 										))}
 									</div>
 								</div>
