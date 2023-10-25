@@ -37,7 +37,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const [coreSolutions, setCoreSolutions] = useState<Option[]>([]);
     const [selectedCoreSoln, setSelectedCoreSoln] = useState<Option>();
     const [focused, setFocused] = useState(0);
-    const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
+    const [isChecked, setIsChecked] = useState<any>({ coreSolution: true, viewStories: false });
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
 
@@ -94,9 +94,9 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
-            if(coreSolutions.length) {
+            if (coreSolutions.length) {
                 setIsChecked({ ...isChecked, coreSolution: true });
-            }            
+            }
             map.data.forEach((feature) => {
                 map.data.remove(feature);
             });
@@ -138,43 +138,47 @@ const StateMap: React.FC<StateMapProps> = ({
     useEffect(() => {
         clearCircles();
         if (map && mapFeatures.circles && isChecked.coreSolution) {
-            const newCircles = mapFeatures.circles?.map((feature: any) => {
-                const center = {
-                    lat: feature.geometry.coordinates[1],
-                    lng: feature.geometry.coordinates[0],
-                };
-                const type = selectedCoreSoln?.type;
+            mapFeatures.circles?.map((feature: any) => {
+            // if (map && newCircle && isChecked.coreSolution) {
+                const newCircles = mapFeatures.circles?.map((feature: any) => {
+                    const center = {
+                        lat: feature.geometry.coordinates[1],
+                        lng: feature.geometry.coordinates[0],
+                    };
+                    const type = selectedCoreSoln?.type;
 
-                const radii = type !== 'all' ? ['all', type] : [type];
+                    const radii = type !== 'core_sum' ? ['core_sum', type] : [type];
 
-                let zoom = map?.getZoom() ?? 0; // Use 0 if map or zoom is undefined
+                    let zoom = map?.getZoom() ?? 0; // Use 0 if map or zoom is undefined
 
-                return radii.map((radius, i) => {
-                    if (radius) {
-                        let zoomFactor = 4;
-                        if (zoom >= 7) {
-                            zoomFactor = 2;
-                        } else if (zoom >= 5) {
-                            zoomFactor = 3;
+                    return radii.map((radius, i) => {
+                        if (radius) {
+                            let zoomFactor = 4;
+                            if (zoom >= 7) {
+                                zoomFactor = 4;
+                            } else if (zoom >= 5) {
+                                zoomFactor = 3.5;
+                            }
+                            const circleRadius = Number(feature.properties[radius] * (Math.pow(10, 4)));
+                            // const circleRadius = Number(feature.properties[radius]);
+                            const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
+                            return new window.google.maps.Circle({
+                                center,
+                                radius: circleRadius,
+                                fillOpacity,
+                                fillColor: '#FFFFFF',
+                                strokeColor: '#FFFFFF',
+                                strokeOpacity: 1,
+                                strokeWeight: 1,
+                                zIndex: 100,
+                                map: map,
+                            });
                         }
-                        const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
-                        const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-                        return new window.google.maps.Circle({
-                            center,
-                            radius: circleRadius,
-                            fillOpacity,
-                            fillColor: '#FFFFFF',
-                            strokeColor: '#FFFFFF',
-                            strokeOpacity: 1,
-                            strokeWeight: 1,
-                            zIndex: 100,
-                            map: map,
-                        });
-                    }
-                    return null;
+                        return null;
+                    });
                 });
+                setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Circle[]);
             });
-            setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Circle[]);
         }
     }, [map, map?.getZoom(), mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
 
@@ -183,7 +187,7 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [selected.country, selected.state, selected.district]);
 
     useEffect(() => {
-        if(!mapFeatures.featuredStories?.featuredStories?.length) {
+        if (!mapFeatures.featuredStories?.featuredStories?.length) {
             setIsChecked({ ...isChecked, viewStories: false });
         }
     }, [mapFeatures.featuredStories])
