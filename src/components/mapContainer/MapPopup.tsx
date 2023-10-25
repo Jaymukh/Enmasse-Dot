@@ -12,12 +12,10 @@ interface MapPopupProps {
 
 const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index }) => {
     const navigate = useNavigate();
-
-    const handlePopupClick = () => {
-        const geoCode = '11';
+    const handlePopupClick = (geo_id: number) => {
         navigate({
             pathname: RouteConstants.stories,
-            search: `?geo_code=${geoCode}`,
+            search: `?geo_code=${geo_id}`,
         });
     };
 
@@ -39,7 +37,8 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     theme={ButtonTheme.success}
                     size={ButtonSize.xsmall}
                     variant={ButtonVariant.transparent}
-                    onClick={handlePopupClick}
+                    // onClick={() => handlePopupClick(properties.parentID)}
+                    onClick={() => handlePopupClick(11)}
                     classname='h-auto ps-0'
                 >
                     Read more

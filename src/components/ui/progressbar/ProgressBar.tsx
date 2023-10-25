@@ -1,11 +1,16 @@
 import styles from './ProgressBar.module.css';
 
-export const ProgressBar = () => {
+interface ProgressBarProps {
+    coverage?: { covered: number, total: number };
+}
+
+export const ProgressBar: React.FC<ProgressBarProps> = ({ coverage }) => {
+    const percentage = (coverage?.covered! * 100) / coverage?.total!;
     return (
         <div className={`progress ${styles.progress_container}`}>
             <div
                 className={`progress-bar ${styles.progressbar}`}
-                style={{ width: `50%` }}
+                style={{ width: `${percentage}%` }}
             ></div>
         </div>
     )
