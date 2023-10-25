@@ -13,6 +13,7 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import { useRecoilValue } from 'recoil';
 import { mapFeatureState } from '../../../states/MapFeatureState';
+import { getCurrencyWithSymbol } from '../../../helpers';
 
 const options = [
     {
@@ -29,6 +30,7 @@ const DistrictSidebar = () => {
     const navigate = useNavigate();
     const mapFeatures = useRecoilValue(mapFeatureState);
     const [currency, setCurrency] = useState<string>("$");
+    const [cifDetails, setCifDetails] = useState<any>();
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
@@ -39,7 +41,11 @@ const DistrictSidebar = () => {
             search: `?geo_code=${geo_id}`,
         });
     }
-   
+
+    useEffect(() => {
+        setCifDetails(mapFeatures.cifData?.properties);
+    }, [mapFeatures.cifData?.properties])
+
     return (
         <div className='py-2 bg-white px-0 h-100 me-0' >
             <div className='row d-flex justify-content-between align-items-center px-3 py-2 me-1'>
@@ -94,7 +100,7 @@ const DistrictSidebar = () => {
                         </div>
                         <p className='fs-10 m-0'>{mapFeatures.cifData?.properties?.EICoverage?.covered ? mapFeatures.cifData?.properties?.EICoverage?.covered : "__"} out 0f {mapFeatures.cifData?.properties?.EICoverage?.total ? mapFeatures.cifData?.properties?.EICoverage?.total : "__"} Districts</p>
                     </div>
-                    <ProgressBar coverage={mapFeatures.cifData?.properties?.EICoverage}/>
+                    <ProgressBar coverage={mapFeatures.cifData?.properties?.EICoverage} />
                 </div>
 
                 <div className='d-flex flex-column justify-content-center pb-1 pt-2 px-0'>
@@ -192,11 +198,11 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHIncome?.averageAnnualEHIncomeFromVariableSources ? mapFeatures.cifData?.properties?.EHIncome?.averageAnnualEHIncomeFromVariableSources : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(mapFeatures.cifData?.properties?.EHIncome?.averageAnnualEHIncomeFromVariableSources, mapFeatures.cifData?.properties?.EHIncome?.averageAnnualEHIncomeFromVariableSourcesUOM)}</h6>
                             <p className='fs-10 m-0'>Median Annual EH Income from Variable Sources</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0 font-primary-green'>..</h6>
+                            <h6 className='fs-14 m-0 font-primary-green'>__</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Income</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >

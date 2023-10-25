@@ -7,6 +7,8 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { IoIosArrowForward } from 'react-icons/io';
 import { PiRadioButtonLight } from 'react-icons/pi';
 import { Legend } from '../ui/legend/Legend';
+import { mapFeatureState } from '../../states';
+import { useRecoilValue } from 'recoil';
 
 interface Option {
     label: string;
@@ -29,6 +31,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     toggleSwitch,
     options,
 }) => {
+    const mapFeatures = useRecoilValue(mapFeatureState);
 
     const handleClickRequestLayer = () => {
 
@@ -37,7 +40,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     return (
         <div className='ms-4 d-flex flex-column justify-content-between h-100' >
             <div className='mt-3'>
-                <div className="mt-1 bg-white px-3 py-2">
+                <div className={`mt-1 bg-white px-3 py-2 ${!options?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center justify-content-between'>
                         <PiRadioButtonLight fontSize={22} />
                         <h6 className="ms-2 my-0 pe-2 text-start fs-16">Core Solutions</h6>
@@ -48,7 +51,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         />
                     </div>
                 </div>
-                {isChecked?.coreSolution &&
+                {isChecked?.coreSolution && options?.length &&
                     <div className="bg-white mt-2 py-3 px-3">
                         {/* {options?.map((option: Option) => (
                             <div className="d-flex flex-row justify-content-start ms-1" key={option.label}>
@@ -66,7 +69,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             </div>
                         ))} */}
                     </div>}
-                <div className="d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2">
+                <div className={`d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex'>
                         <BsFillChatLeftTextFill className='me-1' fontSize={20} />
                         <h6 className="my-0 fs-16 ms-2">View Stories</h6>

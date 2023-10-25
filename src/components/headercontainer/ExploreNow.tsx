@@ -53,10 +53,10 @@ const ExploreNow = () => {
 		}
 	}
 
-	const handleModalOpen = (flag: boolean) => {
-		setSpinner(true);
+	const handleModalOpen = (flag: boolean) => {		
 		setshowModal(flag);
 		if(flag === true) {
+			setSpinner(true);
 			mapsService.getExploreNow().then(data => {
 				setMapFeatures(prevMapFeatures => ({
 					...prevMapFeatures,

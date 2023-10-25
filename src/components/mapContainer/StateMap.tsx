@@ -49,7 +49,6 @@ const StateMap: React.FC<StateMapProps> = ({
 
     const mapOptions = {
         // disableDefaultUI: true,
-        // zoomControl: false,
         mapTypeControl: false,
         streetViewControl: false,
         styles: MapConstants.NonGlobalMapStyle,
@@ -95,7 +94,9 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
-            setIsChecked({ ...isChecked, coreSolution: true });
+            if(coreSolutions.length) {
+                setIsChecked({ ...isChecked, coreSolution: true });
+            }            
             map.data.forEach((feature) => {
                 map.data.remove(feature);
             });
@@ -133,8 +134,6 @@ const StateMap: React.FC<StateMapProps> = ({
             setCenter({ lat: bounds.getCenter().lat(), lng: bounds.getCenter().lng() });
         }
     }, [map, geoJSON]);
-
-    console.log(mapFeatures)
 
     useEffect(() => {
         clearCircles();
@@ -182,6 +181,12 @@ const StateMap: React.FC<StateMapProps> = ({
     useEffect(() => {
         clearCircles();
     }, [selected.country, selected.state, selected.district]);
+
+    useEffect(() => {
+        if(!mapFeatures.featuredStories?.featuredStories?.length) {
+            setIsChecked({ ...isChecked, viewStories: false });
+        }
+    }, [mapFeatures.featuredStories])
 
     return (
         <div className='row mx-0'
