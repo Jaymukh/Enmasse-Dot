@@ -1,2 +1,6 @@
 @import url("../../../styles/color.css");
 @import url("../../../utils/fonts/fonts.css");
+
+.modal-height {
+    height: fit-content;
+}

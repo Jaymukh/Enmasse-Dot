@@ -22,7 +22,7 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer, desc
 				toggleFunction={closeWIPDrawer}
 			>
 				<div>
-					<p className='fs-16 text-start m-0'>{description}</p>
+					<p className='fs-14 text-start m-0'>{description}</p>
 					<div className='bookmark-div'>
 						<div className="d-flex justify-content-center align-items-center mx-2 py-5">
 							<div className="mx-4 my-1 dialog-div d-flex flex-column justify-content-center align-items-center py-5">

@@ -151,7 +151,7 @@ export default function Login() {
                             //className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-secondary ${(filledInputCount < 2) ? 'bg-secondary' : 'bg-dark'}`}
                             //disabled={filledInputCount < 2}
                             >
-                                {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Login
+                                {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Continue
                             </button>
                         </form>
                         <p className='text-muted mb-0 mt-2 login-p'>By clicking on continue you are agreeing to the Enmasse

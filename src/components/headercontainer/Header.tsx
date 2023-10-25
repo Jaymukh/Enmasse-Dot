@@ -45,9 +45,6 @@ function Header() {
 		<div className="d-flex flex-wrap justify-content-between align-items-center border-bottom bg-white w-100" style={{ height: '8.25vh' }} >
 			<div className="d-flex flex-wrap mx-3 align-items-center">
 				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer' />
-				{/* <h3 className='mx-3 enmasse-logo-font'>enmasse</h3>
-				<div className='enmasse-circle'></div>
-				<h6 className='enmasse-logo-font mx-3 mt-2'>D.O.T.S</h6> */}
 			</div>
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />

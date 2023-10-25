@@ -213,16 +213,6 @@ const UpdatePassword = () => {
                             {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
                             Create Password
                         </Button>
-                        {/* <Button
-                            theme={ButtonTheme.primary}
-                            size={ButtonSize.large}
-                            variant={ButtonVariant.transparent}
-                            onClick={() => handleSkip()}
-                            type='button'
-                            classname='text-decoration-underline mt-3'
-                        >
-                            Skip
-                                </Button> */}
                     </form>
                 }
             </div>
