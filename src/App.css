@@ -829,13 +829,14 @@ a {
 }
 
 .dashboard-table-container {
-	border: 1px solid #0D0B0B33;
-	border-radius: 10px;
 	overflow-y: auto;
 }
 
 .dashboard-table-container table {
 	width: 100%;
+	border: 1px solid #0D0B0B33;
+	border-radius: 10px !important;
+	border-collapse: separate;
 }
 
 .dashboard-table-container td,

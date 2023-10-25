@@ -1,27 +1,23 @@
 /* include all the color variable */
 
 html {
-    --black-3: #0D0B0B;
-    /*select large border */
-    --black-4: #1118261A;
-    /* select small border */
-    --black-6: rgba(17, 24, 39, 0.50);
-    /* login muted */
-    --black-7: #D9D9D9;
-    
-    --black-8: rgba(0, 0, 0, 0.8);
-    --black-6: rgba(0, 0, 0, 0.6);
-
     --black-0: rgba(0, 0, 0, 1);
     --black-1: rgba(0, 0, 0, 0.1); 
     --black-2: rgba(0, 0, 0, 0.2); 
     /* --black-3: rgba(0, 0, 0, 0.3);  */
     /* --black-4: rgba(0, 0, 0, 0.4);  */
     --black-5: rgba(0, 0, 0, 0.5); 
-    /* --black-6: rgba(0, 0, 0, 0.6);  */
-    /* --black-7: rgba(0, 0, 0, 0.7);  */
+    --black-6: rgba(0, 0, 0, 0.6); 
+    --black-7: rgba(0, 0, 0, 0.7); 
     --black-8: rgba(0, 0, 0, 0.8); /* settings li border */
-    --black-6: rgba(0, 0, 0, 0.9); 
+    --black-9: rgba(0, 0, 0, 0.9); 
+    --black-10: #0D0B0B;
+    /*select large border */
+    --black-11: #1118261A;
+    /* select small border */
+    --black-12: rgba(17, 24, 39, 0.50);
+    /* login muted */
+    --black-13: #D9D9D9;
 
 
     --white-1: #FFFFFF;

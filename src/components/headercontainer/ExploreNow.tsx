@@ -27,14 +27,14 @@ const ExploreNow = () => {
 		if (!value) {
 			setSuggestions(mapFeatures.suggestions);
 		} else {
-			const result = suggestions.filter((item: any) => item?.name?.toLowerCase().includes(value.toLowerCase()));
+			const result = suggestions?.filter((item: any) => item?.name?.toLowerCase().includes(value.toLowerCase()));
 			setSuggestions(result);
 		}
 	}
 
 	const handleSelectValue = (value: string) => {
 		setValue('');
-		const filteredData = suggestions.find((item: any) => item.name.toLowerCase().includes(value.toLowerCase()));
+		const filteredData = suggestions?.find((item: any) => item.name.toLowerCase().includes(value.toLowerCase()));
 		if (filteredData.districts) {
 			setResults([filteredData]);
 			setSelectedValue({ ...selectedValue, state: filteredData.name });
@@ -122,7 +122,7 @@ const ExploreNow = () => {
 					/>
 					<div className='my-4'>
 						<div>
-							{results.map((item: any) => (
+							{results?.map((item: any) => (
 								<div key={item.geo_id} className='my-2'>
 									<Heading
 										title={item.geo_value}
@@ -132,9 +132,9 @@ const ExploreNow = () => {
 									/>
 									<hr className='mt-0'></hr>
 									<div className='row'>
-										{item.children.map((district: any) => (
+										{/* {item.children.map((district: any) => (
 											<p className='col-4 text-start mb-1 color-green fs-16' key={district.geo_id}>{district.geo_value}</p>
-										))}
+										))} */}
 									</div>
 								</div>
 							))}
