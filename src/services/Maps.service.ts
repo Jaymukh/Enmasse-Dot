@@ -26,7 +26,6 @@ const useMapsService = () => {
         .then((response) => {
             if (response) {
                 setMapFeatures(prevMapFeatures => ({...prevMapFeatures, cifData: response }));
-                // setMapFeatures({ ...mapFeatures, cifData: response });
             }
         });
     }
