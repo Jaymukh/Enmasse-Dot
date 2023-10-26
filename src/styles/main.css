@@ -2,6 +2,14 @@
 /* eg: styles related to text, background colors of div, border etc */
 @import url("./color.css");
 
+.color-green-0 {
+    color: var(--green-0);
+}
+
+.bg-green-1 {
+    background-color: var(--green-1);
+}
+
 .offcanvas {
     padding: 1.25rem !important;
 }
@@ -25,7 +33,7 @@ ul {
     justify-content: start;
     align-items: center;
     padding: 0rem;
-    border-bottom: 1px solid var(--black-7);
+    border-bottom: 1px solid var(--black-1);
 }
 
 .li-icon {
@@ -78,14 +86,6 @@ ul {
 
 .data-card-normal-font {
     color: var(--grey-0);
-}
-
-.color-green-0 {
-    color: var(--green-0);
-}
-
-.bg-green-7 {
-    background-color: var(--green-7);
 }
 
 /* modal width */

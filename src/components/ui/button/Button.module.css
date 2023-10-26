@@ -45,7 +45,7 @@
 .btn_primary_transparent {
 	/* black button without backgrount and without border */
 	background-color: transparent;
-	border: 0;
+	border: none;
 	color: var(--blue-0);
 	height: 2.25rem !important;
 	font-weight: 500;
@@ -280,7 +280,6 @@
 	font-size: 1rem !important;	/* 16px */
 	width: 100%;
 }
-
 
 .no_radius {
 	border-radius: 0;

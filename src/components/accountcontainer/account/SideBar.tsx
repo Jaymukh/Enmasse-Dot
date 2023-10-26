@@ -33,16 +33,6 @@ const SideBar = () => {
                         </li>
                     ))}
                 </ul>
-                {/* <div className='justify-content-start'>
-                    <Button
-                        theme={ButtonTheme.secondary}
-                        size={ButtonSize.medium}
-                        variant={ButtonVariant.transparent}
-                    >
-                        <HelpIcon className='mx-1 mb-1 color-black ' />
-                        Help & Support
-                    </Button>
-                </div> */}
             </div>
         </div>
     );
