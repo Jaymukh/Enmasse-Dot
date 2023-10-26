@@ -893,39 +893,29 @@ th {
 	width: 21rem;
 }
 
-/* .carousel-btn-next,
-.carousel-btn-prev {
-	width: 15%;
-	padding: 0;
-	color: #e7e9eb;
-	margin-top: 2.5rem;
-	border: 0;
-	opacity: .5;
-	height: 20%;
-	border-radius: 50%;
-	background-color: black;
-} */
-
 .PrevBtn {
 	margin-left: -1.2rem;
 	background-color: white;
 	height: 2rem;
 	width: 2rem;
 	margin-top: 2rem;
+	border-style: outset;
+	border-color: var(--black-1);
+	border-width: 2px; 
 	opacity: unset;
-	box-shadow: 0rem 0rem 3rem #00000029;
-
 }
-
 .NextBtn {
 	margin-right: -1.2rem;
 	background-color: white;
 	height: 2rem;
 	width: 2rem;
 	margin-top: 2rem;
-	border-style: groove;
+	border-style: outset;
+	border-color: var(--black-1);
+	border-width: 2px; 
 	opacity: unset;
-}
+  }
+  
 
 .iconNextPrev {
 	color: var(--blackColor);

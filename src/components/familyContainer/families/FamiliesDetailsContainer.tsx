@@ -106,7 +106,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                                             colour={TypographyColor.dark}
                                             classname='text-start'
                                         />
-                                        <p className='mx-0 mb-1 fs-11 color-green-0 bg-green-7 px-2 py-1 rounded'>{data.properties.familyDetails.familyMembers ? data.properties.familyDetails.familyMembers : '_ _'} Members</p>
+                                        <p className='mx-0 mb-1 fs-11 color-green-0 bg-green-1 px-2 py-1 rounded'>{data.properties.familyDetails.familyMembers ? data.properties.familyDetails.familyMembers : '_ _'} Members</p>
                                     </div>
                                     <p className="card-text text-left fs-12 mb-2">{data.properties.district}, {data.properties.state}, {data.properties.country}</p>
                                     {(data.properties.familyDetails.familyMembers) &&
