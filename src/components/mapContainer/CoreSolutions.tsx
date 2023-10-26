@@ -51,9 +51,9 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         />
                     </div>
                 </div>
-                {isChecked?.coreSolution && options?.length &&
+                {isChecked?.coreSolution && options?.length > 0 &&
                     <div className="bg-white mt-2 py-3 px-3">
-                        {/* {options?.map((option: Option) => (
+                        {options?.map((option: Option) => (
                             <div className="d-flex flex-row justify-content-start ms-1" key={option.label}>
                                 <label className="my-1 fs-14">
                                     <input
@@ -67,8 +67,9 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                     {option.label}
                                 </label>
                             </div>
-                        ))} */}
-                    </div>}
+                        ))}
+                    </div>
+                }
                 <div className={`d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex'>
                         <BsFillChatLeftTextFill className='me-1' fontSize={20} />
