@@ -37,7 +37,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const [coreSolutions, setCoreSolutions] = useState<Option[]>([]);
     const [selectedCoreSoln, setSelectedCoreSoln] = useState<Option>();
     const [focused, setFocused] = useState(0);
-    const [isChecked, setIsChecked] = useState<any>({ coreSolution: true, viewStories: false });
+    const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
 
@@ -83,14 +83,17 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     useEffect(() => {
-        mapServices.getCoreSolutions().then(data => {
-            setCoreSolutions(data);
-            setSelectedCoreSoln(data[0]);
-        }).catch(error => {
-            const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
-            toast.error(errorMsg);
-        });
-    }, []);
+        const geoCode = geoJSON?.rootProperties?.id;
+        if (geoCode) {
+            mapServices.getCoreSolutions(Number(geoCode)).then(data => {
+                setCoreSolutions(data);
+                setSelectedCoreSoln(data[0]);
+            }).catch(error => {
+                // const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+                // toast.error(errorMsg);
+            });
+        }
+    }, [geoJSON]);
 
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
@@ -139,15 +142,16 @@ const StateMap: React.FC<StateMapProps> = ({
         clearCircles();
         if (map && mapFeatures.circles && isChecked.coreSolution) {
             mapFeatures.circles?.map((feature: any) => {
-            // if (map && newCircle && isChecked.coreSolution) {
+                // if (map && newCircle && isChecked.coreSolution) {
                 const newCircles = mapFeatures.circles?.map((feature: any) => {
                     const center = {
                         lat: feature.geometry.coordinates[1],
                         lng: feature.geometry.coordinates[0],
                     };
                     const type = selectedCoreSoln?.type;
+                    const coreSumType = coreSolutions[0].type;
 
-                    const radii = type !== 'core_sum' ? ['core_sum', type] : [type];
+                    const radii = type !== coreSumType ? [coreSumType, type] : [type];
 
                     let zoom = map?.getZoom() ?? 0; // Use 0 if map or zoom is undefined
 

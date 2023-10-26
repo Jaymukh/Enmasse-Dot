@@ -39,8 +39,8 @@ const useMapsService = () => {
         return fetchWrapper.get(`${APIS.STORIES.GET_FEATURED_STORIES}?geo-code=${geoCode}`)
     }
 
-    const getCoreSolutions = () => {
-        return fetchWrapper.get(APIS.MAPS.GET_CORE_SOLUTIONS);
+    const getCoreSolutions = (geoCode: number) => {
+        return fetchWrapper.get(`${APIS.MAPS.GET_CORE_SOLUTIONS}?geo-code=${geoCode}`);
     }
 
     return {
