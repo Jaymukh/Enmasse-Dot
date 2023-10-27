@@ -21,12 +21,12 @@ export interface CifData {
         address: string;
         totalPopulation: string | null;
         totalHouseholds: string | null;
-        enmasseThesis: {
+        enMassesThesis: {
             totalAddressableMarket: null | number;
             totalAddressableMarketUOM: null | string;
             averageAnnualEHTransactionalValue: null | number;
             averageAnnualEHTransactionalValueUOM: null | string;
-            numberOfEH: number;
+            numberOfEntrepreneurialHouseholds: null | string;
         };
         EHEconomicActivityIndicators: {
             pointsOfInterest: string;
