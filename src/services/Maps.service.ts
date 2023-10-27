@@ -31,7 +31,7 @@ const useMapsService = () => {
     }
 
     const getExploreNow = () => {
-        return fetchWrapper.get(APIS.MAPS.GET_EXPLORE_NOW);
+        return fetchWrapper.get(`${APIS.MAPS.GET_EXPLORE_NOW}?geo-code=1`);
     }
 
     const getFeaturedStories = (geoCode: number) => {

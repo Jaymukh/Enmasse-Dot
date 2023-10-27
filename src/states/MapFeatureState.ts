@@ -19,70 +19,54 @@ export interface CifData {
         geo_id: string;
         region: string;
         address: string;
-        population: number;
-        totalHouseholds: number;
+        totalPopulation: string | null;
+        totalHouseholds: string | null;
         enmasseThesis: {
-            TotalAddressableMarket: null | number;
-            medianAnnualEHTransactionalValue: null | number;
+            totalAddressableMarket: null | number;
+            totalAddressableMarketUOM: null | string;
+            averageAnnualEHTransactionalValue: null | number;
+            averageAnnualEHTransactionalValueUOM: null | string;
             numberOfEH: number;
         };
-        EHEconmicActivityIndicators: {
-            pointsOfInterest: number;
-            healthcarePointsOfInterest: number;
-            financialSolutionsPointsOfInterest: number;
-            educationPointsOfInterest: number;
-            agricultureMarketPointsOfInterest: number;
+        EHEconomicActivityIndicators: {
+            pointsOfInterest: string;
+            healthcareActivityPointsOfInterest: string;
+            financialSolutionsActivityPointsOfInterest: string;
+            educationActivityPointsOfInterest: string;
+            agricultureMarketActivityPointsOfInterest: string;
         };
         EHSpend: {
-            showSpend: null | boolean;
-            medianAnnualEHHouseholdSpend: null | number;
-            medianAnnualEHHouseholdSpendUOM: null | string;
-            medianAnnualAnnualEHSpendOnCore: null | number;
-            medianAnnualAnnualEHSpendOnCoreUOM: null | string;
-            medianAnnualEHSpendOnNonCoreSolutions: null | number;
-            medianAnnualEHSpendOnNonCoreSolutionsUOM: null | string;
-            AvergeAnnualEHSpendOnHealthcare: number;
-            healthcareSpendUOM: string;
-            AvergeAnnualEHSpendOnFinancialSolutions: number;
-            financialSolutionsSpendUOM: string;
-            AvergeAnnualEHSpendOnEducation: number;
-            educationSpendUOM: string;
-            AvergeAnnualEHSpendOnAgricultureMarket: number;
-            agricultureMarketSpendUOM: string;
+            AnnualEHSpend: null | string;
+            AnnualEHSpendUOM: null | string;
+            AverageAnnualEHSpendOnCore: null | string;
+            AverageAnnualEHSpendOnCoreUOM: null | string;
+            AverageAnnualEHSpendOnNonCoreSolutions: null | string;
+            AverageAnnualEHSpendOnNonCoreSolutionsUOM: null | string;
+            AvergeAnnualEHSpendOnAgricultureMarket: null | string;
+            AvergeAnnualEHSpendOnEducation: null | string;
+            AvergeAnnualEHSpendOnFinancialSolutions: null | string;
+            AvergeAnnualEHSpendOnHealthcare: null | string;
+            agricultureMarketSpendUOM: null | string;
+            educationSpendUOM: null | string;
+            financialSolutionsSpendUOM: null | string;
+            healthcareSpendUOM: null | string;
+            showSpend: null | string;
         };
         EHIncome: {
-            showIncome: null | boolean;
-            averageAnnualEHIncomeFromVariableSources: null | number;
-            averageAnnualEHIncomeFromVariableSourcesUOM: null | string;
-            annualEHIncome: null | number;
+            annualEHIncome: null | string;
             annualEHIncomeUOM: null | string;
-            averageAnnualEHIncomeFromInformalSources: null | number;
+            averageAnnualEHIncomeFromInformalSources: null | string;
             averageAnnualEHIncomeFromInformalSourcesUOM: null | string;
-            healthcareMedianAnnualIncome: number;
-            healthcareIncomeUOM: string;
-            financialSolutionsMedianAnnualIncome: number;
-            financialSolutionsIncomeUOM: string;
-            educationMedianAnnualIncome: number;
-            educationIncomeUOM: string;
-            agricultureMarketMedianAnnualIncome: number;
-            agricultureMarketIncomeUOM: string;
+            averageAnnualEHIncomeFromVariableSources: null | string;
+            averageAnnualEHIncomeFromVariableSourcesUOM: null | string;
         };
         EHBorrow: {
-            showBorrow: null | boolean;
-            medianAnuualEHBorrowingFromFormalSources: null | number;
-            medianAnuualEHBorrowingFromFormalSourcesUOM: null | string;
-            medianAnnualEHBorrowing: null | number;
-            medianAnnualEHBorrowingUOM: null | string;
-            medianAnnualEHBorrowingFromInformalSources: null | number;
-            medianAnnualEHBorrowingFromInformalSourcesUOM: null | string;
-            healthcareMedianAnnualBorrow: number;
-            healthcareBorrowUOM: string;
-            financialSolutionsMedianAnnualBorrow: number;
-            financialSolutionsBorrowUOM: string;
-            educationMedianAnnualBorrow: number;
-            educationBorrowUOM: string;
-            agricultureMarketMedianAnnualBorrow: number;
-            agricultureMarketBorrowUOM: string;
+            averageAnnualEHBorrowing: null | string;
+            averageAnnualEHBorrowingFromInformalSources: null | string;
+            averageAnnualEHBorrowingFromInformalSourcesUOM: null | string;
+            averageAnnualEHBorrowingUOM: null | string;
+            averageAnuualEHBorrowingFromFormalSources: null | string;
+            averageAnuualEHBorrowingFromFormalSourcesUOM: null | string;
         };
         EICoverage: {
             covered: number;
@@ -92,19 +76,19 @@ export interface CifData {
 }
 
 export interface FeatureStories {
-	featuredStories: [],
-	geodata: []
+    featuredStories: [],
+    geodata: []
 }
 
 const mapFeatureState = atom({
-	key: 'mapFeatures',
-	default: {
-		circles: [],
-		stories: [],
-		suggestions: [] as Suggestion[],
+    key: 'mapFeatures',
+    default: {
+        circles: [],
+        stories: [],
+        suggestions: [] as Suggestion[],
         cifData: {} as CifData,
-		featuredStories: {} as FeatureStories,
-	}
+        featuredStories: {} as FeatureStories,
+    }
 });
 
 export { mapFeatureState };

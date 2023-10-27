@@ -51,13 +51,13 @@ export default function InsightBar() {
                             <p className='fs-12 m-0'>Total Households</p>
                         </div>
                         <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
-                            <h6 className='fs-14'>{mapFeatures.cifData?.properties?.population ? mapFeatures.cifData?.properties?.population : "__"}</h6>
+                            <h6 className='fs-14'>{mapFeatures.cifData?.properties?.totalPopulation ? mapFeatures.cifData?.properties?.totalPopulation : "__"}</h6>
                             <p className='fs-12 m-0'>Total Population</p>
                         </div>
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 p-0 d-flex flex-column align-items-center justify-content-center text-start py-2 border-bottom'>
-                            <h6 className='text-left fs-18 m-0'>{mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='text-left fs-18 m-0'>{mapFeatures.cifData?.properties?.enmasseThesis?.totalAddressableMarket ? mapFeatures.cifData?.properties?.enmasseThesis?.totalAddressableMarket : "__"}</h6>
                             <p className='fs-12 m-0'>Total Addressable Market</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start justify-content-center text-start border-end' >
@@ -65,8 +65,8 @@ export default function InsightBar() {
                             <p className='fs-12 m-0'>Number of Entrepreneurial Households (EH)</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start text-start'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.medianAnnualEHHouseholdSpend ? mapFeatures.cifData?.properties?.EHSpend?.medianAnnualEHHouseholdSpend : "__"}</h6>
-                            <p className='fs-12 m-0'>Median Annual EH Household Spend</p>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.AnnualEHSpend ? mapFeatures.cifData?.properties?.EHSpend?.AnnualEHSpend : "__"}</h6>
+                            <p className='fs-12 m-0'>Avarage Annual EH Household Spend</p>
                         </div>
                     </div>
                 </div>

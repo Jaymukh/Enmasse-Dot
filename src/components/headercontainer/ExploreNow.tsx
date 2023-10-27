@@ -60,10 +60,10 @@ const ExploreNow = () => {
 			mapsService.getExploreNow().then(data => {
 				setMapFeatures(prevMapFeatures => ({
 					...prevMapFeatures,
-					suggestions: data.children
+					suggestions: data
 				}));
-				setSuggestions(data.children);
-				setResults(data.children);
+				setSuggestions(data);
+				setResults(data);
 				setSpinner(false);
 			});
 		}		

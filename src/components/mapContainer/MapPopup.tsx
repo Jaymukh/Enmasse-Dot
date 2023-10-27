@@ -38,7 +38,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     size={ButtonSize.xsmall}
                     variant={ButtonVariant.transparent}
                     // onClick={() => handlePopupClick(properties.parentID)}
-                    onClick={() => handlePopupClick(11)}
+                    onClick={() => handlePopupClick(properties.parentId)}
                     classname='h-auto ps-0'
                 >
                     Read more

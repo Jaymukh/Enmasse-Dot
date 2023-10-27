@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FamilyHeader from './FamilyHeader';
 import Families from './families/Families';
 import Family from './family/Family';
 import '../../App.css';
-// import { families } from '../../utils/constants/Constants';
-import { useStoriesService } from '../../services';
-import { storiesState, spinnerState } from "../../states";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { storiesState } from "../../states";
+import { useRecoilState } from "recoil";
+import { useMapsService } from '../../services';
 
 function FamilyContainer() {
+    const mapServices = useMapsService();
     const [selectedFamily, setSelectedFamily] = useState<number>(0);
     const [selectedData, setSelectedData] = useState<any | null>(null);
-    //function to get all the stories
-    const storiesService = useStoriesService();
     const [stories] = useRecoilState(storiesState);
 
     const handleFamilyVisible = (data: any, index: number) => {
         setSelectedFamily(index);
-        setSelectedData(data);        
+        setSelectedData(data);
     };
 
     const handleBackClick = () => {
@@ -29,6 +27,12 @@ function FamilyContainer() {
         const data = stories?.family[selectedFamily];
         setSelectedData(data);
     };
+
+    useEffect(() => {
+        if (selectedData?.properties?.geo_id) {
+            mapServices?.getCifData(selectedData.properties.geo_id);
+        }
+    }, [selectedData?.properties?.geo_id])
 
     return (
         <div className="w-100 z-index-0 header2" style={{ height: '91.75vh', position: 'inherit' }}>

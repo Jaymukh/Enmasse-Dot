@@ -1,7 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/img-redundant-alt */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +25,6 @@ const options = [
 
 const DistrictSidebar = () => {
     const navigate = useNavigate();
-    const mapFeatures = useRecoilValue(mapFeatureState);
     const {cifData: {properties}} = useRecoilValue(mapFeatureState);
     const [currency, setCurrency] = useState<string>("$");
 
@@ -60,11 +56,11 @@ const DistrictSidebar = () => {
             <div className="row d-flex justify-content-center pt-1 mx-0 px-3 h-100 pb-5" style={{ overflow: 'auto' }}>
                 <div className='row data-card px-3 d-flex flex-row mx-0 my-2'>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
-                        <h6 className='fs-14 m-0'>{properties?.totalHouseholds ? properties?.totalHouseholds : "__"}</h6>
+                        <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.totalHouseholds)}</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Households</p>
                     </div>
                     <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
-                        <h6 className='fs-14 m-0'>{properties?.population ? properties?.population : "__"}</h6>
+                        <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.totalPopulation)}</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Population</p>
                     </div>
                 </div>
@@ -75,11 +71,11 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top card-green-bg'>
-                            <h6 className='text-left fs-14 m-0 text-white'>{properties?.enmasseThesis?.TotalAddressableMarket ? properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='text-left fs-14 m-0 text-white'>{getCurrencyWithSymbol(properties?.enmasseThesis?.totalAddressableMarket, properties?.enmasseThesis?.totalAddressableMarketUOM)}</h6>
                             <p className='fs-10 m-0 text-white'>Total Addressable Market</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{properties?.enmasseThesis?.medianAnnualEHTransactionalValue ? properties?.enmasseThesis?.medianAnnualEHTransactionalValue : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.enmasseThesis?.averageAnnualEHTransactionalValue, properties?.enmasseThesis?.averageAnnualEHTransactionalValueUOM)}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Transactional Value</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
@@ -94,7 +90,7 @@ const DistrictSidebar = () => {
                             <h6 className='me-2 fs-13 my-0'>EI Coverage</h6>
                             <AiOutlineInfoCircle fontSize={20} color='#606060' />
                         </div>
-                        <p className='fs-10 m-0'>{properties?.EICoverage?.covered ? properties?.EICoverage?.covered : "__"} out 0f {properties?.EICoverage?.total ? properties?.EICoverage?.total : "__"} Districts</p>
+                        <p className='fs-10 m-0'>{getCurrencyWithSymbol(properties?.EICoverage?.covered)} out 0f {getCurrencyWithSymbol(properties?.EICoverage?.total)} Districts</p>
                     </div>
                     <ProgressBar coverage={properties?.EICoverage} />
                 </div>
@@ -106,23 +102,23 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.pointsOfInterest ? properties?.EHEconmicActivityIndicators?.pointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}</h6>
                             <p className='fs-10 m-0'>Points of Interest</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.healthcarePointsOfInterest ? properties?.EHEconmicActivityIndicators?.healthcarePointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.healthcareActivityPointsOfInterest)}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Healthcare activity points of interest</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.educationPointsOfInterest ? properties?.EHEconmicActivityIndicators?.educationPointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.educationActivityPointsOfInterest)}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Education activity points of interest</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.agricultureMarketPointsOfInterest ? properties?.EHEconmicActivityIndicators?.agricultureMarketPointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.agricultureMarketActivityPointsOfInterest)}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Agri Markets activity points of interest</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.financialSolutionsPointsOfInterest ? properties?.EHEconmicActivityIndicators?.financialSolutionsPointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.financialSolutionsActivityPointsOfInterest)}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Financial Solutions activity points of interest</p>
                         </div>
                     </div>
@@ -136,32 +132,32 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>Annual EH Spend </h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AnnualEHSpend, properties?.EHSpend?.AnnualEHSpendUOM)}</h6>
                             <p className='fs-10 m-0'>Annual EH Spend</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.medianAnnualAnnualEHSpendOnCore ? properties?.EHSpend?.medianAnnualAnnualEHSpendOnCore : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AverageAnnualEHSpendOnCore, properties?.EHSpend?.AverageAnnualEHSpendOnCoreUOM)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.medianAnnualEHSpendOnNonCoreSolutions ? properties?.EHSpend?.medianAnnualEHSpendOnNonCoreSolutions : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Non-Core Solutions</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AverageAnnualEHSpendOnNonCoreSolutions, properties?.EHSpend?.AverageAnnualEHSpendOnNonCoreSolutions)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Non-Core Solutions</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.AvergeAnnualEHSpendOnHealthcare ? properties?.EHSpend?.AvergeAnnualEHSpendOnHealthcare : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Health</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AvergeAnnualEHSpendOnHealthcare, properties?.EHSpend?.healthcareSpendUOM)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Health</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.AvergeAnnualEHSpendOnEducation ? properties?.EHSpend?.AvergeAnnualEHSpendOnEducation : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Education</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AvergeAnnualEHSpendOnEducation, properties?.EHSpend?.educationSpendUOM)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Education</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.AvergeAnnualEHSpendOnAgricultureMarket ? properties?.EHSpend?.AvergeAnnualEHSpendOnAgricultureMarket : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Agriculture</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AvergeAnnualEHSpendOnFinancialSolutions, properties?.EHSpend?.agricultureMarketSpendUOM)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Agriculture</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.AvergeAnnualEHSpendOnFinancialSolutions ? properties?.EHSpend?.AvergeAnnualEHSpendOnFinancialSolutions : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Financial Solutions</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AvergeAnnualEHSpendOnFinancialSolutions, properties?.EHSpend?.financialSolutionsSpendUOM)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Financial Solutions</p>
                         </div>
                     </div>
                 </div>
@@ -173,16 +169,16 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>{properties?.EHBorrow?.medianAnuualEHBorrowingFromFormalSources ? properties?.EHBorrow?.medianAnuualEHBorrowingFromFormalSources : "__"}</h6>
-                            <p className='fs-10 m-0'>Median Annual EH Borrowing from Formal Sources</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSources, properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSourcesUOM)}</h6>
+                            <p className='fs-10 m-0'>Average Annual EH Borrowing from Formal Sources</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0 font-primary-green'>{properties?.EHBorrow?.medianAnnualEHBorrowing ? properties?.EHBorrow?.medianAnnualEHBorrowing : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Borrowing</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0 font-rejected'>{properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources ? properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing from Informal Sources</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources, properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSourcesUOM)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Borrowing from Informal Sources</p>
                         </div>
                     </div>
                 </div>
@@ -195,15 +191,15 @@ const DistrictSidebar = () => {
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
                             <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHIncome?.averageAnnualEHIncomeFromVariableSources, properties?.EHIncome?.averageAnnualEHIncomeFromVariableSourcesUOM)}</h6>
-                            <p className='fs-10 m-0'>Median Annual EH Income from Variable Sources</p>
+                            <p className='fs-10 m-0'>Average Annual EH Income from Variable Sources</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0 font-primary-green'>__</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHIncome?.annualEHIncome, properties?.EHIncome?.annualEHIncomeUOM)}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Income</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0 font-rejected'>{properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources ? properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources : "__"}</h6>
-                            <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Income from Informal Sources</p>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources, properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources)}</h6>
+                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Income from Informal Sources</p>
                         </div>
                     </div>
                 </div>
