@@ -70,7 +70,7 @@ const AccountOptions = () => {
 				(<ul className='account-menu-dropdown z-index-2'>
 					<li className='menu-item fs-16' onClick={(event) => handleClickMenuItem(event, 'profile')}>
 						<ButtonAvatar
-							image={loggedUser?.img}
+							image={loggedUser?.profile_picture}
 							initial={loggedUser.initial}
 							bgColor={loggedUser.userHSL}
 							classname=''

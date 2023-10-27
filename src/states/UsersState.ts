@@ -11,7 +11,7 @@ export interface User {
     phone_number: number;
     role: string;
     status: string;
-    img?: string;
+    profile_picture?: string;
     initial?: string;
     userHSL?: any;
 }

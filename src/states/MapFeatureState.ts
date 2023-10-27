@@ -2,87 +2,71 @@ import { atom } from 'recoil';
 
 export interface GeoLocation {
     geo_id: number;
-    name: string;
-    children?: GeoLocation[];
+    geo_value: string;
+    has_data?: boolean;
 }
 export interface Suggestion {
-    type: string; // You might want to specify the actual type here
-    properties: {
-        region: string;
-        address: string;
-        children: GeoLocation[];
-    };
-}
+    geo_id: number;
+    geo_name: string;
+    has_data: string;
+    children: GeoLocation[];
+};
 export interface CifData {
     type: string;
     properties: {
         geo_id: string;
         region: string;
         address: string;
-        population: number;
-        totalHouseholds: number;
-        enmasseThesis: {
-            TotalAddressableMarket: null | number;
-            medianAnnualEHTransactionalValue: null | number;
-            numberOfEH: number;
+        totalPopulation: null | number;
+        totalHouseholds: null | number;
+        enMassesThesis: {
+            totalAddressableMarket: string | null;
+            totalAddressableMarketUOM: string | null;
+            averageAnnualEHTransactionalValue: string | null;
+            averageAnnualEHTransactionalValueUOM: string | null;
+            numberOfEntrepreneurialHouseholds: string;
         };
-        EHEconmicActivityIndicators: {
-            pointsOfInterest: number;
-            healthcarePointsOfInterest: number;
-            financialSolutionsPointsOfInterest: number;
-            educationPointsOfInterest: number;
-            agricultureMarketPointsOfInterest: number;
+        EHEconomicActivityIndicators: {
+            pointsOfInterest: string;
+            agricultureMarketActivityPointsOfInterest: string;
+            educationActivityPointsOfInterest: string;
+            financialSolutionsActivityPointsOfInterest: string;
+            healthcareActivityPointsOfInterest: string;
         };
         EHSpend: {
-            showSpend: null | boolean;
-            medianAnnualEHHouseholdSpend: null | number;
-            medianAnnualEHHouseholdSpendUOM: null | string;
-            medianAnnualAnnualEHSpendOnCore: null | number;
-            medianAnnualAnnualEHSpendOnCoreUOM: null | string;
-            medianAnnualEHSpendOnNonCoreSolutions: null | number;
-            medianAnnualEHSpendOnNonCoreSolutionsUOM: null | string;
-            AvergeAnnualEHSpendOnHealthcare: number;
-            healthcareSpendUOM: string;
-            AvergeAnnualEHSpendOnFinancialSolutions: number;
-            financialSolutionsSpendUOM: string;
-            AvergeAnnualEHSpendOnEducation: number;
-            educationSpendUOM: string;
-            AvergeAnnualEHSpendOnAgricultureMarket: number;
+            showSpend: null;
+            AnnualEHSpend: string | null;
+            AnnualEHSpendUOM: string | null;
+            AverageAnnualEHSpendOnCore: string | null;
+            AverageAnnualEHSpendOnCoreUOM: string | null;
+            AverageAnnualEHSpendOnNonCoreSolutions: string | null;
+            AverageAnnualEHSpendOnNonCoreSolutionsUOM: string | null;
+            AvergeAnnualEHSpendOnAgricultureMarket: string;
             agricultureMarketSpendUOM: string;
+            AvergeAnnualEHSpendOnEducation: string;
+            educationSpendUOM: string;
+            AvergeAnnualEHSpendOnFinancialSolutions: string;
+            financialSolutionsSpendUOM: string;
+            AvergeAnnualEHSpendOnHealthcare: string;
+            healthcareSpendUOM: string;
         };
         EHIncome: {
-            showIncome: null | boolean;
-            averageAnnualEHIncomeFromVariableSources: null | number;
-            averageAnnualEHIncomeFromVariableSourcesUOM: null | string;
-            annualEHIncome: null | number;
-            annualEHIncomeUOM: null | string;
-            averageAnnualEHIncomeFromInformalSources: null | number;
-            averageAnnualEHIncomeFromInformalSourcesUOM: null | string;
-            healthcareMedianAnnualIncome: number;
-            healthcareIncomeUOM: string;
-            financialSolutionsMedianAnnualIncome: number;
-            financialSolutionsIncomeUOM: string;
-            educationMedianAnnualIncome: number;
-            educationIncomeUOM: string;
-            agricultureMarketMedianAnnualIncome: number;
-            agricultureMarketIncomeUOM: string;
+            showIncome: null;
+            averageAnnualEHIncomeFromVariableSources: string | null;
+            averageAnnualEHIncomeFromVariableSourcesUOM: string | null;
+            annualEHIncome: string | null;
+            annualEHIncomeUOM: string | null;
+            averageAnnualEHIncomeFromInformalSources: string | null;
+            averageAnnualEHIncomeFromInformalSourcesUOM: string | null;
         };
         EHBorrow: {
-            showBorrow: null | boolean;
-            medianAnuualEHBorrowingFromFormalSources: null | number;
-            medianAnuualEHBorrowingFromFormalSourcesUOM: null | string;
-            medianAnnualEHBorrowing: null | number;
-            medianAnnualEHBorrowingUOM: null | string;
-            medianAnnualEHBorrowingFromInformalSources: null | number;
-            medianAnnualEHBorrowingFromInformalSourcesUOM: null | string;
-            healthcareMedianAnnualBorrow: number;
-            healthcareBorrowUOM: string;
-            financialSolutionsMedianAnnualBorrow: number;
-            financialSolutionsBorrowUOM: string;
-            educationMedianAnnualBorrow: number;
-            educationBorrowUOM: string;
-            agricultureMarketMedianAnnualBorrow: number;
-            agricultureMarketBorrowUOM: string;
+            showBorrow: null;
+            averageAnuualEHBorrowingFromFormalSources: string | null;
+            averageAnuualEHBorrowingFromFormalSourcesUOM: string | null;
+            averageAnnualEHBorrowing: string | null;
+            averageAnnualEHBorrowingUOM: string | null;
+            averageAnnualEHBorrowingFromInformalSources: string | null;
+            averageAnnualEHBorrowingFromInformalSourcesUOM: string | null;
         };
         EICoverage: {
             covered: number;
@@ -92,19 +76,19 @@ export interface CifData {
 }
 
 export interface FeatureStories {
-	featuredStories: [],
-	geodata: []
+    featuredStories: [],
+    geodata: []
 }
 
 const mapFeatureState = atom({
-	key: 'mapFeatures',
-	default: {
-		circles: [],
-		stories: [],
-		suggestions: [] as Suggestion[],
+    key: 'mapFeatures',
+    default: {
+        circles: [],
+        stories: [],
+        suggestions: [] as Suggestion[],
         cifData: {} as CifData,
-		featuredStories: {} as FeatureStories,
-	}
+        featuredStories: {} as FeatureStories,
+    }
 });
 
 export { mapFeatureState };

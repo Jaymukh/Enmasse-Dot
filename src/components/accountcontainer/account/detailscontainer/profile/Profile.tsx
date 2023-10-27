@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
@@ -23,7 +23,7 @@ export default function Profile() {
     
     const [showUploadImageModal, setShowUploadImageModal] = useState(false);
     const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
-    const [profileImage, setProfileImage] = useState<string | undefined>(loggedUser?.img);
+    const [profileImage, setProfileImage] = useState<string | undefined>(loggedUser?.profile_picture);
     const [newImage, setNewImage] = useState<string | undefined>(undefined);
     const [zoomLevel, setZoomLevel] = useState<number>(100);
     const minZoom = 50;

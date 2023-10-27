@@ -1,13 +1,13 @@
 import '../../App.css';
 import '../../styles/main.css';
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { mapFeatureState } from '../../states/MapFeatureState';
 import { useMapsService } from '../../services/Maps.service';
 import { spinnerState } from '../../states';
@@ -53,17 +53,18 @@ const ExploreNow = () => {
 		}
 	}
 
-	const handleModalOpen = (flag: boolean) => {		
+	const handleModalOpen = (flag: boolean) => {
+		debugger		
 		setshowModal(flag);
 		if(flag === true) {
 			setSpinner(true);
 			mapsService.getExploreNow().then(data => {
 				setMapFeatures(prevMapFeatures => ({
 					...prevMapFeatures,
-					suggestions: data.children
+					suggestions: data[0].children
 				}));
-				setSuggestions(data.children);
-				setResults(data.children);
+				setSuggestions(data[0].children);
+				setResults(data[0].children);
 				setSpinner(false);
 			});
 		}		

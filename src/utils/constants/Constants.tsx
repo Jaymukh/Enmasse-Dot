@@ -23,6 +23,30 @@ export const options: Option[] = [
     { key: 4, label: 'Financial Solutions', type: 'financial_solutions' },
 ];
 
+// Enmasse-Dot\src\components\mapContainer\OverlayModal.tsx
+export interface HelpContent {
+    title: string;
+    description: string;
+}
+
+export const helpContent: HelpContent[] = [
+    {
+      title: 'Region of Potent Entrepreneurial households',
+      description: 'Entrepreneurial households represent households with its members engaged in opportunities of potential growth and economic activities',
+    },
+    {
+      title: 'Coverage',
+      description: 'Coverage depicts the total count of regions (states/districts) evaluated by enmasse team.',
+    },
+	{
+      title: 'Stories',
+      description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+    },
+	{
+      title: 'Need to contact us?',
+      description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+    }
+  ];
 // Enmasse-Dot\src\components\InsightBar.tsx
 export interface CountryData {
     country: string;

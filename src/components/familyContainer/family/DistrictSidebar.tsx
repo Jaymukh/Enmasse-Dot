@@ -64,7 +64,7 @@ const DistrictSidebar = () => {
                         <p className='fs-12 m-0 data-card-normal-font'>Total Households</p>
                     </div>
                     <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
-                        <h6 className='fs-14 m-0'>{properties?.population ? properties?.population : "__"}</h6>
+                        <h6 className='fs-14 m-0'>{properties?.totalPopulation ? properties?.totalPopulation : "__"}</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Population</p>
                     </div>
                 </div>
@@ -75,15 +75,15 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top card-green-bg'>
-                            <h6 className='text-left fs-14 m-0 text-white'>{properties?.enmasseThesis?.TotalAddressableMarket ? properties?.enmasseThesis?.TotalAddressableMarket : "__"}</h6>
+                            <h6 className='text-left fs-14 m-0 text-white'>{properties?.enMassesThesis?.totalAddressableMarket ? properties?.enMassesThesis?.totalAddressableMarket : "__"}</h6>
                             <p className='fs-10 m-0 text-white'>Total Addressable Market</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{properties?.enmasseThesis?.medianAnnualEHTransactionalValue ? properties?.enmasseThesis?.medianAnnualEHTransactionalValue : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.enMassesThesis?.averageAnnualEHTransactionalValue ? properties?.enMassesThesis?.averageAnnualEHTransactionalValue : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Transactional Value</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0'>{properties?.enmasseThesis?.numberOfEH ? properties?.enmasseThesis?.numberOfEH : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds ? properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Number of Entrepreneurial Households (EH)</p>
                         </div>
                     </div>
@@ -106,23 +106,23 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.pointsOfInterest ? properties?.EHEconmicActivityIndicators?.pointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.EHEconomicActivityIndicators?.pointsOfInterest ? properties?.EHEconomicActivityIndicators?.pointsOfInterest : "__"}</h6>
                             <p className='fs-10 m-0'>Points of Interest</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.healthcarePointsOfInterest ? properties?.EHEconmicActivityIndicators?.healthcarePointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.EHEconomicActivityIndicators?.healthcareActivityPointsOfInterest ? properties?.EHEconomicActivityIndicators?.healthcareActivityPointsOfInterest : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Healthcare activity points of interest</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.educationPointsOfInterest ? properties?.EHEconmicActivityIndicators?.educationPointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.EHEconomicActivityIndicators?.educationActivityPointsOfInterest ? properties?.EHEconomicActivityIndicators?.educationActivityPointsOfInterest : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Education activity points of interest</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.agricultureMarketPointsOfInterest ? properties?.EHEconmicActivityIndicators?.agricultureMarketPointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.EHEconomicActivityIndicators?.agricultureMarketActivityPointsOfInterest ? properties?.EHEconomicActivityIndicators?.agricultureMarketActivityPointsOfInterest : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Agri Markets activity points of interest</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                            <h6 className='fs-14 m-0'>{properties?.EHEconmicActivityIndicators?.financialSolutionsPointsOfInterest ? properties?.EHEconmicActivityIndicators?.financialSolutionsPointsOfInterest : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.EHEconomicActivityIndicators?.financialSolutionsActivityPointsOfInterest ? properties?.EHEconomicActivityIndicators?.financialSolutionsActivityPointsOfInterest : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Financial Solutions activity points of interest</p>
                         </div>
                     </div>
@@ -140,11 +140,11 @@ const DistrictSidebar = () => {
                             <p className='fs-10 m-0'>Annual EH Spend</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.medianAnnualAnnualEHSpendOnCore ? properties?.EHSpend?.medianAnnualAnnualEHSpendOnCore : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.AverageAnnualEHSpendOnCore ? properties?.EHSpend?.AverageAnnualEHSpendOnCore : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.medianAnnualEHSpendOnNonCoreSolutions ? properties?.EHSpend?.medianAnnualEHSpendOnNonCoreSolutions : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.EHSpend?.AverageAnnualEHSpendOnNonCoreSolutions ? properties?.EHSpend?.AverageAnnualEHSpendOnNonCoreSolutions : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Spend on Non-Core Solutions</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
@@ -173,15 +173,15 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                            <h6 className='fs-14 m-0'>{properties?.EHBorrow?.medianAnuualEHBorrowingFromFormalSources ? properties?.EHBorrow?.medianAnuualEHBorrowingFromFormalSources : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSources ? properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSources : "__"}</h6>
                             <p className='fs-10 m-0'>Median Annual EH Borrowing from Formal Sources</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0 font-primary-green'>{properties?.EHBorrow?.medianAnnualEHBorrowing ? properties?.EHBorrow?.medianAnnualEHBorrowing : "__"}</h6>
+                            <h6 className='fs-14 m-0 font-primary-green'>{properties?.EHBorrow?.averageAnnualEHBorrowing ? properties?.EHBorrow?.averageAnnualEHBorrowing : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0 font-rejected'>{properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources ? properties?.EHBorrow?.medianAnnualEHBorrowingFromInformalSources : "__"}</h6>
+                            <h6 className='fs-14 m-0 font-rejected'>{properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources ? properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources : "__"}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Median Annual EH Borrowing from Informal Sources</p>
                         </div>
                     </div>

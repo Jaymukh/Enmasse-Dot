@@ -10,7 +10,7 @@ export const overlayState = atom({
     default: true,
 });
 
-export const showHelpState = atom({
+export const helpState = atom({
     key: 'showHelp',
     default: 0,
 });
