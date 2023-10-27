@@ -10,15 +10,20 @@ import { toast } from 'react-toastify';
 import markerBlack from '../utils/images/location-on.svg';
 import markerGrey from '../utils/images/location-on-grey.svg';
 
-const StaticMap = () => {
+interface StaticMapProps {
+	coordinates?: any;
+}
+
+const StaticMap: React.FC<StaticMapProps>  = ({coordinates}) => {
 	const mapRef = useRef(null);
 	const mapServices = useMapsService();
 	const [geoJSON, setGeoJSON] = useState<any>({});
-	const [selectedMarker, setSelectedMarker] = useState<any>([{}, null]);
+	const [focusedMarker, setFocusedMarker] = useState<any>(null);
 	const { family } = useRecoilValue(storiesState);
 	const setSpinner = useSetRecoilState(spinnerState);
 	const [map, setMap] = useState<google.maps.Map | null>(null);
 	const [searchParams, setSearchParams] = useSearchParams();
+	const [markers, setMarkers] = useState<any>([]);
 	const [center, setCenter] = useState({
 		lat: 20.5937,
 		lng: 78.9629
@@ -48,6 +53,7 @@ const StaticMap = () => {
 	};
 
 	const fetchGeoJsonData = (geo_id: string) => {
+		setSpinner(true);
 		mapServices.getMaps(Number(geo_id)).then(data => {
 			setGeoJSON(data);
 			setSpinner(false);
@@ -57,9 +63,24 @@ const StaticMap = () => {
 		});
 	}
 
-	const handleMarkerClick = (item: any, index: number) => {
-		setSelectedMarker([item, index])
-	}
+	useEffect(() => {
+		if(coordinates) {
+			const index = markers?.findIndex((item: any) => {
+				return item.geometry.coordinates.join(',') === coordinates.join(',');
+			});
+			console.log(index);
+			setFocusedMarker(index);
+		}
+	}, [coordinates, markers])
+
+	useEffect(() => {
+		const markerList = family?.filter((marker, index, self) => {
+			return (
+				self.findIndex((m) => m.geometry.coordinates.join(',') === marker.geometry.coordinates.join(',')) === index
+			)
+		});
+		setMarkers(markerList);
+	}, [family]);
 
 	useEffect(() => {
 		const geoCode = searchParams.get('geo_code');
@@ -117,11 +138,7 @@ const StaticMap = () => {
 					onLoad={handleMapLoad}
 					options={mapOptions}
 				>
-					{family?.filter((marker, index, self) => {
-						return (
-							self.findIndex((m) => m.geometry.coordinates.join(',') === marker.geometry.coordinates.join(',')) === index
-						)
-					}).map((marker, index) => (
+					{markers?.map((marker: any, index: number) => (
 						<Marker
 							key={index}
 							position={{
@@ -129,9 +146,9 @@ const StaticMap = () => {
 								lat: marker.geometry.coordinates[1]
 							}}
 							icon={{
-								url: selectedMarker[1] === index ? markerBlack : markerGrey,
+								url: focusedMarker === index ? markerBlack : markerGrey,
 							}}
-							onClick={() => handleMarkerClick(marker, index)}
+						//onClick={() => handleMarkerClick(marker, index)}
 						/>
 					))}
 				</GoogleMap>

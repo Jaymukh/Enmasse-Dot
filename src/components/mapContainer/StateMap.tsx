@@ -96,7 +96,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         if (map && Object.keys(geoJSON).length) {
-            if (coreSolutions.length) {
+            if (coreSolutions.length > 0) {
                 setIsChecked({ ...isChecked, coreSolution: true });
             }
             map.data.forEach((feature) => {
@@ -175,6 +175,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                 strokeWeight: 1,
                                 zIndex: 100,
                                 map: map,
+                                
                             });
                         }
                         return null;

@@ -29,10 +29,10 @@ function FamilyContainer() {
     };
 
     useEffect(() => {
-        if (selectedData?.properties?.geo_id) {
-            mapServices?.getCifData(selectedData.properties.geo_id);
+        if (selectedData?.geo_id) {
+            mapServices?.getCifData(selectedData.geo_id);
         }
-    }, [selectedData?.properties?.geo_id])
+    }, [selectedData?.geo_id])
 
     return (
         <div className="w-100 z-index-0 header2" style={{ height: '91.75vh', position: 'inherit' }}>

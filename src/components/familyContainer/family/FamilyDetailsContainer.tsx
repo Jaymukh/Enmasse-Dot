@@ -13,58 +13,58 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                 <div className='d-flex flex-row justify-content-between pb-1'>
                     <div className="d-flex flex-column justify-content-start text-start">
                         <Heading
-                            title={selectedData.properties.familyName}
+                            title={selectedData.familyName}
                             type={TypographyType.h3}
                             colour={TypographyColor.dark}
                         />
-                        <p className="card-text text-left fs-12">{selectedData.properties.district}, {selectedData.properties.state}, {selectedData.properties.country}</p>
+                        <p className="card-text text-left fs-12">{selectedData.district}, {selectedData.state}, {selectedData.country}</p>
                     </div>
                     <div className="d-flex flex-column justify-content-end text-end">
-                        <span className='fs-14 me-1 bold-text color-green-0'>${selectedData.properties.familyDetails.householdSpend}</span>
+                        <span className='fs-14 me-1 bold-text color-green-0'>${selectedData.familyDetails.householdSpend}</span>
                         <p className='mx-0 fs-10'>Annual Household Spend on Education</p>
                     </div>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-between my-2">
                     {
-                        selectedData.properties.familyDetails.familyMembers &&
+                        selectedData.familyDetails.familyMembers &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{selectedData.properties.familyDetails.familyMembers}</b>
+                            <b className="fs-14 me-1">{selectedData.familyDetails.familyMembers}</b>
                             <p className="card-title text-muted mx-1 fs-10">Family members</p>
                         </div>
                     }
                     {
-                        selectedData.properties.familyDetails.householdSpend &&
+                        selectedData.familyDetails.householdSpend &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">${selectedData.properties.familyDetails.householdSpend}</b>
+                            <b className="fs-14 me-1">${selectedData.familyDetails.householdSpend}</b>
                             <p className="card-title text-muted mx-1 fs-10">Household Spend</p>
                         </div>
                     }
                     {
-                        selectedData.properties.familyDetails.householdBorrowing &&
+                        selectedData.familyDetails.householdBorrowing &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">${selectedData.properties.familyDetails.householdBorrowing}</b>
+                            <b className="fs-14 me-1">${selectedData.familyDetails.householdBorrowing}</b>
                             <p className="card-title text-muted mx-1 fs-10">Household Borrowing</p>
                         </div>
                     }
                     {
-                        selectedData.properties.familyDetails.householdIncome &&
+                        selectedData.familyDetails.householdIncome &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">${selectedData.properties.familyDetails.householdIncome}</b>
+                            <b className="fs-14 me-1">${selectedData.familyDetails.householdIncome}</b>
                             <p className="card-title text-muted mx-1 fs-10">Household Income</p>
                         </div>
                     }
                 </div>
                 <div className="card-body">
-                    {selectedData.properties.image &&
-                        <img src={selectedData.properties.image} alt="Family image" width="100%" height="auto" className='imgBorderRadious my-2' />
+                    {selectedData.image &&
+                        <img src={selectedData.image} alt="Family image" width="100%" height="auto" className='imgBorderRadious my-2' />
                     }
-                    <p className="text-start fs-12">{selectedData.properties.description}</p>
+                    <p className="text-start fs-12">{selectedData.description}</p>
                     <div className='d-flex flex-row justify-content-around my-2'>
-                        {selectedData.properties.image &&
-                            <img src={selectedData.properties.image} alt="Family image" width="50%" height="auto" className='imgBorderRadious me-1' />
+                        {selectedData.image &&
+                            <img src={selectedData.image} alt="Family image" width="50%" height="auto" className='imgBorderRadious me-1' />
                         }
-                        {selectedData.properties.image &&
-                            <img src={selectedData.properties.image} alt="Family image" width="50%" height="auto" className='imgBorderRadious' />
+                        {selectedData.image &&
+                            <img src={selectedData.image} alt="Family image" width="50%" height="auto" className='imgBorderRadious' />
                         }
                     </div>
                 </div>

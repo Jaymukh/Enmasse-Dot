@@ -15,7 +15,7 @@ interface FamilyProps {
 function Family({ selectedFamily, selectedData, handleCarouselSlide, handleBackClick }: FamilyProps) {
     return (
         <div style={{ height: '86.25vh' }} className='row w-100 m-0'>
-            <FamilySidePanel selectedFamily={selectedFamily} handleCarouselSlide={handleCarouselSlide} />
+            <FamilySidePanel selectedFamily={selectedFamily} selectedData={selectedData} handleCarouselSlide={handleCarouselSlide} />
             <FamilyDetailsContainer selectedData={selectedData} />
             <div className='col-3 p-0 bg-white h-100'>
                 <DistrictSidebar />
