@@ -17,14 +17,14 @@ export interface CifData {
         geo_id: string;
         region: string;
         address: string;
-        totalPopulation: null | number;
-        totalHouseholds: null | number;
+        totalPopulation: string | null;
+        totalHouseholds: string | null;
         enMassesThesis: {
-            totalAddressableMarket: string | null;
-            totalAddressableMarketUOM: string | null;
-            averageAnnualEHTransactionalValue: string | null;
-            averageAnnualEHTransactionalValueUOM: string | null;
-            numberOfEntrepreneurialHouseholds: string;
+            totalAddressableMarket: null | number;
+            totalAddressableMarketUOM: null | string;
+            averageAnnualEHTransactionalValue: null | number;
+            averageAnnualEHTransactionalValueUOM: null | string;
+            numberOfEntrepreneurialHouseholds: null | string;
         };
         EHEconomicActivityIndicators: {
             pointsOfInterest: string;

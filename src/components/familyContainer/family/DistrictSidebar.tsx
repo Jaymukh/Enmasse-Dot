@@ -71,15 +71,15 @@ const DistrictSidebar = () => {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top card-green-bg'>
-                            <h6 className='text-left fs-14 m-0 text-white'>{properties?.enMassesThesis?.totalAddressableMarket ? properties?.enMassesThesis?.totalAddressableMarket : "__"}</h6>
+                            <h6 className='text-left fs-14 m-0 text-white'>{getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}</h6>
                             <p className='fs-10 m-0 text-white'>Total Addressable Market</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                            <h6 className='fs-14 m-0'>{properties?.enMassesThesis?.averageAnnualEHTransactionalValue ? properties?.enMassesThesis?.averageAnnualEHTransactionalValue : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.enMassesThesis?.averageAnnualEHTransactionalValue, properties?.enMassesThesis?.averageAnnualEHTransactionalValueUOM)}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Transactional Value</p>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                            <h6 className='fs-14 m-0'>{properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds ? properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds)}</h6>
                             <p className='fs-10 m-0 data-card-normal-font'>Number of Entrepreneurial Households (EH)</p>
                         </div>
                     </div>
