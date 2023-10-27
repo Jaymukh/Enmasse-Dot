@@ -1,4 +1,4 @@
-const getCurrencyWithSymbol = (value: null | number, currency: string | null) => {
+const getCurrencyWithSymbol = (value: null | number | string, currency?: string | null) => {
     if (value) {
         if (currency) {
             const curr = [{ currency: 'USD', symbol: '$' }, { currency: 'INR', symbol: '₹' }];

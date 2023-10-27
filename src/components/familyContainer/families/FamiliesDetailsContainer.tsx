@@ -11,6 +11,8 @@ import { useStoriesService } from '../../../services';
 import { storiesState, spinnerState } from "../../../states";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import familySkeleton from '../../../utils/images/family-skeleton.png';
+import { useSearchParams } from 'react-router-dom';
+
 interface FamiliesDetailsContainerProps {
     handleFamilyVisible: (data: any, index: number) => void;
 }
@@ -19,11 +21,12 @@ interface FamiliesDetailsContainerProps {
 const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ handleFamilyVisible }) => {
     //function to get all the stories
     const storiesService = useStoriesService();
+    const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
     const setSpinner = useSetRecoilState(spinnerState);
     const [previousDisabled, setPreviousDisabled] = useState(true);
     const [nextDisabled, setNextDisabled] = useState(true);
-    const [paginationData, setPaginationData] = useState<{ geoCode: number, pageNumber: number, storiesPerPage: number }>({ geoCode: 1, pageNumber: 1, storiesPerPage: 2 });
+    const [paginationData, setPaginationData] = useState<{ geoCode: number, pageNumber: number, storiesPerPage: number }>({ geoCode: Number(searchParams.get('geo_code')), pageNumber: 1, storiesPerPage: 2 });
     const [iterator, setIterator] = useState(0);
 
     const storiesSelectOptions = [
@@ -97,7 +100,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
                             <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
-                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover' }} src={data.properties.image ? data.properties.image : familySkeleton} alt="Family image" />
+                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover', minHeight: '9rem' }} src={data.properties.image ? data.properties.image : familySkeleton} alt="Family image" />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
                                         <Heading

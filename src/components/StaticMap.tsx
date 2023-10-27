@@ -7,11 +7,14 @@ import { spinnerState, storiesState } from '../states';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import markerBlack from '../utils/images/location-on.svg';
+import markerGrey from '../utils/images/location-on-grey.svg';
 
-const StaticMap: React.FC = () => {
+const StaticMap = () => {
 	const mapRef = useRef(null);
 	const mapServices = useMapsService();
 	const [geoJSON, setGeoJSON] = useState<any>({});
+	const [selectedMarker, setSelectedMarker] = useState<any>([{}, null]);
 	const { family } = useRecoilValue(storiesState);
 	const setSpinner = useSetRecoilState(spinnerState);
 	const [map, setMap] = useState<google.maps.Map | null>(null);
@@ -52,6 +55,10 @@ const StaticMap: React.FC = () => {
 			setSpinner(false);
 			errorHandler(error);
 		});
+	}
+
+	const handleMarkerClick = (item: any, index: number) => {
+		setSelectedMarker([item, index])
 	}
 
 	useEffect(() => {
@@ -110,13 +117,21 @@ const StaticMap: React.FC = () => {
 					onLoad={handleMapLoad}
 					options={mapOptions}
 				>
-					{family?.map((marker, index) => (
+					{family?.filter((marker, index, self) => {
+						return (
+							self.findIndex((m) => m.geometry.coordinates.join(',') === marker.geometry.coordinates.join(',')) === index
+						)
+					}).map((marker, index) => (
 						<Marker
 							key={index}
 							position={{
 								lng: marker.geometry.coordinates[0],
 								lat: marker.geometry.coordinates[1]
 							}}
+							icon={{
+								url: selectedMarker[1] === index ? markerBlack : markerGrey,
+							}}
+							onClick={() => handleMarkerClick(marker, index)}
 						/>
 					))}
 				</GoogleMap>

@@ -21,6 +21,7 @@ interface Family {
         country: string;
         address: string;
         familyDetails: FamilyDetails;
+        geo_id: number;
     };
     geometry: {
         type: string;
@@ -33,6 +34,7 @@ export interface Stories {
     page: string;
     totalStories: number;
     family: Family[];
+    properties: any;
 }
 
 

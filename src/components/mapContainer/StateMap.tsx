@@ -12,7 +12,6 @@ import { geoJsonState } from '../../states/GeoJSONState';
 import { Breadcrumb } from '../ui/breadcrumb/Breadcrumb';
 import { mapFeatureState } from '../../states/MapFeatureState';
 import { useMapsService } from '../../services';
-import { toast } from 'react-toastify';
 
 interface Option {
     label: string;
