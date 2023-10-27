@@ -1,56 +1,115 @@
 import '../../App.css';
 import '../../styles/main.css';
-import img4 from '../../utils/images/img4.png';
-import React, { useState, useEffect } from 'react';
-import { MdOutlineTravelExplore } from 'react-icons/md';
+import IndiaMap from '../../utils/images/IndiaMap.png';
+import CoreSolutions from '../../utils/images/CoreSolutions.png';
 import * as Constants from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
-import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { mapFeatureState } from '../../states/MapFeatureState';
-import { useMapsService } from '../../services/Maps.service';
-import { showHelpState, spinnerState } from '../../states';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { overlayState, helpState } from '../../states';
 
 const OverlayModal = () => {
-    const showHelp = useRecoilValue(showHelpState);
-    const [showModal, setshowModal] = useState<boolean>(true);
+    const overlay = useRecoilValue(overlayState);
+    const setOverlay = useSetRecoilState(overlayState);
+    const setShowHelp = useSetRecoilState(helpState);
+    const showHelp = useRecoilValue(helpState);
 
     const handleModal = () => {
-        setshowModal(false);
-    }
-    // const handleHelpClick = () => {
-	// 	setOverlay(true);
-	// 	setShow(1);
-	// }
+        setOverlay(false);
+    };
+
+    const nextHelp = () => {
+        if (showHelp < Constants.helpContent.length) {
+            setShowHelp(showHelp + 1);
+        }
+        else {
+            setOverlay(false);
+        }
+    };
+    const previousHelp = () => {
+        if (showHelp > 0) {
+            setShowHelp(showHelp - 1);
+        }
+    };
+
+
 
     return (
         <div>
-            <Modal showModal={showModal} classname='width-62-5'>
-                <div className='d-flex flex-row justify-content-center mb-2'>
-                    <div className="col-6">
-                        <img src={img4} alt="India Map Image" />
+            <Modal showModal={overlay} classname='width-62-5'>
+                {
+                    (showHelp == 0) &&
+                    <div className='d-flex flex-row justify-content-center mb-2'>
+                        <div className="col-6">
+                            <img src={IndiaMap} alt="India Map Image" width='75%' />
+                        </div>
+                        <div className="col-6 d-flex flex-column justify-content-center align-items-start">
+                            <Heading
+                                title='Hello! Welcome to Enmasse | D.O.T.S'
+                                type={TypographyType.h2}
+                                colour={TypographyColor.dark}
+                                classname='mb-3'
+                            />
+                            <p className='text-start fs-14'>
+                                Entrepreneurial households: represent households with its members engaged in opportunities of potential growth and economic activities
+                            </p>
+                            <Button
+                                theme={ButtonTheme.primary}
+                                size={ButtonSize.default}
+                                variant={ButtonVariant.bordered}
+                                classname='h-2'
+                                onClick={() => nextHelp()}
+                            >
+                                Continue
+                            </Button>
+                        </div>
                     </div>
-                    <div className="col-6 d-flex flex-column justify-content-center align-items-center">
-                        <Heading
-                            title='Explore Now'
-                            type={TypographyType.h2}
-                            colour={TypographyColor.dark}
-                        />
-                        <p className='text-muted text-start fs-14'>
-                            Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
-                        </p>
-                        <Button
-							theme={ButtonTheme.secondary}
-							size={ButtonSize.default}
-							variant={ButtonVariant.contained}
-							classname='h-2'
-						>
-							Next
-						</Button>
+                }
+                {(0 < showHelp) && (showHelp <= Constants.helpContent.length) && (
+                    <div>
+                        <div className='d-flex flex-row justify-content-end w-100 pb-1'>
+                            <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleModal()}></Button>
+                        </div>
+                        <div className='d-flex flex-row justify-content-center mb-2'>
+                            <div className="col-6">
+                                <img src={CoreSolutions} alt="Core Solutions Image" width='50%' />
+                            </div>
+                            <div className="col-6 d-flex flex-column justify-content-center align-items-start">
+                                <Heading
+                                    title={Constants.helpContent[showHelp - 1].title}
+                                    type={TypographyType.h2}
+                                    colour={TypographyColor.dark}
+                                    classname='mb-3'
+                                />
+                                <p className='text-start fs-14'>{Constants.helpContent[showHelp - 1].description}</p>
+                            </div>
+                        </div>
+                        <div className='d-flex flex-row justify-content-between align-items-center mb-2'>
+                            <p className='text-start fs-14'>{showHelp}/{Constants.helpContent.length}</p>
+                            <div className='d-flex flex-row justify-items-end align-items-center' >
+                                <Button
+                                    theme={ButtonTheme.secondary}
+                                    size={ButtonSize.default}
+                                    variant={ButtonVariant.bordered}
+                                    classname='h-2 me-2'
+                                    onClick={previousHelp}
+                                >
+                                    Previous
+                                </Button>
+                                <Button
+                                    theme={ButtonTheme.primary}
+                                    size={ButtonSize.default}
+                                    variant={ButtonVariant.bordered}
+                                    classname='h-2'
+                                    onClick={nextHelp}
+                                >
+                                    Next
+                                </Button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                )}
             </Modal>
         </div>
     );

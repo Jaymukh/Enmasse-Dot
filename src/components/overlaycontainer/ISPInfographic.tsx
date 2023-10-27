@@ -1,13 +1,13 @@
 import React from 'react';
 import img5 from '../../utils/images/img5.png';
 import { useSetRecoilState } from "recoil";
-import { overlayState, showHelpState } from '../../states';
+import { overlayState, helpState } from '../../states';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 const ISPInfographic = () => {
 	const setOverlay = useSetRecoilState(overlayState);
-	const setShow = useSetRecoilState(showHelpState);
+	const setShow = useSetRecoilState(helpState);
 	return (
 		<div >
 			<div className='bg-black-opacity d-flex flex-row justify-content-center'>

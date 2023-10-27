@@ -11,13 +11,13 @@ import { RouteConstants } from '../../constants/routeConstants';
 import WIPDrawer from '../mapContainer/WIPDrawer';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { useSetRecoilState } from "recoil";
-import { overlayState, showHelpState } from '../../states';
+import { overlayState, helpState } from '../../states';
 
 
 function Header() {
 	const navigate = useNavigate();
 	const setOverlay = useSetRecoilState(overlayState);
-	const setShow = useSetRecoilState(showHelpState);
+	const setShow = useSetRecoilState(helpState);
 	const onLogoClick = () => {
 		navigate(RouteConstants.root);
 	}

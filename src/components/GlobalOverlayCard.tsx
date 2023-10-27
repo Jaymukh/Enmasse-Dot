@@ -23,7 +23,7 @@ const GlobalOverlayCard = () => {
     return (
         <div className='d-flex bg-transparent my-2' style={{position: 'absolute', top: '0', zIndex: 1000}}>
             {cardItems.map((data, index) => (
-                <div className={`d-flex flex-column px-4 py-3 my-4 h-100 ${index < 3 ? 'right-border' : ''}`}>
+                <div key={data.value} className={`d-flex flex-column px-4 py-3 my-4 h-100 ${index < 3 ? 'right-border' : ''}`}>
                     <h5 className={`fs-31 font-weight-500 text-center ${index === 3 ? 'insight-bar-green-color' : ''}`}>{data.value}</h5>
                     <p className='fs-15 font-lato font-weight-500 text-center grey-light-color'>{data.title}</p>
                 </div>

@@ -1,12 +1,12 @@
-import img4 from '../../utils/images/img4.png';
-import { overlayState, showHelpState } from '../../states';
+import IndiaMap from '../../utils/images/IndiaMap.png';
+import { overlayState, helpState } from '../../states';
 import { useSetRecoilState } from "recoil";
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 const EHInfographic = () => {
 	const setOverlay = useSetRecoilState(overlayState);
-	const setShow = useSetRecoilState(showHelpState );
+	const setShow = useSetRecoilState(helpState );
 	return (
 		<div className=''>
 			<div className='bg-black-opacity d-flex flex-row justify-content-center'>
@@ -39,7 +39,7 @@ const EHInfographic = () => {
 						</Button>
 					</div>
 				</div>
-				<img src={img4} alt="image" width="300" height="300" className='imgBorderRadiousinfograpic' />
+				<img src={IndiaMap} alt="image" width="300" height="300" className='imgBorderRadiousinfograpic' />
 			</div>
 		</div>
 	);

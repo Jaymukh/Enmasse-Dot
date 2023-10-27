@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSetRecoilState } from "recoil";
-import { overlayState, showHelpState } from '../../states';
+import { overlayState, helpState } from '../../states';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 const LandingPage = () => {
 	const setOverlay = useSetRecoilState(overlayState);
-	const setShow = useSetRecoilState(showHelpState);
+	const setShow = useSetRecoilState(helpState);
 	return (
 		<div className='w-100'>
 			<Heading

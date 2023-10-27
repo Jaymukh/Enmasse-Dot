@@ -2,11 +2,12 @@
 import '../../App.css';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { useMapsService } from '../../services';
-import { geoJsonState, spinnerState, mapFeatureState } from '../../states';
+import { geoJsonState, spinnerState, mapFeatureState, overlayState, helpState } from '../../states';
+import OverlayModal from './OverlayModal';
 import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
@@ -17,6 +18,7 @@ function MapContainer() {
     const navigate = useNavigate();
     const mapServices = useMapsService();
     const setSpinner = useSetRecoilState(spinnerState);
+    const overlay = useRecoilValue(overlayState);
 
     const routeFlag = window.location.pathname === '/' ? true : false;
 
@@ -185,6 +187,7 @@ function MapContainer() {
                     breadcrumbs={breadcrumbList}
                 />
             )}
+            {overlay && <OverlayModal /> }
         </div>
     );
 }

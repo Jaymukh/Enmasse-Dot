@@ -2,71 +2,71 @@ import { atom } from 'recoil';
 
 export interface GeoLocation {
     geo_id: number;
-    name: string;
-    children?: GeoLocation[];
+    geo_value: string;
+    has_data?: boolean;
 }
 export interface Suggestion {
-    type: string; // You might want to specify the actual type here
-    properties: {
-        region: string;
-        address: string;
-        children: GeoLocation[];
-    };
-}
+    geo_id: number;
+    geo_name: string;
+    has_data: string;
+    children: GeoLocation[];
+};
 export interface CifData {
     type: string;
     properties: {
         geo_id: string;
         region: string;
         address: string;
-        totalPopulation: string | null;
-        totalHouseholds: string | null;
-        enmasseThesis: {
-            totalAddressableMarket: null | number;
-            totalAddressableMarketUOM: null | string;
-            averageAnnualEHTransactionalValue: null | number;
-            averageAnnualEHTransactionalValueUOM: null | string;
-            numberOfEH: number;
+        totalPopulation: null | number;
+        totalHouseholds: null | number;
+        enMassesThesis: {
+            totalAddressableMarket: string | null;
+            totalAddressableMarketUOM: string | null;
+            averageAnnualEHTransactionalValue: string | null;
+            averageAnnualEHTransactionalValueUOM: string | null;
+            numberOfEntrepreneurialHouseholds: string;
         };
         EHEconomicActivityIndicators: {
             pointsOfInterest: string;
-            healthcareActivityPointsOfInterest: string;
-            financialSolutionsActivityPointsOfInterest: string;
-            educationActivityPointsOfInterest: string;
             agricultureMarketActivityPointsOfInterest: string;
+            educationActivityPointsOfInterest: string;
+            financialSolutionsActivityPointsOfInterest: string;
+            healthcareActivityPointsOfInterest: string;
         };
         EHSpend: {
-            AnnualEHSpend: null | string;
-            AnnualEHSpendUOM: null | string;
-            AverageAnnualEHSpendOnCore: null | string;
-            AverageAnnualEHSpendOnCoreUOM: null | string;
-            AverageAnnualEHSpendOnNonCoreSolutions: null | string;
-            AverageAnnualEHSpendOnNonCoreSolutionsUOM: null | string;
-            AvergeAnnualEHSpendOnAgricultureMarket: null | string;
-            AvergeAnnualEHSpendOnEducation: null | string;
-            AvergeAnnualEHSpendOnFinancialSolutions: null | string;
-            AvergeAnnualEHSpendOnHealthcare: null | string;
-            agricultureMarketSpendUOM: null | string;
-            educationSpendUOM: null | string;
-            financialSolutionsSpendUOM: null | string;
-            healthcareSpendUOM: null | string;
-            showSpend: null | string;
+            showSpend: null;
+            AnnualEHSpend: string | null;
+            AnnualEHSpendUOM: string | null;
+            AverageAnnualEHSpendOnCore: string | null;
+            AverageAnnualEHSpendOnCoreUOM: string | null;
+            AverageAnnualEHSpendOnNonCoreSolutions: string | null;
+            AverageAnnualEHSpendOnNonCoreSolutionsUOM: string | null;
+            AvergeAnnualEHSpendOnAgricultureMarket: string;
+            agricultureMarketSpendUOM: string;
+            AvergeAnnualEHSpendOnEducation: string;
+            educationSpendUOM: string;
+            AvergeAnnualEHSpendOnFinancialSolutions: string;
+            financialSolutionsSpendUOM: string;
+            AvergeAnnualEHSpendOnHealthcare: string;
+            healthcareSpendUOM: string;
         };
         EHIncome: {
-            annualEHIncome: null | string;
-            annualEHIncomeUOM: null | string;
-            averageAnnualEHIncomeFromInformalSources: null | string;
-            averageAnnualEHIncomeFromInformalSourcesUOM: null | string;
-            averageAnnualEHIncomeFromVariableSources: null | string;
-            averageAnnualEHIncomeFromVariableSourcesUOM: null | string;
+            showIncome: null;
+            averageAnnualEHIncomeFromVariableSources: string | null;
+            averageAnnualEHIncomeFromVariableSourcesUOM: string | null;
+            annualEHIncome: string | null;
+            annualEHIncomeUOM: string | null;
+            averageAnnualEHIncomeFromInformalSources: string | null;
+            averageAnnualEHIncomeFromInformalSourcesUOM: string | null;
         };
         EHBorrow: {
-            averageAnnualEHBorrowing: null | string;
-            averageAnnualEHBorrowingFromInformalSources: null | string;
-            averageAnnualEHBorrowingFromInformalSourcesUOM: null | string;
-            averageAnnualEHBorrowingUOM: null | string;
-            averageAnuualEHBorrowingFromFormalSources: null | string;
-            averageAnuualEHBorrowingFromFormalSourcesUOM: null | string;
+            showBorrow: null;
+            averageAnuualEHBorrowingFromFormalSources: string | null;
+            averageAnuualEHBorrowingFromFormalSourcesUOM: string | null;
+            averageAnnualEHBorrowing: string | null;
+            averageAnnualEHBorrowingUOM: string | null;
+            averageAnnualEHBorrowingFromInformalSources: string | null;
+            averageAnnualEHBorrowingFromInformalSourcesUOM: string | null;
         };
         EICoverage: {
             covered: number;

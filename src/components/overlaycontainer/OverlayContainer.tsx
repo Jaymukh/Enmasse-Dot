@@ -5,11 +5,11 @@ import EHInfographic from './EHInfographic';
 import ISPInfographic from './ISPInfographic';
 import TAMInfographic from './TAMInfographic';
 import { useRecoilValue } from "recoil";
-import { showHelpState } from '../../states';
+import { helpState } from '../../states';
 
 const OverlayContainer = () => {
 
-	const showHelp = useRecoilValue(showHelpState);
+	const showHelp = useRecoilValue(helpState);
 
 	return (
 		<div className='OverlayContainer'>
