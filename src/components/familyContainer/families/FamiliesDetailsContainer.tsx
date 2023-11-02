@@ -100,21 +100,21 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
                             <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
-                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover', minHeight: '9rem' }} src={data.image ? data.image : familySkeleton} alt="Family image" />
+                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover', minHeight: '9rem' }} src={data?.image ? data?.image : familySkeleton} alt="Family image" />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
                                         <Heading
-                                            title={data.familyName}
+                                            title={data?.familyName}
                                             type={TypographyType.h3}
                                             colour={TypographyColor.dark}
                                             classname='text-start'
                                         />
-                                        <p className='mx-0 mb-1 fs-11 color-green-0 bg-green-1 px-2 py-1 rounded'>{data.familyDetails.familyMembers ? data.familyDetails.familyMembers : '_ _'} Members</p>
+                                        <p className='mx-0 mb-1 fs-11 color-green-0 bg-green-1 px-2 py-1 rounded'>{data?.familyDetails.familyMembers ? data?.familyDetails.familyMembers : '_ _'} Members</p>
                                     </div>
-                                    <p className="card-text text-left fs-12 mb-2">{data.district}, {data.state}, {data.country}</p>
-                                    {(data.familyDetails.familyMembers) &&
+                                    <p className="card-text text-left fs-12 mb-2">{data?.district}, {data?.state}, {data?.country}</p>
+                                    {(data?.familyDetails.familyMembers) &&
                                         (<div>
-                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text color-green-0'>${data.familyDetails.householdSpend ? data.familyDetails.householdSpend : '_ _'}</span>Annual Household Spend on Education</p>
+                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text color-green-0'>${data?.familyDetails.householdSpend ? data?.familyDetails.householdSpend : '_ _'}</span>Annual Household Spend on Education</p>
                                         </div>)
                                     }
                                 </div>
@@ -164,18 +164,6 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                             <BsArrowRight className='ms-2 mb-1' fontSize={22} />
                         </Button>
                     </div>
-                    {/* <Button
-                        theme={ nextDisabled ? ButtonTheme.muted : ButtonTheme.primary}
-                        size={ButtonSize.default}
-                        variant={ButtonVariant.transparent}
-                        disabled={nextDisabled}
-                        onClick={() => handleNextClick()}
-                        classname=' m-0'
-                    >
-                        Next
-                        <BsArrowRight className='ms-2 mb-1' fontSize={22} />
-
-                    </Button> */}
                 </div>
             </div>
         </div>

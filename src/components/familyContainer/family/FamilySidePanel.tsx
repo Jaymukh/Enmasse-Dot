@@ -30,15 +30,15 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selec
                 <div className="carousel-inner h-100">
                     {stories?.family.map((data, index) => (
                         <div className={`carousel-item h-100 ${index === selectedFamily ? ' active' : ''}`} key={index}>
-                            <div className="d-flex flex-row align-items-center h-100">
-                                <img src={data.image? data.image : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family Image" />
+                            <div className="d-flex flex-row align-items-center h-100">                                
+                                <img src={data?.image? data?.image : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family Image" />
                                 <div className="d-flex flex-column align-items-start justify-content-center mx-2 w-100 h-100">
                                     <Heading
-                                        title={data.familyName}
+                                        title={data?.familyName}
                                         type={TypographyType.h3}
                                         colour={TypographyColor.dark}
                                     />
-                                    <p className='carousel-caption-p text-p fs-12 text-start m-0 py-1'>{data.district}, {data.state}, {data.country}</p>
+                                    <p className='carousel-caption-p text-p fs-12 text-start m-0 py-1'>{data?.district}, {data?.state}, {data?.country}</p>
                                     <button className='border-0 bg-white carousel-caption-p color-green m-0 fs-12 p-0'>View all<FiArrowRight className='ms-1' /></button>
                                 </div>
                             </div>

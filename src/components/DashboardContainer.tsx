@@ -7,7 +7,7 @@ const DashBoardContainer = () => {
 	return (
 		<div className='w-100 h-100 primary-bg fixed-header'>
 			<Header />
-			<div className='header2' style={{position: 'inherit'}}>
+			<div style={{position: 'inherit'}}>
 				<AccountHeader />
 				<DashBoard />
 			</div>

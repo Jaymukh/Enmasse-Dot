@@ -3,6 +3,10 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 import { Input } from '../ui/input/Input';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Modal from '../ui/modal/Modal';
+import { useUserService } from '../../services';
+import { toast } from 'react-toastify';
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { loggedUserState, spinnerState, User } from "../../states";
 
 interface ForgotPasswordProps {
     showModal: boolean;
@@ -20,6 +24,10 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
         handleEmailChange,
         handleSendEmail
     }) => {
+        const userService = useUserService();
+        const setSpinner = useSetRecoilState(spinnerState);
+
+        
 
     return (
         <div>

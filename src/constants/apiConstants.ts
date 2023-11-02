@@ -11,7 +11,9 @@ const APIS: any = {
         DELETE_INVITE: '/users/',
         SET_NEW_PASSWORD: '/users/set-new-passowrd/',
         CHANGE_PASSWORD: '/users/change-password/',
+        FORGOT_PASSWORD: '/users/forgot-password/',
         ACCEPT_AGREEMENT: '/users/accept-agreement/',
+        UPDATE_IMAGE: '/users/updateimage/'
     },
     SETTINGS: {
         GET_ALL_SETTINGS: '/users/settings/details/',

@@ -13,13 +13,13 @@ interface FamilyDetails {
 interface Family {
     description: string;
     image: string;
+    geo_id: number;
     familyName: string;
     district: string;
     state: string;
     country: string;
     address: string;
     familyDetails: FamilyDetails;
-    geo_id: number;
     geometry: {
         type: string;
         coordinates: [number, number];
