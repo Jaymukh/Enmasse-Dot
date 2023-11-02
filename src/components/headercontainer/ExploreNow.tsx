@@ -15,7 +15,7 @@ import { spinnerState } from '../../states';
 const ExploreNow = () => {
 	const mapsService = useMapsService();
 	const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
-	const setSpinner = useSetRecoilState(spinnerState);    
+	const setSpinner = useSetRecoilState(spinnerState);
 	const [showModal, setshowModal] = useState<boolean>(false);
 	const [results, setResults] = useState<any>(mapFeatures.suggestions);
 	const [value, setValue] = useState<string>('');
@@ -23,18 +23,19 @@ const ExploreNow = () => {
 	const [suggestions, setSuggestions] = useState<any>(mapFeatures.suggestions);
 
 	const handleInputChange = (value: string) => {
+		debugger
 		setValue(value);
 		if (!value) {
 			setSuggestions(mapFeatures.suggestions);
 		} else {
-			const result = suggestions?.filter((item: any) => item?.name?.toLowerCase().includes(value.toLowerCase()));
+			const result = suggestions?.filter((item: any) => item?.geo_name?.toLowerCase().includes(value.toLowerCase()));
 			setSuggestions(result);
 		}
 	}
 
 	const handleSelectValue = (value: string) => {
 		setValue('');
-		const filteredData = suggestions?.find((item: any) => item.name.toLowerCase().includes(value.toLowerCase()));
+		const filteredData = suggestions?.find((item: any) => item.geo_name?.toLowerCase().includes(value.toLowerCase()));
 		if (filteredData.districts) {
 			setResults([filteredData]);
 			setSelectedValue({ ...selectedValue, state: filteredData.name });
@@ -54,20 +55,19 @@ const ExploreNow = () => {
 	}
 
 	const handleModalOpen = (flag: boolean) => {
-		debugger		
 		setshowModal(flag);
-		if(flag === true) {
+		if (flag === true) {
 			setSpinner(true);
 			mapsService.getExploreNow().then(data => {
 				setMapFeatures(prevMapFeatures => ({
 					...prevMapFeatures,
-					suggestions: data[0].children
+					suggestions: data
 				}));
-				setSuggestions(data[0].children);
-				setResults(data[0].children);
+				setSuggestions(data);
+				setResults(data);
 				setSpinner(false);
 			});
-		}		
+		}
 	}
 
 	return (
@@ -89,7 +89,7 @@ const ExploreNow = () => {
 					/>
 					<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
 				</div>
-				<div className='modal-dialog-scrollable'>
+				<div className='modal-dialog-scrollable h-25'>
 					<p className='text-muted text-start fs-14'>
 						Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
 					</p>
@@ -117,25 +117,27 @@ const ExploreNow = () => {
 						data={mapFeatures.suggestions}
 						value={value}
 						suggestions={suggestions}
+						labelKey= 'geo_name'
+						valueKey= 'geo_value'
 						hideSuggestionBox={false}
 						placeholderValue='Search by State'
 						classname='height-3 width-26-625'
 					/>
-					<div className='my-4'>
+					<div className='my-4 position-inherit'>
 						<div>
 							{results?.map((item: any) => (
 								<div key={item.geo_id} className='my-2'>
 									<Heading
-										title={item.geo_value}
+										title={item.geo_name}
 										type={TypographyType.h3}
 										colour={TypographyColor.dark}
 										classname='text-start'
 									/>
 									<hr className='mt-0'></hr>
 									<div className='row'>
-										{/* {item.children.map((district: any) => (
+										{item.children.map((district: any) => (
 											<p className='col-4 text-start mb-1 color-green fs-16' key={district.geo_id}>{district.geo_value}</p>
-										))} */}
+										))}
 									</div>
 								</div>
 							))}

@@ -35,7 +35,7 @@ function FamilyContainer() {
     }, [selectedData?.properties?.geo_id])
 
     return (
-        <div className="w-100 z-index-0 header2" style={{ height: '91.75vh', position: 'inherit' }}>
+        <div className="w-100 z-index-0" style={{ height: '91.75vh', position: 'inherit' }}>
             <FamilyHeader
                 selectedData={selectedData}
                 handleBackClick={handleBackClick} />

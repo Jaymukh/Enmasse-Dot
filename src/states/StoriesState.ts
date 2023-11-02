@@ -11,18 +11,18 @@ interface FamilyDetails {
 }
 
 interface Family {
-    type: string;
-    properties: {
-        description: string;
-        image: string;
-        familyName : string;
-        district: string;
-        state: string;
-        country: string;
-        address: string;
-        familyDetails: FamilyDetails;
-        geo_id: number;
-    };
+    // type: string;
+    // properties: {
+    description: string;
+    image: string;
+    geo_id: number;
+    familyName: string;
+    district: string;
+    state: string;
+    country: string;
+    address: string;
+    familyDetails: FamilyDetails;
+    // };
     geometry: {
         type: string;
         coordinates: [number, number];

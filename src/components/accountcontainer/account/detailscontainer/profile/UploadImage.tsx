@@ -1,20 +1,20 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import '../../../../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import { BiUpload } from 'react-icons/bi';
 import { MdDeleteSweep } from 'react-icons/md'
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { loggedUserState, spinnerState, User } from "../../../../../states";
+import { useRecoilValue } from "recoil";
+import { loggedUserState, User } from "../../../../../states";
 import Modal from '../../../../ui/modal/Modal';
+
 
 interface UploadImageProps {
     showUploadImageModal: boolean;
     setShowUploadImageModal: React.Dispatch<React.SetStateAction<boolean>>; // Update prop type
     openUploadImageModal: () => void;
     closeUploadImageModal: () => void;
-    profileImage: string | undefined;
     handleImageChange: (event: any) => void;
     zoomLevel: number;
     setZoomLevel: (level: number) => void;
@@ -33,7 +33,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
     setShowUploadImageModal,
     openUploadImageModal,
     closeUploadImageModal,
-    profileImage,
     handleImageChange,
     zoomLevel,
     setZoomLevel,
@@ -47,6 +46,38 @@ const UploadImage: React.FC<UploadImageProps> = ({
     handleDeleteModel
 }) => {
     const loggedUser = useRecoilValue<User>(loggedUserState);
+    const imageRef = useRef(null);
+    // const handleCropImage = () => {
+    //     const image = imageRef.current;
+    //   
+    //     if (image) {
+    //       // Calculate the dimensions of the cropped area
+    //       const divWidth = 150; // Width of your div
+    //       const divHeight = 150; // Height of your div
+    //   
+    //       // Create a canvas element to hold the cropped image
+    //       const canvas = document.createElement('canvas');
+    //       canvas.width = divWidth;
+    //       canvas.height = divHeight;
+    //   
+    //       // Get the 2D context of the canvas
+    //       const context = canvas.getContext('2d');
+    //   
+    //       // Calculate the position to crop the image
+    //       const x = (image.width - divWidth) / 2;
+    //       const y = (image.height - divHeight) / 2;
+    //   
+    //       // Draw the cropped portion of the image onto the canvas
+    //       context.drawImage(image, x, y, divWidth, divHeight, 0, 0, divWidth, divHeight);
+    //   
+    //       // Get the cropped image as a data URL (base64)
+    //       const croppedImage = canvas.toDataURL('image/jpeg');
+    //   
+    //       // You can use the 'croppedImage' data URL as needed (e.g., display it or save it).
+    //   
+    //       console.log('Cropped Image:', croppedImage);
+    //     }
+    //   };
 
 
     return (
@@ -70,8 +101,8 @@ const UploadImage: React.FC<UploadImageProps> = ({
                 </div>
                 <div className="d-flex flex-column justify-content-center align-items-center my-2">
                     <div className="upload-image-box my-5 d-flex justify-content-center align-items-center bg-light" >
-                        {profileImage || newImage ? (
-                            <img src={newImage ? newImage : profileImage} alt="Profile Photo" style={{ width: `${zoomLevel}%` }} />
+                        {loggedUser?.profile_picture || newImage ? (
+                            <img src={newImage ? newImage : loggedUser?.profile_picture} ref={imageRef} alt="Profile Photo" style={{ width: `${zoomLevel}%` }} />
                         ) : (
                             <span className='m-auto fs-64 w-100 h-100 d-flex flex-column justify-content-center align-items-center' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>
                         )}
@@ -118,7 +149,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                 Save
                             </Button>
                         </>) :
-                        (profileImage ?
+                        (loggedUser?.profile_picture ?
                             <div className="d-flex flex-row justify-content-between">
                                 <Button
                                     theme={ButtonTheme.secondary}

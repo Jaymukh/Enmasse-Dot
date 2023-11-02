@@ -8,12 +8,14 @@ interface SearchProps {
     data?: any;
     value: string;
     suggestions?: any;
+    labelKey?: any;
+    valueKey?: any;
     hideSuggestionBox: boolean;
     placeholderValue: string;
-    classname?: string
+    classname?: string;
 }
 
-const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions, hideSuggestionBox, placeholderValue, classname }: SearchProps) => {
+const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions, labelKey ,valueKey,  hideSuggestionBox, placeholderValue, classname }: SearchProps) => {
     const [hideSuggestions, setHideSuggestions] = useState<boolean>(true);
 
     const handleSelectOption = (value: any) => {
@@ -23,7 +25,7 @@ const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions
     }
 
     return (
-        <div className='d-flex flex-column h-auto'>
+        <div className='d-flex flex-column h-auto suggestion-menu z-index-2'>
             <div className="d-flex flex-column justify-content-center align-items-start">
                 <input
                     onFocus={() => setHideSuggestions(false)}
@@ -45,14 +47,14 @@ const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions
 
             {!hideSuggestionBox &&
                 <div
-                    className={`py-1 ${classname} ${hideSuggestions ? styles.suggestions_hidden : styles.suggestions_visible}`}
+                    className={`py-1 ${classname} ${hideSuggestions ? styles.suggestions_hidden : styles.suggestions_visible} suggestion-menu-dropdown z-index-2`}
                 >
                     {suggestions?.map((suggestion: any) => (
                         <div
                             className={`text-start py-1 ${styles.suggestions_item}`}
-                            onClick={() => handleSelectOption(suggestion.name)}
+                            onClick={() => handleSelectOption(suggestion[labelKey])}
                         >
-                            <p className='px-3 m-0'>{suggestion.name}</p>
+                            <p className='px-3 m-0'>{suggestion[labelKey]}</p>
                         </div>
                     ))}
                 </div>

@@ -58,21 +58,21 @@ const AccountOptions = () => {
     }, []);
 
 	return (
-		<div className='account-menu z-index-2' ref={menuRef}>
+		<div className='account-menu' ref={menuRef}>
 			<ButtonAvatar
 				onClick={handleClick}
-				image=''
+				image={loggedUser?.profile_picture}
 				initial={loggedUser.initial}
-				bgColor={loggedUser.userHSL}
+				bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}
 				classname=''
 			/>
 			{Boolean(anchorEl) &&
-				(<ul className='account-menu-dropdown z-index-2'>
+				(<ul className='account-menu-dropdown '>
 					<li className='menu-item fs-16' onClick={(event) => handleClickMenuItem(event, 'profile')}>
 						<ButtonAvatar
 							image={loggedUser?.profile_picture}
 							initial={loggedUser.initial}
-							bgColor={loggedUser.userHSL}
+							bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}
 							classname=''
 							disabled={false}
 						/>

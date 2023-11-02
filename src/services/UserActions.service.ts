@@ -86,6 +86,9 @@ const useUserService = () => {
     const updateUserDetails = (updatedData: any) => {
         return fetchWrapper.put(APIS.USERS.UPDATE_LOGGED_USER, updatedData);
     }
+    const updateUserImage = (image: any) => {
+        return fetchWrapper.put(APIS.USERS.UPDATE_IMAGE, image);
+    }
 
     const setNewPassword = (data: any) => {
         return fetchWrapper.post(APIS.USERS.SET_NEW_PASSWORD, data);
@@ -93,6 +96,10 @@ const useUserService = () => {
 
     const changePassword = (data: any) => {
         return fetchWrapper.put(APIS.USERS.CHANGE_PASSWORD, data);
+    }
+
+    const forgotPassword = (data: any) => {
+        return fetchWrapper.post(APIS.USERS.FORGOT_PASSWORD, data);
     }
 
     const inviteNew = (newUser: any) => {
@@ -118,7 +125,9 @@ const useUserService = () => {
         getAll,
         getUserDetails,
         updateUserDetails,
+        updateUserImage,
         changePassword,
+        forgotPassword,
         setNewPassword,
         inviteNew,
         editInvite,

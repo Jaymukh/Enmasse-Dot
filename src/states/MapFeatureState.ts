@@ -85,7 +85,7 @@ const mapFeatureState = atom({
     default: {
         circles: [],
         stories: [],
-        suggestions: [] as Suggestion[],
+        suggestions: [] as any,
         cifData: {} as CifData,
         featuredStories: {} as FeatureStories,
     }

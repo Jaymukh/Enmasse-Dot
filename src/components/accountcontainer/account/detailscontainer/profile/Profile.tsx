@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
-
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, spinnerState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
-
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
@@ -16,14 +14,12 @@ import DeleteImage from './DeleteImage';
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
     const [open, setOpen] = useState<boolean>(false);
-    
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
-    
+
     const [showUploadImageModal, setShowUploadImageModal] = useState(false);
     const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
-    const [profileImage, setProfileImage] = useState<string | undefined>(loggedUser?.profile_picture);
     const [newImage, setNewImage] = useState<string | undefined>(undefined);
     const [zoomLevel, setZoomLevel] = useState<number>(100);
     const minZoom = 50;
@@ -75,16 +71,103 @@ export default function Profile() {
         const selectedImage = e.target.files[0];
         setNewImage(URL.createObjectURL(selectedImage));
     };
+
+
+    // Function to convert an image URL to base64
+    const imageUrlToBase64 = async (url: any) => {
+        try {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            const base64Data = await new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.readAsDataURL(blob);
+            });
+            return base64Data;
+        } catch (error) {
+            console.error('Error converting image to base64:', error);
+            return null;
+        }
+    };
     const handleSaveImage = () => {
         if (newImage) {
-            setProfileImage(newImage);
-            setNewImage(undefined);
+            setSpinner(true);
+            imageUrlToBase64(newImage)
+                .then((base64Data) => {
+                    if (typeof base64Data === 'string' && base64Data.length > 0) {
+                        const maxImageSize = 1 * 64 * 1024; // 64KB (adjust as needed)
+                        const img = new Image();
+                        img.src = base64Data; // Image is the base64 image 
+                        const sizeInBytes = new TextEncoder().encode(base64Data).length;
+                        const sizeInKB = sizeInBytes / 1024;
+                        const sizeInMB = sizeInKB / 1024;
+                        img.onload = () => {
+                            if (img.width * img.height <= maxImageSize) {
+                                // The image is smaller than 100KB, no need to resize
+                                const resizedImage = base64Data;
+                                if (resizedImage) {
+                                    userService.updateUserImage({ 'image': resizedImage })
+                                        .then((response: any) => {
+                                            if (response) {
+                                                setSpinner(false);
+                                                userService.getUserDetails();
+                                                setShowUploadImageModal(false);
+                                                toast.success('Successfully Uploaded profile picture.', {
+                                                    position: toast.POSITION.BOTTOM_CENTER
+                                                });
+                                                setNewImage(undefined);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            setSpinner(false);
+                                            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                                            toast.error(errorMsg);
+                                        });
+                                }
+
+                            } else {
+                                // Resize the image
+                                const scaleFactor = Math.sqrt(maxImageSize / (img.width * img.height));
+                                const canvas = document.createElement('canvas');
+                                canvas.width = img.width * scaleFactor;
+                                canvas.height = img.height * scaleFactor;
+                                const ctx = canvas.getContext('2d');
+                                ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+                                const resizedImage = canvas.toDataURL('image/jpeg', 0.7); // Adjust format and quality as 
+                                const sizeInBytes = new TextEncoder().encode(resizedImage).length;
+                                const sizeInKB = sizeInBytes / 1024;
+                                const sizeInMB = sizeInKB / 1024;
+                                if (resizedImage) {
+                                    userService.updateUserImage({ 'image': resizedImage })
+                                        .then((response: any) => {
+                                            if (response) {
+                                                setSpinner(false);
+                                                userService.getUserDetails();
+                                                setShowUploadImageModal(false);
+                                                toast.success('Successfully Uploaded profile picture.', {
+                                                    position: toast.POSITION.BOTTOM_CENTER
+                                                });
+                                                setNewImage(undefined);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            setSpinner(false);
+                                            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                                            toast.error(errorMsg);
+                                        });
+                                }
+                            }
+                        };
+
+                    }
+                });
         }
-        setShowUploadImageModal(false);
-        toast.success('Successfully Updated.', {
-            position: toast.POSITION.BOTTOM_CENTER
-          });
-    }
+        else {
+            console.log('Please select an Image.');
+        }
+
+    };
+
 
     // Function to handle zoom slider changes
     const handleZoomIn = () => {
@@ -110,8 +193,8 @@ export default function Profile() {
 
     const handleDeleteClick = () => {
         setShowDeleteImageModal(false);
-        setProfileImage(undefined);
     }
+
 
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
@@ -134,10 +217,10 @@ export default function Profile() {
             </div>
             <hr />
             <div className="row w-100 mx-3">
-                <div className="col-3  fs-64" >
+                <div className="col-3  fs-64 ms-3" >
                     <div className='d-flex flex-column justify-content-end align-items-end'>
                         <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center bg-light" >
-                            {profileImage ? <img src={profileImage} alt="Profile Photo" className='' style={{ width: `${zoomLevel}%` }} /> : <span className='d-flex flex-column justify-content-center align-items-center w-100 h-100' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>}
+                            {loggedUser?.profile_picture ? <img src={loggedUser?.profile_picture} alt="Profile Photo" className='' /> : <span className='d-flex flex-column justify-content-center align-items-center w-100 h-100' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>}
                         </div>
                         <Button
                             theme={ButtonTheme.secondary}
@@ -201,7 +284,6 @@ export default function Profile() {
                     setShowUploadImageModal={setShowUploadImageModal}
                     openUploadImageModal={openUploadImageModal}
                     closeUploadImageModal={closeUploadImageModal}
-                    profileImage={profileImage}
                     handleImageChange={handleImageChange}
                     zoomLevel={zoomLevel}
                     setZoomLevel={setZoomLevel}
