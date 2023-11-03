@@ -7,7 +7,7 @@ export const visiblePanelState = atom({
 
 export const overlayState = atom({
     key: 'overlay',
-    default: true,
+    default: false,
 });
 
 export const helpState = atom({

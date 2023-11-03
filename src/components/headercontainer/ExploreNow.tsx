@@ -11,6 +11,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { mapFeatureState } from '../../states/MapFeatureState';
 import { useMapsService } from '../../services/Maps.service';
 import { spinnerState } from '../../states';
+import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
 
 const ExploreNow = () => {
 	const mapsService = useMapsService();
@@ -19,29 +20,36 @@ const ExploreNow = () => {
 	const [showModal, setshowModal] = useState<boolean>(false);
 	const [results, setResults] = useState<any>(mapFeatures.suggestions);
 	const [value, setValue] = useState<string>('');
-	const [selectedValue, setSelectedValue] = useState<{ state: string; district: string }>({ state: '', district: '' });
+	const [selectedValue, setSelectedValue] = useState<{ state: string, district: string }>({ state: '', district: '' });
 	const [suggestions, setSuggestions] = useState<any>(mapFeatures.suggestions);
+	const [hasData, setHasData] = useState(true);
 
 	const handleInputChange = (value: string) => {
-		debugger
 		setValue(value);
 		if (!value) {
 			setSuggestions(mapFeatures.suggestions);
 		} else {
-			const result = suggestions?.filter((item: any) => item?.geo_name?.toLowerCase().includes(value.toLowerCase()));
+			const result = suggestions?.filter((item: any) => item?.geo_value?.toLowerCase().includes(value.toLowerCase()));
 			setSuggestions(result);
 		}
 	}
 
 	const handleSelectValue = (value: string) => {
+
 		setValue('');
-		const filteredData = suggestions?.find((item: any) => item.geo_name?.toLowerCase().includes(value.toLowerCase()));
-		if (filteredData.districts) {
-			setResults([filteredData]);
-			setSelectedValue({ ...selectedValue, state: filteredData.name });
-			setSuggestions(filteredData.districts);
-		} else {
-			setSelectedValue({ ...selectedValue, district: filteredData.name });
+		const filteredData = suggestions?.find((item: any) => item.geo_value?.toLowerCase().includes(value.toLowerCase()));
+		if (filteredData?.has_data) {
+			setHasData(true);
+			if (filteredData?.children) {
+				setResults([filteredData]);
+				setSelectedValue({ ...selectedValue, state: filteredData.geo_value });
+				setSuggestions(filteredData.children);
+			} else {
+				setSelectedValue({ ...selectedValue, district: filteredData.geo_value });
+			}
+		}
+		else {
+			setHasData(false);
 		}
 	}
 
@@ -117,32 +125,46 @@ const ExploreNow = () => {
 						data={mapFeatures.suggestions}
 						value={value}
 						suggestions={suggestions}
-						labelKey= 'geo_name'
-						valueKey= 'geo_value'
+						labelKey='geo_value'
+						valueKey='geo_value'
 						hideSuggestionBox={false}
-						placeholderValue='Search by State'
+						placeholderValue={selectedValue?.state ? 'Search by District' : 'Search by State'}
 						classname='height-3 width-26-625'
 					/>
-					<div className='my-4 position-inherit'>
-						<div>
-							{results?.map((item: any) => (
-								<div key={item.geo_id} className='my-2'>
-									<Heading
-										title={item.geo_name}
-										type={TypographyType.h3}
-										colour={TypographyColor.dark}
-										classname='text-start'
-									/>
-									<hr className='mt-0'></hr>
-									<div className='row'>
-										{item.children.map((district: any) => (
-											<p className='col-4 text-start mb-1 color-green fs-16' key={district.geo_id}>{district.geo_value}</p>
-										))}
+					{hasData ?
+						<div className='my-4 position-inherit'>
+							<div>
+								{results?.map((item: any) => (
+									<div key={item.geo_id} className='my-2'>
+										<Heading
+											title={item.geo_value}
+											type={TypographyType.h3}
+											colour={TypographyColor.dark}
+											classname='text-start'
+										/>
+										<hr className='mt-0'></hr>
+										<div className='row'>
+											{item.children.map((district: any) => (
+												<p className='col-4 text-start mb-1 color-green fs-16' key={district.geo_id}>{district.geo_value}</p>
+											))}
+										</div>
 									</div>
-								</div>
-							))}
+								))}
+							</div>
+						</div> :
+						<div className='d-flex justify-content-center align-items-center'>
+							<div className="mx-4 my-1 dialog-div d-flex flex-column justify-content-center align-items-center py-5">
+								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
+								<Heading
+									title='Work in progress.'
+									type={TypographyType.h4}
+									colour={TypographyColor.dark}
+									classname='pt-5'
+								/>
+								<p className="text-center fs-12 my-3 mx-0">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
+							</div>
 						</div>
-					</div>
+					}
 				</div>
 			</Modal>
 		</div>

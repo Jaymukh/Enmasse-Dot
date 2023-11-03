@@ -1,6 +1,6 @@
-import { useSetRecoilState, useRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil';
 import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
-import { authState, loggedUserState, usersState, spinnerState } from '../states';
+import { authState, loggedUserState, usersState, spinnerState, overlayState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { APIS, RouteConstants } from '../constants';
 import { toast } from "react-toastify";
@@ -9,6 +9,7 @@ const useUserService = () => {
     // const baseUrl = `${process.env.REACT_APP_BASE_API_URL}`;
     const fetchWrapper = useFetchWrapper();
     const [auth, setAuth] = useRecoilState(authState);
+    const [overlay, setOverlay] = useRecoilState(overlayState);
     const setLoggedUser = useSetRecoilState(loggedUserState);
     const setUsers = useSetRecoilState(usersState);
     const setSpinner = useSetRecoilState(spinnerState);
@@ -27,6 +28,7 @@ const useUserService = () => {
                 // get return url from location state or default to home page
                 const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.root : location.pathname;
                 if (user.is_first_login) {
+                    setOverlay(true);
                     acceptAgreement();                    
                 }
                 navigate(from);
