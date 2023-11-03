@@ -1,53 +1,30 @@
-import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi';
-import { headers } from '../../utils/constants/Constants';
-import { dashboardTableData } from '../../utils/constants/Constants';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Table, { TableSize } from '../ui/table/Table';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { TableHeaderProps } from '../../constants';
+import NoVisualData from './NoVisualData';
 
+interface TableViewProps {
+    data: any;
+    headerData: TableHeaderProps;
+}
 
-const TableView = () => {
+const TableView: React.FC<TableViewProps> = ({ data, headerData }) => {
     return (
         <div className='white-bg pt-4 pb-5 dashboard-col p-3'>
-            <Heading
-                title='State wise metric breakdown'
-                type={TypographyType.h4}
-                colour={TypographyColor.dark}
-                classname='text-start mb-3 px-1'
-            />
-            <div className='dashboard-table-container mx-1'>
-                <table>
-                    <thead>
-                        <tr>
-                            {headers.map((item, index) => (
-                                <th className='fs-14 text-start'>
-                                    <div className='d-flex flex-row align-items-center'>
-                                        <p className='pt-3 pe-2'>{item}</p>
-                                        <div className='d-flex flex-column'>
-                                            <button className='border-0 bg-white py-0'>
-                                                <BiSolidUpArrow fontSize={9} />
-                                            </button>
-                                            <button className='border-0 bg-white py-0'>
-                                                <BiSolidDownArrow fontSize={9} color='#367A2B' />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {dashboardTableData.map((item, index) => (
-                            <tr key={index}>
-                                <td className='fs-14 table-state-row'>{item.state}</td>
-                                <td className='fs-14'>{item.households}</td>
-                                <td className='fs-14'>{item.medianAnnualEHSpend}</td>
-                                <td className='fs-14'>{item.medianAnnualEHIncome}</td>
-                                <td className='fs-14'>{item.EMrank}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <div className='d-flex align-items-center m-0 p-0 mb-3'>
+                <Heading
+                    title={headerData.NAME}
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='text-start px-1'
+                />
+                <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
             </div>
+
+            {(data && data?.length > 0)
+                ? <Table headers={headerData} data={data} size={TableSize.medium} />
+                : <NoVisualData displayImage={true} />}
         </div>
     );
 };

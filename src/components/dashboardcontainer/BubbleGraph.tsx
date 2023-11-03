@@ -4,6 +4,8 @@ import { bubbleData } from '../../utils/constants/Constants';
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import { useRecoilValue } from 'recoil';
+import { cifState } from '../../states';
 
 interface BubbleNode {
 	name: string;
@@ -12,7 +14,33 @@ interface BubbleNode {
 	// children?: BubbleNode[];
 }
 
+interface BubbleLeaf {
+	name: string;
+	value: number;
+	color: string;
+}
+
+interface BubbleNode {
+	type: 'node';
+	name: string;
+	value: number;
+	children: BubbleLeaf[];
+}
+
+export const bubbleDat: BubbleNode = {
+	type: 'node',
+	name: "parent",
+	value: 2300,
+	children: [
+		{ name: "Healthcare", value: 10, color: '#007CC3' },
+		{ name: "Agri Market", value: 30, color: '#367A2B' },
+		{ name: "Education", value: 15, color: '#F47A1F' },
+		{ name: "Financial", value: 45, color: '#00529B' }
+	]
+}
+
 const BubbleGraph = () => {
+	const { coreSolutionsData } = useRecoilValue(cifState);
 	const options: any[] = [];
 	const currentYear = new Date().getFullYear();
 

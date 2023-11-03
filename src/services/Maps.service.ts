@@ -1,13 +1,14 @@
 import { useFetchWrapper } from '../helpers';
 import { APIS } from '../constants';
-import { mapFeatureState }  from "../states";
-import {useRecoilState} from 'recoil';
+import { mapFeatureState, spinnerState } from "../states";
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 
 
 const useMapsService = () => {
     const fetchWrapper = useFetchWrapper();
-    const [ mapFeatures, setMapFeatures ]= useRecoilState(mapFeatureState);
+    const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
+    const setSpinner = useSetRecoilState(spinnerState);
 
     const getDropdownList = (geoCode: number) => {
         return fetchWrapper.get(`${APIS.MAPS.GET_DROPDOWN}?geo-code=${geoCode}`);
@@ -22,12 +23,16 @@ const useMapsService = () => {
     }
 
     const getCifData = (geoCode: number) => {
+        setSpinner(true);
         return fetchWrapper.get(`${APIS.MAPS.GET_CIF_DATA}?geo-code=${geoCode}`)
-        .then((response) => {
-            if (response) {
-                setMapFeatures(prevMapFeatures => ({...prevMapFeatures, cifData: response }));
-            }
-        });
+            .then((response) => {
+                setSpinner(false);
+                if (response) {
+                    setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
+                }
+            }).catch(error => {
+                setSpinner(false);
+            });
     }
 
     const getExploreNow = () => {

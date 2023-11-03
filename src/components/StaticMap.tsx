@@ -3,8 +3,8 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import * as MapConstants from './../utils/json/googlemapstyle';
 import { useMapsService } from '../services';
-import { spinnerState, storiesState } from '../states';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { geoJsonState, spinnerState, storiesState } from '../states';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import markerBlack from '../utils/images/location-on.svg';
@@ -12,12 +12,13 @@ import markerGrey from '../utils/images/location-on-grey.svg';
 
 interface StaticMapProps {
 	coordinates?: any;
+	noMarkers?: boolean;
 }
 
-const StaticMap: React.FC<StaticMapProps>  = ({coordinates}) => {
+const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 	const mapRef = useRef(null);
 	const mapServices = useMapsService();
-	const [geoJSON, setGeoJSON] = useState<any>({});
+	const [geoJSON, setGeoJSON] = useRecoilState(geoJsonState)
 	const [focusedMarker, setFocusedMarker] = useState<any>(null);
 	const { family } = useRecoilValue(storiesState);
 	const setSpinner = useSetRecoilState(spinnerState);
@@ -64,22 +65,23 @@ const StaticMap: React.FC<StaticMapProps>  = ({coordinates}) => {
 	}
 
 	useEffect(() => {
-		if(coordinates) {
+		if (coordinates) {
 			const index = markers?.findIndex((item: any) => {
 				return item.geometry.coordinates.join(',') === coordinates.join(',');
 			});
-			console.log(index);
 			setFocusedMarker(index);
 		}
 	}, [coordinates, markers])
 
 	useEffect(() => {
-		const markerList = family?.filter((marker, index, self) => {
-			return (
-				self.findIndex((m) => m.geometry.coordinates.join(',') === marker.geometry.coordinates.join(',')) === index
-			)
-		});
-		setMarkers(markerList);
+		if (!noMarkers) {
+			const markerList = family?.filter((marker, index, self) => {
+				return (
+					self.findIndex((m) => m.geometry.coordinates.join(',') === marker.geometry.coordinates.join(',')) === index
+				)
+			});
+			setMarkers(markerList);
+		}
 	}, [family]);
 
 	useEffect(() => {

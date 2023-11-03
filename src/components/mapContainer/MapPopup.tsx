@@ -15,7 +15,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     const handlePopupClick = (geo_id: number) => {
         navigate({
             pathname: RouteConstants.stories,
-            search: `?geo_code=${geo_id}`,
+            search: `?geo_code=${geo_id}&page-no=1&storiespp=2`,
         });
     };
 

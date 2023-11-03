@@ -1,8 +1,7 @@
-import React from 'react';
 import Header from './headercontainer/Header';
 import FamilyContainer from './familyContainer/FamilyContainer';
 
-const StoryContainer = () => {
+const StoryDetailsContainer = () => {
     return (
         <div className='w-100 primary-bg fixed-header'>
             <Header />
@@ -11,4 +10,4 @@ const StoryContainer = () => {
     );
 };
 
-export default StoryContainer;
+export default StoryDetailsContainer;
