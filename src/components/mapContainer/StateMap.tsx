@@ -9,7 +9,7 @@ import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 import { useRecoilValue } from 'recoil';
 import { geoJsonState } from '../../states/GeoJSONState';
-import { Breadcrumb } from '../ui/breadcrumb/Breadcrumb';
+import { Breadcrumb, BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
 import { mapFeatureState } from '../../states/MapFeatureState';
 import { useMapsService } from '../../services';
 
@@ -21,12 +21,14 @@ interface Option {
 
 interface StateMapProps {
     selected: any;
-    breadcrumbs: any;
+    breadcrumbs: BreadcrumbItem[];
+    handleBreadcrumbClick: (item: BreadcrumbItem, index: number) => void;
 }
 
 const StateMap: React.FC<StateMapProps> = ({
     selected,
-    breadcrumbs
+    breadcrumbs,
+    handleBreadcrumbClick
 }) => {
     const mapRef = useRef(null);
     const mapServices = useMapsService();
@@ -161,8 +163,8 @@ const StateMap: React.FC<StateMapProps> = ({
         ]
         // if (map && mapFeatures.circles && isChecked.coreSolution) {
         //     const newCircles = mapFeatures.circles?.map((feature: any) => {
-            if (map && newCircle && isChecked.coreSolution) {
-                const newCircles = newCircle?.map((feature: any) => {
+        if (map && newCircle && isChecked.coreSolution) {
+            const newCircles = newCircle?.map((feature: any) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
                     lng: feature.geometry.coordinates[0],
@@ -173,7 +175,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 const radii = type !== coreSumType ? [coreSumType, type] : [type];
 
                 let zoom = map?.getZoom() ?? 0;
-                
+
                 return radii.map((radius, i) => {
                     if (radius) {
                         // let zoomFactor = 4;
@@ -226,7 +228,7 @@ const StateMap: React.FC<StateMapProps> = ({
             <div className='col-9 m-0 p-0'>
                 <div className='row m-0 p-0 h-100'>
                     <div className='col-12 ps-3 py-2 bg-white border-bottom d-flex align-items-center' style={{ height: '5.25vh' }}>
-                        <Breadcrumb items={breadcrumbs} />
+                        <Breadcrumb items={breadcrumbs} handleBreadcrumbClick={handleBreadcrumbClick} />
                     </div>
                     <div className='col-3 p-0' style={{ backgroundColor: '#F4F6F8', height: '80.25vh' }}>
                         <CoreSolutions

@@ -11,6 +11,7 @@ import OverlayModal from './OverlayModal';
 import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
+import { BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
 
 const countries = [{ geo_id: 1, name: 'India' }];
 
@@ -35,7 +36,7 @@ function MapContainer() {
     }
 
     const [searchParams, setSearchParams] = useSearchParams(getSearchParams());
-    const [breadcrumbList, setBreadcrumbList] = useState<any>([{ key: 'country', geo_id: '1', label: 'India', link: '?&country=1' }])
+    const [breadcrumbList, setBreadcrumbList] = useState<BreadcrumbItem[]>([{ key: 'country', geo_id: 1, label: 'India', link: '?&country=1' }])
 
     const getSelectedObject = () => {
         const params: Record<string, string> = {};
@@ -57,22 +58,24 @@ function MapContainer() {
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
-        setSelected({ ...selected, state: value, district: '' });
-        searchParams.delete('district');
-        updateSearchParams('state', value);
+        updateSelected('state', value);
+        // setSelected({ ...selected, state: value, district: '' });
+        // searchParams.delete('district');
+        //updateSearchParams('state', value);
     };
 
     const handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
-        setSelected({ ...selected, district: value })
-        updateSearchParams('district', value);
+        updateSelected('district', value);
+        // setSelected({ ...selected, district: value })
+        //updateSearchParams('district', value);
     };
 
     const updateBreadcrumb = () => {
         const keys = Object.keys(selected).filter(key => selected[key]);
         const resultArray: { key: string; geo_id: any; label: string; link: string; }[] = [{ key: 'global', geo_id: null, label: 'Global', link: '/' }];
 
-        let link = '?';
+        let link = '';
         keys.forEach((key, index) => {
             link += `&${key}=${selected[key]}`;
             const geo_id = Number(selected[key]);
@@ -90,6 +93,22 @@ function MapContainer() {
         const currentParams = new URLSearchParams(searchParams.toString());
         currentParams.set(name, value);
         setSearchParams(currentParams);
+    }
+
+    const handleBreadcrumbClick = (item: BreadcrumbItem, index: number) => {
+        if (index !== breadcrumbList.length - 1) {
+            updateSelected(item.key, item.geo_id);
+        }
+    }
+
+    const updateSelected = (key: string, value: any) => {
+        if (key === 'district') {
+            setSelected({ ...selected, district: value });
+        } else if (key === 'state') {
+            setSelected({ ...selected, state: value, district: '' });
+        } else if (key === 'country') {
+            setSelected({ country: value, state: '', district: '' })
+        }
     }
 
     const fetchDropdownList = (geo_id: string, level: string) => {
@@ -139,6 +158,18 @@ function MapContainer() {
     };
 
     useEffect(() => {
+        if (selected) {
+            const currentParams = new URLSearchParams();
+            for (const key in selected) {
+                if (selected[key]) {
+                    currentParams.set(key, selected[key]);
+                }
+            }
+            setSearchParams(currentParams);
+        }
+    }, [selected]);
+
+    useEffect(() => {
         updateBreadcrumb();
     }, [selected, states, districts]);
 
@@ -152,14 +183,13 @@ function MapContainer() {
             fetchFeaturedStories(selected.district);
             mapServices?.getCifData(selected.district);
         } else if (selected.state) {
-            updateSearchParams('state', selected.state);
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.state);
             fetchMapCircles(selected.state);
-            fetchFeaturedStories(selected.state); 
-            mapServices?.getCifData(selected.state);           
+            fetchFeaturedStories(selected.state);
+            mapServices?.getCifData(selected.state);
         } else if (selected.country) {
-            updateSearchParams('country', selected.country);
+            //updateSearchParams('country', selected.country);
             fetchGeoJsonData(selected.country);
             fetchMapCircles(selected.country);
             fetchFeaturedStories(selected.country);
@@ -185,9 +215,10 @@ function MapContainer() {
                 <StateMap
                     selected={selected}
                     breadcrumbs={breadcrumbList}
+                    handleBreadcrumbClick={handleBreadcrumbClick}
                 />
             )}
-            {overlay && <OverlayModal /> }
+            {overlay && <OverlayModal />}
         </div>
     );
 }
