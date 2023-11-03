@@ -28,6 +28,13 @@ const APIS: any = {
     STORIES: {
         GET_ALL_STORIES: '/story/viewstory',
         GET_FEATURED_STORIES: '/story/featuredstory',
+    },
+    CIF: {
+        GET_INOUTFLOW_DATA: '/cif/inflowoutflow',
+        GET_EH_GROWTH_DATA: '/cif/ehgrowth',
+        GET_METRIC_BREAKDOWN: '/cif/metricbreakdown',
+        GET_GEO_SPECIFIC_DATA: '/cif/headingtable',
+        GET_CORE_SOLUTIONS_DATA: '/cif/bubblegraph',
     }
 }
 

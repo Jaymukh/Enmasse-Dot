@@ -440,7 +440,6 @@ export const dashboardCardInfo: DashboardCardInfo[] = [
 //
 
 interface BubbleLeaf {
-    type: 'leaf';
     name: string;
     value: number;
     color: string;
@@ -460,10 +459,10 @@ export const bubbleData: BubbleData = {
     name: "parent",
     value: 2300,
     children: [
-        { type: 'leaf', name: "Healthcare", value: 10, color: '#007CC3' },
-        { type: 'leaf', name: "Agri Market", value: 30, color: '#367A2B' },
-        { type: 'leaf', name: "Education", value: 15, color: '#F47A1F' },
-        { type: 'leaf', name: "Financial", value: 45, color: '#00529B' }
+        { name: "Healthcare", value: 10, color: '#007CC3' },
+        { name: "Agri Market", value: 30, color: '#367A2B' },
+        { name: "Education", value: 15, color: '#F47A1F' },
+        { name: "Financial", value: 45, color: '#00529B' }
     ]
 }
 

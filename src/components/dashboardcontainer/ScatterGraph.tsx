@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
+import { cifState, inOutFlowDataProps } from '../../states';
+import { useRecoilValue } from 'recoil';
+import NoVisualData from './NoVisualData';
+
+interface graphDataProps {
+    geoId: number,
+    parentId: number,
+    geoValue: string,
+    dataPeriod: string,
+    medianAnnualIncome: number | null,
+    medianAnnualBorrow: number | null,
+    outflow: number | null,
+    inflow: number | null
+}
 
 const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
     return (
         <g>
             <text x={cx} y={cy - 10} textAnchor="middle" fill="black" fontSize={12} fontWeight={500}>
-                {payload.label}
+                {payload.geoValue}
             </text>
         </g>
     );
@@ -42,6 +56,8 @@ const ReverseArrowMarker = () => (
 )
 
 const ScatterGraph = () => {
+    const { inOutFlowData } = useRecoilValue(cifState);
+    const [center, setCenter] = useState<{ x: number | null, y: number | null }>({ x: 0, y: 0 });
 
     const options: any[] = [];
     const currentYear = new Date().getFullYear();
@@ -57,19 +73,44 @@ const ScatterGraph = () => {
         setSelctedYear(value);
     }
 
-    const data = [
-        { x: 70, y: -90, label: "Kerala" },
-        { x: 56, y: 36, label: "Arunachal Pradesh" },
-        { x: -55, y: 25, label: "Andra Pradesh" },
-        { x: -25, y: 65, label: "Gujarat" }
-    ]
+    const calculateMedian = (keyName: 'outflow' | 'inflow') => {
+        const filteredData = inOutFlowData.filter(item => item[keyName] !== null);
+        if (filteredData.length === 0) {
+            return 0;
+        }
+        const sortedData = filteredData.sort((a: any, b: any) => a[keyName] - b[keyName]);
+        const middle = Math.floor(sortedData.length / 2);
+
+        if (sortedData.length % 2 === 0) {
+            return (filteredData![middle - 1]![keyName]! + filteredData![middle]![keyName]!) / 2;
+        } else {
+            return sortedData[middle][keyName];
+        }
+
+        // const highestOutflow = inOutFlowData.reduce((max, item) => {
+        //     const value = item[keyName];
+        //     if (value !== null && (max === null || value > max)) {
+        //         return value;
+        //     }
+        //     return max;
+        // }, null);
+        // return highestOutflow /2;
+    }
+
+    useEffect(() => {
+        if (inOutFlowData && inOutFlowData.length > 0) {
+            const x = calculateMedian('outflow');
+            const y = calculateMedian('inflow');
+            setCenter({ x: x, y: y })
+        }
+    }, [inOutFlowData])
 
     return (
         <div className='h-100'>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
                 <div className='row px-1 pt-2 d-flex justify-content-between'>
                     <h6 className='col-4 text-start fs-14' >EH Income and Expense</h6>
-                    <div className='col-2'>
+                    <div className='col-1'>
                         <Select
                             options={options}
                             onChange={handleChangeYear}
@@ -81,37 +122,39 @@ const ScatterGraph = () => {
                     </div>
                 </div>
 
-                <ScatterChart width={750} height={375} margin={{ top: 60, right: 20, bottom: 20, left: 20 }} className='px-1'>
-                    <defs>
-                        <ArrowMarker />
-                    </defs>
-                    <defs>
-                        <ReverseArrowMarker />
-                    </defs>
-                    <XAxis type="number" dataKey="x" name="x" strokeWidth='0.35' strokeOpacity='0.5' >
-                        <Label value="EXPENSE" position="bottom" offset={0} fontWeight={500} fill='000000' fontSize={13} />
-                    </XAxis>
-                    <YAxis type="number" dataKey="y" name="y" strokeWidth='0.35' strokeOpacity='0.5' >
-                        <Label angle={-90} value="INCOME" position="left" offset={0} fontWeight={500} fill='000000' fontSize={13} />
-                    </YAxis>
-                    <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                    <Scatter data={data} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
+                {inOutFlowData?.length > 0
+                    ? <ScatterChart width={1275} height={429} margin={{ top: 60, right: 20, bottom: 20, left: 20 }} className='px-1'>
+                        <defs>
+                            <ArrowMarker />
+                        </defs>
+                        <defs>
+                            <ReverseArrowMarker />
+                        </defs>
+                        <XAxis type="number" dataKey="outflow" name="x" strokeWidth='0.35' strokeOpacity='0.5' >
+                            <Label value="OUTFLOW: Spend" position="bottom" offset={0} fontWeight={500} fill='000000' fontSize={10} />
+                        </XAxis>
+                        <YAxis type="number" dataKey="inflow" name="y" strokeWidth='0.35' strokeOpacity='0.5' >
+                            <Label angle={-90} value="INFLOW: Income + Borrowing" position="center" offset={30} fontWeight={500} fill='000000' fontSize={10} />
+                        </YAxis>
+                        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                        <Scatter data={inOutFlowData} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
 
-                    <ReferenceLine x={0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                    <ReferenceLine y={0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                    <text x={90} y={60} textAnchor="start" fill="#000000" fontSize={10}>
-                        Low Income & High Expense
-                    </text>
-                    <text x={725} y={60} textAnchor="end" fill="#000000" fontSize={10}>
-                        High Income & Expense
-                    </text>
-                    <text x={90} y={315} textAnchor="start" fill="#000000" fontSize={10}>
-                        Low Income & Expense
-                    </text>
-                    <text x={725} y={315} textAnchor="end" fill="#000000" fontSize={10}>
-                        High Income & Low Expense
-                    </text>
-                </ScatterChart>
+                        <ReferenceLine x={center.x ? center.x : 0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
+                        <ReferenceLine y={center.y ? center.y : 0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
+                        <text x={90} y={60} textAnchor="start" fill="#000000" fontSize={10}>
+                            Low Inflow & High Outflow
+                        </text>
+                        <text x={1250} y={60} textAnchor="end" fill="#000000" fontSize={10}>
+                            High Inflow & Outflow
+                        </text>
+                        <text x={90} y={375} textAnchor="start" fill="#000000" fontSize={10}>
+                            Low Inflow & Outflow
+                        </text>
+                        <text x={1250} y={375} textAnchor="end" fill="#000000" fontSize={10}>
+                            High Inflow & Low Outflow
+                        </text>
+                    </ScatterChart>
+                    : <NoVisualData displayImage={true} />}
             </Card>
         </div>
     )

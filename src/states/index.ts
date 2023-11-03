@@ -5,3 +5,4 @@ export * from './UiState';
 export * from './GeoJSONState';
 export * from './StoriesState';
 export * from './MapFeatureState';
+export * from './CIFState';

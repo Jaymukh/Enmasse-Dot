@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import {
     Chart as ChartJS,
@@ -11,6 +11,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import NoVisualData from './NoVisualData';
 
 ChartJS.register(
     CategoryScale,
@@ -22,90 +23,111 @@ ChartJS.register(
     Legend
 );
 
-const data = {
-    labels: [2021, 2022, 2023],
-    datasets: [
-        {
-            label: 'Sales Data',
-            data: [100, 120, 300],
-            borderColor: '#367A2B', // Line color
-            backgroundColor: '#ffffff', // Area under the line color
-            pointRadius: 0, // Radius of data points
-            pointBackgroundColor: '#ffffff', // Data point color
-        },
-    ],
-};
+interface LineGraphProps {
+    classname?: string;
+    category: string;
+    graphData: any;
+}
 
-const options = {
-    scales: {
-        y: {
-            beginAtZero: true,
-            title: {
-                display: true,
-                text: 'EH POPULATION (Million)', // Set the Y axis header text
-                color: 'black',       // Set the color to black
-            },
-        },
-        x: {
-            beginAtZero: true,
-            title: {
-                display: true,
-                text: 'YEAR', // Set the Y axis header text
-                color: 'black',       // Set the color to black                
-            },
-        },
-    },
-    plugins: {
-        tooltip: {
-            // mode: 'index',
-            intersect: false,
-            // yAlign: 'bottom',
-            titleColor: '#696B71', // Set the title (header) color
-            bodyColor: '#696B71', // Set the body (content) color
-            backgroundColor: '#ffffff', // Set the background color
-            borderColor: '#CBCBCB',
-            borderWidth: 1,
-            bodyFontSize: 14,  // Increase body font size
-            caretPadding: 10,  // Add padding around the caret
-            caretSize: 10,     // Increase caret size
-            cornerRadius: 6,   // Adjust corner radius
-            xPadding: 12,      // Increase padding on the x-axis
-            yPadding: 12,
-            callbacks: {
-                label: function (context: any) {
-                    const yLabel = context.parsed.y !== null ? context.parsed.y : '';
-                    return yLabel;
+const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData }) => {
+    const [data, setData] = useState<any>(null);
+
+    useEffect(() => {
+        if (graphData?.length > 1) {
+            const xKey = 'period';
+            const yKey = 'value';
+            const xAxisData = graphData?.map((data: any) => data[xKey]);
+            const yAxisData = graphData?.map((data: any) => data[yKey]);
+            // const newData = {...data};
+            // newData.labels = xAxisData;
+            // newData.datasets[0].data = yAxisData;
+            const newData = {
+                labels: xAxisData,
+                datasets: [
+                    {
+                        data: yAxisData,
+                        borderColor: '#367A2B', // Line color
+                        backgroundColor: '#ffffff', // Area under the line color
+                        pointRadius: 0, // Radius of data points
+                        pointBackgroundColor: '#ffffff', // Data point color
+                    },
+                ],
+            }
+            setData(newData);
+        }
+    }, [graphData]);
+
+    const options = {
+        // scales: {
+        //     y: {
+        //         beginAtZero: true,
+        //         title: {
+        //             display: true,
+        //             text: 'EH POPULATION (Million)', // Set the Y axis header text
+        //             color: 'black',       // Set the color to black
+        //         },
+        //     },
+        //     x: {
+        //         beginAtZero: true,
+        //         title: {
+        //             display: true,
+        //             text: 'YEAR', // Set the Y axis header text
+        //             color: 'black',       // Set the color to black                
+        //         },
+        //     },
+        // },
+        plugins: {
+            tooltip: {
+                // mode: 'index',
+                intersect: false,
+                // yAlign: 'bottom',
+                titleColor: '#696B71', // Set the title (header) color
+                bodyColor: '#696B71', // Set the body (content) color
+                backgroundColor: '#ffffff', // Set the background color
+                borderColor: '#CBCBCB',
+                borderWidth: 1,
+                bodyFontSize: 14,  // Increase body font size
+                caretPadding: 10,  // Add padding around the caret
+                caretSize: 10,     // Increase caret size
+                cornerRadius: 6,   // Adjust corner radius
+                xPadding: 12,      // Increase padding on the x-axis
+                yPadding: 12,
+                callbacks: {
+                    label: function (context: any) {
+                        const yLabel = context.parsed.y !== null ? context.parsed.y : '';
+                        return yLabel;
+                    },
+                    labelColor: function (context: any) {
+                        return {
+                            borderColor: 'transparent', // Hide the legend color border
+                            backgroundColor: 'transparent' // Hide the legend color background
+                        };
+                    }
                 },
-                labelColor: function (context: any) {
-                    return {
-                        borderColor: 'transparent', // Hide the legend color border
-                        backgroundColor: 'transparent' // Hide the legend color background
-                    };
-                }
+            },
+            legend: {
+                display: false, // Hide the legend
+            },
+            hover: {
+                mode: 'index',
+                intersect: false
             },
         },
-        legend: {
-            display: false, // Hide the legend
+        elements: {
+            point: {
+                radius: 0,
+                hoverRadius: 5, // Increase radius on hover
+            },
         },
-        hover: {
-            mode: 'index',
-            intersect: false
-        },
-    },
-    elements: {
-        point: {
-            radius: 0,
-            hoverRadius: 5, // Increase radius on hover
-        },
-    },
-};
+    };
 
-const LineGraph = () => {
     return (
-        <div className='h-100'>
+        <div className={`h-auto ${classname}`}>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
-                <h6 className='text-start fs-14 mb-3 mt-2 px-1'>EH Population Growth</h6>
-                <Line data={data} options={options} />
+                <h6 className='text-start fs-14 mb-2 px-1'>{category}</h6>
+                {data
+                    ? <Line data={data} options={options} height={60} />
+                    : <NoVisualData displayImage={false}/>}
             </Card>
         </div>
     )

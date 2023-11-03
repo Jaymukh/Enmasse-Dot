@@ -83,6 +83,7 @@ const useUserService = () => {
                 toast.error(errorMsg);
             });
     };
+    
     const updateUserDetails = (updatedData: any) => {
         return fetchWrapper.put(APIS.USERS.UPDATE_LOGGED_USER, updatedData);
     }

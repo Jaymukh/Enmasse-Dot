@@ -9,6 +9,7 @@ import { Heading, TypographyColor, TypographyType } from '../../ui/typography/He
 import { storiesState } from "../../../states";
 import { useRecoilState } from "recoil";
 import familySkeleton from '../../../utils/images/family-skeleton.png';
+import { Legend } from '../../ui/legend/Legend';
 
 interface FamilySidePanelProps {
     selectedFamily: number;
@@ -25,6 +26,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selec
                 <div className='map-container-sm d-flex mx-auto justify-content-start'>
                     <StaticMap coordinates={selectedData?.geometry?.coordinates}/>
                 </div>
+                <Legend />
             </Card>
             <div id="carouselExampleControlsNoTouching" className="carousel slide custom-carousel d-flex justify-content-center my-3 mx-auto bg-white align-items-center" data-bs-touch="false" data-bs-interval="false" style={{ height: "6vw" }} >
                 <div className="carousel-inner h-100">

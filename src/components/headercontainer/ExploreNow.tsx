@@ -7,7 +7,7 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { mapFeatureState } from '../../states/MapFeatureState';
 import { useMapsService } from '../../services/Maps.service';
 import { spinnerState } from '../../states';

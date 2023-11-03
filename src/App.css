@@ -829,7 +829,7 @@ a {
 }
 
 .dashboard-table-container {
-	overflow-y: auto;
+	overflow-y: auto !important;
 }
 
 .dashboard-table-container table {
@@ -939,7 +939,7 @@ th {
 }
 
 .static-map {
-	height: 20rem;
+	height: 22rem;
 	/* width: 20rem; */
 }
 
@@ -959,7 +959,7 @@ th {
 
 .map-container-sm {
     width: 16.5rem;
-    height: 18rem;
+    height: 16rem;
 }
 
 .cursor-pointer {

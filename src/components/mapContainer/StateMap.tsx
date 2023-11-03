@@ -114,7 +114,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 };
             });
 
-            const processCoordinates = (coordinates: any) => {
+            const processCoordinates = (coordinates: any): void => {
                 if (Array.isArray(coordinates[0])) {
                     // Multi-part geometry, like a polygon with holes or a multi-line string
                     coordinates.forEach((coordSet: any) => {
@@ -139,8 +139,30 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         clearCircles();
-        if (map && mapFeatures.circles && isChecked.coreSolution) {
-            const newCircles = mapFeatures.circles?.map((feature: any) => {
+        const newCircle = [
+            {
+                "id": 256,
+                "name": "Mysuru",
+                "properties": {
+                    "education": 1.7930711610486891,
+                    "agriculture_market": 1.306179775280899,
+                    "health_care": 0.7724719101123595,
+                    "financial_solutions": 1.1282771535580525,
+                    "core_sum": 5.0
+                },
+                "geometry": {
+                    "Type": "Point",
+                    "coordinates": [
+                        76.440373965336,
+                        12.210445567620535
+                    ]
+                }
+            }
+        ]
+        // if (map && mapFeatures.circles && isChecked.coreSolution) {
+        //     const newCircles = mapFeatures.circles?.map((feature: any) => {
+            if (map && newCircle && isChecked.coreSolution) {
+                const newCircles = newCircle?.map((feature: any) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
                     lng: feature.geometry.coordinates[0],
@@ -151,15 +173,20 @@ const StateMap: React.FC<StateMapProps> = ({
                 const radii = type !== coreSumType ? [coreSumType, type] : [type];
 
                 let zoom = map?.getZoom() ?? 0;
-                console.log(zoom)
-
+                
                 return radii.map((radius, i) => {
                     if (radius) {
-                        let zoomFactor = 4;
+                        // let zoomFactor = 4;
+                        // if (zoom >= 7) {
+                        //     zoomFactor = 4;
+                        // } else if (zoom >= 5) {
+                        //     zoomFactor = 2.5;
+                        // }
+                        let zoomFactor = 4.5;
                         if (zoom >= 7) {
                             zoomFactor = 4;
                         } else if (zoom >= 5) {
-                            zoomFactor = 2.5;
+                            zoomFactor = 4.5;
                         }
                         const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
                         // const circleRadius = Number(feature.properties[radius]);
@@ -174,7 +201,6 @@ const StateMap: React.FC<StateMapProps> = ({
                             strokeWeight: 1,
                             zIndex: 100,
                             map: map,
-
                         });
                     }
                     return null;

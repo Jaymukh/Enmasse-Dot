@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './headercontainer/Header';
 import MapContainer from './mapContainer/MapContainer';
 import OverlayContainer from '../components/overlaycontainer/OverlayContainer';
