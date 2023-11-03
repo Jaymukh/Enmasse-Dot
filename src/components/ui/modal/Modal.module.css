@@ -2,5 +2,6 @@
 @import url("../../../utils/fonts/fonts.css");
 
 .modal-height {
-    height: fit-content;
+    /* height: fit-content; */
+    max-height: 60vh;
 }

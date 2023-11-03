@@ -135,7 +135,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                             name='role'
                             classname='width-5 ps-2'
                         />
-                        <p className='fs-12 my-2 ms-2'>{iterator * paginationData.storiesPerPage + 1} - {iterator * paginationData.storiesPerPage + paginationData.storiesPerPage} of {stories?.totalStories} items</p>
+                        <p className='fs-12 my-2 ms-2'>{iterator * paginationData.storiesPerPage + 1} - {((iterator * paginationData.storiesPerPage + paginationData.storiesPerPage) < (stories?.totalStories)) ? (iterator * paginationData.storiesPerPage + paginationData.storiesPerPage) : (stories?.totalStories) } of {stories?.totalStories} items</p>
                     </div>
                     <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
                         <Button

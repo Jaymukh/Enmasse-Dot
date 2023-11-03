@@ -12,6 +12,7 @@ function FamilyContainer() {
     const [selectedFamily, setSelectedFamily] = useState<number>(0);
     const [selectedData, setSelectedData] = useState<any | null>(null);
     const [stories] = useRecoilState(storiesState);
+    const [iterator, setIterator] = useState(1);
 
     const handleFamilyVisible = (data: any, index: number) => {
         setSelectedFamily(index);
@@ -26,6 +27,12 @@ function FamilyContainer() {
         setSelectedFamily(selectedFamily);
         const data = stories?.family[selectedFamily];
         setSelectedData(data);
+        if(iterator < stories?.family.length) {
+            setIterator(iterator + 1);
+        }
+        if(selectedData == stories?.family[0]) {
+            setIterator(1);
+        }
     };
 
     useEffect(() => {
@@ -45,6 +52,7 @@ function FamilyContainer() {
                     selectedData={selectedData}
                     handleCarouselSlide={handleCarouselSlide}
                     handleBackClick={handleBackClick}
+                    iterator={iterator}
                 />
                 : <Families
                     handleFamilyVisible={handleFamilyVisible}

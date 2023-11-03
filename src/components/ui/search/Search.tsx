@@ -52,7 +52,7 @@ const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions
                     {suggestions?.map((suggestion: any) => (
                         <div
                             className={`text-start py-1 ${styles.suggestions_item}`}
-                            onClick={() => handleSelectOption(suggestion[labelKey])}
+                            onClick={() => handleSelectOption(suggestion[labelKey] )}
                         >
                             <p className='px-3 m-0'>{suggestion[labelKey]}</p>
                         </div>
