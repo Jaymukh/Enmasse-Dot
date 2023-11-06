@@ -12,16 +12,15 @@
 	font-family: "Poppins-Medium", sans-serif;
 }
 
-.btn_primary:disabled:hover {
-	/* (bordered) hover */
-	background-color: var(--blue-0);
-	border-color: var(--blue-0);
-	border-radius: 5px;
-	color: var(--white-1);
-	height: 2.25rem;
-	font-weight: 500;
-	font-family: "Poppins-Medium", sans-serif;
-	opacity: 0.5;
+.btn_primary:hover {
+    /* (bordered) hover */
+    background-color: var(--white-1);
+    border: 1px solid var(--blue-0);
+    border-radius: 5px;
+    color: var(--blue-0);
+    height: 2.25rem;
+    font-weight: 500;
+    font-family: "Poppins-Medium", sans-serif;
 }
 
 .btn_primary_contained {
