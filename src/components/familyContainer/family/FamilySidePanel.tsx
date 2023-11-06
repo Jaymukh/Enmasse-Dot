@@ -16,9 +16,10 @@ interface FamilySidePanelProps {
     selectedData: any;
     handleCarouselSlide: (index: number) => void;
     iterator: number;
+    handleBackClick: () => void;
 }
 
-const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selectedData, handleCarouselSlide, iterator }) => {
+const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selectedData, handleCarouselSlide, iterator, handleBackClick }) => {
     const [stories] = useRecoilState(storiesState);
 
     return (
@@ -36,17 +37,17 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selec
                         <div className={`carousel-item h-100 ${index === selectedFamily ? ' active' : ''}`} key={index}>
                             <div className="d-flex flex-row align-items-center h-100">
                                 <img src={data?.image ? data?.image : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family Image" />
-                                <div className="d-flex flex-column align-items-start justify-content-center mx-2 w-100 h-100">
-                                    <div className='d-flex flex-row justify-content-between w-100 m-auto' >
+                                <div className="d-flex flex-column align-items-start justify-content-center my-auto mx-2 px-1 w-100 h-100">
+                                    <div className='d-flex flex-row justify-content-between align-items-center w-100 m-auto my-0' >
                                         <Heading
                                             title={data?.familyName}
                                             type={TypographyType.h3}
                                             colour={TypographyColor.dark}
                                         />
-                                        <p className='fs-12'>{iterator}/{stories?.family.length}</p>
+                                        <p className='fs-12 my-auto '>{iterator}/{stories?.family.length}</p>
                                     </div>
-                                    <p className='carousel-caption-p text-p fs-12 text-start m-0 py-1'>{data?.district}, {data?.state}, {data?.country}</p>
-                                    <button className='border-0 bg-white carousel-caption-p color-green m-0 fs-12 p-0'>View all<FiArrowRight className='ms-1' /></button>
+                                    <p className='carousel-caption-p text-p fs-12 text-start m-0 py-1 mt-0'>{data?.district}, {data?.state}, {data?.country}</p>
+                                    <button className='border-0 bg-white carousel-caption-p color-green m-0 fs-12 p-0' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
                                 </div>
                             </div>
                         </div>

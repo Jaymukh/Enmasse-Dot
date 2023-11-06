@@ -76,7 +76,7 @@ const AccountOptions = () => {
 							classname=''
 							disabled={false}
 						/>
-						<span>{loggedUser.name}</span>
+						<span className='text-wrap'>{loggedUser.name}</span>
 					</li>
 					{Constants.accountMenuItems.map((item) => (
 						<li

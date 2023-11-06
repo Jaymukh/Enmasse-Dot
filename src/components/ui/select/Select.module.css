@@ -13,7 +13,7 @@
     height: 2.125rem;
     font-size: 0.875rem;
     border-radius: 0.3125rem;
-    border: 1px solid var(--black-3);
+    border: 1px solid var(--black-2);
 }
 
 .select_medium {
@@ -31,13 +31,11 @@
 }
 
 .select_large {
-    /* border-radius: 1px;
-    border-color: var(--black-3); */
     border-radius: 0.3125rem;
     height: 3rem;
     padding: 0rem 0.75rem;
     font-size: 0.875rem;
-    border-color: var(--black-3);
+    border: 1px solid var(--black-2);
 }
 
 .select_text_selcted {
