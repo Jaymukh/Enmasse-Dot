@@ -24,6 +24,18 @@
 	opacity: 0.5;
 }
 
+.btn_primary:disabled, .btn_primary:disabled:hover {
+	/* (bordered) black button with black backgrount and with black border */
+	background-color: var(--blue-0);
+	border-color: var(--blue-0);
+	border-radius: 5px;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
 .btn_primary_contained {
 	/* black button with black background and without border */
 	background-color: var(--blue-0);
@@ -43,6 +55,17 @@
 	font-family: "Poppins-Medium", sans-serif;
 }
 
+.btn_primary_contained:disabled, .btn_primary_contained:disabled:hover {
+	/* black button with black background and without border */
+	background-color: var(--blue-0);
+	border-radius: 5px;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
 .btn_primary_transparent {
 	/* black button without backgrount and without border */
 	background-color: transparent;
@@ -60,6 +83,17 @@
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_primary_transparent:disabled, .btn_primary_transparent:disabled:hover {
+	/* black button without backgrount and without border */
+	background-color: transparent;
+	border: none;
+	color: var(--blue-0);
+	height: 2.25rem !important;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
 }
 
 .btn_secondary {
@@ -83,6 +117,18 @@
 	font-family: "Poppins-Medium", sans-serif;
 }
 
+.btn_secondary:disabled, .btn_secondary:disabled:hover {
+	/* (bordered) white button with white backgrount and with white border */
+	background-color: var(--white-1);
+	border-color: var(--white-1);
+	border-radius: 5px;
+	color: var(--blue-0);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
 .btn_secondary_contained {
 	/* white button with white backgrount and without border */
 	background-color: var(--white-1);
@@ -102,6 +148,17 @@
 	font-family: "Poppins-Medium", sans-serif;
 }
 
+.btn_secondary_contained:disabled, .btn_secondary_contained:disabled:hover {
+	/* white button with white backgrount and without border */
+	background-color: var(--white-1);
+	border-radius: 5px;
+	color: var(--blue-0);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
 .btn_secondary_transparent {
 	/* white button without backgrount and without border */
 	background-color: transparent;
@@ -119,6 +176,17 @@
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_secondary_transparent:disabled, .btn_secondary_transparent:disabled:hover {
+	/* white button without backgrount and without border */
+	background-color: transparent;
+	border: none !important;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
 }
 
 .btn_muted {
@@ -200,6 +268,17 @@
 	font-family: "Poppins-Medium", sans-serif;
 }
 
+.btn_warning:disabled, .btn_warning:disabled:hover {
+	background-color: var(--warning-0);
+	border-color: var(--warning-0);
+	border-radius: 4px;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
 .btn_warning_contained {
 	background-color: var(--warning-0);
 	border-radius: 4px;
@@ -219,6 +298,17 @@
 	font-family: "Poppins-Medium", sans-serif;
 }
 
+.btn_warning_contained:disabled, .btn_warning_contained:disabled:hover {
+	background-color: var(--warning-0);
+	border-radius: 4px;
+	border: none;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
 .btn_warning_transparent {
 	background-color: transparent;
 	border: none !important;
@@ -236,6 +326,16 @@
 	font-family: "Poppins-Medium", sans-serif;
 }
 
+.btn_warning_transparent:disabled, .btn_warning_transparent:disabled:hover {
+	background-color: transparent;
+	border: none !important;
+	color: var(--warning-0);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
 .btn_success_transparent {
 	background-color: transparent;
 	border: none !important;
@@ -248,6 +348,14 @@
 	background-color: transparent;
 	border: none !important;
 	color: var(--green-6);
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_success_transparent:disabled, .btn_success_transparent:disabled:hover {
+	background-color: transparent;
+	border: none !important;
+	color: var(--green-0);
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
