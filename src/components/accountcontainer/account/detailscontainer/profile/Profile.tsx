@@ -192,6 +192,23 @@ export default function Profile() {
     }
 
     const handleDeleteClick = () => {
+        setSpinner(true);
+        userService.updateUserImage({ 'image': '' })
+            .then((response: any) => {
+                if (response) {
+                    setSpinner(false);
+                    userService.getUserDetails();
+                    toast.success('Successfully Deleted.', {
+                        position: toast.POSITION.BOTTOM_CENTER
+                    });
+                    setNewImage(undefined);
+                }
+            })
+            .catch(error => {
+                setSpinner(false);
+                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                toast.error(errorMsg);
+            });
         setShowDeleteImageModal(false);
     }
 

@@ -25,7 +25,7 @@ const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions
     }
 
     return (
-        <div className='d-flex flex-column h-auto suggestion-menu z-index-2'>
+        <div className={`d-flex flex-column h-auto ${styles.suggestion_menu}`}>
             <div className="d-flex flex-column justify-content-center align-items-start">
                 <input
                     onFocus={() => setHideSuggestions(false)}
@@ -47,7 +47,7 @@ const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions
 
             {!hideSuggestionBox &&
                 <div
-                    className={`py-1 ${classname} ${hideSuggestions ? styles.suggestions_hidden : styles.suggestions_visible} suggestion-menu-dropdown z-index-2`}
+                    className={`py-1 ${classname} ${hideSuggestions ? styles.suggestions_hidden : styles.suggestions_visible} ${styles.suggestion_menu_dropdown}`}
                 >
                     {suggestions?.map((suggestion: any) => (
                         <div
