@@ -46,7 +46,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
             userService.inviteNew(payload)
                 .then((response) => {
                     if (response) {
-                        toast.success('Successfully Invited.');
                         userService.getAll();
                         setOpenInviteSent(true);
                     }

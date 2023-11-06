@@ -31,8 +31,8 @@ const Router = () => {
         <Suspense fallback={<div className=""></div>}>
             <Routes>
                 <Route path={RouteConstants.login} element={<Login />} />
-                <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} />}>
-                    <Route path={RouteConstants.update_password} element={<UpdatePassword />} />
+                <Route path={RouteConstants.update_password} element={<UpdatePassword />} />
+                <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} />}>                    
                     <Route path={RouteConstants.root} element={<HomeContainer />} />
                     <Route path={RouteConstants.explore} element={<HomeContainer />} />
                     <Route path={RouteConstants.dashboards} element={<DashboardContainer />} />

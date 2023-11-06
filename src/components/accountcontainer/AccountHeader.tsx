@@ -2,9 +2,8 @@ import React from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
-import { RouteConstants } from '../../constants';
 
-const AccountHeader: React.FC = () => {
+const AccountHeader: React.FC<{ routeTo?: string }> = ({ routeTo }) => {
     const navigate = useNavigate();
 
     return (
@@ -13,7 +12,7 @@ const AccountHeader: React.FC = () => {
                 theme={ButtonTheme.primary}
                 size={ButtonSize.default}
                 variant={ButtonVariant.transparent}
-                onClick={() => navigate(RouteConstants.root)}
+                onClick={() => routeTo ? navigate(routeTo) : navigate(-1)}
                 classname='m-0 h-auto'
             >
                 <BiArrowBack className='me-2 mb-1' fontSize={22} />

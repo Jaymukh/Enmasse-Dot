@@ -6,3 +6,4 @@ export * from './GeoJSONState';
 export * from './StoriesState';
 export * from './MapFeatureState';
 export * from './CIFState';
+export * from './ErrorState';

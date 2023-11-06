@@ -33,7 +33,11 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             .min(8, 'Password must be at least 8 characters')
             .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
             .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Password must contain at least one special character')
-            .matches(/[0-9]/, 'Password must contain at least one number'),
+            .matches(/[0-9]/, 'Password must contain at least one number')
+            .test('different-password', 'New password cannot be the same as the current password', function (value) {
+                const currentPassword = this.parent.current_password;
+                return value !== currentPassword;
+            }),
         confirm_new_password: Yup.string()
             .oneOf([Yup.ref('new_password')], 'Passwords must match')
             .required('Confirm password is required'),
@@ -108,7 +112,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         placeholder='Old password'
                     />
 
-                    {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.current_password?.message}</p>}
+                    {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start fs-10'>{errors?.current_password?.message}</p>}
                     <Heading
                         title='New Password'
                         type={TypographyType.h5}
@@ -126,7 +130,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
                         placeholder='New password'
                     />
-                    {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.new_password?.message}</p>}
+                    {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start fs-10'>{errors?.new_password?.message}</p>}
                     <div className="row my-2">
                         <div className="d-flex pe-0 mb-1">
                             {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
@@ -158,7 +162,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='my-2 inputBoxHeight px-2 fs-14 w-100'
                         placeholder='Confirm new password'
                     />
-                    {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start'>{errors?.confirm_new_password?.message}</p>}
+                    {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start fs-10'>{errors?.confirm_new_password?.message}</p>}
                     <button
                         type="submit"
                         className='mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 bg-dark'

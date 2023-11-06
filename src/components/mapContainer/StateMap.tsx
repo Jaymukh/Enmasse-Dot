@@ -55,7 +55,7 @@ const StateMap: React.FC<StateMapProps> = ({
         styles: MapConstants.NonGlobalMapStyle,
         isFractionalZoomEnabled: true,
         keyboardShortcuts: false,
-        // gestureHandling: "none", //manual zoom handling
+        gestureHandling: "none", //manual zoom handling
         // zoomControl: false,
     };
 

@@ -9,6 +9,7 @@ import { cifState } from '../../states';
 import '../../styles/main.css';
 import WIPImage from '../../utils/images/work_in_progress.svg';
 import NoVisualData from './NoVisualData';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 const BubbleGraph = () => {
 	const [data, setData] = useState<BubbleNode>();
@@ -70,14 +71,17 @@ const BubbleGraph = () => {
 
 	return (
 		<div className="h-100 me-3">
-			<Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
-				<div className='row px-1 pt-2 d-flex justify-content-between'>
-					<Heading
-						title='Core Solutions by EH'
-						type={TypographyType.h4}
-						colour={TypographyColor.dark}
-						classname='col-4 text-start'
-					/>
+			<Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
+				<div className='row px-2 d-flex justify-content-between'>
+					<div className='m-0 p-0 d-flex col-4 align-items-center'>
+						<Heading
+							title='Core Solutions by EH'
+							type={TypographyType.h4}
+							colour={TypographyColor.dark}
+							classname='text-start px-1'
+						/>
+						<AiOutlineInfoCircle fontSize={15} color='#606060' />
+					</div>
 					<div className='col-2'>
 						<Select
 							options={options}

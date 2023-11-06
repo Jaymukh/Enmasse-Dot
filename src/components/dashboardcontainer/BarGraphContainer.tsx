@@ -19,7 +19,7 @@ const BarGraphContainer = () => {
 
     return (
         <div className='h-100'>
-            <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
                 <NavTab navItems={tabItems} selected={selected} handleTabClick={handleTabClick} />
                 <BarGraph selected={tabItems[selected].label} />
             </Card>

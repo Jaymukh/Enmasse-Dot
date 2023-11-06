@@ -48,7 +48,7 @@ const FamilyDetails = () => {
                         <p className='w-auto fs-12 m-0 text-end text-nowrap ps-2'>{getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.covered)} out Of {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.total)} Districts</p>
                     </div>}
             </div>
-            <Card size={CardSize.default} variant={CardVariant.bordered} classname='mx-0 mt-2 row'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
                 <img className='col-2 pe-0 ps-0 rounded-start' src={familyDetails?.image} alt={familyDetails?.familyName}></img>
                 <div className='col-10 white-bg py-4 px-4 rounded-end'>
                     <div className='d-flex flex-row'>

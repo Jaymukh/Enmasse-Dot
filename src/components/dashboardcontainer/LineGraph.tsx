@@ -123,7 +123,7 @@ const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData })
 
     return (
         <div className={`h-auto ${classname}`}>
-            <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
                 <h6 className='text-start fs-14 mb-2 px-1'>{category}</h6>
                 {data
                     ? <Line data={data} options={options} height={60} />

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 import Select, { SelectSize } from '../ui/select/Select';
@@ -5,6 +6,8 @@ import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { cifState, inOutFlowDataProps } from '../../states';
 import { useRecoilValue } from 'recoil';
 import NoVisualData from './NoVisualData';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 interface graphDataProps {
     geoId: number,
@@ -98,9 +101,17 @@ const ScatterGraph = () => {
 
     return (
         <div className='h-100'>
-            <Card size={CardSize.default} variant={CardVariant.bordered} classname='p-3 h-100'>
-                <div className='row px-1 pt-2 d-flex justify-content-between'>
-                    <h6 className='col-4 text-start fs-14' >EH Income and Expense</h6>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
+                <div className='row px-2 pt-2 d-flex justify-content-between'>
+                    <div className='m-0 p-0 d-flex col-4 align-items-center'>
+                        <Heading
+                            title='EH Income and Expense'
+                            type={TypographyType.h4}
+                            colour={TypographyColor.dark}
+                            classname='text-start px-1'
+                        />
+                        <AiOutlineInfoCircle fontSize={15} color='#606060' />
+                    </div>
                     <div className='col-1'>
                         <Select
                             options={options}
