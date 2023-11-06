@@ -83,7 +83,7 @@ const ExploreNow = () => {
 			<Button
 				theme={ButtonTheme.primary}
 				size={ButtonSize.small}
-				variant={ButtonVariant.contained}
+				variant={ButtonVariant.bordered}
 				onClick={() => handleModalOpen(true)}>
 				<MdOutlineTravelExplore className='me-2' fontSize={20} />
 				Explore Now

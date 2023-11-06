@@ -25,6 +25,7 @@
 
 .btn_primary_contained {
 	/* black button with black background and without border */
+	border: none;
 	background-color: var(--blue-0);
 	border-radius: 5px;
 	color: var(--white-1);
@@ -35,6 +36,7 @@
 
 .btn_primary_contained:hover {
 	background-color: var(--white-1);
+	border: none;
 	border-radius: 5px;
 	color: var(--blue-0);
 	height: 2.25rem;
@@ -85,6 +87,7 @@
 .btn_secondary_contained {
 	/* white button with white backgrount and without border */
 	background-color: var(--white-1);
+	border: none;
 	border-radius: 5px;
 	color: var(--blue-0);
 	height: 2.25rem;
@@ -95,6 +98,7 @@
 .btn_secondary_contained:hover {
 	background-color: var(--blue-0);
 	border-radius: 5px;
+	border: none;
 	color: var(--white-1);
 	height: 2.25rem;
 	font-weight: 500;
@@ -144,6 +148,7 @@
 .btn_muted_contained {
 	/* lightgray button without border and with lightgray background color */
 	background-color: var(--black-5);
+	border: none;
 	border-radius: 5px;
 	color: var(--white-1);
 	height: 2.25rem;
@@ -153,6 +158,7 @@
 
 .btn_muted_contained:hover {
 	background-color: var(--white-1);
+	border: none;
 	border-radius: 5px;
 	color: var(--black-5);
 	height: 2.25rem;
@@ -203,6 +209,7 @@
 	background-color: var(--warning-0);
 	border-radius: 4px;
 	border: none;
+	border: none;
 	color: var(--white-1);
 	height: 2.25rem;
 	font-weight: 500;
@@ -212,6 +219,7 @@
 .btn_warning_contained:hover {
 	background-color: var(--white-1);
 	border-radius: 4px;
+	border: none;
 	color: var(--warning-0);
 	height: 2.25rem;
 	font-weight: 500;
