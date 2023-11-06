@@ -9,6 +9,10 @@
     padding: 0rem 5rem;
 }
 
+.select:disabled {
+    opacity: 0.5;
+}
+
 .select_small {
     height: 2.125rem;
     font-size: 0.875rem;

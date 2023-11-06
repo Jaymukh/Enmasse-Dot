@@ -25,7 +25,7 @@ const FamilyDetails = () => {
     }
 
     useEffect(() => {
-        if(family?.length > 0) {
+        if (family?.length > 0) {
             setFamilyDetails(family[0]);
         }
     }, [family])
@@ -40,12 +40,13 @@ const FamilyDetails = () => {
                         classname='text-start'
                     />
                 </div>
-                <div className='col-5 d-flex align-items-center justify-content-around py-2 coverage-div'>
-                    <h6 className='w-auto fs-14 text-end m-0 text-nowrap pe-2'>EI Coverage</h6>
-                    <AiOutlineInfoCircle fontSize={35} color='#606060' className='me-2' />
-                    <ProgressBar coverage={mapFeatures?.cifData?.properties?.EICoverage} />
-                    <p className='w-auto fs-12 m-0 text-end text-nowrap ps-2'>{getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.covered)} out Of {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.total)} Districts</p>
-                </div>
+                {mapFeatures?.cifData?.properties?.EICoverage &&
+                    <div className='col-5 d-flex align-items-center justify-content-around py-2 coverage-div'>
+                        <h6 className='w-auto fs-14 text-end m-0 text-nowrap pe-2'>EI Coverage</h6>
+                        <AiOutlineInfoCircle fontSize={35} color='#606060' className='me-2' />
+                        <ProgressBar coverage={mapFeatures?.cifData?.properties?.EICoverage} />
+                        <p className='w-auto fs-12 m-0 text-end text-nowrap ps-2'>{getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.covered)} out Of {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.total)} Districts</p>
+                    </div>}
             </div>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='mx-0 mt-2 row'>
                 <img className='col-2 pe-0 ps-0 rounded-start' src={familyDetails?.image} alt={familyDetails?.familyName}></img>

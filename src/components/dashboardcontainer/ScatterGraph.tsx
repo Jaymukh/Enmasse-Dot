@@ -86,15 +86,6 @@ const ScatterGraph = () => {
         } else {
             return sortedData[middle][keyName];
         }
-
-        // const highestOutflow = inOutFlowData.reduce((max, item) => {
-        //     const value = item[keyName];
-        //     if (value !== null && (max === null || value > max)) {
-        //         return value;
-        //     }
-        //     return max;
-        // }, null);
-        // return highestOutflow /2;
     }
 
     useEffect(() => {
@@ -118,6 +109,7 @@ const ScatterGraph = () => {
                             labelKey='value'
                             valueKey='value'
                             size={SelectSize.small}
+                            disabled={inOutFlowData?.length > 0 ? false : true}
                         />
                     </div>
                 </div>

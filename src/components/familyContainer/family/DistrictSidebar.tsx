@@ -88,7 +88,7 @@ const DistrictSidebar = () => {
                 </div>
                 {properties?.showExploreMore ?
                     <div className='m-0 p-0'>
-                        <div className='row data-card d-flex flex-row mx-0 my-2 px-2 pt-2 pb-3'>
+                        {properties?.EICoverage &&  <div className='row data-card d-flex flex-row mx-0 my-2 px-2 pt-2 pb-3'>
                             <div className='d-flex justify-content-between align-items-center m-0 p-0'>
                                 <div className='d-flex justify-content-start align-items-center m-0 px-0 pb-2'>
                                     <h6 className='me-2 fs-13 my-0'>EI Coverage</h6>
@@ -97,7 +97,7 @@ const DistrictSidebar = () => {
                                 <p className='fs-10 m-0'>{getCurrencyWithSymbol(properties?.EICoverage?.covered)} out 0f {getCurrencyWithSymbol(properties?.EICoverage?.total)} Districts</p>
                             </div>
                             <ProgressBar coverage={properties?.EICoverage} />
-                        </div>
+                        </div>}
 
                         <div className='d-flex flex-column justify-content-center pb-1 pt-2 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
@@ -202,7 +202,7 @@ const DistrictSidebar = () => {
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Income</p>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources, properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources)}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHIncome?.averageAnnualEHIncomeFromInformalSources, properties?.EHIncome?.averageAnnualEHIncomeFromInformalSourcesUOM)}</h6>
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Income from Informal Sources</p>
                                 </div>
                             </div>
