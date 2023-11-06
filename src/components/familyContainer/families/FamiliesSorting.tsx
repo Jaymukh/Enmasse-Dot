@@ -50,7 +50,7 @@ const FamiliesSorting = () => {
     }, []);
 
 	return (
-		<div className='account-menu' ref={menuRef}>
+		<div className='family-menu' ref={menuRef}>
             <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.small}
@@ -61,11 +61,11 @@ const FamiliesSorting = () => {
                     <BiMenuAltLeft fontSize={22} />                    
                 </Button>
 			{Boolean(anchorEl) &&
-				(<ul className='account-menu-dropdown '>
+				(<ul className='family-menu-dropdown '>
 					{Constants.familiesSortingItems.map((item) => (
 						<li
 							key={item.key}
-							className='menu-item d-flex fs-16'
+							className='family-menu-item d-flex fs-16'
 							onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
 						>
 							<span>{item.text}</span>
