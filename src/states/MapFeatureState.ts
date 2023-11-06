@@ -19,6 +19,7 @@ export interface CifData {
         address: string;
         totalPopulation: string | null;
         totalHouseholds: string | null;
+        showExploreMore: boolean;
         enMassesThesis: {
             totalAddressableMarket: null | number;
             totalAddressableMarketUOM: null | string;

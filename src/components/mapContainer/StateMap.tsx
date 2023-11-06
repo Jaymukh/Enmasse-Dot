@@ -87,11 +87,9 @@ const StateMap: React.FC<StateMapProps> = ({
         const geoCode = geoJSON?.rootProperties?.id;
         if (geoCode) {
             mapServices.getCoreSolutions(Number(geoCode)).then(data => {
-                if (data.length > 0) {
-                    setCoreSolutions(data);
-                    setSelectedCoreSoln(data[0]);
-                    setIsChecked({ ...isChecked, coreSolution: true });
-                }
+                setCoreSolutions(data);
+                setSelectedCoreSoln(data[0]);
+                setIsChecked({ ...isChecked, coreSolution: data.length > 0 });
             }).catch(error => {
                 // const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
                 // toast.error(errorMsg);

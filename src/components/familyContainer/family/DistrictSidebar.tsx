@@ -25,7 +25,7 @@ const options = [
 
 const DistrictSidebar = () => {
     const navigate = useNavigate();
-    const {cifData: {properties}} = useRecoilValue(mapFeatureState);
+    const { cifData: { properties } } = useRecoilValue(mapFeatureState);
     const [currency, setCurrency] = useState<string>("$");
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -204,6 +204,7 @@ const DistrictSidebar = () => {
                     </div>
                 </div>
                 <Button
+                    disabled={!properties?.showExploreMore}
                     theme={ButtonTheme.primary}
                     size={ButtonSize.large}
                     variant={ButtonVariant.bordered}
