@@ -105,7 +105,7 @@ export default function Login() {
                                 colour={TypographyColor.dark}
                             />
                             <p className='text-muted login-p'>
-                                Our team of skilled professionals id committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
+                                Our team of skilled professionals is committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
                             </p>
                         </div>
                     </div>

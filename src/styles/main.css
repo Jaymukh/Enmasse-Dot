@@ -116,3 +116,9 @@ ul {
     pointer-events: none;
     opacity: 0.45;
 }
+
+.bubble-legend {
+    width: 0.9375rem;
+    height: 0.9375rem;
+    border-radius: 0.46875rem;
+}

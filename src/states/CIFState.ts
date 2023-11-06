@@ -50,7 +50,6 @@ export interface coreSolutionDataProps {
         pointsOfInterest: number,
         percentageContribution: number,
         color?: string | undefined;
-        type?: 'leaf' | undefined;
     }[]
 }
 

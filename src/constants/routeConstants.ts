@@ -3,7 +3,7 @@ const RouteConstants: any = {
     login: '/login',
     explore: '/explore',
     update_password: '/update-password',
-    dashboards: '/dashboards',
+    dashboards: '/dashboard',
     stories: '/stories',
     profile: '/profile',
     settings: '/settings',

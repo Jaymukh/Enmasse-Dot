@@ -9,7 +9,7 @@ const APIS: any = {
         INVITE_NEW: '/users/invite/',
         REINVITE: '/users/reinvite/',
         DELETE_INVITE: '/users/',
-        SET_NEW_PASSWORD: '/users/set-new-passowrd/',
+        SET_NEW_PASSWORD: '/users/set-new-password/',
         CHANGE_PASSWORD: '/users/change-password/',
         FORGOT_PASSWORD: '/users/forgot-password/',
         ACCEPT_AGREEMENT: '/users/accept-agreement/',

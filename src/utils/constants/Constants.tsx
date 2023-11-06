@@ -463,32 +463,40 @@ export const dashboardCardInfo: DashboardCardInfo[] = [
 
 //
 
-interface BubbleLeaf {
-    name: string;
-    value: number;
-    color: string;
+export interface BubbleLeaf {
+    coreSolution: string;
+    pointsOfInterest: number;
+    color?: string;
+    percentageContribution: number;
 }
 
-interface BubbleNode {
-    type: 'node';
-    name: string;
-    value: number;
+export interface BubbleNode {
+	color?: string | undefined;
+	percentageContribution?: number;
+	coreSolution?: string | null | undefined;
+    pointsOfInterest?: number;
     children: BubbleLeaf[];
 }
 
-export type BubbleData = BubbleNode;
-
-export const bubbleData: BubbleData = {
-    type: 'node',
-    name: "parent",
-    value: 2300,
+export const bubbleData: BubbleNode = {
+    // type: 'node',
+    // coreSolution: "Core Sum",
+    // pointsOfInterest: 117219,
+    // percentageContribution: 100,
     children: [
-        { name: "Healthcare", value: 10, color: '#007CC3' },
-        { name: "Agri Market", value: 30, color: '#367A2B' },
-        { name: "Education", value: 15, color: '#F47A1F' },
-        { name: "Financial", value: 45, color: '#00529B' }
+        { coreSolution: "Healthcare", pointsOfInterest: 29460, percentageContribution: 25.13, color: '#007CC3' },
+        { coreSolution: "Agri Market", pointsOfInterest: 30124, percentageContribution: 25.7, color: '#367A2B' },
+        { coreSolution: "Education", pointsOfInterest: 29726, percentageContribution: 25.36, color: '#F47A1F' },
+        { coreSolution: "Financial Solutions", pointsOfInterest: 27909, percentageContribution: 23.81,  color: '#00529B' }
     ]
 }
+
+export const colorDescription = [
+    { coreSolution: 'Healthcare', color: '#00529B' },
+    { coreSolution: 'Agri Market', color: '#108041' },
+    { coreSolution: 'Education', color: '#F47A1F' },
+    { coreSolution: 'Financial Solutions', color: ' #007CC3' },
+];
 
 //
 

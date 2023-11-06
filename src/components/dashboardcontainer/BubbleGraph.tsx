@@ -1,45 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
-import { bubbleData } from '../../utils/constants/Constants';
+import { BubbleNode, bubbleData, colorDescription } from '../../utils/constants/Constants';
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { useRecoilValue } from 'recoil';
 import { cifState } from '../../states';
-
-interface BubbleNode {
-	name: string;
-	value: number;
-	color?: string;
-	// children?: BubbleNode[];
-}
-
-interface BubbleLeaf {
-	name: string;
-	value: number;
-	color: string;
-}
-
-interface BubbleNode {
-	type: 'node';
-	name: string;
-	value: number;
-	children: BubbleLeaf[];
-}
-
-export const bubbleDat: BubbleNode = {
-	type: 'node',
-	name: "parent",
-	value: 2300,
-	children: [
-		{ name: "Healthcare", value: 10, color: '#007CC3' },
-		{ name: "Agri Market", value: 30, color: '#367A2B' },
-		{ name: "Education", value: 15, color: '#F47A1F' },
-		{ name: "Financial", value: 45, color: '#00529B' }
-	]
-}
+import '../../styles/main.css'
 
 const BubbleGraph = () => {
+	const [data, setData] = useState<BubbleNode>();
+	const [root, setRoot] = useState<d3.HierarchyCircularNode<BubbleNode>>();
 	const { coreSolutionsData } = useRecoilValue(cifState);
 	const options: any[] = [];
 	const currentYear = new Date().getFullYear();
@@ -55,13 +26,45 @@ const BubbleGraph = () => {
 		setSelctedYear(value);
 	}
 
-	const hierarchy = d3
-		.hierarchy<BubbleNode>(bubbleData)
-		.sum((d) => d.value)
-		.sort((a, b) => (b.value || 0) - (a.value || 0));
+	useEffect(() => {
+		if (coreSolutionsData?.coreSolutionsByEH.length > 0) {
+			const coreSolutionsByEH = [...coreSolutionsData?.coreSolutionsByEH];
+			const coreSolutions = coreSolutionsByEH.filter((item: any) => {
+				return item.coreSolution !== "Core Sum";
+			});
 
-	const packGenerator = d3.pack<BubbleNode>().size([500, 300]).padding(15);
-	const root = packGenerator(hierarchy);
+			const modifiedCoreSolutions = coreSolutions.map(child => {
+				const foundItem = colorDescription.find(item => item.coreSolution === child.coreSolution);
+				if (foundItem) {
+					return {
+						...child,
+						color: foundItem.color,
+					};
+				} else {
+					return child;
+				}
+			});;
+
+			const modifiedParentNode = { children: modifiedCoreSolutions };
+			setData(modifiedParentNode);
+			const hierarchy = d3
+				.hierarchy<BubbleNode>(modifiedParentNode)
+				.sum((d) => {
+					if (d.pointsOfInterest) {
+						return d.pointsOfInterest;
+					}
+					return 0;
+				})
+				.sort((a, b) => (b.value || 0) - (a.value || 0));
+
+			const packGenerator = d3.pack<BubbleNode>().size([500, 300]).padding(15);
+			const root = packGenerator(hierarchy);
+			setRoot(root);
+		}
+
+	}, [coreSolutionsData]);
+
+
 
 	return (
 		<div className="h-100 me-3">
@@ -85,14 +88,13 @@ const BubbleGraph = () => {
 					</div>
 				</div>
 				<div style={{ width: '30rem', height: '22rem' }}>
-					<svg width={550} height={330} style={{ display: "inline-block" }}>
-						{/* <svg width='100%' height='100%' style={{ display: "inline-block" }}> */}
-						{root
+					<svg width={500} height={320} style={{ display: "inline-block" }}>
+						{root && root
 							.descendants()
 							.slice(1)
 							.map((node) => (
 								<circle
-									key={node.data.name}
+									key={node.data.coreSolution}
 									cx={node.x}
 									cy={node.y}
 									r={node.r}
@@ -100,12 +102,12 @@ const BubbleGraph = () => {
 									fillOpacity={1}
 								/>
 							))}
-						{root
+						{root && root
 							.descendants()
 							.slice(1)
 							.map((node) => (
 								<text
-									key={node.data.name}
+									key={node.data.coreSolution}
 									x={node.x}
 									y={node.y}
 									fontSize={14}
@@ -114,19 +116,18 @@ const BubbleGraph = () => {
 									alignmentBaseline="middle"
 									fill="#ffffff"
 								>
-									{/* {`${node.data.value}%`} */}
-									{`${node.data.value || 0}%`}
+									{`${node.data.percentageContribution || 0}%`}
 								</text>
 							))}
-						<g className="legend" transform="translate(90, 310)">
-							{bubbleData.children.map((child, index) => (
-								<g className="legend-item" transform={`translate(${index * 85}, 0)`}>
-									<rect width="15" height="15" fill={child.color} />
-									<text x="20" y="10" fontSize={10} alignmentBaseline="middle" dominantBaseline="middle">{child.name}</text>
-								</g>
-							))}
-						</g>
 					</svg>
+					<div className='d-flex w-100 justify-content-center align-items-center'>
+						{data?.children?.map((child, index) => (
+							<div className='d-flex ms-2'>
+								<div className='bubble-legend me-1' style={{ backgroundColor: `${child.color}` }}></div	>
+								<p className='fs-10 m-0 p-0 text-muted'>{child.coreSolution}</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</Card>
 		</div>
