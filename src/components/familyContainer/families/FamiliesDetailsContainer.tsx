@@ -6,12 +6,12 @@ import { Heading, TypographyColor, TypographyType } from '../../ui/typography/He
 import Select, { SelectSize } from '../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
-import { BiMenuAltLeft } from 'react-icons/bi';
 import { useStoriesService } from '../../../services';
 import { storiesState, spinnerState } from "../../../states";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import familySkeleton from '../../../utils/images/family-skeleton.png';
 import { useSearchParams } from 'react-router-dom';
+import FamiliesSorting from './FamiliesSorting';
 
 interface FamiliesDetailsContainerProps {
     handleFamilyVisible: (data: any, index: number) => void;
@@ -43,7 +43,6 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
         }));
         setIterator(0);
     };
-
 
     const totalStories = stories.totalStories;
     const totalPages = Math.ceil(totalStories / paginationData.storiesPerPage);
@@ -92,9 +91,9 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                     type={TypographyType.h2}
                     colour={TypographyColor.dark}
                     classname='text-start mt-4 ms-2'
-                /><BiMenuAltLeft fontSize={22} />
+                />
+                <FamiliesSorting />                
             </div>
-
             <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflow: 'auto' }}>
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
@@ -135,7 +134,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                             name='role'
                             classname='width-5 ps-2'
                         />
-                        <p className='fs-12 my-2 ms-2'>{iterator * paginationData.storiesPerPage + 1} - {((iterator * paginationData.storiesPerPage + paginationData.storiesPerPage) < (stories?.totalStories)) ? (iterator * paginationData.storiesPerPage + paginationData.storiesPerPage) : (stories?.totalStories) } of {stories?.totalStories} items</p>
+                        <p className='fs-12 my-2 ms-2'>{iterator * paginationData.storiesPerPage + 1} - {((iterator * paginationData.storiesPerPage + paginationData.storiesPerPage) < (stories?.totalStories)) ? (iterator * paginationData.storiesPerPage + paginationData.storiesPerPage) : (stories?.totalStories)} of {stories?.totalStories} items</p>
                     </div>
                     <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
                         <Button

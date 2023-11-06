@@ -635,7 +635,42 @@ export const families: FamiliesData = {
         }
     ]
 }
-//
+
+// FamiliesSorting Parameters
+export interface FamiliesSortingItem {
+    key: number;
+    text: string;
+    param: string;
+
+}
+
+export const familiesSortingItems: FamiliesSortingItem[] = [
+    {
+        key: 1,
+        text: "Ascending (A to Z)",
+        param: '',
+    },
+    {
+        key: 2,
+        text: "Descending (Z to A)",
+        param: '',
+    },
+    {
+        key: 3,
+        text: "Latest Updated",
+        param: '',
+    },
+    {
+        key: 4,
+        text: "Newly Created",
+        param: '',
+    },
+    {
+        key: 5,
+        text: "Family Name",
+        param: '',
+    },
+]; 
 export interface ExplorePlace {
     code: string;
     name: string;

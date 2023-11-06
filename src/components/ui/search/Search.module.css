@@ -6,7 +6,6 @@ input {
     padding: 0rem 2.7rem;
     position: relative;
     font-size: 0.875rem;
-
 }
 
 .icon {
@@ -22,7 +21,9 @@ input {
 
 .suggestions_visible {
     width: 26.625rem;
-    height: auto;
+    min-height: 6rem;
+    max-height: 10rem;
+    overflow-y: scroll;
     font-size: 0.875rem;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
 }
@@ -32,18 +33,17 @@ input {
     color: var(--black-0);
 }
 
-.suggestion-menu {
+.suggestion_menu {
 	position: relative;
 }
 
-.suggestion-menu-dropdown {
+.suggestion_menu_dropdown {
 	position: absolute;
 	top: 100%;
 	left: 0;
 	background-color: #fff;
 	z-index: 1000 !important;
 	border-radius: 0.3125rem;
-	background: #FFF;
 	min-width: 300px;
 	padding: 0;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

@@ -88,7 +88,7 @@ ul {
     color: var(--grey-0);
 }
 
-/* modal width */
+/* modal width & height */
 .width-18-75.modal {
     --bs-modal-width: 18.75rem !important;
 }
@@ -99,7 +99,12 @@ ul {
 
 .width-62-5.modal {
     --bs-modal-width: 62.5rem !important;
-    background-color: var(--green-1);
+    /* background-color: var(--green-1); */
+}
+
+.height-90.modal {
+    height: 90vh !important;
+    min-width: 90vh !important;
 }
 
 .no-scrollbar::-webkit-scrollbar {

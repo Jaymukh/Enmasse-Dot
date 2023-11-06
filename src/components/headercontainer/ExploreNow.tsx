@@ -88,7 +88,7 @@ const ExploreNow = () => {
 				<MdOutlineTravelExplore className='me-2' fontSize={20} />
 				Explore Now
 			</Button>
-			<Modal showModal={showModal} classname='width-62-5'>
+			<Modal showModal={showModal} classname='width-62-5 height-90'>
 				<div className='d-flex flex-row justify-content-between mb-2'>
 					<Heading
 						title='Explore Now'
@@ -97,7 +97,7 @@ const ExploreNow = () => {
 					/>
 					<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
 				</div>
-				<div className='modal-dialog-scrollable h-25'>
+				<div className=''>
 					<p className='text-muted text-start fs-14'>
 						Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
 					</p>
@@ -132,7 +132,7 @@ const ExploreNow = () => {
 						classname='height-3 width-26-625'
 					/>
 					{hasData ?
-						<div className='my-4 position-inherit'>
+						<div className='my-2 position-inherit' style={{maxHeight: '60vh', overflowY: 'auto', overflowX: 'hidden'}}>
 							<div>
 								{results?.map((item: any) => (
 									<div key={item.geo_id} className='my-2'>
