@@ -72,7 +72,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             return;
         }
         userService.changePassword({ ...values, refresh: auth?.tokens?.refresh })
-            .then(response => {
+            .then((response: any) => {
                 handleDrawer(false);
                 handleShowModal(true);
             })

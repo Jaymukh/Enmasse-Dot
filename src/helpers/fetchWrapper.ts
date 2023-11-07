@@ -20,8 +20,7 @@ function useFetchWrapper() {
 
     // Interceptor for adding authorization headers
     axiosInstance.interceptors.request.use(
-
-        (config: any) => {
+        async (config: any) => {
             if (config.url.includes(APIS.USERS.SET_NEW_PASSWORD)) {
                 config.headers['Authorization'] = '';
                 return config;
@@ -32,29 +31,24 @@ function useFetchWrapper() {
             if (user != null) {
                 const token = JSON.parse(user)?.tokens?.access;
                 const isLoggedIn = !!token;
-                const isTokenExpired = checkTokenExpired(token);
+                // const isTokenExpired = checkTokenExpired(token);
+                const isTokenExpired = true;
                 if (isLoggedIn && !isTokenExpired) {
                     config.headers['Authorization'] = `Bearer ${token}`;
                 } if (isLoggedIn && isTokenExpired) {
                     try {
-                        getRefreshToken().then(data => {
-                            const newAccessToken = data.access;
-                            const updatedAuth = {
-                                ...auth,
-                                tokens: {
-                                    ...auth.tokens,
-                                    access: newAccessToken
-                                }
-                            };
-                            setAuth(updatedAuth);
-                            localStorage.setItem('user', JSON.stringify(updatedAuth));
-                            config.headers['Authorization'] = `Bearer ${newAccessToken}`;
-                        }).catch(error => {
-                            console.log(error);
-                            localStorage.removeItem('user');
-                            setAuth({});
-                            navigate(RouteConstants.login);
-                        });
+                        const response = await getRefreshToken();
+                        const newAccessToken = response.access;
+                        const updatedAuth = {
+                            ...auth,
+                            tokens: {
+                                ...auth.tokens,
+                                access: newAccessToken
+                            }
+                        };
+                        setAuth(updatedAuth);
+                        localStorage.setItem('user', JSON.stringify(updatedAuth));
+                        config.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     } catch (error: any) {
                         const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                         toast.error(errorMsg);
@@ -67,7 +61,6 @@ function useFetchWrapper() {
                 return config;
             }
             return config;
-
         },
         (error: any) => {
             return Promise.reject(error);
@@ -88,11 +81,9 @@ function useFetchWrapper() {
                 localStorage.removeItem('user');
                 setAuth(null);
             }
-
             const error = (response?.data?.message) || response?.statusText;
             return Promise.reject(error);
         }
-
         return response.data;
     };
 
@@ -101,7 +92,6 @@ function useFetchWrapper() {
             // Token is missing; consider it expired.
             return true;
         }
-
         try {
             const tokenData = JSON.parse(atob(accessToken.split('.')[1]));
             const expirationTime = tokenData.exp * 1000;

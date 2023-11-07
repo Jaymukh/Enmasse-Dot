@@ -50,7 +50,7 @@ export default function Profile() {
                     userService.getUserDetails();
                 }
             })
-            .catch(error => {
+            .catch((error: any) => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);

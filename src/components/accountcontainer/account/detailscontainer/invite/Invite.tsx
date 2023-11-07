@@ -64,7 +64,7 @@ export default function Invite() {
 	const handleUpdate = (updatedRow: User) => {
 		setSpinner(true);
 		userService.editInvite(updatedRow)
-			.then((response) => {
+			.then((response: any) => {
 				if (response) {
 					setUsers((prevData) =>
 						prevData.map((row) => (

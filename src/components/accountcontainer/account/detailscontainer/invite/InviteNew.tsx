@@ -44,7 +44,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
         if (newData.name && newData.email_id) {
             var payload = { ...newData, user_id: loggedUser.user_id, designation: 'Manager', country: 'India', phone_number: 5436525362, status: 'Invited' };
             userService.inviteNew(payload)
-                .then((response) => {
+                .then((response: any) => {
                     if (response) {
                         userService.getAll();
                         setOpenInviteSent(true);

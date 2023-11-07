@@ -29,7 +29,7 @@ export interface CifData {
         };
         EHEconomicActivityIndicators: {
             pointsOfInterest: string;
-            agricultureMarketActivityPointsOfInterest: string;
+            agriMarketActivityPointsOfInterest: string;
             educationActivityPointsOfInterest: string;
             financialSolutionsActivityPointsOfInterest: string;
             healthcareActivityPointsOfInterest: string;

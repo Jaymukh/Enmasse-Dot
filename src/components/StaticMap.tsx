@@ -55,7 +55,7 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 
 	const fetchGeoJsonData = (geo_id: string) => {
 		setSpinner(true);
-		mapServices.getMaps(Number(geo_id)).then(data => {
+		mapServices.getMaps(Number(geo_id)).then((data: any) => {
 			setGeoJSON(data);
 			setSpinner(false);
 		}).catch(error => {

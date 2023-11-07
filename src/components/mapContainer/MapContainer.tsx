@@ -112,7 +112,7 @@ function MapContainer() {
     }
 
     const fetchDropdownList = (geo_id: string, level: string) => {
-        mapServices.getDropdownList(Number(geo_id)).then(data => {
+        mapServices.getDropdownList(Number(geo_id)).then((data: any) => {
             level === 'states' ? setStates(data.children) : setDistricts(data.children);
         }).catch(error => {
             errorHandler(error);
@@ -120,7 +120,7 @@ function MapContainer() {
     }
 
     const fetchGeoJsonData = (geo_id: string) => {
-        mapServices.getMaps(Number(geo_id)).then(data => {
+        mapServices.getMaps(Number(geo_id)).then((data: any) => {
             setGeoJSON(data);
             setSpinner(false);
         }).catch(error => {

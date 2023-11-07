@@ -78,7 +78,7 @@ export default function Login() {
                     setSpinner(false);
                 }
             })
-            .catch(error => {
+            .catch((error: any) => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 toast.error(errorMsg);
@@ -131,7 +131,7 @@ export default function Login() {
                                 {...register("email_id")}
                                 className='my-1 px-2 inputBoxHeight w-100'
                                 placeholder='Enter your email id here' />
-                            {errors?.email_id?.message && <p className='text-danger m-0 p-0'>{errors?.email_id?.message}</p>}
+                            {errors?.email_id?.message && <p className='text-danger m-0 p-0 fs-12'>{errors?.email_id?.message}</p>}
                             <div className='d-flex flex-row justify-content-between align-items-center mt-2'>
                                 <Heading
                                     title='Password'
@@ -163,7 +163,7 @@ export default function Login() {
                                     {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}
                                 </span>
                             </div>
-                            {errors?.password?.message && <p className='text-danger m-0 p-0'>{errors?.password?.message}</p>}
+                            {errors?.password?.message && <p className='text-danger m-0 p-0 fs-12'>{errors?.password?.message}</p>}
                             <button
                                 type='submit'
                                 className='mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-dark'

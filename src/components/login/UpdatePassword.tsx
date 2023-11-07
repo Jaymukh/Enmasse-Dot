@@ -72,7 +72,7 @@ const UpdatePassword = () => {
             return;
         }
         userService.setNewPassword({ ...values, token: token })
-            .then(response => {
+            .then((response: any) => {
                 setPasswordCreated(true);
             })
             .catch(error => {
