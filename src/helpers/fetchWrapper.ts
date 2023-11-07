@@ -31,8 +31,7 @@ function useFetchWrapper() {
             if (user != null) {
                 const token = JSON.parse(user)?.tokens?.access;
                 const isLoggedIn = !!token;
-                // const isTokenExpired = checkTokenExpired(token);
-                const isTokenExpired = true;
+                const isTokenExpired = checkTokenExpired(token);
                 if (isLoggedIn && !isTokenExpired) {
                     config.headers['Authorization'] = `Bearer ${token}`;
                 } if (isLoggedIn && isTokenExpired) {
