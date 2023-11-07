@@ -28,6 +28,7 @@ export interface CifData {
             numberOfEntrepreneurialHouseholds: null | string;
         };
         EHEconomicActivityIndicators: {
+            showPOI: boolean | null;
             pointsOfInterest: string;
             agriMarketActivityPointsOfInterest: string;
             educationActivityPointsOfInterest: string;

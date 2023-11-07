@@ -9,7 +9,18 @@ function App() {
 
 	return (
 		<div className="App">
-			<ToastContainer />
+			<ToastContainer
+				position="bottom-center"
+				autoClose={5000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 			<Spinner />
 			<BrowserRouter>
 				<Router />

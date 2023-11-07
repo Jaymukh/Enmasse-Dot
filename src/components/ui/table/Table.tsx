@@ -116,7 +116,13 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }
                     {tableData?.map((item: any, index: number) => (
                         <tr key={index}>
                             {headers?.KEYS?.map((key, keyIndex) => (
-                                <td className={`fs-14 ${keyIndex === 0 ? 'table-state-row' : ''}`} style={{ cursor: `${keyIndex === 0 ? 'pointer' : 'default'}` }} onClick={() => handleColClick(item, keyIndex)} >{getCurrencyWithSymbol(item[key.KEY], item[key?.UOM!])}</td>
+                                <td
+                                    className={`fs-14 ${keyIndex === 0 ? 'table-state-row' : ''}`}
+                                    style={{ cursor: `${keyIndex === 0 ? 'pointer' : 'default'}` }}
+                                    onClick={() => handleColClick(item, keyIndex)}
+                                >
+                                    {getCurrencyWithSymbol(item[key.KEY], item[key?.UOM!])}
+                                </td>
                             ))}
                         </tr>
                     ))}

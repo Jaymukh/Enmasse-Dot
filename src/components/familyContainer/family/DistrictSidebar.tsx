@@ -56,7 +56,7 @@ const DistrictSidebar = () => {
                 </div>
             </div>
             <div className="row d-flex justify-content-center pt-1 mx-0 px-3 h-100 pb-5" style={{ overflow: 'auto' }}>
-                <div className='row data-card px-3 d-flex flex-row mx-0 my-2'>
+                <div className='row data-card px-3 d-flex flex-row mx-0 my-2' style={{height: 'fit-content'}}>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
                         <h6 className='fs-14 m-0'>{properties?.totalPopulation ? properties?.totalPopulation : "__"}</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Population</p>
@@ -99,7 +99,7 @@ const DistrictSidebar = () => {
                             <ProgressBar coverage={properties?.EICoverage} />
                         </div>}
 
-                        <div className='d-flex flex-column justify-content-center pb-1 pt-2 px-0'>
+                        {properties?.EHEconomicActivityIndicators?.showPOI && <div className='d-flex flex-column justify-content-center pb-1 pt-2 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
                                 <h6 className='me-2 fs-13 my-0'>EH Economic Activity Indicators</h6>
                                 <AiOutlineInfoCircle fontSize={20} color='#606060' />
@@ -127,9 +127,9 @@ const DistrictSidebar = () => {
                                 </div>
                             </div>
 
-                        </div>
+                        </div>}
 
-                        <div className='d-flex flex-column justify-content-center pb-1 px-0'>
+                        {properties?.EHSpend?.showSpend && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
                                 <h6 className='me-2 fs-13 my-0'>EH Spend</h6>
                                 <AiOutlineInfoCircle fontSize={20} color='#606060' />
@@ -164,9 +164,9 @@ const DistrictSidebar = () => {
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Financial Solutions</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
 
-                        <div className='d-flex flex-column justify-content-center pb-1 px-0'>
+                        {properties?.EHBorrow?.showBorrow && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
                                 <h6 className='me-2 fs-13 my-0'>EH Borrowing</h6>
                                 <AiOutlineInfoCircle fontSize={20} color='#606060' />
@@ -185,9 +185,9 @@ const DistrictSidebar = () => {
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Borrowing from Informal Sources</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
 
-                        <div className='d-flex flex-column justify-content-center pb-1 px-0'>
+                        {properties?.EHIncome?.showIncome && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
                                 <h6 className='me-2 fs-13 my-0'>EH Income</h6>
                                 <AiOutlineInfoCircle fontSize={20} color='#606060' />
@@ -206,7 +206,7 @@ const DistrictSidebar = () => {
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Income from Informal Sources</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                     </div> :
                     <div className='row d-flex flex-row m-0 p-0 justify-content-center align-items-center'>
                         <img src={WIPImage} alt='WIP' width="40%" height='50%' />

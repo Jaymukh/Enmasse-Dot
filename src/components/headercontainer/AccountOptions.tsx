@@ -79,6 +79,7 @@ const AccountOptions = () => {
 						<span className='text-wrap'>{loggedUser.name}</span>
 					</li>
 					{Constants.accountMenuItems.map((item) => (
+						(loggedUser.role === 'Admin' || item.key !== 2) && (
 						<li
 							key={item.key}
 							className='menu-item d-flex fs-16'
@@ -86,7 +87,7 @@ const AccountOptions = () => {
 						>
 							<div>{item.icon}</div>
 							<span>{item.text}</span>
-						</li>
+						</li>)
 					))}
 					<hr className='m-0' />
 					<Button theme={ButtonTheme.primary} size={ButtonSize.large} variant={ButtonVariant.transparent} classname='menu-item d-flex logout my-1' onClick={handleLogout}>
