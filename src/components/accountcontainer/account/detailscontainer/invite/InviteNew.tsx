@@ -31,8 +31,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
     newData,
     handleChangeData
 }) => {
-
-
     
     const userService = useUserService();
     const loggedUser = useRecoilValue(loggedUserState);
@@ -56,6 +54,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     toast.error(errorMsg);
                 });
             handleCloseInviteNew();
+            
         }
         else{
             toast.error("All fields are mendatory!");

@@ -156,7 +156,7 @@ export default function Invite() {
 					<Button
 						theme={ButtonTheme.secondary}
 						size={ButtonSize.default}
-						variant={ButtonVariant.contained}
+						variant={ButtonVariant.bordered}
 						onClick={() => handleOpenInviteNew()}
 						classname='ms-2'
 					>
