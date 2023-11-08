@@ -6,7 +6,6 @@ import { APIS, RouteConstants } from '../constants';
 import { toast } from "react-toastify";
 
 const useUserService = () => {
-    // const baseUrl = `${process.env.REACT_APP_BASE_API_URL}`;
     const fetchWrapper = useFetchWrapper();
     const [auth, setAuth] = useRecoilState(authState);
     const [overlay, setOverlay] = useRecoilState(overlayState);
@@ -26,12 +25,15 @@ const useUserService = () => {
                 setSpinner(false);
                 getUserDetails();
                 // get return url from location state or default to home page
-                const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.root : location.pathname;
+                const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.explore : location.pathname;
                 if (user.is_first_login) {
                     setOverlay(true);
                     acceptAgreement();                    
                 }
-                navigate(from);
+                navigate({
+                    pathname: from,
+                    search: from === RouteConstants.explore ? '?country=1' : '',
+                });
             })
             .catch(error => {
                 setSpinner(false);

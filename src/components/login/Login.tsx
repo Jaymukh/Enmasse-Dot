@@ -1,5 +1,5 @@
 import '../../App.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import globe from '../../utils/images/globe.png';
 import ForgotPassword from './ForgotPassword';
 import EmailSent from './EmailSent';
@@ -12,9 +12,8 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
-import * as Constants from '../../utils/constants/Constants';
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { loggedUserState, spinnerState, User } from "../../states";
+import { useSetRecoilState } from "recoil";
+import { spinnerState } from "../../states";
 import { toast } from 'react-toastify';
 
 interface IFormValues {
@@ -47,7 +46,7 @@ export default function Login() {
             .required('Password is required')
     });
 
-    const { handleSubmit, register, watch, formState } = useForm({
+    const { handleSubmit, register, formState } = useForm({
         resolver: yupResolver(validationSchema),
     });
     const { errors, isSubmitting } = formState;

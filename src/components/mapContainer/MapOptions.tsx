@@ -10,6 +10,7 @@ interface MapOptionsProps {
     handleCountryChange: () => void;
     handleStateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     handleDistrictChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    handleGlobal: () => void;
     global: boolean;
     countries: any;
     states: any;
@@ -21,6 +22,7 @@ function MapOptions({
     handleCountryChange,
     handleStateChange,
     handleDistrictChange,
+    handleGlobal,
     global,
     states,
     districts,
@@ -47,7 +49,7 @@ function MapOptions({
                         theme={ButtonTheme.primary}
                         size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
-                        // onClick={handleGlobal}
+                        onClick={handleGlobal}
                         classname='h-100 text-start ps-0 py-0'
                     >
                         Global
