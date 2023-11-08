@@ -6,7 +6,7 @@ import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { useMapsService } from '../../services';
-import { geoJsonState, spinnerState, mapFeatureState, overlayState, helpState } from '../../states';
+import { geoJsonState, spinnerState, mapFeatureState, overlayState } from '../../states';
 import OverlayModal from './OverlayModal';
 import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
@@ -48,6 +48,14 @@ function MapContainer() {
     }
     const [selected, setSelected] = useState<any>(getSelectedObject());
 
+    const handleGlobal = () => {
+        setGlobal(!global);
+        navigate({
+            pathname: RouteConstants.root,
+            search: '?country=1',
+        });
+    }
+
     const handleCountryChange = () => {
         setGlobal(!global);
         setTimeout(() => {
@@ -59,16 +67,11 @@ function MapContainer() {
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
         updateSelected('state', value);
-        // setSelected({ ...selected, state: value, district: '' });
-        // searchParams.delete('district');
-        //updateSearchParams('state', value);
     };
 
     const handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
         updateSelected('district', value);
-        // setSelected({ ...selected, district: value })
-        //updateSearchParams('district', value);
     };
 
     const updateBreadcrumb = () => {
@@ -89,15 +92,13 @@ function MapContainer() {
         setBreadcrumbList(resultArray);
     };
 
-    const updateSearchParams = (name: string, value: string) => {
-        const currentParams = new URLSearchParams(searchParams.toString());
-        currentParams.set(name, value);
-        setSearchParams(currentParams);
-    }
-
     const handleBreadcrumbClick = (item: BreadcrumbItem, index: number) => {
         if (index !== breadcrumbList.length - 1) {
-            updateSelected(item.key, item.geo_id);
+            if (item.key === 'global') {
+                handleGlobal();
+            } else {
+                updateSelected(item.key, item.geo_id);
+            }
         }
     }
 
@@ -189,7 +190,6 @@ function MapContainer() {
             fetchFeaturedStories(selected.state);
             mapServices?.getCifData(selected.state);
         } else if (selected.country) {
-            //updateSearchParams('country', selected.country);
             fetchGeoJsonData(selected.country);
             fetchMapCircles(selected.country);
             fetchFeaturedStories(selected.country);
@@ -203,6 +203,7 @@ function MapContainer() {
                 handleCountryChange={handleCountryChange}
                 handleStateChange={handleStateChange}
                 handleDistrictChange={handleDistrictChange}
+                handleGlobal={handleGlobal}
                 global={global}
                 countries={countries}
                 states={states}
