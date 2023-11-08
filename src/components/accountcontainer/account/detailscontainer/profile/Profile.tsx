@@ -225,7 +225,7 @@ export default function Profile() {
                 <Button
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
-                    variant={ButtonVariant.contained}
+                    variant={ButtonVariant.bordered}
                     onClick={() => handleOpen(true)}
                 >
                     <MdModeEdit className='mx-1 mb-1' fontSize={22} />

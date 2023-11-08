@@ -1,8 +1,8 @@
 
-import { MdGroupAdd } from 'react-icons/md';
+import { MdGroupAdd, MdMail, MdContactSupport } from 'react-icons/md';
 import '../../App.css';
 import { BsFillPersonFill } from 'react-icons/bs';
-import { IoSettingsSharp } from 'react-icons/io5';
+import { IoSettingsSharp, IoListSharp } from 'react-icons/io5';
 // import Navale from '../images/family-sample.png';
 import Navale from '../images/Navale.png'
 import Ashe from '../images/Ashe.png'
@@ -194,6 +194,30 @@ export const inviteData: InviteData[] = [
 ];
 
 //
+export interface HelpMenuItem {
+    key: number;
+    text: string;
+    icon: JSX.Element;
+
+}
+
+export const helpMenuItems: HelpMenuItem[] = [
+    {
+        key: 1,
+        text: "Contact us",
+        icon: <MdMail className='fs-21' />,
+    },
+    {
+        key: 2,
+        text: "Help",
+        icon: <MdContactSupport className='fs-21' />,
+    },
+    {
+        key: 3,
+        text: "Roadmap",
+        icon: <IoListSharp className='fs-21' />,
+    }
+];
 export interface AccountMenuItem {
     key: number;
     text: string;

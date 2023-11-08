@@ -87,7 +87,7 @@ const Settings: React.FC<SettingsProps> = () => {
                     <Button
                         theme={ButtonTheme.secondary}
                         size={ButtonSize.default}
-                        variant={ButtonVariant.contained}
+                        variant={ButtonVariant.bordered}
                         onClick={() => handleEditClick(!editMode)}
                     >
                         <MdModeEdit className='me-1 mb-1' fontSize={20} />
@@ -96,7 +96,7 @@ const Settings: React.FC<SettingsProps> = () => {
                     <Button
                         theme={ButtonTheme.secondary}
                         size={ButtonSize.default}
-                        variant={ButtonVariant.contained}
+                        variant={ButtonVariant.bordered}
                         onClick={() => handleDrawer(true)}
                         classname='ms-2'
                     >
