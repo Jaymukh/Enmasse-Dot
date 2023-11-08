@@ -30,7 +30,7 @@ const getColor = (color: TypographyColor) => {
             className = `${styles.primary}`;
             break;
         case TypographyColor.secondary:
-            className = `${styles.secondary}`;
+            className = `${styles.white}`;
             break;
         case TypographyColor.warning:
             className = `${styles.warning}`;
