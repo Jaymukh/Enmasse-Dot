@@ -1,31 +1,22 @@
 import '../../App.css';
 import React, { useState } from 'react';
 import Logo from '../../utils/images/Enmasse DOTS logo 1.png';
-import { MdHelpCenter } from 'react-icons/md';
 import { BsFillBookmarksFill } from 'react-icons/bs';
 import AccountOptions from './AccountOptions';
-import RequestDetails from './RequestDetails';
 import ExploreNow from './ExploreNow';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants/routeConstants';
 import WIPDrawer from '../mapContainer/WIPDrawer';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
-import { useSetRecoilState } from "recoil";
-import { overlayState, helpState } from '../../states';
+import HelpOptions from './helpcontainer/HelpOptions';
 
 
 function Header() {
 	const navigate = useNavigate();
-	const setOverlay = useSetRecoilState(overlayState);
-	const setShow = useSetRecoilState(helpState);
 	const onLogoClick = () => {
 		navigate(RouteConstants.root);
 	}
-	const handleHelpClick = () => {
-		navigate(RouteConstants.root);
-		setOverlay(true);
-		setShow(1);
-	}
+	
 
 	const [open, setOpen] = useState(false);
 	const [text, setText] = useState<{title: string, description: string}>({title: '', description: ''});
@@ -49,7 +40,7 @@ function Header() {
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />
 				{/* <RequestDetails /> */}
-				<Button
+				{/* <Button
 					theme={ButtonTheme.primary}
 					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
@@ -57,7 +48,8 @@ function Header() {
 					classname='ps-4 pe-0'
 				>
 					<MdHelpCenter fontSize={25} />
-				</Button>
+				</Button> */}
+				<HelpOptions  />
 				<Button
 					theme={ButtonTheme.primary}
 					size={ButtonSize.small}
