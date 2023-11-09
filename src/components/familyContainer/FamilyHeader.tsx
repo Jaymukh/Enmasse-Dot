@@ -1,18 +1,20 @@
 import React from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { RouteConstants } from '../../constants';
 
-interface FamilyHeaderProps {
-    handleBackClick: () => void;
-    selectedData: any; // Update the type based on your data structure
-}
-
-function FamilyHeader({ handleBackClick, selectedData }: FamilyHeaderProps) {
+function FamilyHeader() {
     const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const onNavigateBack = () => {
-        navigate(-1);
+        const currentParams = new URLSearchParams(searchParams.toString());
+        currentParams.delete('story_id');
+        navigate({
+            pathname: RouteConstants.stories,
+            search: `?${currentParams.toString()}`,
+        });
     }
 
     return (
@@ -21,7 +23,7 @@ function FamilyHeader({ handleBackClick, selectedData }: FamilyHeaderProps) {
                 theme={ButtonTheme.primary}
                 size={ButtonSize.default}
                 variant={ButtonVariant.transparent}
-                onClick={selectedData ? handleBackClick : onNavigateBack}
+                onClick={onNavigateBack}
                 classname='h-auto'
             >
                 <BiArrowBack className='me-2 h-auto' fontSize={22} />

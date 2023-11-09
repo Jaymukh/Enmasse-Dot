@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { RouteConstants } from "./constants";
 import { useRecoilValue } from "recoil";
 import { authState } from './states';
+import StoryDetailsContainer from './components/StoryDetailsContainer';
 
 interface ProtectedRouteProps {
     auth: any;
@@ -37,6 +38,7 @@ const Router = () => {
                     <Route path={RouteConstants.explore} element={<HomeContainer />} />
                     <Route path={RouteConstants.dashboards} element={<DashboardContainer />} />
                     <Route path={RouteConstants.stories} element={<StoryContainer />} />
+                    <Route path={RouteConstants.story_details} element={<StoryDetailsContainer />} />
                     <Route path={RouteConstants.profile} element={<ProfileContainer />} />
                     <Route path={RouteConstants.settings} element={<ProfileContainer />} />
                     <Route path={RouteConstants.invite} element={<ProfileContainer />} />

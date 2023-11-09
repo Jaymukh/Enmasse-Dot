@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '../../../App.css';
 import { BiArrowBack } from 'react-icons/bi';
 import { MdOutlineArrowForward } from 'react-icons/md';
@@ -12,14 +12,13 @@ import familySkeleton from '../../../utils/images/family-skeleton.png';
 import { Legend } from '../../ui/legend/Legend';
 
 interface FamilySidePanelProps {
-    selectedFamily: number;
-    selectedData: any;
+    selectedStory: { index: number, story: any };
     handleCarouselSlide: (index: number) => void;
     iterator: number;
     handleBackClick: () => void;
 }
 
-const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selectedData, handleCarouselSlide, iterator, handleBackClick }) => {
+const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handleCarouselSlide, iterator, handleBackClick }) => {
     const [stories] = useRecoilState(storiesState);
 
     return (
@@ -27,14 +26,14 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selec
             <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mt-1 mx-0 white-bg'>
                 <h6 className='fs-14 text-start m-0'>{stories?.properties?.region}</h6>
                 <div className='map-container-sm d-flex mx-auto justify-content-start'>
-                    <StaticMap coordinates={selectedData?.geometry?.coordinates} />
+                    <StaticMap coordinates={selectedStory?.story?.geometry?.coordinates} />
                 </div>
                 <Legend />
             </Card>
             <div id="carouselExampleControlsNoTouching" className="carousel slide custom-carousel d-flex justify-content-center my-3 mx-auto bg-white align-items-center" data-bs-touch="false" data-bs-interval="false" style={{ height: "6vw" }} >
                 <div className="carousel-inner h-100">
-                    {stories?.family.map((data, index) => (
-                        <div className={`carousel-item h-100 ${index === selectedFamily ? ' active' : ''}`} key={index}>
+                    {stories?.family?.map((data, index) => (
+                        <div className={`carousel-item h-100 ${index === selectedStory?.index ? ' active' : ''}`} key={index}>
                             <div className="d-flex flex-row align-items-center h-100">
                                 <img src={data?.image ? data?.image : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family Image" />
                                 <div className="d-flex flex-column align-items-start justify-content-center my-auto mx-2 px-1 w-100 h-100">
@@ -55,7 +54,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selec
                 </div>
 
                 <button className="carousel-control-prev PrevBtn rounded-circle bg-white"
-                    onClick={() => handleCarouselSlide((selectedFamily - 1 + stories?.family.length) % stories?.family.length)}
+                    onClick={() => handleCarouselSlide((selectedStory?.index - 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                     data-bs-target="#carouselExampleControlsNoTouching"
                     data-bs-slide="prev"
@@ -64,7 +63,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selec
                 </button>
 
                 <button className="carousel-control-next NextBtn rounded-circle bg-white"
-                    onClick={() => handleCarouselSlide((selectedFamily + 1 + stories?.family.length) % stories?.family.length)}
+                    onClick={() => handleCarouselSlide((selectedStory?.index + 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                     data-bs-target="#carouselExampleControlsNoTouching"
                     data-bs-slide="next"
