@@ -15,16 +15,16 @@ const TABLE_HEADERS: TableProps = {
         ID: 'geo-info',
         NAME: 'Heading',
         KEYS: [
-            { KEY: 'geoName', VALUE: 'State' },
+            { KEY: 'geo_value', VALUE: 'State' },
             { KEY: 'area', VALUE: 'Area (sq.Km)' },
             { KEY: 'ehPopulation', VALUE: 'EH Population' },
-            { KEY: 'averageEHTransactionalValue', VALUE: 'Average Annual EH Transactional Value', UOM: 'averageEHTransactionalValueUOM' },
-            { KEY: 'pointsOfInterest', VALUE: 'Points of Interest' }
+            { KEY: 'totalEhGtv', VALUE: 'Average Annual EH Transactional Value', UOM: 'averageEHTransactionalValueUOM' },
+            { KEY: 'poi', VALUE: 'Points of Interest' }
         ],
     },
     METRIC_BREAKDOWN_TABLE: {
         ID: 'metric-breakdown',
-        NAME: 'State wise metric breakdown',
+        NAME: 'wise metric breakdown',
         KEYS: [
             { KEY: 'geoName', VALUE: 'State' },
             { KEY: 'entrepreneurialHouseholds', VALUE: 'Entrepreneurial Households' },

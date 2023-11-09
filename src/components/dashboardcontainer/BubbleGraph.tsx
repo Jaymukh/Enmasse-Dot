@@ -32,21 +32,9 @@ const BubbleGraph = () => {
 	useEffect(() => {
 		if (coreSolutionsData?.coreSolutionsByEH?.length > 0) {
 			const coreSolutionsByEH = [...coreSolutionsData?.coreSolutionsByEH];
-			const coreSolutions = coreSolutionsByEH.filter((item: any) => {
-				return item.coreSolution !== "Core Sum";
+			const modifiedCoreSolutions = coreSolutionsByEH.map(child => {
+				return { ...child, color: colorDescription[child.type] };
 			});
-
-			const modifiedCoreSolutions = coreSolutions.map(child => {
-				const foundItem = colorDescription.find(item => item.coreSolution === child.coreSolution);
-				if (foundItem) {
-					return {
-						...child,
-						color: foundItem.color,
-					};
-				} else {
-					return child;
-				}
-			});;
 
 			const modifiedParentNode = { children: modifiedCoreSolutions };
 			setData(modifiedParentNode);

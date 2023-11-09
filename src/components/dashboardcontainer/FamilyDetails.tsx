@@ -40,7 +40,7 @@ const FamilyDetails = () => {
                         classname='text-start'
                     />
                 </div>
-                {mapFeatures?.cifData?.properties?.EICoverage &&
+                {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
                     <div className='col-5 d-flex align-items-center justify-content-around py-2 coverage-div'>
                         <h6 className='w-auto fs-14 text-end m-0 text-nowrap pe-2'>EI Coverage</h6>
                         <AiOutlineInfoCircle fontSize={35} color='#606060' className='me-2' />

@@ -8,7 +8,7 @@ import OverViewMap from './OverViewMap';
 import ScatterGraph from './ScatterGraph';
 import TableView from './TableView';
 import { useSearchParams } from 'react-router-dom';
-import { cifState } from '../../states';
+import { cifState, mapFeatureState } from '../../states';
 import { useRecoilValue } from 'recoil';
 import { useCIFService, useMapsService, useStoriesService } from '../../services';
 import { TABLE_HEADERS } from '../../constants';
@@ -20,7 +20,9 @@ const DashBoard = () => {
     const storiesService = useStoriesService();
     const [searchParams] = useSearchParams();
     const cifData = useRecoilValue(cifState);
+    const mapFeatures = useRecoilValue(mapFeatureState);
     const geoCode = searchParams.get('geo_code');
+    console.log(cifData)
 
     useEffect(() => {
         if (geoCode) {
@@ -56,15 +58,17 @@ const DashBoard = () => {
             <div className='col-7 p-0 my-2'>
                 <BarGraphContainer />
             </div>
-            <div className='col-12 p-0 my-2'>
-                <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo} />
-            </div>
+            {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
+                <div className='col-12 p-0 my-2'>
+                    <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo} />
+                </div>}
             <div className='col-12 p-0 my-2'>
                 <ScatterGraph />
             </div>
-            <div className='col-12 p-0 my-2 mb-5 pb-5'>
-                <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo} />
-            </div>
+            {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
+                <div className='col-12 p-0 my-2 mb-5 pb-5'>
+                    <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} type={cifData?.metricBreakdownInfo?.breakdownType} />
+                </div>}
         </div>
     )
 }

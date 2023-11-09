@@ -61,6 +61,8 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }
 
     const handleSortTable = (item: TableRowProps, order: string) => {
         let sortedTable = tableData.slice().sort((a: any, b: any) => {
+            const actualKey = item.KEY + 'ActualValue';
+            const hasActualValue = tableData.some((obj: any) => obj.hasOwnProperty(actualKey));
             if (a[item.KEY] === null && b[item.KEY] === null) {
                 return 0;
             } else if (a[item.KEY] === null) {
@@ -68,15 +70,14 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }
             } else if (b[item.KEY] === null) {
                 return -1;
             } else if (typeof a[item.KEY] === 'string' && typeof b[item.KEY] === 'string') {
-                // const regex = /^[0-9]+(\.[0-9]+)?[MBK]$/i;
-                const regex = /^[0-9]+(\.[0-9]+)?[MBK](illion)?$/i;
-                if (regex.test(a[item.KEY]) && regex.test(b[item.KEY])) {
-                    const ValueA = getConvertedValue(a[item.KEY]);
-                    const ValueB = getConvertedValue(b[item.KEY]);
-                    return order === 'asc' ? ValueB - ValueA : ValueA - ValueB;
+                if (hasActualValue) {
+                    return order === 'asc' ? a[actualKey] - b[actualKey] : b[actualKey] - a[actualKey];
                 }
                 return order === 'asc' ? a[item.KEY].localeCompare(b[item.KEY]) : b[item.KEY].localeCompare(a[item.KEY]);
             } else if (typeof a[item.KEY] === 'number' && typeof b[item.KEY] === 'number') {
+                if (hasActualValue) {
+                    return order === 'asc' ? a[actualKey] - b[actualKey] : b[actualKey] - a[actualKey];
+                }
                 return order === 'asc' ? b[item.KEY] - a[item.KEY] : a[item.KEY] - b[item.KEY];
             } else {
                 return 0;
