@@ -8,6 +8,7 @@ import { AllSettingsState, User } from "../../../../../states";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Input } from '../../../../ui/input/Input';
+import { toast } from 'react-toastify';
 
 interface EditProfileProps {
     selectedData: User;
@@ -42,7 +43,13 @@ export default function EditProfile({
     };
 
     const handleUpdateClick = () => {
-        handleUpdate(updatedData);
+        if(updatedData.name && updatedData.email_id && updatedData.phone_number && updatedData.designation){
+            handleUpdate(updatedData);
+        }
+        else{
+            toast.error('All fields are mendatory!');
+        }
+        
     };
 
     return (
@@ -52,8 +59,8 @@ export default function EditProfile({
             isOpen={open}
             toggleFunction={handleOpen}
         >
-            <div className='d-flex justify-content-center flex-column px-3'>
-                <h6 className='mt-1 font-87-5 text-start'>Name</h6>
+            <div className='d-flex justify-content-center flex-column'>
+                <h6 className='font-87-5 text-start'>Name</h6>
                 <Input
                     type="text"
                     placeholder="Enter your name"
@@ -118,12 +125,13 @@ export default function EditProfile({
                 <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.large}
-                    variant={ButtonVariant.contained}
+                    variant={ButtonVariant.bordered}
                     onClick={() => handleUpdateClick()}
-                    classname='my-3'
+                    classname='my-3 height-3'
                 >
                     Update Profile
-                </Button>            </div>
+                </Button>            
+            </div>
         </Drawer>
     );
 }

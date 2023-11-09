@@ -5,12 +5,12 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 import { Input } from '../../ui/input/Input';
 import { toast } from 'react-toastify';
 
-interface ContactUsProps {
-    contactUsDrawerOpen: boolean,
-    handleContactUsDrawer: (contactUsDrawerOpen: boolean) => void;
+interface RequestLayersProps {
+    requestLayersDrawerOpen: boolean,
+    handleRequestLayersDrawer: (contactUsDrawerOpen: boolean) => void;
 }
 
-export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }: ContactUsProps) {
+export default function RequestLayers({ requestLayersDrawerOpen,   handleRequestLayersDrawer}: RequestLayersProps) {
 
     const [payloadData, setPayloadData] = useState<{ name: string, email_id: string, message: string }>({ name: '', email_id: '', message: '' });
 
@@ -27,7 +27,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                 // Truncate the input to the word limit
                 const truncatedInput = words.slice(0, wordLimit).join(' ');
                 setPayloadData({ ...payloadData, [name]: truncatedInput });
-            }
+            } 
             else {
                 setPayloadData({ ...payloadData, [name]: value });
             }
@@ -40,7 +40,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
     const handleSendClick = () => {
         if (payloadData.name && payloadData.email_id && payloadData.message) {
             console.log(payloadData);
-            handleContactUsDrawer(false);
+            handleRequestLayersDrawer(false);
         }
         else {
             toast.error('All fields are mendatory!');
@@ -49,13 +49,13 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
 
     return (
         <Drawer
-            id='contact-us'
-            title='Contact us'
-            isOpen={contactUsDrawerOpen}
-            toggleFunction={handleContactUsDrawer}
+            id='request-layers'
+            title='Request Layers'
+            isOpen={requestLayersDrawerOpen}
+            toggleFunction={handleRequestLayersDrawer}
         >
             <div className='d-flex justify-content-center flex-column'>
-                <p className=' text-start'>If you like to request any data or details from enmasse, fill the following form and send request. We will notify you once the data have been updated.</p>
+                <p className=' text-start'>We are working on developing layers that will help analyze opportunities beter.To request layers, fill the following form. We will notify you once the layers have been updated.</p>
                 <h6 className='mt-1 font-87-5 text-start'>Name</h6>
                 <Input
                     type="text"
@@ -78,7 +78,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                     name='message'
                     onChange={(e) => handleChangeData(e)}
                     placeholder="Type your request message (Max 250 words)"
-                    style={{ height: '10rem' }}
+                    style={{height: '10rem'}}
                     className='fs-13 p-3 rounded'
                 />
                 <Button

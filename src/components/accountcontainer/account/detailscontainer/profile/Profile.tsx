@@ -48,6 +48,7 @@ export default function Profile() {
                     handleCloseDialog();
                     setSpinner(false);
                     userService.getUserDetails();
+                    toast.success(response.msg);
                 }
             })
             .catch((error: any) => {

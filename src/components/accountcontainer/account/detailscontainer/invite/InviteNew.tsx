@@ -21,7 +21,8 @@ interface InviteNewProps {
     handleCloseInviteNew: () => void;
     setOpenInviteSent: (openInviteSent: boolean) => void;
     newData: NewData;
-    handleChangeData : (event: any) => void;
+    setNewData: React.Dispatch<React.SetStateAction<NewData>>;
+    handleChangeData: (event: any) => void;
 }
 
 const InviteNew: React.FC<InviteNewProps> = ({
@@ -29,15 +30,16 @@ const InviteNew: React.FC<InviteNewProps> = ({
     handleCloseInviteNew,
     setOpenInviteSent,
     newData,
+    setNewData,
     handleChangeData
 }) => {
-    
+
     const userService = useUserService();
     const loggedUser = useRecoilValue(loggedUserState);
     const settings = useRecoilValue(AllSettingsState);
     const settingsService = useSettingsService();
-    
-    
+
+
     const handleSubmitInviteNew = () => {
         if (newData.name && newData.email_id) {
             var payload = { ...newData, user_id: loggedUser.user_id, designation: 'Manager', country: 'India', phone_number: 5436525362, status: 'Invited' };
@@ -46,16 +48,22 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     if (response) {
                         userService.getAll();
                         setOpenInviteSent(true);
+                        setNewData({
+                            name: undefined,
+                            email_id: undefined,
+                            role: 'Admin',
+                            company: 'enmasse',
+                            company_type: 'Enmasse',
+                        });
+                        handleCloseInviteNew();
                     }
                 })
                 .catch(error => {
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                     toast.error(errorMsg);
                 });
-            handleCloseInviteNew();
-            
         }
-        else{
+        else {
             toast.error("All fields are mendatory!");
         }
     };
@@ -73,7 +81,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                 isOpen={openInviteNew}
                 toggleFunction={handleCloseInviteNew}
             >
-                <div className='d-flex justify-content-center flex-column px-3'>
+                <div className='d-flex justify-content-center flex-column'>
                     <h6 className='mt-1 font-87-5 text-start'>Name</h6>
                     <Input
                         type="text"
@@ -124,13 +132,13 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
                         onClick={() => handleSubmitInviteNew()}
-                        classname='mt-4 mb-3'
+                        classname='mt-4 mb-3 height-3'
                     >
                         Invite
                     </Button>
                 </div>
             </Drawer>
-            
+
         </>
     );
 }

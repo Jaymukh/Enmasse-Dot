@@ -8,6 +8,7 @@ import { AllSettingsState, User } from "../../../../../states";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Input } from '../../../../ui/input/Input';
+import { toast } from 'react-toastify';
 
 interface EditInviteProps {
     selectedData: User;
@@ -40,7 +41,12 @@ const EditInvite: React.FC<EditInviteProps> = ({
     }
 
     const handleUpdateClick = () => {
-        handleUpdate(updatedData);
+        if(updatedData.name && updatedData.email_id ){
+            handleUpdate(updatedData);
+        }        
+        else{
+            toast.error('All fields are mendatory!');
+        }
     };
     return (
         <div className=''>
@@ -50,7 +56,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                 isOpen={selectedData !== null}
                 toggleFunction={handleCloseDialog}
             >
-                <div className='d-flex justify-content-center flex-column mx-3'>
+                <div className='d-flex justify-content-center flex-column'>
                     <h6 className='mt-1 font-87-5 text-start'>Name</h6>
                     <Input
                         type="text"
@@ -98,9 +104,9 @@ const EditInvite: React.FC<EditInviteProps> = ({
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
-                        variant={ButtonVariant.contained}
+                        variant={ButtonVariant.bordered}
                         onClick={() => handleUpdateClick()}
-                        classname='my-4'
+                        classname='my-4 height-3'
                     >
                         Update
                     </Button>

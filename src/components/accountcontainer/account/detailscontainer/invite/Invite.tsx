@@ -32,9 +32,9 @@ export default function Invite() {
 	const [newData, setNewData] = useState<NewData>({
 		name: undefined,
 		email_id: undefined,
-		role: 'Admin',
-		company: 'enmasse',
-		company_type: 'Enmasse',
+		role: '',
+		company: '',
+		company_type: '',
 	});
 
 	// all user's data
@@ -75,7 +75,6 @@ export default function Invite() {
 					userService.getAll();
 					handleCloseDialog();
 					toast.success('Successfully Updated.');
-
 				}
 			})
 			.catch(error => {
@@ -92,6 +91,13 @@ export default function Invite() {
 	};
 	const handleCloseInviteNew = () => {
 		setOpenInviteNew(false);
+		setNewData({
+			name: undefined,
+			email_id: undefined,
+			role: 'Admin',
+			company: 'enmasse',
+			company_type: 'Enmasse',
+		});
 	};
 
 	// searchbar function
@@ -250,7 +256,7 @@ export default function Invite() {
 				<EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
 
 			{openInviteNew &&
-				<InviteNew openInviteNew={openInviteNew} newData={newData} handleChangeData={handleChangeData} handleCloseInviteNew={handleCloseInviteNew} setOpenInviteSent={setOpenInviteSent} />}
+				<InviteNew openInviteNew={openInviteNew} newData={newData} setNewData={setNewData} handleChangeData={handleChangeData} handleCloseInviteNew={handleCloseInviteNew} setOpenInviteSent={setOpenInviteSent} />}
 
 			{openInviteSent &&
 				<InviteSent openInviteSent={openInviteSent} setOpenInviteSent={setOpenInviteSent} email={newData.email_id} />}

@@ -80,7 +80,7 @@ const HelpOptions = () => {
 	}, []);
 
 	return (
-		<div className='family-menu' ref={menuRef}>
+		<div className='help-menu' ref={menuRef}>
 			<Button
 				theme={ButtonTheme.primary}
 				size={ButtonSize.small}
@@ -91,11 +91,11 @@ const HelpOptions = () => {
 				<MdHelpCenter fontSize={25} />
 			</Button>
 			{Boolean(anchorEl) &&
-				(<ul className='family-menu-dropdown '>
+				(<ul className='help-menu-dropdown '>
 					{Constants.helpMenuItems.map((item) => (
 						<li
 							key={item.key}
-							className='family-menu-item d-flex fs-16'
+							className='help-menu-item d-flex fs-16'
 							onClick={() => handleClickMenuItem(item.key)}
 						>
 							<div>{item.icon}</div>
