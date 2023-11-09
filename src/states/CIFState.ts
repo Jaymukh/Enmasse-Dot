@@ -12,6 +12,11 @@ export interface geoInfoProps {
 }
 
 export interface metricBreakdownInfoProps {
+    breakdownType: string;
+    data: metricBreakdownInfoTableProps[];
+}
+
+export interface metricBreakdownInfoTableProps {
     geoId: number,
     geoName: string,
     entrepreneurialHouseholds: number | null,
@@ -46,6 +51,7 @@ export interface coreSolutionDataProps {
         region: string
     },
     coreSolutionsByEH: {
+		type: string;
         coreSolution: string
         pointsOfInterest: number,
         percentageContribution: number,
@@ -55,7 +61,7 @@ export interface coreSolutionDataProps {
 
 export interface cifProps {
     geoInfo: geoInfoProps[];
-    metricBreakdownInfo: metricBreakdownInfoProps[];
+    metricBreakdownInfo: metricBreakdownInfoProps;
     ehGrowthGraphData: ehGrowthGraphDataProps;
     inOutFlowData: inOutFlowDataProps[];
     coreSolutionsData: coreSolutionDataProps;

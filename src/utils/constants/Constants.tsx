@@ -3,7 +3,6 @@ import { MdGroupAdd } from 'react-icons/md';
 import '../../App.css';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { IoSettingsSharp } from 'react-icons/io5';
-// import Navale from '../images/family-sample.png';
 import Navale from '../images/Navale.png'
 import Ashe from '../images/Ashe.png'
 import Joshi from '../images/Joshi.png'
@@ -13,7 +12,7 @@ export const storiesSelectOptions = [
     { key: 2, value: 2 },
     { key: 5, value: 5 },
     { key: 10, value: 10 }
-]; 
+];
 export interface Option {
     key: number;
     label: string;
@@ -35,22 +34,22 @@ export interface HelpContent {
 
 export const helpContent: HelpContent[] = [
     {
-      title: 'Region of Potent Entrepreneurial households',
-      description: 'Entrepreneurial households represent households with its members engaged in opportunities of potential growth and economic activities',
+        title: 'Region of Potent Entrepreneurial households',
+        description: 'Entrepreneurial households represent households with its members engaged in opportunities of potential growth and economic activities',
     },
     {
-      title: 'Coverage',
-      description: 'Coverage depicts the total count of regions (states/districts) evaluated by enmasse team.',
+        title: 'Coverage',
+        description: 'Coverage depicts the total count of regions (states/districts) evaluated by enmasse team.',
     },
-	{
-      title: 'Stories',
-      description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+    {
+        title: 'Stories',
+        description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
     },
-	{
-      title: 'Need to contact us?',
-      description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+    {
+        title: 'Need to contact us?',
+        description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
     }
-  ];
+];
 // Enmasse-Dot\src\components\InsightBar.tsx
 export interface CountryData {
     country: string;
@@ -475,9 +474,9 @@ export interface BubbleLeaf {
 }
 
 export interface BubbleNode {
-	color?: string | undefined;
-	percentageContribution?: number;
-	coreSolution?: string | null | undefined;
+    color?: string | undefined;
+    percentageContribution?: number;
+    coreSolution?: string | null | undefined;
     pointsOfInterest?: number;
     children: BubbleLeaf[];
 }
@@ -491,16 +490,11 @@ export const bubbleData: BubbleNode = {
         { coreSolution: "Healthcare", pointsOfInterest: 29460, percentageContribution: 25.13, color: '#007CC3' },
         { coreSolution: "Agri Market", pointsOfInterest: 30124, percentageContribution: 25.7, color: '#367A2B' },
         { coreSolution: "Education", pointsOfInterest: 29726, percentageContribution: 25.36, color: '#F47A1F' },
-        { coreSolution: "Financial Solutions", pointsOfInterest: 27909, percentageContribution: 23.81,  color: '#00529B' }
+        { coreSolution: "Financial Solutions", pointsOfInterest: 27909, percentageContribution: 23.81, color: '#00529B' }
     ]
 }
 
-export const colorDescription = [
-    { coreSolution: 'Healthcare', color: '#00529B' },
-    { coreSolution: 'Agri Market', color: '#108041' },
-    { coreSolution: 'Education', color: '#F47A1F' },
-    { coreSolution: 'Financial Solutions', color: ' #007CC3' },
-];
+export const colorDescription: Record<string, string> = { Healthcare: '#00529B', Agri_Market: '#108041', Education: '#F47A1F', Financial_Solutions: ' #007CC3' };
 
 //
 
@@ -674,7 +668,7 @@ export const familiesSortingItems: FamiliesSortingItem[] = [
         text: "Family Name",
         param: '',
     },
-]; 
+];
 export interface ExplorePlace {
     code: string;
     name: string;
@@ -682,7 +676,7 @@ export interface ExplorePlace {
 }
 
 export const explorePlaces: ExplorePlace[] = [
-    {   
+    {
         code: 'AD',
         name: 'Andhra Pradesh',
         districts: [

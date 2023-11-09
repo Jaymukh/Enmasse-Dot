@@ -8,9 +8,10 @@ import { Card, CardSize, CardVariant } from '../ui/card/Card';
 interface TableViewProps {
     data: any;
     headerData: TableHeaderProps;
+    type?: string
 }
 
-const TableView: React.FC<TableViewProps> = ({ data, headerData }) => {
+const TableView: React.FC<TableViewProps> = ({ data, headerData, type }) => {
     return (
         <div>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3'>
@@ -18,7 +19,7 @@ const TableView: React.FC<TableViewProps> = ({ data, headerData }) => {
                 {/* <div className='white-bg pt-4 pb-5 dashboard-col p-3'> */}
                 <div className='d-flex align-items-center m-0 p-0 mb-3'>
                     <Heading
-                        title={headerData.NAME}
+                        title={type ? `${type} ${headerData.NAME}` : `${headerData.NAME}`}
                         type={TypographyType.h4}
                         colour={TypographyColor.dark}
                         classname='text-start px-1'

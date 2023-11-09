@@ -14,6 +14,7 @@ export interface Suggestion {
 export interface CifData {
     type: string;
     properties: {
+        geo_name: string;
         geo_id: string;
         region: string;
         address: string;
