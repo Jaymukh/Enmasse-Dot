@@ -43,7 +43,7 @@ function FamilyContainer() {
 
     return (
         <div className="w-100 z-index-0" style={{ height: '91.75vh', position: 'inherit' }}>
-            <FamilyHeader
+            {/* <FamilyHeader
                 selectedData={selectedData}
                 handleBackClick={handleBackClick} />
             {selectedData && Object.keys(selectedData).length > 0 ?
@@ -56,7 +56,7 @@ function FamilyContainer() {
                 />
                 : <Families
                     handleFamilyVisible={handleFamilyVisible}
-                />}
+                />} */}
         </div>
     );
 }

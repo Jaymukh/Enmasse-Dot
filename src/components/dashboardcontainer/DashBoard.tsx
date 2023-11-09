@@ -31,9 +31,9 @@ const DashBoard = () => {
             cifService.getCoreSolutionsGraphData(Number(geoCode));
             mapService.getCifData(Number(geoCode));
             storiesService.getAllStories({
-                geoCode: Number(geoCode),
-                pageNumber: 1,
-                storiesPerPage: 1
+                geo_code: Number(geoCode),
+                page_no: 1,
+                storiespp: 1
             });
         }
     }, [geoCode]);

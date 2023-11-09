@@ -87,7 +87,7 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 	useEffect(() => {
 		const geoCode = searchParams.get('geo_code');
 		fetchGeoJsonData(geoCode!);
-	}, []);
+	}, [searchParams.get('geo_code')]);
 
 	useEffect(() => {
 		if (map && Object.keys(geoJSON).length) {

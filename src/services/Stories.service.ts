@@ -12,8 +12,8 @@ const useStoriesService = () => {
     // ?geo_code=11&page_no=1&storiespp=15
     //http://34.74.103.54/story/viewstory?geo-code=1&page-no=1&storiespp=10&sort-by=geo_value
     //'http://34.74.103.54/story/viewstory?geo-code=1&page-no=1&storiespp=10&sort-by=no_of_members&reverse=True'
-    function getAllStories(paginationData: any) {
-        return fetchWrapper.get(`${APIS.STORIES.GET_ALL_STORIES}?geo-code=${paginationData.geoCode}&page-no=${paginationData.pageNumber}&storiespp=${paginationData.storiesPerPage}&sort-by=geo_value` )
+    function getAllStories(paginationData: { geo_code: number, page_no: number, storiespp: number }) {
+        return fetchWrapper.get(`${APIS.STORIES.GET_ALL_STORIES}?geo-code=${paginationData.geo_code}&page-no=${paginationData.page_no}&storiespp=${paginationData.storiespp}&sort-by=geo_value` )
         .then((response: any) => {  
             if (response) {
                 setStories(response);
@@ -23,7 +23,7 @@ const useStoriesService = () => {
     }
 
     return {
-        getAllStories
+        getAllStories,
     }
 }
 export { useStoriesService };

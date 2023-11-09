@@ -1,13 +1,22 @@
 import Header from './headercontainer/Header';
-import FamilyContainer from './familyContainer/FamilyContainer';
+import FamiliesSidePanel from './familyContainer/families/FamiliesSidePanel';
+import FamiliesDetailsContainer from './familyContainer/families/FamiliesDetailsContainer';
+import AccountHeader from './accountcontainer/AccountHeader';
 
-const StoryDetailsContainer = () => {
+const StoryContainer = () => {
+
     return (
         <div className='w-100 primary-bg fixed-header'>
             <Header />
-            <FamilyContainer />
+            <div className="w-100 z-index-0" style={{ height: '91.75vh', position: 'inherit' }}>
+                <AccountHeader />
+                <div className='row w-100' style={{ height: '86.25vh' }}>
+                    <FamiliesSidePanel />
+                    <FamiliesDetailsContainer />
+                </div>
+            </div>
         </div>
     );
 };
 
-export default StoryDetailsContainer;
+export default StoryContainer;

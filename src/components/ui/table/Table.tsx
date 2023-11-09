@@ -89,7 +89,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }
         if (keyIndex === 0) {
             navigate({
                 pathname: RouteConstants.stories,
-                search: `?geo_code=${item.geoId}&page-no=1&storiespp=2`,
+                search: `?geo-code=${item.geoId}&page-no=1&storiespp=2`,
             });
         }
     }

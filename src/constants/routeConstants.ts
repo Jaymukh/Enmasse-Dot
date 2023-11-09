@@ -5,6 +5,7 @@ const RouteConstants: any = {
     update_password: '/update-password',
     dashboards: '/dashboard',
     stories: '/stories',
+    story_details: '/story-details',
     profile: '/profile',
     settings: '/settings',
     invite: '/invite',

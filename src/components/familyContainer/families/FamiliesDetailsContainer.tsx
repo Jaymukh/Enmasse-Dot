@@ -1,87 +1,91 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import '../../../styles/main.css';
-import { families } from '../../../utils/constants/Constants';
+import { storiesSelectOptions } from '../../../utils/constants/Constants';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Select, { SelectSize } from '../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
-import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { useStoriesService } from '../../../services';
-import { storiesState, spinnerState } from "../../../states";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { storiesState } from "../../../states";
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { useRecoilState } from "recoil";
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import familySkeleton from '../../../utils/images/family-skeleton.png';
-import { useSearchParams } from 'react-router-dom';
 import FamiliesSorting from './FamiliesSorting';
+import { RouteConstants } from '../../../constants';
 
-interface FamiliesDetailsContainerProps {
-    handleFamilyVisible: (data: any, index: number) => void;
-}
-
-
-const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ handleFamilyVisible }) => {
-    //function to get all the stories
+const FamiliesDetailsContainer = () => {
+    const navigate = useNavigate();
     const storiesService = useStoriesService();
     const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
-    const setSpinner = useSetRecoilState(spinnerState);
-    const [previousDisabled, setPreviousDisabled] = useState(true);
-    const [nextDisabled, setNextDisabled] = useState(true);
-    const [paginationData, setPaginationData] = useState<{ geoCode: number, pageNumber: number, storiesPerPage: number }>({ geoCode: Number(searchParams.get('geo_code')), pageNumber: 1, storiesPerPage: 2 });
+    const getSelectedObject = () => {
+        const params: any = {};
+        searchParams?.toString().split('&').forEach((param) => {
+            const [key, value] = param.split('=');
+            params[key] = Number(value);
+        });
+        return params;
+    }
+    const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
     const [iterator, setIterator] = useState(0);
+    const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 })
 
-    const storiesSelectOptions = [
-        { key: 2, value: 2 },
-        { key: 5, value: 5 },
-        { key: 10, value: 10 }
-    ];
     const handleChangeData = (event: any) => {
         const value = Number(event.target.value);
-        setPaginationData((prevPaginationData) => ({
+        setPaginationData((prevPaginationData: any) => ({
             ...prevPaginationData,
-            storiesPerPage: value,
-            pageNumber: 1
+            storiespp: value,
+            page_no: 1
         }));
         setIterator(0);
     };
 
-    const totalStories = stories.totalStories;
-    const totalPages = Math.ceil(totalStories / paginationData.storiesPerPage);
+    const handleFamilyVisible = (data: any, index: number) => {
+        searchParams.set('story_id', (index + 1).toString());
+        setSearchParams(searchParams);
+        navigate({
+            pathname: RouteConstants.story_details,
+            search: `?${searchParams.toString()}`,
+        });
+    };
 
-    const handlePreviousDisabled = () => {
-        if (paginationData.pageNumber === 1) {
-            setPreviousDisabled(true);
-        }
-        else {
-            setPreviousDisabled(false);
-        }
-    };
-    const handleNextDisabled = () => {
-        if (paginationData.pageNumber === totalPages) {
-            setNextDisabled(true);
-        }
-        else {
-            setNextDisabled(false);
-        }
-    };
     const handleNextClick = () => {
-        paginationData.pageNumber = paginationData.pageNumber + 1;
+        setPaginationData((prevData: any) => ({
+            ...prevData,
+            page_no: paginationData.page_no + 1
+        }));
         setIterator(iterator + 1);
-        storiesService.getAllStories(paginationData);
 
     };
     const handlePreviousClick = () => {
-        paginationData.pageNumber = paginationData.pageNumber - 1;
+        setPaginationData((prevData: any) => ({
+            ...prevData,
+            page_no: paginationData.page_no - 1
+        }));
         setIterator(iterator - 1);
-        storiesService.getAllStories(paginationData);
-
     };
 
     useEffect(() => {
-        setSpinner(true);
-        handlePreviousDisabled();
-        handleNextDisabled();
-        storiesService.getAllStories(paginationData);
-    }, [paginationData.storiesPerPage, paginationData.pageNumber]);
+        setTotalStoryInfo({
+            totalPages: Math.ceil(totalStoryInfo.totalStories / paginationData.storiespp),
+            totalStories: stories.totalStories
+        });
+    }, [stories.totalStories, paginationData.storiespp, totalStoryInfo.totalStories])
+
+    useEffect(() => {
+        if (paginationData) {
+            storiesService.getAllStories(paginationData);
+            const currentParams = new URLSearchParams();
+            for (const key in paginationData) {
+                if (paginationData[key]) {
+                    currentParams.set(key, paginationData[key].toString());
+                }
+            }
+            setSearchParams(currentParams);
+        }
+    }, [paginationData])
 
     return (
         <div className='col-9 ps-4 mb-5 py-0 h-100'>
@@ -92,14 +96,14 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                     colour={TypographyColor.dark}
                     classname='text-start mt-4 ms-2'
                 />
-                <FamiliesSorting />                
+                <FamiliesSorting />
             </div>
             <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflow: 'auto' }}>
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
                             <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
-                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover', minHeight: '9rem' }} src={data?.image ? data?.image : familySkeleton} alt="Family image" />
+                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover', minHeight: '9rem' }} src={data?.image ? data?.image : familySkeleton} alt={data?.familyName} />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
                                         <Heading
@@ -127,21 +131,21 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                         <Select
                             options={storiesSelectOptions}
                             onChange={(e) => handleChangeData(e)}
-                            value={paginationData.storiesPerPage}
+                            value={paginationData.storiespp}
                             labelKey='key'
                             valueKey='value'
                             size={SelectSize.small}
                             name='role'
                             classname='width-5 ps-2'
                         />
-                        <p className='fs-12 my-2 ms-2'>{iterator * paginationData.storiesPerPage + 1} - {((iterator * paginationData.storiesPerPage + paginationData.storiesPerPage) < (stories?.totalStories)) ? (iterator * paginationData.storiesPerPage + paginationData.storiesPerPage) : (stories?.totalStories)} of {stories?.totalStories} items</p>
+                        <p className='fs-12 my-2 ms-2'>{iterator * paginationData.storiespp + 1} - {((iterator * paginationData.storiespp + paginationData.storiespp) < (stories?.totalStories)) ? (iterator * paginationData.storiespp + paginationData.storiespp) : (stories?.totalStories)} of {stories?.totalStories} items</p>
                     </div>
                     <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
                         <Button
-                            theme={previousDisabled ? ButtonTheme.muted : ButtonTheme.primary}
+                            theme={paginationData.page_no === 1 ? ButtonTheme.muted : ButtonTheme.primary}
                             size={ButtonSize.default}
                             variant={ButtonVariant.transparent}
-                            disabled={previousDisabled}
+                            disabled={paginationData.page_no === 1}
                             onClick={() => handlePreviousClick()}
                             classname='m-0 h-auto'
                         >
@@ -149,13 +153,13 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                             Previous
                         </Button>
                         <div className='d-flex flex-row justify-content-around align-items-center mx-2 h-auto fs-12'>
-                            <span className='border rounded mx-1 px-2 py-1'>{paginationData?.pageNumber}</span>  of {totalPages}
+                            <span className='border rounded mx-1 px-2 py-1'>{paginationData?.page_no}</span>  of {totalStoryInfo.totalPages}
                         </div>
                         <Button
-                            theme={nextDisabled ? ButtonTheme.muted : ButtonTheme.primary}
+                            theme={paginationData.page_no === totalStoryInfo.totalPages ? ButtonTheme.muted : ButtonTheme.primary}
                             size={ButtonSize.default}
                             variant={ButtonVariant.transparent}
-                            disabled={nextDisabled}
+                            disabled={paginationData.page_no === totalStoryInfo.totalPages}
                             onClick={() => handleNextClick()}
                             classname=' m-0'
                         >
