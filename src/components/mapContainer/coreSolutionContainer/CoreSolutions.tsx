@@ -1,14 +1,16 @@
-import React, { ChangeEvent } from "react";
-import * as Constants from '../../utils/constants/Constants';
-import Switch from '../ui/switch/Switch';
+import React, { ChangeEvent, useState } from "react";
+import * as Constants from '../../../utils/constants/Constants';
+import Switch from '../../ui/switch/Switch';
 import { BsFillChatLeftTextFill } from 'react-icons/bs';
 import { MdLayers } from 'react-icons/md';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { IoIosArrowForward } from 'react-icons/io';
 import { PiRadioButtonLight } from 'react-icons/pi';
-import { Legend } from '../ui/legend/Legend';
-import { mapFeatureState } from '../../states';
+import { Legend } from '../../ui/legend/Legend';
+import { mapFeatureState } from '../../../states';
 import { useRecoilValue } from 'recoil';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import RequestLayers from "./RequestLayers";
 
 interface Option {
     label: string;
@@ -32,10 +34,11 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     options,
 }) => {
     const mapFeatures = useRecoilValue(mapFeatureState);
+    const [requestLayersDrawerOpen, setRequestLayersDrawerOpen] = useState(false);
 
-    const handleClickRequestLayer = () => {
-
-    }
+    const handleRequestLayersDrawer = (contactUsDrawerOpen: boolean) => {
+        setRequestLayersDrawerOpen(contactUsDrawerOpen);
+    };
 
     return (
         <div className='ms-4 d-flex flex-column justify-content-between h-100' >
@@ -85,12 +88,22 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     <MdLayers fontSize={22} />
                     <h6 className="my-0 fs-16">Request Layers</h6>
                     <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
-                    <IoIosArrowForward fontSize={22} onClick={handleClickRequestLayer} />
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.default}
+                        variant={ButtonVariant.transparent}
+                        onClick={() => handleRequestLayersDrawer(true)}
+                        classname='h-auto'
+                    >
+                        <IoIosArrowForward fontSize={22} />
+                    </Button>
                 </div>
             </div>
             <div className='mb-3'>
                 <Legend />
             </div>
+            
+            {requestLayersDrawerOpen && <RequestLayers requestLayersDrawerOpen={requestLayersDrawerOpen} handleRequestLayersDrawer={handleRequestLayersDrawer} />}
         </div>
     );
 }

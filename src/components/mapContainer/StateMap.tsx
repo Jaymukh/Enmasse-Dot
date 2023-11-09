@@ -4,7 +4,7 @@ import '../../App.css';
 import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api';
 import * as MapConstants from '../../utils/json/googlemapstyle'
 import * as Constants from '../../utils/constants/Constants';
-import CoreSolutions from './CoreSolutions';
+import CoreSolutions from './coreSolutionContainer/CoreSolutions';
 import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 import { useRecoilValue } from 'recoil';

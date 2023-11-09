@@ -24,6 +24,10 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
     const auth = useRecoilValue(authState);
 
     const [filledInputCount, setFilledInputCount] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
+    }
 
     const validationSchema = Yup.object().shape({
         current_password: Yup.string()
@@ -95,7 +99,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             isOpen={open}
             toggleFunction={handleDrawer}
         >
-            <div className='mx-3'>
+            <div className=''>
                 <p className='text-muted fs-14 text-start'>You will be required to re-login after updating the password.</p>
                 <form className='d-flex justify-content-center flex-column' onSubmit={handleSubmit(onSubmit)}>
                     <Heading
@@ -165,7 +169,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start fs-10'>{errors?.confirm_new_password?.message}</p>}
                     <button
                         type="submit"
-                        className='mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 bg-dark'
+                        className='mediumMarginTopBottom inputBoxHeight text-white my-2 rounded bg-dark'
                     // className={`mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 ${(filledInputCount < 3) ? 'bg-secondary' : 'bg-dark'}`}
                     // disabled={filledInputCount < 3} 
                     >
