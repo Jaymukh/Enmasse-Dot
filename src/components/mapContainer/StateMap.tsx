@@ -231,7 +231,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                                 // onClose={handleHoverEnd}                                                
                                                 options={{
                                                     padding: 0,
-                                                    maxWidth: 206,
+                                                    maxWidth: 224,
                                                     borderRadius: 0,
                                                     zIndex: focused === index ? 1000 : 0,
                                                 } as any}

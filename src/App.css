@@ -671,6 +671,8 @@ a {
 	font-size: 0.825rem;
 	color: #B4B4B4;
 	font-family: 'Lato', sans-serif;
+	margin-left: 0.1px;
+	width: 12.625rem;
 }
 
 .map-popup-description {
@@ -680,8 +682,9 @@ a {
 }
 
 .map-popup-story-img {
-	height: 3.25rem;
-	border-radius: 5px;
+	object-fit: cover;
+	height: 100%;
+	width: 3.5rem;
 }
 
 .green-text {
