@@ -17,65 +17,90 @@ export interface CifData {
         geo_id: string;
         region: string;
         address: string;
-        totalPopulation: string | null;
-        totalHouseholds: string | null;
-        showExploreMore: boolean;
+        geo_name: string;
+        totalPopulationActualValue: number;
+        totalPopulation: string;
+        totalHouseholdsActualValue: number;
+        totalHouseholds: string;
         enMassesThesis: {
-            totalAddressableMarket: null | number;
-            totalAddressableMarketUOM: null | string;
-            averageAnnualEHTransactionalValue: null | number;
-            averageAnnualEHTransactionalValueUOM: null | string;
-            numberOfEntrepreneurialHouseholds: null | string;
+            totalAddressableMarketActualValue: number;
+            totalAddressableMarket: string;
+            totalAddressableMarketUOM: string;
+            numberOfEntrepreneurialHouseholdsActualValue: number;
+            numberOfEntrepreneurialHouseholds: string;
+            averageAnnualEHTransactionalValueActualValue: number;
+            averageAnnualEHTransactionalValue: string;
+            averageAnnualEHTransactionalValueUOM: string;
         };
         EHEconomicActivityIndicators: {
-            showPOI: boolean | null;
+            showPOI: boolean;
+            pointsOfInterestActualValue: number;
             pointsOfInterest: string;
+            agriMarketActivityPointsOfInterestActualValue: number;
             agriMarketActivityPointsOfInterest: string;
+            educationActivityPointsOfInterestActualValue: number;
             educationActivityPointsOfInterest: string;
+            financialSolutionsActivityPointsOfInterestActualValue: number;
             financialSolutionsActivityPointsOfInterest: string;
+            healthcareActivityPointsOfInterestActualValue: number;
             healthcareActivityPointsOfInterest: string;
         };
         EHSpend: {
-            showSpend: null;
-            AnnualEHSpend: string | null;
-            AnnualEHSpendUOM: string | null;
-            AverageAnnualEHSpendOnCore: string | null;
-            AverageAnnualEHSpendOnCoreUOM: string | null;
-            AverageAnnualEHSpendOnNonCoreSolutions: string | null;
-            AverageAnnualEHSpendOnNonCoreSolutionsUOM: string | null;
-            AvergeAnnualEHSpendOnAgricultureMarket: string;
-            agricultureMarketSpendUOM: string;
+            showSpend: boolean;
+            annualEHSpendActualValue: number;
+            annualEHSpend: string;
+            annualEHSpendUOM: string;
+            averageAnnualEHSpendActualValue: number;
+            averageAnnualEHSpend: string;
+            averageAnnualEHSpendUOM: string;
+            averageAnnualEHSpendOnNonCoreSolutionsActualValue: number;
+            averageAnnualEHSpendOnNonCoreSolutions: string;
+            averageAnnualEHSpendOnNonCoreSolutionsUOM: string;
+            AvergeAnnualEHSpendOnAgriMarketActualValue: number;
+            AvergeAnnualEHSpendOnAgriMarket: string;
+            agriMarketSpendUOM: string;
+            AvergeAnnualEHSpendOnEducationActualValue: number;
             AvergeAnnualEHSpendOnEducation: string;
             educationSpendUOM: string;
+            AvergeAnnualEHSpendOnFinancialSolutionsActualValue: number;
             AvergeAnnualEHSpendOnFinancialSolutions: string;
             financialSolutionsSpendUOM: string;
+            AvergeAnnualEHSpendOnHealthcareActualValue: number;
             AvergeAnnualEHSpendOnHealthcare: string;
             healthcareSpendUOM: string;
         };
         EHIncome: {
-            showIncome: null;
-            averageAnnualEHIncomeFromVariableSources: string | null;
-            averageAnnualEHIncomeFromVariableSourcesUOM: string | null;
-            annualEHIncome: string | null;
-            annualEHIncomeUOM: string | null;
-            averageAnnualEHIncomeFromInformalSources: string | null;
-            averageAnnualEHIncomeFromInformalSourcesUOM: string | null;
+            showIncome: boolean;
+            averageAnnualEHIncomeFromVariableSourcesActualValue: number;
+            averageAnnualEHIncomeFromVariableSources: string;
+            averageAnnualEHIncomeFromVariableSourcesUOM: string;
+            annualEHIncomeActualValue: number;
+            annualEHIncome: string;
+            annualEHIncomeUOM: string;
+            averageAnnualEHIncomeFromInformalSourcesActualValue: number;
+            averageAnnualEHIncomeFromInformalSources: string;
+            averageAnnualEHIncomeFromInformalSourcesUOM: string;
         };
         EHBorrow: {
-            showBorrow: null;
-            averageAnuualEHBorrowingFromFormalSources: string | null;
-            averageAnuualEHBorrowingFromFormalSourcesUOM: string | null;
-            averageAnnualEHBorrowing: string | null;
-            averageAnnualEHBorrowingUOM: string | null;
-            averageAnnualEHBorrowingFromInformalSources: string | null;
-            averageAnnualEHBorrowingFromInformalSourcesUOM: string | null;
+            showBorrow: boolean;
+            averageAnuualEHBorrowingFromFormalSourcesActualValue: number;
+            averageAnuualEHBorrowingFromFormalSources: string;
+            averageAnuualEHBorrowingFromFormalSourcesUOM: string;
+            averageAnnualEHBorrowingActualValue: number;
+            averageAnnualEHBorrowing: string;
+            averageAnnualEHBorrowingUOM: string;
+            averageAnnualEHBorrowingFromInformalSourcesActualValue: number;
+            averageAnnualEHBorrowingFromInformalSources: string;
+            averageAnnualEHBorrowingFromInformalSourcesUOM: string;
         };
         EICoverage: {
             covered: number;
             total: number;
         };
+        showExploreMore: boolean;
     };
 }
+
 
 export interface FeatureStories {
     featuredStories: [],

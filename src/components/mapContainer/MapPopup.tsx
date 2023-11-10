@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../App.css'
 import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
@@ -20,11 +21,11 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     };
 
     return (
-        <div className="map-popup-grey-text rounded row h-100 w-100" onClick={() => handleFocused(index)}>
-            <div className="col-5 px-0">
+        <div className="map-popup-grey-text rounded " onClick={() => handleFocused(index)}>
+            <div className=" px-0 overflow-hidden">
                 <img className="map-popup-story-img rounded" src={properties.image} alt={properties.familyName} />
             </div>
-            <div className="col-7 px-0 d-flex flex-column justify-content-start">
+            <div className=" px-1 d-flex flex-column justify-content-start">
                 <p className="map-popup-description text-start my-0">
                     <span className="pe-1">{properties.familyDetails.familyMembers} </span>
                     Family members

@@ -7,13 +7,15 @@ import '../../styles/main.css';
 import { mapFeatureState, storiesState } from '../../states';
 import { useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
-import { getCurrencyWithSymbol } from '../../helpers';
+import useMapHelpers from '../../helpers/MapHelpers';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 
 const FamilyDetails = () => {
     const navigate = useNavigate();
     const mapFeatures = useRecoilValue(mapFeatureState);
+    const { getCurrencyWithSymbol } = useMapHelpers();
+
     const { family, properties } = useRecoilValue(storiesState);
     const [familyDetails, setFamilyDetails] = useState<any>({});
 

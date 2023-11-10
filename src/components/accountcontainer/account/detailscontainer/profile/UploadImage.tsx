@@ -102,7 +102,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                 <div className="d-flex flex-column justify-content-center align-items-center my-2">
                     <div className="upload-image-box my-5 d-flex justify-content-center align-items-center bg-light" >
                         {loggedUser?.profile_picture || newImage ? (
-                            <img src={newImage ? newImage : loggedUser?.profile_picture} ref={imageRef} alt="Profile Photo" style={{ width: `${zoomLevel}%` }} />
+                            <img src={newImage ? newImage : loggedUser?.profile_picture} ref={imageRef} alt="Profile" style={{ width: `${zoomLevel}%` }} />
                         ) : (
                             <span className='m-auto fs-64 w-100 h-100 d-flex flex-column justify-content-center align-items-center' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>
                         )}

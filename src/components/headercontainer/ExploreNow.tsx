@@ -35,7 +35,6 @@ const ExploreNow = () => {
 	}
 
 	const handleSelectValue = (value: string) => {
-
 		setValue('');
 		const filteredData = suggestions?.find((item: any) => item.geo_value?.toLowerCase().includes(value.toLowerCase()));
 		if (filteredData?.has_data) {
@@ -76,6 +75,12 @@ const ExploreNow = () => {
 				setSpinner(false);
 			});
 		}
+		else{
+			setHasData(true);
+		}
+	}
+	const handleViewAvailableStates = () => {
+		setHasData(true);
 	}
 
 	return (
@@ -132,7 +137,7 @@ const ExploreNow = () => {
 						classname='height-3 width-26-625'
 					/>
 					{hasData ?
-						<div className='my-2 position-inherit' style={{maxHeight: '60vh', overflowY: 'auto', overflowX: 'hidden'}}>
+						<div className='my-2 position-inherit' style={{ maxHeight: '60vh', overflowY: 'auto', overflowX: 'hidden' }}>
 							<div>
 								{results?.map((item: any) => (
 									<div key={item.geo_id} className='my-2'>
@@ -156,12 +161,19 @@ const ExploreNow = () => {
 							<div className="mx-4 my-1 dialog-div d-flex flex-column justify-content-center align-items-center py-5">
 								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
 								<Heading
-									title='Work in progress.'
+									title="The state you're Searching is currently unavailable."
 									type={TypographyType.h4}
 									colour={TypographyColor.dark}
 									classname='pt-5'
 								/>
 								<p className="text-center fs-12 my-3 mx-0">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
+								<Button
+									theme={ButtonTheme.primary}
+									size={ButtonSize.small}
+									variant={ButtonVariant.bordered}
+									onClick={() => handleViewAvailableStates()}>
+									View available states
+								</Button>
 							</div>
 						</div>
 					}

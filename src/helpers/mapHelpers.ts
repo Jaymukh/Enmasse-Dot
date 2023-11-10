@@ -1,17 +1,22 @@
-const getCurrencyWithSymbol = (value: null | number | string, currency?: string | null) => {
-    // if (value) {
-    if (value !== undefined && value !== null) {
-        if (currency) {
-            const curr = [{ currency: 'USD', symbol: '$' }, { currency: 'INR', symbol: '₹' }];
-            const selCurr = curr.find((item: any) => {
-                return (item.currency === currency);
-            });
-            return selCurr?.symbol! + value.toString();
+import { useRecoilValue } from 'recoil';
+import { AllSettingsState } from '../states';
+
+const useMapHelpers = () => {
+    const settings = useRecoilValue(AllSettingsState);
+    const currencies = settings.currencies;    
+
+    const getCurrencyWithSymbol = (value: null | number | string, currency?: string | null) => {
+        if (value !== undefined && value !== null) {
+            if (currency) {
+                const selectedCurrency = currencies.find(item => item.code === currency);
+                return selectedCurrency?.symbol! + value.toString();
+            }
+            return value;
         }
-        return value;
-    }
-    return '__';
+        return '__';
+    };
 
-}
+    return { getCurrencyWithSymbol };
+};
 
-export { getCurrencyWithSymbol }
+export default useMapHelpers;

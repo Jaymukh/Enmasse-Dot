@@ -32,9 +32,9 @@ export default function Invite() {
 	const [newData, setNewData] = useState<NewData>({
 		name: undefined,
 		email_id: undefined,
-		role: '',
-		company: '',
-		company_type: '',
+		role: 'Admin',
+		company: 'enmasse',
+		company_type: 'Enmasse',
 	});
 
 	// all user's data

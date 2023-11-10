@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
@@ -9,8 +9,9 @@ import '../../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import { useRecoilValue } from 'recoil';
-import { mapFeatureState } from '../../../states';
-import { getCurrencyWithSymbol } from '../../../helpers';
+import { useSettingsService } from '../../../services';
+import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings } from '../../../states';
+import useMapHelpers from '../../../helpers/MapHelpers';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import WIPImage from '../../../utils/images/work_in_progress.svg';
 
@@ -29,6 +30,18 @@ const DistrictSidebar = () => {
     const navigate = useNavigate();
     const { cifData: { properties } } = useRecoilValue(mapFeatureState);
     const [currency, setCurrency] = useState<string>("$");
+    // all settings's data
+    const settingsService = useSettingsService();
+    const settings: SettingsData = useRecoilValue(AllSettingsState);
+    const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
+    const { getCurrencyWithSymbol } = useMapHelpers();
+	
+    
+	//function to get all the user's setting
+    useEffect(() => {
+        settingsService.getAllSettings();
+        settingsService.getUserSettings();
+    }, []);
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
@@ -46,12 +59,12 @@ const DistrictSidebar = () => {
                 <h6 className='col-6 text-start m-0 fs-16'>{properties?.region}</h6>
                 <div className='col-6 p-0'>
                     <Select
-                        options={options}
-                        value={currency}
-                        labelKey='currency'
+                        options={settings?.currencies}
+                        value={usersettings?.currency}
+                        labelKey='name'
                         valueKey='symbol'
                         size={SelectSize.small}
-                        onChange={handleChangeCurrency}
+                        name='currency'
                     />
                 </div>
             </div>
@@ -136,15 +149,15 @@ const DistrictSidebar = () => {
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AnnualEHSpend, properties?.EHSpend?.AnnualEHSpendUOM)}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.annualEHSpend, properties?.EHSpend?.annualEHSpendUOM)}</h6>
                                     <p className='fs-10 m-0'>Annual EH Spend</p>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                                    <h6 className='fs-14 m-0'>{properties?.EHSpend?.AverageAnnualEHSpendOnCore ? properties?.EHSpend?.AverageAnnualEHSpendOnCore : "__"}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.averageAnnualEHSpend, properties?.EHSpend?.averageAnnualEHSpendUOM)}</h6>
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend</p>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                                    <h6 className='fs-14 m-0'>{properties?.EHSpend?.AverageAnnualEHSpendOnNonCoreSolutions ? properties?.EHSpend?.AverageAnnualEHSpendOnNonCoreSolutions : "__"}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.averageAnnualEHSpendOnNonCoreSolutions, properties?.EHSpend?.averageAnnualEHSpendOnNonCoreSolutionsUOM)}</h6>
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Non-Core Solutions</p>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
@@ -156,7 +169,7 @@ const DistrictSidebar = () => {
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Education</p>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
-                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AvergeAnnualEHSpendOnFinancialSolutions, properties?.EHSpend?.agricultureMarketSpendUOM)}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHSpend?.AvergeAnnualEHSpendOnAgriMarket, properties?.EHSpend?.agriMarketSpendUOM)}</h6>
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Agri Markets</p>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
@@ -173,15 +186,16 @@ const DistrictSidebar = () => {
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
-                                    <h6 className='fs-14 m-0'>{properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSources ? properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSources : "__"}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSources, properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSourcesUOM)}</h6>
                                     <p className='fs-10 m-0'>Average Annual EH Borrowing from Formal Sources</p>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
-                                    <h6 className='fs-14 m-0'>{properties?.EHBorrow?.averageAnnualEHBorrowing ? properties?.EHBorrow?.averageAnnualEHBorrowing : "__"}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}</h6>
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Borrowing</p>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                                    <h6 className='fs-14 m-0'>{properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources ? properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources : "__"}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}
+                                    {properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources ? properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources : "__"}</h6>
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Borrowing from Informal Sources</p>
                                 </div>
                             </div>

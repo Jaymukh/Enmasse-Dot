@@ -48,8 +48,7 @@ export default function EditProfile({
         }
         else{
             toast.error('All fields are mendatory!');
-        }
-        
+        }        
     };
 
     return (
@@ -75,6 +74,7 @@ export default function EditProfile({
                     value={updatedData.email_id}
                     name='email_id'
                     onChange={(e) => handleChangeData(e)}
+                    disabled={true}
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Phone Number</h6>
                 <Input
@@ -103,14 +103,12 @@ export default function EditProfile({
                     onChange={(e) => handleChangeData(e)}
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Company</h6>
-                <Select
-                    options={Constants?.company}
-                    value={updatedData?.company}
-                    labelKey='value'
-                    valueKey='value'
-                    size={SelectSize.large}
-                    onChange={(e) => handleChangeData(e)}
+                <Input
+                    type="text"
+                    placeholder="Enter your Company name"
+                    value={updatedData.company}
                     name='company'
+                    onChange={(e) => handleChangeData(e)}
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
                 <Select

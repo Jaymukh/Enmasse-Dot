@@ -5,11 +5,12 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 import { useEffect, useState } from 'react';
 import { mapFeatureState } from '../../states';
 import { useRecoilValue } from 'recoil';
-import { getCurrencyWithSymbol } from '../../helpers';
+import useMapHelpers from '../../helpers/MapHelpers';
 import { Legend } from '../ui/legend/Legend';
 
 const OverViewMap = () => {
     const mapFeatures = useRecoilValue(mapFeatureState);
+    const { getCurrencyWithSymbol } = useMapHelpers();
     const [cardData, setCardData] = useState<any>([]);
     useEffect(() => {
         const cifData = mapFeatures?.cifData?.properties;

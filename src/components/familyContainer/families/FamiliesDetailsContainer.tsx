@@ -12,6 +12,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import familySkeleton from '../../../utils/images/family-skeleton.png';
 import { useSearchParams } from 'react-router-dom';
 import FamiliesSorting from './FamiliesSorting';
+import useMapHelpers from '../../../helpers/MapHelpers';
 
 interface FamiliesDetailsContainerProps {
     handleFamilyVisible: (data: any, index: number) => void;
@@ -24,6 +25,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
     const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
     const setSpinner = useSetRecoilState(spinnerState);
+    const { getCurrencyWithSymbol } = useMapHelpers();
     const [previousDisabled, setPreviousDisabled] = useState(true);
     const [nextDisabled, setNextDisabled] = useState(true);
     const [paginationData, setPaginationData] = useState<{ geoCode: number, pageNumber: number, storiesPerPage: number }>({ geoCode: Number(searchParams.get('geo_code')), pageNumber: 1, storiesPerPage: 2 });
@@ -99,7 +101,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
                             <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
-                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover', minHeight: '9rem' }} src={data?.image ? data?.image : familySkeleton} alt="Family image" />
+                                <img className="rounded-top" style={{ width: '100%', height: '60%', objectFit: 'cover', minHeight: '9rem' }} src={data?.image ? data?.image : familySkeleton} alt="Family" />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
                                         <Heading
@@ -113,7 +115,7 @@ const FamiliesDetailsContainer: React.FC<FamiliesDetailsContainerProps> = ({ han
                                     <p className="card-text text-left fs-12 mb-2">{data?.district}, {data?.state}, {data?.country}</p>
                                     {(data?.familyDetails.familyMembers) &&
                                         (<div>
-                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text color-green-0'>${data?.familyDetails.householdSpend ? data?.familyDetails.householdSpend : '_ _'}</span>Annual Household Spend on Education</p>
+                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text color-green-0'>{getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}</span>Annual Household Spend on Education</p>
                                         </div>)
                                     }
                                 </div>

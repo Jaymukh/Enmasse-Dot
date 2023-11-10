@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../../../App.css';
 import { BiArrowBack } from 'react-icons/bi';
 import { MdOutlineArrowForward } from 'react-icons/md';
@@ -36,7 +36,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedFamily, selec
                     {stories?.family.map((data, index) => (
                         <div className={`carousel-item h-100 ${index === selectedFamily ? ' active' : ''}`} key={index}>
                             <div className="d-flex flex-row align-items-center h-100">
-                                <img src={data?.image ? data?.image : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family Image" />
+                                <img src={data?.image ? data?.image : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family" />
                                 <div className="d-flex flex-column align-items-start justify-content-center my-auto mx-2 px-1 w-100 h-100">
                                     <div className='d-flex flex-row justify-content-between align-items-center w-100 m-auto my-0' >
                                         <Heading
