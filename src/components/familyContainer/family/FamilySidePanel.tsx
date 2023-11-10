@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-=======
 import React from 'react';
->>>>>>> 811f74a24e4e5b4a11cdd4922bded4d47e0063aa
 import '../../../App.css';
 import { BiArrowBack } from 'react-icons/bi';
 import { MdOutlineArrowForward } from 'react-icons/md';
