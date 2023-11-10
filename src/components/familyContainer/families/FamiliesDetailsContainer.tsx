@@ -67,6 +67,13 @@ const FamiliesDetailsContainer = () => {
         setIterator(iterator - 1);
     };
 
+    const handlePaginationData = (data: any) => {
+        // let newPaginationData = { ...paginationData };
+        // data.forEach((item: any) => newPaginationData = { ...newPaginationData, item })
+        // console.log(newPaginationData)
+        // setPaginationData(newPaginationData);
+    }
+
     useEffect(() => {
         setTotalStoryInfo({
             totalPages: Math.ceil(totalStoryInfo.totalStories / paginationData.storiespp),
@@ -96,7 +103,7 @@ const FamiliesDetailsContainer = () => {
                     colour={TypographyColor.dark}
                     classname='text-start mt-4 ms-2'
                 />
-                <FamiliesSorting />
+                <FamiliesSorting handlePaginationData={handlePaginationData} />
             </div>
             <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflow: 'auto' }}>
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>

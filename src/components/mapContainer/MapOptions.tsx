@@ -49,7 +49,7 @@ function MapOptions({
                         theme={ButtonTheme.primary}
                         size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
-                        onClick={handleGlobal}
+                        // onClick={handleGlobal}
                         classname='h-100 text-start ps-0 py-0'
                     >
                         Global

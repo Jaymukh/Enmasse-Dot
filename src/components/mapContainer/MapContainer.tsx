@@ -95,7 +95,7 @@ function MapContainer() {
     const handleBreadcrumbClick = (item: BreadcrumbItem, index: number) => {
         if (index !== breadcrumbList.length - 1) {
             if (item.key === 'global') {
-                handleGlobal();
+                // handleGlobal();
             } else {
                 updateSelected(item.key, item.geo_id);
             }

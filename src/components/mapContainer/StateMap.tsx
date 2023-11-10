@@ -49,14 +49,14 @@ const StateMap: React.FC<StateMapProps> = ({
     });
 
     const mapOptions = {
-        // disableDefaultUI: true,
+        disableDefaultUI: true,
         mapTypeControl: false,
         streetViewControl: false,
         styles: MapConstants.NonGlobalMapStyle,
         isFractionalZoomEnabled: true,
         keyboardShortcuts: false,
         gestureHandling: "none", //manual zoom handling
-        // zoomControl: false,
+        zoomControl: false,
     };
 
     const toggleSwitch = (event?: React.ChangeEvent<HTMLInputElement>) => {

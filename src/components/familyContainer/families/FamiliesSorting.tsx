@@ -5,19 +5,19 @@ import { BiMenuAltLeft } from 'react-icons/bi';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import * as Constants from '../../../utils/constants/Constants';
 import { useNavigate } from 'react-router-dom';
-import { loggedUserState, visiblePanelState } from '../../../states';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { useUserService } from '../../../services';
+import { useStoriesService, useUserService } from '../../../services';
+import { FamiliesSortingItem } from '../../../utils/constants/Constants';
 
+interface FamiliesSortingProps {
+	handlePaginationData: (data: any) => void;
+}
 
-
-const FamiliesSorting = () => {
+const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const navigate = useNavigate();
 	const userService = useUserService();
-	const loggedUser = useRecoilValue(loggedUserState);
-	const setVisiblePanel = useSetRecoilState(visiblePanelState);
+	const storiesService = useStoriesService();
 
 	useEffect(() => {
 		userService.getUserDetails();
@@ -27,8 +27,9 @@ const FamiliesSorting = () => {
 		Boolean(anchorEl) ? setAnchorEl(null) : setAnchorEl(event.currentTarget);
 	};
 
-	const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, route: string) => {
-		setVisiblePanel('/' + route);
+	const handleClickMenuItem = (item: FamiliesSortingItem) => {
+		const param = item.param;
+		handlePaginationData(param);
 		handleClose();
 	};
 
@@ -36,37 +37,37 @@ const FamiliesSorting = () => {
 		setAnchorEl(null);
 	};
 
-    const handleClickOutside = (event: { target: any; }) => {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
-            handleClose();
-        }
-    };
+	const handleClickOutside = (event: { target: any; }) => {
+		if (menuRef.current && !menuRef.current.contains(event.target)) {
+			handleClose();
+		}
+	};
 
 	useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
 
 	return (
 		<div className='family-menu' ref={menuRef}>
-            <Button
-                    theme={ButtonTheme.primary}
-                    size={ButtonSize.small}
-                    variant={ButtonVariant.transparent}
-                    onClick={(e) => handleMenuClick(e)}
-                    classname='m-0 h-auto'
-                >
-                    <BiMenuAltLeft fontSize={22} />                    
-                </Button>
+			<Button
+				theme={ButtonTheme.primary}
+				size={ButtonSize.small}
+				variant={ButtonVariant.transparent}
+				onClick={(e) => handleMenuClick(e)}
+				classname='m-0 h-auto'
+			>
+				<BiMenuAltLeft fontSize={22} />
+			</Button>
 			{Boolean(anchorEl) &&
 				(<ul className='family-menu-dropdown '>
 					{Constants.familiesSortingItems.map((item) => (
 						<li
 							key={item.key}
 							className='family-menu-item d-flex fs-16'
-							onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
+							onClick={() => handleClickMenuItem(item)}
 						>
 							<span>{item.text}</span>
 						</li>

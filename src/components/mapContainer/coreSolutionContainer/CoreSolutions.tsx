@@ -100,7 +100,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 </div>
             </div>
             <div className='mb-3'>
-                <Legend />
+                <Legend hasLegendValue={true}/>
             </div>
             
             {requestLayersDrawerOpen && <RequestLayers requestLayersDrawerOpen={requestLayersDrawerOpen} handleRequestLayersDrawer={handleRequestLayersDrawer} />}

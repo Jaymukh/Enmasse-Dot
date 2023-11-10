@@ -662,36 +662,31 @@ export const families: FamiliesData = {
 export interface FamiliesSortingItem {
     key: number;
     text: string;
-    param: string;
+    param: any;
 
 }
 
 export const familiesSortingItems: FamiliesSortingItem[] = [
     {
         key: 1,
-        text: "Ascending (A to Z)",
-        param: '',
+        text: "Latest Updated (A to Z)",
+        param: [{ sort_by: 'updated_time' }],
     },
     {
         key: 2,
-        text: "Descending (Z to A)",
-        param: '',
+        text: "Latest Updated (Z to A)",
+        param: [{ sort_by: 'updated_time' }, { reverse: 'True' }],
     },
     {
         key: 3,
-        text: "Latest Updated",
-        param: '',
+        text: "Family Name (A to Z)",
+        param: [{ sort_by: 'family_name' }],
     },
     {
         key: 4,
-        text: "Newly Created",
-        param: '',
-    },
-    {
-        key: 5,
-        text: "Family Name",
-        param: '',
-    },
+        text: "Family Name (Z to A)",
+        param: [{ sort_by: 'family_name' }, { reverse: 'True' }],
+    }
 ];
 export interface ExplorePlace {
     code: string;
