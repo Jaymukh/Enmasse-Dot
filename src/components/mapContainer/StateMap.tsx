@@ -233,8 +233,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                                     disableAutoPan: true,
                                                     margin: 0,
                                                     padding: 0,
-                                                    maxWidth: 230,
-                                                    minWidth: 220,
+                                                   
                                                     borderRadius: 0,
                                                     zIndex: focused === index ? 1000 : 0,
                                                 } as any}
