@@ -3,6 +3,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import { getCurrencyWithSymbol } from '../../helpers';
 
 interface MapPopupProps {
     properties: any;
@@ -20,17 +21,17 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     };
 
     return (
-        <div className="map-popup-grey-text rounded row h-100 w-100" onClick={() => handleFocused(index)}>
-            <div className="col-5 px-0">
+        <div className="map-popup-grey-text rounded row h-100 w-100 d-flex justify-content-between p-1" onClick={() => handleFocused(index)}>
+            <div className="col-3 px-0">
                 <img className="map-popup-story-img rounded" src={properties.image} alt={properties.familyName} />
             </div>
-            <div className="col-7 px-0 d-flex flex-column justify-content-start">
+            <div className="col-8 px-0 d-flex flex-column justify-content-start ps-1">
                 <p className="map-popup-description text-start my-0">
                     <span className="pe-1">{properties.familyDetails.familyMembers} </span>
                     Family members
                 </p>
                 <p className="map-popup-description text-start my-0">
-                    <span className="green-text pe-1">{properties.familyDetails.spendOnEducation} </span>
+                    <span className="green-text pe-1">{getCurrencyWithSymbol(properties.familyDetails.spendOnEducation, properties.familyDetails.spendOnEducationUOM)} </span>
                     Annual household spend on Education
                 </p>
                 <Button

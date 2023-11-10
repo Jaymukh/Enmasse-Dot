@@ -208,7 +208,7 @@ const StateMap: React.FC<StateMapProps> = ({
                             options={coreSolutions}
                         />
                     </div>
-                    <div className='col-9 p-0' style={{ height: '80.25vh' }}>
+                    <div className='col-9 p-0 d-flex justify-content-center align-items-center' style={{ height: '80.25vh' }}>
                         {apiKey && (
                             <LoadScript
                                 googleMapsApiKey={apiKey}
@@ -230,8 +230,11 @@ const StateMap: React.FC<StateMapProps> = ({
                                                 }}
                                                 // onClose={handleHoverEnd}                                                
                                                 options={{
+                                                    disableAutoPan: true,
+                                                    margin: 0,
                                                     padding: 0,
-                                                    maxWidth: 206,
+                                                    maxWidth: 230,
+                                                    minWidth: 220,
                                                     borderRadius: 0,
                                                     zIndex: focused === index ? 1000 : 0,
                                                 } as any}
