@@ -8,9 +8,10 @@ interface InputProps {
     name?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     classname?: string;
+    disabled?: boolean;
 }
 
-export const Input = ({ type, placeholder, value, name, onChange, classname }: InputProps) => {
+export const Input = ({ type, placeholder, value, name, onChange, classname, disabled }: InputProps) => {
     return(
         <input
             type={type}
@@ -18,6 +19,7 @@ export const Input = ({ type, placeholder, value, name, onChange, classname }: I
             value={value}
             name={name}
             onChange={onChange}
+            disabled={disabled}
             className={`${styles.input} ${classname} w-100`}
         >
 

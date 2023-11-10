@@ -1,4 +1,4 @@
-import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil';
+import { useSetRecoilState, useRecoilState } from 'recoil';
 import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
 import { authState, loggedUserState, usersState, spinnerState, overlayState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 const useUserService = () => {
     const fetchWrapper = useFetchWrapper();
     const [auth, setAuth] = useRecoilState(authState);
-    const [overlay, setOverlay] = useRecoilState(overlayState);
+    const setOverlay = useSetRecoilState(overlayState);
     const setLoggedUser = useSetRecoilState(loggedUserState);
     const setUsers = useSetRecoilState(usersState);
     const setSpinner = useSetRecoilState(spinnerState);

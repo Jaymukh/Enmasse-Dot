@@ -1,13 +1,13 @@
-import '../../App.css';
-import '../../styles/main.css';
-import IndiaMap from '../../utils/images/IndiaMap.png';
-import CoreSolutions from '../../utils/images/CoreSolutions.png';
-import * as Constants from '../../utils/constants/Constants';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
-import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
-import Modal from '../ui/modal/Modal';
+import '../../../App.css';
+import '../../../styles/main.css';
+import IndiaMap from '../../../utils/images/IndiaMap.png';
+import CoreSolutions from '../../../utils/images/CoreSolutions.png';
+import * as Constants from '../../../utils/constants/Constants';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import Modal from '../../ui/modal/Modal';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { overlayState, helpState } from '../../states';
+import { overlayState, helpState } from '../../../states';
 
 const OverlayModal = () => {
     const overlay = useRecoilValue(overlayState);
@@ -39,10 +39,10 @@ const OverlayModal = () => {
         <div>
             <Modal showModal={overlay} classname='width-62-5'>
                 {
-                    (showHelp == 0) &&
+                    (showHelp === 0) &&
                     <div className='d-flex flex-row justify-content-center mb-2'>
                         <div className="col-6">
-                            <img src={IndiaMap} alt="India Map Image" width='75%' />
+                            <img src={IndiaMap} alt="India Map" width='75%' />
                         </div>
                         <div className="col-6 d-flex flex-column justify-content-center align-items-start">
                             <Heading
@@ -73,7 +73,7 @@ const OverlayModal = () => {
                         </div>
                         <div className='d-flex flex-row justify-content-center mb-2'>
                             <div className="col-6">
-                                <img src={CoreSolutions} alt="Core Solutions Image" width='50%' />
+                                <img src={CoreSolutions} alt="Core Solutions" width='50%' />
                             </div>
                             <div className="col-6 d-flex flex-column justify-content-center align-items-start">
                                 <Heading

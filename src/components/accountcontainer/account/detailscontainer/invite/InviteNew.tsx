@@ -98,6 +98,14 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='email_id'
                         onChange={(e) => handleChangeData(e)}
                     />
+                    <h6 className='mt-1 font-87-5 text-start'>Company</h6>
+                    <Input
+                        type="text"
+                        placeholder="Enter your Company name"
+                        value={newData?.company}
+                        name='company'
+                        onChange={(e) => handleChangeData(e)}
+                    />
                     <h6 className='my-1 font-87-5 text-start'>Role</h6>
                     <Select
                         options={settings?.roles}
@@ -107,16 +115,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='role'
-                    />
-                    <h6 className='mt-1 font-87-5 text-start'>Company</h6>
-                    <Select
-                        options={Constants?.company}
-                        value={newData?.company}
-                        labelKey='value'
-                        valueKey='value'
-                        size={SelectSize.large}
-                        name='company'
-                    />
+                    />                    
                     <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
                     <Select
                         options={settings?.company_types}

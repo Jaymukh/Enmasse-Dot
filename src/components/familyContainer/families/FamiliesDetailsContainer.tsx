@@ -14,12 +14,14 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import familySkeleton from '../../../utils/images/family-skeleton.png';
 import FamiliesSorting from './FamiliesSorting';
 import { RouteConstants } from '../../../constants';
+import useMapHelpers from '../../../helpers/MapHelpers';
 
 const FamiliesDetailsContainer = () => {
     const navigate = useNavigate();
     const storiesService = useStoriesService();
     const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
+    const { getCurrencyWithSymbol } = useMapHelpers();
     const getSelectedObject = () => {
         const params: any = {};
         searchParams?.toString().split('&').forEach((param) => {
@@ -29,6 +31,11 @@ const FamiliesDetailsContainer = () => {
         return params;
     }
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
+    // const setSpinner = useSetRecoilState(spinnerState);
+    // const { getCurrencyWithSymbol } = useMapHelpers();
+    // const [previousDisabled, setPreviousDisabled] = useState(true);
+    // const [nextDisabled, setNextDisabled] = useState(true);
+    // const [paginationData, setPaginationData] = useState<{ geoCode: number, pageNumber: number, storiesPerPage: number }>({ geoCode: Number(searchParams.get('geo_code')), pageNumber: 1, storiesPerPage: 2 });
     const [iterator, setIterator] = useState(0);
     const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 })
 
@@ -124,7 +131,7 @@ const FamiliesDetailsContainer = () => {
                                     <p className="card-text text-left fs-12 mb-2">{data?.district}, {data?.state}, {data?.country}</p>
                                     {(data?.familyDetails.familyMembers) &&
                                         (<div>
-                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text color-green-0'>${data?.familyDetails.householdSpend ? data?.familyDetails.householdSpend : '_ _'}</span>Annual Household Spend on Education</p>
+                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text color-green-0'>{getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}</span>Annual Household Spend on Education</p>
                                         </div>)
                                     }
                                 </div>

@@ -7,8 +7,8 @@ import ChangePassword from './ChangePassword';
 import UpdateSuccessModal from './UpdateSuccessModel';
 import { RouteConstants } from '../../../../../constants';
 import { useNavigate } from 'react-router-dom';
-import { AllSettingsState, UserSettingsState, SettingsData, UserSettings, spinnerState } from "../../../../../states";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
+import { useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 import Select, { SelectSize } from '../../../../ui/select/Select';
@@ -28,10 +28,9 @@ const Settings: React.FC<SettingsProps> = () => {
     const [open, setOpen] = useState(false);
     // all settings's data
     const settings: SettingsData = useRecoilValue(AllSettingsState);
-    const [usersettings, setUserSettings] = useRecoilState<UserSettings>(UserSettingsState);
+    const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
     const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
     const settingsService = useSettingsService();
-    const setSpinner = useSetRecoilState(spinnerState);
 
     const handleUpdateClick = () => {
         handleDrawer(false);
@@ -44,18 +43,6 @@ const Settings: React.FC<SettingsProps> = () => {
     const handleEditClick = (editMode?: boolean) => {
         setEditMode(editMode!);
     };
-    //function to get logged users
-    const getLoggedUserSettings = () => {
-        setSpinner(true);
-        settingsService.getUserSettings().then((response) => {
-            if (response) {
-                setUserSettings(response);
-                setSpinner(false);
-            }
-        }).catch(error => {
-            setSpinner(false);
-        });
-    };
     const handleShowModal = (flag: boolean, navigateFlag?: boolean) => {
         setShowModal(flag);
         if (navigateFlag) {
@@ -67,11 +54,11 @@ const Settings: React.FC<SettingsProps> = () => {
         setIsChecked(!isChecked);
     };
 
-    //function to get all the users
+    //function to get all the user's setting
     useEffect(() => {
         settingsService.getAllSettings();
-        getLoggedUserSettings();
-    }, []);
+        settingsService.getUserSettings()
+    }, [settingsService]);
 
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
@@ -116,7 +103,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         valueKey='name'
                         size={SelectSize.large}
                         name='language'
-                        disabled={!editMode}
+                        disabled={true}
                     />
                     <h6 className='mt-2 text-start'>Currency Preference</h6>
                     <Select
@@ -126,7 +113,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         valueKey='name'
                         size={SelectSize.large}
                         name='currency'
-                        disabled={!editMode}
+                        disabled={true}
                     />
                     <h6 className='mt-2 text-start'>Location Focus</h6>
                     <Select
@@ -136,15 +123,16 @@ const Settings: React.FC<SettingsProps> = () => {
                         valueKey='name'
                         size={SelectSize.large}
                         name='location'
-                        disabled={!editMode}
+                        disabled={true}
                     />
                     <h6 className='mt-2 text-start'>Notifications</h6>
                     <div className='d-flex justify-content-between align-items-center px-3 py-2 input-div'>
-                        <h6 className='color-black m-0' >Receive email notifications</h6>
+                        <h6 className='m-0' >Receive email notifications</h6>
                         <Switch
                             isChecked={usersettings?.email_notification}
                             toggleSwitch={toggleSwitch}
                             name='email_notification'
+                            disabled={true}
                         />
                     </div>
                 </div>
