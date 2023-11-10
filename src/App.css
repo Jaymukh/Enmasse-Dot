@@ -21,23 +21,18 @@
 	--pink-color: #f45eac;
 
 }
-
-.height-2-25 {
+.height-2-25{
 	height: 2.25rem !important;
 }
-
-.height-3 {
+.height-3{
 	height: 3rem !important;
 }
-
 .width-5 {
 	width: 5rem !important;
 }
-
 .width-26-625 {
 	width: 26.625rem
 }
-
 .width-10 {
 	width: 10rem !important;
 }
@@ -111,7 +106,7 @@ a {
 
 .select-right-margin {
 	border-right: 0.5px solid #D2D4D6;
-	width: 11.25rem;
+	width: 11.25rem;    
 }
 
 .primary-select-box .css-1t0qkoj-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
@@ -554,14 +549,13 @@ a {
 
 /* profile page css */
 .editImageBtn {
-	padding: auto !important;
-	height: 2rem !important;
-	width: 2rem !important;
-	padding: 0;
+    padding: auto !important;
+    height: 2rem !important;
+    width: 2rem !important;
+    padding: 0;
 	margin-right: 1rem;
-	margin-top: -3rem;
+    margin-top: -3rem;
 }
-
 /* .profileImageAlignment {
 	right: 45%!important;
     bottom: 30%!important;
@@ -571,7 +565,6 @@ a {
 	list-style: none;
 	text-align: start;
 }
-
 .upload-image-box {
 	width: 15rem;
 	height: 15rem;
@@ -678,8 +671,6 @@ a {
 	font-size: 0.825rem;
 	color: #B4B4B4;
 	font-family: 'Lato', sans-serif;
-	margin-left: 0.1px;
-	width: 12.625rem;
 }
 
 .map-popup-description {
@@ -689,24 +680,8 @@ a {
 }
 
 .map-popup-story-img {
-	object-fit: cover;
-	height: 100%;
-	width: 3.5rem;
-}
-
-button.gm-ui-hover-effect {
-    visibility: hidden;
-}
-
-div.gm-style-iw-c {
-	padding: 0 !important;
-	border: 1px solid #108041;
-	width: 12.625rem;
-}
-
-div.gm-style-iw-c .gm-style-iw-d {
-	padding: 0 !important;
-	display: inline;
+	height: 3.25rem;
+	border-radius: 5px;
 }
 
 .green-text {
@@ -867,7 +842,7 @@ div.gm-style-iw-c .gm-style-iw-d {
 th {
 	height: 3.25rem;
 	text-align: start;
-	padding: 0rem 0.875rem;
+	padding: 0rem 0.875rem;	
 	font-weight: 500;
 }
 
@@ -925,10 +900,9 @@ th {
 	margin-top: 2rem;
 	border-style: outset;
 	border-color: var(--black-1);
-	border-width: 2px;
+	border-width: 2px; 
 	opacity: unset;
 }
-
 .NextBtn {
 	margin-right: -1.2rem;
 	background-color: white;
@@ -937,10 +911,10 @@ th {
 	margin-top: 2rem;
 	border-style: outset;
 	border-color: var(--black-1);
-	border-width: 2px;
+	border-width: 2px; 
 	opacity: unset;
-}
-
+  }
+  
 
 .iconNextPrev {
 	color: var(--blackColor);
@@ -983,8 +957,8 @@ th {
 }
 
 .map-container-sm {
-	width: 16.5rem;
-	height: 16rem;
+    width: 16.5rem;
+    height: 16rem;
 }
 
 .cursor-pointer {
@@ -1004,7 +978,7 @@ th {
 
 ::-webkit-scrollbar {
 	width: 0.25rem;
-	/* background-color: #000000; */
+		/* background-color: #000000; */
 	/* background: transparent; */
 }
 
@@ -1015,7 +989,7 @@ th {
 ::-webkit-scrollbar-thumb {
 	background-color: var(--scrollbar-thumb);
 	border-radius: 0.3125rem;
-}
+  }
 
 .font-lato {
 	font-family: 'Lato', sans-serif;
@@ -1347,7 +1321,6 @@ th {
 	margin-left: 5px;
 	margin-right: 5px;
 }
-
 /* Help options */
 .help-menu {
 	position: relative;
@@ -1357,7 +1330,7 @@ th {
 	position: absolute;
 	padding: 1.25rem 1.25rem 0 1.25rem !important;
 	top: 106%;
-	right: -85px;
+    right: -85px;
 	background-color: #fff;
 	z-index: 1000 !important;
 	border-radius: 0.3125rem;
@@ -1392,3 +1365,6 @@ th {
 	margin-left: 5px;
 	margin-right: 5px;
 }
+
+
+
