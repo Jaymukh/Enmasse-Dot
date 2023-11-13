@@ -5,11 +5,7 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 import { useEffect, useState } from 'react';
 import { mapFeatureState } from '../../states';
 import { useRecoilValue } from 'recoil';
-<<<<<<< HEAD
 import { useMapHelpers } from '../../helpers';
-=======
-import useMapHelpers from '../../helpers/mapHelpers';
->>>>>>> 0faaf0096becf9df358514bb6c46a06247c9cb96
 import { Legend } from '../ui/legend/Legend';
 
 const OverViewMap = () => {
