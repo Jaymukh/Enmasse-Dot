@@ -18,7 +18,6 @@ export interface CifData {
         geo_id: string;
         region: string;
         address: string;
-        geo_name: string;
         totalPopulationActualValue: number;
         totalPopulation: string;
         totalHouseholdsActualValue: number;

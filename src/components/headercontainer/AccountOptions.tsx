@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { loggedUserState } from '../../states';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { useUserService } from '../../services';
+import { useSettingsService, useUserService } from '../../services';
 import { ButtonAvatar } from '../ui/button/ButtonAvatar';
 import { Button, ButtonTheme, ButtonVariant, ButtonSize } from '../ui/button/Button';
 import { visiblePanelState } from '../../states';
@@ -18,11 +18,14 @@ const AccountOptions = () => {
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const navigate = useNavigate();
 	const userService = useUserService();
+	const settingsService = useSettingsService();
 	const loggedUser = useRecoilValue(loggedUserState);
 	const setVisiblePanel = useSetRecoilState(visiblePanelState);
 
 	useEffect(() => {
 		userService.getUserDetails();
+		settingsService.getAllSettings();
+		settingsService.getUserSettings();
 	}, []);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -42,20 +45,20 @@ const AccountOptions = () => {
 	const handleLogout = () => {
 		userService.logout();
 		handleClose();
-	}	
+	}
 
-    const handleClickOutside = (event: { target: any; }) => {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
-            handleClose();
-        }
-    };
+	const handleClickOutside = (event: { target: any; }) => {
+		if (menuRef.current && !menuRef.current.contains(event.target)) {
+			handleClose();
+		}
+	};
 
 	useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
 
 	return (
 		<div className='account-menu' ref={menuRef}>
@@ -80,14 +83,14 @@ const AccountOptions = () => {
 					</li>
 					{Constants.accountMenuItems.map((item) => (
 						(loggedUser.role === 'Admin' || item.key !== 2) && (
-						<li
-							key={item.key}
-							className='menu-item d-flex fs-16'
-							onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
-						>
-							<div>{item.icon}</div>
-							<span>{item.text}</span>
-						</li>)
+							<li
+								key={item.key}
+								className='menu-item d-flex fs-16'
+								onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
+							>
+								<div>{item.icon}</div>
+								<span>{item.text}</span>
+							</li>)
 					))}
 					<hr className='m-0' />
 					<Button theme={ButtonTheme.primary} size={ButtonSize.large} variant={ButtonVariant.transparent} classname='menu-item d-flex logout my-1' onClick={handleLogout}>

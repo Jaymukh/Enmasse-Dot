@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
-import useMapHelpers from '../../../helpers/MapHelpers';
+import { useMapHelpers } from '../../../helpers';
 
 interface FamilyDetailsContainerProps {
     selectedData: any; // Update with appropriate type
@@ -22,36 +22,36 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                         <p className="card-text text-left fs-12">{selectedData?.district}, {selectedData?.state}, {selectedData?.country}</p>
                     </div>
                     <div className="d-flex flex-column justify-content-end text-end">
-                        <span className='fs-14 me-1 bold-text color-green-0'>{getCurrencyWithSymbol(selectedData.familyDetails.householdSpend, selectedData.familyDetails.spendUOM)}</span>
+                        <span className='fs-14 me-1 bold-text color-green-0'>{getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}</span>
                         <p className='mx-0 fs-10'>Annual Household Spend on Education</p>
-                    </div> 
+                    </div>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-between my-2">
                     {
                         selectedData?.familyDetails?.familyMembers &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{selectedData.familyDetails.familyMembers}</b>
+                            <b className="fs-14 me-1">{selectedData?.familyDetails?.familyMembers}</b>
                             <p className="card-title text-muted fs-10">Family members</p>
                         </div>
-                    } 
+                    }
                     {
                         selectedData?.familyDetails?.householdSpend &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData.familyDetails.householdSpend, selectedData.familyDetails.spendUOM)}</b>
+                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}</b>
                             <p className="card-title text-muted fs-10">Household Spend</p>
                         </div>
                     }
                     {
                         selectedData?.familyDetails?.householdBorrowing &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData.familyDetails.householdBorrowing, selectedData.familyDetails.borrowUOM)}</b>
+                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdBorrowing, selectedData?.familyDetails?.borrowUOM)}</b>
                             <p className="card-title text-muted fs-10">Household Borrowing</p>
                         </div>
                     }
                     {
                         selectedData?.familyDetails?.householdIncome &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData.familyDetails.householdIncome, selectedData.familyDetails.incomeUOM)}</b>
+                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdIncome, selectedData?.familyDetails?.incomeUOM)}</b>
                             <p className="card-title text-muted fs-10">Household Income</p>
                         </div>
                     }

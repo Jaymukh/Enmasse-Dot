@@ -18,7 +18,7 @@ const TABLE_HEADERS: TableProps = {
             { KEY: 'geo_value', VALUE: 'State' },
             { KEY: 'area', VALUE: 'Area (sq.Km)' },
             { KEY: 'ehPopulation', VALUE: 'EH Population' },
-            { KEY: 'totalEhGtv', VALUE: 'Average Annual EH Transactional Value', UOM: 'averageEHTransactionalValueUOM' },
+            { KEY: 'totalEhGtv', VALUE: 'Average Annual EH Transactional Value', UOM: 'totalEhGtvUOM' },
             { KEY: 'poi', VALUE: 'Points of Interest' }
         ],
     },
@@ -28,10 +28,10 @@ const TABLE_HEADERS: TableProps = {
         KEYS: [
             { KEY: 'geoName', VALUE: 'State' },
             { KEY: 'entrepreneurialHouseholds', VALUE: 'Entrepreneurial Households' },
-            { KEY: 'medianAnnualEhSpend', VALUE: 'Median Annual EH Spend' },
-            { KEY: 'medianAnnualEhBorrowing', VALUE: 'Median Annual EH Borrowing' },
-            { KEY: 'medianAnnualEhIncome', VALUE: 'Median Annual EH Income' },
-            { KEY: 'ehTransactionValue', VALUE: 'EH Transcational Value' }
+            { KEY: 'medianAnnualEhSpend', VALUE: 'Median Annual EH Spend', UOM: 'medianAnnualEhSpendUOM' },
+            { KEY: 'medianAnnualEhBorrowing', VALUE: 'Median Annual EH Borrowing', UOM: 'medianAnnualEhBorrowingUOM' },
+            { KEY: 'medianAnnualEhIncome', VALUE: 'Median Annual EH Income', UOM: 'medianAnnualEhIncomeUOM' },
+            { KEY: 'ehTransactionValue', VALUE: 'EH Transcational Value', UOM: 'ehTransactionValueUOM' }
         ],
     },
     // INVITE_TABLE: {

@@ -22,7 +22,6 @@ const DashBoard = () => {
     const cifData = useRecoilValue(cifState);
     const mapFeatures = useRecoilValue(mapFeatureState);
     const geoCode = searchParams.get('geo_code');
-    console.log(cifData)
 
     useEffect(() => {
         if (geoCode) {

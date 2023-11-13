@@ -30,7 +30,7 @@ const Settings: React.FC<SettingsProps> = () => {
     const settings: SettingsData = useRecoilValue(AllSettingsState);
     const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
     const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
-    const settingsService = useSettingsService();
+    
 
     const handleUpdateClick = () => {
         handleDrawer(false);
@@ -53,12 +53,6 @@ const Settings: React.FC<SettingsProps> = () => {
     const toggleSwitch = () => {
         setIsChecked(!isChecked);
     };
-
-    //function to get all the user's setting
-    useEffect(() => {
-        settingsService.getAllSettings();
-        settingsService.getUserSettings()
-    }, [settingsService]);
 
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>

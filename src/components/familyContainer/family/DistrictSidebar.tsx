@@ -11,7 +11,7 @@ import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import { useRecoilValue } from 'recoil';
 import { useSettingsService } from '../../../services';
 import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings } from '../../../states';
-import useMapHelpers from '../../../helpers/MapHelpers';
+import { useMapHelpers } from '../../../helpers';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import WIPImage from '../../../utils/images/work_in_progress.svg';
 
@@ -35,9 +35,9 @@ const DistrictSidebar = () => {
     const settings: SettingsData = useRecoilValue(AllSettingsState);
     const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
     const { getCurrencyWithSymbol } = useMapHelpers();
-	
-    
-	//function to get all the user's setting
+
+
+    //function to get all the user's setting
     useEffect(() => {
         settingsService.getAllSettings();
         settingsService.getUserSettings();
@@ -69,7 +69,7 @@ const DistrictSidebar = () => {
                 </div>
             </div>
             <div className="row d-flex justify-content-center pt-1 mx-0 px-3 h-100 pb-5" style={{ overflow: 'auto' }}>
-                <div className='row data-card px-3 d-flex flex-row mx-0 my-2' style={{height: 'fit-content'}}>
+                <div className='row data-card px-3 d-flex flex-row mx-0 my-2' style={{ height: 'fit-content' }}>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
                         <h6 className='fs-14 m-0'>{properties?.totalPopulation ? properties?.totalPopulation : "__"}</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Population</p>
@@ -101,7 +101,7 @@ const DistrictSidebar = () => {
                 </div>
                 {properties?.showExploreMore ?
                     <div className='m-0 p-0'>
-                        {properties?.EICoverage && (properties?.geo_name !=='district') && <div className='row data-card d-flex flex-row mx-0 my-2 px-2 pt-2 pb-3'>
+                        {properties?.EICoverage && (properties?.geo_name !== 'district') && <div className='row data-card d-flex flex-row mx-0 my-2 px-2 pt-2 pb-3'>
                             <div className='d-flex justify-content-between align-items-center m-0 p-0'>
                                 <div className='d-flex justify-content-start align-items-center m-0 px-0 pb-2'>
                                     <h6 className='me-2 fs-13 my-0'>EI Coverage</h6>
@@ -195,7 +195,7 @@ const DistrictSidebar = () => {
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
                                     <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}
-                                    {properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources ? properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources : "__"}</h6>
+                                        {properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources ? properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources : "__"}</h6>
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Borrowing from Informal Sources</p>
                                 </div>
                             </div>

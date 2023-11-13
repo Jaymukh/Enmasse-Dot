@@ -1,6 +1,6 @@
 import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi';
 import styles from "./Table.module.css";
-import useMapHelpers from '../../../helpers/MapHelpers';
+import { useMapHelpers } from '../../../helpers';
 import { RouteConstants, TableHeaderProps } from '../../../constants';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

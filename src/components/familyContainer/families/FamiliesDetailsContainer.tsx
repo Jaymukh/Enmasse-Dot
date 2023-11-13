@@ -14,7 +14,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import familySkeleton from '../../../utils/images/family-skeleton.png';
 import FamiliesSorting from './FamiliesSorting';
 import { RouteConstants } from '../../../constants';
-import useMapHelpers from '../../../helpers/MapHelpers';
+import { useMapHelpers } from '../../../helpers';
 
 const FamiliesDetailsContainer = () => {
     const navigate = useNavigate();
