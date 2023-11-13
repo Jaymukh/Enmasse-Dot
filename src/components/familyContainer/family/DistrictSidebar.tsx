@@ -11,9 +11,10 @@ import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import { useRecoilValue } from 'recoil';
 import { useSettingsService } from '../../../services';
 import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings } from '../../../states';
-import useMapHelpers from '../../../helpers/MapHelpers';
+import useMapHelpers from '../../../helpers/mapHelpers';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import WIPImage from '../../../utils/images/work_in_progress.svg';
+import RequestData from './RequestData';
 
 const options = [
     {
@@ -35,6 +36,11 @@ const DistrictSidebar = () => {
     const settings: SettingsData = useRecoilValue(AllSettingsState);
     const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
     const { getCurrencyWithSymbol } = useMapHelpers();
+    const [requestDataDrawerOpen, setRequestDataDrawerOpen] = useState(false);
+
+	const handleRequestDataDrawer = (requestDataDrawerOpen: boolean) => {
+		setRequestDataDrawerOpen(requestDataDrawerOpen);
+	};
 	
     
 	//function to get all the user's setting
@@ -234,6 +240,7 @@ const DistrictSidebar = () => {
                             theme={ButtonTheme.primary}
                             size={ButtonSize.default}
                             variant={ButtonVariant.bordered}
+                            onClick={() => handleRequestDataDrawer(true)}
                         >
                             Request Data
                         </Button>
@@ -250,7 +257,7 @@ const DistrictSidebar = () => {
                     <PiArrowRightBold className='ms-2' />
                 </Button>
             </div>
-
+            {requestDataDrawerOpen && <RequestData requestDataDrawerOpen={requestDataDrawerOpen} handleRequestDataDrawer={handleRequestDataDrawer} />}
         </div >
     );
 }

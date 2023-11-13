@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
-import useMapHelpers from '../../../helpers/MapHelpers';
+import useMapHelpers from '../../../helpers/mapHelpers';
 
 interface FamilyDetailsContainerProps {
     selectedData: any; // Update with appropriate type

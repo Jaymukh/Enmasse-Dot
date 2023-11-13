@@ -82,7 +82,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                 toggleFunction={handleCloseInviteNew}
             >
                 <div className='d-flex justify-content-center flex-column'>
-                    <h6 className='mt-1 font-87-5 text-start'>Name</h6>
+                    <h6 className='mt-1 font-87-5 text-start'>Name*</h6>
                     <Input
                         type="text"
                         placeholder="Enter your name"
@@ -90,7 +90,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='name'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Email</h6>
+                    <h6 className='mt-1 font-87-5 text-start'>Email*</h6>
                     <Input
                         type="email"
                         placeholder="Enter your Email ID"
@@ -98,7 +98,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='email_id'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Company</h6>
+                    <h6 className='mt-1 font-87-5 text-start'>Company*</h6>
                     <Input
                         type="text"
                         placeholder="Enter your Company name"
@@ -106,7 +106,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='company'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='my-1 font-87-5 text-start'>Role</h6>
+                    <h6 className='my-1 font-87-5 text-start'>Role*</h6>
                     <Select
                         options={settings?.roles}
                         onChange={(e) => handleChangeData(e)}
@@ -116,7 +116,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={SelectSize.large}
                         name='role'
                     />                    
-                    <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
+                    <h6 className='mt-1 font-87-5 text-start'>Company Type*</h6>
                     <Select
                         options={settings?.company_types}
                         value={newData?.company_type}

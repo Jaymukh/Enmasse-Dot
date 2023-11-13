@@ -84,15 +84,23 @@ export default function EditProfile({
                     name='phone_number'
                     onChange={(e) => handleChangeData(e)}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Role</h6>
+                <h6 className='mt-1 font-87-5 text-start'>Country</h6>
                 <Select
-                    options={settings?.roles}
-                    value={updatedData?.role}
+                    options={settings?.countries}
+                    value={updatedData?.country}
                     labelKey='name'
                     valueKey='name'
                     size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
-                    name='role'
+                    name='company_type'
+                />              
+                <h6 className='mt-1 font-87-5 text-start'>Company</h6>
+                <Input
+                    type="text"
+                    placeholder="Enter your Company name"
+                    value={updatedData.company}
+                    name='company'
+                    onChange={(e) => handleChangeData(e)}
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Designation</h6>
                 <Input
@@ -102,15 +110,19 @@ export default function EditProfile({
                     name='designation'
                     onChange={(e) => handleChangeData(e)}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Company</h6>
-                <Input
-                    type="text"
-                    placeholder="Enter your Company name"
-                    value={updatedData.company}
-                    name='company'
+                <h6 className='mt-1 font-87-5 text-start'>Role</h6>
+                <Select
+                    options={settings?.roles}
+                    value={updatedData?.role}
+                    labelKey='name'
+                    valueKey='name'
+                    size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
+                    name='role'
+                    disabled={true}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
+                
+                {/* <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
                 <Select
                     options={settings?.company_types}
                     value={updatedData?.company_type}
@@ -119,7 +131,7 @@ export default function EditProfile({
                     size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
                     name='company_type'
-                />
+                /> */}
                 <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.large}

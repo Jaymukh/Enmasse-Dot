@@ -4,7 +4,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
-import useMapHelpers from '../../helpers/MapHelpers';
+import useMapHelpers from '../../helpers/mapHelpers';
 
 interface MapPopupProps {
     properties: any;

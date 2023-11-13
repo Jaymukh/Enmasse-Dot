@@ -7,7 +7,7 @@ import '../../styles/main.css';
 import { mapFeatureState, storiesState } from '../../states';
 import { useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
-import useMapHelpers from '../../helpers/MapHelpers';
+import useMapHelpers from '../../helpers/mapHelpers';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 
