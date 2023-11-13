@@ -20,12 +20,13 @@ interface Country {
     name: string;
     description: string;
 }
-
 interface Language {
+    id: number;
     code: string;
     name: string;
+    is_active: boolean;
+    description: string;
 }
-
 interface Currency {
     id: number;
     code: string;
@@ -34,12 +35,13 @@ interface Currency {
     is_active: boolean;
     description: string | null;
 }
-
 interface Location {
+    id: number;
     code: string;
     name: string;
+    is_active: boolean;
+    description: string | null;
 }
-
 export interface SettingsData {
     company_types: CompanyType[];
     roles: Role[];

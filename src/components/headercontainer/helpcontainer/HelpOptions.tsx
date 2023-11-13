@@ -50,9 +50,6 @@ const HelpOptions = () => {
 			case 3:
 				handleRoadmapDrawer(true);
 				break;
-			// default:
-			// Handle cases where the item doesn't match any of the specified cases
-			//   break;
 		}
 		handleClose();
 	};

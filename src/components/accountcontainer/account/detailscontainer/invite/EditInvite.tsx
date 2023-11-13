@@ -57,7 +57,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                 toggleFunction={handleCloseDialog}
             >
                 <div className='d-flex justify-content-center flex-column'>
-                    <h6 className='mt-1 font-87-5 text-start'>Name</h6>
+                    <h6 className='mt-1 font-87-5 text-start'>Name*</h6>
                     <Input
                         type="text"
                         placeholder="Enter your name"
@@ -65,7 +65,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         name='name'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Email</h6>
+                    <h6 className='mt-1 font-87-5 text-start'>Email*</h6>
                     <Input
                         type="email"
                         placeholder="Enter your Email ID"
@@ -73,7 +73,32 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         name='email_id'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Role</h6>
+                    <h6 className='mt-1 font-87-5 text-start'>Company*</h6>
+                    <Input
+                        type="text"
+                        placeholder="Enter your company"
+                        value={updatedData?.company}
+                        name='company'
+                        onChange={(e) => handleChangeData(e)}
+                    />
+                    {/* <Select
+                        options={Constants?.company}
+                        value={updatedData?.company}
+                        labelKey='value'
+                        valueKey='value'
+                        size={SelectSize.large}
+                        name='company'
+                    /> */}
+                    <h6 className='mt-1 font-87-5 text-start'>CompanyType*</h6>
+                    <Select
+                        options={settings?.company_types}
+                        value={updatedData?.company_type}
+                        labelKey='name'
+                        valueKey='name'
+                        size={SelectSize.large}
+                        name='company_type'
+                    />
+                    <h6 className='mt-1 font-87-5 text-start'>Role*</h6>
                     <Select
                         options={settings?.roles}
                         onChange={(e) => handleChangeData(e)}
@@ -82,24 +107,6 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='role'
-                    />
-                    <h6 className='mt-1 font-87-5 text-start'>Company</h6>
-                    <Select
-                        options={Constants?.company}
-                        value={updatedData?.company}
-                        labelKey='value'
-                        valueKey='value'
-                        size={SelectSize.large}
-                        name='company'
-                    />
-                    <h6 className='mt-1 font-87-5 text-start'>CompanyType</h6>
-                    <Select
-                        options={settings?.company_types}
-                        value={updatedData?.company_type}
-                        labelKey='name'
-                        valueKey='name'
-                        size={SelectSize.large}
-                        name='company_type'
                     />
                     <Button
                         theme={ButtonTheme.primary}

@@ -7,7 +7,11 @@ import '../../styles/main.css';
 import { mapFeatureState, storiesState } from '../../states';
 import { useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { useMapHelpers } from '../../helpers';
+=======
+import useMapHelpers from '../../helpers/mapHelpers';
+>>>>>>> 0faaf0096becf9df358514bb6c46a06247c9cb96
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 

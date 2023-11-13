@@ -258,12 +258,12 @@ export default function Profile() {
                             <p className="color-black">{loggedUser.name}</p>
                         </li>
                         <li >
-                            <p className="text-muted fs-6  mb-0">Phone:</p>
-                            <p className="color-black">{loggedUser.phone_number}</p>
+                            <p className="text-muted fs-6  mb-0">Company:</p>
+                            <p className="color-black">{loggedUser.company}</p>
                         </li>
                         <li >
-                            <p className="text-muted fs-6  mb-0">Company Name:</p>
-                            <p className="color-black">{loggedUser.company}</p>
+                            <p className="text-muted fs-6  mb-0">Phone Number:</p>
+                            <p className="color-black">{loggedUser.phone_number}</p>
                         </li>
                         <li >
                             <p className="text-muted fs-6  mb-0">Role:</p>
