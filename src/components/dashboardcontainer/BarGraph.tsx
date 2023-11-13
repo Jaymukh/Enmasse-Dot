@@ -12,6 +12,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { CoreSolutionByEH } from '../../states';
 
 ChartJS.register(
     CategoryScale,
@@ -24,34 +25,24 @@ ChartJS.register(
 );
 
 interface BarGraphProps {
-    selected: string;
+    selected: any;
 }
 
 const BarGraph: React.FC<BarGraphProps> = ({ selected }) => {
-    const graphData = [
-        { year: 'Sub category 1', value: 100 },
-        { year: 'Sub category 2', value: 120 },
-        { year: 'Sub category 3', value: 140 },
-        { year: 'Sub category 4', value: 160 },
-        { year: 'Sub category 5', value: 180 },
-    ];
-    const xKey = 'year';
-    const yKey = 'value';
-
-    const xAxisData = graphData.map(data => data[xKey]);
-    const yAxisData = graphData.map(data => data[yKey]);
+    const xAxisData = selected?.subcategory?.map((data: any) => data['name']);
+    const yAxisData = selected?.subcategory?.map((data: any) => data['value']);
 
     const data = {
         labels: xAxisData,
         datasets: [
             {
-                label: selected,
+                label: selected?.coreSolution,
                 data: yAxisData,
                 backgroundColor: '#108041',
                 borderColor: '#108041',
                 borderWidth: 0,
                 borderRadius: 5,
-                barPercentage: 0.6,
+                barPercentage: 0.3, //previously it was 0.6
             },
         ],
     };
@@ -61,12 +52,19 @@ const BarGraph: React.FC<BarGraphProps> = ({ selected }) => {
         scales: {
             x: {
                 beginAtZero: true,
+                ticks: {
+                    maxWidth: 50,
+                    font: {
+                        size: 12,
+                    },
+                }
             },
             y: {
                 display: true,
                 grid: {
                     display: false,
                 },
+
                 // ticks: {
                 //     callback: (value: any) => `${value}`,
                 //   }
@@ -81,7 +79,6 @@ const BarGraph: React.FC<BarGraphProps> = ({ selected }) => {
 
     return (
         <div className='h-100'>
-            {/* <h6 className='text-start fs-14 mb-3 mt-2 px-1'>{selected}</h6> */}
             <Bar data={data} options={options} />
         </div>
     )

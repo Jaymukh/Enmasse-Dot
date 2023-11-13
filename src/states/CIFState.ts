@@ -1,7 +1,13 @@
-import { type } from 'os';
 import { atom } from 'recoil';
 
 export interface geoInfoProps {
+    breakdownType: string;
+    data: geoInfoTableProps[];
+    show: boolean;
+}
+
+
+export interface geoInfoTableProps {
     geoId: number,
     geoName: string,
     area: number | null,
@@ -50,17 +56,25 @@ export interface coreSolutionDataProps {
         geoName: string,
         region: string
     },
-    coreSolutionsByEH: {
-		type: string;
-        coreSolution: string
-        pointsOfInterest: number,
-        percentageContribution: number,
-        color?: string | undefined;
-    }[]
+    coreSolutionsByEH: CoreSolutionByEH[]
+}
+
+export interface CoreSolutionByEH {
+    type: string;
+    coreSolution: string;
+    pointsOfInterest: number;
+    percentageContribution: number;
+    subcategory: Subcategory[];
+    color?: string | undefined;    
+}
+
+export interface Subcategory {
+    name: string;
+    value: string;
 }
 
 export interface cifProps {
-    geoInfo: geoInfoProps[];
+    geoInfo: geoInfoProps;
     metricBreakdownInfo: metricBreakdownInfoProps;
     ehGrowthGraphData: ehGrowthGraphDataProps;
     inOutFlowData: inOutFlowDataProps[];

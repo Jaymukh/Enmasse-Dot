@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
-import { BubbleNode, bubbleData, colorDescription } from '../../utils/constants/Constants';
+import { BubbleNode, colorDescription } from '../../utils/constants/Constants';
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { useRecoilValue } from 'recoil';
 import { cifState } from '../../states';
 import '../../styles/main.css';
-import WIPImage from '../../utils/images/work_in_progress.svg';
 import NoVisualData from './NoVisualData';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 
