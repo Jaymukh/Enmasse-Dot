@@ -27,8 +27,12 @@ interface Language {
 }
 
 interface Currency {
+    id: number;
     code: string;
     name: string;
+    symbol: string;
+    is_active: boolean;
+    description: string | null;
 }
 
 interface Location {

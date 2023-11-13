@@ -1,6 +1,6 @@
 import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi';
 import styles from "./Table.module.css";
-import { getCurrencyWithSymbol } from '../../../helpers';
+import useMapHelpers from '../../../helpers/MapHelpers';
 import { RouteConstants, TableHeaderProps } from '../../../constants';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -38,6 +38,7 @@ const getSizeClass = (size: TableSize) => {
 const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }) => {
     const navigate = useNavigate();
     const [tableData, setTableData] = useState<any>(data);
+    const { getCurrencyWithSymbol } = useMapHelpers();
 
     useEffect(() => {
         setTableData(data);

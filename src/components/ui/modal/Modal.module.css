@@ -6,4 +6,6 @@
     overflow: hidden;
     min-height: 90vh;
     height: 90vh;
+    top: auto !important;
+    margin: auto;
 }

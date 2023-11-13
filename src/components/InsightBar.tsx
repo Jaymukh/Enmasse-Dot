@@ -4,6 +4,8 @@ import '../styles/main.css';
 import Select, { SelectSize } from './ui/select/Select';
 import { useRecoilValue } from 'recoil';
 import { mapFeatureState } from '../states/MapFeatureState';
+import { useSettingsService } from '../services';
+import { AllSettingsState, UserSettingsState } from '../states';
 
 const options = [
     {
@@ -20,10 +22,20 @@ export default function InsightBar() {
     const [visible, setVisible] = useState(true);
     const [currency, setCurrency] = useState("US Dollar");
     const mapFeatures = useRecoilValue(mapFeatureState);
+    // all settings's data
+    const settingsService = useSettingsService();
+    const settings = useRecoilValue(AllSettingsState);
+    const usersettings = useRecoilValue(UserSettingsState);
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
     }
+
+    //function to get all the user's setting
+    useEffect(() => {
+        settingsService.getAllSettings();
+        settingsService.getUserSettings();
+    }, []);
 
     return (
         <div className='sideBar-parent-expended py-4 px-0 z-index-1' style={{ overflow: 'auto', overflowX: 'hidden', position: 'inherit' }} >
@@ -33,12 +45,12 @@ export default function InsightBar() {
                 </div>
                 <div className='col-5'>
                     <Select
-                        options={options}
-                        value={currency}
-                        labelKey='currency'
+                        options={settings?.currencies}
+                        value={usersettings?.currency}
+                        labelKey='name'
                         valueKey='symbol'
                         size={SelectSize.small}
-                        onChange={handleChangeCurrency}
+                        name='currency'
                     />
                 </div>
             </div>
@@ -65,7 +77,7 @@ export default function InsightBar() {
                             <p className='fs-12 m-0'>Number of Entrepreneurial Households (EH)</p>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start text-start'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.AverageAnnualEHSpendOnCore ? mapFeatures.cifData?.properties?.EHSpend?.AverageAnnualEHSpendOnCore : "__"}</h6>
+                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.averageAnnualEHSpend ? mapFeatures.cifData?.properties?.EHSpend?.averageAnnualEHSpend : "__"}</h6>
                             <p className='fs-12 m-0'>Median Annual EH Household Spend</p>
                         </div>
                     </div>

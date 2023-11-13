@@ -4,31 +4,26 @@ import '../../../App.css';
 import { MdHelpCenter } from 'react-icons/md';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import * as Constants from '../../../utils/constants/Constants';
-import { useNavigate } from 'react-router-dom';
-import { loggedUserState, visiblePanelState, overlayState, helpState } from '../../../states';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { overlayState, helpState } from '../../../states';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useUserService } from '../../../services';
-import { RouteConstants } from '../../../constants/routeConstants';
 import ContactUs from './ContactUs';
 import Roadmap from './Roadmap';
+import OverlayModal from './OverlayModal';
 
 const HelpOptions = () => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-	const navigate = useNavigate();
 	const userService = useUserService();
-	const setOverlay = useSetRecoilState(overlayState);
+	const [overlay, setOverlay] = useRecoilState(overlayState);
 	const setShow = useSetRecoilState(helpState);
-	const loggedUser = useRecoilValue(loggedUserState);
-	const setVisiblePanel = useSetRecoilState(visiblePanelState);
 	const [contactUsDrawerOpen, setContactUsDrawerOpen] = useState(false);
 	const [roadmapDrawerOpen, setRoadmapDrawerOpen] = useState(false);
-	
+
 	const handleContactUsDrawer = (contactUsDrawerOpen: boolean) => {
 		setContactUsDrawerOpen(contactUsDrawerOpen);
 	};
 	const handleHelpClick = () => {
-		navigate(RouteConstants.root);
 		setOverlay(true);
 		setShow(1);
 	};
@@ -48,17 +43,17 @@ const HelpOptions = () => {
 		switch (key) {
 			case 1:
 				handleContactUsDrawer(true);
-			  break;
+				break;
 			case 2:
 				handleHelpClick();
-			  break;
+				break;
 			case 3:
 				handleRoadmapDrawer(true);
-			  break;
+				break;
 			// default:
-			  // Handle cases where the item doesn't match any of the specified cases
+			// Handle cases where the item doesn't match any of the specified cases
 			//   break;
-		  }
+		}
 		handleClose();
 	};
 
@@ -109,6 +104,9 @@ const HelpOptions = () => {
 
 			{/* drawer for roadmap */}
 			{roadmapDrawerOpen && (<Roadmap roadmapDrawerOpen={roadmapDrawerOpen} handleRoadmapDrawer={handleRoadmapDrawer} />)}
+
+			{/* drawer for Help */}
+			{overlay && <OverlayModal />}
 		</div >
 	);
 }

@@ -1,15 +1,15 @@
 import React, { ChangeEvent, useState } from "react";
-import * as Constants from '../../../utils/constants/Constants';
-import Switch from '../../ui/switch/Switch';
+import * as Constants from '../../utils/constants/Constants';
+import Switch from '../ui/switch/Switch';
 import { BsFillChatLeftTextFill } from 'react-icons/bs';
 import { MdLayers } from 'react-icons/md';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { IoIosArrowForward } from 'react-icons/io';
 import { PiRadioButtonLight } from 'react-icons/pi';
-import { Legend } from '../../ui/legend/Legend';
-import { mapFeatureState } from '../../../states';
+import { Legend } from '../ui/legend/Legend';
+import { mapFeatureState } from '../../states';
 import { useRecoilValue } from 'recoil';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import RequestLayers from "./RequestLayers";
 
 interface Option {
@@ -93,7 +93,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         onClick={() => handleRequestLayersDrawer(true)}
-                        classname='h-auto'
+                        classname='h-auto p-0'
                     >
                         <IoIosArrowForward fontSize={22} />
                     </Button>
