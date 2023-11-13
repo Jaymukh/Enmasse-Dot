@@ -75,10 +75,10 @@ const FamiliesDetailsContainer = () => {
     };
 
     const handlePaginationData = (data: any) => {
-        // let newPaginationData = { ...paginationData };
-        // data.forEach((item: any) => newPaginationData = { ...newPaginationData, item })
-        // console.log(newPaginationData)
-        // setPaginationData(newPaginationData);
+        let newPaginationData = { ...paginationData };
+        delete newPaginationData['reverse'];
+        data.forEach((item: any) => newPaginationData = { ...newPaginationData, ...item });
+        setPaginationData(newPaginationData);
     }
 
     useEffect(() => {
@@ -86,7 +86,7 @@ const FamiliesDetailsContainer = () => {
             totalPages: Math.ceil(totalStoryInfo.totalStories / paginationData.storiespp),
             totalStories: stories.totalStories
         });
-    }, [stories.totalStories, paginationData.storiespp, totalStoryInfo.totalStories])
+    }, [stories.totalStories, paginationData, totalStoryInfo.totalStories])
 
     useEffect(() => {
         if (paginationData) {

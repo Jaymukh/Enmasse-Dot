@@ -14,7 +14,7 @@ import HelpOptions from './helpcontainer/HelpOptions';
 function Header() {
 	const navigate = useNavigate();
 	const onLogoClick = () => {
-		navigate(RouteConstants.root);
+		navigate(`${RouteConstants.explore}?country=1`);
 	}
 	
 
