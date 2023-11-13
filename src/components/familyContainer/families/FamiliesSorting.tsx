@@ -16,12 +16,6 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const navigate = useNavigate();
-	const userService = useUserService();
-	const storiesService = useStoriesService();
-
-	// useEffect(() => {
-	// 	userService.getUserDetails();
-	// }, []);
 
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		Boolean(anchorEl) ? setAnchorEl(null) : setAnchorEl(event.currentTarget);
