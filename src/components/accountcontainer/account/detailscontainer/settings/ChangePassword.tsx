@@ -11,6 +11,7 @@ import { useRecoilValue } from 'recoil';
 import { toast } from "react-toastify";
 import { authState } from '../../../../../states';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import { Button, ButtonSize, ButtonTheme, ButtonVariant } from '../../../../ui/button/Button';
 
 interface ChangePasswordProps {
     open: boolean,
@@ -50,7 +51,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
     const { handleSubmit, register, watch, formState } = useForm({
         resolver: yupResolver(validationSchema),
     });
-    const { errors, isSubmitting } = formState;
+    const { errors, isSubmitting, isValid } = formState;
 
     const [conditions, setConditions] = useState({
         lengthCheck: false,
@@ -116,7 +117,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         placeholder='Old password'
                     />
 
-                    {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start fs-10'>{errors?.current_password?.message}</p>}
+                    {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.current_password?.message}</p>}
                     <Heading
                         title='New Password'
                         type={TypographyType.h5}
@@ -134,7 +135,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
                         placeholder='New password'
                     />
-                    {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start fs-10'>{errors?.new_password?.message}</p>}
+                    {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.new_password?.message}</p>}
                     <div className="row my-2">
                         <div className="d-flex pe-0 mb-1">
                             {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
@@ -166,16 +167,17 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='my-2 inputBoxHeight px-2 fs-14 w-100'
                         placeholder='Confirm new password'
                     />
-                    {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start fs-10'>{errors?.confirm_new_password?.message}</p>}
-                    <button
-                        type="submit"
-                        className='mediumMarginTopBottom inputBoxHeight text-white my-2 rounded bg-dark'
-                    // className={`mediumMarginTopBottom inputBoxHeight text-white my-2 border-0 ${(filledInputCount < 3) ? 'bg-secondary' : 'bg-dark'}`}
-                    // disabled={filledInputCount < 3} 
+                    {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.confirm_new_password?.message}</p>}
+                    <Button
+                        type='submit'
+                        classname='mb-0 mt-4 height-3'
+                        size={ButtonSize.large}
+                        theme={ButtonTheme.primary}
+                        variant={ButtonVariant.contained}
                     >
                         {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
                         Update
-                    </button>
+                    </Button>
                 </form>
             </div>
         </Drawer>

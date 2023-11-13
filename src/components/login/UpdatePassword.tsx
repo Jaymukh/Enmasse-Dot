@@ -41,7 +41,7 @@ const UpdatePassword = () => {
     const { handleSubmit, register, watch, formState } = useForm({
         resolver: yupResolver(validationSchema),
     });
-    const { errors, isSubmitting } = formState;
+    const { errors, isSubmitting, isValid } = formState;
 
     const [conditions, setConditions] = useState({
         lengthCheck: false,
@@ -49,8 +49,6 @@ const UpdatePassword = () => {
         specialChar: false,
         number: false,
     });
-
-    const new_password = watch('new_password');
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newPassword = e.target.value;
@@ -83,7 +81,6 @@ const UpdatePassword = () => {
     const handleContinue = () => {
         navigate(RouteConstants.login);
     }
-
 
     //     const handleSkip = () => {
     //         navigate(RouteConstants.root);
@@ -209,6 +206,7 @@ const UpdatePassword = () => {
                             variant={ButtonVariant.bordered}
                             type='submit'
                             classname='mt-3'
+                            disabled={!isValid}
                         >
                             {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
                             Create Password

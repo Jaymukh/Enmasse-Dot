@@ -49,7 +49,7 @@ export default function Login() {
     const { handleSubmit, register, formState } = useForm({
         resolver: yupResolver(validationSchema),
     });
-    const { errors, isSubmitting } = formState;
+    const { errors, isSubmitting, isValid } = formState;
 
     const onSubmit = (values: IFormValues) => {
         if (Object.values(errors).length > 0) {
@@ -90,7 +90,7 @@ export default function Login() {
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
     }
-
+    
     return (
         <div>
             <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
@@ -163,14 +163,18 @@ export default function Login() {
                                 </span>
                             </div>
                             {errors?.password?.message && <p className='text-danger m-0 p-0 fs-12'>{errors?.password?.message}</p>}
-                            <button
+                            <Button
                                 type='submit'
-                                className='mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-dark'
+                                classname='mb-2 mt-4 height-3'
+                                disabled={!isValid}
+                                size={ButtonSize.large}
+                                theme={ButtonTheme.primary}
+                                variant={ButtonVariant.bordered}
                             //className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-secondary ${(filledInputCount < 2) ? 'bg-secondary' : 'bg-dark'}`}
                             //disabled={filledInputCount < 2}
                             >
-                                {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Continue
-                            </button>
+                                {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Login
+                            </Button>
                         </form>
                         <p className='text-muted mb-0 mt-2 login-p'>By clicking on continue you are agreeing to the Enmasse
                             <Button
