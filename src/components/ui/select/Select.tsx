@@ -58,7 +58,7 @@ const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classn
             {placeholder && <option value="" selected disabled>Select</option>}
             {options?.map((option: any, key: number) => (
                 <option key={key} value={option[valueKey] as any} className={`${styles.select_text_selcted}`}>
-                    {option[labelKey]} {labelKey === 'currency' ? `(${option[valueKey]})` : ''}
+                    {option[labelKey]} {name === 'currency' ? `(${option[valueKey]})` : ''}
                 </option>
             ))}
         </select>
