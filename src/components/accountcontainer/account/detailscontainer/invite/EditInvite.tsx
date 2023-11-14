@@ -49,7 +49,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
         }
     };
     return (
-        <div className=''>
+        <div className='' data-testid="InviteEdit">
             <Drawer
                 id='edit'
                 title='Edit'
@@ -82,6 +82,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='role'
+                        datatestid=""
                     />
                     <h6 className='mt-1 font-87-5 text-start'>Company</h6>
                     <Select
@@ -91,6 +92,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         valueKey='value'
                         size={SelectSize.large}
                         name='company'
+                        datatestid="companyId"
                     />
                     <h6 className='mt-1 font-87-5 text-start'>CompanyType</h6>
                     <Select
@@ -100,6 +102,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='company_type'
+                        datatestid="companytypeId"
                     />
                     <Button
                         theme={ButtonTheme.primary}
@@ -107,6 +110,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         variant={ButtonVariant.bordered}
                         onClick={() => handleUpdateClick()}
                         classname='my-4 height-3'
+                        datatestid=""
                     >
                         Update
                     </Button>

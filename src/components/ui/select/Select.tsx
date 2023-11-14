@@ -23,6 +23,7 @@ interface SelectProps<T> {
     classname?: string;
     name?: string;
     placeholder?: string;
+    datatestid: string;
 }
 
 const getSizeClass = (size: SelectSize) => {
@@ -45,7 +46,7 @@ const getTextColor = (value: any) => {
     return value ? `${styles.select_text_selcted}` : `${styles.select_text_not_selected}` ;
 }
 
-const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name, placeholder }: SelectProps<any>) => {
+const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name, placeholder,datatestid }: SelectProps<any>) => {
     return (
         <select
             className={`${getSizeClass(size)} ${classname} w-100 px-2 ${styles.select} ${getTextColor(value)}`}
@@ -54,6 +55,7 @@ const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classn
             disabled={disabled}
             name={name}
             placeholder={placeholder}
+            data-testid={datatestid}
         >
             {placeholder && <option value="" selected disabled>Select</option>}
             {options?.map((option: any, key: number) => (

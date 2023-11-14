@@ -89,6 +89,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         size={ButtonSize.default}
                         variant={ButtonVariant.bordered}
                         onClick={() => handleEditClick(!editMode)}
+                        datatestid='EditSettingId'
                     >
                         <MdModeEdit className='me-1 mb-1' fontSize={20} />
                         Edit Setting
@@ -99,6 +100,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         variant={ButtonVariant.bordered}
                         onClick={() => handleDrawer(true)}
                         classname='ms-2'
+                        datatestid='ChangePasswordId'
                     >
                         <MdLock className='me-1 mb-1' fontSize={20} />
                         Change Password
@@ -117,6 +119,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         size={SelectSize.large}
                         name='language'
                         disabled={!editMode}
+                        datatestid='languageId'
                     />
                     <h6 className='mt-2 text-start'>Currency Preference</h6>
                     <Select
@@ -127,6 +130,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         size={SelectSize.large}
                         name='currency'
                         disabled={!editMode}
+                        datatestid='currencyId'
                     />
                     <h6 className='mt-2 text-start'>Location Focus</h6>
                     <Select
@@ -137,6 +141,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         size={SelectSize.large}
                         name='location'
                         disabled={!editMode}
+                        datatestid='locationId'
                     />
                     <h6 className='mt-2 text-start'>Notifications</h6>
                     <div className='d-flex justify-content-between align-items-center px-3 py-2 input-div'>

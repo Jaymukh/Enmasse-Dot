@@ -81,7 +81,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
 
 
     return (
-        <div>
+        <div data-testid="uploadImageId">
             <Modal showModal={showUploadImageModal} classname='width-30' >
                 <div className='d-flex flex-row justify-content-between align-items-center'>
                     <Heading
@@ -97,6 +97,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                         onClick={() => closeUploadImageModal()}
                         type='button'
                         classname='btn-close'
+                        datatestid=''
                     />
                 </div>
                 <div className="d-flex flex-column justify-content-center align-items-center my-2">
@@ -117,6 +118,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     onClick={() => handleZoomOut()}
                                     type='button'
                                     classname='w-auto m-auto'
+                                    datatestid='zoomOutButton'
                                 >
                                     <AiFillMinusCircle fontSize={22} />
                                 </Button>
@@ -134,6 +136,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     onClick={() => handleZoomIn()}
                                     type='button'
                                     classname='w-auto m-auto'
+                                    datatestid='zoomInButton'
                                 >
                                     <AiFillPlusCircle fontSize={22} />
                                 </Button>
@@ -145,6 +148,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                 onClick={() => handleSaveImage()}
                                 type='button'
                                 classname=''
+                                datatestid=''
                             >
                                 Save
                             </Button>
@@ -158,8 +162,9 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     onClick={() => handleDeleteModel(true)}
                                     type='button'
                                     classname='me-2'
+                                    datatestid='deleteButton'
                                 >
-                                    <MdDeleteSweep fontSize={20} className='color-orange' />
+                                <MdDeleteSweep fontSize={20} className='color-orange'/>
                                     Delete
                                 </Button>
                                 <label className="bg-dark rounded px-3 height-2-25 d-flex align-items-center justify-content-center m-auto">

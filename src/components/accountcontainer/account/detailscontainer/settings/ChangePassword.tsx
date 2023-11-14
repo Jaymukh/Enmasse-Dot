@@ -136,20 +136,20 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     />
                     {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start fs-10'>{errors?.new_password?.message}</p>}
                     <div className="row my-2">
-                        <div className="d-flex pe-0 mb-1">
-                            {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                        <div className="d-flex pe-0 mb-1" >
+                            {conditions.lengthCheck ? <GoCheckCircleFill  color='#108041' data-testid="charactersId"/> : <GiPlainCircle color='#CECECE' data-testid="charactersId"/>}
                             <p className='fs-12 ms-2 mb-1'>8 Characters</p>
                         </div>
-                        <div className="d-flex pe-0 mb-1">
-                            {conditions.uppercase ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                        <div className="d-flex pe-0 mb-1" >
+                            {conditions.uppercase ? <GoCheckCircleFill  color='#108041' data-testid="uppercaseIcon"/> : <GiPlainCircle  color='#CECECE' data-testid="uppercaseIcon"/>}
                             <p className='fs-12 ms-2 mb-1'>Contains Uppercase</p>
                         </div>
-                        <div className="d-flex pe-0 mb-1">
-                            {conditions.specialChar ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                        <div className="d-flex pe-0 mb-1"data-testid="specialCharIcon">
+                            {conditions.specialChar ? <GoCheckCircleFill  color='#108041' /> : <GiPlainCircle  color='#CECECE' />}
                             <p className='fs-12 ms-2 mb-1'>Contains Special character</p>
                         </div>
-                        <div className="d-flex pe-0 mb-1">
-                            {conditions.number ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                        <div className="d-flex pe-0 mb-1"data-testid="numberIcon">
+                            {conditions.number ? <GoCheckCircleFill  color='#108041'/> : <GiPlainCircle  color='#CECECE' />}
                             <p className='fs-12 ms-2 mb-1'>Contains Number</p>
                         </div>
                     </div>

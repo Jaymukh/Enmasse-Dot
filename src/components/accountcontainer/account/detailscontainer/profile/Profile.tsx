@@ -228,6 +228,7 @@ export default function Profile() {
                     size={ButtonSize.default}
                     variant={ButtonVariant.bordered}
                     onClick={() => handleOpen(true)}
+                    datatestid=''
                 >
                     <MdModeEdit className='mx-1 mb-1' fontSize={22} />
                     Edit Profile
@@ -246,6 +247,7 @@ export default function Profile() {
                             variant={ButtonVariant.bordered}
                             onClick={() => openUploadImageModal()}
                             classname='rounded-circle editImageBtn align-self-end p-0'
+                            datatestid='EditImageId'
                         >
                             <MdModeEdit className='mx-1 mb-1' fontSize={22} />
                         </Button>

@@ -33,6 +33,7 @@ interface ButtonProps {
     disabled?: boolean,
     children?: React.ReactNode,
     type?: "button" | "submit" | "reset";
+    datatestid:string;
 }
 
 const getSizeClass = (size: ButtonSize) => {
@@ -93,7 +94,8 @@ export const Button = ({
     disabled,
     children,
     type,
-    classname
+    classname,
+    datatestid
 }: ButtonProps) => {
     return (
         <button
@@ -101,6 +103,7 @@ export const Button = ({
             onClick={onClick}
             disabled={disabled}
             type={type}
+            data-testid={datatestid}
         >
             {children}
         </button>

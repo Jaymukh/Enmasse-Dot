@@ -26,6 +26,7 @@ const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, hand
                         variant={ButtonVariant.contained}
                         onClick={() => handleShowModal(false, true)}
                         classname='my-4'
+                        datatestid="ContinueBtnId"
                     >
                         Continue
                     </Button>

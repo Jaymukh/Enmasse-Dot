@@ -32,9 +32,9 @@ export default function Invite() {
 	const [newData, setNewData] = useState<NewData>({
 		name: undefined,
 		email_id: undefined,
-		role: '',
-		company: '',
-		company_type: '',
+		role: 'Manager',
+		company: 'enmasse',
+		company_type: 'Enamsse',
 	});
 
 	// all user's data
@@ -165,8 +165,9 @@ export default function Invite() {
 						variant={ButtonVariant.bordered}
 						onClick={() => handleOpenInviteNew()}
 						classname='ms-2'
+						datatestid="InviteNewBtn1"
 					>
-						<IoMdAdd className='me-1' fontSize={22} />
+						<IoMdAdd className='me-1' fontSize={22}/>
 						Invite New
 					</Button>
 				</div>
@@ -202,6 +203,7 @@ export default function Invite() {
 													size={ButtonSize.default}
 													variant={ButtonVariant.transparent}
 													onClick={() => handleEditClick(row)}
+													datatestid="EditIconBtn"
 												>
 													<MdModeEdit fontSize={20} />
 												</Button>
@@ -210,6 +212,7 @@ export default function Invite() {
 													size={ButtonSize.default}
 													variant={ButtonVariant.transparent}
 													onClick={() => openConfirmDeleteModal(true, row.user_id)}
+													datatestid="DeleteIcon"
 												>
 													<MdDeleteSweep fontSize={20} />
 												</Button>
@@ -233,6 +236,7 @@ export default function Invite() {
 													size={ButtonSize.default}
 													variant={ButtonVariant.transparent}
 													onClick={() => handleEditClick(row)}
+													datatestid="EditIconBtn"
 												>
 													<MdModeEdit fontSize={20} />
 												</Button>
@@ -241,6 +245,7 @@ export default function Invite() {
 													size={ButtonSize.default}
 													variant={ButtonVariant.transparent}
 													onClick={() => openConfirmDeleteModal(true, row.user_id)}
+													datatestid="DeleteIcon"
 												>
 													<MdDeleteSweep fontSize={20} />
 												</Button>

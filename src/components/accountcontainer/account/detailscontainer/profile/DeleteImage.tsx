@@ -21,7 +21,7 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
         <div>
             <Modal showModal={showDeleteImageModal} classname='width-18-75' >
                 <div className='d-flex flex-row justify-content-end w-100 pb-1'>
-                    <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleDeleteModel(false)}></Button>
+                    <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" datatestid="" onClick={() => handleDeleteModel(false)}></Button>
                 </div>
                 <div d-flex justify-content-center>
                     <MdCancel className='text-center fontSizeXL color-orange' />
@@ -38,6 +38,7 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
                     variant={ButtonVariant.bordered}
                     onClick={() => handleDeleteClick()}
                     classname='my-2'
+                    datatestid=""
                 >
                     Delete
                 </Button>
@@ -46,6 +47,7 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
                     size={ButtonSize.large}
                     variant={ButtonVariant.contained}
                     onClick={() => handleDeleteModel(false)}
+                    datatestid=""
                 >
                     Cancel
                 </Button>

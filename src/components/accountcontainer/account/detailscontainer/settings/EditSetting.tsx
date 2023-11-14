@@ -16,6 +16,7 @@ const EditSetting: React.FC<EditSettingProps> = ({ editMode, handleEditClick }) 
             title='Edit Setting'
             isOpen={editMode}
             toggleFunction={handleEditClick}
+            data-testid="closeBtnId"
         >
             <div className='d-flex justify-content-center flex-column'>
                 <div className="d-flex justify-content-center p-5">

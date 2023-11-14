@@ -18,10 +18,10 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
     handleDeleteClick
 }) => {
     return (
-        <div>
+        <div data-testid="ConfirmDelete">
             <Modal showModal={showConfirmDeleteModal} classname='width-18-75' >
                 <div className='d-flex flex-row justify-content-end w-100 pb-1'>
-                    <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeConfirmDeleteModal()}></Button>
+                    <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeConfirmDeleteModal()} datatestid=""></Button>
                 </div>
                 <div className='d-flex justify-content-center'>
                 <MdCancel className='text-center fontSizeXL color-orange' />
@@ -39,6 +39,7 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                     variant={ButtonVariant.bordered}
                     onClick={() => handleDeleteClick()}
                     classname='my-2'
+                    datatestid=""
                 >
                     Delete
                 </Button>
@@ -47,6 +48,7 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                     size={ButtonSize.large}
                     variant={ButtonVariant.transparent}
                     onClick={() => closeConfirmDeleteModal()}
+                    datatestid=""
                 >
                     <span className='underline-text'>Cancel</span>
                 </Button>

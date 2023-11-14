@@ -32,6 +32,7 @@ const InviteSent: React.FC<InviteSentProps> = ({
                         onClick={() => handleInviteSentModal()}
                         type='button'
                         classname='btn-close mx-3 my-auto'
+                        datatestid=''
                     />
                 </div>
                 <div className="d-flex flex-column justify-content-center align-items-center my-2">

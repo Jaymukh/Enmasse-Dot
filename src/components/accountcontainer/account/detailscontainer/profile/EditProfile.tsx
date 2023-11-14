@@ -58,8 +58,9 @@ export default function EditProfile({
             title='Edit Profile'
             isOpen={open}
             toggleFunction={handleOpen}
+            
         >
-            <div className='d-flex justify-content-center flex-column'>
+            <div className='d-flex justify-content-center flex-column' data-testid="EditProfileId">
                 <h6 className='font-87-5 text-start'>Name</h6>
                 <Input
                     type="text"
@@ -93,6 +94,7 @@ export default function EditProfile({
                     size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
                     name='role'
+                    datatestid=''
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Designation</h6>
                 <Input
@@ -111,6 +113,7 @@ export default function EditProfile({
                     size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
                     name='company'
+                    datatestid='company-placeholder'
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
                 <Select
@@ -121,6 +124,7 @@ export default function EditProfile({
                     size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
                     name='company_type'
+                    datatestid='companytype-placeholder'
                 />
                 <Button
                     theme={ButtonTheme.primary}
@@ -128,6 +132,7 @@ export default function EditProfile({
                     variant={ButtonVariant.bordered}
                     onClick={() => handleUpdateClick()}
                     classname='my-3 height-3'
+                    datatestid=''
                 >
                     Update Profile
                 </Button>            

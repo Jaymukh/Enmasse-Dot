@@ -74,7 +74,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
     }, []);
 
     return (
-        <>
+        <div data-testid="InviteNewid">
             <Drawer
                 id='invite'
                 title='Invite'
@@ -107,6 +107,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='role'
+                        datatestid='roleId'
                     />
                     <h6 className='mt-1 font-87-5 text-start'>Company</h6>
                     <Select
@@ -116,6 +117,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         valueKey='value'
                         size={SelectSize.large}
                         name='company'
+                        datatestid='companyId'
                     />
                     <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
                     <Select
@@ -125,6 +127,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='company_type'
+                        datatestid='companytypeId'
                     />
                     <p className='my-3 Note d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p>
                     <Button
@@ -133,13 +136,14 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         variant={ButtonVariant.bordered}
                         onClick={() => handleSubmitInviteNew()}
                         classname='mt-4 mb-3 height-3'
+                        datatestid='BtnInvite'
                     >
                         Invite
                     </Button>
                 </div>
             </Drawer>
 
-        </>
+        </div>
     );
 }
 
