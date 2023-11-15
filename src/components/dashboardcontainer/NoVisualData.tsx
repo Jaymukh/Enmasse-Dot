@@ -8,7 +8,7 @@ interface NoVisualDataProps {
 
 const NoVisualData: React.FC<NoVisualDataProps> = ({ displayImage, size }) => {
     return (
-        <div className='h-auto w-100 d-flex justify-content-center'>
+        <div className='h-100 w-100 d-flex justify-content-center'>
             <div className={`h-auto d-flex flex-column justify-content-center align-items-center py-3 ${size === 'large' ? 'w-100' : 'w-50'}`} style={{ minHeight: '9rem' }}>
                 {displayImage && <img src={WIPImage} className="wip-img mb-3" alt="Work in progress" width="50%" />}
                 <Heading
