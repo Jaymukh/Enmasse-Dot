@@ -39,11 +39,11 @@ export default function InsightBar() {
 
     return (
         <div className='sideBar-parent-expended py-4 px-0 z-index-1' style={{ overflow: 'auto', overflowX: 'hidden', position: 'inherit' }} >
-            <div className='row d-flex justify-content-between align-items-start px-3'>
+            <div className='row d-flex justify-content-between align-items-center px-3'>
                 <div className='col-6 d-flex justify-content-start'>
                     <h6 className='ms-1 fs-16'>EnMasses Thesis</h6>
                 </div>
-                <div className='col-5'>
+                <div className='col-6'>
                     <Select
                         options={settings?.currencies}
                         value={usersettings?.currency}

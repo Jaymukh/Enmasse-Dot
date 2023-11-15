@@ -19,7 +19,6 @@
 	--white-color: white;
 	--light-pink-color: pink;
 	--pink-color: #f45eac;
-
 }
 
 .height-2-25 {
@@ -412,6 +411,12 @@ a {
 
 .color-green {
 	color: green;
+}
+.green-0{
+	color: var(--green-0);
+}
+.bg-0{
+	background-color: var(--green-0);
 }
 
 .bold-text {
@@ -1349,6 +1354,15 @@ th {
 .family-menu-item div {
 	margin-left: 5px;
 	margin-right: 5px;
+}
+.green-circle{
+	position: absolute;
+	top: 7px;
+    right: 15px;
+	background-color: var(--green-0);
+	height: 0.6rem;
+	width: 0.6rem;
+	border-radius: 0.3rem;
 }
 
 /* Help options */

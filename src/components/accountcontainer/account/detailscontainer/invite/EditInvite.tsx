@@ -41,7 +41,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
     }
 
     const handleUpdateClick = () => {
-        if(updatedData.name && updatedData.email_id ){
+        if(updatedData.name && updatedData.email_id && updatedData.company && updatedData.role && updatedData.company_type){
             handleUpdate(updatedData);
         }        
         else{

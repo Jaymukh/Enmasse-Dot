@@ -55,7 +55,7 @@ export default function RequestLayers({ requestLayersDrawerOpen,   handleRequest
             toggleFunction={handleRequestLayersDrawer}
         >
             <div className='d-flex justify-content-center flex-column'>
-                <p className=' text-start'>We are working on developing layers that will help analyze opportunities beter.To request layers, fill the following form. We will notify you once the layers have been updated.</p>
+                <p className=' text-start'>We are working on developing layers that will help analyze opportunities better.To request layers, fill the following form. We will notify you once the layers have been updated.</p>
                 <h6 className='mt-1 font-87-5 text-start'>Name</h6>
                 <Input
                     type="text"

@@ -32,8 +32,8 @@ export default function Invite() {
 	const [newData, setNewData] = useState<NewData>({
 		name: undefined,
 		email_id: undefined,
-		role: 'Admin',
-		company: 'enmasse',
+		company: undefined,
+		role: 'Admin',		
 		company_type: 'Enmasse',
 	});
 
@@ -94,8 +94,8 @@ export default function Invite() {
 		setNewData({
 			name: undefined,
 			email_id: undefined,
+			company: undefined,
 			role: 'Admin',
-			company: 'enmasse',
 			company_type: 'Enmasse',
 		});
 	};
