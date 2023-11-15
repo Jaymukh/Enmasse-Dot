@@ -22,6 +22,7 @@ const FamiliesDetailsContainer = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
     const { getCurrencyWithSymbol } = useMapHelpers();
+
     const getSelectedObject = () => {
         const params: any = {};
         searchParams?.toString().split('&').forEach((param) => {

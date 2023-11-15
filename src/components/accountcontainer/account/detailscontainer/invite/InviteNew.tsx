@@ -41,7 +41,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
 
 
     const handleSubmitInviteNew = () => {
-        if (newData.name && newData.email_id) {
+        if (newData.name && newData.email_id && newData.company && newData.role && newData.company_type) {
             var payload = { ...newData, user_id: loggedUser.user_id, designation: 'Manager', country: 'India', phone_number: 5436525362, status: 'Invited' };
             userService.inviteNew(payload)
                 .then((response: any) => {

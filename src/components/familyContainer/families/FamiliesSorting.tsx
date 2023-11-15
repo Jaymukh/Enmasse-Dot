@@ -15,6 +15,7 @@ interface FamiliesSortingProps {
 const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+	const [selectedItem, setSelectedItem] = useState<FamiliesSortingItem | null>(Constants.familiesSortingItems[0]);
 	const navigate = useNavigate();
 
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -24,6 +25,7 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 	const handleClickMenuItem = (item: FamiliesSortingItem) => {
 		const param = item.param;
 		handlePaginationData(param);
+		setSelectedItem(item);
 		handleClose();
 	};
 
@@ -60,14 +62,17 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 					{Constants.familiesSortingItems.map((item) => (
 						<li
 							key={item.key}
-							className='family-menu-item d-flex fs-16'
+							className={`family-menu-item d-flex fs-16 ${selectedItem === item ? 'green-0' : ''}`}
 							onClick={() => handleClickMenuItem(item)}
 						>
 							<span>{item.text}</span>
 						</li>
+						
 					))}
 				</ul>)
 			}
+			<span className={selectedItem ? 'green-circle' : ''}></span>
+			
 		</div >
 	);
 }

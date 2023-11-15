@@ -45,8 +45,11 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
             <div className='mt-3'>
                 <div className={`mt-1 bg-white px-3 py-2 ${!options?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center justify-content-between'>
-                        <PiRadioButtonLight fontSize={22} />
-                        <h6 className="ms-2 my-0 pe-2 text-start fs-16">Core Solutions</h6>
+                        <div className='d-flex align-items-center'>
+                            <PiRadioButtonLight fontSize={22} />
+                            <h6 className="my-0 fs-16 mx-2">Core Solutions</h6>
+                            <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
+                        </div>
                         <Switch
                             isChecked={isChecked?.coreSolution}
                             toggleSwitch={toggleSwitch}
@@ -74,9 +77,10 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     </div>
                 }
                 <div className={`d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
-                    <div className='d-flex'>
-                        <BsFillChatLeftTextFill className='me-1' fontSize={20} />
-                        <h6 className="my-0 fs-16 ms-2">View Stories</h6>
+                    <div className='d-flex align-items-center'>
+                        <BsFillChatLeftTextFill className='' fontSize={20} />
+                        <h6 className="my-0 fs-16 mx-2">View Stories</h6>
+                        <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
                     </div>
                     <Switch
                         isChecked={isChecked?.viewStories}
@@ -85,9 +89,11 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     />
                 </div>
                 <div className="d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2">
-                    <MdLayers fontSize={22} />
-                    <h6 className="my-0 fs-16">Request Layers</h6>
-                    <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
+                    <div className='d-flex align-items-center'>
+                        <MdLayers fontSize={22} />
+                        <h6 className="my-0 fs-16 mx-2">Request Layers</h6>
+                        <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
+                    </div>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.default}
@@ -100,9 +106,9 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 </div>
             </div>
             <div className='mb-3'>
-                <Legend hasLegendValue={true}/>
+                <Legend hasLegendValue={true} />
             </div>
-            
+
             {requestLayersDrawerOpen && <RequestLayers requestLayersDrawerOpen={requestLayersDrawerOpen} handleRequestLayersDrawer={handleRequestLayersDrawer} />}
         </div>
     );
