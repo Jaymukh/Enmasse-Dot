@@ -133,11 +133,11 @@ const ScatterGraph = () => {
                         <defs>
                             <ReverseArrowMarker />
                         </defs>
-                        <XAxis type="number" dataKey="outflow" name="x" strokeWidth='0.35' strokeOpacity='0.5' >
+                        <XAxis type="number" dataKey="outflow" name="x" strokeWidth='0.35' strokeOpacity='0.5' fontSize={10} >
                             <Label value="OUTFLOW: Spend" position="bottom" offset={0} fontWeight={500} fill='000000' fontSize={10} />
                         </XAxis>
-                        <YAxis type="number" dataKey="inflow" name="y" strokeWidth='0.35' strokeOpacity='0.5' >
-                            <Label angle={-90} value="INFLOW: Income + Borrowing" position="center" offset={30} fontWeight={500} fill='000000' fontSize={10} />
+                        <YAxis type="number" dataKey="inflow" name="y" strokeWidth='0.35' strokeOpacity='0.5' className='mb-3' fontSize={10} >
+                            <Label angle={270} value="INFLOW: Income + Borrowing" position={{x: 5, y: 80}} offset={30} fontWeight={500} fill='000000' fontSize={10} />
                         </YAxis>
                         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                         <Scatter data={inOutFlowData} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />

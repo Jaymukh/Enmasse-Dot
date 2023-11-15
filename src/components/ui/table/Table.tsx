@@ -106,7 +106,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }
                                 <div className='d-flex flex-row align-items-center'>
                                     <p className='pt-3 pe-2'>{item.VALUE}</p>
                                     <div className='d-flex flex-column'>
-                                        <BiSolidUpArrow name='asc' fontSize={9} onClick={() => handleSortTable(item, 'asc')} />
+                                        <BiSolidUpArrow name='asc' fontSize={9} color='#939393' onClick={() => handleSortTable(item, 'asc')} />
                                         <BiSolidDownArrow name='desc' fontSize={9} color='#367A2B' onClick={() => handleSortTable(item, 'desc')} />
                                     </div>
                                 </div>

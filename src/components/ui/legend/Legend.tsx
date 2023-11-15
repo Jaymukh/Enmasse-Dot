@@ -20,7 +20,7 @@ export const Legend: React.FC<LegendProps> = ({ classname, hasLegendValue }) => 
     return (
         <>
             {legendData &&
-                <div className={`row mx-0 mb-1 ${styles.legend_font_style} ${classname}`}>
+                <div className={`row mx-0 mb-1 w-100 ${styles.legend_font_style} ${classname}`}>
                     <p className='col-12 m-0 fs-10'>EH Population</p>
                     <div className={`col-12 ${styles.legend}`} style={{ background: `linear-gradient(90deg, ${legendData?.legend_start_color} 0%, ${legendData?.legend_end_color} 100%)` }} />
                     {hasLegendValue ?
