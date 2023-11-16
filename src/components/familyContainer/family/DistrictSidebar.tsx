@@ -84,7 +84,7 @@ const DistrictSidebar = () => {
                         <p className='fs-12 m-0 data-card-normal-font'>Total Population</p>
                     </div>
                     <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
-                        <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.totalHouseholds)}</h6>
+                        <h6 className='fs-14 m-0'>{properties?.totalHouseholds ? properties?.totalHouseholds : '__' }</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Households</p>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ const DistrictSidebar = () => {
                                     <h6 className='me-2 fs-13 my-0'>EI Coverage</h6>
                                     <AiOutlineInfoCircle fontSize={20} color='#606060' />
                                 </div>
-                                <p className='fs-10 m-0'>{getCurrencyWithSymbol(properties?.EICoverage?.covered)} out 0f {getCurrencyWithSymbol(properties?.EICoverage?.total)} Districts</p>
+                                <p className='fs-10 m-0'>{properties?.EICoverage?.covered} out 0f {properties?.EICoverage?.total} Districts</p>
                             </div>
                             <ProgressBar coverage={properties?.EICoverage} />
                         </div>}
@@ -205,7 +205,7 @@ const DistrictSidebar = () => {
 
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}</h6>
+                                    <h6 className='fs-14 m-0'>{getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSources, properties?.EHBorrow?.averageAnnualEHBorrowingFromInformalSourcesUOM)}</h6>
                                     <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Borrowing from Informal Sources</p>
                                 </div>
                             </div>
