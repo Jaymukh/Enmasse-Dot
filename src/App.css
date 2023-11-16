@@ -853,13 +853,16 @@ a {
 
 .dashboard-table-container {
 	overflow-y: auto !important;
+	border: 1px solid #0D0B0B33;
+	border-radius: 10px !important;
 }
 
 .dashboard-table-container table {
 	width: 100%;
-	border: 1px solid #0D0B0B33;
-	border-radius: 10px !important;
-	border-collapse: separate;
+	border: none;
+	/* border: 1px solid #0D0B0B33;
+	border-radius: 10px !important; */
+	border-spacing: 0px !important;
 }
 
 .dashboard-table-container td,
