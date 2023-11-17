@@ -15,7 +15,7 @@ const TABLE_HEADERS: TableProps = {
         ID: 'geo-info',
         NAME: 'Heading',
         KEYS: [
-            { KEY: 'geo_value', VALUE: 'State' },
+            { KEY: 'geoName', VALUE: 'State' },
             { KEY: 'area', VALUE: 'Area (sq.Km)' },
             { KEY: 'ehPopulation', VALUE: 'EH Population' },
             { KEY: 'totalEhGtv', VALUE: 'Average Annual EH Transactional Value', UOM: 'totalEhGtvUOM' },
