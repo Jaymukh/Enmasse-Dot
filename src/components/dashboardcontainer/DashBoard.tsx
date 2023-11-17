@@ -66,7 +66,7 @@ const DashBoard = () => {
             </div>
             {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
                 <div className='col-12 p-0 my-2 mb-5 pb-5'>
-                    <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} type={cifData?.metricBreakdownInfo?.breakdownType} />
+                    <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} breakdownType={cifData?.metricBreakdownInfo?.breakdownType} />
                 </div>}
         </div>
     )
