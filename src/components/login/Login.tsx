@@ -15,6 +15,7 @@ import { FaEyeSlash } from 'react-icons/fa';
 import { useSetRecoilState } from "recoil";
 import { spinnerState } from "../../states";
 import { toast } from 'react-toastify';
+import Toast from '../ui/toast/Toast';
 
 interface IFormValues {
     email_id: string;
@@ -90,7 +91,7 @@ export default function Login() {
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
     }
-    
+
     return (
         <div>
             <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
@@ -125,8 +126,6 @@ export default function Login() {
                                 colour={TypographyColor.dark}
                             />
                             <input
-                                // type="email"
-                                // name='email_id'
                                 {...register("email_id")}
                                 className='my-1 px-2 inputBoxHeight w-100'
                                 placeholder='Enter your email id here' />
@@ -138,7 +137,6 @@ export default function Login() {
                                     colour={TypographyColor.dark}
                                     classname='mb-0'
                                 />
-                                {/* <a href='' onClick={() => handleModal({ passwordModal: true })}>Forgot password?</a> */}
                                 <Button
                                     type='button'
                                     theme={ButtonTheme.primary}
@@ -170,9 +168,7 @@ export default function Login() {
                                 size={ButtonSize.large}
                                 theme={ButtonTheme.primary}
                                 variant={ButtonVariant.bordered}
-                            //className={`mb-2 mt-4 inputBoxHeight login-btn text-white fs-6 bg-secondary ${(filledInputCount < 2) ? 'bg-secondary' : 'bg-dark'}`}
-                            //disabled={filledInputCount < 2}
-                            >
+                             >
                                 {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Login
                             </Button>
                         </form>

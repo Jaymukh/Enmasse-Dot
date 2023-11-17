@@ -59,7 +59,7 @@ const DashBoard = () => {
             </div>
             {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
                 <div className='col-12 p-0 my-2'>
-                    <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo?.data} />
+                    <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo?.data} breakdownType={cifData?.geoInfo?.breakdownType} />
                 </div>}
             <div className='col-12 p-0 my-2'>
                 <ScatterGraph />

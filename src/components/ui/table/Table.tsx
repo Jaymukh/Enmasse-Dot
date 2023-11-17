@@ -80,7 +80,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
             });
         }
     }
-
+console.log(headers?.KEYS, breakdownType)
     return (
         <div className={`dashboard-table-container mx-1 ${getSizeClass(size)}`}>
             <table>
@@ -89,7 +89,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
                         {headers?.KEYS?.map((item, index) => (
                             <th className='fs-10 text-start'>
                                 <div className='d-flex flex-row align-items-center'>
-                                    <p className='pt-3 pe-2'>{item.KEY === 'geo_value' || item.KEY === 'geoName' ? breakdownType : item.VALUE}</p>
+                                    <p className='pt-3 pe-2'>{item.KEY === 'geoName' ? breakdownType : item.VALUE}</p>
                                     <div className='d-flex flex-column'>
                                         <BiSolidUpArrow name='asc' fontSize={9} color='#939393' onClick={() => handleSortTable(item, 'asc')} />
                                         <BiSolidDownArrow name='desc' fontSize={9} color='#367A2B' onClick={() => handleSortTable(item, 'desc')} />
