@@ -139,7 +139,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         clearCircles();
-        if (map && mapFeatures?.circles && isChecked?.coreSolution) {
+        if (map && mapFeatures?.circles && mapFeatures?.circles?.length > 0 && isChecked?.coreSolution) {
             const newCircles = mapFeatures?.circles?.map((feature: any) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
