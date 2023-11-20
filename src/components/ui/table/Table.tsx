@@ -3,7 +3,7 @@ import styles from "./Table.module.css";
 import { useMapHelpers } from '../../../helpers';
 import { RouteConstants, TableHeaderProps } from '../../../constants';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 interface TableProps {
     headers: TableHeaderProps;
@@ -38,6 +38,7 @@ const getSizeClass = (size: TableSize) => {
 
 const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, breakdownType }) => {
     const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
     const [tableData, setTableData] = useState<any>(data);
     const { getCurrencyWithSymbol } = useMapHelpers();
 
@@ -74,9 +75,11 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
 
     const handleColClick = (item: any, keyIndex: number) => {
         if (keyIndex === 0) {
+            const geoCode = searchParams.get('geo_code')
+            const searchParam = breakdownType === 'State' ? `?country=1&state=${item.geoId}` : `?country=1&state=${geoCode}&district=${item.geoId}`;
             navigate({
-                pathname: RouteConstants.stories,
-                search: `?geo_code=${item.geoId}&page-no=1&storiespp=2`,
+                pathname: RouteConstants.explore,
+                search: searchParam,
             });
         }
     }
