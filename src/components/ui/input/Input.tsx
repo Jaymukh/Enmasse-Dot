@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "./Input.module.css";
+import { string } from 'yup';
 
 interface InputProps {
     type?: string;
@@ -7,11 +8,13 @@ interface InputProps {
     value?: any;
     name?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-    classname?: string;
     disabled?: boolean;
+    maxlength?: number;
+    pattern?: any;
+    classname?: string;
 }
 
-export const Input = ({ type, placeholder, value, name, onChange, classname, disabled }: InputProps) => {
+export const Input = ({ type, placeholder, value, name, onChange, disabled, maxlength,pattern, classname }: InputProps) => {
     return(
         <input
             type={type}
@@ -20,6 +23,8 @@ export const Input = ({ type, placeholder, value, name, onChange, classname, dis
             name={name}
             onChange={onChange}
             disabled={disabled}
+            maxLength={maxlength}
+            pattern={pattern}
             className={`${styles.input} ${classname} w-100`}
         >
 

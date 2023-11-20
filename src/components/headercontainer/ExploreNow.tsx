@@ -43,8 +43,9 @@ const ExploreNow = () => {
 				setResults([filteredData]);
 				setSelectedValue({ ...selectedValue, state: filteredData.geo_value });
 				setSuggestions(filteredData.children);
-			} else {
-				setSelectedValue({ ...selectedValue, district: filteredData.geo_value });
+			} 
+			else {
+				// setSelectedValue({ ...selectedValue, district: filteredData.geo_value });
 			}
 		}
 		else {
@@ -77,6 +78,7 @@ const ExploreNow = () => {
 		}
 		else{
 			setHasData(true);
+			setSelectedValue({ state: '', district: '' })
 		}
 	}
 	const handleViewAvailableStates = () => {
