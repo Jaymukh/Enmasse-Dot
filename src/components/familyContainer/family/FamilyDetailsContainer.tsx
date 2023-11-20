@@ -29,29 +29,29 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                 <div className="d-flex flex-row align-items-center justify-content-between my-2">
                     {
                         selectedData?.familyDetails?.familyMembers &&
-                        <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{selectedData?.familyDetails?.familyMembers}</b>
+                        <div className="d-flex flex-row justify-content-center align-items-center">
+                            <p className="bold-familydetails">{selectedData?.familyDetails?.familyMembers}</p>
                             <p className="card-title text-muted fs-10">Family members</p>
                         </div>
                     }
                     {
                         selectedData?.familyDetails?.householdSpend &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}</b>
+                            <p className="bold-familydetails">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}</p>
                             <p className="card-title text-muted fs-10">Household Spend</p>
                         </div>
                     }
                     {
                         selectedData?.familyDetails?.householdBorrowing &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdBorrowing, selectedData?.familyDetails?.borrowUOM)}</b>
+                            <p className="bold-familydetails">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdBorrowing, selectedData?.familyDetails?.borrowUOM)}</p>
                             <p className="card-title text-muted fs-10">Household Borrowing</p>
                         </div>
                     }
                     {
                         selectedData?.familyDetails?.householdIncome &&
                         <div className="d-flex flex-row align-items-center">
-                            <b className="fs-14 me-1">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdIncome, selectedData?.familyDetails?.incomeUOM)}</b>
+                            <p className="bold-familydetails">{getCurrencyWithSymbol(selectedData?.familyDetails?.householdIncome, selectedData?.familyDetails?.incomeUOM)}</p>
                             <p className="card-title text-muted fs-10">Household Income</p>
                         </div>
                     }

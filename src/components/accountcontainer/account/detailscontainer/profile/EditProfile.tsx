@@ -82,6 +82,8 @@ export default function EditProfile({
                     placeholder="Enter your Phone number"
                     value={updatedData.phone_number}
                     name='phone_number'
+                    maxlength={10}
+                    pattern="[0-9]*"
                     onChange={(e) => handleChangeData(e)}
                 />
                 <h6 className='mt-1 font-87-5 text-start'>Country</h6>

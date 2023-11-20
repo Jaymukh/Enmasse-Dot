@@ -43,7 +43,7 @@ const InviteSent: React.FC<InviteSentProps> = ({
                         classname='mb-3'
                     />
                     <p className=' fs-12 '>
-                        Invite sent to "{email}" with login and password.
+                        Invite sent to "{email}".
                     </p>
                 </div>
             </Modal>
