@@ -139,8 +139,8 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         clearCircles();
-        if (map && mapFeatures.circles && isChecked.coreSolution) {
-            const newCircles = mapFeatures.circles?.map((feature: any) => {
+        if (map && mapFeatures?.circles && isChecked?.coreSolution) {
+            const newCircles = mapFeatures?.circles?.map((feature: any) => {
                 const center = {
                     lat: feature.geometry.coordinates[1],
                     lng: feature.geometry.coordinates[0],
