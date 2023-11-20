@@ -245,7 +245,6 @@ const DistrictSidebar = () => {
                             size={ButtonSize.default}
                             variant={ButtonVariant.bordered}
                             onClick={() => handleRequestDataDrawer(true)}
-                            classname='fixed-bottom'
                         >
                             Request Data
                         </Button>

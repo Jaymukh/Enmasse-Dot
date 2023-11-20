@@ -82,7 +82,7 @@ export default function EditProfile({
                     placeholder="Enter your Phone number"
                     value={updatedData.phone_number}
                     name='phone_number'
-                    maxlength={10}
+                    maxlength={15}
                     pattern="[0-9]*"
                     onChange={(e) => handleChangeData(e)}
                 />
