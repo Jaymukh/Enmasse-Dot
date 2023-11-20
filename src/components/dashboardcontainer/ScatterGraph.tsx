@@ -144,10 +144,10 @@ const ScatterGraph = () => {
 
                         <ReferenceLine x={center.x ? center.x : 0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
                         <ReferenceLine y={center.y ? center.y : 0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                        <text x={90} y={60} textAnchor="start" fill="#000000" fontSize={10}>
+                        <text x={90} y={55} textAnchor="start" fill="#000000" fontSize={10}>
                             Low Inflow & High Outflow
                         </text>
-                        <text x={1250} y={60} textAnchor="end" fill="#000000" fontSize={10}>
+                        <text x={1250} y={55} textAnchor="end" fill="#000000" fontSize={10}>
                             High Inflow & Outflow
                         </text>
                         <text x={90} y={375} textAnchor="start" fill="#000000" fontSize={10}>

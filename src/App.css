@@ -686,7 +686,7 @@ a {
 	font-family: 'Lato', sans-serif;
 	margin-left: 0.1px;
 	width: 12.625rem;
-	
+
 	/* width: 12.1875rem;
 	height: 4.625rem;
 	padding: 0.31rem;
@@ -887,6 +887,10 @@ th {
 
 .dashboard-table-container th {
 	color: #232323;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background-color: var(--white-1);
 }
 
 .table-header-btn {
@@ -1292,8 +1296,9 @@ th {
 	/* border: 1px solid rgba(0, 0, 0, 0.3); */
 	border: 1px solid var(--black-2);
 }
+
 .input-div:disabled {
-    opacity: 0.5;
+	opacity: 0.5;
 }
 
 

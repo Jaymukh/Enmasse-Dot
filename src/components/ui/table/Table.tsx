@@ -9,6 +9,7 @@ interface TableProps {
     headers: TableHeaderProps;
     data: any[];
     size: TableSize;
+    breakdownType?: string;
 }
 
 interface TableRowProps {
@@ -35,7 +36,7 @@ const getSizeClass = (size: TableSize) => {
     return className;
 }
 
-const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }) => {
+const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, breakdownType }) => {
     const navigate = useNavigate();
     const [tableData, setTableData] = useState<any>(data);
     const { getCurrencyWithSymbol } = useMapHelpers();
@@ -43,22 +44,6 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }
     useEffect(() => {
         setTableData(data);
     }, [data]);
-
-    const getConvertedValue = (value: string) => {
-        const units: { [key: string]: number } = {
-            'K': 1e3,
-            'M': 1e6,
-            'B': 1e9,
-        };
-        const match = value.match(/(\d+(\.\d+)?)([A-Za-z]+)?/);
-        if (match && match.length > 1) {
-            let numericValue = parseFloat(match[1]);
-            const unit = match[3];
-            numericValue *= units[unit.toUpperCase()] || 1;
-            return numericValue;
-        }
-        return 0;
-    }
 
     const handleSortTable = (item: TableRowProps, order: string) => {
         let sortedTable = tableData.slice().sort((a: any, b: any) => {
@@ -91,11 +76,11 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }
         if (keyIndex === 0) {
             navigate({
                 pathname: RouteConstants.stories,
-                search: `?geo-code=${item.geoId}&page-no=1&storiespp=2`,
+                search: `?geo_code=${item.geoId}&page-no=1&storiespp=2`,
             });
         }
     }
-
+console.log(headers?.KEYS, breakdownType)
     return (
         <div className={`dashboard-table-container mx-1 ${getSizeClass(size)}`}>
             <table>
@@ -104,7 +89,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, }
                         {headers?.KEYS?.map((item, index) => (
                             <th className='fs-10 text-start'>
                                 <div className='d-flex flex-row align-items-center'>
-                                    <p className='pt-3 pe-2'>{item.VALUE}</p>
+                                    <p className='pt-3 pe-2'>{item.KEY === 'geoName' ? breakdownType : item.VALUE}</p>
                                     <div className='d-flex flex-column'>
                                         <BiSolidUpArrow name='asc' fontSize={9} color='#939393' onClick={() => handleSortTable(item, 'asc')} />
                                         <BiSolidDownArrow name='desc' fontSize={9} color='#367A2B' onClick={() => handleSortTable(item, 'desc')} />

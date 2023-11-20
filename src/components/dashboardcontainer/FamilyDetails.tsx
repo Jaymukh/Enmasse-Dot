@@ -22,7 +22,7 @@ const FamilyDetails = () => {
     const handleViewButtonClick = () => {
         navigate({
             pathname: RouteConstants.stories,
-            search: `?geo-code=${properties?.geo_id}&page-no=1&storiespp=2`,
+            search: `?geo_code=${properties?.geo_id}&page-no=1&storiespp=2`,
         });
     }
 
