@@ -23,15 +23,15 @@ const useMapsService = () => {
     }
 
     const getCifData = (geoCode: number) => {
-        setSpinner(true);
+        // setSpinner(true);
         return fetchWrapper.get(`${APIS.MAPS.GET_CIF_DATA}?geo-code=${geoCode}`)
             .then((response) => {
-                setSpinner(false);
+                // setSpinner(false);
                 if (response) {
                     setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
                 }
             }).catch(error => {
-                setSpinner(false);
+                // setSpinner(false);
             });
     }
 
