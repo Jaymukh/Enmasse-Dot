@@ -48,17 +48,17 @@ function MapContainer() {
 
     const handleGlobal = () => {
         setGlobal(!global);
-        navigate({
-            pathname: RouteConstants.root,
-            search: '?country=1',
-        });
+        // navigate({
+        //     pathname: RouteConstants.root,
+        //     search: '?country=1',
+        // });
     }
 
     const handleCountryChange = () => {
         setGlobal(!global);
-        setTimeout(() => {
-            navigate(global ? `${RouteConstants.explore}?country=1` : RouteConstants.root);
-        });
+        // setTimeout(() => {
+        //     navigate(global ? `${RouteConstants.explore}?country=1` : RouteConstants.root);
+        // });
         setSelected({ country: 1 });
     };
 
