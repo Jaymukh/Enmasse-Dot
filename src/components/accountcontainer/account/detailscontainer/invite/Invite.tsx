@@ -7,14 +7,12 @@ import ConfirmDelete from './ConfirmDelete';
 import { IoMdAdd } from 'react-icons/io';
 import { MdModeEdit } from 'react-icons/md';
 import { MdDeleteSweep } from 'react-icons/md';
-import { usersState, User, spinnerState } from "../../../../../states";
+import { usersState, User, spinnerState, errorState } from "../../../../../states";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { useUserService } from '../../../../../services';
-import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import InviteSent from './InviteSent'; import Search from '../../../../ui/search/Search';
-import { error } from 'console';
 
 interface NewData {
 	name: string | undefined;
@@ -42,6 +40,7 @@ export default function Invite() {
 	const [users, setUsers] = useRecoilState(usersState);
 	const [openInviteSent, setOpenInviteSent] = useState(false);
 	const [spinner, setSpinner] = useRecoilState(spinnerState);
+	const setError = useSetRecoilState(errorState);
 
 	const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		e.preventDefault();
@@ -74,13 +73,13 @@ export default function Invite() {
 					setSpinner(false);
 					userService.getAll();
 					handleCloseDialog();
-					toast.success('Successfully Updated.');
+					setError({ type: 'Success', message: 'Successfully Updated.' });
 				}
 			})
 			.catch(error => {
 				setSpinner(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-				toast.error(errorMsg);
+				setError({ type: 'Error', message: errorMsg });
 			});
 	};
 
@@ -137,7 +136,7 @@ export default function Invite() {
 			.catch(error => {
 				setSpinner(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-				toast.error(errorMsg);
+				setError({ type: 'Error', message: errorMsg });
 			});
 	};
 

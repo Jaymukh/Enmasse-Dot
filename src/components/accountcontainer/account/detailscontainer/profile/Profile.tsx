@@ -3,9 +3,8 @@ import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { loggedUserState, spinnerState, User } from "../../../../../states";
+import { errorState, loggedUserState, spinnerState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
-import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import UploadImage from './UploadImage';
@@ -17,6 +16,7 @@ export default function Profile() {
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
+    const setError = useSetRecoilState(errorState);
 
     const [showUploadImageModal, setShowUploadImageModal] = useState(false);
     const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
@@ -48,13 +48,13 @@ export default function Profile() {
                     handleCloseDialog();
                     setSpinner(false);
                     userService.getUserDetails();
-                    toast.success(response.msg);
+                    setError({ type: 'Success', message: response.msg });
                 }
             })
             .catch((error: any) => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                setError({ type: 'Error', message: errorMsg });
             });
     };
 
@@ -113,16 +113,14 @@ export default function Profile() {
                                                 setSpinner(false);
                                                 userService.getUserDetails();
                                                 setShowUploadImageModal(false);
-                                                toast.success('Successfully Uploaded profile picture.', {
-                                                    position: toast.POSITION.BOTTOM_CENTER
-                                                });
+                                                setError({ type: 'Success', message: 'Successfully Uploaded profile picture.' });
                                                 setNewImage(undefined);
                                             }
                                         })
                                         .catch(error => {
                                             setSpinner(false);
                                             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                                            toast.error(errorMsg);
+                                            setError({ type: 'Error', message: errorMsg });
                                         });
                                 }
 
@@ -145,16 +143,14 @@ export default function Profile() {
                                                 setSpinner(false);
                                                 userService.getUserDetails();
                                                 setShowUploadImageModal(false);
-                                                toast.success('Successfully Uploaded profile picture.', {
-                                                    position: toast.POSITION.BOTTOM_CENTER
-                                                });
+                                                setError({ type: 'Success', message: 'Successfully Uploaded profile picture.' });
                                                 setNewImage(undefined);
                                             }
                                         })
                                         .catch(error => {
                                             setSpinner(false);
                                             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                                            toast.error(errorMsg);
+                                            setError({ type: 'Error', message: errorMsg });
                                         });
                                 }
                             }
@@ -199,16 +195,14 @@ export default function Profile() {
                 if (response) {
                     setSpinner(false);
                     userService.getUserDetails();
-                    toast.success('Successfully Deleted.', {
-                        position: toast.POSITION.BOTTOM_CENTER
-                    });
+                    setError({ type: 'Success', message: 'Successfully Deleted.' });
                     setNewImage(undefined);
                 }
             })
             .catch(error => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                setError({ type: 'Error', message: errorMsg });
             });
         setShowDeleteImageModal(false);
     }

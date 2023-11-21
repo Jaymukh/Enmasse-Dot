@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { GiPlainCircle } from 'react-icons/gi';
 import { GoCheckCircleFill } from 'react-icons/go';
-import { IoMdArrowBack } from 'react-icons/io';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
 import globe from '../../utils/images/globe.png';
@@ -12,10 +11,11 @@ import * as Yup from 'yup';
 import { useUserService } from '../../services';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
-import { toast } from "react-toastify";
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import CheckGIF from "../../utils/images/CheckMarkGIF.gif";
+import { useSetRecoilState } from 'recoil';
+import { errorState } from '../../states';
 
 const UpdatePassword = () => {
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const UpdatePassword = () => {
     // const arr = window.location.href.split("=");
     // const token = arr.pop();
     const [searchParams] = useSearchParams();
-    console.log(searchParams.get('token'));
+    const setError = useSetRecoilState(errorState);
     const token = searchParams.get('token');
     const [passwordCreated, setPasswordCreated] = useState(false);
     const validationSchema = Yup.object().shape({
@@ -75,7 +75,7 @@ const UpdatePassword = () => {
             })
             .catch(error => {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                setError({ type: 'Error', message: errorMsg });
             });
     };
     const handleContinue = () => {

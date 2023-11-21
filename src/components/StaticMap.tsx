@@ -3,10 +3,9 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import * as MapConstants from './../utils/json/googlemapstyle';
 import { useMapsService } from '../services';
-import { geoJsonState, spinnerState, storiesState } from '../states';
+import { errorState, geoJsonState, spinnerState, storiesState } from '../states';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import markerBlack from '../utils/images/location-on.svg';
 import markerGrey from '../utils/images/location-on-grey.svg';
 
@@ -19,11 +18,12 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 	const mapRef = useRef(null);
 	const mapServices = useMapsService();
 	const [geoJSON, setGeoJSON] = useRecoilState(geoJsonState)
-	const [focusedMarker, setFocusedMarker] = useState<any>(null);
 	const { family } = useRecoilValue(storiesState);
+	const setError = useSetRecoilState(errorState);
 	const setSpinner = useSetRecoilState(spinnerState);
-	const [map, setMap] = useState<google.maps.Map | null>(null);
 	const [searchParams, setSearchParams] = useSearchParams();
+	const [map, setMap] = useState<google.maps.Map | null>(null);
+	const [focusedMarker, setFocusedMarker] = useState<any>(null);
 	const [markers, setMarkers] = useState<any>([]);
 	const [center, setCenter] = useState({
 		lat: 20.5937,
@@ -50,7 +50,8 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 
 	const errorHandler = (error: any) => {
 		const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
-		toast.error(errorMsg);
+		setError({ type: 'Error', message: errorMsg });
+
 	};
 
 	const fetchGeoJsonData = (geo_id: string) => {

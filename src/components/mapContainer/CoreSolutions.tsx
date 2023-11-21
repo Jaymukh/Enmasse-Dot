@@ -41,15 +41,15 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     };
 
     return (
-        <div className='ms-4 d-flex flex-column justify-content-between h-100' >
+        <div className='ms-3 d-flex flex-column justify-content-between h-100' >
             <div className='mt-3'>
                 <div className={`mt-1 bg-white px-3 py-2 ${!options?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center justify-content-between'>
                         <div className='d-flex align-items-center'>
                             <PiRadioButtonLight fontSize={22} />
-                            <h6 className="my-0 fs-16 mx-2">Core Solutions</h6>
-                            <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
+                            <h6 className="my-0 fs-16 ms-2">Core Solutions</h6>                            
                         </div>
+                        <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
                         <Switch
                             isChecked={isChecked?.coreSolution}
                             toggleSwitch={toggleSwitch}

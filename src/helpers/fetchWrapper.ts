@@ -1,13 +1,13 @@
-import { useRecoilState } from 'recoil';
-import { authState } from '../states';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { authState, errorState } from '../states';
 import { APIS, RouteConstants } from '../constants';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 
 function useFetchWrapper() {
     const [auth, setAuth] = useRecoilState(authState);
+    const setError = useSetRecoilState(errorState);
     const navigate = useNavigate();
 
     // Create an Axios instance with common headers
@@ -50,7 +50,7 @@ function useFetchWrapper() {
                         config.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     } catch (error: any) {
                         const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                        toast.error(errorMsg);
+                        setError({ type: 'Error', message: errorMsg });
                         localStorage.removeItem('user');
                         setAuth({});
                         navigate(RouteConstants.login);

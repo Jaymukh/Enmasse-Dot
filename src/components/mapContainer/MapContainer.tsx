@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import '../../App.css';
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import { useSetRecoilState } from 'recoil';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { RouteConstants } from '../../constants';
+import { useSearchParams } from 'react-router-dom';
 import { useMapsService } from '../../services';
-import { geoJsonState, spinnerState, mapFeatureState } from '../../states';
+import { geoJsonState, spinnerState, mapFeatureState, errorState } from '../../states';
 import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
@@ -15,7 +13,6 @@ import { BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
 const countries = [{ geo_id: 1, name: 'India' }];
 
 function MapContainer() {
-    const navigate = useNavigate();
     const mapServices = useMapsService();
     const setSpinner = useSetRecoilState(spinnerState);
 
@@ -26,6 +23,7 @@ function MapContainer() {
     const [districts, setDistricts] = useState<any>([]);
     const setGeoJSON = useSetRecoilState(geoJsonState);
     const setMapFeatures = useSetRecoilState(mapFeatureState);
+    const setError = useSetRecoilState(errorState);
 
     const getSearchParams = () => {
         if (global) {
@@ -153,7 +151,7 @@ function MapContainer() {
 
     const errorHandler = (error: any) => {
         const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
-        toast.error(errorMsg);
+        setError({ type: 'Error', message: errorMsg });
     };
 
     useEffect(() => {

@@ -92,7 +92,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 setIsChecked({ ...isChecked, coreSolution: data.length > 0 });
             }).catch(error => {
                 // const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
-                // toast.error(errorMsg);
+                // setError({ type: 'Error', message: errorMsg });
             });
         }
     }, [geoJSON]);

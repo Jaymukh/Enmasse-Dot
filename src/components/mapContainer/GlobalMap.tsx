@@ -3,7 +3,8 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import * as MapConstants from '../../utils/json/googlemapstyle';
 import GlobalOverlayCard from '../GlobalOverlayCard';
 import InsightBar from '../InsightBar';
-import { toast } from 'react-toastify';
+import { useSetRecoilState } from 'recoil';
+import { errorState } from '../../states';
 
 interface GlobalMapProps {
 	features?: any; // Replace 'any' with the actual type of 'features' if available
@@ -11,6 +12,7 @@ interface GlobalMapProps {
 }
 
 const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) => {
+	const setError = useSetRecoilState(errorState);
 	const apiKey = process.env.REACT_APP_GOOGLE_API_KEY || '';
 	const center = {
 		lat: 20.5937,
@@ -27,7 +29,7 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
 					//handleImportFeature(countryCode);
 				}
 			} else {
-				toast.error('Geocode was not successful');
+				setError({ type: 'Error', message: 'Geocode was not successful' });
 			}
 		});
 	};
