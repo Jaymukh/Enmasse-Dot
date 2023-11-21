@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { authState } from '../../../../../states';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import { Button, ButtonSize, ButtonTheme, ButtonVariant } from '../../../../ui/button/Button';
+import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 
 interface ChangePasswordProps {
     open: boolean,
@@ -100,14 +101,19 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             isOpen={open}
             toggleFunction={handleDrawer}
         >
-            <div className=''>
-                <p className='text-muted fs-14 text-start'>You will be required to re-login after updating the password.</p>
-                <form className='d-flex justify-content-center flex-column' onSubmit={handleSubmit(onSubmit)}>
+            <div className='d-flex flex-column align-items-start justify-content-center text-start'>
+                <Body
+                    type={BodyType.p2}
+                    color={BodyColor.muted}
+                    classname=''>
+                    You will be required to re-login after updating the password.
+                </Body>
+                <form className='d-flex flex-column align-items-start justify-content-center' onSubmit={handleSubmit(onSubmit)}>
                     <Heading
                         title='Old Password'
-                        type={TypographyType.h5}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
-                        classname='text-start'
+                        classname='mb-0'
                     />
                     <input
                         type="password"
@@ -120,9 +126,9 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.current_password?.message}</p>}
                     <Heading
                         title='New Password'
-                        type={TypographyType.h5}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
-                        classname='mt-2 text-start'
+                        classname='mt-2 mb-0 text-start'
                     />
                     <input
                         type="password"
@@ -139,26 +145,46 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     <div className="row my-2">
                         <div className="d-flex pe-0 mb-1">
                             {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <p className='fs-12 ms-2 mb-1'>8 Characters</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='ms-2 mb-1'>
+                                8 Characters
+                            </Body>
                         </div>
                         <div className="d-flex pe-0 mb-1">
                             {conditions.uppercase ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <p className='fs-12 ms-2 mb-1'>Contains Uppercase</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='ms-2 mb-1'>
+                                Contains Uppercase
+                            </Body>
                         </div>
                         <div className="d-flex pe-0 mb-1">
                             {conditions.specialChar ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <p className='fs-12 ms-2 mb-1'>Contains Special character</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='ms-2 mb-1'>
+                                Contains Special character
+                            </Body>
                         </div>
                         <div className="d-flex pe-0 mb-1">
                             {conditions.number ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <p className='fs-12 ms-2 mb-1'>Contains Number</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='ms-2 mb-1'>
+                                Contains Number
+                            </Body>
                         </div>
                     </div>
                     <Heading
                         title='Re enter new password'
-                        type={TypographyType.h5}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
-                        classname='text-start'
+                        classname='mb-0'
                     />
                     <input
                         type="password"
@@ -167,7 +193,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='my-2 inputBoxHeight px-2 fs-14 w-100'
                         placeholder='Confirm new password'
                     />
-                    {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.confirm_new_password?.message}</p>}
+                    {errors?.confirm_new_password?.message && 
+                    <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.confirm_new_password?.message}</p>}
                     <Button
                         type='submit'
                         classname='mb-0 mt-4 height-3'

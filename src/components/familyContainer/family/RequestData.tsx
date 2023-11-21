@@ -71,21 +71,21 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
         >
             <div className='d-flex justify-content-center flex-column'>
                 <p className=' text-start'>If you like to request a data for “Place name”, fill the following form and send request. We will notify you once the data have been updated.</p>
-                <h6 className='mt-1 font-87-5 text-start'>Name*</h6>
+                <h6 className='mt-1 fs-14 text-start'>Name*</h6>
                 <Input
                     type="text"
                     placeholder="Enter your name"
                     value={loggedUser.name}
                     disabled={true}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Email*</h6>
+                <h6 className='mt-1 fs-14 text-start'>Email*</h6>
                 <Input
                     type="email"
                     placeholder="Enter your Email ID"
                     value={loggedUser.email_id}
                     disabled={true}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Message*</h6>
+                <h6 className='mt-1 fs-14 text-start'>Message*</h6>
                 <textarea
                     value={payloadData.message}
                     name='message'

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import '../../../../../App.css';
 import Drawer from '../../../../ui/Drawer';
 import * as Constants from '../../../../../utils/constants/Constants'
-import '../../../../../App.css';
 import { useRecoilValue } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User } from "../../../../../states";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import { Input } from '../../../../ui/input/Input';
 import { toast } from 'react-toastify';
 
@@ -43,12 +44,12 @@ export default function EditProfile({
     };
 
     const handleUpdateClick = () => {
-        if(updatedData.name && updatedData.email_id && updatedData.phone_number && updatedData.designation){
+        if (updatedData.name && updatedData.email_id && updatedData.phone_number && updatedData.designation) {
             handleUpdate(updatedData);
         }
-        else{
+        else {
             toast.error('All fields are mendatory!');
-        }        
+        }
     };
 
     return (
@@ -58,8 +59,13 @@ export default function EditProfile({
             isOpen={open}
             toggleFunction={handleOpen}
         >
-            <div className='d-flex justify-content-center flex-column'>
-                <h6 className='font-87-5 text-start'>Name</h6>
+            <div className='d-flex flex-column justify-content-center align-items-start '>
+                <Heading
+                    title='Name*'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-2 mb-0'
+                />
                 <Input
                     type="text"
                     placeholder="Enter your name"
@@ -67,7 +73,12 @@ export default function EditProfile({
                     name='name'
                     onChange={(e) => handleChangeData(e)}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Email</h6>
+                <Heading
+                    title='Email*'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-2 mb-0'
+                />
                 <Input
                     type="email"
                     placeholder="Enter your Email ID"
@@ -76,7 +87,12 @@ export default function EditProfile({
                     onChange={(e) => handleChangeData(e)}
                     disabled={true}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Phone Number</h6>
+                <Heading
+                    title='Phone Number*'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-2 mb-0'
+                />
                 <Input
                     type="tel"
                     placeholder="Enter your Phone number"
@@ -86,7 +102,12 @@ export default function EditProfile({
                     pattern="[0-9]*"
                     onChange={(e) => handleChangeData(e)}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Country</h6>
+                <Heading
+                    title='Country*'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-2 mb-0'
+                />
                 <Select
                     options={settings?.countries}
                     value={updatedData?.country}
@@ -95,8 +116,13 @@ export default function EditProfile({
                     size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
                     name='company_type'
-                />              
-                <h6 className='mt-1 font-87-5 text-start'>Company</h6>
+                />
+                <Heading
+                    title='Company*'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-2 mb-0'
+                />
                 <Input
                     type="text"
                     placeholder="Enter your Company name"
@@ -104,7 +130,12 @@ export default function EditProfile({
                     name='company'
                     onChange={(e) => handleChangeData(e)}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Designation</h6>
+                <Heading
+                    title='Designation*'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-2 mb-0'
+                />
                 <Input
                     type="text"
                     placeholder="Enter your designation"
@@ -112,7 +143,12 @@ export default function EditProfile({
                     name='designation'
                     onChange={(e) => handleChangeData(e)}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Role</h6>
+                <Heading
+                    title='Role*'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-2 mb-0'
+                />
                 <Select
                     options={settings?.roles}
                     value={updatedData?.role}
@@ -123,17 +159,6 @@ export default function EditProfile({
                     name='role'
                     disabled={true}
                 />
-                
-                {/* <h6 className='mt-1 font-87-5 text-start'>Company Type</h6>
-                <Select
-                    options={settings?.company_types}
-                    value={updatedData?.company_type}
-                    labelKey='name'
-                    valueKey='name'
-                    size={SelectSize.large}
-                    onChange={(e) => handleChangeData(e)}
-                    name='company_type'
-                /> */}
                 <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.large}
@@ -142,7 +167,7 @@ export default function EditProfile({
                     classname='my-3 height-3'
                 >
                     Update Profile
-                </Button>            
+                </Button>
             </div>
         </Drawer>
     );

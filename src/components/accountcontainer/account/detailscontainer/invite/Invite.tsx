@@ -91,6 +91,9 @@ export default function Invite() {
 	};
 	const handleCloseInviteNew = () => {
 		setOpenInviteNew(false);
+	};
+	const handleInviteSentModal = () => {
+        setOpenInviteSent(false);
 		setNewData({
 			name: undefined,
 			email_id: undefined,
@@ -98,7 +101,7 @@ export default function Invite() {
 			role: 'Admin',
 			company_type: 'Enmasse',
 		});
-	};
+    }
 
 	// searchbar function
 	const [searchTerm, setSearchTerm] = useState('');
@@ -252,6 +255,7 @@ export default function Invite() {
 						</table>
 					</div>}
 			</div>
+			
 			{selectedData &&
 				<EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
 
@@ -259,7 +263,7 @@ export default function Invite() {
 				<InviteNew openInviteNew={openInviteNew} newData={newData} setNewData={setNewData} handleChangeData={handleChangeData} handleCloseInviteNew={handleCloseInviteNew} setOpenInviteSent={setOpenInviteSent} />}
 
 			{openInviteSent &&
-				<InviteSent openInviteSent={openInviteSent} setOpenInviteSent={setOpenInviteSent} email={newData.email_id} />}
+				<InviteSent openInviteSent={openInviteSent} handleInviteSentModal={handleInviteSentModal} email={newData.email_id} />}
 
 			{showConfirmDeleteModal &&
 				<ConfirmDelete showConfirmDeleteModal={showConfirmDeleteModal}

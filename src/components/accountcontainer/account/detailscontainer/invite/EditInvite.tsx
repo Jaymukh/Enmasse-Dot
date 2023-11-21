@@ -7,6 +7,8 @@ import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User } from "../../../../../states";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import { Input } from '../../../../ui/input/Input';
 import { toast } from 'react-toastify';
 
@@ -41,10 +43,10 @@ const EditInvite: React.FC<EditInviteProps> = ({
     }
 
     const handleUpdateClick = () => {
-        if(updatedData.name && updatedData.email_id && updatedData.company && updatedData.role && updatedData.company_type){
+        if (updatedData.name && updatedData.email_id && updatedData.company && updatedData.role && updatedData.company_type) {
             handleUpdate(updatedData);
-        }        
-        else{
+        }
+        else {
             toast.error('All fields are mendatory!');
         }
     };
@@ -56,8 +58,13 @@ const EditInvite: React.FC<EditInviteProps> = ({
                 isOpen={selectedData !== null}
                 toggleFunction={handleCloseDialog}
             >
-                <div className='d-flex justify-content-center flex-column'>
-                    <h6 className='mt-1 font-87-5 text-start'>Name*</h6>
+                <div className='d-flex flex-column align-items-start justify-content-center text-start'>
+                    <Heading
+                        title='Name*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Input
                         type="text"
                         placeholder="Enter your name"
@@ -65,7 +72,12 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         name='name'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Email*</h6>
+                    <Heading
+                        title='Email*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Input
                         type="email"
                         placeholder="Enter your Email ID"
@@ -73,7 +85,12 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         name='email_id'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Company*</h6>
+                    <Heading
+                        title='Company*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Input
                         type="text"
                         placeholder="Enter your company"
@@ -81,15 +98,12 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         name='company'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    {/* <Select
-                        options={Constants?.company}
-                        value={updatedData?.company}
-                        labelKey='value'
-                        valueKey='value'
-                        size={SelectSize.large}
-                        name='company'
-                    /> */}
-                    <h6 className='mt-1 font-87-5 text-start'>CompanyType*</h6>
+                    <Heading
+                        title='Company Type*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Select
                         options={settings?.company_types}
                         value={updatedData?.company_type}
@@ -98,7 +112,12 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         size={SelectSize.large}
                         name='company_type'
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Role*</h6>
+                    <Heading
+                        title='Role*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Select
                         options={settings?.roles}
                         onChange={(e) => handleChangeData(e)}

@@ -8,6 +8,7 @@ import { useUserService } from '../../../../../services';
 import { toast } from 'react-toastify';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import UploadImage from './UploadImage';
 import DeleteImage from './DeleteImage';
 
@@ -107,18 +108,17 @@ export default function Profile() {
                                 // The image is smaller than 100KB, no need to resize
                                 const resizedImage = base64Data;
                                 if (resizedImage) {
-                                    userService.updateUserImage({ 'image': resizedImage })
-                                        .then((response: any) => {
-                                            if (response) {
-                                                setSpinner(false);
-                                                userService.getUserDetails();
-                                                setShowUploadImageModal(false);
-                                                toast.success('Successfully Uploaded profile picture.', {
-                                                    position: toast.POSITION.BOTTOM_CENTER
-                                                });
-                                                setNewImage(undefined);
-                                            }
-                                        })
+                                    userService.updateUserImage({ 'image': resizedImage }).then((response: any) => {
+                                        if (response) {
+                                            setSpinner(false);
+                                            userService.getUserDetails();
+                                            setShowUploadImageModal(false);
+                                            toast.success('Successfully Uploaded profile picture.', {
+                                                position: toast.POSITION.BOTTOM_CENTER
+                                            });
+                                            setNewImage(undefined);
+                                        }
+                                    })
                                         .catch(error => {
                                             setSpinner(false);
                                             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
@@ -139,18 +139,17 @@ export default function Profile() {
                                 const sizeInKB = sizeInBytes / 1024;
                                 const sizeInMB = sizeInKB / 1024;
                                 if (resizedImage) {
-                                    userService.updateUserImage({ 'image': resizedImage })
-                                        .then((response: any) => {
-                                            if (response) {
-                                                setSpinner(false);
-                                                userService.getUserDetails();
-                                                setShowUploadImageModal(false);
-                                                toast.success('Successfully Uploaded profile picture.', {
-                                                    position: toast.POSITION.BOTTOM_CENTER
-                                                });
-                                                setNewImage(undefined);
-                                            }
-                                        })
+                                    userService.updateUserImage({ 'image': resizedImage }).then((response: any) => {
+                                        if (response) {
+                                            setSpinner(false);
+                                            userService.getUserDetails();
+                                            setShowUploadImageModal(false);
+                                            toast.success('Successfully Uploaded profile picture.', {
+                                                position: toast.POSITION.BOTTOM_CENTER
+                                            });
+                                            setNewImage(undefined);
+                                        }
+                                    })
                                         .catch(error => {
                                             setSpinner(false);
                                             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
@@ -213,7 +212,6 @@ export default function Profile() {
         setShowDeleteImageModal(false);
     }
 
-
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
             <div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pe-4">
@@ -254,36 +252,85 @@ export default function Profile() {
                 <div className="col-4 ps-5">
                     <ul className='edit-profile-list'>
                         <li >
-                            <p className="text-muted fs-6  mb-0">Name:</p>
-                            <p className="color-black">{loggedUser.name}</p>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.muted}
+                                classname='mb-0'>Name:</Body>
+                            <Heading
+                                title={loggedUser.name}
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                         </li>
                         <li >
-                            <p className="text-muted fs-6  mb-0">Company:</p>
-                            <p className="color-black">{loggedUser.company}</p>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.muted}
+                                classname='mb-0'>Company:</Body>
+                            <Heading
+                                title={loggedUser.company}
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                         </li>
                         <li >
-                            <p className="text-muted fs-6  mb-0">Phone Number:</p>
-                            <p className="color-black">{loggedUser.phone_number}</p>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.muted}
+                                classname='mb-0'>Phone Number:</Body>
+                            <Heading
+                                title={loggedUser.phone_number}
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                         </li>
                         <li >
-                            <p className="text-muted fs-6  mb-0">Role:</p>
-                            <p className="color-black">{loggedUser.role}</p>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.muted}
+                                classname='mb-0'>Role:</Body>
+                            <Heading
+                                title={loggedUser.role}
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                         </li>
                     </ul>
                 </div>
                 <div className="col-4">
                     <ul className='edit-profile-list'>
                         <li>
-                            <p className="text-muted fs-6  mb-0">Email Id:</p>
-                            <p className="color-black">{loggedUser.email_id}</p>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.muted}
+                                classname='mb-0'>Email Id:</Body>
+                            <Heading
+                                title={loggedUser.email_id}
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                         </li>
                         <li >
-                            <p className="text-muted fs-6  mb-0">Designation:</p>
-                            <p className="color-black">{loggedUser.designation}</p>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.muted}
+                                classname='mb-0'>Designation:</Body>
+                            <Heading
+                                title={loggedUser.designation}
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                         </li>
                         <li >
-                            <p className="text-muted fs-6  mb-0">Country:</p>
-                            <p className="color-black">{loggedUser.country}</p>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.muted}
+                                classname='mb-0'>Country:</Body>
+                            <Heading
+                                title={loggedUser.country}
+                                type={TypographyType.h3}
+                                colour={TypographyColor.dark}
+                            />
                         </li>
                     </ul>
                 </div>

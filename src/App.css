@@ -248,18 +248,6 @@ a {
 	text-align: left;
 }
 
-.fontSizeS {
-	font-size: 12px;
-}
-
-.fontSizeXS {
-	font-size: 10px;
-}
-
-.fontSizeXL {
-	font-size: 60px;
-}
-
 .infoIcon {
 	background-color: black;
 	color: white;
@@ -577,6 +565,9 @@ a {
 	list-style: none;
 	text-align: start;
 }
+.edit-profile-list li {
+	margin-bottom: 1rem;
+}
 
 .upload-image-box {
 	width: 15rem;
@@ -631,8 +622,6 @@ a {
 	width: 96%;
 	height: 100% !important;
 }
-
-
 
 .full-height {
 	height: 100% !important;
@@ -736,11 +725,16 @@ a {
 /* InviteNew page */
 
 .Note {
-	font-size: 11px;
+	/* d-flex justify-content-center align-items-center */
 	background-color: #f9eade;
 	height: 2rem;
+	width: 100%;
 	border-radius: 0.25rem;
 	font-weight: 600 !important;
+	margin: 1rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .btn-black {
@@ -768,9 +762,6 @@ a {
 	padding-bottom: 6rem;
 }
 
-.font-87-5 {
-	font-size: 0.875rem;
-}
 
 .drawer-input-box-height {
 	height: 2.75rem;
@@ -838,6 +829,9 @@ a {
 
 .fs-31 {
 	font-size: 1.983rem;
+}
+.fs-60 {
+	font-size: 3.75rem;
 }
 
 .fs-64 {
@@ -1216,12 +1210,6 @@ th {
 
 .description-para {
 	font-size: 0.9rem;
-}
-
-.note-div {
-	background-color: #FCF1E8;
-	border-radius: 0.35rem;
-
 }
 
 .upload-btn {

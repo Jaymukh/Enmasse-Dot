@@ -1,10 +1,10 @@
 import styles from "./Typography.module.css";
 
 export enum BodyType {
-    p1, /* 1rem */
-    p2, /* 0.875rem */
-    p3, /* 0.75rem */
-    p4, /* 0.625rem */
+    p1, /* 1rem (16px) */
+    p2, /* 0.875rem (14px) */
+    p3, /* 0.75rem (12px) */
+    p4, /* 0.625rem (10px) */
 }
 
 export enum BodyColor {
@@ -18,6 +18,7 @@ interface BodyProps {
     type: BodyType;
     color: BodyColor;
     children: React.ReactNode;
+    classname?: string;
 }
 
 const getColor = (color: BodyColor) => {
@@ -58,11 +59,9 @@ const getType = (type: BodyType) => {
     return className;
 }
 
-const Body = ({ type, color, children }: BodyProps) => {
+const Body = ({ type, color, children, classname }: BodyProps) => {
     return (
-        <div>
-            <p className={`${getColor(color)} ${getType(type)} m-0 p-0`}>{children}</p>
-        </div>
+        <p className={`${getColor(color)} ${getType(type)} ${classname}`}>{children}</p>
     )
 }
 

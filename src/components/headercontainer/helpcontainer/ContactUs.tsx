@@ -20,7 +20,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
     const setSpinner = useSetRecoilState(spinnerState);
 
 
-    const [payloadData, setPayloadData] = useState<{ message: string, geo_name: string, purpose: string }>({ message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Contact us' });
+    const [payloadData, setPayloadData] = useState<{ message: string, geo_name: string, purpose: string }>({ message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Contact Us' });
 
     const handleChangeData = (e: any) => {
         e.preventDefault();
@@ -71,19 +71,19 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
         >
             <div className='d-flex justify-content-center flex-column'>
                 <p className=' text-start'>If you like to request any data or details from enmasse, fill the following form and send request. We will notify you once the data have been updated.</p>
-                <h6 className='mt-1 font-87-5 text-start'>Name</h6>
+                <h6 className='mt-1 fs-14 text-start'>Name</h6>
                 <Input
                     type="text"
                     placeholder="Enter your name"
                     value={loggedUser.name}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Email</h6>
+                <h6 className='mt-1 fs-14 text-start'>Email</h6>
                 <Input
                     type="email"
                     placeholder="Enter your Email ID"
                     value={loggedUser.email_id}
                 />
-                <h6 className='mt-1 font-87-5 text-start'>Message</h6>
+                <h6 className='mt-1 fs-14 text-start'>Message</h6>
                 <textarea
                     value={payloadData.message}
                     name='message'

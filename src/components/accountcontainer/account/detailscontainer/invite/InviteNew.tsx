@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../../../../App.css'
 import Drawer from '../../../../ui/Drawer';
 import * as Constants from '../../../../../utils/constants/Constants';
 import '../../../../../App.css';
@@ -8,6 +9,8 @@ import { loggedUserState, AllSettingsState, User } from "../../../../../states";
 import { toast } from "react-toastify";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import { Input } from '../../../../ui/input/Input';
 interface NewData {
     name: string | undefined;
@@ -48,13 +51,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     if (response) {
                         userService.getAll();
                         setOpenInviteSent(true);
-                        setNewData({
-                            name: undefined,
-                            email_id: undefined,
-                            role: 'Admin',
-                            company: 'enmasse',
-                            company_type: 'Enmasse',
-                        });
                         handleCloseInviteNew();
                     }
                 })
@@ -81,8 +77,13 @@ const InviteNew: React.FC<InviteNewProps> = ({
                 isOpen={openInviteNew}
                 toggleFunction={handleCloseInviteNew}
             >
-                <div className='d-flex justify-content-center flex-column'>
-                    <h6 className='mt-1 font-87-5 text-start'>Name*</h6>
+                <div className='d-flex flex-column align-items-start justify-content-center text-start'>
+                    <Heading
+                        title='Name*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Input
                         type="text"
                         placeholder="Enter your name"
@@ -90,7 +91,12 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='name'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Email*</h6>
+                    <Heading
+                        title='Email*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Input
                         type="email"
                         placeholder="Enter your Email ID"
@@ -98,7 +104,12 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='email_id'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='mt-1 font-87-5 text-start'>Company*</h6>
+                    <Heading
+                        title='Company*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Input
                         type="text"
                         placeholder="Enter your Company name"
@@ -106,7 +117,12 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='company'
                         onChange={(e) => handleChangeData(e)}
                     />
-                    <h6 className='my-1 font-87-5 text-start'>Role*</h6>
+                    <Heading
+                        title='Role*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Select
                         options={settings?.roles}
                         onChange={(e) => handleChangeData(e)}
@@ -115,8 +131,13 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='role'
-                    />                    
-                    <h6 className='mt-1 font-87-5 text-start'>Company Type*</h6>
+                    />
+                    <Heading
+                        title='Company Type*'
+                        type={TypographyType.h4}
+                        colour={TypographyColor.dark}
+                        classname='mt-2 mb-0'
+                    />
                     <Select
                         options={settings?.company_types}
                         value={newData?.company_type}
@@ -125,7 +146,12 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={SelectSize.large}
                         name='company_type'
                     />
-                    <p className='my-3 Note d-flex justify-content-center align-items-center'>Note: Admins will be able to invite users to the platform</p>
+                    <Body
+                        type={BodyType.p3}
+                        color={BodyColor.dark}
+                        classname='Note'>
+                            Note: Admins will be able to invite users to the platform
+                    </Body>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}

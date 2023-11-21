@@ -4,6 +4,7 @@ import '../../../../../styles/main.css';
 import { MdCancel } from 'react-icons/md';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import Modal from '../../../../ui/modal/Modal';
 
 interface ConfirmDeleteProps {
@@ -24,15 +25,18 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                     <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeConfirmDeleteModal()}></Button>
                 </div>
                 <div className='d-flex justify-content-center'>
-                <MdCancel className='text-center fontSizeXL color-orange' />
+                <MdCancel className='text-center fs-60 color-orange' />
                 </div>
                 
                 <Heading
                     title='Are you sure?'
-                    type={TypographyType.h5}
+                    type={TypographyType.h4}
                     colour={TypographyColor.dark}
                 />
-                <p className='text-center fontSizeS'>Do you really want to delete this record? This process cannot be undone.</p>
+                <Body
+                type={BodyType.p3}
+                color={BodyColor.dark}
+                classname='text-center'>Do you really want to delete this record? This process cannot be undone.</Body>
                 <Button
                     theme={ButtonTheme.warning}
                     size={ButtonSize.large}

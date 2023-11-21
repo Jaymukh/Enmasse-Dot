@@ -8,8 +8,8 @@ import { overlayState, helpState } from '../../../states';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useUserService } from '../../../services';
 import ContactUs from './ContactUs';
-import Roadmap from './Roadmap';
 import OverlayModal from './OverlayModal';
+import WIPDrawer from '../../mapContainer/WIPDrawer';
 
 const HelpOptions = () => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
@@ -19,6 +19,17 @@ const HelpOptions = () => {
 	const setShow = useSetRecoilState(helpState);
 	const [contactUsDrawerOpen, setContactUsDrawerOpen] = useState(false);
 	const [roadmapDrawerOpen, setRoadmapDrawerOpen] = useState(false);
+	const [text, setText] = useState('');
+
+	const closeWIPDrawer = () => {
+		setRoadmapDrawerOpen(false);
+		setText('');
+	};
+
+	const openWIPDrawer = (title: string) => {
+		setText(title);
+		setRoadmapDrawerOpen(true);
+	}
 
 	const handleContactUsDrawer = (contactUsDrawerOpen: boolean) => {
 		setContactUsDrawerOpen(contactUsDrawerOpen);
@@ -26,10 +37,6 @@ const HelpOptions = () => {
 	const handleHelpClick = () => {
 		setOverlay(true);
 		setShow(1);
-	};
-	
-	const handleRoadmapDrawer = (roadmapDrawerOpen: boolean) => {
-		setRoadmapDrawerOpen(roadmapDrawerOpen);
 	};
 
 	useEffect(() => {
@@ -49,7 +56,7 @@ const HelpOptions = () => {
 				handleHelpClick();
 				break;
 			case 3:
-				handleRoadmapDrawer(true);
+				openWIPDrawer('Roadmap');
 				break;
 		}
 		handleClose();
@@ -101,7 +108,7 @@ const HelpOptions = () => {
 			{contactUsDrawerOpen && (<ContactUs contactUsDrawerOpen={contactUsDrawerOpen} handleContactUsDrawer={handleContactUsDrawer} />)}
 
 			{/* drawer for roadmap */}
-			{roadmapDrawerOpen && (<Roadmap roadmapDrawerOpen={roadmapDrawerOpen} handleRoadmapDrawer={handleRoadmapDrawer} />)}
+			{roadmapDrawerOpen && <WIPDrawer open={roadmapDrawerOpen} title={text} closeWIPDrawer={closeWIPDrawer} />}
 
 			{/* drawer for Help */}
 			{overlay && <OverlayModal />}
