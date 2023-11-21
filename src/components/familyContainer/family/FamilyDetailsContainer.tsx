@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import { useMapHelpers } from '../../../helpers';
+import { useSearchParams } from 'react-router-dom';
+import { useMapsService } from '../../../services';
 
 interface FamilyDetailsContainerProps {
     selectedData: any; // Update with appropriate type
@@ -9,6 +11,12 @@ interface FamilyDetailsContainerProps {
 
 const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
     const { getCurrencyWithSymbol } = useMapHelpers();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const mapServices = useMapsService();
+
+    useEffect(() => {
+        mapServices?.getCifData(Number(searchParams.get('geo_code')!));
+    }, []);
     return (
         <div className='col-6 py-2 my-3 no-scrollbar' style={{ height: '98%', overflow: 'auto' }}>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='mb-5 mt-1 p-3'>

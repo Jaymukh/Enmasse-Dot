@@ -1,13 +1,11 @@
 import { atom } from 'recoil';
 
-export interface ErrorStateProps {
-    type: 'error' | 'success' | 'warning';
+export type ErrorType = {
+    type: string;
     message: string;
-}
+};
 
-const errorState = atom({
-    key: 'error',
-    default: {} as ErrorStateProps,
+export const errorState = atom<ErrorType | null>({
+    key: 'errorState',
+    default: null,
 });
-
-export { errorState };

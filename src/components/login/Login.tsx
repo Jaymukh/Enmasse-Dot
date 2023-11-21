@@ -13,9 +13,7 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
 import { useSetRecoilState } from "recoil";
-import { spinnerState } from "../../states";
-import { toast } from 'react-toastify';
-import Toast from '../ui/toast/Toast';
+import { errorState, spinnerState } from "../../states";
 
 interface IFormValues {
     email_id: string;
@@ -31,6 +29,7 @@ interface IModal {
 export default function Login() {
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
+    const setError = useSetRecoilState(errorState);
     const [email, setEmail] = useState('');
     const [showModal, setShowModal] = useState<IModal>({
         passwordModal: false,
@@ -72,16 +71,14 @@ export default function Login() {
         userService.forgotPassword({"email_id": email})
             .then((response: any) => {
                 if (response) {
-                    toast.success(response.message, {
-                        position: toast.POSITION.BOTTOM_CENTER,
-                      });
+                    setError({ type: 'Success', message: response.message });
                     setSpinner(false);
                 }
             })
             .catch((error: any) => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                setError({ type: 'Error', message: errorMsg });
             });
         setEmail('');
         handleModal({ passwordModal: false });

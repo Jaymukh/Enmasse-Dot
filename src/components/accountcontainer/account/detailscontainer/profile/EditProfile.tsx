@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '../../../../../App.css';
 import Drawer from '../../../../ui/Drawer';
-import * as Constants from '../../../../../utils/constants/Constants'
-import { useRecoilValue } from "recoil";
+import '../../../../../App.css';
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useSettingsService } from '../../../../../services';
-import { AllSettingsState, User } from "../../../../../states";
+import { AllSettingsState, User, errorState } from "../../../../../states";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import { Input } from '../../../../ui/input/Input';
-import { toast } from 'react-toastify';
 
 interface EditProfileProps {
     selectedData: User;
@@ -28,6 +27,7 @@ export default function EditProfile({
     // all settings's data
     const settingsService = useSettingsService();
     const settings = useRecoilValue(AllSettingsState);
+    const setError = useSetRecoilState(errorState);
 
     //function to get all the settings details
     useEffect(() => {
@@ -47,9 +47,9 @@ export default function EditProfile({
         if (updatedData.name && updatedData.email_id && updatedData.phone_number && updatedData.designation) {
             handleUpdate(updatedData);
         }
-        else {
-            toast.error('All fields are mendatory!');
-        }
+        else{
+            setError({ type: 'Error', message: "All fields are mendatory!" });
+        }        
     };
 
     return (

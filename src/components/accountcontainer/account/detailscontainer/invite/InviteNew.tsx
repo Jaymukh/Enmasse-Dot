@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import '../../../../../App.css'
+import React, { useEffect } from 'react';
 import Drawer from '../../../../ui/Drawer';
-import * as Constants from '../../../../../utils/constants/Constants';
 import '../../../../../App.css';
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useUserService, useSettingsService } from '../../../../../services';
-import { loggedUserState, AllSettingsState, User } from "../../../../../states";
-import { toast } from "react-toastify";
+import { loggedUserState, AllSettingsState, errorState } from "../../../../../states";
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
@@ -40,6 +37,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
     const userService = useUserService();
     const loggedUser = useRecoilValue(loggedUserState);
     const settings = useRecoilValue(AllSettingsState);
+    const setError = useSetRecoilState(errorState);
     const settingsService = useSettingsService();
 
 
@@ -56,11 +54,11 @@ const InviteNew: React.FC<InviteNewProps> = ({
                 })
                 .catch(error => {
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                    toast.error(errorMsg);
+                    setError({ type: 'Error', message: errorMsg });
                 });
         }
         else {
-            toast.error("All fields are mendatory!");
+            setError({ type: 'Error', message: "All fields are mendatory!" });
         }
     };
 

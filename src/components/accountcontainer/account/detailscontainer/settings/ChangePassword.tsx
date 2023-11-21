@@ -7,9 +7,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useUserService } from '../../../../../services';
-import { useRecoilValue } from 'recoil';
-import { toast } from "react-toastify";
-import { authState } from '../../../../../states';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { authState, errorState } from '../../../../../states';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import { Button, ButtonSize, ButtonTheme, ButtonVariant } from '../../../../ui/button/Button';
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
@@ -24,6 +23,7 @@ interface ChangePasswordProps {
 const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick, handleDrawer, handleShowModal }) => {
     const userService = useUserService();
     const auth = useRecoilValue(authState);
+    const setError = useSetRecoilState(errorState);
 
     const [filledInputCount, setFilledInputCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
@@ -84,7 +84,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             })
             .catch(error => {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                setError({ type: 'Error', message: errorMsg });
             });
     };
 

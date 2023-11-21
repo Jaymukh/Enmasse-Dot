@@ -4,9 +4,8 @@ import { Input } from '../ui/input/Input';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Modal from '../ui/modal/Modal';
 import { useUserService } from '../../services';
-import { toast } from 'react-toastify';
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { loggedUserState, spinnerState, User } from "../../states";
+import { useSetRecoilState } from "recoil";
+import { spinnerState } from "../../states";
 
 interface ForgotPasswordProps {
     showModal: boolean;

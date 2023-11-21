@@ -1,9 +1,8 @@
 import { useSetRecoilState, useRecoilState } from 'recoil';
 import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
-import { authState, loggedUserState, usersState, spinnerState, overlayState } from '../states';
+import { authState, loggedUserState, usersState, spinnerState, overlayState, errorState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { APIS, RouteConstants } from '../constants';
-import { toast } from "react-toastify";
 
 const useUserService = () => {
     const fetchWrapper = useFetchWrapper();
@@ -12,6 +11,7 @@ const useUserService = () => {
     const setLoggedUser = useSetRecoilState(loggedUserState);
     const setUsers = useSetRecoilState(usersState);
     const setSpinner = useSetRecoilState(spinnerState);
+    const setError = useSetRecoilState(errorState);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -38,7 +38,7 @@ const useUserService = () => {
             .catch(error => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                setError({ type: 'Success', message: errorMsg });
             });
 
     }
@@ -57,7 +57,7 @@ const useUserService = () => {
             .catch(error => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                setError({ type: 'Error', message: errorMsg });
             });
 
     }
@@ -69,7 +69,7 @@ const useUserService = () => {
 		}).catch(error => {
 			setSpinner(false);
 			const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-			toast.error(errorMsg);
+			setError({ type: 'Error', message: errorMsg });
 		})
     };
 
@@ -84,7 +84,7 @@ const useUserService = () => {
             .catch(error => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                toast.error(errorMsg);
+                setError({ type: 'Error', message: errorMsg });
             });
     };
     

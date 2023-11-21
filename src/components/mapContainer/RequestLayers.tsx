@@ -3,9 +3,8 @@ import Drawer from '../ui/Drawer';
 import '../../App.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Input } from '../ui/input/Input';
-import { toast } from 'react-toastify';
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { loggedUserState, User, geoJsonState, spinnerState } from "../../states";
+import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../states";
 import { useCIFService } from '../../services';
 
 interface RequestLayersProps {
@@ -18,6 +17,7 @@ export default function RequestLayers({ requestLayersDrawerOpen,   handleRequest
     const geoJSON = useRecoilValue(geoJsonState);
     const cifService = useCIFService();
     const setSpinner = useSetRecoilState(spinnerState);
+    const setError = useSetRecoilState(errorState);
 
     const [payloadData, setPayloadData] = useState<{ message: string, geo_name: string, purpose: string }>({ message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Layers' });
 
@@ -45,19 +45,19 @@ export default function RequestLayers({ requestLayersDrawerOpen,   handleRequest
             console.log(payloadData);
             cifService.sendEmail(payloadData).then((response: any) => {
                 if (response) {
-                    toast.success(response.message);
+                    setError({ type: 'Success', message: response.message });
                     handleRequestLayersDrawer(false);
                 }
                 setSpinner(false);
             })
             .catch(error => {
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-				toast.error(errorMsg);
+				setError({ type: 'Success', message: errorMsg });
                 setSpinner(false);
 			});
         }
         else {
-            toast.error('Write something!');
+            setError({ type: 'Error', message: 'Write something!' });
         }
     };
 

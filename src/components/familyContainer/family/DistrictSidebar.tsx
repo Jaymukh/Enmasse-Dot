@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RouteConstants } from '../../../constants';
 import Select, { SelectSize } from '../../ui/select/Select';
 import '../../../App.css';
@@ -9,7 +10,7 @@ import '../../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import { useRecoilValue } from 'recoil';
-import { useSettingsService } from '../../../services';
+import { useMapsService, useSettingsService } from '../../../services';
 import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings } from '../../../states';
 import { useMapHelpers } from '../../../helpers';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
@@ -31,7 +32,6 @@ const DistrictSidebar = () => {
     const navigate = useNavigate();
     const { cifData: { properties } } = useRecoilValue(mapFeatureState);
     const [currency, setCurrency] = useState<string>("$");
-    // all settings's data
     const settingsService = useSettingsService();
     const settings: SettingsData = useRecoilValue(AllSettingsState);
     const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
@@ -49,7 +49,7 @@ const DistrictSidebar = () => {
     //function to get all the user's setting
     useEffect(() => {
         settingsService.getAllSettings();
-        settingsService.getUserSettings();
+        settingsService.getUserSettings();        
     }, []);
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -84,7 +84,7 @@ const DistrictSidebar = () => {
                         <p className='fs-12 m-0 data-card-normal-font'>Total Population</p>
                     </div>
                     <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
-                        <h6 className='fs-14 m-0'>{properties?.totalHouseholds ? properties?.totalHouseholds : '__' }</h6>
+                        <h6 className='fs-14 m-0'>{properties?.totalHouseholds ? properties?.totalHouseholds : '__'}</h6>
                         <p className='fs-12 m-0 data-card-normal-font'>Total Households</p>
                     </div>
                 </div>

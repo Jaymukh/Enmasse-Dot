@@ -94,8 +94,8 @@ console.log(headers?.KEYS, breakdownType)
                                 <div className='d-flex flex-row align-items-center'>
                                     <p className='pt-3 pe-2'>{item.KEY === 'geoName' ? breakdownType : item.VALUE}</p>
                                     <div className='d-flex flex-column'>
-                                        <BiSolidUpArrow name='asc' fontSize={9} color='#939393' onClick={() => handleSortTable(item, 'asc')} />
-                                        <BiSolidDownArrow name='desc' fontSize={9} color='#367A2B' onClick={() => handleSortTable(item, 'desc')} />
+                                        <BiSolidUpArrow name='asc' fontSize={9} color='#939393' onClick={() => handleSortTable(item, 'desc')} />
+                                        <BiSolidDownArrow name='desc' fontSize={9} color='#367A2B' onClick={() => handleSortTable(item, 'asc')} />
                                     </div>
                                 </div>
                             </th>
