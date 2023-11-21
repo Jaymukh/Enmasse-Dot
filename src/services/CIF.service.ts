@@ -80,12 +80,18 @@ const useCIFService = () => {
         });
     }
 
+    const sendEmail = (payload: any) => {
+        setSpinner(true);
+        return fetchWrapper.post(APIS.CIF.SEND_EMAIL , payload);
+    }
+
     return {
         getInOutFlowData,
         getEHGrowthData,
         getMetricBreakdownData,
         getGeoSpecificData,
-        getCoreSolutionsGraphData
+        getCoreSolutionsGraphData,
+        sendEmail,
     }
 }
 

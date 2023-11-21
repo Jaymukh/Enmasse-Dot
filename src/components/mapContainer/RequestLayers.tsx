@@ -4,8 +4,9 @@ import '../../App.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Input } from '../ui/input/Input';
 import { toast } from 'react-toastify';
-import { useRecoilValue } from "recoil";
-import { loggedUserState, User, geoJsonState } from "../../states";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { loggedUserState, User, geoJsonState, spinnerState } from "../../states";
+import { useCIFService } from '../../services';
 
 interface RequestLayersProps {
     requestLayersDrawerOpen: boolean,
@@ -14,7 +15,9 @@ interface RequestLayersProps {
 
 export default function RequestLayers({ requestLayersDrawerOpen,   handleRequestLayersDrawer}: RequestLayersProps) {
     const loggedUser = useRecoilValue<User>(loggedUserState);
-    const geoJSON = useRecoilValue(geoJsonState)
+    const geoJSON = useRecoilValue(geoJsonState);
+    const cifService = useCIFService();
+    const setSpinner = useSetRecoilState(spinnerState);
 
     const [payloadData, setPayloadData] = useState<{ message: string, geo_name: string, purpose: string }>({ message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Layers' });
 
@@ -34,16 +37,27 @@ export default function RequestLayers({ requestLayersDrawerOpen,   handleRequest
         else {
             setPayloadData({ ...payloadData, [name]: value });
         }
-
     };
 
     const handleSendClick = () => {
         if (payloadData.message) {
+            setSpinner(true);
             console.log(payloadData);
-            handleRequestLayersDrawer(false);
+            cifService.sendEmail(payloadData).then((response: any) => {
+                if (response) {
+                    toast.success(response.message);
+                    handleRequestLayersDrawer(false);
+                }
+                setSpinner(false);
+            })
+            .catch(error => {
+				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+				toast.error(errorMsg);
+                setSpinner(false);
+			});
         }
         else {
-            toast.error('Write a message!');
+            toast.error('Write something!');
         }
     };
 
