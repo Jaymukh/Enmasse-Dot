@@ -54,21 +54,19 @@ function MapOptions({
                     >
                         Global
                     </Button>
-                </div>
-                
-                        <div className='select-right-margin py-0 h-100'>
-                            <p className='country-text m-0 text-start'>Country</p>
-                            <Button
-                                theme={ButtonTheme.primary}
-                                size={ButtonSize.medium}
-                                variant={ButtonVariant.transparent}
-                                // onClick={handleCountryChange}
-                                classname='h-auto text-start ps-2 pb-3'
-                            >
-                                {global ? 'Select' : 'India'}
-                            </Button>
-                        </div>
-                   
+                </div>                
+                <div className='select-right-margin py-0 h-100'>
+                    <p className='country-text m-0 text-start'>Country</p>
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.medium}
+                        variant={ButtonVariant.transparent}
+                        // onClick={handleCountryChange}
+                        classname='h-auto text-start ps-2 pb-3'
+                    >
+                        {global ? 'Select' : 'India'}
+                    </Button>
+                </div>                   
                 {!global && selected.country ? (
                     <div className='select-right-margin py-0 h-100'>
                         <p className='country-text m-0 text-start'>State</p>

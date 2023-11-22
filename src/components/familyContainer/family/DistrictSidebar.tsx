@@ -74,6 +74,7 @@ const DistrictSidebar = () => {
                         valueKey='symbol'
                         size={SelectSize.small}
                         name='currency'
+                        disabled={true}
                     />
                 </div>
             </div>
