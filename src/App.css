@@ -729,8 +729,8 @@ a {
 .profile-image-box {
 	top: 214px;
 	left: 377px;
-	width: 15rem !important;
-	height: 15rem !important;
+	width: 12.5rem !important;
+	height: 12.5rem !important;
 	overflow: hidden;
 	opacity: 1;
 }

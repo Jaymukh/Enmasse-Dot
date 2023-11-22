@@ -229,8 +229,8 @@ export default function Profile() {
             </div>
             <hr />
             <div className="row w-100 mx-3">
-                <div className="col-3  fs-64 ms-3" >
-                    <div className='d-flex flex-column justify-content-end align-items-end'>
+                <div className="col-3 p-0 fs-64 ms-3" >
+                    <div className='d-flex flex-column justify-content-start align-items-start' style={{ width: '12.5rem', height: '12.5rem' }}>
                         <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center bg-light" >
                             {loggedUser?.profile_picture ? <img src={loggedUser?.profile_picture} alt="Profile" className='' /> : <span className='d-flex flex-column justify-content-center align-items-center w-100 h-100' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>}
                         </div>
@@ -245,7 +245,7 @@ export default function Profile() {
                         </Button>
                     </div>
                 </div>
-                <div className="col-4 ps-5">
+                <div className="col-3">
                     <ul className='edit-profile-list'>
                         <li >
                             <Body

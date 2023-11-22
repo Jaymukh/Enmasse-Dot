@@ -24,8 +24,8 @@ const AccountOptions = () => {
 
 	useEffect(() => {
 		userService.getUserDetails();
-		// settingsService.getAllSettings();
-		// settingsService.getUserSettings();
+		settingsService.getAllSettings();
+		settingsService.getUserSettings();
 	}, []);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -79,7 +79,7 @@ const AccountOptions = () => {
 							classname=''
 							disabled={false}
 						/>
-						<span className='text-wrap'>{loggedUser.name}</span>
+						<span className='text-wrap text-start'>{loggedUser.name}</span>
 					</li>
 					{Constants.accountMenuItems.map((item) => (
 						(loggedUser.role === 'Admin' || item.key !== 2) && (
