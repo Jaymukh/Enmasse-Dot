@@ -3,22 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
-import { cifState, inOutFlowDataProps } from '../../states';
+import { cifState } from '../../states';
 import { useRecoilValue } from 'recoil';
 import NoVisualData from './NoVisualData';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
-
-interface graphDataProps {
-    geoId: number,
-    parentId: number,
-    geoValue: string,
-    dataPeriod: string,
-    medianAnnualIncome: number | null,
-    medianAnnualBorrow: number | null,
-    outflow: number | null,
-    inflow: number | null
-}
 
 const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
     return (
@@ -58,7 +47,7 @@ const ReverseArrowMarker = () => (
     </marker>
 )
 
-const ScatterGraph = () => {
+const ScatterGraph = ({ geoName }: { geoName: string }) => {
     const { inOutFlowData } = useRecoilValue(cifState);
     const [center, setCenter] = useState<{ x: number | null, y: number | null }>({ x: 0, y: 0 });
 
@@ -100,7 +89,7 @@ const ScatterGraph = () => {
     }, [inOutFlowData])
 
     return (
-        <div className='h-100'>
+        <div className={`h-100 ${geoName === 'district' ? 'mb-5 pb-5' : ''}`}>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
                 <div className='row px-2 pt-2 d-flex justify-content-between'>
                     <div className='m-0 p-0 d-flex col-4 align-items-center'>
@@ -137,7 +126,7 @@ const ScatterGraph = () => {
                             <Label value="OUTFLOW: Spend" position="bottom" offset={0} fontWeight={500} fill='000000' fontSize={10} />
                         </XAxis>
                         <YAxis type="number" dataKey="inflow" name="y" strokeWidth='0.35' strokeOpacity='0.5' className='mb-3' fontSize={10} >
-                            <Label angle={270} value="INFLOW: Income + Borrowing" position={{x: 5, y: 80}} offset={30} fontWeight={500} fill='000000' fontSize={10} />
+                            <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: 5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10} />
                         </YAxis>
                         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                         <Scatter data={inOutFlowData} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />

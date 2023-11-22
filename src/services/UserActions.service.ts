@@ -38,7 +38,7 @@ const useUserService = () => {
             .catch(error => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                setError({ type: 'Success', message: errorMsg });
+                setError({ type: 'Error', message: errorMsg });
             });
 
     }
@@ -91,6 +91,7 @@ const useUserService = () => {
     const updateUserDetails = (updatedData: any) => {
         return fetchWrapper.put(APIS.USERS.UPDATE_LOGGED_USER, updatedData);
     }
+
     const updateUserImage = (image: any) => {
         return fetchWrapper.put(APIS.USERS.UPDATE_IMAGE, image);
     }

@@ -61,8 +61,8 @@ const DashBoard = () => {
                 <div className='col-12 p-0 my-2'>
                     <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo?.data} breakdownType={cifData?.geoInfo?.breakdownType} />
                 </div>}
-            <div className='col-12 p-0 my-2'>
-                <ScatterGraph />
+            <div className={`col-12 p-0 my-2 ${(mapFeatures?.cifData?.properties?.geo_name === 'district' ? 'mb-5' : '')}`}>
+                <ScatterGraph geoName={mapFeatures?.cifData?.properties?.geo_name} />
             </div>
             {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
                 <div className='col-12 p-0 my-2 mb-5 pb-5'>
