@@ -1,7 +1,9 @@
 import { useRecoilValue } from 'recoil';
 import { AllSettingsState } from '../states';
+import { useSearchParams } from 'react-router-dom';
 
 const useMapHelpers = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
     const settings = useRecoilValue(AllSettingsState);
     const currencies = settings.currencies;
 
@@ -16,7 +18,19 @@ const useMapHelpers = () => {
         return '__';
     };
 
-    return { getCurrencyWithSymbol };
+    const getSelectedObject = () => {
+        const params: any = {};
+        searchParams?.toString().split('&').forEach((param) => {
+            const [key, value] = param.split('=');
+            params[key] = Number(value);
+        });
+        return params;
+    }
+
+    return {
+        getCurrencyWithSymbol,
+        getSelectedObject,
+    };
 };
 
 export { useMapHelpers };

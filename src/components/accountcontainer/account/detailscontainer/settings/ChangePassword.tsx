@@ -27,6 +27,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
 
     const [filledInputCount, setFilledInputCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
+
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
     }
@@ -48,6 +49,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             .oneOf([Yup.ref('new_password')], 'Passwords must match')
             .required('Confirm password is required'),
     });
+
+    const validationOptions = [
+        { key: 'lengthCheck', text: '8 Characters' },
+        { key: 'uppercase', text: 'Contains Uppercase' },
+        { key: 'specialChar', text: 'Contains Special character' },
+        { key: 'number', text: 'Contains Number' },
+    ];
 
     const { handleSubmit, register, watch, formState } = useForm({
         resolver: yupResolver(validationSchema),
@@ -122,7 +130,6 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
                         placeholder='Old password'
                     />
-
                     {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.current_password?.message}</p>}
                     <Heading
                         title='New Password'
@@ -143,42 +150,17 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     />
                     {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.new_password?.message}</p>}
                     <div className="row my-2">
-                        <div className="d-flex pe-0 mb-1">
-                            {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <Body
-                                type={BodyType.p3}
-                                color={BodyColor.dark}
-                                classname='ms-2 mb-1'>
-                                8 Characters
-                            </Body>
-                        </div>
-                        <div className="d-flex pe-0 mb-1">
-                            {conditions.uppercase ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <Body
-                                type={BodyType.p3}
-                                color={BodyColor.dark}
-                                classname='ms-2 mb-1'>
-                                Contains Uppercase
-                            </Body>
-                        </div>
-                        <div className="d-flex pe-0 mb-1">
-                            {conditions.specialChar ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <Body
-                                type={BodyType.p3}
-                                color={BodyColor.dark}
-                                classname='ms-2 mb-1'>
-                                Contains Special character
-                            </Body>
-                        </div>
-                        <div className="d-flex pe-0 mb-1">
-                            {conditions.number ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                            <Body
-                                type={BodyType.p3}
-                                color={BodyColor.dark}
-                                classname='ms-2 mb-1'>
-                                Contains Number
-                            </Body>
-                        </div>
+                        {validationOptions.map((item: { key: string, text: string }) => (
+                            <div className="d-flex pe-0 mb-1">
+                                {conditions[item?.key as keyof typeof conditions] ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                                <Body
+                                    type={BodyType.p3}
+                                    color={BodyColor.dark}
+                                    classname='ms-2 mb-1'>
+                                    {item.text}
+                                </Body>
+                            </div>
+                        ))}
                     </div>
                     <Heading
                         title='Re enter new password'
@@ -193,8 +175,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='my-2 inputBoxHeight px-2 fs-14 w-100'
                         placeholder='Confirm new password'
                     />
-                    {errors?.confirm_new_password?.message && 
-                    <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.confirm_new_password?.message}</p>}
+                    {errors?.confirm_new_password?.message &&
+                        <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.confirm_new_password?.message}</p>}
                     <Button
                         type='submit'
                         classname='mb-0 mt-4 height-3'

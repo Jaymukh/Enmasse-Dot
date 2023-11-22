@@ -16,6 +16,7 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 import CheckGIF from "../../utils/images/CheckMarkGIF.gif";
 import { useSetRecoilState } from 'recoil';
 import { errorState } from '../../states';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 
 const UpdatePassword = () => {
     const navigate = useNavigate();
@@ -49,6 +50,13 @@ const UpdatePassword = () => {
         specialChar: false,
         number: false,
     });
+
+    const validationOptions = [
+        { key: 'lengthCheck', text: '8 Characters' },
+        { key: 'uppercase', text: 'Contains Uppercase' },
+        { key: 'specialChar', text: 'Contains Special character' },
+        { key: 'number', text: 'Contains Number' },
+    ];
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newPassword = e.target.value;
@@ -170,22 +178,17 @@ const UpdatePassword = () => {
                         </div>
                         {errors?.new_password?.message && <p className='text-danger m-0 p-0'>{errors?.new_password?.message}</p>}
                         <div className="row my-2">
-                            <div className="col-7 d-flex pe-0">
-                                {conditions.lengthCheck ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                                <p className='fs-12 ms-2'>8 Characters</p>
-                            </div>
-                            <div className="col-5 d-flex pe-0">
-                                {conditions.uppercase ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                                <p className='fs-12 ms-2'>Contains Uppercase</p>
-                            </div>
-                            <div className="col-7 d-flex pe-0">
-                                {conditions.specialChar ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                                <p className='fs-12 ms-2'>Contains Special character</p>
-                            </div>
-                            <div className="col-5 d-flex pe-0">
-                                {conditions.number ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
-                                <p className='fs-12 ms-2'>Contains Number</p>
-                            </div>
+                            {validationOptions.map((item: { key: string, text: string }, index: number) => (
+                                <div className='col-6 d-flex pe-0'>
+                                    {conditions[item?.key as keyof typeof conditions] ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                                    <Body
+                                        type={BodyType.p3}
+                                        color={BodyColor.dark}
+                                        classname='ms-2'>
+                                        {item.text}
+                                    </Body>
+                                </div>
+                            ))}
                         </div>
                         <Heading
                             title='Confirm password'

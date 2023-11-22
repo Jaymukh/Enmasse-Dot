@@ -9,6 +9,7 @@ import { useStoriesService } from '../../../services';
 import { useRecoilValue } from 'recoil';
 import { storiesState } from '../../../states';
 import { RouteConstants } from '../../../constants';
+import { useMapHelpers } from '../../../helpers';
 
 interface FamilyProps {
     selectedFamily: number;
@@ -23,15 +24,7 @@ const Family = () => {
     const storiesService = useStoriesService();
     const stories = useRecoilValue(storiesState);
     const [searchParams, setSearchParams] = useSearchParams();
-
-    const getSelectedObject = () => {
-        const params: any = {};
-        searchParams?.toString().split('&').forEach((param) => {
-            const [key, value] = param.split('=');
-            params[key] = Number(value);
-        });
-        return params;
-    }
+    const { getSelectedObject } = useMapHelpers();
     const [pageInfo, setPageInfo] = useState<any>(getSelectedObject());
     const [selectedStory, setSelectedStory] = useState<{ index: number, story: any }>({ index: Number(searchParams.get('story_id')) - 1, story: {} });
     

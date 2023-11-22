@@ -21,16 +21,7 @@ const FamiliesDetailsContainer = () => {
     const storiesService = useStoriesService();
     const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
-    const { getCurrencyWithSymbol } = useMapHelpers();
-
-    const getSelectedObject = () => {
-        const params: any = {};
-        searchParams?.toString().split('&').forEach((param) => {
-            const [key, value] = param.split('=');
-            params[key] = Number(value);
-        });
-        return params;
-    }
+    const { getCurrencyWithSymbol, getSelectedObject } = useMapHelpers();
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
     // const setSpinner = useSetRecoilState(spinnerState);
     // const { getCurrencyWithSymbol } = useMapHelpers();
