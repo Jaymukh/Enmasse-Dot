@@ -25,18 +25,17 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                     <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeConfirmDeleteModal()}></Button>
                 </div>
                 <div className='d-flex justify-content-center'>
-                <MdCancel className='text-center fs-60 color-orange' />
+                    <MdCancel className='text-center fs-60 color-orange' />
                 </div>
-                
                 <Heading
                     title='Are you sure?'
                     type={TypographyType.h4}
                     colour={TypographyColor.dark}
                 />
                 <Body
-                type={BodyType.p3}
-                color={BodyColor.dark}
-                classname='text-center'>Do you really want to delete this record? This process cannot be undone.</Body>
+                    type={BodyType.p3}
+                    color={BodyColor.dark}
+                    classname='text-center'>Do you really want to delete this record? This process cannot be undone.</Body>
                 <Button
                     theme={ButtonTheme.warning}
                     size={ButtonSize.large}
