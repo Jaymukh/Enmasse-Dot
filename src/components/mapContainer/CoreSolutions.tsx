@@ -43,7 +43,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     return (
         <div className='ms-3 d-flex flex-column justify-content-between h-100' >
             <div className='mt-3'>
-                <div className={`mt-1 bg-white px-3 py-2 ${!options?.length ? 'disabled-div' : ''}`}>
+                <div className={`mt-1 bg-white px-2 py-2 ${!options?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center justify-content-between'>
                         <div className='d-flex align-items-center'>
                             <PiRadioButtonLight fontSize={22} />
@@ -58,7 +58,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     </div>
                 </div>
                 {isChecked?.coreSolution && options?.length > 0 &&
-                    <div className="bg-white mt-2 py-3 px-3">
+                    <div className="bg-white mt-1 py-3 px-3">
                         {options?.map((option: Option) => (
                             <div className="d-flex flex-row justify-content-start ms-1" key={option.label}>
                                 <label className="my-1 fs-14">
@@ -76,7 +76,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         ))}
                     </div>
                 }
-                <div className={`d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
+                <div className={`d-flex justify-content-between align-items-center bg-white mt-3 px-2 py-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center'>
                         <BsFillChatLeftTextFill className='' fontSize={20} />
                         <h6 className="my-0 fs-16 mx-2">View Stories</h6>
@@ -88,7 +88,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         name='viewStories'
                     />
                 </div>
-                <div className="d-flex justify-content-between align-items-center bg-white mt-3 px-3 py-2">
+                <div className="d-flex justify-content-between align-items-center bg-white mt-3 px-2 py-2">
                     <div className='d-flex align-items-center'>
                         <MdLayers fontSize={22} />
                         <h6 className="my-0 fs-16 mx-2">Request Layers</h6>

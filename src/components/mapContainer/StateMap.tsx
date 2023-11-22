@@ -183,6 +183,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
     useEffect(() => {
         clearCircles();
+        setSelectedRb(0);
     }, [selected.country, selected.state, selected.district]);
 
     useEffect(() => {
