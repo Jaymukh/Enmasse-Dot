@@ -19,8 +19,9 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
     const setSpinner = useSetRecoilState(spinnerState);
     const setError = useSetRecoilState(errorState);
 
-
-    const [payloadData, setPayloadData] = useState<{ message: string, geo_name: string, purpose: string }>({ message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Contact Us' });
+    const [payloadData, setPayloadData] = useState
+    <{ email_id: string, name: string, company: string ,message: string, geo_name: string, purpose: string }>
+    ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Contact Us' });
 
     const handleChangeData = (e: any) => {
         e.preventDefault();
@@ -65,7 +66,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
     return (
         <Drawer
             id='contact-us'
-            title={`Contact us - ${geoJSON?.rootProperties?.Name}`}
+            title={`Contact us (${geoJSON?.rootProperties?.Name})`}
             isOpen={contactUsDrawerOpen}
             toggleFunction={handleContactUsDrawer}
         >
