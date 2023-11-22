@@ -223,8 +223,8 @@ export default function Profile() {
                     variant={ButtonVariant.bordered}
                     onClick={() => handleOpen(true)}
                 >
-                    <MdModeEdit className='mx-1 mb-1' fontSize={22} />
-                    Edit Profile
+                    <MdModeEdit className='me-1 mb-1' fontSize={22} />
+                    Edit
                 </Button>
             </div>
             <hr />

@@ -84,7 +84,7 @@ const Settings = () => {
                         classname='ms-2'
                     >
                         <MdLock className='me-1 mb-1' fontSize={20} />
-                        Change Password
+                        Change password
                     </Button>
                 </div>
             </div>

@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { useMapHelpers } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
+import familySkeleton from '../../utils/images/family-skeleton.png';
 
 const FamilyDetails = () => {
     const navigate = useNavigate();
@@ -51,7 +52,7 @@ const FamilyDetails = () => {
                     </div>}
             </div>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
-                <img className='col-2 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0]} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
+                <img className='col-2 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
                 <div className='col-10 white-bg py-4 px-4 rounded-end'>
                     <div className='d-flex flex-row'>
                         <h6 className='fs-16'>{familyDetails?.familyName}</h6>
