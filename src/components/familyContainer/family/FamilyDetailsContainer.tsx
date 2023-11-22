@@ -65,18 +65,19 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     }
                 </div>
                 <div className="card-body">
-                    {selectedData.image &&
-                        <img src={selectedData.image} alt="Family" width="100%" height="auto" className='imgBorderRadious my-2' />
+                    {selectedData?.image && selectedData?.image[0] &&
+                        <img src={selectedData?.image[0]} alt="Family" width="100%" height="auto" className='imgBorderRadious my-2' />
                     }
-                    <p className="text-start fs-12">{selectedData?.description}</p>
+                    {selectedData?.description && selectedData?.description[0] && <p className="text-start fs-12">{selectedData?.description[0]}</p>}
                     <div className='d-flex flex-row justify-content-around my-2'>
-                        {selectedData.image &&
-                            <img src={selectedData.image} alt="Family" width="50%" height="auto" className='imgBorderRadious me-1' />
+                        {selectedData?.image && selectedData?.image[1] &&
+                            <img src={selectedData?.image[1]} alt="Family" width="50%" height="auto" className='imgBorderRadious me-1' />
                         }
-                        {selectedData.image &&
-                            <img src={selectedData.image} alt="Family" width="50%" height="auto" className='imgBorderRadious' />
+                        {selectedData?.image && selectedData?.image[2] &&
+                            <img src={selectedData?.image[2]} alt="Family" width="50%" height="auto" className='imgBorderRadious' />
                         }
                     </div>
+                    {selectedData?.description && selectedData?.description[1] && <p className="text-start fs-12">{selectedData?.description[1]}</p>}
                 </div>
             </Card>
         </div>
