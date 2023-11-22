@@ -22,10 +22,10 @@ const useSettingsService = () => {
         return fetchWrapper.get(APIS.SETTINGS.GET_USER_SETTINGS).then((response) => {
             if (response) {
                 setUserSettings(response);
-                setSpinner(false);
+                // setSpinner(false);
             }
         }).catch(error => {
-            setSpinner(false);
+            // setSpinner(false);
         });
     }
 

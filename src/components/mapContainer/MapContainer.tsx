@@ -132,9 +132,7 @@ function MapContainer() {
                 ...prevMapFeatures,
                 circles: data
             }));
-            //setSpinner(false);
         }).catch(error => {
-            //setSpinner(false);
         });
     }
 
@@ -145,7 +143,6 @@ function MapContainer() {
                 featuredStories: data
             }));
         }).catch(error => {
-            //setSpinner(false);
         });
     }
 

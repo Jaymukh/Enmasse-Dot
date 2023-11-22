@@ -11,9 +11,9 @@ const DetailsContainer = () => {
     const visiblePanel = useRecoilValue(visiblePanelState);
     const userService = useUserService();
 
-	useEffect(() => {
-		userService.getUserDetails();
-	}, []);
+	// useEffect(() => {
+	// 	userService.getUserDetails();
+	// }, []);
 
     return (
         <div className='col-9 h-100 z-index-0 pe-5'>
