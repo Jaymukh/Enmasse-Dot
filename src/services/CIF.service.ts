@@ -3,8 +3,6 @@ import { APIS } from '../constants';
 import { cifState, spinnerState } from "../states";
 import { useSetRecoilState } from 'recoil';
 
-
-
 const useCIFService = () => {
     const fetchWrapper = useFetchWrapper();
     const setDashboardData = useSetRecoilState(cifState);
@@ -20,7 +18,6 @@ const useCIFService = () => {
             setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            console.log(error);
         });
     }
 
@@ -34,7 +31,6 @@ const useCIFService = () => {
             setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            console.log(error);
         });
     }
 
@@ -48,7 +44,6 @@ const useCIFService = () => {
             setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            console.log(error);
         });
     }
 
@@ -62,7 +57,6 @@ const useCIFService = () => {
             setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            console.log(error);
         });
     }
 
@@ -76,7 +70,6 @@ const useCIFService = () => {
             setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            console.log(error);
         });
     }
 
