@@ -182,7 +182,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         classname='mb-0 mt-4 height-3'
                         size={ButtonSize.large}
                         theme={ButtonTheme.primary}
-                        variant={ButtonVariant.contained}
+                        variant={ButtonVariant.bordered}
                     >
                         {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
                         Update

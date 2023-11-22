@@ -43,6 +43,8 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
     };
 
     const handleSendClick = () => {
+        // setPayloadData({ ...payloadData, geo_name: geoJSON?.rootProperties?.Name });
+        
         if (payloadData.message) {
             setSpinner(true);
             console.log(payloadData);

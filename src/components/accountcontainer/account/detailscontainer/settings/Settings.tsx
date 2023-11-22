@@ -8,7 +8,8 @@ import ChangePassword from './ChangePassword';
 import UpdateSuccessModal from './UpdateSuccessModel';
 import { RouteConstants } from '../../../../../constants';
 import { useNavigate } from 'react-router-dom';
-import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
+import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states"; 
+import {useSettingsService} from '../../../../../services'
 import { useRecoilValue } from "recoil";
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 import Select, { SelectSize } from '../../../../ui/select/Select';
@@ -21,6 +22,7 @@ const Settings = () => {
     const [showModal, setShowModal] = useState(false);
     const [open, setOpen] = useState(false);
     // all settings's data
+    const settingsService = useSettingsService();
     const settings: SettingsData = useRecoilValue(AllSettingsState);
     const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
     const [isChecked, setIsChecked] = useState(usersettings?.email_notification);    
@@ -46,6 +48,13 @@ const Settings = () => {
     const toggleSwitch = () => {
         setIsChecked(!isChecked);
     };
+
+    //function to get all the user's setting
+    useEffect(() => {
+        settingsService.getAllSettings();
+        settingsService.getUserSettings();
+    }, []);
+    
 
     return (
         <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>

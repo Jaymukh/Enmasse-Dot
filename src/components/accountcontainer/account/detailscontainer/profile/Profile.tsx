@@ -237,7 +237,7 @@ export default function Profile() {
                         <Button
                             theme={ButtonTheme.secondary}
                             size={ButtonSize.small}
-                            variant={ButtonVariant.bordered}
+                            variant={ButtonVariant.contained}
                             onClick={() => openUploadImageModal()}
                             classname='rounded-circle editImageBtn align-self-end p-0'
                         >
