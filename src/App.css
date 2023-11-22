@@ -12,7 +12,6 @@
 	--pinkColor: #f45eac;
 	--blackColor: #1f1f1f;
 	--black-3: #0D0B0B;
-
 	--background-color: #f2f3f4;
 	--light-gray-color: '#E7E7E9';
 	--gray-color: gray;
@@ -21,6 +20,7 @@
 	--light-pink-color: pink;
 	--pink-color: #f45eac;
 }
+/* height and width class  */
 
 .height-2-25 {
 	height: 2.25rem !important;
@@ -184,9 +184,6 @@ a {
 		padding-bottom: 6rem;
 	}
 
-	/* .SideBarIcon {
-		margin-left: 0;
-	} */
 }
 
 .tam-info {
@@ -299,14 +296,6 @@ a {
 	left: 0;
 	/* z-index: 0; */
 }
-
-/* .header {
-    margin-bottom: 11.5vh; 
-}
-
-.header2 {
-    margin-top: 11.5vh; 
-} */
 
 /* login page css */
 
@@ -488,7 +477,6 @@ a {
 }
 
 .contextualinfo {
-	/* margin-left: 39rem; */
 	border-radius: 20.7rem;
 	margin-top: 7rem;
 	margin-right: -42rem;
@@ -675,15 +663,6 @@ a {
 	font-family: 'Lato', sans-serif;
 	margin-left: 0.1px;
 	width: 12.625rem;
-
-	/* width: 12.1875rem;
-	height: 4.625rem;
-	padding: 0.31rem;
-	overflow: hidden;
-	display: flex;
-	flex-direction: row;
-	justify-content: start;
-	align-items: center; */
 }
 
 .map-popup-description {
@@ -1281,12 +1260,7 @@ th {
 	border-radius: 0.3125rem;
 	height: 3rem;
 	font-size: 0.875rem;
-	/* border: 1px solid rgba(0, 0, 0, 0.3); */
 	border: 1px solid var(--black-2);
-}
-
-.input-div:disabled {
-	opacity: 0.5;
 }
 
 
@@ -1413,4 +1387,8 @@ th {
 	font-family: "Poppins-Medium", sans-serif;
 	margin: auto 0.3rem auto 0;
 	font-size: 0.875rem;
+}
+/* margin class  */
+.margin-bottom-0-31{
+	margin-bottom: 0.31rem;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../../../../App.css';
+import '../../../../../styles/main.css';
 import { MdModeEdit } from 'react-icons/md';
 import { MdLock } from 'react-icons/md';
 import Switch from '../../../../ui/switch/Switch';
@@ -9,19 +10,12 @@ import { RouteConstants } from '../../../../../constants';
 import { useNavigate } from 'react-router-dom';
 import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
 import { useRecoilValue } from "recoil";
-import { useSettingsService } from '../../../../../services';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 
-interface SettingsProps { }
-
-
-
-const Settings: React.FC<SettingsProps> = () => {
-
-    // handle edit
+const Settings = () => {
     const navigate = useNavigate();
     const [editMode, setEditMode] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -29,8 +23,7 @@ const Settings: React.FC<SettingsProps> = () => {
     // all settings's data
     const settings: SettingsData = useRecoilValue(AllSettingsState);
     const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
-    const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
-    
+    const [isChecked, setIsChecked] = useState(usersettings?.email_notification);    
 
     const handleUpdateClick = () => {
         handleDrawer(false);
@@ -104,7 +97,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         options={settings?.currencies}
                         value={usersettings?.currency}
                         labelKey='name'
-                        valueKey='name'
+                        valueKey='symbol'
                         size={SelectSize.large}
                         name='currency'
                         disabled={true}
@@ -120,7 +113,7 @@ const Settings: React.FC<SettingsProps> = () => {
                         disabled={true}
                     />
                     <h6 className='mt-2 text-start'>Notifications</h6>
-                    <div className='d-flex justify-content-between align-items-center px-3 py-2 input-div'>
+                    <div className={`d-flex justify-content-between align-items-center px-3 py-2 input-div ${!editMode?'disabled-div': ''}`} aria-disabled={true}>
                         <h6 className='m-0' >Receive email notifications</h6>
                         <Switch
                             isChecked={usersettings?.email_notification}
