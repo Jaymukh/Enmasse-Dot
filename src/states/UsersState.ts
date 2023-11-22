@@ -8,7 +8,7 @@ export interface User {
     designation: string;
     country: string;
     company_type: string;
-    phone_number: number;
+    phone_number: string;
     role: string;
     status: string;
     profile_picture?: string;

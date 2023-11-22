@@ -40,17 +40,25 @@ export default function EditProfile({
         e.preventDefault();
         const name = e.target.name as keyof User;
         const value = e.target.value;
-        setUpdatedData({ ...updatedData, [name]: value });
+        if(name == 'phone_number')
+        {
+            const validValue = value.replace(/[^0-9+-]/g, '');
+            setUpdatedData({ ...updatedData, [name]: validValue });
+        }
+        else{
+            setUpdatedData({ ...updatedData, [name]: value });
+        }        
     };
 
     const handleUpdateClick = () => {
         if (updatedData.name && updatedData.email_id && updatedData.phone_number && updatedData.designation) {
             handleUpdate(updatedData);
         }
-        else{
+        else {
             setError({ type: 'Error', message: "All fields are mendatory!" });
-        }        
+        }
     };
+    
 
     return (
         <Drawer
@@ -99,8 +107,8 @@ export default function EditProfile({
                     value={updatedData.phone_number}
                     name='phone_number'
                     maxlength={15}
-                    pattern="[0-9]*"
                     onChange={(e) => handleChangeData(e)}
+                    pattern="[0-9+-]*"
                 />
                 <Heading
                     title='Country*'
