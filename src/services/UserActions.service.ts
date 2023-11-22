@@ -74,15 +74,15 @@ const useUserService = () => {
     };
 
     const getUserDetails = () => {
-        setSpinner(true);
+        // setSpinner(true);
         return fetchWrapper.get(APIS.USERS.GET_LOGGED_USER).then(data => {
             const initial = initialGenerator(data.name);
             const userHSL = generateHSL(data.name);
             setLoggedUser({ ...data, initial: initial, userHSL: userHSL });
-            setSpinner(false);
+            // setSpinner(false);
         })
             .catch(error => {
-                setSpinner(false);
+                // setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
             });

@@ -24,8 +24,8 @@ const AccountOptions = () => {
 
 	useEffect(() => {
 		userService.getUserDetails();
-		settingsService.getAllSettings();
-		settingsService.getUserSettings();
+		// settingsService.getAllSettings();
+		// settingsService.getUserSettings();
 	}, []);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
