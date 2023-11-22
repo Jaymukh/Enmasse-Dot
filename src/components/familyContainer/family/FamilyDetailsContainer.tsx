@@ -77,7 +77,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                             <img src={selectedData?.image[2]} alt="Family" width="50%" height="auto" className='imgBorderRadious' />
                         }
                     </div>
-                    {selectedData?.description && selectedData?.description[0] && <p className="text-start fs-12">{selectedData?.description[1]}</p>}
+                    {selectedData?.description && selectedData?.description[1] && <p className="text-start fs-12">{selectedData?.description[1]}</p>}
                 </div>
             </Card>
         </div>
