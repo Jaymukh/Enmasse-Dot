@@ -16,7 +16,6 @@ import familySkeleton from '../../../utils/images/family-skeleton.png';
 import FamiliesSorting from './FamiliesSorting';
 import { RouteConstants } from '../../../constants';
 import { useMapHelpers } from '../../../helpers';
-import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 
 const FamiliesDetailsContainer = () => {
     const navigate = useNavigate();

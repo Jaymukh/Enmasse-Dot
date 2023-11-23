@@ -12,7 +12,6 @@ import { useMapHelpers } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import familySkeleton from '../../utils/images/family-skeleton.png';
-import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 
 const FamilyDetails = () => {
     const navigate = useNavigate();
