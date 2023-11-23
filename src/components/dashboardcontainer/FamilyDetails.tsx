@@ -1,6 +1,7 @@
 import { FiArrowRight } from 'react-icons/fi';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import { ProgressBar } from '../ui/progressbar/ProgressBar';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import '../../styles/main.css';
@@ -54,7 +55,12 @@ const FamilyDetails = () => {
                         />
                         <AiOutlineInfoCircle fontSize={35} color='#606060' className='me-2' />
                         <ProgressBar coverage={mapFeatures?.cifData?.properties?.EICoverage} />
-                        <p className='w-auto fs-12 m-0 text-end text-nowrap ps-2'>{getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.covered)} out Of {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.total)} Districts</p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.dark}
+                            classname='w-auto m-0 text-end text-nowrap ps-2'>
+                            {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.covered)} out Of {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.total)} Districts
+                        </Body>
                     </div>}
             </div>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
@@ -66,7 +72,12 @@ const FamilyDetails = () => {
                             colour={TypographyColor.dark}
                             type={TypographyType.h4}
                         />
-                        <p className='ms-3 fs-12'>{familyDetails?.address}</p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.dark}
+                            classname='ms-3'>
+                            {familyDetails?.address}
+                        </Body>
                     </div>
                     <div className='d-flex flex-row'>
                         <Body
@@ -75,10 +86,19 @@ const FamilyDetails = () => {
                             classname='text-center'>
                             {getCurrencyWithSymbol(familyDetails?.familyDetails?.householdSpend, familyDetails?.familyDetails?.spendUOM)}
                         </Body>
-
-                        <p className='ms-2 me-4 grey-para fs-10'>Annual Household Spend</p>
+                        <Body
+                            type={BodyType.p4}
+                            color={BodyColor.muted}
+                            classname='ms-2 me-4 mt-1'>
+                            Annual Household Spend
+                        </Body>
                     </div>
-                    <p className='text-start fs-12'>{familyDetails?.description}</p>
+                    <Body
+                        type={BodyType.p3}
+                        color={BodyColor.dark}
+                        classname='text-start'>
+                        {familyDetails?.description}
+                    </Body>
                     <div className='d-flex justify-content-start'>
                         <button className='rounded text-start ps-0 border-0 fs-10 white-bg fw-bold green-text' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
                     </div>

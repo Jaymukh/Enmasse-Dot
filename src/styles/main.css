@@ -2,10 +2,15 @@
 /* eg: styles related to text, background colors of div, border etc */
 @import url("./color.css");
 
+/* color and background color classes */
+
 .color-green-0 {
     color: var(--green-0);
 }
 
+.bg-green-0 {
+    background-color: var(--green-0);
+}
 .bg-green-1 {
     background-color: var(--green-1);
 }
@@ -70,22 +75,6 @@ ul {
 .data-card {
     border-radius: 0.5rem;
     border: 1px solid var(--black-1);
-}
-
-.card-green-bg {
-    background-color: var(--green-0);
-}
-
-.font-rejected {
-    color: var(--rejected-0);
-}
-
-.font-primary-green {
-    color: var(--green-0);
-}
-
-.data-card-normal-font {
-    color: var(--grey-0);
 }
 
 /* modal width & height */

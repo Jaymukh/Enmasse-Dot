@@ -3,6 +3,7 @@ import '../../../../../App.css';
 import Drawer from '../../../../ui/Drawer';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import WorkInProgressImage from '../../../../../utils/images/work_in_progress.svg';
+import Body, {BodyType, BodyColor } from '../../../../ui/typography/Body';
 
 interface EditSettingProps {
     editMode: boolean;
@@ -27,7 +28,12 @@ const EditSetting: React.FC<EditSettingProps> = ({ editMode, handleEditClick }) 
                                 type={TypographyType.h6}
                                 colour={TypographyColor.dark}
                             />
-                            <p className="card-text">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
+                            <Body 
+                            type={BodyType.p3}
+                            color={BodyColor.dark}
+                            classname=''>
+                            Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.
+                        </Body>
                         </div>
                     </div>
                 </div>

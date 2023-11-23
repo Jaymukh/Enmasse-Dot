@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Drawer from '../../ui/Drawer';
 import '../../../App.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Input } from '../../ui/input/Input';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
@@ -40,11 +41,9 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
         else {
             setPayloadData({ ...payloadData, [name]: value });
         }
-
     };
 
     const handleSendClick = () => {
-        // setPayloadData({ ...payloadData, geo_name: geoJSON?.rootProperties?.Name });
 
         if (payloadData.message) {
             setSpinner(true);
@@ -74,8 +73,15 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
             isOpen={requestDataDrawerOpen}
             toggleFunction={handleRequestDataDrawer}
         >
-            <div className='d-flex justify-content-center flex-column'>
-                <p className=' text-start'>{`If you like to request a data for “${geoJSON?.rootProperties?.Name}”, fill the following form and send request. We will notify you once the data have been updated.`}</p>
+            <div className='d-flex flex-column align-items-start justify-content-center test-start'>
+                <Body
+                    type={BodyType.p2}
+                    color={BodyColor.muted}
+                    classname='text-start'
+                >
+                    {`If you like to request a data for “${geoJSON?.rootProperties?.Name}”, fill the following form and send request. We will notify you once the data have been updated.`}
+                </Body>
+
                 <Heading
                     title='Name*'
                     type={TypographyType.h5}
@@ -112,7 +118,7 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
                     onChange={(e) => handleChangeData(e)}
                     placeholder="Type your request message (Max 250 words)"
                     style={{ height: '10rem' }}
-                    className='fs-13 p-3 rounded'
+                    className='fs-13 p-3 rounded w-100'
                 />
                 <Button
                     theme={ButtonTheme.primary}

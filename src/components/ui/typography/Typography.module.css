@@ -84,11 +84,11 @@
 }
 
 .secondary {
-    color: var(--grey-0);
+    color: var(--grey-0); /*dark gray */
 }
 
 .muted {
-    color: var(--black-6);
+    color: var(--black-6); /*lightgray*/
 }
 .warning {
     color: var(--warning-0);

@@ -1,4 +1,5 @@
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import WIPImage from '../../utils/images/work_in_progress.svg';
 
 interface NoVisualDataProps {
@@ -16,8 +17,18 @@ const NoVisualData: React.FC<NoVisualDataProps> = ({ displayImage, size }) => {
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
                 />
-                <p className='fs-12 grey-text p-0 pt-2 m-0'>Our team is actively developing these features for the upcoming updates.</p>
-                <p className='fs-12 grey-text p-0 m-0'> Keep an eye out for more information</p>
+                <Body
+                    type={BodyType.p3}
+                    color={BodyColor.muted}
+                    classname='p-0 pt-2 m-0'>
+                    Our team is actively developing these features for the upcoming updates.
+                </Body>
+                <Body
+                    type={BodyType.p3}
+                    color={BodyColor.muted}
+                    classname='p-0 m-0'>
+                    Keep an eye out for more information.
+                </Body>
             </div>
         </div>
     )

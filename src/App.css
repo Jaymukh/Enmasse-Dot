@@ -757,10 +757,6 @@ a {
 	background-color: #ffffff;
 }
 
-.grey-para {
-	color: var(--gray-color);
-}
-
 /* font size class  */
 .fs-10 {
 	font-size: 0.625rem;
@@ -1385,10 +1381,12 @@ th {
 .bold-familydetails {
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
-	margin: auto 0.3rem auto 0;
 	font-size: 0.875rem;
 }
 /* margin class  */
 .margin-bottom-0-31{
 	margin-bottom: 0.31rem;
+}
+.margin-right-0-31{
+	margin-right: 0.31rem;
 }

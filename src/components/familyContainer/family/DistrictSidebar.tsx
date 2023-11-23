@@ -14,6 +14,7 @@ import { useMapsService, useSettingsService } from '../../../services';
 import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings } from '../../../states';
 import { useMapHelpers } from '../../../helpers';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import WIPImage from '../../../utils/images/work_in_progress.svg';
 import RequestData from './RequestData';
 
@@ -93,7 +94,12 @@ const DistrictSidebar = () => {
                             type={TypographyType.h5}
                             classname='m-0'
                         />
-                        <p className='fs-12 m-0 data-card-normal-font'>Total Population</p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.secondary}
+                            classname='m-0'>
+                            Total Population
+                        </Body>
                     </div>
                     <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
                         <Heading
@@ -102,7 +108,12 @@ const DistrictSidebar = () => {
                             type={TypographyType.h5}
                             classname='m-0'
                         />
-                        <p className='fs-12 m-0 data-card-normal-font'>Total Households</p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.secondary}
+                            classname='m-0'>
+                            Total Households
+                        </Body>
                     </div>
                 </div>
                 <div className='d-flex flex-column justify-content-center pb-1 px-0'>
@@ -123,7 +134,12 @@ const DistrictSidebar = () => {
                                 type={TypographyType.h5}
                                 classname='m-0'
                             />
-                            <p className='fs-10 m-0 text-white'>Total Addressable Market</p>
+                            <Body
+                                type={BodyType.p4}
+                                color={BodyColor.white}
+                                classname='m-0'>
+                                Total Addressable Market
+                            </Body>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
                             <Heading
@@ -132,7 +148,12 @@ const DistrictSidebar = () => {
                                 type={TypographyType.h5}
                                 classname='m-0'
                             />
-                            <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Transactional Value</p>
+                            <Body
+                                type={BodyType.p4}
+                                color={BodyColor.secondary}
+                                classname='m-0'>
+                                Average Annual EH Transactional Value
+                            </Body>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
                             <Heading
@@ -141,7 +162,12 @@ const DistrictSidebar = () => {
                                 type={TypographyType.h5}
                                 classname='m-0'
                             />
-                            <p className='fs-10 m-0 data-card-normal-font'>Number of Entrepreneurial Households (EH)</p>
+                            <Body
+                                type={BodyType.p4}
+                                color={BodyColor.secondary}
+                                classname='m-0'>
+                                Number of Entrepreneurial Households (EH)
+                            </Body>
                         </div>
                     </div>
                 </div>
@@ -158,7 +184,12 @@ const DistrictSidebar = () => {
                                     />
                                     <AiOutlineInfoCircle fontSize={20} color='#606060' />
                                 </div>
-                                <p className='fs-10 m-0'>{properties?.EICoverage?.covered} out 0f {properties?.EICoverage?.total} Districts</p>
+                                <Body
+                                    type={BodyType.p4}
+                                    color={BodyColor.dark}
+                                    classname='m-0'>
+                                    {properties?.EICoverage?.covered} out 0f {properties?.EICoverage?.total} Districts
+                                </Body>
                             </div>
                             <ProgressBar coverage={properties?.EICoverage} />
                         </div>}
@@ -181,7 +212,11 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0'>Points of Interest</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.white}
+                                        classname='m-0'>Points of Interest
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
                                     <Heading
@@ -190,7 +225,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Healthcare activity points of interest</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Healthcare activity points of interest
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
                                     <Heading
@@ -199,7 +239,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Education activity points of interest</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Education activity points of interest
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
                                     <Heading
@@ -208,7 +253,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Agri Markets activity points of interest</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Agri Markets activity points of interest
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
                                     <Heading
@@ -217,7 +267,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Financial Solutions activity points of interest</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Financial Solutions activity points of interest
+                                    </Body>
                                 </div>
                             </div>
 
@@ -241,7 +296,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0'>Annual EH Spend</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.white}
+                                        classname='m-0'>
+                                        Annual EH Spend
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
                                     <Heading
@@ -250,7 +310,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Average Annual EH Spend
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
                                     <Heading
@@ -259,7 +324,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Non-Core Solutions</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Average Annual EH Spend on Non-Core Solutions
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
                                     <Heading
@@ -268,7 +338,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Healthcare</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Average Annual EH Spend on Healthcare
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
                                     <Heading
@@ -277,7 +352,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Education</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Average Annual EH Spend on Education
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
                                     <Heading
@@ -286,7 +366,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Agri Markets</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Average Annual EH Spend on Agri Markets
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
                                     <Heading
@@ -295,7 +380,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Spend on Financial Solutions</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Average Annual EH Spend on Financial Solutions
+                                    </Body>
                                 </div>
                             </div>
                         </div>}
@@ -318,7 +408,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 '>Average Annual EH Borrowing</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.white}
+                                        classname='m-0'>
+                                        Average Annual EH Borrowing
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
                                     <Heading
@@ -327,8 +422,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0'>Average Annual EH Borrowing from Formal Sources</p>
-
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.dark}
+                                        classname='m-0'>
+                                        Average Annual EH Borrowing from Formal Sources
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
                                     <Heading
@@ -337,10 +436,16 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Borrowing from Informal Sources</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Average Annual EH Borrowing from Informal Sources
+                                    </Body>
                                 </div>
                             </div>
-                        </div>}
+                        </div>
+                        }
 
                         {properties?.EHIncome?.showIncome && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
@@ -360,7 +465,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0'>Average Annual EH Income</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.white}
+                                        classname='m-0'>
+                                        Average Annual EH Income
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>
                                     <Heading
@@ -369,7 +479,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0'>Average Annual EH Income from Variable Sources</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.dark}
+                                        classname='m-0'>
+                                        Average Annual EH Income from Variable Sources
+                                    </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
                                     <Heading
@@ -378,7 +493,12 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
-                                    <p className='fs-10 m-0 data-card-normal-font'>Average Annual EH Income from Informal Sources</p>
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.secondary}
+                                        classname='m-0'>
+                                        Average Annual EH Income from Informal Sources
+                                    </Body>
                                 </div>
                             </div>
                         </div>}
@@ -390,7 +510,12 @@ const DistrictSidebar = () => {
                             type={TypographyType.h5}
                             colour={TypographyColor.dark}
                         />
-                        <p className='text-muted fs-12 p-0 m-0 w-95'>We are working on measuring EH Spend, Income, and Borrowing for this district to project a TAM. Please check again soon.</p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.muted}
+                            classname='p-0 m-0 w-95'>
+                            We are working on measuring EH Spend, Income, and Borrowing for this district to project a TAM. Please check again soon.
+                        </Body>
                         <Button
                             theme={ButtonTheme.primary}
                             size={ButtonSize.default}

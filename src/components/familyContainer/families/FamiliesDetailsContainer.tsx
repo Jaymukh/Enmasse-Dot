@@ -4,6 +4,7 @@ import '../../../styles/main.css';
 import { storiesSelectOptions } from '../../../utils/constants/Constants';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import Select, { SelectSize } from '../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { useStoriesService } from '../../../services';
@@ -119,12 +120,30 @@ const FamiliesDetailsContainer = () => {
                                             colour={TypographyColor.dark}
                                             classname='text-start'
                                         />
-                                        <p className='mx-0 mb-1 fs-11 color-green-0 bg-green-1 px-2 py-1 rounded'>{data?.familyDetails.familyMembers ? data?.familyDetails.familyMembers : '_ _'} Members</p>
+                                        <Body
+                                            type={BodyType.p4}
+                                            color={BodyColor.primary}
+                                            classname='mx-0 mb-1 bg-green-1 px-2 py-1 rounded'>
+                                            {data?.familyDetails.familyMembers ? data?.familyDetails.familyMembers : '_ _'} Members
+                                        </Body>
                                     </div>
-                                    <p className="card-text text-left fs-12 mb-2">{data?.district}, {data?.state}, {data?.country}</p>
+                                    <Body
+                                        type={BodyType.p3}
+                                        color={BodyColor.dark}
+                                        classname='text-left mb-2'>
+                                        {data?.district}, {data?.state}, {data?.country}
+                                    </Body>
                                     {(data?.familyDetails.familyMembers) &&
                                         (<div>
-                                            <p className='mx-0 mb-1 fs-11'><span className='fs-14 me-1 bold-text color-green-0'>{getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}</span>Annual Household Spend on Education</p>
+                                            <Body
+                                                type={BodyType.p4}
+                                                color={BodyColor.dark}
+                                                classname='mx-0 mb-1'>
+                                                <span className='fs-14 me-1 bold-text color-green-0'>
+                                                    {getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}
+                                                </span>
+                                                Annual Household Spend on Education
+                                            </Body>
                                         </div>)
                                     }
                                 </div>
@@ -134,7 +153,12 @@ const FamiliesDetailsContainer = () => {
                 </div>
                 <div className="w-100 bg-white m-0 mb-5 d-flex flex-row justify-content-between rounded p-2 ms-2">
                     <div className='w-auto d-flex flex-row justify-content-start align-items-center'>
-                        <p className='fs-12 m-2'>Stories per page</p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.dark}
+                            classname='m-2'>
+                            Stories per page
+                        </Body>
                         <Select
                             options={storiesSelectOptions}
                             onChange={(e) => handleChangeData(e)}
@@ -145,7 +169,12 @@ const FamiliesDetailsContainer = () => {
                             name='role'
                             classname='width-5 ps-2'
                         />
-                        <p className='fs-12 my-2 ms-2'>{iterator * paginationData.storiespp + 1} - {((iterator * paginationData.storiespp + paginationData.storiespp) < (stories?.totalStories)) ? (iterator * paginationData.storiespp + paginationData.storiespp) : (stories?.totalStories)} of {stories?.totalStories} items</p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.dark}
+                            classname='my-2 ms-2'>
+                            {iterator * paginationData.storiespp + 1} - {((iterator * paginationData.storiespp + paginationData.storiespp) < (stories?.totalStories)) ? (iterator * paginationData.storiespp + paginationData.storiespp) : (stories?.totalStories)} of {stories?.totalStories} items
+                        </Body>
                     </div>
                     <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
                         <Button

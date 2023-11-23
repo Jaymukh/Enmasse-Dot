@@ -1,5 +1,6 @@
 import '../../App.css';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 interface StatisticsCardProps {
     data: {
         value: string;
@@ -18,7 +19,12 @@ const StatisticsCard = ({ data, index }: StatisticsCardProps) => {
                 type={TypographyType.h5}
                 classname='pb-1 m-0'
             />
-            <p className={`fs-11 m-0 text-start ${index === 4 ? 'white-text' : 'grey-para'}`}>{data.title}</p>
+            <Body
+                type={BodyType.p3}
+                color={index === 4 ? BodyColor.white : BodyColor.muted}
+                classname='fs-11 m-0 text-start'>
+                {data.title}
+            </Body>
         </div>
     )
 }
