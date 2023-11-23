@@ -110,7 +110,7 @@ function MapContainer() {
 
     const fetchDropdownList = (geo_id: string, level: string) => {
         mapServices.getDropdownList(Number(geo_id)).then((data: any) => {
-            level === 'states' ? setStates(data.children) : setDistricts(data.children);
+            level === 'states' ? setStates(data) : setDistricts(data);
         }).catch(error => {
             errorHandler(error);
         });

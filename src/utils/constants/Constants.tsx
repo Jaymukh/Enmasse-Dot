@@ -232,12 +232,12 @@ export const accountMenuItems: AccountMenuItem[] = [
     {
         key: 1,
         text: "Settings",
-        icon: <IoSettingsSharp className='fs-21' />,
+        icon: <IoSettingsSharp className='fs-21' color='rgba(28, 27, 31, 1)' />,
     },
     {
         key: 2,
         text: "Invite",
-        icon: <MdGroupAdd className='fs-21' />,
+        icon: <MdGroupAdd className='fs-21' color='rgba(28, 27, 31, 1)' />,
     },
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\settings\Settings.tsx language selectbox
@@ -518,7 +518,7 @@ export const bubbleData: BubbleNode = {
     ]
 }
 
-export const colorDescription: Record<string, string> = { Healthcare: '#00529B', Agri_Market: '#108041', Education: '#F47A1F', Financial_Solutions: ' #007CC3' };
+export const colorDescription: Record<string, string> = { Healthcare: '#00529B', Agri_Markets: '#108041', Education: '#F47A1F', Financial_Solutions: ' #007CC3' };
 
 //
 

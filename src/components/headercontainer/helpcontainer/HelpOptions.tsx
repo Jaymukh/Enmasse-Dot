@@ -6,7 +6,6 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 import * as Constants from '../../../utils/constants/Constants';
 import { overlayState, helpState } from '../../../states';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { useUserService } from '../../../services';
 import ContactUs from './ContactUs';
 import OverlayModal from './OverlayModal';
 import WIPDrawer from '../../mapContainer/WIPDrawer';
@@ -14,7 +13,6 @@ import WIPDrawer from '../../mapContainer/WIPDrawer';
 const HelpOptions = () => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-	const userService = useUserService();
 	const [overlay, setOverlay] = useRecoilState(overlayState);
 	const setShow = useSetRecoilState(helpState);
 	const [contactUsDrawerOpen, setContactUsDrawerOpen] = useState(false);
@@ -86,7 +84,7 @@ const HelpOptions = () => {
 				size={ButtonSize.small}
 				variant={ButtonVariant.transparent}
 				onClick={(e) => handleMenuClick(e)}
-				classname='ps-4 pe-0'
+				classname='p-0 ms-4'
 			>
 				<MdHelpCenter fontSize={25} />
 			</Button>

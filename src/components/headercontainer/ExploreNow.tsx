@@ -2,7 +2,6 @@ import '../../App.css';
 import '../../styles/main.css';
 import { useState } from 'react';
 import { MdOutlineTravelExplore } from 'react-icons/md';
-import * as Constants from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Search from '../ui/search/Search';
@@ -10,13 +9,14 @@ import Modal from '../ui/modal/Modal';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { mapFeatureState } from '../../states/MapFeatureState';
 import { useMapsService } from '../../services/Maps.service';
-import { spinnerState } from '../../states';
+import { errorState, spinnerState } from '../../states';
 import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
 
 const ExploreNow = () => {
 	const mapsService = useMapsService();
 	const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
 	const setSpinner = useSetRecoilState(spinnerState);
+	const setError = useSetRecoilState(errorState);
 	const [showModal, setshowModal] = useState<boolean>(false);
 	const [results, setResults] = useState<any>(mapFeatures.suggestions);
 	const [value, setValue] = useState<string>('');
@@ -74,6 +74,10 @@ const ExploreNow = () => {
 				setSuggestions(data);
 				setResults(data);
 				setSpinner(false);
+			}).catch(error => {
+				setSpinner(false);
+				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+				setError({ type: 'Error', message: errorMsg });
 			});
 		}
 		else {
