@@ -55,7 +55,7 @@ function Header() {
 					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
 					onClick={() => handleDrawer('Add Bookmark')}
-					classname='px-4'
+					classname='px-0 mx-4'
 				>
 					<BsFillBookmarksFill fontSize={20} />
 				</Button>

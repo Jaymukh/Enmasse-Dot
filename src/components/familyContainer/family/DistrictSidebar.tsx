@@ -127,7 +127,7 @@ const DistrictSidebar = () => {
                         <AiOutlineInfoCircle fontSize={20} color='#606060' />
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                        <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top card-green-bg'>
+                        <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-green-0'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}
                                 colour={TypographyColor.secondary}

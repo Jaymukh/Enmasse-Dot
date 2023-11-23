@@ -98,7 +98,7 @@ const FamiliesDetailsContainer = () => {
         <div className='col-9 ps-4 mb-5 py-0 h-100'>
             <div className="d-flex flex-row justify-content-between align-items-center">
                 <Heading
-                    title={`Families in ${stories?.properties?.name}`}
+                    title={`Families ${stories?.properties?.name ? `in ${stories?.properties?.name}` : ''}`}
                     type={TypographyType.h2}
                     colour={TypographyColor.dark}
                     classname='text-start mt-4 ms-2'

@@ -44,7 +44,7 @@ function MapOptions({
     return (
         <div className='d-flex justify-content-start align-items-center border-bottom bg-white mx-0' style={{ height: '6.25vh' }}>
             <div className='col-xl-7 col-md-7 justify-content-start d-flex flex-wrap h-100'>
-                <div className='select-right-margin py-0 h-100 px-3'>
+                <div className='select-right-margin py-0 h-100 px-3 d-flex align-items-center'>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.medium}
@@ -55,20 +55,20 @@ function MapOptions({
                         Global
                     </Button>
                 </div>                
-                <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start'>
+                <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
                     <p className='country-text m-0 text-start ps-2'>Country</p>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
                         // onClick={handleCountryChange}
-                        classname='h-auto text-start ps-2 pb-3'
+                        classname='h-auto text-start ps-2 py-0'
                     >
                         {global ? 'Select' : 'India'}
                     </Button>
                 </div>                   
                 {!global && selected.country ? (
-                    <div className='select-right-margin py-0 h-100'>
+                    <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
                         <p className='country-text m-0 text-start ps-2'>State</p>
                         <Select
                             options={states}
@@ -85,7 +85,7 @@ function MapOptions({
                     ''
                 )}
                 {!global && selected.state ? (
-                    <div className='select-right-margin py-0 h-100'>
+                    <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
                         <p className='country-text m-0 text-start ps-2'>District</p>
                         <Select
                             options={districts}

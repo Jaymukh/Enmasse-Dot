@@ -75,7 +75,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                 <p className=' text-start'>We are working on developing layers that will help analyze opportunities better.To request layers, fill the following form. We will notify you once the layers have been updated.</p>
                 <Heading
                     title='Name'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-1 text-start'
                 />
@@ -87,7 +87,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                 />
                 <Heading
                     title='Email'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-1 text-start'
                 />
@@ -99,7 +99,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                 />
                 <Heading
                     title='Message'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-1 text-start'
                 />
