@@ -314,7 +314,7 @@ const DistrictSidebar = () => {
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}
-                                        colour={TypographyColor.dark}
+                                        colour={TypographyColor.secondary}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
@@ -356,7 +356,7 @@ const DistrictSidebar = () => {
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHIncome?.annualEHIncome, properties?.EHIncome?.annualEHIncomeUOM)}
-                                        colour={TypographyColor.dark}
+                                        colour={TypographyColor.secondary}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
