@@ -45,8 +45,8 @@ const EditInvite: React.FC<EditInviteProps> = ({
     const handleUpdateClick = () => {
         if (updatedData.name && updatedData.email_id && updatedData.company && updatedData.role && updatedData.company_type) {
             handleUpdate(updatedData);
-        }        
-        else{
+        }
+        else {
             setError({ type: 'Error', message: 'All fields are mendatory!' });
         }
     };
@@ -61,7 +61,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                 <div className='d-flex flex-column align-items-start justify-content-center text-start'>
                     <Heading
                         title='Name*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -74,7 +74,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                     />
                     <Heading
                         title='Email*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -87,7 +87,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                     />
                     <Heading
                         title='Company*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -100,7 +100,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                     />
                     <Heading
                         title='Company Type*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -114,7 +114,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                     />
                     <Heading
                         title='Role*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />

@@ -6,6 +6,7 @@ import { Input } from '../../ui/input/Input';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
 import { useCIFService } from '../../../services';
+import { Heading, TypographyType, TypographyColor } from '../../ui/typography/Heading';
 
 interface ContactUsProps {
     contactUsDrawerOpen: boolean,
@@ -20,8 +21,8 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
     const setError = useSetRecoilState(errorState);
 
     const [payloadData, setPayloadData] = useState
-    <{ email_id: string, name: string, company: string ,message: string, geo_name: string, purpose: string }>
-    ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Contact Us' });
+        <{ email_id: string, name: string, company: string, message: string, geo_name: string, purpose: string }>
+        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Contact Us' });
 
     const handleChangeData = (e: any) => {
         e.preventDefault();
@@ -52,11 +53,11 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                 }
                 setSpinner(false);
             })
-            .catch(error => {
-				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-				setError({ type: 'Error', message: errorMsg });
-                setSpinner(false);
-			});
+                .catch(error => {
+                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    setError({ type: 'Error', message: errorMsg });
+                    setSpinner(false);
+                });
         }
         else {
             setError({ type: 'Error', message: 'Write something!' });
@@ -72,19 +73,34 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
         >
             <div className='d-flex justify-content-center flex-column'>
                 <p className=' text-start'>If you like to request any data or details from enmasse, fill the following form and send request. We will notify you once the data have been updated.</p>
-                <h6 className='mt-1 fs-14 text-start'>Name</h6>
+                <Heading
+                    title='Name'
+                    type={TypographyType.h5}
+                    colour={TypographyColor.dark}
+                    classname='mt-1 text-start'
+                />
                 <Input
                     type="text"
                     placeholder="Enter your name"
                     value={loggedUser.name}
                 />
-                <h6 className='mt-1 fs-14 text-start'>Email</h6>
+                <Heading
+                    title='Email'
+                    type={TypographyType.h5}
+                    colour={TypographyColor.dark}
+                    classname='mt-1 text-start'
+                />
                 <Input
                     type="email"
                     placeholder="Enter your Email ID"
                     value={loggedUser.email_id}
                 />
-                <h6 className='mt-1 fs-14 text-start'>Message</h6>
+                <Heading
+                    title='Message'
+                    type={TypographyType.h5}
+                    colour={TypographyColor.dark}
+                    classname='mt-1 text-start'
+                />
                 <textarea
                     value={payloadData.message}
                     name='message'

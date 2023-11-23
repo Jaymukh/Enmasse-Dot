@@ -31,7 +31,7 @@ const EmailSent: React.FC<EmailSentProps> = ({
                 <div className=" d-flex flex-column justify-content-center my-2">
                     <Heading
                         title='Email sent'
-                        type={TypographyType.h3}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
                         classname='text-start'
                     />

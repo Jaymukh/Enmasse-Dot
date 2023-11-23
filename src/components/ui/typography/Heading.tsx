@@ -11,9 +11,10 @@ export enum TypographyColor {
 export enum TypographyType {
     h1, /* 1.875rem (30px) */
     h2, /* 1.5rem (24px)  */
-    h3, /* 1rem (16px)*/
-    h4, /* 0.875rem (14px) */
-    h5, /* 0.75rem (12px) */
+    h3, /* 1.125rem (18rem) */
+    h4, /* 1rem (16px)*/
+    h5, /* 0.875rem (14px) */
+    h6 /* 0.75rem (12px) */
 }
 
 interface HeadingOne {
@@ -60,11 +61,14 @@ const getType = (type: TypographyType) => {
         case TypographyType.h5:
             className = `${styles.h5}`;
             break;
+        case TypographyType.h6:
+            className = `${styles.h6}`;
+            break;
     }
     return className;
 }
 
-export const Heading = ({type, colour, title, classname }: HeadingOne) => {
+export const Heading = ({ type, colour, title, classname }: HeadingOne) => {
     return (
         <h1 className={`${getType(type)} ${getColor(colour)} ${classname}`}>{title}</h1>
     )

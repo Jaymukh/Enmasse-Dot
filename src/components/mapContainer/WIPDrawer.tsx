@@ -29,7 +29,7 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer, desc
 								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
 								<Heading
 									title='Work in progress.'
-									type={TypographyType.h4}
+									type={TypographyType.h5}
 									colour={TypographyColor.dark}
 									classname='pt-5'
 								/>

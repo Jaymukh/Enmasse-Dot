@@ -43,7 +43,7 @@ const ExploreNow = () => {
 				setResults([filteredData]);
 				setSelectedValue({ ...selectedValue, state: filteredData.geo_value });
 				setSuggestions(filteredData.children);
-			} 
+			}
 			else {
 				// setSelectedValue({ ...selectedValue, district: filteredData.geo_value });
 			}
@@ -76,7 +76,7 @@ const ExploreNow = () => {
 				setSpinner(false);
 			});
 		}
-		else{
+		else {
 			setHasData(true);
 			setSelectedValue({ state: '', district: '' })
 		}
@@ -114,7 +114,7 @@ const ExploreNow = () => {
 							(<>
 								<Heading
 									title={item}
-									type={TypographyType.h3}
+									type={TypographyType.h4}
 									colour={TypographyColor.dark}
 								/>
 								<button
@@ -145,7 +145,7 @@ const ExploreNow = () => {
 									<div key={item.geo_id} className='my-2'>
 										<Heading
 											title={item.geo_value}
-											type={TypographyType.h3}
+											type={TypographyType.h4}
 											colour={TypographyColor.dark}
 											classname='text-start'
 										/>
@@ -164,7 +164,7 @@ const ExploreNow = () => {
 								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
 								<Heading
 									title="The state you're Searching is currently unavailable."
-									type={TypographyType.h4}
+									type={TypographyType.h5}
 									colour={TypographyColor.dark}
 									classname='pt-5'
 								/>

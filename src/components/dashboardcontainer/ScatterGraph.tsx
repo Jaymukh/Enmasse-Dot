@@ -95,7 +95,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                     <div className='m-0 p-0 d-flex col-4 align-items-center'>
                         <Heading
                             title='EH Income and Expense'
-                            type={TypographyType.h4}
+                            type={TypographyType.h5}
                             colour={TypographyColor.dark}
                             classname='text-start px-1'
                         />

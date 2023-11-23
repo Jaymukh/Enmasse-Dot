@@ -23,10 +23,10 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
         handleEmailChange,
         handleSendEmail
     }) => {
-        const userService = useUserService();
-        const setSpinner = useSetRecoilState(spinnerState);
+    const userService = useUserService();
+    const setSpinner = useSetRecoilState(spinnerState);
 
-        
+
 
     return (
         <div>
@@ -34,7 +34,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                 <div className='d-flex flex-row justify-content-between align-items-center'>
                     <Heading
                         title='Forgot Password'
-                        type={TypographyType.h3}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
                         classname='text-start'
                     />
@@ -51,7 +51,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                 <div className=" d-flex flex-column justify-content-start my-2" >
                     <Heading
                         title='Email'
-                        type={TypographyType.h3}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
                         classname='text-start'
                     />

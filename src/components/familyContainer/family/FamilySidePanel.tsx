@@ -24,7 +24,12 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
     return (
         <div className='col-3 d-flex flex-column my-4 px-3 h-auto'>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mt-1 mx-0 white-bg'>
-                <h6 className='fs-14 text-start m-0'>{stories?.properties?.region}</h6>
+                <Heading
+                    title={stories?.properties?.region}
+                    colour={TypographyColor.dark}
+                    type={TypographyType.h5}
+                    classname='text-start m-0'
+                />
                 <div className='map-container-sm d-flex mx-auto justify-content-start'>
                     <StaticMap coordinates={selectedStory?.story?.geometry?.coordinates} />
                 </div>
@@ -40,7 +45,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                     <div className='d-flex flex-row justify-content-between align-items-center w-100 m-auto my-0' >
                                         <Heading
                                             title={data?.familyName}
-                                            type={TypographyType.h3}
+                                            type={TypographyType.h4}
                                             colour={TypographyColor.dark}
                                         />
                                         <p className='fs-12 my-auto '>{iterator}/{stories?.family.length}</p>

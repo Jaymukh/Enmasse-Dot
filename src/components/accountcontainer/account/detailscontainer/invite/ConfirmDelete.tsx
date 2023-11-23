@@ -29,7 +29,7 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                 </div>
                 <Heading
                     title='Are you sure?'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                 />
                 <Body

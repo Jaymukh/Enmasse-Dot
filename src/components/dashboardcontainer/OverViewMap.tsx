@@ -31,7 +31,7 @@ const OverViewMap = () => {
                 {/* <h5 className="pb-2 text-start fs-14">Overall Information</h5> */}
                 <Heading
                     title='Overall Information'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='pb-2 text-start ps-1'
                 />

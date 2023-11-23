@@ -78,7 +78,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                 <div className='d-flex flex-column align-items-start justify-content-center text-start'>
                     <Heading
                         title='Name*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -91,7 +91,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     />
                     <Heading
                         title='Email*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -104,7 +104,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     />
                     <Heading
                         title='Company*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -117,7 +117,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     />
                     <Heading
                         title='Role*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -132,7 +132,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     />
                     <Heading
                         title='Company Type*'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0'
                     />
@@ -148,7 +148,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         type={BodyType.p3}
                         color={BodyColor.dark}
                         classname='Note'>
-                            Note: Admins will be able to invite users to the platform
+                        Note: Admins will be able to invite users to the platform
                     </Body>
                     <Button
                         theme={ButtonTheme.primary}

@@ -40,14 +40,13 @@ export default function EditProfile({
         e.preventDefault();
         const name = e.target.name as keyof User;
         const value = e.target.value;
-        if(name == 'phone_number')
-        {
+        if (name == 'phone_number') {
             const validValue = value.replace(/[^0-9+-]/g, '');
             setUpdatedData({ ...updatedData, [name]: validValue });
         }
-        else{
+        else {
             setUpdatedData({ ...updatedData, [name]: value });
-        }        
+        }
     };
 
     const handleUpdateClick = () => {
@@ -58,7 +57,7 @@ export default function EditProfile({
             setError({ type: 'Error', message: "All fields are mendatory!" });
         }
     };
-    
+
 
     return (
         <Drawer
@@ -70,7 +69,7 @@ export default function EditProfile({
             <div className='d-flex flex-column justify-content-center align-items-start '>
                 <Heading
                     title='Name*'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-2 mb-0'
                 />
@@ -83,7 +82,7 @@ export default function EditProfile({
                 />
                 <Heading
                     title='Email*'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-2 mb-0'
                 />
@@ -97,7 +96,7 @@ export default function EditProfile({
                 />
                 <Heading
                     title='Phone Number*'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-2 mb-0'
                 />
@@ -112,7 +111,7 @@ export default function EditProfile({
                 />
                 <Heading
                     title='Country*'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-2 mb-0'
                 />
@@ -127,7 +126,7 @@ export default function EditProfile({
                 />
                 <Heading
                     title='Company*'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-2 mb-0'
                 />
@@ -140,7 +139,7 @@ export default function EditProfile({
                 />
                 <Heading
                     title='Designation*'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-2 mb-0'
                 />
@@ -153,7 +152,7 @@ export default function EditProfile({
                 />
                 <Heading
                     title='Role*'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-2 mb-0'
                 />

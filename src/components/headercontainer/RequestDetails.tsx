@@ -31,15 +31,18 @@ const RequestDetails = () => {
 				toggleFunction={toggleDrawer}
 			>
 				<div className='mx-3 my-1 dialog-div'>
-					<h6 className='contact-para fs-14'>
-						Why do we need this?
-					</h6>
+					<Heading
+						title='Why do we need this?'
+						type={TypographyType.h5}
+						colour={TypographyColor.dark}
+						classname='contact-para'
+					/>
 					<p className='text-wrap fs-12 grey-para'>To plot your business and recommend the best opportunities for you.</p>
 					<div className="d-flex flex-column justify-content-center align-items-center py-5">
 						<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
 						<Heading
 							title='Work in progress'
-							type={TypographyType.h3}
+							type={TypographyType.h4}
 							colour={TypographyColor.dark}
 							classname='pt-5'
 						/>

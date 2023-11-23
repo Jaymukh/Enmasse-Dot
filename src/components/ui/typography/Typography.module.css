@@ -32,16 +32,21 @@
 }
 
 .h3 {
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-family: "Poppins-Medium", sans-serif;
 }
 
 .h4 {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-family: "Poppins-Medium", sans-serif;
 }
 
 .h5 {
+    font-size: 0.875rem;
+    font-family: "Poppins-Medium", sans-serif;
+}
+
+.h6 {
     font-size: 0.75rem;
     font-family: "Poppins-Medium", sans-serif;
 }

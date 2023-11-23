@@ -16,7 +16,7 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                 <div className="d-flex flex-row justify-content-between align-items-center">
                     <Heading
                         title={title}
-                        type={TypographyType.h3}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
                         classname='p-0'
                     />
@@ -27,7 +27,7 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                         aria-label="Close"
                     />
                 </div>
-                <div className="my-3" style={{overflowY: 'auto', overflowX: 'hidden'}}>
+                <div className="my-3" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
                     {children}
                 </div>
             </div>

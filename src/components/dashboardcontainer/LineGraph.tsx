@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import NoVisualData from './NoVisualData';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 ChartJS.register(
     CategoryScale,
@@ -124,10 +125,15 @@ const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData })
     return (
         <div className={`h-auto ${classname}`}>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
-                <h6 className='text-start fs-14 mb-2 px-1'>{category}</h6>
+                <Heading
+                    title={category}
+                    colour={TypographyColor.dark}
+                    type={TypographyType.h5}
+                    classname='mt-2 text-start'
+                />
                 {data
                     ? <Line data={data} options={options} height={60} />
-                    : <NoVisualData displayImage={false}/>}
+                    : <NoVisualData displayImage={false} />}
             </Card>
         </div>
     )

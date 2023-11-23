@@ -11,6 +11,7 @@ import { mapFeatureState } from '../../states';
 import { useRecoilValue } from 'recoil';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import RequestLayers from "./RequestLayers";
+import { Heading, TypographyType, TypographyColor } from '../ui/typography/Heading';
 
 interface Option {
     label: string;
@@ -47,7 +48,12 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     <div className='d-flex align-items-center justify-content-between'>
                         <div className='d-flex align-items-center'>
                             <PiRadioButtonLight fontSize={22} />
-                            <h6 className="my-0 fs-16 ms-2">Core Solutions</h6>                            
+                            <Heading
+                                title='Core Solutions'
+                                type={TypographyType.h4}
+                                colour={TypographyColor.dark}
+                                classname='my-0 ms-2'
+                            />
                         </div>
                         <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
                         <Switch
@@ -79,7 +85,12 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 <div className={`d-flex justify-content-between align-items-center bg-white mt-3 px-2 py-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center'>
                         <BsFillChatLeftTextFill className='' fontSize={20} />
-                        <h6 className="my-0 fs-16 mx-2">View Stories</h6>
+                        <Heading
+                            title='View Stories'
+                            type={TypographyType.h4}
+                            colour={TypographyColor.dark}
+                            classname='my-0 mx-2'
+                        />
                         <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
                     </div>
                     <Switch
@@ -91,7 +102,12 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 <div className="d-flex justify-content-between align-items-center bg-white mt-3 px-2 py-2">
                     <div className='d-flex align-items-center'>
                         <MdLayers fontSize={22} />
-                        <h6 className="my-0 fs-16 mx-2">Request Layers</h6>
+                        <Heading
+                                title='Request Layers'
+                                type={TypographyType.h4}
+                                colour={TypographyColor.dark}
+                                classname='my-0 ms-2'
+                            />
                         <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
                     </div>
                     <Button

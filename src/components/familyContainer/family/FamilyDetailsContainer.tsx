@@ -24,7 +24,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     <div className="d-flex flex-column justify-content-start text-start">
                         <Heading
                             title={selectedData?.familyName}
-                            type={TypographyType.h3}
+                            type={TypographyType.h4}
                             colour={TypographyColor.dark}
                         />
                         <p className="card-text text-left fs-12">{selectedData?.district}, {selectedData?.state}, {selectedData?.country}</p>

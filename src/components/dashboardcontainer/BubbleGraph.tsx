@@ -63,7 +63,7 @@ const BubbleGraph = () => {
 					<div className='m-0 p-0 d-flex col-4 align-items-center'>
 						<Heading
 							title='Core Solutions by EH'
-							type={TypographyType.h4}
+							type={TypographyType.h5}
 							colour={TypographyColor.dark}
 							classname='text-start px-1'
 						/>

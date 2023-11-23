@@ -254,7 +254,7 @@ export default function Profile() {
                                 classname='margin-bottom-0-31'>Name:</Body>
                             <Heading
                                 title={loggedUser.name}
-                                type={TypographyType.h3}
+                                type={TypographyType.h4}
                                 colour={TypographyColor.dark}
                             />
                         </li>
@@ -265,7 +265,7 @@ export default function Profile() {
                                 classname='margin-bottom-0-31'>Company:</Body>
                             <Heading
                                 title={loggedUser.company}
-                                type={TypographyType.h3}
+                                type={TypographyType.h4}
                                 colour={TypographyColor.dark}
                             />
                         </li>
@@ -276,7 +276,7 @@ export default function Profile() {
                                 classname='margin-bottom-0-31'>Phone Number:</Body>
                             <Heading
                                 title={loggedUser.phone_number}
-                                type={TypographyType.h3}
+                                type={TypographyType.h4}
                                 colour={TypographyColor.dark}
                             />
                         </li>
@@ -287,7 +287,7 @@ export default function Profile() {
                                 classname='margin-bottom-0-31'>Role:</Body>
                             <Heading
                                 title={loggedUser.role}
-                                type={TypographyType.h3}
+                                type={TypographyType.h4}
                                 colour={TypographyColor.dark}
                             />
                         </li>
@@ -302,7 +302,7 @@ export default function Profile() {
                                 classname='margin-bottom-0-31'>Email Id:</Body>
                             <Heading
                                 title={loggedUser.email_id}
-                                type={TypographyType.h3}
+                                type={TypographyType.h4}
                                 colour={TypographyColor.dark}
                             />
                         </li>
@@ -313,7 +313,7 @@ export default function Profile() {
                                 classname='margin-bottom-0-31'>Designation:</Body>
                             <Heading
                                 title={loggedUser.designation}
-                                type={TypographyType.h3}
+                                type={TypographyType.h4}
                                 colour={TypographyColor.dark}
                             />
                         </li>
@@ -324,7 +324,7 @@ export default function Profile() {
                                 classname='margin-bottom-0-31'>Country:</Body>
                             <Heading
                                 title={loggedUser.country}
-                                type={TypographyType.h3}
+                                type={TypographyType.h4}
                                 colour={TypographyColor.dark}
                             />
                         </li>

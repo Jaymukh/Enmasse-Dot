@@ -13,7 +13,7 @@ const NoVisualData: React.FC<NoVisualDataProps> = ({ displayImage, size }) => {
                 {displayImage && <img src={WIPImage} className="wip-img mb-3" alt="Work in progress" width="50%" />}
                 <Heading
                     title='Work in progress.'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                 />
                 <p className='fs-12 grey-text p-0 pt-2 m-0'>Our team is actively developing these features for the upcoming updates.</p>

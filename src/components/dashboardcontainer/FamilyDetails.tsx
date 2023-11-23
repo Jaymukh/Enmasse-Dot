@@ -11,6 +11,7 @@ import { useMapHelpers } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import familySkeleton from '../../utils/images/family-skeleton.png';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 
 const FamilyDetails = () => {
     const navigate = useNavigate();
@@ -38,14 +39,19 @@ const FamilyDetails = () => {
                 <div className='col-4 p-0'>
                     <Heading
                         title={properties?.name}
-                        type={TypographyType.h3}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
                         classname='text-start'
                     />
                 </div>
                 {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
                     <div className='col-5 d-flex align-items-center justify-content-around py-2 coverage-div'>
-                        <h6 className='w-auto fs-14 text-end m-0 text-nowrap pe-2'>EI Coverage</h6>
+                        <Heading
+                            title='EI Coverage'
+                            colour={TypographyColor.dark}
+                            type={TypographyType.h5}
+                            classname='mt-2 w-auto text-end text-nowrap pe-2 '
+                        />
                         <AiOutlineInfoCircle fontSize={35} color='#606060' className='me-2' />
                         <ProgressBar coverage={mapFeatures?.cifData?.properties?.EICoverage} />
                         <p className='w-auto fs-12 m-0 text-end text-nowrap ps-2'>{getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.covered)} out Of {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.total)} Districts</p>
@@ -55,11 +61,21 @@ const FamilyDetails = () => {
                 <img className='col-2 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
                 <div className='col-10 white-bg py-4 px-4 rounded-end'>
                     <div className='d-flex flex-row'>
-                        <h6 className='fs-16'>{familyDetails?.familyName}</h6>
+                        <Heading
+                            title={familyDetails?.familyName}
+                            colour={TypographyColor.dark}
+                            type={TypographyType.h4}
+                        />
                         <p className='ms-3 fs-12'>{familyDetails?.address}</p>
                     </div>
                     <div className='d-flex flex-row'>
-                        <h6 className='fs-14 green-text'>{getCurrencyWithSymbol(familyDetails?.familyDetails?.householdSpend, familyDetails?.familyDetails?.spendUOM)}</h6>
+                        <Body
+                            type={BodyType.p2}
+                            color={BodyColor.primary}
+                            classname='text-center'>
+                            {getCurrencyWithSymbol(familyDetails?.familyDetails?.householdSpend, familyDetails?.familyDetails?.spendUOM)}
+                        </Body>
+
                         <p className='ms-2 me-4 grey-para fs-10'>Annual Household Spend</p>
                     </div>
                     <p className='text-start fs-12'>{familyDetails?.description}</p>

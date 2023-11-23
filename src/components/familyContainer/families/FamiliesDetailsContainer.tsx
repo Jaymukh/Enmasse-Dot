@@ -114,7 +114,7 @@ const FamiliesDetailsContainer = () => {
                                     <div className="d-flex flex-row justify-content-between align-items-center">
                                         <Heading
                                             title={data?.familyName}
-                                            type={TypographyType.h3}
+                                            type={TypographyType.h4}
                                             colour={TypographyColor.dark}
                                             classname='text-start'
                                         />

@@ -3,6 +3,7 @@ import '../../../../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import CheckGIF from "../../../../../utils/images/CheckMarkGIF.gif";
 import Modal from '../../../../ui/modal/Modal';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 
 interface UpdateSuccessModalProps {
     showModal: boolean;
@@ -17,7 +18,11 @@ const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, hand
                 </div>
 
                 <div className="modal-body m-2 py-0">
-                    <h6 className='fs-21'>Password changed</h6>
+                    <Heading
+                        title='Password changed!'
+                        colour={TypographyColor.dark}
+                        type={TypographyType.h2}
+                    />
                     <p className='fs-14'>Password for your account updated successfully</p>
                     {/* <button className='btn border-0 text-white btn-dark rounded-0 w-100' onClick={() => handleShowModal(false, true)}>Continue</button> */}
                     <Button

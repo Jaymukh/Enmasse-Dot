@@ -68,7 +68,7 @@ export default function Login() {
 
     const handleSendEmail = () => {
         setSpinner(true);
-        userService.forgotPassword({"email_id": email})
+        userService.forgotPassword({ "email_id": email })
             .then((response: any) => {
                 if (response) {
                     setError({ type: 'Success', message: response.message });
@@ -119,7 +119,7 @@ export default function Login() {
                         <form className='loginCardAlign w-100' onSubmit={handleSubmit(onSubmit)}>
                             <Heading
                                 title='Email'
-                                type={TypographyType.h4}
+                                type={TypographyType.h5}
                                 colour={TypographyColor.dark}
                             />
                             <input
@@ -130,7 +130,7 @@ export default function Login() {
                             <div className='d-flex flex-row justify-content-between align-items-center mt-2'>
                                 <Heading
                                     title='Password'
-                                    type={TypographyType.h4}
+                                    type={TypographyType.h5}
                                     colour={TypographyColor.dark}
                                     classname='mb-0'
                                 />
@@ -165,7 +165,7 @@ export default function Login() {
                                 size={ButtonSize.large}
                                 theme={ButtonTheme.primary}
                                 variant={ButtonVariant.bordered}
-                             >
+                            >
                                 {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Login
                             </Button>
                         </form>

@@ -6,13 +6,14 @@ import { Input } from '../ui/input/Input';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../states";
 import { useCIFService } from '../../services';
+import { Heading, TypographyType, TypographyColor } from '../ui/typography/Heading';
 
 interface RequestLayersProps {
     requestLayersDrawerOpen: boolean,
     handleRequestLayersDrawer: (contactUsDrawerOpen: boolean) => void;
 }
 
-export default function RequestLayers({ requestLayersDrawerOpen,   handleRequestLayersDrawer}: RequestLayersProps) {
+export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLayersDrawer }: RequestLayersProps) {
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const geoJSON = useRecoilValue(geoJsonState);
     const cifService = useCIFService();
@@ -20,8 +21,8 @@ export default function RequestLayers({ requestLayersDrawerOpen,   handleRequest
     const setError = useSetRecoilState(errorState);
 
     const [payloadData, setPayloadData] = useState<
-    { email_id: string, name: string, company: string, message: string, geo_name: string, purpose: string }>
-    ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Layers' });
+        { email_id: string, name: string, company: string, message: string, geo_name: string, purpose: string }>
+        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Layers' });
 
     const handleChangeData = (e: any) => {
         e.preventDefault();
@@ -52,11 +53,11 @@ export default function RequestLayers({ requestLayersDrawerOpen,   handleRequest
                 }
                 setSpinner(false);
             })
-            .catch(error => {
-				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-				setError({ type: 'Success', message: errorMsg });
-                setSpinner(false);
-			});
+                .catch(error => {
+                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    setError({ type: 'Success', message: errorMsg });
+                    setSpinner(false);
+                });
         }
         else {
             setError({ type: 'Error', message: 'Write something!' });
@@ -72,27 +73,42 @@ export default function RequestLayers({ requestLayersDrawerOpen,   handleRequest
         >
             <div className='d-flex justify-content-center flex-column'>
                 <p className=' text-start'>We are working on developing layers that will help analyze opportunities better.To request layers, fill the following form. We will notify you once the layers have been updated.</p>
-                <h6 className='mt-1 fs-14 text-start'>Name</h6>
+                <Heading
+                    title='Name'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-1 text-start'
+                />
                 <Input
                     type="text"
                     placeholder="Enter your name"
                     value={loggedUser.name}
                     disabled={true}
                 />
-                <h6 className='mt-1 fs-14 text-start'>Email</h6>
+                <Heading
+                    title='Email'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-1 text-start'
+                />
                 <Input
                     type="email"
                     placeholder="Enter your Email ID"
                     value={loggedUser.email_id}
                     disabled={true}
                 />
-                <h6 className='mt-1 fs-14 text-start'>Message</h6>
+                <Heading
+                    title='Message'
+                    type={TypographyType.h4}
+                    colour={TypographyColor.dark}
+                    classname='mt-1 text-start'
+                />
                 <textarea
                     value={payloadData.message}
                     name='message'
                     onChange={(e) => handleChangeData(e)}
                     placeholder="Type your request message (Max 250 words)"
-                    style={{height: '10rem'}}
+                    style={{ height: '10rem' }}
                     className='fs-13 p-3 rounded'
                 />
                 <Button

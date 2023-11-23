@@ -61,7 +61,7 @@ const getType = (type: BodyType) => {
 
 const Body = ({ type, color, children, classname }: BodyProps) => {
     return (
-        <p className={`${getColor(color)} ${getType(type)} ${classname}`}>{children}</p>
+        <p className={`${getColor(color)} ${getType(type)} ${classname} m-0`}>{children}</p>
     )
 }
 

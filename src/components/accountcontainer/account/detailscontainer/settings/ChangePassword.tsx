@@ -119,7 +119,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                 <form className='d-flex flex-column align-items-start justify-content-center' onSubmit={handleSubmit(onSubmit)}>
                     <Heading
                         title='Old Password'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mb-0'
                     />
@@ -133,7 +133,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.current_password?.message}</p>}
                     <Heading
                         title='New Password'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0 text-start'
                     />
@@ -164,7 +164,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     </div>
                     <Heading
                         title='Re enter new password'
-                        type={TypographyType.h4}
+                        type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mb-0'
                     />

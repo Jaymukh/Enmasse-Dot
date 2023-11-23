@@ -20,7 +20,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 					<div className="d-flex flex-row align-items-center">
 						<Heading
 							title='Terms and Conditions'
-							type={TypographyType.h3}
+							type={TypographyType.h2}
 							colour={TypographyColor.dark}
 							classname='text-start'
 						/>
@@ -38,14 +38,29 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 				<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 modal-padding">
 					<div className=" d-flex flex-column justify-content-start modal-dialog-scrollable my-2">
 						<p className='Dialog-p'>Please read these Terms and Conditions (“Terms”) carefully before using our services. By accessing or using our services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you may not use our services.</p>
-						<h6 className='text-start'>1. General</h6>
+						<Heading
+							title='1. General'
+							type={TypographyType.h3}
+							colour={TypographyColor.dark}
+							classname='text-start'
+						/>
 						<p className='Dialog-p'>1.1 These Terms apply to all users of our services, including but not limited to website visitors, customers, and clients.</p>
 						<p className='Dialog-p'>1.2 Our services may include, but are not limited to, the provision of information, products, and online resources.</p>
 						<p className='Dialog-p'>1.3 We reserve the right to modify, update, or discontinue our services at any time without prior notice.</p>
-						<h6 className='text-start'>2. Intellectual Property</h6>
+						<Heading
+							title='2. Intellectual Property'
+							type={TypographyType.h3}
+							colour={TypographyColor.dark}
+							classname='text-start'
+						/>
 						<p className='Dialog-p'>2.1 All content and materials provided through our services, including but not limited to text, graphics, logos, images, videos, and software, are the property of our company and are protected by applicable intellectual property laws.</p>
 						<p className='Dialog-p'>2.2 You may not reproduce, distribute, modify, display, or use any of our intellectual property without our prior written consent.</p>
-						<h6 className='text-start'>3. User Responsibilities</h6>
+						<Heading
+							title='3. User Responsibilities'
+							type={TypographyType.h3}
+							colour={TypographyColor.dark}
+							classname='text-start'
+						/>
 						<p className='Dialog-p'>3.1 By using our services, you agree to provide accurate and current information and to ensure the security of your account credentials.</p>
 					</div>
 					<Button

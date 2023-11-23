@@ -24,7 +24,7 @@ const EditSetting: React.FC<EditSettingProps> = ({ editMode, handleEditClick }) 
                         <div className="card-body">
                             <Heading
                                 title='Work in progress'
-                                type={TypographyType.h5}
+                                type={TypographyType.h6}
                                 colour={TypographyColor.dark}
                             />
                             <p className="card-text">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>

@@ -46,7 +46,7 @@ export default function InsightBar() {
                     <Heading
                         title='EnMasses Thesis'
                         colour={TypographyColor.dark}
-                        type={TypographyType.h3}
+                        type={TypographyType.h4}
                         classname='ms-1' />
                 </div>
                 <div className='col-6'>
@@ -64,7 +64,7 @@ export default function InsightBar() {
                 <Heading
                     title={mapFeatures.cifData?.properties?.region}
                     colour={TypographyColor.dark}
-                    type={TypographyType.h3}
+                    type={TypographyType.h4}
                     classname='text-start px-3 my-1 ms-1' />
                 <div className="row d-flex justify-content-center py-2 mx-0 px-4">
                     <div className='row data-card px-3 d-flex flex-row mx-0 my-2'>
@@ -72,7 +72,7 @@ export default function InsightBar() {
                             <Heading
                                 title={mapFeatures.cifData?.properties?.totalHouseholds ? mapFeatures.cifData?.properties?.totalHouseholds : "__"}
                                 colour={TypographyColor.dark}
-                                type={TypographyType.h4}
+                                type={TypographyType.h5}
                                 classname='text-start px-3 my-1 ms-1' />
                             <p className='fs-12 m-0'>Total Households</p>
                         </div>

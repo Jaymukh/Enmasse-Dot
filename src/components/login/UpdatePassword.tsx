@@ -156,7 +156,7 @@ const UpdatePassword = () => {
                         <p className='fs-14 text-muted mb-3'>Create password for your account.</p>
                         <Heading
                             title='Password'
-                            type={TypographyType.h3}
+                            type={TypographyType.h4}
                             colour={TypographyColor.dark}
                             classname='mt-3 text-start'
                         />
@@ -192,7 +192,7 @@ const UpdatePassword = () => {
                         </div>
                         <Heading
                             title='Confirm password'
-                            type={TypographyType.h3}
+                            type={TypographyType.h4}
                             colour={TypographyColor.dark}
                             classname='text-start'
                         />

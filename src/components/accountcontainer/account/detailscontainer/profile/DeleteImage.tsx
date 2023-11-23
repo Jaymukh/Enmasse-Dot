@@ -29,13 +29,13 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
                 </div>
                 <Heading
                     title='Are you sure?'
-                    type={TypographyType.h4}
+                    type={TypographyType.h5}
                     colour={TypographyColor.dark}
                 />
                 <Body
-                type={BodyType.p3}
-                color={BodyColor.dark}
-                classname='text-center'>Do you really want to delete this record? This process cannot be undone.</Body>
+                    type={BodyType.p3}
+                    color={BodyColor.dark}
+                    classname='text-center'>Do you really want to delete this record? This process cannot be undone.</Body>
                 <Button
                     theme={ButtonTheme.warning}
                     size={ButtonSize.large}
