@@ -4,6 +4,7 @@ import { BubbleNode, colorDescription } from '../../utils/constants/Constants';
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import { useRecoilValue } from 'recoil';
 import { cifState } from '../../states';
 import '../../styles/main.css';
@@ -120,7 +121,12 @@ const BubbleGraph = () => {
 								{data?.children?.map((child, index) => (
 									<div className='d-flex ms-2'>
 										<div className='bubble-legend me-1' style={{ backgroundColor: `${child.color}` }}></div	>
-										<p className='fs-10 m-0 p-0 text-muted'>{child.coreSolution}</p>
+										<Body
+											type={BodyType.p4}
+											color={BodyColor.muted}
+											classname='m-0 p-0'>
+											{child.coreSolution}
+										</Body>
 									</div>
 								))}
 							</div>

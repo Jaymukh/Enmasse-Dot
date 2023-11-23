@@ -131,13 +131,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         placeholder='Old password'
                     />
                     {errors?.current_password?.message &&
-                        // <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.current_password?.message}</p>
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.warning}
                             classname=''>
                             {errors?.current_password?.message}
-                        </Body>}
+                        </Body>
+                    }
                     <Heading
                         title='New Password'
                         type={TypographyType.h4}
@@ -155,7 +155,14 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
                         placeholder='New password'
                     />
-                    {errors?.new_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.new_password?.message}</p>}
+                    {errors?.new_password?.message &&
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.warning}
+                            classname=''>
+                            {errors?.new_password?.message}
+                        </Body>
+                    }
                     <div className="row my-2">
                         {validationOptions.map((item: { key: string, text: string }) => (
                             <div className="d-flex pe-0 mb-1">
@@ -183,7 +190,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         placeholder='Confirm new password'
                     />
                     {errors?.confirm_new_password?.message &&
-                        <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.confirm_new_password?.message}</p>}
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.warning}
+                            classname=''>
+                            {errors?.confirm_new_password?.message}
+                        </Body>
+                    }
                     <Button
                         type='submit'
                         classname='mb-0 mt-4 height-3'

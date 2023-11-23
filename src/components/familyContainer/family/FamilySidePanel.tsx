@@ -6,6 +6,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import StaticMap from '../../StaticMap';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { storiesState } from "../../../states";
 import { useRecoilState } from "recoil";
 import familySkeleton from '../../../utils/images/family-skeleton.png';
@@ -37,16 +38,27 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                             <div className="d-flex flex-row align-items-center h-100">
                                 <img src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family" />
                                 <div className="d-flex flex-column align-items-start justify-content-center my-auto mx-2 px-1 w-100 h-100">
-                                    <div className='d-flex flex-row justify-content-between align-items-center w-100 m-auto my-0' >
+                                    <div className='d-flex flex-row justify-content-between align-items-center w-100 m-auto my-0 py-0' >
                                         <Heading
                                             title={data?.familyName}
                                             type={TypographyType.h3}
                                             colour={TypographyColor.dark}
                                         />
-                                        <p className='fs-12 my-auto '>{iterator}/{stories?.family.length}</p>
+                                        <Body
+                                            type={BodyType.p3}
+                                            color={BodyColor.dark}
+                                        >
+                                            {iterator}/{stories?.family.length}
+                                        </Body>
                                     </div>
-                                    <p className='carousel-caption-p text-p fs-12 text-start m-0 py-1 mt-0'>{data?.district}, {data?.state}, {data?.country}</p>
-                                    <button className='border-0 bg-white carousel-caption-p color-green m-0 fs-12 p-0' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
+                                    <Body
+                                        type={BodyType.p3}
+                                        color={BodyColor.dark}
+                                        classname='my-0'
+                                    >
+                                        {data?.district}, {data?.state}, {data?.country}
+                                    </Body>
+                                    <button className='border-0 bg-white color-green m-0 fs-12 p-0' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
                                 </div>
                             </div>
                         </div>

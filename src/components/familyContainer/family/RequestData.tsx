@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Drawer from '../../ui/Drawer';
 import '../../../App.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Input } from '../../ui/input/Input';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
@@ -20,8 +21,8 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
     const setError = useSetRecoilState(errorState);
 
     const [payloadData, setPayloadData] = useState<
-    { email_id: string, name: string, company: string, message: string, geo_name: string, purpose: string }>
-    ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Data' });
+        { email_id: string, name: string, company: string, message: string, geo_name: string, purpose: string }>
+        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Data' });
 
     const handleChangeData = (e: any) => {
         e.preventDefault();
@@ -39,12 +40,10 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
         else {
             setPayloadData({ ...payloadData, [name]: value });
         }
-
     };
 
     const handleSendClick = () => {
-        // setPayloadData({ ...payloadData, geo_name: geoJSON?.rootProperties?.Name });
-        
+
         if (payloadData.message) {
             setSpinner(true);
             console.log(payloadData);
@@ -55,11 +54,11 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
                 }
                 setSpinner(false);
             })
-            .catch((error: any) => {
-				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-				setError({ type: 'Error', message: errorMsg });
-                setSpinner(false);
-			});
+                .catch((error: any) => {
+                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    setError({ type: 'Error', message: errorMsg });
+                    setSpinner(false);
+                });
         }
         else {
             setError({ type: 'Error', message: 'Write something!' });
@@ -73,30 +72,37 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
             isOpen={requestDataDrawerOpen}
             toggleFunction={handleRequestDataDrawer}
         >
-            <div className='d-flex justify-content-center flex-column'>
-                <p className=' text-start'>{`If you like to request a data for “${geoJSON?.rootProperties?.Name}”, fill the following form and send request. We will notify you once the data have been updated.`}</p>
-                <h6 className='mt-1 fs-14 text-start'>Name*</h6>
+            <div className='d-flex flex-column align-items-start justify-content-center test-start'>
+                <Body
+                    type={BodyType.p2}
+                    color={BodyColor.muted}
+                    classname='text-start'
+                >
+                    {`If you like to request a data for “${geoJSON?.rootProperties?.Name}”, fill the following form and send request. We will notify you once the data have been updated.`}
+                </Body>
+
+                <h6 className='mt-3 fs-14 text-start'>Name*</h6>
                 <Input
                     type="text"
                     placeholder="Enter your name"
                     value={loggedUser.name}
                     disabled={true}
                 />
-                <h6 className='mt-1 fs-14 text-start'>Email*</h6>
+                <h6 className='mt-3 fs-14 text-start'>Email*</h6>
                 <Input
                     type="email"
                     placeholder="Enter your Email ID"
                     value={loggedUser.email_id}
                     disabled={true}
                 />
-                <h6 className='mt-1 fs-14 text-start'>Message*</h6>
+                <h6 className='mt-3 fs-14 text-start'>Message*</h6>
                 <textarea
                     value={payloadData.message}
                     name='message'
                     onChange={(e) => handleChangeData(e)}
                     placeholder="Type your request message (Max 250 words)"
                     style={{ height: '10rem' }}
-                    className='fs-13 p-3 rounded'
+                    className='fs-13 p-3 rounded w-100'
                 />
                 <Button
                     theme={ButtonTheme.primary}
