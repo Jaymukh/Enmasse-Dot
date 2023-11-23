@@ -55,8 +55,8 @@ function MapOptions({
                         Global
                     </Button>
                 </div>                
-                <div className='select-right-margin py-0 h-100'>
-                    <p className='country-text m-0 text-start'>Country</p>
+                <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start'>
+                    <p className='country-text m-0 text-start ps-2'>Country</p>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.medium}
@@ -69,7 +69,7 @@ function MapOptions({
                 </div>                   
                 {!global && selected.country ? (
                     <div className='select-right-margin py-0 h-100'>
-                        <p className='country-text m-0 text-start'>State</p>
+                        <p className='country-text m-0 text-start ps-2'>State</p>
                         <Select
                             options={states}
                             onChange={handleStateChange}

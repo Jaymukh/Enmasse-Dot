@@ -75,7 +75,7 @@ const Settings = () => {
                         onClick={() => handleEditClick(!editMode)}
                     >
                         <MdModeEdit className='me-1 mb-1' fontSize={20} />
-                        Edit Setting
+                        Edit Settings
                     </Button>
                     <Button
                         theme={ButtonTheme.secondary}
