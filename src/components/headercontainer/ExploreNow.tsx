@@ -83,6 +83,7 @@ const ExploreNow = () => {
 	}
 	const handleViewAvailableStates = () => {
 		setHasData(true);
+		setSuggestions(mapFeatures.suggestions);
 	}
 
 	return (
@@ -95,7 +96,7 @@ const ExploreNow = () => {
 				<MdOutlineTravelExplore className='me-2' fontSize={20} />
 				Explore Now
 			</Button>
-			<Modal showModal={showModal} classname='width-62-5 height-90'>
+			<Modal showModal={showModal} classname='width-62-5 h-100 m-5 p-1'>
 				<div className='d-flex flex-row justify-content-between mb-2'>
 					<Heading
 						title='Explore Now'
@@ -104,7 +105,7 @@ const ExploreNow = () => {
 					/>
 					<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
 				</div>
-				<div className=''>
+				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27rem', maxWidth: '56.27rem' }}>
 					<p className='text-muted text-start fs-14'>
 						Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
 					</p>
@@ -139,34 +140,35 @@ const ExploreNow = () => {
 						classname='height-3 width-26-625'
 					/>
 					{hasData ?
-						<div className='my-2 position-inherit' style={{ maxHeight: '60vh', overflowY: 'auto', overflowX: 'hidden' }}>
+						<div className='my-2 position-inherit' style={{ maxHeight: '52vh', overflowY: 'auto', overflowX: 'hidden', minHeight: '52vh' }}>
 							<div>
 								{results?.map((item: any) => (
-									<div key={item.geo_id} className='my-2'>
-										<Heading
-											title={item.geo_value}
-											type={TypographyType.h4}
-											colour={TypographyColor.dark}
-											classname='text-start'
-										/>
-										<hr className='mt-0'></hr>
-										<div className='row'>
-											{item.children.map((district: any) => (
-												<p className='col-4 text-start mb-1 color-green fs-16' key={district.geo_id}>{district.geo_value}</p>
-											))}
-										</div>
-									</div>
+									(item.has_data &&
+										<div key={item.geo_id} className='my-2'>
+											<Heading
+												title={item.geo_value}
+												type={TypographyType.h4}
+												colour={TypographyColor.dark}
+												classname='text-start'
+											/>
+											<hr className='mt-0'></hr>
+											<div className='row m-0 p-0'>
+												{item.children.map((district: any) => (
+													(item.has_data && <p className='col-4 text-start mb-1 p-0 color-green fs-16' key={district.geo_id}>{district.geo_value}</p>
+													)))}
+											</div>
+										</div>)
 								))}
 							</div>
 						</div> :
 						<div className='d-flex justify-content-center align-items-center'>
-							<div className="mx-4 my-1 dialog-div d-flex flex-column justify-content-center align-items-center py-5">
+							<div className="mx-4 mt-4 mb-0 d-flex flex-column justify-content-center align-items-center" style={{ width: '23rem' }}>
 								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
 								<Heading
 									title="The state you're Searching is currently unavailable."
 									type={TypographyType.h5}
 									colour={TypographyColor.dark}
-									classname='pt-5'
+									classname='pt-3 mb-1'
 								/>
 								<p className="text-center fs-12 my-3 mx-0">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
 								<Button

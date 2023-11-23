@@ -133,6 +133,7 @@ function MapContainer() {
                 circles: data
             }));
         }).catch(error => {
+            errorHandler(error);
         });
     }
 
@@ -143,6 +144,7 @@ function MapContainer() {
                 featuredStories: data
             }));
         }).catch(error => {
+            errorHandler(error);
         });
     }
 

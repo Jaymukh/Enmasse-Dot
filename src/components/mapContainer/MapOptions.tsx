@@ -86,7 +86,7 @@ function MapOptions({
                 )}
                 {!global && selected.state ? (
                     <div className='select-right-margin py-0 h-100'>
-                        <p className='country-text m-0 text-start'>District</p>
+                        <p className='country-text m-0 text-start ps-2'>District</p>
                         <Select
                             options={districts}
                             onChange={handleDistrictChange}

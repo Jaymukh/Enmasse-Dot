@@ -106,7 +106,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 title='Request Layers'
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='my-0 ms-2'
+                                classname='my-0 mx-2'
                             />
                         <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
                     </div>

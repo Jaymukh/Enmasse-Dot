@@ -1,14 +1,13 @@
 import { useFetchWrapper } from '../helpers';
 import { APIS } from '../constants';
-import { mapFeatureState, spinnerState } from "../states";
-import { useRecoilState, useSetRecoilState } from 'recoil';
-
-
+import { errorState, mapFeatureState, spinnerState } from "../states";
+import { useSetRecoilState } from 'recoil';
 
 const useMapsService = () => {
     const fetchWrapper = useFetchWrapper();
-    const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
+    const setMapFeatures = useSetRecoilState(mapFeatureState);
     const setSpinner = useSetRecoilState(spinnerState);
+    const setError = useSetRecoilState(errorState);
 
     const getDropdownList = (geoCode: number) => {
         return fetchWrapper.get(`${APIS.MAPS.GET_DROPDOWN}?geo-code=${geoCode}`);
@@ -31,6 +30,8 @@ const useMapsService = () => {
                     setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
                 }
             }).catch(error => {
+                const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+                setError({ type: 'Error', message: errorMsg });
                 // setSpinner(false);
             });
     }
