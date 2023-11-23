@@ -116,7 +116,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     classname=''>
                     You will be required to re-login after updating the password.
                 </Body>
-                <form className='d-flex flex-column align-items-start justify-content-center' onSubmit={handleSubmit(onSubmit)}>
+                <form className='d-flex flex-column align-items-start justify-content-center text-start' onSubmit={handleSubmit(onSubmit)}>
                     <Heading
                         title='Old Password'
                         type={TypographyType.h5}
@@ -130,7 +130,14 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
                         placeholder='Old password'
                     />
-                    {errors?.current_password?.message && <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.current_password?.message}</p>}
+                    {errors?.current_password?.message &&
+                        // <p className='text-danger m-0 p-0 text-start fs-12'>{errors?.current_password?.message}</p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.warning}
+                            classname=''>
+                            {errors?.current_password?.message}
+                        </Body>}
                     <Heading
                         title='New Password'
                         type={TypographyType.h5}

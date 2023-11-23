@@ -11,7 +11,8 @@ export enum BodyColor {
     primary,   /* rgba(16, 128, 65, 1) - green */
     secondary, /* rgba(73, 73, 73, 1) - dark grey */
     dark,      /* rgba(0, 0, 0, 1) - black */
-    muted      /* rgba(0, 0, 0, 0.6) - light black */
+    muted,      /* rgba(0, 0, 0, 0.6) - light black */
+    warning  /* warning-0*/
 }
 
 interface BodyProps {
@@ -35,6 +36,9 @@ const getColor = (color: BodyColor) => {
             break;
         case BodyColor.muted:
             className = `${styles.muted}`;
+            break;
+        case BodyColor.warning:
+            className = `${styles.warning}`;
             break;
     }
     return className;

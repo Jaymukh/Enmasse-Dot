@@ -90,3 +90,6 @@
 .muted {
     color: var(--black-6);
 }
+.warning {
+    color: var(--warning-0);
+}
