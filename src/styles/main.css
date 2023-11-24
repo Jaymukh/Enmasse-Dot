@@ -52,6 +52,11 @@ ul {
     border-left: 4px solid var(--green-0);
 }
 
+.li-not-selected {
+    background-color: var(--white-1);
+    border-left: 4px solid var(--white-1);
+}
+
 .sidebar-ul {
     margin-left: 0.75rem;
 }

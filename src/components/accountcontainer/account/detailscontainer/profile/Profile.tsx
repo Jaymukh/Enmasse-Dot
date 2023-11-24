@@ -215,7 +215,7 @@ export default function Profile() {
                     title='Profile'
                     type={TypographyType.h2}
                     colour={TypographyColor.dark}
-                    classname='mt-2 col-2 ms-3 text-start'
+                    classname='col-2 ms-3 ps-2 text-start'
                 />
                 <Button
                     theme={ButtonTheme.secondary}
@@ -227,8 +227,8 @@ export default function Profile() {
                     Edit
                 </Button>
             </div>
-            <hr />
-            <div className="row w-100 mx-3">
+            <hr className='mb-4'/>
+            <div className="row w-100 mx-2">
                 <div className="col-3 p-0 fs-64 ms-3" >
                     <div className='d-flex flex-column justify-content-start align-items-start' style={{ width: '12.5rem', height: '12.5rem' }}>
                         <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center bg-light" >
@@ -251,7 +251,7 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='margin-bottom-0-31'>Name:</Body>
+                                classname='mb-1'>Name:</Body>
                             <Heading
                                 title={loggedUser.name}
                                 type={TypographyType.h4}
@@ -262,7 +262,7 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='margin-bottom-0-31'>Company:</Body>
+                                classname='mb-1'>Company:</Body>
                             <Heading
                                 title={loggedUser.company}
                                 type={TypographyType.h4}
@@ -273,7 +273,7 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='margin-bottom-0-31'>Phone Number:</Body>
+                                classname='mb-1'>Phone Number:</Body>
                             <Heading
                                 title={loggedUser.phone_number}
                                 type={TypographyType.h4}
@@ -284,7 +284,7 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='margin-bottom-0-31'>Role:</Body>
+                                classname='mb-1'>Role:</Body>
                             <Heading
                                 title={loggedUser.role}
                                 type={TypographyType.h4}
@@ -299,7 +299,7 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='margin-bottom-0-31'>Email Id:</Body>
+                                classname='mb-1'>Email Id:</Body>
                             <Heading
                                 title={loggedUser.email_id}
                                 type={TypographyType.h4}
@@ -310,7 +310,7 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='margin-bottom-0-31'>Designation:</Body>
+                                classname='mb-1'>Designation:</Body>
                             <Heading
                                 title={loggedUser.designation}
                                 type={TypographyType.h4}
@@ -321,7 +321,7 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='margin-bottom-0-31'>Country:</Body>
+                                classname='mb-1'>Country:</Body>
                             <Heading
                                 title={loggedUser.country}
                                 type={TypographyType.h4}

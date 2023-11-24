@@ -65,7 +65,7 @@ const Settings = () => {
                     title='Settings'
                     type={TypographyType.h2}
                     colour={TypographyColor.dark}
-                    classname='col-2 ms-3 text-start'
+                    classname='col-2 ms-3 ps-2 text-start'
                 />
                 <div className='col d-flex justify-content-end '>
                     <Button

@@ -15,9 +15,7 @@ const countries = [{ geo_id: 1, name: 'India' }];
 function MapContainer() {
     const mapServices = useMapsService();
     const setSpinner = useSetRecoilState(spinnerState);
-
     const routeFlag = window.location.pathname === '/' ? true : false;
-
     const [global, setGlobal] = useState<boolean>(routeFlag);
     const [states, setStates] = useState<any>([]);
     const [districts, setDistricts] = useState<any>([]);
@@ -205,7 +203,7 @@ function MapContainer() {
                 districts={districts}
                 selected={selected}
             />
-            {global ? (
+            {!global ? (
                 <GlobalMap />
             ) : (
                 <StateMap

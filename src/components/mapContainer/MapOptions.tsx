@@ -64,10 +64,10 @@ function MapOptions({
                         // onClick={handleCountryChange}
                         classname='h-auto text-start ps-2 py-0'
                     >
-                        {global ? 'Select' : 'India'}
+                        {!global ? 'Select' : 'India'}
                     </Button>
                 </div>                   
-                {!global && selected.country ? (
+                {global && selected.country ? (
                     <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
                         <p className='country-text m-0 text-start ps-2'>State</p>
                         <Select
@@ -84,7 +84,7 @@ function MapOptions({
                 ) : (
                     ''
                 )}
-                {!global && selected.state ? (
+                {global && selected.state ? (
                     <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
                         <p className='country-text m-0 text-start ps-2'>District</p>
                         <Select

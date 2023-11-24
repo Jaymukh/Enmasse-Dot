@@ -5,6 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from 'react-router-dom';
 import { loggedUserState, visiblePanelState } from '../../../states';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 
 
 const SideBar = () => {
@@ -25,12 +26,16 @@ const SideBar = () => {
                         (loggedUser.role === 'Admin' || data.index !== 2) && (
                             <li className='p-0 m-0' key={index}>
                                 <button
-                                    className={`list-item-button ${'/' + (data.option).toLowerCase() === visiblePanel ? 'li-selected' : ''
+                                    className={`list-item-button ${'/' + (data.option).toLowerCase() === visiblePanel ? 'li-selected' : 'li-not-selected'
                                         }`}
                                     onClick={() => handleItemClick((data.option).toLowerCase())}
                                 >
                                     <span className='mx-3 li-icon'>{data.icon}</span>
-                                    <span>{data.option}</span>
+                                    <Heading
+                                        title={data.option}
+                                        colour={TypographyColor.dark}
+                                        type={TypographyType.h4}
+                                    />
                                 </button>
                             </li>)
                     ))}

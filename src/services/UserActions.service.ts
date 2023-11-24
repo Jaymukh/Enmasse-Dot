@@ -32,7 +32,7 @@ const useUserService = () => {
                 }
                 navigate({
                     pathname: from,
-                    search: from === RouteConstants.explore ? '?country=1' : '',
+                    search: from === RouteConstants.root ? '?country=1' : '',
                 });
             })
             .catch(error => {

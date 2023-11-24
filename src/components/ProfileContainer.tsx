@@ -9,7 +9,7 @@ const ProfileContainer = () => {
 		<div className='w-100 primary-bg fixed-header'>
 			<Header	/>
 			<div className="w-100 m-0 z-index-0" style={{ height: '91.75vh', position: 'inherit' }}>
-				<AccountHeader routeTo={`${RouteConstants.explore}?country=1`} />
+				<AccountHeader routeTo={`${RouteConstants.root}?country=1`} />
 				<Account />
 			</div>
 		</div>

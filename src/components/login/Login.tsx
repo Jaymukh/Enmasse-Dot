@@ -1,5 +1,5 @@
 import '../../App.css';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import globe from '../../utils/images/globe.png';
 import ForgotPassword from './ForgotPassword';
 import EmailSent from './EmailSent';

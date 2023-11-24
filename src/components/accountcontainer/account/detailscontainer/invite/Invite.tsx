@@ -4,7 +4,7 @@ import '../../../../../App.css';
 import EditInvite from './EditInvite';
 import InviteNew from './InviteNew';
 import ConfirmDelete from './ConfirmDelete';
-import { IoMdAdd } from 'react-icons/io';
+import { MdPersonAddAlt1 } from 'react-icons/md';
 import { MdModeEdit } from 'react-icons/md';
 import { MdDeleteSweep } from 'react-icons/md';
 import { usersState, User, spinnerState, errorState } from "../../../../../states";
@@ -31,7 +31,7 @@ export default function Invite() {
 		name: undefined,
 		email_id: undefined,
 		company: undefined,
-		role: 'Admin',		
+		role: 'Admin',
 		company_type: 'Enmasse',
 	});
 
@@ -92,7 +92,7 @@ export default function Invite() {
 		setOpenInviteNew(false);
 	};
 	const handleInviteSentModal = () => {
-        setOpenInviteSent(false);
+		setOpenInviteSent(false);
 		setNewData({
 			name: undefined,
 			email_id: undefined,
@@ -100,7 +100,7 @@ export default function Invite() {
 			role: 'Admin',
 			company_type: 'Enmasse',
 		});
-    }
+	}
 
 	// searchbar function
 	const [searchTerm, setSearchTerm] = useState('');
@@ -150,9 +150,9 @@ export default function Invite() {
 					title='Invite'
 					type={TypographyType.h2}
 					colour={TypographyColor.dark}
-					classname='col-2 ms-3 text-start'
+					classname='col-2 ms-3 text-start ps-2'
 				/>
-				<div className='col-8 d-flex flex-row justify-content-end align-items-center'>
+				<div className='col-8 d-flex flex-row justify-content-end align-items-center px-0'>
 					<Search
 						handleInputChange={handleInputChange}
 						value={searchTerm}
@@ -168,7 +168,7 @@ export default function Invite() {
 						onClick={() => handleOpenInviteNew()}
 						classname='ms-2'
 					>
-						<IoMdAdd className='me-1' fontSize={22} />
+						<MdPersonAddAlt1 className='me-1' fontSize={22} />
 						Invite New
 					</Button>
 				</div>
@@ -254,7 +254,7 @@ export default function Invite() {
 						</table>
 					</div>}
 			</div>
-			
+
 			{selectedData &&
 				<EditInvite selectedData={selectedData} handleCloseDialog={handleCloseDialog} handleUpdate={handleUpdate} />}
 

@@ -78,7 +78,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
             const geoCode = searchParams.get('geo_code')
             const searchParam = breakdownType === 'State' ? `?country=1&state=${item.geoId}` : `?country=1&state=${geoCode}&district=${item.geoId}`;
             navigate({
-                pathname: RouteConstants.explore,
+                pathname: RouteConstants.root,
                 search: searchParam,
             });
         }
