@@ -36,7 +36,6 @@ const Toast = () => {
             const timer = setTimeout(() => {
                 onClose();
             }, 3000);
-
             return () => clearTimeout(timer);
         }
     }, [error]);
