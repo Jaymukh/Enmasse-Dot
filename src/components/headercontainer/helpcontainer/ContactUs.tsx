@@ -72,19 +72,19 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
             isOpen={contactUsDrawerOpen}
             toggleFunction={handleContactUsDrawer}
         >
-            <div className='d-flex flex-column align-items-start justify-content-center test-start'>
+            <div className='d-flex flex-column align-items-start justify-content-center text-start'>
                 <Body
-                    type={BodyType.p2}
-                    color={BodyColor.muted}
-                    classname='text-start'
+                    type={BodyType.p1}
+                    color={BodyColor.secondary}
+                    classname='mb-2'
                 >
                     If you like to request any data or details from enmasse, fill the following form and send request. We will notify you once the data have been updated.
                 </Body>
                 <Heading
-                    title='Name'
+                    title='Name*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 text-start'
+                    classname='mt-3'
                 />
                 <Input
                     type="text"
@@ -92,10 +92,10 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                     value={loggedUser.name}
                 />
                 <Heading
-                    title='Email'
+                    title='Email*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 text-start'
+                    classname='mt-3'
                 />
                 <Input
                     type="email"
@@ -106,7 +106,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                     title='Message*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 text-start'
+                    classname='mt-3'
                 />
                 <textarea
                     value={payloadData.message}

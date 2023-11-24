@@ -155,7 +155,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                 <Button
                                     theme={ButtonTheme.secondary}
                                     size={ButtonSize.small}
-                                    variant={ButtonVariant.contained}
+                                    variant={ButtonVariant.bordered}
                                     onClick={() => handleDeleteModel(true)}
                                     type='button'
                                     classname='me-2'

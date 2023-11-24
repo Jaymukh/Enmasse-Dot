@@ -73,20 +73,20 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
             isOpen={requestDataDrawerOpen}
             toggleFunction={handleRequestDataDrawer}
         >
-            <div className='d-flex flex-column align-items-start justify-content-center test-start'>
+            <div className='d-flex flex-column align-items-start justify-content-center text-start'>
                 <Body
                     type={BodyType.p2}
                     color={BodyColor.muted}
-                    classname='text-start'
+                    classname='mb-2'
                 >
                     {`If you like to request a data for “${geoJSON?.rootProperties?.Name}”, fill the following form and send request. We will notify you once the data have been updated.`}
                 </Body>
 
                 <Heading
-                    title='Name'
+                    title='Name*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-3'
                 />
                 <Input
                     type="text"
@@ -95,10 +95,10 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
                     disabled={true}
                 />
                 <Heading
-                    title='Email'
+                    title='Email*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-3'
                 />
                 <Input
                     type="email"
@@ -110,7 +110,7 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
                     title='Message*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-3'
                 />
                 <textarea
                     value={payloadData.message}
