@@ -5,21 +5,6 @@
 @import url('./styles/color.css');
 @import url("./utils/fonts/fonts.css");
 
-:root {
-	--primaryColor: #f2f3f4;
-	--secondaryColor: #ffffff;
-	--lightGreyColor: #E7E7E9;
-	--pinkColor: #f45eac;
-	--blackColor: #1f1f1f;
-	--black-3: #0D0B0B;
-	--background-color: #f2f3f4;
-	--light-gray-color: '#E7E7E9';
-	--gray-color: gray;
-	--black-color: black;
-	--white-color: white;
-	--light-pink-color: pink;
-	--pink-color: #f45eac;
-}
 /* height and width class  */
 
 .height-2-25 {
@@ -42,71 +27,22 @@
 	width: 10rem !important;
 }
 
-.width-fit-content {
-	width: fit-content !important;
-}
-
 /*background color  */
 .App {
 	text-align: center;
-	background-color: var(--background-color);
+	background-color: var(--app-background);
 	height: 100vh;
 	font-family: 'Poppins', sans-serif;
 }
 
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
-}
-
 a {
 	cursor: pointer;
-	color: #000000;
+	color: var(--black-0);
 }
 
 /* Header */
-.header-height {
-	height: 12vh;
-}
-
-.map-options-height {
-	height: 8vh;
-}
-
 .enmasse-logo-font {
 	font-family: 'Bai Jamjuree', sans-serif;
-}
-
-.overlay-container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	width: 100%;
-	height: 100%;
-	background-color: none;
-}
-
-.overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 999;
-}
-
-.global-btn {
-	width: 10rem;
-	height: 2.5rem;
-	font-weight: 500;
 }
 
 .select-right-margin {
@@ -114,26 +50,11 @@ a {
 	width: 11.25rem;
 }
 
-.primary-select-box .css-1t0qkoj-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
-	text-align: start;
-	padding-left: 0rem;
-	font-family: 'Poppins', sans-serif;
-	font-weight: 500;
-	font-size: 0.85rem;
-}
-
-.primary-select-box .css-1t0qkoj-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-	padding-top: 0rem;
-	padding-bottom: 0rem;
-}
-
-
-
 /* sidebar css */
 .sideBar-parent-expended {
 	height: 85.5vh;
 	width: 25vw;
-	background-color: white;
+	background-color: var(--white-1);
 }
 
 .sideBar-parent-collapsed {
@@ -142,7 +63,7 @@ a {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	background-color: white;
+	background-color: var(--white-1);
 }
 
 .SideBar {
@@ -151,7 +72,7 @@ a {
 	float: right;
 	align-items: start;
 	height: 80vh;
-	background-color: #FFFFFF;
+	background-color: var(--white-1);
 	align-content: center;
 	z-index: 999;
 }
@@ -173,7 +94,7 @@ a {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		background-color: white;
+		background-color: var(--white-1);
 		padding: 2rem;
 	}
 
@@ -186,108 +107,7 @@ a {
 
 }
 
-.tam-info {
-	background-color: #108041;
-	border: 1px solid #108041;
-	border-radius: 5px;
-	color: var(--secondaryColor);
-	width: 95%;
-}
-
-.tam-info-grey {
-	background-color: #E6E7E9;
-	border: 1px solid #1118261A;
-	border-radius: 5px;
-	color: var(--blackColor);
-	width: 95%;
-}
-
-.insight-bar-green-color {
-	color: #108041;
-}
-
-.btn-white {
-	border: none;
-	background: transparent !important;
-}
-
-.country-wise-info {
-	width: 20rem;
-	margin: 5px auto;
-}
-
-.explore-btn {
-	width: 100%;
-	position: sticky;
-	z-index: 2;
-	bottom: 0;
-	right: '0';
-}
-
-.explore-country-btn {
-	border: 1px solid #dbdbdb;
-	box-shadow: none;
-	box-sizing: border-box;
-	font-size: 0.9rem;
-	height: 2.6rem;
-	padding: 0.25rem 1rem;
-	border-bottom: none;
-	border-right: none;
-	border-left: none;
-	background-color: #FFFFFF;
-}
-
-.tam-header {
-	color: #108041;
-}
-
-.textAlignLeft {
-	text-align: left;
-}
-
-.infoIcon {
-	background-color: black;
-	color: white;
-	font-size: 2rem;
-	border-radius: 1rem;
-}
-
-.infoIconCol {
-	display: flex;
-	width: 5rem;
-	margin: auto;
-	justify-content: center;
-	align-content: center;
-
-}
-
-.alignItemsCenter {
-	display: flex;
-	flex-direction: column;
-	align-items: start;
-	justify-content: center;
-}
-
-.colBorder {
-	border: 2px solid #e6e7e8;
-	border-radius: 5px;
-	padding: 5px;
-	margin: auto;
-	width: 8rem;
-
-}
-
 /* Header */
-.Header {
-	height: '10vh';
-}
-
-.enmasse-circle {
-	width: 6px;
-	height: 6px;
-	background-color: #108041;
-	border-radius: 100%;
-}
 
 .fixed-header {
 	position: fixed;
@@ -298,12 +118,6 @@ a {
 }
 
 /* login page css */
-
-.login-header {
-	font-size: 1.5rem;
-}
-
-
 
 .loginCardAlign {
 	width: 60%;
@@ -327,7 +141,7 @@ a {
 
 .grayBtnClr {
 	background-color: #111827 !important;
-	color: #FFFFFF;
+	color: var(--white-1);
 
 }
 
@@ -340,7 +154,7 @@ a {
 
 .blackBtnColor {
 	background-color: black;
-	color: white;
+	color: var(--white-1);
 
 }
 
@@ -407,7 +221,7 @@ a {
 }
 
 .whiteBackground {
-	background-color: white;
+	background-color: var(--white-1);
 }
 
 .lightGrayBackground {
@@ -416,7 +230,7 @@ a {
 
 .paragraph {
 	margin: 0rem;
-	color: #000000;
+	color: var(--black-0);
 }
 
 .request-link {
@@ -614,7 +428,7 @@ a {
 }
 
 .color-white {
-	color: white;
+	color: var(--white-1);
 }
 
 .btn-outline-black {
@@ -709,8 +523,8 @@ a {
 }
 
 .btn-black {
-	color: White;
-	background-color: #000000;
+	color: var(--white-1);
+	background-color: var(--black-0);
 	vertical-align: middle;
 	border: 1px solid black;
 	padding: 0.375rem 0.75rem;
@@ -746,7 +560,7 @@ a {
 
 /* Dashboard css starts here */
 .white-bg {
-	background-color: #ffffff;
+	background-color: var(--white-1);
 }
 
 /* font size class  */
@@ -816,7 +630,7 @@ a {
 }
 
 .primary-bg {
-	background-color: var(--primaryColor);
+	background-color: var(--app-background);
 }
 
 .dashboard-table-container {
@@ -853,7 +667,7 @@ th {
 }
 
 .table-header-btn {
-	background-color: #ffffff;
+	background-color: var(--white-1);
 	height: 1rem;
 	width: 1.25rem;
 }
@@ -864,10 +678,6 @@ th {
 
 .black-text {
 	color: '#484E59';
-}
-
-.white-text {
-	color: var(--white-color);
 }
 
 .bg-green-card {
@@ -882,7 +692,7 @@ th {
 
 .select-year option:hover {
 	background-color: black;
-	color: white;
+	color: var(--white-1);
 }
 
 .dialog-div {
@@ -891,7 +701,7 @@ th {
 
 .PrevBtn {
 	margin-left: -1.2rem;
-	background-color: white;
+	background-color: var(--white-1);
 	height: 2rem;
 	width: 2rem;
 	margin-top: 2rem;
@@ -903,7 +713,7 @@ th {
 
 .NextBtn {
 	margin-right: -1.2rem;
-	background-color: white;
+	background-color: var(--white-1);
 	height: 2rem;
 	width: 2rem;
 	margin-top: 2rem;
@@ -915,13 +725,13 @@ th {
 
 
 .iconNextPrev {
-	color: var(--blackColor);
+	color: var(--icon-color);
 }
 
 .family-empty-btn {
 	border: 1px solid #111827;
 	border-radius: 5px;
-	background-color: var(--secondaryColor);
+	background-color: var(--white-1);
 	color: #111827;
 	padding: 0.5rem;
 }
@@ -932,7 +742,7 @@ th {
 
 .fam-details-card {
 	border-radius: 5px;
-	border: var(--secondaryColor);
+	border: var(--white-1);
 }
 
 .static-map {
@@ -976,7 +786,7 @@ th {
 
 ::-webkit-scrollbar {
 	width: 0.25rem;
-	/* background-color: #000000; */
+	/* background-color: var(--black-0); */
 	/* background: transparent; */
 }
 
@@ -1022,7 +832,7 @@ th {
 /* sidebar css */
 .grayBtnClr {
 	background-color: #111827;
-	color: #FFFFFF;
+	color: var(--white-1);
 
 }
 
@@ -1036,8 +846,8 @@ th {
 /* InviteNew page */
 
 .btn-black {
-	color: White;
-	background-color: #000000;
+	color: var(--white-1);
+	background-color: var(--black-0);
 	vertical-align: middle;
 	border: 1px solid black;
 	padding: 0.375rem 0.75rem;
@@ -1086,7 +896,7 @@ th {
 
 /* Map your business */
 .header-btns {
-	/* background-color: #fff; */
+	/* background-color: var(--white-1); */
 	border: 1px solid #dbdbdb;
 	border-radius: 0.5rem;
 	box-shadow: none;
@@ -1102,7 +912,7 @@ th {
 
 .header-btn-white {
 	color: #565657;
-	background-color: #ffffff;
+	background-color: var(--white-1);
 }
 
 .drawer-header {
@@ -1126,7 +936,7 @@ th {
 	font-size: 0.9rem;
 	height: 2.6rem;
 	padding: 0.25rem 1rem;
-	color: #ffffff;
+	color: var(--white-1);
 	background-color: #111827;
 	font-weight: 500;
 }
@@ -1138,7 +948,7 @@ th {
 
 /* ExploreNow */
 .header-btns {
-	/* background-color: #fff; */
+	/* background-color: var(--white-1); */
 	border: 1px solid #dbdbdb;
 	border-radius: 0.5rem;
 	box-shadow: none;
@@ -1153,13 +963,13 @@ th {
 }
 
 .btn-black {
-	color: #ffffff;
+	color: var(--white-1);
 	background-color: #414652;
 }
 
 .header-btn-white {
 	color: #565657;
-	background-color: #ffffff;
+	background-color: var(--white-1);
 }
 
 .description-div {
@@ -1179,7 +989,7 @@ th {
 	font-size: 0.9rem;
 	height: 2.6rem;
 	padding: 0.25rem 1rem;
-	color: #ffffff;
+	color: var(--white-1);
 	background-color: #111827;
 	font-weight: 500;
 }
@@ -1202,10 +1012,9 @@ th {
 	position: absolute;
 	top: 100%;
 	right: 0;
-	background-color: #fff;
+	background-color: var(--white-1);
 	z-index: 1000 !important;
 	border-radius: 0.3125rem;
-	background: #FFF;
 	min-width: 250px;
 	max-width: 100%;
 	padding: 0;
@@ -1272,10 +1081,9 @@ th {
 	padding: 1.56rem 1.88rem !important;
 	top: 100%;
 	right: 0;
-	background-color: #fff;
+	background-color: var(--white-1);
 	z-index: 1000 !important;
 	border-radius: 0.3125rem;
-	background: #FFF;
 	min-width: 234px;
 	max-width: 100%;
 	padding: 0;
@@ -1327,10 +1135,9 @@ th {
 	padding: 1.25rem 1.25rem 0 1.25rem !important;
 	top: 106%;
 	right: -85px;
-	background-color: #fff;
+	background-color: var(--white-1);
 	z-index: 1000 !important;
 	border-radius: 0.3125rem;
-	background: #FFF;
 	width: 12.5rem;
 	height: 10.625rem;
 	padding: 0;

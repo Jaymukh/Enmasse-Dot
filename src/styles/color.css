@@ -1,6 +1,8 @@
 /* include all the color variable */
 
 html {
+    --app-background: rgba(244, 246, 248, 1);
+    
     --black-0: rgba(0, 0, 0, 1);
     --black-1: rgba(0, 0, 0, 0.1); 
     --black-2: rgba(0, 0, 0, 0.2); 
@@ -58,4 +60,7 @@ html {
 
     --bs-offcanvas-padding-x: 1rem;
     --bs-offcanvas-padding-y: 1rem;
+
+
+    --icon-color: rgba(28, 27, 31, 1);
 }
