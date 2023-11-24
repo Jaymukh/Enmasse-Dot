@@ -1,4 +1,3 @@
-import '../../App.css';
 import '../../styles/main.css';
 import { useState } from 'react';
 import globe from '../../utils/images/globe.png';

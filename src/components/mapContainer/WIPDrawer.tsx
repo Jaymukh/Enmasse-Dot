@@ -1,4 +1,3 @@
-import '../../App.css';
 import '../../styles/main.css';
 import React from 'react';
 import Drawer from '../ui/Drawer';

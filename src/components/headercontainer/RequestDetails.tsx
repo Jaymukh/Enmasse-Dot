@@ -1,4 +1,3 @@
-import '../../App.css';
 import '../../styles/main.css';
 import React, { useState } from 'react';
 import { HiMiniPhone } from 'react-icons/hi2';

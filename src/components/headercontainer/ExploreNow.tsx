@@ -1,4 +1,3 @@
-import '../../App.css';
 import '../../styles/main.css';
 import { useState } from 'react';
 import { MdOutlineTravelExplore } from 'react-icons/md';

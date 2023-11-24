@@ -5,7 +5,6 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RouteConstants } from '../../../constants';
 import Select, { SelectSize } from '../../ui/select/Select';
-import '../../../App.css';
 import '../../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';

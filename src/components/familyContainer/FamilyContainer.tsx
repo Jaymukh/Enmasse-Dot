@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import FamilyHeader from './FamilyHeader';
 import Families from './families/Families';
 import Family from './family/Family';
-import '../../App.css';
 import '../../styles/main.css';
 import { storiesState } from "../../states";
 import { useRecoilState } from "recoil";

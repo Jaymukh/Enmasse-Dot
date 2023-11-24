@@ -1,4 +1,3 @@
-import '../../../App.css';
 import '../../../styles/main.css';
 import IndiaMap from '../../../utils/images/IndiaMap.png';
 import CoreSolutions from '../../../utils/images/CoreSolutions.png';

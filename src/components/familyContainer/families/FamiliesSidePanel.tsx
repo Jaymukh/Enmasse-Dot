@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../App.css';
 import '../../../styles/main.css';
 import StaticMap from '../../StaticMap';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
