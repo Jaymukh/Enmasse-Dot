@@ -25,7 +25,7 @@ const useUserService = () => {
                 setSpinner(false);
                 getUserDetails();
                 // get return url from location state or default to home page
-                const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.explore : location.pathname;
+                const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.root : location.pathname;
                 if (user.is_first_login) {
                     setOverlay(true);
                     acceptAgreement();                    
