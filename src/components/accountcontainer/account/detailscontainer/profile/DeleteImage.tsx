@@ -50,6 +50,7 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
                     size={ButtonSize.large}
                     variant={ButtonVariant.contained}
                     onClick={() => handleDeleteModel(false)}
+                    classname='text-decoration-underline'
                 >
                     Cancel
                 </Button>

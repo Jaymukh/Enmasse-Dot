@@ -531,7 +531,7 @@ const DistrictSidebar = () => {
                     size={ButtonSize.large}
                     variant={ButtonVariant.bordered}
                     onClick={() => handleExploreMore(properties?.geo_id)}
-                    classname='my-4'
+                    classname='height-3 my-4'
                 >
                     Explore More
                     <PiArrowRightBold className='ms-2' />

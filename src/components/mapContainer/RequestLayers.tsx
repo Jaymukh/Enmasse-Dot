@@ -73,19 +73,19 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
             isOpen={requestLayersDrawerOpen}
             toggleFunction={handleRequestLayersDrawer}
         >
-            <div className='d-flex justify-content-center flex-column'>
+            <div className='d-flex flex-column align-items-start justify-content-center text-start'>
                 <Body
-                    type={BodyType.p3}
-                    color={BodyColor.dark}
-                    classname='text-start'
+                    type={BodyType.p1}
+                    color={BodyColor.secondary}
+                    classname='mb-2'
                 >
                     We are working on developing layers that will help analyze opportunities better.To request layers, fill the following form. We will notify you once the layers have been updated.
                 </Body>
                 <Heading
-                    title='Name'
+                    title='Name*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-3'
                 />
                 <Input
                     type="text"
@@ -94,10 +94,10 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                     disabled={true}
                 />
                 <Heading
-                    title='Email'
+                    title='Email*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-3'
                 />
                 <Input
                     type="email"
@@ -106,10 +106,10 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                     disabled={true}
                 />
                 <Heading
-                    title='Message'
+                    title='Message*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-3'
                 />
                 <textarea
                     value={payloadData.message}
@@ -126,7 +126,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                     onClick={() => handleSendClick()}
                     classname='my-3 height-3'
                 >
-                    Send Message
+                    Send Request
                 </Button>
             </div>
         </Drawer>

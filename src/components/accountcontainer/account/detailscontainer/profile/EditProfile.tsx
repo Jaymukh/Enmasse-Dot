@@ -62,7 +62,7 @@ export default function EditProfile({
     return (
         <Drawer
             id='edit-profile'
-            title='Edit Profile'
+            title='Edit'
             isOpen={open}
             toggleFunction={handleOpen}
         >
@@ -173,7 +173,7 @@ export default function EditProfile({
                     onClick={() => handleUpdateClick()}
                     classname='my-3 height-3'
                 >
-                    Update Profile
+                    Update
                 </Button>
             </div>
         </Drawer>
