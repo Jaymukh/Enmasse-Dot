@@ -7,11 +7,22 @@
 
 /* color and background color classes */
 
-.color-green-0 {
+.App {
+    text-align: center;
+    background-color: var(--app-background);
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.color-green {
     color: var(--green-0);
 }
 
-.bg-green-0 {
+.color-orange {
+    color: var(--rejected-0);
+}
+
+.bg-green {
     background-color: var(--green-0);
 }
 
@@ -23,17 +34,10 @@
     padding: 1.25rem !important;
 }
 
-/*background color  */
-.App {
-	text-align: center;
-	background-color: var(--app-background);
-	height: 100vh;
-	font-family: 'Poppins', sans-serif;
-}
 
 a {
-	cursor: pointer;
-	color: var(--black-0);
+    cursor: pointer;
+    color: var(--black-0);
 }
 
 ul {
@@ -78,7 +82,6 @@ ul {
     font-size: 0.75rem;
 }
 
-
 /* margin and padding class  */
 .margin-right-0-31 {
     margin-right: 0.31rem;
@@ -120,7 +123,6 @@ ul {
 
 .width-62-5.modal {
     --bs-modal-width: 62.5rem !important;
-    /* background-color: var(--green-1); */
 }
 
 .height-90.modal {
@@ -165,7 +167,7 @@ ul {
     width: 12.5rem;
     height: 10.625rem;
     padding: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--black-1);
     border: 1px solid #ccc;
 }
 
@@ -181,7 +183,7 @@ ul {
 }
 
 .help-menu-item:hover {
-    background-color: #f0f0f0;
+    background-color: var(--light-grey-1);
 }
 
 .help-menu-item span {
@@ -220,8 +222,8 @@ ul {
     min-width: 234px;
     max-width: 100%;
     padding: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px var(--black-1);
+    border: 1px solid var(--light-grey-2);
 }
 
 .family-menu-item {
@@ -237,7 +239,7 @@ ul {
 }
 
 .family-menu-item:hover {
-    background-color: #f0f0f0;
+    background-color: var(--light-grey-1);
 }
 
 .family-menu-item span {
@@ -290,7 +292,7 @@ ul {
     max-width: 100%;
     padding: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
+    border: 1px solid var(--light-grey-2);
 }
 
 .menu-item {
@@ -304,7 +306,7 @@ ul {
 }
 
 .menu-item:hover {
-    background-color: #f0f0f0;
+    background-color: var(--light-grey-1);
 }
 
 .menu-item span {
@@ -323,7 +325,7 @@ ul {
 }
 
 .drawer-shadow {
-    box-shadow: 0px 3px 26px #00000029;
+    box-shadow: 0px 3px 26px var(--black-16);
 }
 
 
@@ -338,13 +340,11 @@ ul {
 }
 
 .right-border {
-    border-right: 1.75px solid #DDDFE3;
+    border-right: 1.75px solid var(--light-grey-3);
 }
 
 ::-webkit-scrollbar {
     width: 0.25rem;
-    /* background-color: var(--black-0); */
-    /* background: transparent; */
 }
 
 ::-webkit-scrollbar-track {
@@ -405,7 +405,7 @@ ul {
 
 .dashboard-table-container {
     overflow-y: auto !important;
-    border: 1px solid #0D0B0B33;
+    border: 1px solid var(--table-border);
     border-radius: 10px !important;
 }
 
@@ -425,23 +425,15 @@ th {
 
 .dashboard-table-container tr:not(:last-child) td,
 th {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--table-border);
 }
 
 .dashboard-table-container th {
-    color: #232323;
+    color: var(--black-14);
     position: sticky;
     top: 0;
     z-index: 1;
     background-color: var(--white-1);
-}
-
-.table-state-row {
-    color: #367A2B;
-}
-
-.bg-green-card {
-    background-color: #108041;
 }
 
 .primary-bg {
@@ -449,7 +441,12 @@ th {
 }
 
 .dashboard-col {
-    border: 1px solid #1118261A;
+    border: 1px solid var(--black-3);
+    border-radius: 5px;
+}
+
+.dashboard-col-green {
+    border: 1px solid var(--green-0);
     border-radius: 5px;
 }
 
@@ -496,262 +493,235 @@ th {
 }
 
 .white-bg {
-	background-color: var(--white-1);
+    background-color: var(--white-1);
 }
 
 .profile-image-box {
-	top: 214px;
-	left: 377px;
-	width: 12.5rem !important;
-	height: 12.5rem !important;
-	overflow: hidden;
-	opacity: 1;
+    top: 214px;
+    left: 377px;
+    width: 12.5rem !important;
+    height: 12.5rem !important;
+    overflow: hidden;
+    opacity: 1;
 }
 
 
 /* InviteNew page */
 
 .Note {
-	/* d-flex justify-content-center align-items-center */
-	background-color: #f9eade;
-	height: 2rem;
-	width: 100%;
-	border-radius: 0.25rem;
-	font-weight: 600 !important;
-	margin: 1rem auto !important;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.green-text {
-	color: var(--green-0);
+    /* d-flex justify-content-center align-items-center */
+    background-color: var(--orange-1);
+    height: 2rem;
+    width: 100%;
+    border-radius: 0.25rem;
+    font-weight: 600 !important;
+    margin: 1rem auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* MapPopup */
 .map-popup-grey-text {
-	font-size: 0.825rem;
-	color: #B4B4B4;
-	font-family: 'Lato', sans-serif;
-	margin-left: 0.1px;
-	width: 12.625rem;
+    margin-left: 0.1px;
+    width: 12.625rem;
 }
 
 .map-popup-description {
-	line-height: 0.875rem;
+    line-height: 0.875rem;
 }
 
 .map-popup-story-img {
-	object-fit: cover;
-	height: 100%;
-	width: 3.5rem;
-}
-
-.color-orange {
-	color: #D55038;
-}
-
-.color-brown {
-	color: #c68f27;
+    object-fit: cover;
+    height: 100%;
+    width: 3.5rem;
 }
 
 .primary-bgColor {
-	background-color: rgba(17, 24, 39, 1)
-}
-
-.bg-green {
-	background-color: #10810b;
+    background-color: var(--blue-0)
 }
 
 .upload-image-box {
-	width: 15rem;
-	height: 15rem;
-	overflow: hidden;
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden;
 }
 
 
 .edit-profile-list {
-	list-style: none;
+    list-style: none;
 }
 
 .edit-profile-list li {
-	margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .editImageBtn {
-	padding: auto !important;
-	height: 2rem !important;
-	width: 2rem !important;
-	padding: 0;
-	margin-right: 1rem;
-	margin-top: -3rem;
+    padding: auto !important;
+    height: 2rem !important;
+    width: 2rem !important;
+    padding: 0;
+    margin-right: 1rem;
+    margin-top: -3rem;
 }
 
 .input-rb {
-	height: 1rem;
-	width: 1rem;
-	accent-color: #111827;
+    height: 1rem;
+    width: 1rem;
+    accent-color: var(--blue-0);
 }
 
 .underline-text {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .lightGrayBackground {
-	background-color: #eeeeef;
+    background-color: var(--app-background);
 }
 
 @media only screen and (max-width: 850px) {
-	.login-update-box {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		margin: auto;
-		width: 100vw;
-		height: 50vh;
-	}
+    .login-update-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 100vw;
+        height: 50vh;
+    }
 }
 
 .bold-text {
-	font-weight: 500;
-}
-
-.color-green {
-	color: green;
-}
-
-.green-0 {
-	color: var(--green-0);
+    font-weight: 500;
 }
 
 /* terms and condition */
 
 .modal-padding {
-	padding: auto 10rem;
+    padding: auto 10rem;
 
 }
 
 /* loginUpdateBox */
 .login-update-box {
-	display: flex;
-	justify-content: center;
-	margin: auto;
-	width: 50vw;
-	height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 50vw;
+    height: 100vh;
 }
 
 .inputBoxHeight {
-	height: 3rem;
+    height: 3rem;
 }
 
 .mediumMarginTopBottom {
-	margin: 10px 0;
+    margin: 10px 0;
 }
 
 .loginCardAlign {
-	width: 60%;
-	background-color: transparent;
-	border: none;
-	border-style: none;
-	display: flex;
-	flex-direction: column;
-	justify-content: start;
-	text-align: start;
-	margin: auto
+    width: 60%;
+    background-color: transparent;
+    border: none;
+    border-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: start;
+    margin: auto
 }
 
 .fixed-header {
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	/* z-index: 0; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    /* z-index: 0; */
 }
 
 /* Header */
 .enmasse-logo-font {
-	font-family: 'Bai Jamjuree', sans-serif;
+    font-family: 'Bai Jamjuree', sans-serif;
 }
 
 .select-right-margin {
-	border-right: 0.5px solid #D2D4D6;
-	width: 11.25rem;
+    border-right: 0.5px solid var(--scrollbar-track);
+    width: 11.25rem;
 }
 
 /* sidebar css */
 .sideBar-parent-expended {
-	height: 85.5vh;
-	width: 25vw;
-	background-color: var(--white-1);
+    height: 85.5vh;
+    width: 25vw;
+    background-color: var(--white-1);
 }
 
 .sideBar-parent-collapsed {
-	height: 80vh;
-	width: 1vw;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	background-color: var(--white-1);
+    height: 80vh;
+    width: 1vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--white-1);
 }
 
 .SideBar {
-	display: flex;
-	flex-direction: column;
-	float: right;
-	align-items: start;
-	height: 80vh;
-	background-color: var(--white-1);
-	align-content: center;
-	z-index: 999;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    align-items: start;
+    height: 80vh;
+    background-color: var(--white-1);
+    align-content: center;
+    z-index: 999;
 }
 
 .SideBarContent {
-	height: 80vh;
-	right: 0;
-	overflow: auto;
+    height: 80vh;
+    right: 0;
+    overflow: auto;
 }
 
 .SideBarIcon {
-	margin-left: -2rem;
+    margin-left: -2rem;
 }
 
 @media only screen and (max-width: 850px) {
-	.sideBar-parent-expended {
-		height: 80vh;
-		width: 100vw;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		background-color: var(--white-1);
-		padding: 2rem;
-	}
+    .sideBar-parent-expended {
+        height: 80vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: var(--white-1);
+        padding: 2rem;
+    }
 
-	.SideBarContent {
-		height: 80vh;
-		right: 0;
-		overflow: auto;
-		padding-bottom: 6rem;
-	}
+    .SideBarContent {
+        height: 80vh;
+        right: 0;
+        overflow: auto;
+        padding-bottom: 6rem;
+    }
 
 }
 
 
 .height-2-25 {
-	height: 2.25rem !important;
+    height: 2.25rem !important;
 }
 
 .height-3 {
-	height: 3rem !important;
+    height: 3rem !important;
 }
 
 .width-5 {
-	width: 5rem !important;
+    width: 5rem !important;
 }
 
 .width-26-625 {
-	width: 26.625rem
+    width: 26.625rem
 }
 
 .width-10 {
-	width: 10rem !important;
+    width: 10rem !important;
 }

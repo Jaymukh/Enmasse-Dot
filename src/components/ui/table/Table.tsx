@@ -83,7 +83,6 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
             });
         }
     }
-console.log(headers?.KEYS, breakdownType)
     return (
         <div className={`dashboard-table-container mx-1 ${getSizeClass(size)}`}>
             <table>
@@ -107,7 +106,7 @@ console.log(headers?.KEYS, breakdownType)
                         <tr key={index}>
                             {headers?.KEYS?.map((key, keyIndex) => (
                                 <td
-                                    className={`fs-14 ${keyIndex === 0 ? 'table-state-row' : ''}`}
+                                    className={`fs-14 ${keyIndex === 0 ? 'color-green' : ''}`}
                                     style={{ cursor: `${keyIndex === 0 ? 'pointer' : 'default'}` }}
                                     onClick={() => handleColClick(item, keyIndex)}
                                 >

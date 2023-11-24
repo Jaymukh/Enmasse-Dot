@@ -99,7 +99,7 @@ const FamilyDetails = () => {
                         {familyDetails?.description}
                     </Body>
                     <div className='d-flex justify-content-start'>
-                        <button className='rounded text-start ps-0 border-0 fs-10 white-bg fw-bold green-text' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
+                        <button className='rounded text-start ps-0 border-0 fs-10 white-bg fw-bold color-green' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
                     </div>
                 </div>
             </Card>

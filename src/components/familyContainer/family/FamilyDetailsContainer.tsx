@@ -38,7 +38,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                         </Body>
                     </div>
                     <div className="d-flex flex-column align-items-end justify-content-start  text-end">
-                        <span className='fs-14 me-1 bold-text color-green-0'>{getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}</span>
+                        <span className='fs-14 me-1 bold-text color-green'>{getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}</span>
                         <Body
                             type={BodyType.p4}
                             color={BodyColor.dark}

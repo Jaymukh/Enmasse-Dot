@@ -63,7 +63,7 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 					{Constants.familiesSortingItems.map((item) => (
 						<li
 							key={item.key}
-							className={`family-menu-item d-flex fs-16 ${selectedItem === item ? 'green-0' : ''}`}
+							className={`family-menu-item d-flex fs-16 ${selectedItem === item ? 'color-green' : ''}`}
 							onClick={() => handleClickMenuItem(item)}
 						>
 							<span>{item.text}</span>

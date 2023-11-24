@@ -65,7 +65,6 @@ function MapOptions({
                     >
                         Country
                     </Body>
-
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.medium}
@@ -76,7 +75,7 @@ function MapOptions({
                         {!global ? 'Select' : 'India'}
                     </Button>
                 </div>
-                {!global && selected.country ? (
+                {global && selected.country ? (
                     <div className='select-right-margin py-0 h-100'>
                         <Body
                             type={BodyType.p4}
@@ -99,7 +98,7 @@ function MapOptions({
                 ) : (
                     ''
                 )}
-                {!global && selected.state ? (
+                {global && selected.state ? (
                     <div className='select-right-margin py-0 h-100'>
                         <Body
                             type={BodyType.p4}

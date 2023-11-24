@@ -5,7 +5,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
-import Body, {BodyType, BodyColor} from '../ui/typography/Body';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import { useMapHelpers } from '../../helpers';
 
 interface MapPopupProps {
@@ -17,7 +17,7 @@ interface MapPopupProps {
 const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index }) => {
     const navigate = useNavigate();
     const { getCurrencyWithSymbol } = useMapHelpers();
-    
+
     const handlePopupClick = (geo_id: number) => {
         navigate({
             pathname: RouteConstants.stories,
@@ -44,7 +44,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     color={BodyColor.secondary}
                     classname='map-popup-description text-start my-0'
                 >
-                    <span className="green-text pe-1">{getCurrencyWithSymbol(properties.familyDetails.spendOnEducation, properties.familyDetails.spendOnEducationUOM)} </span>
+                    <span className="color-green pe-1">{getCurrencyWithSymbol(properties.familyDetails.spendOnEducation, properties.familyDetails.spendOnEducationUOM)} </span>
                     Annual household spend on Education
                 </Body>
                 <Button

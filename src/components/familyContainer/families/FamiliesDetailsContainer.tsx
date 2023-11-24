@@ -138,7 +138,7 @@ const FamiliesDetailsContainer = () => {
                                                 type={BodyType.p4}
                                                 color={BodyColor.dark}
                                                 classname='mx-0 mb-1'>
-                                                <span className='fs-14 me-1 bold-text color-green-0'>
+                                                <span className='fs-14 me-1 bold-text color-green'>
                                                     {getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}
                                                 </span>
                                                 Annual Household Spend on Education

@@ -1,4 +1,4 @@
-import './Spinner.module.css';
+import './Spinner.css';
 import { spinnerState } from '../../../states';
 import { useRecoilState } from 'recoil';
 
