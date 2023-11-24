@@ -190,7 +190,6 @@ a {
 
 }
 
-
 .Dialog-btn-width {
 	width: 8rem;
 }
@@ -247,71 +246,7 @@ a {
 	bottom: 0;
 }
 
-/* EHinfographic*/
-
-.bg-img {
-	/* background-image: url('./images/img3.png'); */
-	background-repeat: no-repeat;
-	width: 100vw;
-	height: 100vh;
-	background-size: cover;
-
-}
-
-.bg-black-opacity {
-	background-color: #282c34;
-	opacity: 0.8;
-	width: 100vw;
-	height: 100vh;
-}
-
-.circle {
-	width: 20rem;
-	height: 20rem;
-	border-radius: 10rem;
-	background-color: transparent;
-}
-
-.EHinfograpic-div-2 {
-	width: 20vw;
-	margin-top: 15rem;
-	margin-right: 5rem !important;
-	text-align: left;
-}
-
-.imgBorderRadiousinfograpic {
-	border-radius: 20.7rem;
-	margin-top: 20rem;
-}
-
-.contextualinfo {
-	border-radius: 20.7rem;
-	margin-top: 7rem;
-	margin-right: -42rem;
-}
-
-
-.btn-height {
-	height: 2rem;
-	width: 5rem;
-	padding-bottom: 2rem;
-}
-
-.TotalAdressableMarket-div-2 {
-	width: 20vw;
-	margin-top: 25rem;
-	margin-right: 5rem !important;
-	text-align: left;
-}
-
-.TotalAdressableMarketImg {
-	border-radius: 20.7rem;
-	margin-top: 22rem;
-	margin-right: -42rem;
-}
-
 /* Core Solutions */
-
 
 .input-rb {
 	height: 1rem;
@@ -334,8 +269,6 @@ a {
 
 .header-search-bar .MuiOutlinedInput-notchedOutline {
 	border: none !important;
-	/* background-color: #F3F3F4;
-	color: #111827; */
 }
 
 .underline-text {
@@ -351,11 +284,6 @@ a {
 	margin-right: 1rem;
 	margin-top: -3rem;
 }
-
-/* .profileImageAlignment {
-	right: 45%!important;
-    bottom: 30%!important;
-} */
 
 .edit-profile-list {
 	list-style: none;
@@ -481,11 +409,6 @@ a {
 	object-fit: cover;
 	height: 100%;
 	width: 3.5rem;
-
-	/* border-radius: 5px;
-	height: 4rem;
-	width: auto;
-	overflow: hidden; */
 }
 
 .green-text {

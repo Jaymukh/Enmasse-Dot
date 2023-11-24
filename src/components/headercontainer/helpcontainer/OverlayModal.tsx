@@ -10,7 +10,11 @@ import Modal from '../../ui/modal/Modal';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { overlayState, helpState } from '../../../states';
 
-const OverlayModal = () => {
+interface OverlayModalProps {
+    handleContactUsDrawer: (contactUsDrawerOpen: boolean) => void;
+}
+
+const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) => {
     const overlay = useRecoilValue(overlayState);
     const setOverlay = useSetRecoilState(overlayState);
     const setShowHelp = useSetRecoilState(helpState);
@@ -33,13 +37,16 @@ const OverlayModal = () => {
             setShowHelp(showHelp - 1);
         }
     };
+    const handleContactNow = () => {
+        setOverlay(false);
+        handleContactUsDrawer(true);
+    }
 
     return (
         <div>
             <Modal showModal={overlay} classname='width-62-5'>
-                {
-                    (showHelp === 0) &&
-                    <div className='d-flex flex-row justify-content-center mb-2'>
+                {(showHelp === 0)
+                    && <div className='d-flex flex-row justify-content-center mb-2'>
                         <div className="col-6">
                             <img src={IndiaMap} alt="India Map" width='75%' />
                         </div>
@@ -78,12 +85,12 @@ const OverlayModal = () => {
                             <div className="col-6">
                                 <img src={CoreSolutions} alt="Core Solutions" width='50%' />
                             </div>
-                            <div className="col-6 d-flex flex-column justify-content-center align-items-start">
+                            <div className="col-6 d-flex flex-column justify-content-center align-items-start text-start">
                                 <Heading
                                     title={Constants.helpContent[showHelp - 1].title}
                                     type={TypographyType.h2}
                                     colour={TypographyColor.dark}
-                                    classname='mb-3'
+                                    classname='test-start mb-3'
                                 />
                                 <Body
                                     type={BodyType.p2}
@@ -92,6 +99,16 @@ const OverlayModal = () => {
                                 >
                                     {Constants.helpContent[showHelp - 1].description}
                                 </Body>
+                                {(showHelp === Constants.helpContent.length)
+                                    && <Button
+                                        theme={ButtonTheme.secondary}
+                                        size={ButtonSize.default}
+                                        variant={ButtonVariant.bordered}
+                                        classname='h-2 mt-2'
+                                        onClick={() => handleContactNow()}
+                                    >
+                                        Contact Now
+                                    </Button>}
                             </div>
                         </div>
                         <div className='d-flex flex-row justify-content-between align-items-center mb-2'>
@@ -103,15 +120,17 @@ const OverlayModal = () => {
                                 {showHelp}/{Constants.helpContent.length}
                             </Body>
                             <div className='d-flex flex-row justify-items-end align-items-center' >
-                                <Button
-                                    theme={ButtonTheme.secondary}
-                                    size={ButtonSize.default}
-                                    variant={ButtonVariant.bordered}
-                                    classname='h-2 me-2'
-                                    onClick={previousHelp}
-                                >
-                                    Previous
-                                </Button>
+                                {(showHelp > 1)
+                                    && <Button
+                                        theme={ButtonTheme.secondary}
+                                        size={ButtonSize.default}
+                                        variant={ButtonVariant.bordered}
+                                        classname='h-2 me-2'
+                                        onClick={previousHelp}
+                                    >
+                                        Previous
+                                    </Button>
+                                }
                                 <Button
                                     theme={ButtonTheme.primary}
                                     size={ButtonSize.default}

@@ -109,7 +109,7 @@ const HelpOptions = () => {
 			{roadmapDrawerOpen && <WIPDrawer open={roadmapDrawerOpen} title={text} closeWIPDrawer={closeWIPDrawer} />}
 
 			{/* drawer for Help */}
-			{overlay && <OverlayModal />}
+			{overlay && <OverlayModal handleContactUsDrawer={handleContactUsDrawer} />}
 		</div >
 	);
 }
