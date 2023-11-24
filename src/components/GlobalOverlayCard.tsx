@@ -31,8 +31,6 @@ const GlobalOverlayCard = () => {
                         colour={TypographyColor.dark}
                         type={TypographyType.h6}
                         classname={`fs-31 text-center ${index === 3 ? 'insight-bar-green-color' : ''}`} />
-                    {/* <h5 className={`fs-31 font-weight-500 text-center ${index === 3 ? 'insight-bar-green-color' : ''}`}>{data.value}</h5> */}
-                    {/* <p className='fs-15 font-lato font-weight-500 text-center grey-light-color'>{data.title}</p> */}
                     <Body
                         type={BodyType.p1}
                         color={BodyColor.muted}>

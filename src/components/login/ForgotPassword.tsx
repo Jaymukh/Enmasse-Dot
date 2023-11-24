@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Input } from '../ui/input/Input';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import Modal from '../ui/modal/Modal';
 import { useUserService } from '../../services';
 import { useSetRecoilState } from "recoil";
@@ -47,7 +48,13 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                         classname='btn-close m-0 w-auto p-2'
                     />
                 </div>
-                <p className='Dialog-p'>Enter your email, we will send you instructions.</p>
+                <Body
+                    type={BodyType.p4}
+                    color={BodyColor.dark}
+                    classname='text-start'
+                >
+                    Enter your email, we will send you instructions.
+                </Body>
                 <div className=" d-flex flex-column justify-content-start my-2" >
                     <Heading
                         title='Email'

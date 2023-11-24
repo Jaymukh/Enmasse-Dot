@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { useUserService } from '../../services';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
 import { useSetRecoilState } from "recoil";
@@ -101,9 +102,12 @@ export default function Login() {
                                 type={TypographyType.h2}
                                 colour={TypographyColor.dark}
                             />
-                            <p className='text-muted login-p'>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.muted}
+                            >
                                 Our team of skilled professionals is committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
-                            </p>
+                            </Body>
                         </div>
                     </div>
                 </div>
@@ -114,8 +118,13 @@ export default function Login() {
                             type={TypographyType.h2}
                             colour={TypographyColor.dark}
                         />
-                        <p className='text-muted mb-4 login-p'>Enter your email ID and Password to login
-                        </p>
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.muted}
+                            classname='mb-4'
+                        >
+                            Enter your email ID and Password to login
+                        </Body>
                         <form className='loginCardAlign w-100' onSubmit={handleSubmit(onSubmit)}>
                             <Heading
                                 title='Email'
@@ -126,7 +135,15 @@ export default function Login() {
                                 {...register("email_id")}
                                 className='my-1 px-2 inputBoxHeight w-100'
                                 placeholder='Enter your email id here' />
-                            {errors?.email_id?.message && <p className='text-danger m-0 p-0 fs-12'>{errors?.email_id?.message}</p>}
+                            {errors?.email_id?.message
+                                && <Body
+                                    type={BodyType.p3}
+                                    color={BodyColor.warning}
+                                    classname='m-0 p-0'
+                                >
+                                    {errors?.email_id?.message}
+                                </Body>
+                            }
                             <div className='d-flex flex-row justify-content-between align-items-center mt-2'>
                                 <Heading
                                     title='Password'
@@ -157,7 +174,15 @@ export default function Login() {
                                     {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}
                                 </span>
                             </div>
-                            {errors?.password?.message && <p className='text-danger m-0 p-0 fs-12'>{errors?.password?.message}</p>}
+                            {errors?.password?.message
+                                && <Body
+                                    type={BodyType.p3}
+                                    color={BodyColor.warning}
+                                    classname='m-0 p-0'
+                                >
+                                    {errors?.password?.message}
+                                </Body>
+                            }
                             <Button
                                 type='submit'
                                 classname='mb-2 mt-4 height-3'
@@ -169,7 +194,12 @@ export default function Login() {
                                 {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Login
                             </Button>
                         </form>
-                        <p className='text-muted mb-0 mt-2 login-p'>By clicking on continue you are agreeing to the Enmasse
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.muted}
+                            classname='mb-0 mt-2'
+                        >
+                            By clicking on continue you are agreeing to the Enmasse
                             <Button
                                 theme={ButtonTheme.primary}
                                 size={ButtonSize.small}
@@ -189,7 +219,8 @@ export default function Login() {
                             >
                                 Privacy policies
                             </Button>
-                        </p>
+                        </Body>
+
                     </div>
                 </div>
 

@@ -63,7 +63,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Name*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2 mb-1'
                     />
                     <Input
                         type="text"
@@ -76,7 +76,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Email*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2 mb-1'
                     />
                     <Input
                         type="email"
@@ -89,7 +89,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Company*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2 mb-1'
                     />
                     <Input
                         type="text"
@@ -102,7 +102,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Company Type*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2 mb-1'
                     />
                     <Select
                         options={settings?.company_types}
@@ -116,7 +116,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Role*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2 mb-1'
                     />
                     <Select
                         options={settings?.roles}
@@ -127,12 +127,18 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         size={SelectSize.large}
                         name='role'
                     />
+                    <Body
+                        type={BodyType.p3}
+                        color={BodyColor.dark}
+                        classname='Note'>
+                        Note: Admins will be able to invite users to the platform
+                    </Body>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
                         onClick={() => handleUpdateClick()}
-                        classname='my-4 height-3'
+                        classname='my-3 height-3'
                     >
                         Update
                     </Button>

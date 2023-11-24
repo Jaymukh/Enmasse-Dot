@@ -5,6 +5,7 @@ import { MdBookmarks } from 'react-icons/md';
 import WIPDrawer from './WIPDrawer';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import Select, { SelectSize } from '../ui/select/Select';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 
 interface MapOptionsProps {
     handleCountryChange: () => void;
@@ -30,7 +31,7 @@ function MapOptions({
 }: MapOptionsProps) {
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useState('');
-    
+
 
     const openWIPDrawer = (title: string) => {
         setOpen(true);
@@ -54,9 +55,16 @@ function MapOptions({
                     >
                         Global
                     </Button>
-                </div>                
-                <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
-                    <p className='country-text m-0 text-start ps-2'>Country</p>
+                </div>
+                <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start'>
+                    <Body
+                        type={BodyType.p4}
+                        color={BodyColor.secondary}
+                        classname='m-0 text-start ps-2'
+                    >
+                        Country
+                    </Body>
+
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.medium}
@@ -66,10 +74,16 @@ function MapOptions({
                     >
                         {!global ? 'Select' : 'India'}
                     </Button>
-                </div>                   
-                {global && selected.country ? (
-                    <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
-                        <p className='country-text m-0 text-start ps-2'>State</p>
+                </div>
+                {!global && selected.country ? (
+                    <div className='select-right-margin py-0 h-100'>
+                        <Body
+                            type={BodyType.p4}
+                            color={BodyColor.secondary}
+                            classname='m-0 text-start ps-2'
+                        >
+                            State
+                        </Body>
                         <Select
                             options={states}
                             onChange={handleStateChange}
@@ -84,9 +98,15 @@ function MapOptions({
                 ) : (
                     ''
                 )}
-                {global && selected.state ? (
-                    <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
-                        <p className='country-text m-0 text-start ps-2'>District</p>
+                {!global && selected.state ? (
+                    <div className='select-right-margin py-0 h-100'>
+                        <Body
+                            type={BodyType.p4}
+                            color={BodyColor.secondary}
+                            classname='m-0 text-start ps-2'
+                        >
+                            District
+                        </Body>
                         <Select
                             options={districts}
                             onChange={handleDistrictChange}

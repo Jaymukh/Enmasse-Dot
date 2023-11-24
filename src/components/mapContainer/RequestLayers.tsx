@@ -7,6 +7,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../states";
 import { useCIFService } from '../../services';
 import { Heading, TypographyType, TypographyColor } from '../ui/typography/Heading';
+import Body, {BodyType, BodyColor} from '../ui/typography/Body';
 
 interface RequestLayersProps {
     requestLayersDrawerOpen: boolean,
@@ -72,7 +73,13 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
             toggleFunction={handleRequestLayersDrawer}
         >
             <div className='d-flex justify-content-center flex-column'>
-                <p className=' text-start'>We are working on developing layers that will help analyze opportunities better.To request layers, fill the following form. We will notify you once the layers have been updated.</p>
+                <Body
+                    type={BodyType.p3}
+                    color={BodyColor.dark}
+                    classname='text-start'
+                >
+                    We are working on developing layers that will help analyze opportunities better.To request layers, fill the following form. We will notify you once the layers have been updated.
+                </Body>
                 <Heading
                     title='Name'
                     type={TypographyType.h5}

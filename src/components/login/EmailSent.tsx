@@ -2,6 +2,7 @@ import React from 'react'
 import '../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, {BodyType, BodyColor} from '../ui/typography/Body';
 import Modal from '../ui/modal/Modal';
 
 interface EmailSentProps {
@@ -35,9 +36,13 @@ const EmailSent: React.FC<EmailSentProps> = ({
                         colour={TypographyColor.dark}
                         classname='text-start'
                     />
-                    <p className=' Dialog-p '>
-                        Email sent {email} with further instructions.
-                    </p>
+                    <Body
+						type={BodyType.p4}
+						color={BodyColor.dark}
+						classname='text-start'
+					>
+						Email sent {email} with further instructions.
+					</Body>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}

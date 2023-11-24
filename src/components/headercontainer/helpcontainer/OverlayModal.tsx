@@ -5,6 +5,7 @@ import CoreSolutions from '../../../utils/images/CoreSolutions.png';
 import * as Constants from '../../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import Modal from '../../ui/modal/Modal';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { overlayState, helpState } from '../../../states';
@@ -33,8 +34,6 @@ const OverlayModal = () => {
         }
     };
 
-
-
     return (
         <div>
             <Modal showModal={overlay} classname='width-62-5'>
@@ -51,9 +50,13 @@ const OverlayModal = () => {
                                 colour={TypographyColor.dark}
                                 classname='mb-3'
                             />
-                            <p className='text-start fs-14'>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.dark}
+                                classname='text-start'
+                            >
                                 Entrepreneurial households: represent households with its members engaged in opportunities of potential growth and economic activities
-                            </p>
+                            </Body>
                             <Button
                                 theme={ButtonTheme.primary}
                                 size={ButtonSize.default}
@@ -82,11 +85,23 @@ const OverlayModal = () => {
                                     colour={TypographyColor.dark}
                                     classname='mb-3'
                                 />
-                                <p className='text-start fs-14'>{Constants.helpContent[showHelp - 1].description}</p>
+                                <Body
+                                    type={BodyType.p2}
+                                    color={BodyColor.dark}
+                                    classname='text-start'
+                                >
+                                    {Constants.helpContent[showHelp - 1].description}
+                                </Body>
                             </div>
                         </div>
                         <div className='d-flex flex-row justify-content-between align-items-center mb-2'>
-                            <p className='text-start fs-14'>{showHelp}/{Constants.helpContent.length}</p>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.dark}
+                                classname='text-start'
+                            >
+                                {showHelp}/{Constants.helpContent.length}
+                            </Body>
                             <div className='d-flex flex-row justify-items-end align-items-center' >
                                 <Button
                                     theme={ButtonTheme.secondary}

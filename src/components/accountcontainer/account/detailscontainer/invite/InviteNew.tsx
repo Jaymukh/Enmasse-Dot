@@ -80,7 +80,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Name*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2'
                     />
                     <Input
                         type="text"
@@ -93,7 +93,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Email*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2'
                     />
                     <Input
                         type="email"
@@ -106,7 +106,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Company*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2'
                     />
                     <Input
                         type="text"
@@ -119,7 +119,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Role*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2'
                     />
                     <Select
                         options={settings?.roles}
@@ -134,7 +134,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Company Type*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0'
+                        classname='mt-2'
                     />
                     <Select
                         options={settings?.company_types}
@@ -155,7 +155,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
                         onClick={() => handleSubmitInviteNew()}
-                        classname='mt-4 mb-3 height-3'
+                        classname='my-3 height-3'
                     >
                         Invite
                     </Button>
