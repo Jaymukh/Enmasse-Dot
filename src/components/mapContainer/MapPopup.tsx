@@ -4,6 +4,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import Body, {BodyType, BodyColor} from '../ui/typography/Body';
 import { useMapHelpers } from '../../helpers';
 
 interface MapPopupProps {
@@ -29,14 +30,22 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                 <img className="map-popup-story-img rounded" src={properties.image} alt={properties.familyName} />
             </div>
             <div className="col-8 px-0 d-flex flex-column justify-content-start ps-1">
-                <p className="map-popup-description text-start my-0">
+                <Body
+                    type={BodyType.p4}
+                    color={BodyColor.secondary}
+                    classname='map-popup-description text-start my-0'
+                >
                     <span className="pe-1">{properties.familyDetails.familyMembers} </span>
                     Family members
-                </p>
-                <p className="map-popup-description text-start my-0">
+                </Body>
+                <Body
+                    type={BodyType.p4}
+                    color={BodyColor.secondary}
+                    classname='map-popup-description text-start my-0'
+                >
                     <span className="green-text pe-1">{getCurrencyWithSymbol(properties.familyDetails.spendOnEducation, properties.familyDetails.spendOnEducationUOM)} </span>
                     Annual household spend on Education
-                </p>
+                </Body>
                 <Button
                     theme={ButtonTheme.success}
                     size={ButtonSize.xsmall}

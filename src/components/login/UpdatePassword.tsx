@@ -21,8 +21,6 @@ import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 const UpdatePassword = () => {
     const navigate = useNavigate();
     const userService = useUserService();
-    // const arr = window.location.href.split("=");
-    // const token = arr.pop();
     const [searchParams] = useSearchParams();
     const setError = useSetRecoilState(errorState);
     const token = searchParams.get('token');
@@ -90,22 +88,11 @@ const UpdatePassword = () => {
         navigate(RouteConstants.login);
     }
 
-    //     const handleSkip = () => {
-    //         navigate(RouteConstants.root);
-    //     }
-    // 
-    //     const handleNavigateBack = () => {
-    //         navigate(RouteConstants.login);
-    //     }
-
 
     return (
         <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
             <div className='col-md-6 col-xl-6 login-update-box lightGrayBackground'>
                 <div className='col-12 my-5 d-flex flex-column align-items-start'>
-                    {/* <button className='border-0 mx-5' onClick={handleNavigateBack}>
-                        <IoMdArrowBack />Back
-                    </button> */}
                     <div className='loginCardAlign my-5'>
                         <img src={globe} alt='enmasse' />
                         <div>
@@ -114,9 +101,13 @@ const UpdatePassword = () => {
                                 type={TypographyType.h2}
                                 colour={TypographyColor.dark}
                             />
-                            <p className='text-muted login-p'>
+                            <Body
+                                type={BodyType.p1}
+                                color={BodyColor.muted}
+                                classname='text-start'
+                            >
                                 Our team of skilled professionals id committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
-                            </p>
+                            </Body>
                         </div>
                     </div>
                 </div>
@@ -133,7 +124,13 @@ const UpdatePassword = () => {
                             colour={TypographyColor.dark}
                             classname='text-center mb-2'
                         />
-                        <p className='fs-14 text-muted mb-3 text-center'>Password created successfully!</p>
+                        <Body
+                            type={BodyType.p2}
+                            color={BodyColor.muted}
+                            classname='mb-3 text-center'
+                        >
+                            Password created successfully!
+                        </Body>
                         <Button
                             theme={ButtonTheme.primary}
                             size={ButtonSize.large}
@@ -153,7 +150,13 @@ const UpdatePassword = () => {
                             colour={TypographyColor.dark}
                             classname='mb-2'
                         />
-                        <p className='fs-14 text-muted mb-3'>Create password for your account.</p>
+                        <Body
+                                type={BodyType.p2}
+                                color={BodyColor.muted}
+                                classname='mb-3'
+                            >
+                                Create password for your account.
+                            </Body>
                         <Heading
                             title='Password'
                             type={TypographyType.h4}
@@ -176,7 +179,15 @@ const UpdatePassword = () => {
                                 {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}
                             </span>
                         </div>
-                        {errors?.new_password?.message && <p className='text-danger m-0 p-0'>{errors?.new_password?.message}</p>}
+                        {errors?.new_password?.message 
+                        && <Body
+                                type={BodyType.p3}
+                                color={BodyColor.warning}
+                                classname='m-0 p-0'
+                            >
+                                {errors?.new_password?.message}
+                            </Body>
+                        }
                         <div className="row my-2">
                             {validationOptions.map((item: { key: string, text: string }, index: number) => (
                                 <div className='col-6 d-flex pe-0'>
@@ -202,7 +213,15 @@ const UpdatePassword = () => {
                             {...register("confirm_new_password")}
                             className='my-1 px-2 inputBoxHeight w-100'
                             placeholder='Re enter your password here' />
-                        {errors?.confirm_new_password?.message && <p className='text-danger m-0 p-0'>{errors?.confirm_new_password?.message}</p>}
+                        {errors?.confirm_new_password?.message
+                            && <Body
+                                type={BodyType.p3}
+                                color={BodyColor.warning}
+                                classname='m-0 p-0'
+                            >
+                                {errors?.confirm_new_password?.message}
+                            </Body>
+                        }
                         <Button
                             theme={ButtonTheme.primary}
                             size={ButtonSize.large}

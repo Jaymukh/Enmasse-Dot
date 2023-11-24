@@ -303,9 +303,7 @@ a {
 	font-size: 1.5rem;
 }
 
-.login-p {
-	font-size: 0.825rem;
-}
+
 
 .loginCardAlign {
 	width: 60%;
@@ -378,10 +376,6 @@ a {
 
 }
 
-.Dialog-p {
-	text-align: start;
-	font-size: small;
-}
 
 .Dialog-btn-width {
 	width: 8rem;
@@ -666,9 +660,7 @@ a {
 }
 
 .map-popup-description {
-	font-size: 0.625rem;
 	line-height: 0.875rem;
-	color: #9D9D9D;
 }
 
 .map-popup-story-img {
@@ -710,7 +702,7 @@ a {
 	width: 100%;
 	border-radius: 0.25rem;
 	font-weight: 600 !important;
-	margin: 1rem auto;
+	margin: 1rem auto !important;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1074,12 +1066,6 @@ th {
 	margin-top: 1rem;
 }
 
-.country-text {
-	font-size: 0.625rem;
-	color: var(--black-8);
-	padding: 0 0.5rem 0 0.63rem;
-}
-
 .secondary-select {
 	min-width: 8rem !important;
 	min-height: 1rem !important;
@@ -1383,10 +1369,17 @@ th {
 	font-family: "Poppins-Medium", sans-serif;
 	font-size: 0.875rem;
 }
-/* margin class  */
+/* margin and padding class  */
 .margin-bottom-0-31{
 	margin-bottom: 0.31rem;
 }
 .margin-right-0-31{
 	margin-right: 0.31rem;
 }
+.margin-top-1-25 {
+	margin-top: 1.25rem ;
+}
+.margin-bottom-0-63 {
+	margin-bottom: 0.63rem;
+}
+

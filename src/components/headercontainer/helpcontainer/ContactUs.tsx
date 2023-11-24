@@ -7,6 +7,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
 import { useCIFService } from '../../../services';
 import { Heading, TypographyType, TypographyColor } from '../../ui/typography/Heading';
+import Body, {BodyType, BodyColor} from '../../ui/typography/Body';
 
 interface ContactUsProps {
     contactUsDrawerOpen: boolean,
@@ -71,13 +72,19 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
             isOpen={contactUsDrawerOpen}
             toggleFunction={handleContactUsDrawer}
         >
-            <div className='d-flex justify-content-center flex-column'>
-                <p className=' text-start'>If you like to request any data or details from enmasse, fill the following form and send request. We will notify you once the data have been updated.</p>
+            <div className='d-flex flex-column align-items-start justify-content-center test-start'>
+                <Body
+                    type={BodyType.p2}
+                    color={BodyColor.muted}
+                    classname='text-start'
+                >
+                    If you like to request any data or details from enmasse, fill the following form and send request. We will notify you once the data have been updated.
+                </Body>
                 <Heading
                     title='Name'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-2 text-start'
                 />
                 <Input
                     type="text"
@@ -88,7 +95,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                     title='Email'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-2 text-start'
                 />
                 <Input
                     type="email"
@@ -96,10 +103,10 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                     value={loggedUser.email_id}
                 />
                 <Heading
-                    title='Message'
+                    title='Message*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-1 text-start'
+                    classname='mt-2 text-start'
                 />
                 <textarea
                     value={payloadData.message}
@@ -107,7 +114,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                     onChange={(e) => handleChangeData(e)}
                     placeholder="Type your request message (Max 250 words)"
                     style={{ height: '10rem' }}
-                    className='fs-13 p-3 rounded'
+                    className='fs-13 p-3 rounded w-100'
                 />
                 <Button
                     theme={ButtonTheme.primary}

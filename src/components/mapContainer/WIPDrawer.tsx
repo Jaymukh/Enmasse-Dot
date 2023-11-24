@@ -2,6 +2,7 @@ import '../../App.css';
 import React from 'react';
 import Drawer from '../ui/Drawer';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
 
 interface WIPDrawerProps {
@@ -22,7 +23,13 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer, desc
 				toggleFunction={closeWIPDrawer}
 			>
 				<div>
-					<p className='fs-14 text-start m-0'>{description}</p>
+					<Body
+						type={BodyType.p2}
+						color={BodyColor.dark}
+						classname='text-start m-0'
+					>
+						{description}
+					</Body>
 					<div className='bookmark-div'>
 						<div className="d-flex justify-content-center align-items-center mx-2 py-5">
 							<div className="mx-4 my-1 dialog-div d-flex flex-column justify-content-center align-items-center py-5">
@@ -33,7 +40,13 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer, desc
 									colour={TypographyColor.dark}
 									classname='pt-5'
 								/>
-								<p className="text-center fs-12 my-3 mx-0">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
+								<Body
+									type={BodyType.p3}
+									color={BodyColor.dark}
+									classname='text-center my-3 mx-0'
+								>
+									Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.
+								</Body>
 							</div>
 						</div>
 					</div>

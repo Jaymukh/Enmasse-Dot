@@ -5,6 +5,7 @@ import { MdOutlineTravelExplore } from 'react-icons/md';
 import * as Constants from '../../utils/constants/Constants';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
 import { useRecoilState, useSetRecoilState } from 'recoil';
@@ -106,9 +107,13 @@ const ExploreNow = () => {
 					<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
 				</div>
 				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27rem', maxWidth: '56.27rem' }}>
-					<p className='text-muted text-start fs-14'>
+					<Body
+						type={BodyType.p2}
+						color={BodyColor.muted}
+						classname='text-start'
+					>
 						Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
-					</p>
+					</Body>
 					<div className='d-flex flex-row justify-content-start mb-2'>
 						{Object.values(selectedValue)?.map((item, index) => (
 							item &&
@@ -154,7 +159,13 @@ const ExploreNow = () => {
 											<hr className='mt-0'></hr>
 											<div className='row m-0 p-0'>
 												{item.children.map((district: any) => (
-													(item.has_data && <p className='col-4 text-start mb-1 p-0 color-green fs-16' key={district.geo_id}>{district.geo_value}</p>
+													(item.has_data
+														&& <Body
+															type={BodyType.p1}
+															color={BodyColor.primary}
+															classname='col-4 text-start mb-1 p-0'
+															key={district.geo_id}>{district.geo_value}
+														</Body>
 													)))}
 											</div>
 										</div>)
@@ -170,7 +181,13 @@ const ExploreNow = () => {
 									colour={TypographyColor.dark}
 									classname='pt-3 mb-1'
 								/>
-								<p className="text-center fs-12 my-3 mx-0">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
+								<Body
+									type={BodyType.p3}
+									color={BodyColor.dark}
+									classname='text-center my-3 mx-0'
+								>
+									Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.
+								</Body>
 								<Button
 									theme={ButtonTheme.primary}
 									size={ButtonSize.small}

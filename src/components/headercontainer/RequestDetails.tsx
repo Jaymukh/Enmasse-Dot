@@ -5,6 +5,7 @@ import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
 import Drawer from '../ui/Drawer';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 
 const RequestDetails = () => {
 	const [open, setOpen] = useState(false);
@@ -37,7 +38,13 @@ const RequestDetails = () => {
 						colour={TypographyColor.dark}
 						classname='contact-para'
 					/>
-					<p className='text-wrap fs-12 grey-para'>To plot your business and recommend the best opportunities for you.</p>
+					<Body
+						type={BodyType.p3}
+						color={BodyColor.secondary}
+						classname='text-wrap'
+					>
+						To plot your business and recommend the best opportunities for you.
+					</Body>
 					<div className="d-flex flex-column justify-content-center align-items-center py-5">
 						<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
 						<Heading
@@ -46,7 +53,13 @@ const RequestDetails = () => {
 							colour={TypographyColor.dark}
 							classname='pt-5'
 						/>
-						<p className="text-center fs-12 grey-para">Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.</p>
+						<Body
+						type={BodyType.p3}
+						color={BodyColor.secondary}
+						classname='text-center'
+					>
+						Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.
+					</Body>
 					</div>
 				</div>
 			</Drawer>

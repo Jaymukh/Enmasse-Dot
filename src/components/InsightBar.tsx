@@ -74,25 +74,55 @@ export default function InsightBar() {
                                 colour={TypographyColor.dark}
                                 type={TypographyType.h5}
                                 classname='text-start px-3 my-1 ms-1' />
-                            <p className='fs-12 m-0'>Total Households</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='m-0'
+                            >
+                                Total Households
+                            </Body>
                         </div>
                         <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
                             <h6 className='fs-14'>{mapFeatures.cifData?.properties?.totalPopulation ? mapFeatures.cifData?.properties?.totalPopulation : "__"}</h6>
-                            <p className='fs-12 m-0'>Total Population</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='m-0'
+                            >
+                                Total Population
+                            </Body>
                         </div>
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 p-0 d-flex flex-column align-items-center justify-content-center text-start py-2 border-bottom'>
                             <h6 className='text-left fs-18 m-0'>{mapFeatures.cifData?.properties?.enMassesThesis?.totalAddressableMarket ? mapFeatures.cifData?.properties?.enMassesThesis?.totalAddressableMarket : "__"}</h6>
-                            <p className='fs-12 m-0'>Total Addressable Market</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='m-0'
+                            >
+                                Total Addressable Market
+                            </Body>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start justify-content-center text-start border-end' >
                             <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds ? mapFeatures.cifData?.properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds : "__"}</h6>
-                            <p className='fs-12 m-0'>Number of Entrepreneurial Households (EH)</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='m-0'
+                            >
+                                Number of Entrepreneurial Households (EH)
+                            </Body>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start text-start'>
                             <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.averageAnnualEHSpend ? mapFeatures.cifData?.properties?.EHSpend?.averageAnnualEHSpend : "__"}</h6>
-                            <p className='fs-12 m-0'>Median Annual EH Household Spend</p>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='m-0'
+                            >
+                                Median Annual EH Household Spend
+                            </Body>
                         </div>
                     </div>
                 </div>

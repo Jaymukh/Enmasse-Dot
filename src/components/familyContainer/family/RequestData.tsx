@@ -83,7 +83,7 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
                 </Body>
 
                 <Heading
-                    title='Name*'
+                    title='Name'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-1 text-start'
@@ -95,7 +95,7 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
                     disabled={true}
                 />
                 <Heading
-                    title='Email*'
+                    title='Email'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
                     classname='mt-1 text-start'
