@@ -119,7 +119,7 @@ const OverlayModal = () => {
                                     classname='h-2'
                                     onClick={nextHelp}
                                 >
-                                    Next
+                                    {(showHelp < Constants.helpContent.length) ? 'Next' : 'Continue'}
                                 </Button>
                             </div>
                         </div>
