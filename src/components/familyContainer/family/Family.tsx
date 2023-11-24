@@ -4,6 +4,7 @@ import FamilySidePanel from './FamilySidePanel';
 import FamilyDetailsContainer from './FamilyDetailsContainer';
 import DistrictSidebar from './DistrictSidebar';
 import '../../../App.css';
+import '../../../styles/main.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useStoriesService } from '../../../services';
 import { useRecoilValue } from 'recoil';

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import '../../../App.css';
+import '../../../styles/main.css';
 import { MdHelpCenter } from 'react-icons/md';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import * as Constants from '../../../utils/constants/Constants';

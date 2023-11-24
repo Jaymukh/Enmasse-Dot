@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/main.css';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import * as MapConstants from '../../utils/json/googlemapstyle';
 import GlobalOverlayCard from '../GlobalOverlayCard';

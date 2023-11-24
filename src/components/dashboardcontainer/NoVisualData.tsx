@@ -1,3 +1,4 @@
+import '../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import WIPImage from '../../utils/images/work_in_progress.svg';

@@ -1,3 +1,4 @@
+import '../../styles/main.css';
 import StatisticsCard from "./StatisticsCard";
 import StaticMap from "../StaticMap";
 import { Card, CardSize, CardVariant } from '../ui/card/Card';

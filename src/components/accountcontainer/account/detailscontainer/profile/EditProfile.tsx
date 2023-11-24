@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../../../../App.css';
 import Drawer from '../../../../ui/Drawer';
-import '../../../../../App.css';
+import '../../../../../styles/main.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useSettingsService } from '../../../../../services';
 import { AllSettingsState, User, errorState } from "../../../../../states";

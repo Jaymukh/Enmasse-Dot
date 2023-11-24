@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import '../../App.css';
+import '../../styles/main.css';
 import React, { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';

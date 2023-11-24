@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import '../../App.css';
+import '../../styles/main.css';
 import * as Constants from '../../utils/constants/Constants';
 import { MdLogout } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';

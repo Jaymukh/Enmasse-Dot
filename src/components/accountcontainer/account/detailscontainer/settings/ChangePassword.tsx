@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../../../../App.css';
+import '../../../../../styles/main.css';
 import Drawer from '../../../../ui/Drawer';
 import { GiPlainCircle } from 'react-icons/gi';
 import { GoCheckCircleFill } from 'react-icons/go';

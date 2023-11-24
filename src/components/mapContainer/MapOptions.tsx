@@ -1,4 +1,5 @@
 import '../../App.css';
+import '../../styles/main.css';
 import { useState } from 'react';
 import { FiDownload } from 'react-icons/fi';
 import { MdBookmarks } from 'react-icons/md';

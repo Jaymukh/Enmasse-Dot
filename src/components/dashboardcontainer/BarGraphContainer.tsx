@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import '../../styles/main.css';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import NavTab from '../ui/navtab/NavTab';
 import BarGraph from './BarGraph';

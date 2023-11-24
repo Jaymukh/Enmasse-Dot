@@ -112,7 +112,7 @@ const UpdatePassword = () => {
                     </div>
                 </div>
             </div>
-            <div className='col-md-6 col-md-6 login-update-box whiteBackground'>
+            <div className='col-md-6 col-md-6 login-update-box bg-white'>
                 {passwordCreated ?
                     <div className='loginCardAlign'>
                         <div className='d-flex justify-content-center'>

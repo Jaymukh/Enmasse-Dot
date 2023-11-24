@@ -1,3 +1,4 @@
+import '../../styles/main.css';
 import React, { ChangeEvent, useState } from "react";
 import * as Constants from '../../utils/constants/Constants';
 import Switch from '../ui/switch/Switch';

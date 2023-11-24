@@ -1,3 +1,4 @@
+import '../styles/main.css';
 import Header from './headercontainer/Header';
 import FamiliesSidePanel from './familyContainer/families/FamiliesSidePanel';
 import FamiliesDetailsContainer from './familyContainer/families/FamiliesDetailsContainer';

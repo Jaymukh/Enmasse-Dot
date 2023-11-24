@@ -1,4 +1,5 @@
 import '../../App.css';
+import '../../styles/main.css';
 import { useState } from 'react';
 import globe from '../../utils/images/globe.png';
 import ForgotPassword from './ForgotPassword';
@@ -111,7 +112,7 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                <div className='col-md-6 col-md-6 login-update-box whiteBackground'>
+                <div className='col-md-6 col-md-6 login-update-box bg-white'>
                     <div className='loginCardAlign' >
                         <Heading
                             title='Login'

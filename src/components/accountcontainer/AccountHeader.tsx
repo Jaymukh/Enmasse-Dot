@@ -1,3 +1,4 @@
+import '../../styles/main.css';
 import React from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';

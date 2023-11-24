@@ -6,6 +6,7 @@ import InviteNew from './InviteNew';
 import ConfirmDelete from './ConfirmDelete';
 import { MdPersonAddAlt1 } from 'react-icons/md';
 import { MdModeEdit } from 'react-icons/md';
+import '../../../../../styles/main.css';
 import { MdDeleteSweep } from 'react-icons/md';
 import { usersState, User, spinnerState, errorState } from "../../../../../states";
 import { useRecoilState, useSetRecoilState } from "recoil";
