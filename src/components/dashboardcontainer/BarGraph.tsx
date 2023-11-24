@@ -1,3 +1,4 @@
+import '../../styles/main.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import * as d3 from 'd3';

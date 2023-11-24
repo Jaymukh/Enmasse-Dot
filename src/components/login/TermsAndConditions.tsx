@@ -1,5 +1,6 @@
 import React from 'react';
-import '../../App.css'
+import '../../App.css';
+import '../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button'
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';

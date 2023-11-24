@@ -1,3 +1,4 @@
+import '../styles/main.css';
 import * as Constants from '../utils/constants/Constants';
 import { Heading, TypographyColor, TypographyType } from './ui/typography/Heading'
 import Body, { BodyColor, BodyType } from './ui/typography/Body';

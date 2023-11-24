@@ -1,4 +1,5 @@
 import '../../App.css';
+import '../../styles/main.css';
 import React, { useState } from 'react';
 import Logo from '../../utils/images/Enmasse DOTS logo 1.png';
 import { BsFillBookmarksFill } from 'react-icons/bs';

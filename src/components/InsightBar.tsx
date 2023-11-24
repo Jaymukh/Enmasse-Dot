@@ -8,6 +8,7 @@ import { useSettingsService } from '../services';
 import { AllSettingsState, UserSettingsState } from '../states';
 import { Heading, TypographyColor, TypographyType } from './ui/typography/Heading'
 import Body, { BodyColor, BodyType } from './ui/typography/Body';
+import { useMapHelpers } from '../helpers';
 
 const options = [
     {
@@ -28,6 +29,7 @@ export default function InsightBar() {
     const settingsService = useSettingsService();
     const settings = useRecoilValue(AllSettingsState);
     const usersettings = useRecoilValue(UserSettingsState);
+    const { getCurrencyWithSymbol } = useMapHelpers();
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
@@ -83,7 +85,12 @@ export default function InsightBar() {
                             </Body>
                         </div>
                         <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
-                            <h6 className='fs-14'>{mapFeatures.cifData?.properties?.totalPopulation ? mapFeatures.cifData?.properties?.totalPopulation : "__"}</h6>
+                            <Heading
+                                title={getCurrencyWithSymbol(mapFeatures.cifData?.properties?.totalPopulation)}
+                                colour={TypographyColor.dark}
+                                type={TypographyType.h5}
+                                classname='m-0'
+                            />
                             <Body
                                 type={BodyType.p3}
                                 color={BodyColor.dark}
@@ -95,7 +102,12 @@ export default function InsightBar() {
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 p-0 d-flex flex-column align-items-center justify-content-center text-start py-2 border-bottom'>
-                            <h6 className='text-left fs-18 m-0'>{mapFeatures.cifData?.properties?.enMassesThesis?.totalAddressableMarket ? mapFeatures.cifData?.properties?.enMassesThesis?.totalAddressableMarket : "__"}</h6>
+                            <Heading
+                                title={getCurrencyWithSymbol(mapFeatures.cifData?.properties?.enMassesThesis?.totalAddressableMarket)}
+                                colour={TypographyColor.dark}
+                                type={TypographyType.h5}
+                                classname='text-left m-0'
+                            />
                             <Body
                                 type={BodyType.p3}
                                 color={BodyColor.dark}
@@ -105,7 +117,12 @@ export default function InsightBar() {
                             </Body>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start justify-content-center text-start border-end' >
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds ? mapFeatures.cifData?.properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds : "__"}</h6>
+                            <Heading
+                                title={getCurrencyWithSymbol(mapFeatures.cifData?.properties?.enMassesThesis?.numberOfEntrepreneurialHouseholds)}
+                                colour={TypographyColor.dark}
+                                type={TypographyType.h5}
+                                classname='m-0'
+                            />
                             <Body
                                 type={BodyType.p3}
                                 color={BodyColor.dark}
@@ -115,7 +132,12 @@ export default function InsightBar() {
                             </Body>
                         </div>
                         <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 py-2 d-flex flex-column align-items-start text-start'>
-                            <h6 className='fs-14 m-0'>{mapFeatures.cifData?.properties?.EHSpend?.averageAnnualEHSpend ? mapFeatures.cifData?.properties?.EHSpend?.averageAnnualEHSpend : "__"}</h6>
+                            <Heading
+                                title={getCurrencyWithSymbol(mapFeatures.cifData?.properties?.EHSpend?.averageAnnualEHSpend)}
+                                colour={TypographyColor.dark}
+                                type={TypographyType.h5}
+                                classname='m-0'
+                            />
                             <Body
                                 type={BodyType.p3}
                                 color={BodyColor.dark}

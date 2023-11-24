@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../../../../App.css';
+import '../../../../../styles/main.css';
 import Drawer from '../../../../ui/Drawer';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import WorkInProgressImage from '../../../../../utils/images/work_in_progress.svg';

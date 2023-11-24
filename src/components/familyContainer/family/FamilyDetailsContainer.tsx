@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import '../../../styles/main.css';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';

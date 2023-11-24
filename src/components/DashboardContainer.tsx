@@ -1,3 +1,4 @@
+import '../styles/main.css';
 import Header from './headercontainer/Header';
 import DashBoard from './dashboardcontainer/DashBoard';
 import AccountHeader from './accountcontainer/AccountHeader';

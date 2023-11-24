@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
 import '../../../../../App.css';
+import '../../../../../styles/main.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { errorState, loggedUserState, spinnerState, User } from "../../../../../states";
 import { useUserService } from '../../../../../services';
@@ -246,49 +247,53 @@ export default function Profile() {
                     </div>
                 </div>
                 <div className="col-3">
-                    <ul className='edit-profile-list'>
+                    <ul className='edit-profile-list text-start'>
                         <li >
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='mb-1'>Name:</Body>
+                                classname='mb-1 text-start'>Name:</Body>
                             <Heading
                                 title={loggedUser.name}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
+                                classname='text-start'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='mb-1'>Company:</Body>
+                                classname='mb-1 text-start'>Company:</Body>
                             <Heading
                                 title={loggedUser.company}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
+                                classname='text-start'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='mb-1'>Phone Number:</Body>
+                                classname='mb-1 text-start'>Phone Number:</Body>
                             <Heading
                                 title={loggedUser.phone_number}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
+                                classname='text-start'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='mb-1'>Role:</Body>
+                                classname='mb-1 text-start'>Role:</Body>
                             <Heading
                                 title={loggedUser.role}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
+                                classname='text-start'
                             />
                         </li>
                     </ul>
@@ -299,33 +304,36 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='mb-1'>Email Id:</Body>
+                                classname='mb-1 text-start'>Email Id:</Body>
                             <Heading
                                 title={loggedUser.email_id}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
+                                classname='text-start'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='mb-1'>Designation:</Body>
+                                classname='mb-1 text-start'>Designation:</Body>
                             <Heading
                                 title={loggedUser.designation}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
+                                classname='text-start'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.muted}
-                                classname='mb-1'>Country:</Body>
+                                classname='mb-1 text-start'>Country:</Body>
                             <Heading
                                 title={loggedUser.country}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
+                                classname='text-start'
                             />
                         </li>
                     </ul>

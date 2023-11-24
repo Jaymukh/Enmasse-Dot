@@ -1,3 +1,4 @@
+import '../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Table, { TableSize } from '../ui/table/Table';
 import { AiOutlineInfoCircle } from 'react-icons/ai';

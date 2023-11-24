@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/main.css';
 import { BiArrowBack } from 'react-icons/bi';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';

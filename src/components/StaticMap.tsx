@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import '../styles/main.css';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import * as MapConstants from './../utils/json/googlemapstyle';

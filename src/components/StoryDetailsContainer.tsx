@@ -1,3 +1,4 @@
+import '../styles/main.css';
 import Header from './headercontainer/Header';
 import FamilyHeader from './familyContainer/FamilyHeader';
 import Family from './familyContainer/family/Family';

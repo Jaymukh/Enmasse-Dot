@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import '../../styles/main.css';
 import React, { useEffect, useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 import Select, { SelectSize } from '../ui/select/Select';
