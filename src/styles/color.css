@@ -72,5 +72,6 @@ html {
     --bs-offcanvas-padding-y: 1rem;
 
     --icon-color: rgba(28, 27, 31, 1);
+    --icon-color-5: rgba(28, 27, 31, 0.5);
     --table-border: rgba(197, 197, 197, 1);
 }

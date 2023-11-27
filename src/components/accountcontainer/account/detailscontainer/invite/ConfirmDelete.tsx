@@ -54,8 +54,9 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                     size={ButtonSize.large}
                     variant={ButtonVariant.transparent}
                     onClick={() => closeConfirmDeleteModal()}
+                    classname='text-decoration-underline'
                 >
-                    <span className='underline-text'>Cancel</span>
+                    Cancel
                 </Button>
             </Modal>
         </div>

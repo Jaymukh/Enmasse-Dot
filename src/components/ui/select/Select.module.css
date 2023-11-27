@@ -1,12 +1,12 @@
 @import url("../../../styles/color.css");
+@import url("../../../utils/fonts/fonts.css");
 
 .select {
-    -moz-appearance: none;
-    /* Firefox */
-    -webkit-appearance: none;
-    /* Safari and Chrome */
+    -moz-appearance: none; /* Firefox */    
+    -webkit-appearance: none; /* Safari and Chrome */    
     appearance: none;
     padding: 0rem 5rem;
+    font-family: "Poppins-Medium", sans-serif;
 }
 
 .select:disabled {

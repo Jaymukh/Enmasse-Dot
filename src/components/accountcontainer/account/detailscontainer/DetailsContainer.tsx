@@ -15,7 +15,6 @@ import { useUserService } from '../../../../services';
 
 const DetailsContainer = () => {
     const visiblePanel = useRecoilValue(visiblePanelState);
-    const userService = useUserService();
 
 	// useEffect(() => {
 	// 	userService.getUserDetails();

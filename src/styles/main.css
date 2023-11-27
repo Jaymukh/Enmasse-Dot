@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url("../utils/fonts/fonts.css");
 
 /* color and background color classes */
 
@@ -370,9 +371,12 @@ ul {
     /* width: 20rem; */
 }
 
+.icon-color-5 {
+    color: var(--icon-color-5);
+}
 
 .iconNextPrev {
-    color: var(--icon-color);
+    color: var(--icon-color--icon-color);
 }
 
 .PrevBtn {
@@ -413,6 +417,7 @@ ul {
     width: 100%;
     border: none;
     border-spacing: 0px !important;
+    font-family: "Poppins-Medium", sans-serif;
 }
 
 .dashboard-table-container td,

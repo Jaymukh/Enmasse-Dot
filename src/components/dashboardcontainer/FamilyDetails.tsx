@@ -59,7 +59,7 @@ const FamilyDetails = () => {
                             type={TypographyType.h5}
                             classname='mt-2 w-auto text-end text-nowrap pe-2 '
                         />
-                        <AiOutlineInfoCircle fontSize={35} color='#606060' className='me-2' />
+                        <AiOutlineInfoCircle fontSize={35} className='me-2 icon-color-5' />
                         <ProgressBar coverage={mapFeatures?.cifData?.properties?.EICoverage} />
                         <Body
                             type={BodyType.p3}
@@ -72,11 +72,12 @@ const FamilyDetails = () => {
             <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
                 <img className='col-2 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
                 <div className='col-10 white-bg py-4 px-4 rounded-end'>
-                    <div className='d-flex flex-row'>
+                    <div className='d-flex flex-row mb-2'>
                         <Heading
                             title={familyDetails?.familyName}
                             colour={TypographyColor.dark}
                             type={TypographyType.h4}
+                            classname='m-0'
                         />
                         <Body
                             type={BodyType.p3}
@@ -85,7 +86,7 @@ const FamilyDetails = () => {
                             {familyDetails?.address}
                         </Body>
                     </div>
-                    <div className='d-flex flex-row'>
+                    <div className='d-flex flex-row mb-2'>
                         <Body
                             type={BodyType.p2}
                             color={BodyColor.primary}
@@ -105,7 +106,7 @@ const FamilyDetails = () => {
                         classname='text-start'>
                         {familyDetails?.description}
                     </Body>
-                    <div className='d-flex justify-content-start'>
+                    <div className='d-flex justify-content-start mt-2'>
                         <button className='rounded text-start ps-0 border-0 fs-10 white-bg fw-bold color-green' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
                     </div>
                 </div>
