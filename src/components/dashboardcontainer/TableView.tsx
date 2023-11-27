@@ -23,7 +23,7 @@ const TableView: React.FC<TableViewProps> = ({ data, headerData, breakdownType }
                         colour={TypographyColor.dark}
                         classname='text-start px-1'
                     />
-                    <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
+                    <AiOutlineInfoCircle fontSize={15} className='icon-color-5 mb-2' />
                 </div>
 
                 {(data && data?.length > 0)

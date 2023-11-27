@@ -116,7 +116,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                     onChange={(e) => handleChangeData(e)}
                     placeholder="Type your request message (Max 250 words)"
                     style={{ height: '10rem' }}
-                    className='fs-13 p-3 rounded'
+                    className='fs-13 p-3 rounded w-100'
                 />
                 <Button
                     theme={ButtonTheme.primary}

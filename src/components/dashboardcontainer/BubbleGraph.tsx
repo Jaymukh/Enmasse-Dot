@@ -68,7 +68,7 @@ const BubbleGraph = () => {
 							colour={TypographyColor.dark}
 							classname='text-start px-1'
 						/>
-						<AiOutlineInfoCircle fontSize={15} color='#606060' />
+						<AiOutlineInfoCircle fontSize={15} className='icon-color-5 mb-2' />
 					</div>
 					<div className='col-2'>
 						<Select

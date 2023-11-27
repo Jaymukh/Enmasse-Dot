@@ -26,10 +26,10 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
 
     return (
         <div className="map-popup-grey-text rounded row h-100 w-100" onClick={() => handleFocused(index)}>
-            <div className="col-4 px-0">
+            <div className="col-3 px-0">
                 <img className="map-popup-story-img rounded" src={properties.image} alt={properties.familyName} />
             </div>
-            <div className="col-8 px-0 d-flex flex-column justify-content-start ps-1">
+            <div className="col-9 px-0 d-flex flex-column justify-content-start ps-1">
                 <Body
                     type={BodyType.p4}
                     color={BodyColor.secondary}

@@ -56,7 +56,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 classname='my-0 ms-2'
                             />
                         </div>
-                        <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
+                        <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
                         <Switch
                             isChecked={isChecked?.coreSolution}
                             toggleSwitch={toggleSwitch}
@@ -92,7 +92,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             colour={TypographyColor.dark}
                             classname='my-0 mx-2'
                         />
-                        <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
+                        <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
                     </div>
                     <Switch
                         isChecked={isChecked?.viewStories}
@@ -109,7 +109,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 colour={TypographyColor.dark}
                                 classname='my-0 mx-2'
                             />
-                        <AiOutlineInfoCircle fontSize={15} color='#b8b7b8' />
+                        <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
                     </div>
                     <Button
                         theme={ButtonTheme.primary}

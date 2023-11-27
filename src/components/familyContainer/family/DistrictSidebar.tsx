@@ -123,7 +123,7 @@ const DistrictSidebar = () => {
                             type={TypographyType.h5}
                             classname='me-2 my-0'
                         />
-                        <AiOutlineInfoCircle fontSize={20} color='#606060' />
+                        <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-green'>
@@ -181,7 +181,7 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='me-2 my-0'
                                     />
-                                    <AiOutlineInfoCircle fontSize={20} color='#606060' />
+                                    <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                                 </div>
                                 <Body
                                     type={BodyType.p4}
@@ -201,7 +201,7 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                <AiOutlineInfoCircle fontSize={20} color='#606060' />
+                                <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
@@ -285,7 +285,7 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                <AiOutlineInfoCircle fontSize={20} color='#606060' />
+                                <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
@@ -397,7 +397,7 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                <AiOutlineInfoCircle fontSize={20} color='#606060' />
+                                <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
@@ -454,7 +454,7 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                <AiOutlineInfoCircle fontSize={20} color='#606060' />
+                                <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
