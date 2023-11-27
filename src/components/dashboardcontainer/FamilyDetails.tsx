@@ -1,15 +1,22 @@
+// External libraries
+import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useNavigate } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import { ProgressBar } from '../ui/progressbar/ProgressBar';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-import '../../styles/main.css';
 import { mapFeatureState, storiesState } from '../../states';
-import { useRecoilValue } from 'recoil';
-import { useEffect, useState } from 'react';
+
+// Utilities
 import { useMapHelpers } from '../../helpers';
-import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import familySkeleton from '../../utils/images/family-skeleton.png';
 

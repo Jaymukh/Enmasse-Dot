@@ -1,12 +1,18 @@
+// External libraries
 import React from 'react';
-import '../../../styles/main.css';
-import * as Constants from '../../../utils/constants/Constants';
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from 'react-router-dom';
-import { loggedUserState, visiblePanelState } from '../../../states';
+
+// CSS
+import '../../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import { loggedUserState, visiblePanelState } from '../../../states';
 
+// Utilities
+import * as Constants from '../../../utils/constants/Constants';
 
 const SideBar = () => {
     const navigate = useNavigate();

@@ -1,14 +1,22 @@
+// External libraries
 import React, { useEffect } from 'react';
-import Drawer from '../../../../ui/Drawer';
-import '../../../../../styles/main.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { useUserService, useSettingsService } from '../../../../../services';
-import { loggedUserState, AllSettingsState, errorState } from "../../../../../states";
+
+// CSS
+import '../../../../../styles/main.css';
+
+// Components
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import { Input } from '../../../../ui/input/Input';
+import Drawer from '../../../../ui/Drawer';
+import { loggedUserState, AllSettingsState, errorState } from "../../../../../states";
+
+// Utilities
+import { useUserService, useSettingsService } from '../../../../../services';
+
 interface NewData {
     name: string | undefined;
     email_id: string | undefined;

@@ -1,13 +1,20 @@
+// External libraries
 import React, { useEffect, useState } from 'react';
-import Drawer from '../../../../ui/Drawer';
-import '../../../../../styles/main.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { useSettingsService } from '../../../../../services';
-import { AllSettingsState, User, errorState } from "../../../../../states";
-import Select, { SelectSize } from '../../../../ui/select/Select';
+
+// CSS
+import '../../../../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Input } from '../../../../ui/input/Input';
+import Drawer from '../../../../ui/Drawer';
+import { AllSettingsState, User, errorState } from "../../../../../states";
+
+// Utilities
+import { useSettingsService } from '../../../../../services';
 
 interface EditProfileProps {
     selectedData: User;

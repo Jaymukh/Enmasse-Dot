@@ -1,20 +1,27 @@
+// External libraries
 import React, { useState, useEffect } from 'react';
-import '../../../../../styles/main.css';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from "recoil";
 import { MdModeEdit } from 'react-icons/md';
 import { MdLock } from 'react-icons/md';
+
+// CSS
+import '../../../../../styles/main.css';
+
+// Components
 import Switch from '../../../../ui/switch/Switch';
-import ChangePassword from './ChangePassword';
-import UpdateSuccessModal from './UpdateSuccessModel';
-import { RouteConstants } from '../../../../../constants';
-import { useNavigate } from 'react-router-dom';
-import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
-import { useSettingsService } from '../../../../../services'
-import { useRecoilValue } from "recoil";
-import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../../../../ui/typography/Body';
+import ChangePassword from './ChangePassword';
+import UpdateSuccessModal from './UpdateSuccessModel';
+import WIPDrawer from '../../../../mapContainer/WIPDrawer';
+import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
+
+// Utilities
+import { RouteConstants } from '../../../../../constants';
+import { useSettingsService } from '../../../../../services'
 
 const Settings = () => {
     const navigate = useNavigate();

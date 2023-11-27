@@ -1,5 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useSearchParams } from 'react-router-dom';
+
+// Components
 import BarGraphContainer from './BarGraphContainer';
 import BubbleGraph from './BubbleGraph';
 import FamilyDetails from './FamilyDetails';
@@ -7,9 +12,9 @@ import LineGraph from './LineGraph';
 import OverViewMap from './OverViewMap';
 import ScatterGraph from './ScatterGraph';
 import TableView from './TableView';
-import { useSearchParams } from 'react-router-dom';
 import { cifState, mapFeatureState } from '../../states';
-import { useRecoilValue } from 'recoil';
+
+// Utilities
 import { useCIFService, useMapsService, useStoriesService } from '../../services';
 import { TABLE_HEADERS } from '../../constants';
 

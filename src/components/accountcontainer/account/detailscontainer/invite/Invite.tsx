@@ -1,18 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, { useState, useEffect } from 'react';
-import EditInvite from './EditInvite';
-import InviteNew from './InviteNew';
-import ConfirmDelete from './ConfirmDelete';
-import { MdPersonAddAlt1 } from 'react-icons/md';
-import { MdModeEdit } from 'react-icons/md';
-import '../../../../../styles/main.css';
-import { MdDeleteSweep } from 'react-icons/md';
-import { usersState, User, spinnerState, errorState } from "../../../../../states";
 import { useRecoilState, useSetRecoilState } from "recoil";
+import { MdPersonAddAlt1, MdModeEdit, MdDeleteSweep } from 'react-icons/md';
+
+// CSS
+import '../../../../../styles/main.css';
+
+// Components
 import { useUserService } from '../../../../../services';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import InviteSent from './InviteSent'; import Search from '../../../../ui/search/Search';
+import EditInvite from './EditInvite';
+import InviteNew from './InviteNew';
+import ConfirmDelete from './ConfirmDelete';
+import { usersState, User, spinnerState, errorState } from "../../../../../states";
 
 interface NewData {
 	name: string | undefined;

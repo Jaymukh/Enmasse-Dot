@@ -1,15 +1,22 @@
+// External libraries
 import React, { useState } from 'react'
 import { MdModeEdit } from 'react-icons/md';
-import EditProfile from './EditProfile';
-import '../../../../../styles/main.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { errorState, loggedUserState, spinnerState, User } from "../../../../../states";
-import { useUserService } from '../../../../../services';
+
+// CSS
+import '../../../../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import UploadImage from './UploadImage';
 import DeleteImage from './DeleteImage';
+import EditProfile from './EditProfile';
+import { errorState, loggedUserState, spinnerState, User } from "../../../../../states";
+
+// Utilities
+import { useUserService } from '../../../../../services';
 
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);

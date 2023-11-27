@@ -1,15 +1,22 @@
+// External libraries
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from 'recoil';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 import * as d3 from "d3";
-import { BubbleNode, colorDescription } from '../../utils/constants/Constants';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../ui/typography/Body';
-import { useRecoilValue } from 'recoil';
-import { cifState } from '../../states';
-import '../../styles/main.css';
 import NoVisualData from './NoVisualData';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { cifState } from '../../states';
+
+// Utilities
+import { BubbleNode, colorDescription } from '../../utils/constants/Constants';
 
 const BubbleGraph = () => {
 	const [data, setData] = useState<BubbleNode>();

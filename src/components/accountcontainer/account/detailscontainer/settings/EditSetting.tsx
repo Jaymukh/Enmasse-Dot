@@ -1,9 +1,16 @@
+// External libraries
 import React from 'react'
+
+// CSS
 import '../../../../../styles/main.css';
-import Drawer from '../../../../ui/Drawer';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
-import WorkInProgressImage from '../../../../../utils/images/work_in_progress.svg';
 import Body, {BodyType, BodyColor } from '../../../../ui/typography/Body';
+import Drawer from '../../../../ui/Drawer';
+
+// Utilities
+import WorkInProgressImage from '../../../../../utils/images/work_in_progress.svg';
 
 interface EditSettingProps {
     editMode: boolean;

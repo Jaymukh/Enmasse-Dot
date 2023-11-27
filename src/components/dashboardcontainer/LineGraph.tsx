@@ -1,6 +1,6 @@
-import '../../styles/main.css';
+// External libraries
 import React, { useEffect, useRef, useState } from 'react';
-import { Card, CardSize, CardVariant } from '../ui/card/Card';
+import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -11,9 +11,14 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import NoVisualData from './NoVisualData';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import { Card, CardSize, CardVariant } from '../ui/card/Card';
+import NoVisualData from './NoVisualData';
 
 ChartJS.register(
     CategoryScale,

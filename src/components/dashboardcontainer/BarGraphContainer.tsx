@@ -1,11 +1,16 @@
+// External libraries
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+
+// CSS
 import '../../styles/main.css';
+
+// Components
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import NavTab from '../ui/navtab/NavTab';
 import BarGraph from './BarGraph';
-import { useRecoilValue } from 'recoil';
-import { CoreSolutionByEH, cifState } from '../../states';
 import NoVisualData from './NoVisualData';
+import { CoreSolutionByEH, cifState } from '../../states';
 
 const BarGraphContainer = () => {
     const { coreSolutionsData } = useRecoilValue(cifState);

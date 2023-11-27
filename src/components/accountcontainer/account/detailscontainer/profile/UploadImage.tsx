@@ -1,13 +1,18 @@
+// External libraries
 import React, { useRef } from 'react';
-import '../../../../../styles/main.css';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
-import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import { useRecoilValue } from "recoil";
 import { BiUpload } from 'react-icons/bi';
 import { MdDeleteSweep } from 'react-icons/md'
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
-import { useRecoilValue } from "recoil";
-import { loggedUserState, User } from "../../../../../states";
+
+// CSS
+import '../../../../../styles/main.css';
+
+// Componentss
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
+import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import Modal from '../../../../ui/modal/Modal';
+import { loggedUserState, User } from "../../../../../states";
 
 
 interface UploadImageProps {

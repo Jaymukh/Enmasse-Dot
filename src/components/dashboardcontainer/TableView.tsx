@@ -1,10 +1,17 @@
-import '../../styles/main.css';
-import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
-import Table, { TableSize } from '../ui/table/Table';
+// External libraries
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { TableHeaderProps } from '../../constants';
-import NoVisualData from './NoVisualData';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
+import Table, { TableSize } from '../ui/table/Table';
+import NoVisualData from './NoVisualData';
+
+// Utilities
+import { TableHeaderProps } from '../../constants';
 
 interface TableViewProps {
     data: any;

@@ -1,11 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, {useEffect}  from 'react';
+import { useRecoilValue } from "recoil";
+
+// Components
 import Profile from './profile/Profile';
 import Settings from './settings/Settings';
 import Invite from './invite/Invite';
-import { useUserService } from '../../../../services';
-import { useRecoilValue } from "recoil";
 import { visiblePanelState } from '../../../../states';
+
+// Utilities
+import { useUserService } from '../../../../services';
+
 
 const DetailsContainer = () => {
     const visiblePanel = useRecoilValue(visiblePanelState);

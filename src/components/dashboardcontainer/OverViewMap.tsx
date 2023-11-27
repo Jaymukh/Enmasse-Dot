@@ -1,13 +1,21 @@
-import '../../styles/main.css';
-import StatisticsCard from "./StatisticsCard";
-import StaticMap from "../StaticMap";
-import { Card, CardSize, CardVariant } from '../ui/card/Card';
-import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+// External libraries
 import { useEffect, useState } from 'react';
-import { mapFeatureState } from '../../states';
 import { useRecoilValue } from 'recoil';
-import { useMapHelpers } from '../../helpers';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import { Card, CardSize, CardVariant } from '../ui/card/Card';
+import StatisticsCard from "./StatisticsCard";
 import { Legend } from '../ui/legend/Legend';
+import StaticMap from "../StaticMap";
+import { mapFeatureState } from '../../states';
+
+// Utilities
+import { useMapHelpers } from '../../helpers';
+
 
 const OverViewMap = () => {
     const mapFeatures = useRecoilValue(mapFeatureState);

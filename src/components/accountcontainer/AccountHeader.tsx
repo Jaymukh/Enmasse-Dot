@@ -1,7 +1,12 @@
-import '../../styles/main.css';
+// External libraries
 import React from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 const AccountHeader: React.FC<{ routeTo?: string }> = ({ routeTo }) => {

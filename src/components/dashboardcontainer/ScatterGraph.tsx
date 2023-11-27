@@ -1,14 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import '../../styles/main.css';
+// External libraries
 import React, { useEffect, useState } from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
-import Select, { SelectSize } from '../ui/select/Select';
-import { Card, CardSize, CardVariant } from '../ui/card/Card';
-import { cifState } from '../../states';
 import { useRecoilValue } from 'recoil';
-import NoVisualData from './NoVisualData';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import { Card, CardSize, CardVariant } from '../ui/card/Card';
+import Select, { SelectSize } from '../ui/select/Select';
+import NoVisualData from './NoVisualData';
+import { cifState } from '../../states';
 
 const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
     return (

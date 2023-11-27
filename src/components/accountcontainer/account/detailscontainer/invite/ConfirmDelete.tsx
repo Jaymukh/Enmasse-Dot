@@ -1,6 +1,11 @@
+// External libraries
 import React from 'react'
-import '../../../../../styles/main.css';
 import { MdCancel } from 'react-icons/md';
+
+// CSS
+import '../../../../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';

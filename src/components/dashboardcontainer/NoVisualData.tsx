@@ -1,6 +1,11 @@
+// CSS
 import '../../styles/main.css';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../ui/typography/Body';
+
+// Utilities
 import WIPImage from '../../utils/images/work_in_progress.svg';
 
 interface NoVisualDataProps {

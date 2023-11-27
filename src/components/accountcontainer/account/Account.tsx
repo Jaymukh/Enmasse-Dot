@@ -1,4 +1,7 @@
+// External libraries
 import React from 'react';
+
+// Components
 import SideBar from './SideBar';
 import DetailsContainer from './detailscontainer/DetailsContainer';
 

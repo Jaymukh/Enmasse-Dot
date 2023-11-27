@@ -1,7 +1,13 @@
-import '../../styles/main.css';
+// External libraries
 import React, { useEffect, useRef, useState } from 'react';
+import * as d3 from 'd3'; 
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
-import * as d3 from 'd3';
+
 import {
     Chart as ChartJS,
     CategoryScale,

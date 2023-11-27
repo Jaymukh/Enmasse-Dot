@@ -1,4 +1,7 @@
+// CSS
 import '../../styles/main.css';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 interface StatisticsCardProps {
