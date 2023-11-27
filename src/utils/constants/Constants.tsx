@@ -1,6 +1,5 @@
 
 import { MdGroupAdd, MdMail, MdContactSupport } from 'react-icons/md';
-import '../../App.css';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { IoListSharp, IoSettingsSharp } from 'react-icons/io5';
 import Navale from '../images/Navale.png'

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import EditProfile from './EditProfile';
-import '../../../../../App.css';
 import '../../../../../styles/main.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { errorState, loggedUserState, spinnerState, User } from "../../../../../states";

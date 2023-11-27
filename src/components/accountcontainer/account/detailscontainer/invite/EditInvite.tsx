@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import Drawer from '../../../../ui/Drawer';
-import '../../../../../App.css';
 import '../../../../../styles/main.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useSettingsService } from '../../../../../services';

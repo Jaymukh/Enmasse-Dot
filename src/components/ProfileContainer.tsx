@@ -1,4 +1,3 @@
-import '../App.css';
 import '../styles/main.css';
 import Header from './headercontainer/Header';
 import AccountHeader from './accountcontainer/AccountHeader';

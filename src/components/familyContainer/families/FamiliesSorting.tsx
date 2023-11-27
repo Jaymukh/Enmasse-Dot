@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
-import '../../../App.css';
 import '../../../styles/main.css';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
@@ -8,6 +7,7 @@ import * as Constants from '../../../utils/constants/Constants';
 import { useNavigate } from 'react-router-dom';
 import { useStoriesService, useUserService } from '../../../services';
 import { FamiliesSortingItem } from '../../../utils/constants/Constants';
+import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 
 interface FamiliesSortingProps {
 	handlePaginationData: (data: any) => void;
@@ -17,7 +17,6 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const [selectedItem, setSelectedItem] = useState<FamiliesSortingItem | null>(Constants.familiesSortingItems[0]);
-	const navigate = useNavigate();
 
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		Boolean(anchorEl) ? setAnchorEl(null) : setAnchorEl(event.currentTarget);
@@ -63,16 +62,19 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 					{Constants.familiesSortingItems.map((item) => (
 						<li
 							key={item.key}
-							className={`family-menu-item d-flex fs-16 ${selectedItem === item ? 'color-green' : ''}`}
+							className='family-menu-item d-flex'
 							onClick={() => handleClickMenuItem(item)}
 						>
-							<span>{item.text}</span>
+							<Heading
+								title={item.text}
+								colour={selectedItem === item ? TypographyColor.primary : TypographyColor.dark}
+								type={TypographyType.h5}
+							/>
 						</li>
-						
 					))}
 				</ul>)
 			}
-			<span className={selectedItem ? 'green-circle' : ''}></span>			
+			<span className={selectedItem ? 'green-circle' : ''}></span>
 		</div >
 	);
 }

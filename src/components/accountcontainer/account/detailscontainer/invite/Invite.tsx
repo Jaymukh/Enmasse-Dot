@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import '../../../../../App.css';
 import EditInvite from './EditInvite';
 import InviteNew from './InviteNew';
 import ConfirmDelete from './ConfirmDelete';
@@ -195,7 +194,7 @@ export default function Invite() {
 											key={row.name}
 											className='table-row-height'
 										>
-											<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
+											<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id}</span></td>
 											<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
 											<td className='text-center fs-14'>{row.company}</td>
 											<td className='text-center fs-14'>{row.company_type}</td>

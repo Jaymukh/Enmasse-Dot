@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../App.css';
 import '../../../styles/main.css';
 import { BiArrowBack } from 'react-icons/bi';
 import { MdOutlineArrowForward } from 'react-icons/md';

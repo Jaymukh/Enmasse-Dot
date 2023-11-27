@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../../../../App.css';
 import '../../../../../styles/main.css';
 import { MdCancel } from 'react-icons/md';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
@@ -50,8 +49,9 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                     size={ButtonSize.large}
                     variant={ButtonVariant.transparent}
                     onClick={() => closeConfirmDeleteModal()}
+                    classname='text-decoration-underline'
                 >
-                    <span className='underline-text'>Cancel</span>
+                    Cancel
                 </Button>
             </Modal>
         </div>

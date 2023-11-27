@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
 import '../styles/main.css';
 import Select, { SelectSize } from './ui/select/Select';
 import { useRecoilValue } from 'recoil';

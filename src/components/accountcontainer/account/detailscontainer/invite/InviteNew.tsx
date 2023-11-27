@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Drawer from '../../../../ui/Drawer';
-import '../../../../../App.css';
 import '../../../../../styles/main.css';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useUserService, useSettingsService } from '../../../../../services';

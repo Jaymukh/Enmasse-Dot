@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Drawer from '../ui/Drawer';
-import '../../App.css';
 import '../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Input } from '../ui/input/Input';

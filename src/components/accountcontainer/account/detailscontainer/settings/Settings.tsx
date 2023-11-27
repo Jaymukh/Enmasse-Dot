@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../../../../../App.css';
 import '../../../../../styles/main.css';
 import { MdModeEdit } from 'react-icons/md';
 import { MdLock } from 'react-icons/md';
