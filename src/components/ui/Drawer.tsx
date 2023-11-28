@@ -18,7 +18,7 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                         title={title}
                         type={TypographyType.h4}
                         colour={TypographyColor.dark}
-                        classname='p-0 text-start pe-3'
+                        classname='p-0 text-start pe-3 m-0'
                     />
                     <button
                         type="button"

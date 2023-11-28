@@ -12,10 +12,12 @@ interface InputProps {
     maxlength?: number;
     pattern?: any;
     classname?: string;
+    onBlur?: any;
+    ref?: any;
 }
 
-export const Input = ({ type, placeholder, value, name, onChange, disabled, maxlength,pattern, classname }: InputProps) => {
-    return(
+export const Input = ({ type, placeholder, value, name, onChange, disabled, maxlength, pattern, classname }: InputProps) => {
+    return (
         <input
             type={type}
             placeholder={placeholder}
