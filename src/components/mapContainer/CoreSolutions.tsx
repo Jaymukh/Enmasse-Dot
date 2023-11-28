@@ -13,6 +13,7 @@ import { useRecoilValue } from 'recoil';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import RequestLayers from "./RequestLayers";
 import { Heading, TypographyType, TypographyColor } from '../ui/typography/Heading';
+import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 
 interface Option {
     label: string;
@@ -53,7 +54,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 title='Core Solutions'
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='my-0 ms-2'
+                                classname='my-0 ms-2 text-start'
                             />
                         </div>
                         <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
@@ -67,18 +68,22 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 {isChecked?.coreSolution && options?.length > 0 &&
                     <div className="bg-white mt-1 py-3 px-3">
                         {options?.map((option: Option) => (
-                            <div className="d-flex flex-row justify-content-start ms-1" key={option.label}>
-                                <label className="my-1 fs-14">
-                                    <input
-                                        className="me-2 input-rb"
-                                        size={1.5}
-                                        type="radio"
-                                        value={option.key}
-                                        checked={selectedRb === option.key}
-                                        onChange={(event) => handleChangeRb(event, option)}
-                                    />
+                            <div className="d-flex flex-row justify-content-start my-2 ms-1" key={option.label}>
+                                <input
+                                    className="me-2 input-rb mt-1"
+                                    size={1.5}
+                                    type="radio"
+                                    value={option.key}
+                                    checked={selectedRb === option.key}
+                                    onChange={(event) => handleChangeRb(event, option)}
+                                />
+                                <Body
+                                    type={BodyType.p2}
+                                    color={BodyColor.dark}
+                                    classname='text-start'
+                                    >
                                     {option.label}
-                                </label>
+                                </Body>
                             </div>
                         ))}
                     </div>
@@ -90,7 +95,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             title='View Stories'
                             type={TypographyType.h4}
                             colour={TypographyColor.dark}
-                            classname='my-0 mx-2'
+                            classname='my-0 mx-2 text-start'
                         />
                         <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
                     </div>
@@ -104,11 +109,11 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     <div className='d-flex align-items-center'>
                         <MdLayers fontSize={22} />
                         <Heading
-                                title='Request Layers'
-                                type={TypographyType.h4}
-                                colour={TypographyColor.dark}
-                                classname='my-0 mx-2'
-                            />
+                            title='Request Layers'
+                            type={TypographyType.h4}
+                            colour={TypographyColor.dark}
+                            classname='my-0 mx-2 text-start'
+                        />
                         <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
                     </div>
                     <Button

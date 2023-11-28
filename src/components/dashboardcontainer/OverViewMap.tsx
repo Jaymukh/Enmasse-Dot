@@ -37,7 +37,6 @@ const OverViewMap = () => {
     return (
         <div className="me-3 h-100">
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
-                {/* <h5 className="pb-2 text-start fs-14">Overall Information</h5> */}
                 <Heading
                     title='Overall Information'
                     type={TypographyType.h5}
