@@ -187,8 +187,8 @@ ul {
     background-color: var(--light-grey-1);
 }
 
-.help-menu-item span {
-    margin-left: 10px;
+.help-menu-item p {
+    margin-left: 10px !important;
 }
 
 .help-menu-item div {
@@ -310,8 +310,11 @@ ul {
     background-color: var(--light-grey-1);
 }
 
-.menu-item span {
+/* .menu-item span {
     margin-left: 10px;
+} */
+.menu-item p {
+    margin-left: 10px !important;
 }
 
 .menu-item div {

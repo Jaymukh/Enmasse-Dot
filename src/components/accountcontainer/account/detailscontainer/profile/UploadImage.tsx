@@ -11,6 +11,7 @@ import '../../../../../styles/main.css';
 // Componentss
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import Modal from '../../../../ui/modal/Modal';
 import { loggedUserState, User } from "../../../../../states";
 
@@ -171,7 +172,12 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                     <div className="">
                                         <BiUpload fontSize={20} className='me-2 text-white' />
-                                        <span className='text-white'>Upload new photo</span>
+                                        <Body
+                                            color={BodyColor.white}
+                                            type={BodyType.p3}
+                                        >
+                                            Upload new photo
+                                        </Body>
                                     </div>
                                 </label>
                             </div> :
@@ -179,7 +185,12 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                 <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                 <div className="file-input-content">
                                     <BiUpload fontSize={20} className='me-2 text-white' />
-                                    <span className='text-white'>Upload new photo</span>
+                                    <Body
+                                        color={BodyColor.white}
+                                        type={BodyType.p3}
+                                    >
+                                        Upload new photo
+                                    </Body>
                                 </div>
                             </label>
                         )

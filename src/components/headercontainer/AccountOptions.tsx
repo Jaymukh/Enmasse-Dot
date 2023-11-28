@@ -10,6 +10,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSettingsService, useUserService } from '../../services';
 import { ButtonAvatar } from '../ui/button/ButtonAvatar';
 import { Button, ButtonTheme, ButtonVariant, ButtonSize } from '../ui/button/Button';
+import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import { visiblePanelState } from '../../states';
 
 
@@ -79,7 +80,14 @@ const AccountOptions = () => {
 							classname=''
 							disabled={false}
 						/>
-						<span className='text-wrap text-start'>{loggedUser.name}</span>
+						<Body
+							color={BodyColor.dark}
+							type={BodyType.p1}
+							classname='text-wrap text-start'
+						>
+							{loggedUser.name}
+						</Body>
+
 					</li>
 					{Constants.accountMenuItems.map((item) => (
 						(loggedUser.role === 'Admin' || item.key !== 2) && (
@@ -89,8 +97,15 @@ const AccountOptions = () => {
 								onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
 							>
 								<div>{item.icon}</div>
-								<span>{item.text}</span>
-							</li>)
+								<Body
+									color={BodyColor.dark}
+									type={BodyType.p1}
+									classname=''
+								>
+									{item.text}
+								</Body>
+							</li>
+						)
 					))}
 					<hr className='m-0' />
 					<Button theme={ButtonTheme.primary} size={ButtonSize.large} variant={ButtonVariant.transparent} classname='menu-item d-flex logout my-1' onClick={handleLogout}>

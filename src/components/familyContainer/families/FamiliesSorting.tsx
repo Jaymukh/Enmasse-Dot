@@ -75,6 +75,7 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 				</ul>)
 			}
 			<span className={selectedItem ? 'green-circle' : ''}></span>
+			
 		</div >
 	);
 }

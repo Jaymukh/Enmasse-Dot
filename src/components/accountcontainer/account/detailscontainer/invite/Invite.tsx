@@ -12,6 +12,7 @@ import { useUserService } from '../../../../../services';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import InviteSent from './InviteSent'; import Search from '../../../../ui/search/Search';
+import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import EditInvite from './EditInvite';
 import InviteNew from './InviteNew';
 import ConfirmDelete from './ConfirmDelete';
@@ -197,7 +198,14 @@ export default function Invite() {
 											key={row.name}
 											className='table-row-height'
 										>
-											<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id}</span></td>
+											<td className='text-start fs-14'>{row.name}<br />
+												<Body
+													color={BodyColor.muted}
+													type={BodyType.p3}
+													>
+													{row.email_id}
+												</Body>
+											</td>
 											<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
 											<td className='text-center fs-14'>{row.company}</td>
 											<td className='text-center fs-14'>{row.company_type}</td>
@@ -228,7 +236,14 @@ export default function Invite() {
 											key={row.name}
 											className='table-row-height'
 										>
-											<td className='text-start fs-14'>{row.name}<br /><span className='fs-12 text-muted'>{row.email_id} </span></td>
+											<td className='text-start fs-14'>{row.name}<br />
+											<Body
+													color={BodyColor.muted}
+													type={BodyType.p3}
+													>
+													{row.email_id}
+												</Body>
+											</td>
 											<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
 											<td className='text-center fs-14'>{row.company}</td>
 											<td className='text-center fs-14'>{row.company_type}</td>

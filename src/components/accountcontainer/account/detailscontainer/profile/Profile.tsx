@@ -234,12 +234,16 @@ export default function Profile() {
                     Edit
                 </Button>
             </div>
-            <hr className='mb-4'/>
+            <hr className='mb-4' />
             <div className="row w-100 mx-2">
                 <div className="col-3 p-0 fs-64 ms-3" >
                     <div className='d-flex flex-column justify-content-start align-items-start' style={{ width: '12.5rem', height: '12.5rem' }}>
                         <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center bg-light" >
-                            {loggedUser?.profile_picture ? <img src={loggedUser?.profile_picture} alt="Profile" className='' /> : <span className='d-flex flex-column justify-content-center align-items-center w-100 h-100' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>}
+                            {loggedUser?.profile_picture ? <img src={loggedUser?.profile_picture} alt="Profile" className='' /> :
+                                <span className='d-flex flex-column justify-content-center align-items-center w-100 h-100' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
+                                    {loggedUser.initial}
+                                </span>
+                            }
                         </div>
                         <Button
                             theme={ButtonTheme.secondary}

@@ -170,9 +170,14 @@ export default function Login() {
                                     className='my-1 px-2 inputBoxHeight w-100'
                                     placeholder='Enter your password here'
                                 />
-                                <span className="eye-icon" onClick={toggleVisibility}>
-                                    {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}
-                                </span>
+                                <Body
+                                    type={BodyType.p3}
+                                    color={BodyColor.dark}
+                                    classname='eye-icon'
+                                    onClick={toggleVisibility}
+                                >
+                                    {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}                                    
+                                </Body>
                             </div>
                             {errors?.password?.message
                                 && <Body
@@ -191,7 +196,13 @@ export default function Login() {
                                 theme={ButtonTheme.primary}
                                 variant={ButtonVariant.bordered}
                             >
-                                {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}Login
+                                {isSubmitting 
+                                && <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='spinner-border spinner-border-sm me-3'
+                            />
+                                }Login
                             </Button>
                         </form>
                         <Body

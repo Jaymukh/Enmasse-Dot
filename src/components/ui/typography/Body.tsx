@@ -19,8 +19,10 @@ export enum BodyColor {
 interface BodyProps {
     type: BodyType;
     color: BodyColor;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     classname?: string;
+    style?: any;
+    onClick?: any;
 }
 
 const getColor = (color: BodyColor) => {
@@ -67,9 +69,9 @@ const getType = (type: BodyType) => {
     return className;
 }
 
-const Body = ({ type, color, children, classname }: BodyProps) => {
+const Body = ({ type, color, children, classname, style, onClick }: BodyProps) => {
     return (
-        <p className={`${getColor(color)} ${getType(type)} ${classname} m-0`}>{children}</p>
+        <p className={`${getColor(color)} ${getType(type)} ${classname} m-0`} style={style} onClick={onClick} >{children}</p>
     )
 }
 

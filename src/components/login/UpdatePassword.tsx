@@ -151,12 +151,12 @@ const UpdatePassword = () => {
                             classname='mb-2'
                         />
                         <Body
-                                type={BodyType.p2}
-                                color={BodyColor.muted}
-                                classname='mb-3'
-                            >
-                                Create password for your account.
-                            </Body>
+                            type={BodyType.p2}
+                            color={BodyColor.muted}
+                            classname='mb-3'
+                        >
+                            Create password for your account.
+                        </Body>
                         <Heading
                             title='Password'
                             type={TypographyType.h4}
@@ -175,12 +175,17 @@ const UpdatePassword = () => {
                                 className='my-1 px-2 inputBoxHeight w-100'
                                 placeholder='Enter your password here'
                             />
-                            <span className="eye-icon" onClick={toggleVisibility}>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='eye-icon'
+                                onClick={toggleVisibility}
+                            >
                                 {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}
-                            </span>
+                            </Body>
                         </div>
-                        {errors?.new_password?.message 
-                        && <Body
+                        {errors?.new_password?.message
+                            && <Body
                                 type={BodyType.p3}
                                 color={BodyColor.warning}
                                 classname='m-0 p-0'
@@ -230,7 +235,13 @@ const UpdatePassword = () => {
                             classname='mt-3'
                             disabled={!isValid}
                         >
-                            {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
+                            {isSubmitting
+                                && <Body
+                                    type={BodyType.p3}
+                                    color={BodyColor.dark}
+                                    classname='spinner-border spinner-border-sm me-3'
+                                />
+                            }
                             Create Password
                         </Button>
                     </form>

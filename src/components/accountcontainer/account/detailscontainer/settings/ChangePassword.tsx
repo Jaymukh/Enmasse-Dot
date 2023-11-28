@@ -212,7 +212,12 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         theme={ButtonTheme.primary}
                         variant={ButtonVariant.bordered}
                     >
-                        {isSubmitting && <span className="spinner-border spinner-border-sm me-3"></span>}
+                        {isSubmitting
+                            && <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}
+                                classname='spinner-border spinner-border-sm me-3' />
+                        }
                         Update
                     </Button>
                 </form>

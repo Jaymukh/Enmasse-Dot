@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../../../styles/main.css';
 import { MdHelpCenter } from 'react-icons/md';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import Body, {BodyColor, BodyType} from '../../ui/typography/Body';
 import * as Constants from '../../../utils/constants/Constants';
 import { overlayState, helpState } from '../../../states';
 import { useRecoilState, useSetRecoilState } from 'recoil';
@@ -97,7 +98,10 @@ const HelpOptions = () => {
 							onClick={() => handleClickMenuItem(item.key)}
 						>
 							<div>{item.icon}</div>
-							<span>{item.text}</span>
+							<Body
+							type={BodyType.p2}
+							color={BodyColor.dark}
+							>{item.text}</Body>
 						</li>
 					))}
 				</ul>)

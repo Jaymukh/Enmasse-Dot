@@ -38,7 +38,13 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                         </Body>
                     </div>
                     <div className="d-flex flex-column align-items-end justify-content-start  text-end">
-                        <span className='fs-14 me-1 bold-text color-green'>{getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}</span>
+                        {/* heading will come here */}
+                        <Heading
+                            title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}
+                            type={TypographyType.h5}
+                            colour={TypographyColor.primary}
+                            classname='me-1 my-0'
+                        />
                         <Body
                             type={BodyType.p4}
                             color={BodyColor.dark}

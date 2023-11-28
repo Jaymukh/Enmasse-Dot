@@ -1,11 +1,11 @@
 import styles from "./Typography.module.css";
 
 export enum TypographyColor {
-    primary,
-    secondary,
-    muted,
-    warning,
-    dark
+    primary, /* green*/
+    secondary, /* dark gray*/
+    muted, /* light gray*/
+    warning, /* red*/
+    dark /* black*/
 }
 
 export enum TypographyType {

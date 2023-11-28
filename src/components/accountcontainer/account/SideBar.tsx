@@ -9,6 +9,7 @@ import '../../../styles/main.css';
 // Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { loggedUserState, visiblePanelState } from '../../../states';
 
 // Utilities
@@ -36,11 +37,17 @@ const SideBar = () => {
                                         }`}
                                     onClick={() => handleItemClick((data.option).toLowerCase())}
                                 >
-                                    <span className='mx-3 li-icon'>{data.icon}</span>
+                                    <Body 
+                                    color={BodyColor.secondary}
+                                    type={BodyType.p3}
+                                    classname='mx-3 li-icon'>
+                                        {data.icon}
+                                    </Body>
                                     <Heading
                                         title={data.option}
                                         colour={TypographyColor.dark}
                                         type={TypographyType.h4}
+                                        classname='my-0'
                                     />
                                 </button>
                             </li>)

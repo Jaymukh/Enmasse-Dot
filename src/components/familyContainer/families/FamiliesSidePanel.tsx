@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import React from 'react';
-=======
->>>>>>> a6cec8309b0bbe6a1f2021667b2b0d61a7a3a61a
 import '../../../styles/main.css';
 import StaticMap from '../../StaticMap';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';

@@ -137,10 +137,13 @@ const FamiliesDetailsContainer = () => {
                                             <Body
                                                 type={BodyType.p4}
                                                 color={BodyColor.dark}
-                                                classname='mx-0 mb-1'>
-                                                <span className='fs-14 me-1 bold-text color-green'>
-                                                    {getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}
-                                                </span>
+                                                classname='d-flex flex-row align-items-center mx-0'>
+                                                <Heading
+                                                    title={getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}
+                                                    type={TypographyType.h5}
+                                                    colour={TypographyColor.primary}
+                                                    classname='me-1 my-0'
+                                                />
                                                 Annual Household Spend on Education
                                             </Body>
                                         </div>)
@@ -188,7 +191,14 @@ const FamiliesDetailsContainer = () => {
                             Previous
                         </Button>
                         <div className='d-flex flex-row justify-content-around align-items-center mx-2 h-auto fs-12'>
-                            <span className='border rounded mx-1 px-2 py-1'>{paginationData?.page_no ? paginationData?.page_no : 1}</span>  of {totalStoryInfo.totalPages}
+                            <Body
+                                color={BodyColor.dark}
+                                type={BodyType.p3}
+                                classname='border rounded mx-1 px-2 py-1'
+                            >
+                                {paginationData?.page_no ? paginationData?.page_no : 1}
+                            </Body>
+                            of {totalStoryInfo.totalPages}
                         </div>
                         <Button
                             theme={paginationData.page_no === totalStoryInfo.totalPages ? ButtonTheme.muted : ButtonTheme.primary}

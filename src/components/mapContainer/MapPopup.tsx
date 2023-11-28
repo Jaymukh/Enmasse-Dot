@@ -29,7 +29,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
             <div className="col-3 px-0">
                 <img className="map-popup-story-img rounded" src={properties.image} alt={properties.familyName} />
             </div>
-            <div className="col-9 px-0 d-flex flex-column justify-content-start ps-1">
+            <div className="col-9 d-flex flex-column justify-content-start ps-3">
                 <Body
                     type={BodyType.p4}
                     color={BodyColor.secondary}
