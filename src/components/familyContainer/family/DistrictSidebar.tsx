@@ -179,7 +179,7 @@ const DistrictSidebar = () => {
                                         title='EI Coverage'
                                         colour={TypographyColor.dark}
                                         type={TypographyType.h5}
-                                        classname='me-2 my-0'
+                                        classname='me-2 my-0 text-start'
                                     />
                                     <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                                 </div>
@@ -199,7 +199,7 @@ const DistrictSidebar = () => {
                                     title='EH Economic Activity Indicators'
                                     colour={TypographyColor.dark}
                                     type={TypographyType.h5}
-                                    classname='me-2 my-0'
+                                    classname='me-2 my-0 text-start'
                                 />
                                 <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                             </div>
