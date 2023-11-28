@@ -1,10 +1,17 @@
+// External libraries
 import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
+// CSS
 import '../../../styles/main.css';
-import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
+import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+
+// Utilities
 import { useMapHelpers } from '../../../helpers';
-import { useSearchParams } from 'react-router-dom';
 import { useMapsService } from '../../../services';
 
 interface FamilyDetailsContainerProps {

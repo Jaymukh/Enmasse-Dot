@@ -1,13 +1,20 @@
+// External libraries
 import React, { useState } from 'react';
-import Drawer from '../../ui/Drawer';
+import { useRecoilValue, useSetRecoilState } from "recoil";
+
+// CSS
 import '../../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import { Heading, TypographyType, TypographyColor } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Input } from '../../ui/input/Input';
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import Drawer from '../../ui/Drawer';
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
+
+// Utilities
 import { useCIFService } from '../../../services';
-import { Heading, TypographyType, TypographyColor } from '../../ui/typography/Heading';
 
 interface RequestDataProps {
     requestDataDrawerOpen: boolean,

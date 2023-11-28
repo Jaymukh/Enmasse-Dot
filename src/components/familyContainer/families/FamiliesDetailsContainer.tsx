@@ -1,20 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, { useState, useEffect } from 'react';
-import '../../../styles/main.css';
-import { storiesSelectOptions } from '../../../utils/constants/Constants';
-import { Card, CardSize, CardVariant } from '../../ui/card/Card';
-import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
-import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
-import Select, { SelectSize } from '../../ui/select/Select';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
-import { useStoriesService } from '../../../services';
-import { storiesState } from "../../../states";
-import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { useRecoilState } from "recoil";
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import familySkeleton from '../../../utils/images/family-skeleton.png';
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+
+// CSS
+import '../../../styles/main.css';
+
+// Components
+import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
+import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+import Select, { SelectSize } from '../../ui/select/Select';
 import FamiliesSorting from './FamiliesSorting';
+import { storiesState } from "../../../states";
+
+// Utilities
+import { storiesSelectOptions } from '../../../utils/constants/Constants';
+import familySkeleton from '../../../utils/images/family-skeleton.png';
 import { RouteConstants } from '../../../constants';
+import { useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 
 const FamiliesDetailsContainer = () => {

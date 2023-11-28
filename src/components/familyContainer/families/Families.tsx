@@ -1,3 +1,4 @@
+// Components
 import FamiliesSidePanel from './FamiliesSidePanel';
 import FamiliesDetailsContainer from './FamiliesDetailsContainer';
 

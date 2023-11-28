@@ -1,16 +1,22 @@
+// External libraries
 import React from 'react';
-import '../../../styles/main.css';
-import { BiArrowBack } from 'react-icons/bi';
-import { MdOutlineArrowForward } from 'react-icons/md';
+import { useRecoilState } from "recoil";
+import { MdOutlineArrowBack , MdOutlineArrowForward } from 'react-icons/md';
 import { FiArrowRight } from 'react-icons/fi';
-import StaticMap from '../../StaticMap';
-import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+
+// CSS
+import '../../../styles/main.css';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
-import { storiesState } from "../../../states";
-import { useRecoilState } from "recoil";
-import familySkeleton from '../../../utils/images/family-skeleton.png';
+import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+import StaticMap from '../../StaticMap';
 import { Legend } from '../../ui/legend/Legend';
+import { storiesState } from "../../../states";
+
+// Utilities
+import familySkeleton from '../../../utils/images/family-skeleton.png';
 
 interface FamilySidePanelProps {
     selectedStory: { index: number, story: any };
@@ -76,7 +82,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                     data-bs-target="#carouselExampleControlsNoTouching"
                     data-bs-slide="prev"
                 >
-                    <BiArrowBack className="iconNextPrev" aria-hidden="true"></BiArrowBack>
+                    <MdOutlineArrowBack  className="iconNextPrev" fontSize={20} aria-hidden="true" />
                 </button>
 
                 <button className="carousel-control-next NextBtn rounded-circle bg-white"
@@ -85,7 +91,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                     data-bs-target="#carouselExampleControlsNoTouching"
                     data-bs-slide="next"
                 >
-                    <MdOutlineArrowForward className='iconNextPrev' fontSize={20} aria-hidden="true"></MdOutlineArrowForward>
+                    <MdOutlineArrowForward className='iconNextPrev' fontSize={20} aria-hidden="true" />
                 </button>
             </div>
         </div >

@@ -1,11 +1,17 @@
+// External libraries
 import React from 'react';
-import '../../../styles/main.css';
-import StaticMap from '../../StaticMap';
-import { Card, CardSize, CardVariant } from '../../ui/card/Card';
-import { storiesState } from '../../../states';
 import { useRecoilValue } from 'recoil';
-import { Legend } from '../../ui/legend/Legend';
+
+// CSS
+import '../../../styles/main.css';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+import { Legend } from '../../ui/legend/Legend';
+import StaticMap from '../../StaticMap';
+import { storiesState } from '../../../states';
+
 
 const FamiliesSidePanel = () => {
     const stories = useRecoilValue(storiesState);

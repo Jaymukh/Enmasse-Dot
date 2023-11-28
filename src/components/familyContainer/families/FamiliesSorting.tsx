@@ -1,13 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, { useState, useEffect, useRef } from 'react';
-import '../../../styles/main.css';
 import { BiMenuAltLeft } from 'react-icons/bi';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
-import * as Constants from '../../../utils/constants/Constants';
-import { useNavigate } from 'react-router-dom';
-import { useStoriesService, useUserService } from '../../../services';
-import { FamiliesSortingItem } from '../../../utils/constants/Constants';
+
+// CSS
+import '../../../styles/main.css';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+
+// Utilities
+import * as Constants from '../../../utils/constants/Constants';
 
 interface FamiliesSortingProps {
 	handlePaginationData: (data: any) => void;
@@ -16,13 +20,13 @@ interface FamiliesSortingProps {
 const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-	const [selectedItem, setSelectedItem] = useState<FamiliesSortingItem | null>(Constants.familiesSortingItems[0]);
+	const [selectedItem, setSelectedItem] = useState<Constants.FamiliesSortingItem | null>(Constants.familiesSortingItems[0]);
 
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		Boolean(anchorEl) ? setAnchorEl(null) : setAnchorEl(event.currentTarget);
 	};
 
-	const handleClickMenuItem = (item: FamiliesSortingItem) => {
+	const handleClickMenuItem = (item: Constants.FamiliesSortingItem) => {
 		const param = item.param;
 		handlePaginationData(param);
 		setSelectedItem(item);

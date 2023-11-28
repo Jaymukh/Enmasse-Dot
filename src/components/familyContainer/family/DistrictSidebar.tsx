@@ -1,21 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, { useState, useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { RouteConstants } from '../../../constants';
-import Select, { SelectSize } from '../../ui/select/Select';
+
+// CSS
 import '../../../styles/main.css';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
-import { ProgressBar } from '../../ui/progressbar/ProgressBar';
-import { useRecoilValue } from 'recoil';
-import { useMapsService, useSettingsService } from '../../../services';
-import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings } from '../../../states';
-import { useMapHelpers } from '../../../helpers';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
-import WIPImage from '../../../utils/images/work_in_progress.svg';
+import Select, { SelectSize } from '../../ui/select/Select';
+import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import RequestData from './RequestData';
+import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings } from '../../../states';
+
+// Utilities
+import WIPImage from '../../../utils/images/work_in_progress.svg';
+import { RouteConstants } from '../../../constants';
+import { useSettingsService } from '../../../services';
+import { useMapHelpers } from '../../../helpers';
+
 
 const options = [
     {

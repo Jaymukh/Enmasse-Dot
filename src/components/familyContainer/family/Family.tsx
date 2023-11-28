@@ -1,14 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, { useEffect, useState } from 'react';
-import FamilySidePanel from './FamilySidePanel';
+import { useRecoilValue } from 'recoil';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
+// CSS
+import '../../../styles/main.css';
+
+// Components
 import FamilyDetailsContainer from './FamilyDetailsContainer';
 import DistrictSidebar from './DistrictSidebar';
-import '../../../styles/main.css';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useStoriesService } from '../../../services';
-import { useRecoilValue } from 'recoil';
+import FamilySidePanel from './FamilySidePanel';
 import { storiesState } from '../../../states';
+
+// Utilities
 import { RouteConstants } from '../../../constants';
+import { useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 
 interface FamilyProps {

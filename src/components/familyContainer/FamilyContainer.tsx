@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useRecoilState } from "recoil";
+
 import FamilyHeader from './FamilyHeader';
 import Families from './families/Families';
 import Family from './family/Family';
 import '../../styles/main.css';
 import { storiesState } from "../../states";
-import { useRecoilState } from "recoil";
 import { useMapsService } from '../../services';
 
 function FamilyContainer() {

@@ -379,11 +379,11 @@ ul {
 }
 
 .iconNextPrev {
-    color: var(--icon-color--icon-color);
+    color: var(--icon-color);
 }
 
 .PrevBtn {
-    margin-left: -1.2rem;
+    margin-left: -1.4rem;
     background-color: var(--white-1);
     height: 2rem;
     width: 2rem;
@@ -395,7 +395,7 @@ ul {
 }
 
 .NextBtn {
-    margin-right: -1.2rem;
+    margin-right: -1.4rem;
     background-color: var(--white-1);
     height: 2rem;
     width: 2rem;
