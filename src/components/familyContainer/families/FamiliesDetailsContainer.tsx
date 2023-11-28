@@ -24,11 +24,6 @@ const FamiliesDetailsContainer = () => {
     const [stories] = useRecoilState(storiesState);
     const { getCurrencyWithSymbol, getSelectedObject } = useMapHelpers();
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
-    // const setSpinner = useSetRecoilState(spinnerState);
-    // const { getCurrencyWithSymbol } = useMapHelpers();
-    // const [previousDisabled, setPreviousDisabled] = useState(true);
-    // const [nextDisabled, setNextDisabled] = useState(true);
-    // const [paginationData, setPaginationData] = useState<{ geoCode: number, pageNumber: number, storiesPerPage: number }>({ geoCode: Number(searchParams.get('geo_code')), pageNumber: 1, storiesPerPage: 2 });
     const [iterator, setIterator] = useState(0);
     const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 })
 

@@ -15,6 +15,7 @@ import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
 import { useSetRecoilState } from "recoil";
 import { errorState, spinnerState } from "../../states";
+import { Input } from '../ui/input/Input';
 
 interface IFormValues {
     email_id: string;
@@ -134,7 +135,8 @@ export default function Login() {
                             <input
                                 {...register("email_id")}
                                 className='my-1 px-2 inputBoxHeight w-100'
-                                placeholder='Enter your email id here' />
+                                placeholder='Enter your email id here'
+                            />
                             {errors?.email_id?.message
                                 && <Body
                                     type={BodyType.p3}

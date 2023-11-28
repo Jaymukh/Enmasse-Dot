@@ -68,7 +68,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
     const { handleSubmit, register, watch, formState } = useForm({
         resolver: yupResolver(validationSchema),
     });
-    const { errors, isSubmitting, isValid } = formState;
+    const { errors, isSubmitting } = formState;
 
     const [conditions, setConditions] = useState({
         lengthCheck: false,
@@ -124,12 +124,12 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     classname=''>
                     You will be required to re-login after updating the password.
                 </Body>
-                <form className='d-flex flex-column align-items-start justify-content-center text-start' onSubmit={handleSubmit(onSubmit)}>
+                <form className='d-flex flex-column align-items-start justify-content-center text-start mt-2' onSubmit={handleSubmit(onSubmit)}>
                     <Heading
-                        title='Old Password'
+                        title='Old Password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mb-0'
+                        classname='mb-0 mt-2'
                     />
                     <input
                         type="password"
@@ -142,12 +142,12 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.warning}
-                            classname=''>
+                            classname='mb-1'>
                             {errors?.current_password?.message}
                         </Body>
                     }
                     <Heading
-                        title='New Password'
+                        title='New Password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mt-2 mb-0 text-start'
@@ -185,7 +185,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         ))}
                     </div>
                     <Heading
-                        title='Re enter new password'
+                        title='Re enter new password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='mb-0'

@@ -9,4 +9,5 @@
 
 .progressbar {
     background-color: var(--blue-0);
+    border-radius: inherit;
 }
