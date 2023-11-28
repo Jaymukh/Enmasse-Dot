@@ -17,7 +17,8 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     const navigate = useNavigate();
     const { getCurrencyWithSymbol } = useMapHelpers();
 
-    const handlePopupClick = (geo_id: number) => {
+    const handlePopupClick = (geoIdArray: any[], geoHierarchyLevel: number) => {
+        let geo_id = geoHierarchyLevel === 1 ? geoIdArray[1] : geoIdArray[0];
         navigate({
             pathname: RouteConstants.stories,
             search: `?geo_code=${geo_id}&page_no=1&storiespp=2`,
@@ -51,7 +52,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     size={ButtonSize.xsmall}
                     variant={ButtonVariant.transparent}
                     // onClick={() => handlePopupClick(properties.parentID)}
-                    onClick={() => handlePopupClick(properties.parentId)}
+                    onClick={() => handlePopupClick(properties.parent_id, properties.geoHierarchyLevel)}
                     classname='h-auto ps-0'
                 >
                     Read more

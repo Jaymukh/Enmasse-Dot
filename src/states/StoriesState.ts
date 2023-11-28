@@ -20,6 +20,9 @@ interface Family {
     country: string;
     address: string;
     familyDetails: FamilyDetails;
+    geoHierarchyLevel: number;
+    parentId: number;
+    parent_id: number[];
     geometry: {
         type: string;
         coordinates: [number, number];
