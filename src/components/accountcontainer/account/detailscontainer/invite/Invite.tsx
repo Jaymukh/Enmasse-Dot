@@ -17,6 +17,7 @@ import EditInvite from './EditInvite';
 import InviteNew from './InviteNew';
 import ConfirmDelete from './ConfirmDelete';
 import { usersState, User, spinnerState, errorState } from "../../../../../states";
+import { rollbar } from '../../../../../constants';
 
 interface NewData {
 	name: string | undefined;
@@ -84,6 +85,7 @@ export default function Invite() {
 				setSpinner(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
+				rollbar.error(error);
 			});
 	};
 
@@ -144,6 +146,7 @@ export default function Invite() {
 				setSpinner(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
+				rollbar.error(error);
 			});
 	};
 

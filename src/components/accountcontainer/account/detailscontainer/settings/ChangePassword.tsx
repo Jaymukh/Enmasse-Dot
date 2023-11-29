@@ -20,6 +20,7 @@ import { authState, errorState } from '../../../../../states';
 // Utilities
 import { useUserService } from '../../../../../services';
 
+import { rollbar } from '../../../../../constants';
 
 interface ChangePasswordProps {
     open: boolean,
@@ -101,6 +102,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             .catch(error => {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
     };
 

@@ -6,6 +6,7 @@ import GlobalOverlayCard from '../GlobalOverlayCard';
 import InsightBar from '../InsightBar';
 import { useSetRecoilState } from 'recoil';
 import { errorState } from '../../states';
+import { rollbar } from '../../constants';
 
 interface GlobalMapProps {
 	features?: any; // Replace 'any' with the actual type of 'features' if available
@@ -31,6 +32,7 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
 				}
 			} else {
 				setError({ type: 'Error', message: 'Geocode was not successful' });
+				rollbar.error('Geocode was not successful');
 			}
 		});
 	};

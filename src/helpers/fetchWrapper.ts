@@ -1,6 +1,6 @@
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { authState, errorState } from '../states';
-import { APIS, RouteConstants } from '../constants';
+import { APIS, RouteConstants, rollbar } from '../constants';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -51,6 +51,7 @@ function useFetchWrapper() {
                     } catch (error: any) {
                         const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                         setError({ type: 'Error', message: errorMsg });
+                        rollbar.error(error);
                         localStorage.removeItem('user');
                         setAuth({});
                         navigate(RouteConstants.login);

@@ -17,6 +17,7 @@ import { errorState, loggedUserState, spinnerState, User } from "../../../../../
 
 // Utilities
 import { useUserService } from '../../../../../services';
+import { rollbar } from '../../../../../constants';
 
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -63,6 +64,7 @@ export default function Profile() {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
     };
 
@@ -129,6 +131,7 @@ export default function Profile() {
                                             setSpinner(false);
                                             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                                             setError({ type: 'Error', message: errorMsg });
+                                            rollbar.error(error);
                                         });
                                 }
 
@@ -159,6 +162,7 @@ export default function Profile() {
                                             setSpinner(false);
                                             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                                             setError({ type: 'Error', message: errorMsg });
+                                            rollbar.error(error);
                                         });
                                 }
                             }
@@ -211,6 +215,7 @@ export default function Profile() {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
         setShowDeleteImageModal(false);
     }

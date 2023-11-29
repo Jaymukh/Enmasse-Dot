@@ -11,6 +11,7 @@ import { mapFeatureState } from '../../states/MapFeatureState';
 import { useMapsService } from '../../services/Maps.service';
 import { errorState, spinnerState } from '../../states';
 import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
+import { rollbar } from '../../constants';
 
 const ExploreNow = () => {
 	const mapsService = useMapsService();
@@ -78,6 +79,7 @@ const ExploreNow = () => {
 				setSpinner(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
+				rollbar.error(error);
 			});
 		}
 		else {
