@@ -13,6 +13,7 @@ import { useUserService } from '../../../../../services';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import InviteSent from './InviteSent'; import Search from '../../../../ui/search/Search';
+import { rollbar } from '../../../../../constants';
 
 interface NewData {
 	name: string | undefined;
@@ -80,6 +81,7 @@ export default function Invite() {
 				setSpinner(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
+				rollbar.error(error);
 			});
 	};
 
@@ -140,6 +142,7 @@ export default function Invite() {
 				setSpinner(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
+				rollbar.error(error);
 			});
 	};
 

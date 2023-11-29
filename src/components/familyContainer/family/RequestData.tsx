@@ -8,6 +8,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
 import { useCIFService } from '../../../services';
 import { Heading, TypographyType, TypographyColor } from '../../ui/typography/Heading';
+import { rollbar } from '../../../constants';
 
 interface RequestDataProps {
     requestDataDrawerOpen: boolean,
@@ -58,6 +59,7 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
                 .catch((error: any) => {
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
+                    rollbar.error(error);
                     setSpinner(false);
                 });
         }

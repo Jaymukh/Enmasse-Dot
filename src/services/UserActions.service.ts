@@ -2,7 +2,7 @@ import { useSetRecoilState, useRecoilState } from 'recoil';
 import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
 import { authState, loggedUserState, usersState, spinnerState, overlayState, errorState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { APIS, RouteConstants } from '../constants';
+import { APIS, RouteConstants, rollbar } from '../constants';
 
 const useUserService = () => {
     const fetchWrapper = useFetchWrapper();
@@ -39,6 +39,7 @@ const useUserService = () => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
 
     }
@@ -58,6 +59,7 @@ const useUserService = () => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
 
     }
@@ -70,6 +72,7 @@ const useUserService = () => {
 			setSpinner(false);
 			const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 			setError({ type: 'Error', message: errorMsg });
+            rollbar.error(error);
 		})
     };
 
@@ -85,6 +88,7 @@ const useUserService = () => {
                 // setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
     };
     

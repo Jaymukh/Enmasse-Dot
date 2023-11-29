@@ -1,5 +1,5 @@
 import { useFetchWrapper } from '../helpers';
-import { APIS } from '../constants';
+import { APIS, rollbar } from '../constants';
 import { errorState, mapFeatureState, spinnerState } from "../states";
 import { useSetRecoilState } from 'recoil';
 
@@ -32,6 +32,7 @@ const useMapsService = () => {
             }).catch(error => {
                 const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
                 // setSpinner(false);
             });
     }

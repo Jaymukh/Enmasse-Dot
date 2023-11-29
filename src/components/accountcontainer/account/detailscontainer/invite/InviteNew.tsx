@@ -9,6 +9,7 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../../../ui/b
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import { Input } from '../../../../ui/input/Input';
+import { rollbar } from '../../../../../constants';
 interface NewData {
     name: string | undefined;
     email_id: string | undefined;
@@ -55,6 +56,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                 .catch(error => {
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
+                    rollbar.error(error);
                 });
         }
         else {

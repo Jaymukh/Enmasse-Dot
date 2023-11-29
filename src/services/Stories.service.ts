@@ -1,5 +1,5 @@
 import { useFetchWrapper } from '../helpers';
-import { APIS } from '../constants';
+import { APIS, rollbar } from '../constants';
 import { storiesState, errorState } from "../states";
 import { useSetRecoilState } from 'recoil';
 // import { useRecoilState, useSetRecoilState } from "recoil";
@@ -25,6 +25,7 @@ const useStoriesService = () => {
             }).catch(error => {
                 const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
     }
 

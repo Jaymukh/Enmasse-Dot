@@ -16,6 +16,7 @@ import { FaEyeSlash } from 'react-icons/fa';
 import { useSetRecoilState } from "recoil";
 import { errorState, spinnerState } from "../../states";
 import { Input } from '../ui/input/Input';
+import { rollbar } from '../../constants';
 
 interface IFormValues {
     email_id: string;
@@ -81,6 +82,7 @@ export default function Login() {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
         setEmail('');
         handleModal({ passwordModal: false });

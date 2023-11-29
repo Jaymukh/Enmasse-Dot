@@ -12,6 +12,7 @@ import { authState, errorState } from '../../../../../states';
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
 import { Button, ButtonSize, ButtonTheme, ButtonVariant } from '../../../../ui/button/Button';
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
+import { rollbar } from '../../../../../constants';
 
 interface ChangePasswordProps {
     open: boolean,
@@ -93,6 +94,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             .catch(error => {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
+                rollbar.error(error);
             });
     };
 

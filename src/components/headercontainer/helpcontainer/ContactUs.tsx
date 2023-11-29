@@ -8,6 +8,7 @@ import { loggedUserState, User, geoJsonState, spinnerState, errorState } from ".
 import { useCIFService } from '../../../services';
 import { Heading, TypographyType, TypographyColor } from '../../ui/typography/Heading';
 import Body, {BodyType, BodyColor} from '../../ui/typography/Body';
+import { rollbar } from '../../../constants';
 
 interface ContactUsProps {
     contactUsDrawerOpen: boolean,
@@ -57,6 +58,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                 .catch(error => {
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
+                    rollbar.error(error);
                     setSpinner(false);
                 });
         }

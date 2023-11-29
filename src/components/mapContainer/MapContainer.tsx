@@ -9,6 +9,7 @@ import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
 import { BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
+import { rollbar } from '../../constants';
 
 const countries = [{ geo_id: 1, name: 'India' }];
 
@@ -149,6 +150,7 @@ function MapContainer() {
     const errorHandler = (error: any) => {
         const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
         setError({ type: 'Error', message: errorMsg });
+        rollbar.error(error);
     };
 
     useEffect(() => {
