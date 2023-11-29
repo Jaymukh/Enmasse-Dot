@@ -80,11 +80,11 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Name*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2'
+                        classname='mt-0 mb-1'
                     />
                     <Input
                         type="text"
-                        placeholder="Enter your name"
+                        placeholder="Full name"
                         value={newData.name}
                         name='name'
                         onChange={(e) => handleChangeData(e)}
@@ -93,11 +93,11 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Email*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2'
+                        classname='mt-3 mb-1'
                     />
                     <Input
                         type="email"
-                        placeholder="Enter your Email ID"
+                        placeholder="Enter work email"
                         value={newData.email_id}
                         name='email_id'
                         onChange={(e) => handleChangeData(e)}
@@ -106,20 +106,34 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Company*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2'
+                        classname='mt-3 mb-1'
                     />
                     <Input
                         type="text"
-                        placeholder="Enter your Company name"
+                        placeholder="Company"
                         value={newData?.company}
                         name='company'
                         onChange={(e) => handleChangeData(e)}
                     />
                     <Heading
+                        title='Company Type*'
+                        type={TypographyType.h5}
+                        colour={TypographyColor.dark}
+                        classname='mt-3 mb-1'
+                    />
+                    <Select
+                        options={settings?.company_types}
+                        value={newData?.company_type}
+                        labelKey='name'
+                        valueKey='name'
+                        size={SelectSize.large}
+                        name='company_type'
+                    />
+                    <Heading
                         title='Role*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2'
+                        classname='mt-3 mb-1'
                     />
                     <Select
                         options={settings?.roles}
@@ -131,34 +145,20 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         name='role'
                     />
                     <Heading
-                        title='Company Type*'
-                        type={TypographyType.h5}
+                        title='Note: Admins will be able to invite users to the platform'
                         colour={TypographyColor.dark}
-                        classname='mt-2'
+                        type={TypographyType.h6}
+                        classname='Note'
                     />
-                    <Select
-                        options={settings?.company_types}
-                        value={newData?.company_type}
-                        labelKey='name'
-                        valueKey='name'
-                        size={SelectSize.large}
-                        name='company_type'
-                    />
-                    <Body
-                        type={BodyType.p3}
-                        color={BodyColor.dark}
-                        classname='Note'>
-                        Note: Admins will be able to invite users to the platform
-                    </Body>
-                    <Button
-                        theme={ButtonTheme.primary}
-                        size={ButtonSize.large}
-                        variant={ButtonVariant.bordered}
-                        onClick={() => handleSubmitInviteNew()}
-                        classname='my-3 height-3'
-                    >
-                        Invite
-                    </Button>
+                        <Button
+                            theme={ButtonTheme.primary}
+                            size={ButtonSize.large}
+                            variant={ButtonVariant.bordered}
+                            onClick={() => handleSubmitInviteNew()}
+                            classname='my-3 height-3'
+                        >
+                            Invite
+                        </Button>
                 </div>
             </Drawer>
 
