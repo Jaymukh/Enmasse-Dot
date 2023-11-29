@@ -60,8 +60,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
 
     const validationOptions = [
         { key: 'lengthCheck', text: '8 Characters' },
-        { key: 'uppercase', text: 'Contains Uppercase' },
         { key: 'specialChar', text: 'Contains Special character' },
+        { key: 'uppercase', text: 'Contains Uppercase' },        
         { key: 'number', text: 'Contains Number' },
     ];
 
@@ -120,22 +120,22 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
             <div className='d-flex flex-column align-items-start justify-content-center text-start'>
                 <Body
                     type={BodyType.p2}
-                    color={BodyColor.muted}
+                    color={BodyColor.secondary}
                     classname=''>
                     You will be required to re-login after updating the password.
                 </Body>
-                <form className='d-flex flex-column align-items-start justify-content-center text-start mt-2' onSubmit={handleSubmit(onSubmit)}>
+                <form className='d-flex flex-column align-items-start justify-content-center text-start' onSubmit={handleSubmit(onSubmit)}>
                     <Heading
                         title='Old Password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mb-0 mt-2'
+                        classname='mt-3 mb-1 text-start'
                     />
                     <input
                         type="password"
                         //name='current_password'
                         {...register("current_password")}
-                        className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
+                        className='inputBoxHeight mb-1 mt-0 px-2 fs-14 w-100'
                         placeholder='Old password'
                     />
                     {errors?.current_password?.message &&
@@ -150,7 +150,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         title='New Password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-0 text-start'
+                        classname='mt-3 mb-1 text-start'
                     />
                     <input
                         type="password"
@@ -160,7 +160,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                                 handlePasswordChange(e)
                             }
                         })}
-                        className='mediumMarginTopBottom inputBoxHeight my-1 px-2 fs-14 w-100'
+                        className='inputBoxHeight mb-1 mt-0 px-2 fs-14 w-100'
                         placeholder='New password'
                     />
                     {errors?.new_password?.message &&
@@ -171,13 +171,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                             {errors?.new_password?.message}
                         </Body>
                     }
-                    <div className="row my-2">
+                    <div className="row mt-2">
                         {validationOptions.map((item: { key: string, text: string }) => (
                             <div className="d-flex pe-0 mb-1">
                                 {conditions[item?.key as keyof typeof conditions] ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
                                 <Body
                                     type={BodyType.p3}
-                                    color={BodyColor.dark}
+                                    color={BodyColor.secondary}
                                     classname='ms-2 mb-1'>
                                     {item.text}
                                 </Body>
@@ -188,13 +188,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         title='Re enter new password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mb-0'
+                        classname='mt-3 mb-1 text-start'
                     />
                     <input
                         type="password"
                         //name='confirm_new_password'
                         {...register("confirm_new_password")}
-                        className='my-2 inputBoxHeight px-2 fs-14 w-100'
+                        className='mb-1 mt-0 inputBoxHeight px-2 fs-14 w-100'
                         placeholder='Confirm new password'
                     />
                     {errors?.confirm_new_password?.message &&

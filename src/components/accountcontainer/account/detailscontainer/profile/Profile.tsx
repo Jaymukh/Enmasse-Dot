@@ -261,49 +261,49 @@ export default function Profile() {
                         <li >
                             <Body
                                 type={BodyType.p2}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='mb-1 text-start'>Name:</Body>
                             <Heading
                                 title={loggedUser.name}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start'
+                                classname='text-start m-0'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='mb-1 text-start'>Company:</Body>
                             <Heading
                                 title={loggedUser.company}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start'
+                                classname='text-start m-0'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='mb-1 text-start'>Phone Number:</Body>
                             <Heading
                                 title={loggedUser.phone_number}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start'
+                                classname='text-start m-0'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='mb-1 text-start'>Role:</Body>
                             <Heading
                                 title={loggedUser.role}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start'
+                                classname='text-start m-0'
                             />
                         </li>
                     </ul>
@@ -313,37 +313,37 @@ export default function Profile() {
                         <li>
                             <Body
                                 type={BodyType.p2}
-                                color={BodyColor.muted}
-                                classname='mb-1 text-start'>Email Id:</Body>
+                                color={BodyColor.secondary}
+                                classname='mb-1 text-start'>Email:</Body>
                             <Heading
                                 title={loggedUser.email_id}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start'
+                                classname='text-start m-0'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='mb-1 text-start'>Designation:</Body>
                             <Heading
                                 title={loggedUser.designation}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start'
+                                classname='text-start m-0'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='mb-1 text-start'>Country:</Body>
                             <Heading
                                 title={loggedUser.country}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start'
+                                classname='text-start m-0'
                             />
                         </li>
                     </ul>

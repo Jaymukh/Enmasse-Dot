@@ -550,7 +550,6 @@ th {
     height: 2rem;
     width: 100%;
     border-radius: 0.25rem;
-    font-weight: 600 !important;
     margin: 1rem auto !important;
     display: flex;
     justify-content: center;
@@ -589,7 +588,7 @@ th {
 }
 
 .edit-profile-list li {
-    margin-bottom: 1rem;
+    margin-bottom: 1.88rem;
 }
 
 .editImageBtn {

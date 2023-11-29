@@ -72,12 +72,12 @@ export default function EditProfile({
             isOpen={open}
             toggleFunction={handleOpen}
         >
-            <div className='d-flex flex-column justify-content-center align-items-start '>
+            <div className='d-flex flex-column justify-content-start align-items-start'>
                 <Heading
                     title='Name*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 mb-1'
+                    classname='mt-0 mb-1'
                 />
                 <Input
                     type="text"
@@ -90,7 +90,7 @@ export default function EditProfile({
                     title='Email*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 mb-1'
+                    classname='mt-3 mb-1'
                 />
                 <Input
                     type="email"
@@ -104,7 +104,7 @@ export default function EditProfile({
                     title='Phone Number*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 mb-1'
+                    classname='mt-3 mb-1'
                 />
                 <Input
                     type="tel"
@@ -119,7 +119,7 @@ export default function EditProfile({
                     title='Country*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 mb-1'
+                    classname='mt-3 mb-1'
                 />
                 <Select
                     options={settings?.countries}
@@ -134,7 +134,7 @@ export default function EditProfile({
                     title='Company*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 mb-1'
+                    classname='mt-3 mb-1'
                 />
                 <Input
                     type="text"
@@ -147,7 +147,7 @@ export default function EditProfile({
                     title='Designation*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 mb-1'
+                    classname='mt-3 mb-1'
                 />
                 <Input
                     type="text"
@@ -160,7 +160,7 @@ export default function EditProfile({
                     title='Role*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-2 mb-1'
+                    classname='mt-3 mb-1'
                 />
                 <Select
                     options={settings?.roles}
