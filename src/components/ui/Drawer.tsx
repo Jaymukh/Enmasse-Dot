@@ -27,7 +27,7 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                         aria-label="Close"
                     />
                 </div>
-                <div className="my-3" style={{ overflowY: 'auto', overflowX: 'hidden', height: '100%' }}>
+                <div className="my-3 h-100" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
                     {children}
                 </div>
             </div>
