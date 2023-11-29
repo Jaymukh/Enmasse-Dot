@@ -11,7 +11,7 @@ interface DrawerProps {
 
 const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, children }) => {
     return (
-        <div className={`offcanvas offcanvas-end h-100 drawer-shadow border-0 ${isOpen ? 'show' : ''}`} id={id}>
+        <div className={`offcanvas offcanvas-end h-100 drawer-shadow border-0 overflow-auto ${isOpen ? 'show' : ''}`} id={id}>
             <div>
                 <div className="d-flex flex-row justify-content-between align-items-center">
                     <Heading
