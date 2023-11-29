@@ -761,3 +761,7 @@ th {
 .width-10 {
     width: 10rem !important;
 }
+
+.green-card-sm {
+    border-radius: 0.875rem;
+}

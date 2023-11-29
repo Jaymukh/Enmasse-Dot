@@ -54,7 +54,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                         />
                         <Body
                             type={BodyType.p4}
-                            color={BodyColor.dark}
+                            color={BodyColor.secondary}
                         >
                             Annual Household Spend on Education
                         </Body>
@@ -72,7 +72,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                             />
                             <Body
                                 type={BodyType.p4}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='m-0'>
                                 Family members
                             </Body>
@@ -89,7 +89,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                             />
                             <Body
                                 type={BodyType.p4}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='m-0'>
                                 Household Spend
                             </Body>
@@ -107,7 +107,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                             />
                             <Body
                                 type={BodyType.p4}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='m-0'>
                                 Household Borrowing
                             </Body>
@@ -125,7 +125,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                             />
                             <Body
                                 type={BodyType.p4}
-                                color={BodyColor.muted}
+                                color={BodyColor.secondary}
                                 classname='m-0'>
                                 Household Income
                             </Body>
@@ -139,7 +139,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     {selectedData?.description && selectedData?.description[0]
                         && <Body
                             type={BodyType.p3}
-                            color={BodyColor.dark}
+                            color={BodyColor.secondary}
                         >
                             {selectedData?.description[0]}
                         </Body>
@@ -155,7 +155,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     {selectedData?.description && selectedData?.description[1]
                         && <Body
                             type={BodyType.p3}
-                            color={BodyColor.dark}
+                            color={BodyColor.secondary}
                         >
                             {selectedData?.description[1]}
                         </Body>

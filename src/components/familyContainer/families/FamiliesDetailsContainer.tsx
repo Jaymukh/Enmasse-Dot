@@ -111,7 +111,7 @@ const FamiliesDetailsContainer = () => {
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-4 px-0 cursor-pointer'>
-                            <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
+                            <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 mb-4 p-0' onClick={() => handleFamilyVisible(data, index)}>
                                 <img className="rounded-top" style={{ maxWidth: '100%', minHeight: '14rem' }} src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} alt={data?.familyName} />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
@@ -124,8 +124,8 @@ const FamiliesDetailsContainer = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.primary}
-                                            classname='mx-0 mb-1 bg-green-1 px-2 py-1 rounded'>
-                                            {data?.familyDetails.familyMembers ? data?.familyDetails.familyMembers : '_ _'} Members
+                                            classname='mx-0 mb-1 bg-green-1 px-2 py-1 green-card-sm'>
+                                            {data?.familyDetails.familyMembers ? data?.familyDetails.familyMembers : '_ _'} members
                                         </Body>
                                     </div>
                                     <Body
