@@ -100,7 +100,7 @@ const ExploreNow = () => {
 				variant={ButtonVariant.bordered}
 				onClick={() => handleModalOpen(true)}
 			>
-				<MdOutlineTravelExplore className='me-2 iconNextPrev' fontSize={20} />
+				<MdOutlineTravelExplore className='me-2' fontSize={20} />
 				Explore Now
 			</Button>
 			<Modal showModal={showModal} classname='width-62-5 h-100 m-5 p-1'>
