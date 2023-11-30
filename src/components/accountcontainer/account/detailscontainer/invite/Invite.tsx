@@ -67,15 +67,9 @@ export default function Invite() {
 	};
 	const handleUpdate = (updatedRow: User) => {
 		setSpinner(true);
-		debugger
 		userService.editInvite(updatedRow)
 			.then((response: any) => {
 				if (response) {
-					// setUsers((prevData) =>
-					// 	prevData.map((row) => (
-					// 		row.user_id === updatedRow.user_id ? updatedRow : row
-					// 	))
-					// );
 					setSpinner(false);
 					userService.getAll();
 					handleCloseDialog();
@@ -104,8 +98,8 @@ export default function Invite() {
 			name: undefined,
 			email_id: undefined,
 			company: undefined,
-			role: 'Admin',
-			company_type: 'Enmasse',
+			role: undefined,
+			company_type: undefined,
 		});
 	}
 
@@ -116,12 +110,10 @@ export default function Invite() {
 	const handleInputChange = (value: string) => {
 		console.log(suggestions)
 		setSuggestions([]);
-		var result = [];
-		
+		var result = [];		
 		console.log(users)
 		setSearchTerm(value);
-		if (!value) {
-			
+		if (!value) {			
 			setSuggestions([]);
 			setSearchTerm('');
 		} else {

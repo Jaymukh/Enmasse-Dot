@@ -72,9 +72,7 @@ const AccountOptions = () => {
 					bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}
 					classname=''
 				/>
-				<Button theme={ButtonTheme.primary} size={ButtonSize.default} variant={ButtonVariant.transparent} classname='' style={{ width: '2.1875rem', height: '2.1875rem' }} >
-					<IoMdArrowDropdown fontSize={22} className='mx-0 px-0' color='rgba(28, 27, 31, 1)' />
-				</Button>
+				<IoMdArrowDropdown fontSize={22} className='ms-1 px-0' color='rgba(28, 27, 31, 1)'  />
 			</div>
 
 			{Boolean(anchorEl) &&

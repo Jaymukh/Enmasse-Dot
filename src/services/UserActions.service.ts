@@ -117,7 +117,8 @@ const useUserService = () => {
     }
 
     const editInvite = (updatedUser: any) => {
-        return fetchWrapper.post(APIS.USERS.REINVITE, updatedUser)
+        var api = APIS.USERS.EDIT_INVITE + updatedUser.user_id + '/details/';
+        return fetchWrapper.put(api, updatedUser)
     }
 
     const acceptAgreement = () => {

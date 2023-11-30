@@ -7,6 +7,7 @@ const APIS: any = {
         GET_ALL_USERS: "/users/all/",
         GET_REFRESH_TOKEN: "/users/token-refresh/",
         INVITE_NEW: '/users/invite/',
+        EDIT_INVITE: '/users/update/',
         REINVITE: '/users/reinvite/',
         DELETE_INVITE: '/users/',
         SET_NEW_PASSWORD: '/users/set-new-password/',
