@@ -136,7 +136,8 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         labelKey='name'
                         valueKey='name'
                         size={SelectSize.large}
-                        name='role'
+                        name='role'                        
+                        placeholder='Select'
                     />
                     <Heading
                         title='Company Type*'
@@ -146,11 +147,13 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     />
                     <Select
                         options={settings?.company_types}
+                        onChange={(e) => handleChangeData(e)}
                         value={newData?.company_type}
                         labelKey='name'
                         valueKey='name'
                         size={SelectSize.large}
                         name='company_type'
+                        placeholder='Select'
                     />
                     <Body
                         type={BodyType.p3}

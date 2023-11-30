@@ -365,7 +365,9 @@ ul {
 }
 
 .map-container-sm {
-    width: 16.5rem;
+    /* width: 16.5rem;
+    height: 16rem; */
+    max-width: 16.5rem;
     height: 16rem;
 }
 
@@ -379,28 +381,28 @@ ul {
 }
 
 .iconNextPrev {
-    color: var(--icon-color--icon-color);
+    color: var(--icon-color);
 }
 
 .PrevBtn {
-    margin-left: -1.2rem;
+    margin-left: -1.4rem;
     background-color: var(--white-1);
     height: 2rem;
     width: 2rem;
-    margin-top: 2rem;
     border-style: outset;
+    border-radius: 1rem;
     border-color: var(--black-1);
     border-width: 2px;
     opacity: unset;
 }
 
 .NextBtn {
-    margin-right: -1.2rem;
+    margin-right: -1.4em;
     background-color: var(--white-1);
     height: 2rem;
     width: 2rem;
-    margin-top: 2rem;
     border-style: outset;
+    border-radius: 1rem;
     border-color: var(--black-1);
     border-width: 2px;
     opacity: unset;

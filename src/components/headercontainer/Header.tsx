@@ -15,8 +15,7 @@ function Header() {
 	const navigate = useNavigate();
 	const onLogoClick = () => {
 		navigate(`${RouteConstants.root}?country=1`);
-	}
-	
+	}	
 
 	const [open, setOpen] = useState(false);
 	const [text, setText] = useState<{title: string, description: string}>({title: '', description: ''});

@@ -95,7 +95,7 @@ const FamiliesDetailsContainer = () => {
     }, [paginationData])
 
     return (
-        <div className='col-9 ps-4 mb-5 py-0 h-100'>
+        <div className='col-lg-9 col-md-8 col-sm-12 ps-4 mb-5 py-0 h-100'>
             <div className="d-flex flex-row justify-content-between align-items-center">
                 <Heading
                     title={`Families ${stories?.properties?.name ? `in ${stories?.properties?.name}` : ''}`}
@@ -108,7 +108,7 @@ const FamiliesDetailsContainer = () => {
             <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflow: 'auto' }}>
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
-                        <div className='col-4 px-0 cursor-pointer'>
+                        <div className='col-lg-4 col-md-6 col-sm-12 px-0 cursor-pointer'>
                             <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
                                 <img className="rounded-top" style={{ maxWidth: '100%', minHeight: '14rem' }} src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} alt={data?.familyName} />
                                 <div className="text-start p-3">

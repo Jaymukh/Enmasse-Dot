@@ -20,7 +20,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
         mapServices?.getCifData(Number(searchParams.get('geo_code')!));
     }, []);
     return (
-        <div className='col-6 py-2 my-3 no-scrollbar' style={{ height: '98%', overflow: 'auto' }}>
+        <div className='col-lg-6 col-md-8 col-sm-12 py-2 my-3 no-scrollbar' style={{ height: '98%', overflow: 'auto' }}>
             <Card size={CardSize.default} variant={CardVariant.bordered} classname='mb-5 mt-1 p-3'>
                 <div className='d-flex flex-row justify-content-between pb-1'>
                     <div className="d-flex flex-column align-items-start justify-content-start text-start">

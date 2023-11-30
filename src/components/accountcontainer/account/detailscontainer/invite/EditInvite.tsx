@@ -48,7 +48,6 @@ const EditInvite: React.FC<EditInviteProps> = ({
         const value = e.target.value;
         setUpdatedData({ ...updatedData, [name]: value });
     }
-
     const handleUpdateClick = () => {
         if (updatedData.name && updatedData.email_id && updatedData.company && updatedData.role && updatedData.company_type) {
             handleUpdate(updatedData);
@@ -113,6 +112,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                     />
                     <Select
                         options={settings?.company_types}
+                        onChange={(e) => handleChangeData(e)}
                         value={updatedData?.company_type}
                         labelKey='name'
                         valueKey='name'

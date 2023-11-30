@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/main.css';
 import * as Constants from '../../utils/constants/Constants';
 import { MdLogout } from 'react-icons/md';
+import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
 import { loggedUserState } from '../../states';
@@ -63,13 +64,19 @@ const AccountOptions = () => {
 
 	return (
 		<div className='account-menu' ref={menuRef}>
-			<ButtonAvatar
-				onClick={handleClick}
-				image={loggedUser?.profile_picture}
-				initial={loggedUser.initial}
-				bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}
-				classname=''
-			/>
+			<div className='d-flex flex-row justify-content-center align-items-center' onClick={handleClick}>
+				<ButtonAvatar
+					// onClick={handleClick}
+					image={loggedUser?.profile_picture}
+					initial={loggedUser.initial}
+					bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}
+					classname=''
+				/>
+				<Button theme={ButtonTheme.primary} size={ButtonSize.default} variant={ButtonVariant.transparent} classname='' style={{ width: '2.1875rem', height: '2.1875rem' }} >
+					<IoMdArrowDropdown fontSize={22} className='mx-0 px-0' color='rgba(28, 27, 31, 1)' />
+				</Button>
+			</div>
+
 			{Boolean(anchorEl) &&
 				(<ul className='account-menu-dropdown '>
 					<li className='menu-item fs-16' onClick={(event) => handleClickMenuItem(event, 'profile')}>

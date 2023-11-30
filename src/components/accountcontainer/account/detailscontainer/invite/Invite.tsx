@@ -35,8 +35,8 @@ export default function Invite() {
 		name: undefined,
 		email_id: undefined,
 		company: undefined,
-		role: 'Admin',
-		company_type: 'Enmasse',
+		role: undefined,
+		company_type: undefined,
 	});
 
 	// all user's data
@@ -66,14 +66,15 @@ export default function Invite() {
 	};
 	const handleUpdate = (updatedRow: User) => {
 		setSpinner(true);
+		debugger
 		userService.editInvite(updatedRow)
 			.then((response: any) => {
 				if (response) {
-					setUsers((prevData) =>
-						prevData.map((row) => (
-							row.user_id === updatedRow.user_id ? updatedRow : row
-						))
-					);
+					// setUsers((prevData) =>
+					// 	prevData.map((row) => (
+					// 		row.user_id === updatedRow.user_id ? updatedRow : row
+					// 	))
+					// );
 					setSpinner(false);
 					userService.getAll();
 					handleCloseDialog();
@@ -108,23 +109,57 @@ export default function Invite() {
 
 	// searchbar function
 	const [searchTerm, setSearchTerm] = useState('');
-	const [suggestions, setSuggestions] = useState<User[]>([]);
+	var [suggestions, setSuggestions] = useState<User[]>([]);
 
 	const handleInputChange = (value: string) => {
-		setSearchTerm(value.toLowerCase());
-		const filteredSuggestions = users?.filter(data =>
-			Object.values(data).some(prop =>
-				prop && prop.toString().toLowerCase().includes(searchTerm)
-			)
-		);
-		setSuggestions(filteredSuggestions);
+		console.log(suggestions)
+		setSuggestions([]);
+		var result = [];
+		
+		console.log(users)
+		setSearchTerm(value);
+		if (!value) {
+			
+			setSuggestions([]);
+			setSearchTerm('');
+		} else {
+			const lowercasedValue = value.toLowerCase();
+			 result = users?.filter((item: any) => {
+				const lowercasedName = item?.name?.toLowerCase();
+				const lowercasedEmail = item?.email_id?.toLowerCase();
+				const lowercasedRole = item?.role?.toLowerCase();
+				const lowercasedCompany = item?.company?.toLowerCase();
+				const lowercasedCompanyType = item?.company_type?.toLowerCase();
+				
+
+				return (
+					lowercasedName.includes(lowercasedValue) ||
+					lowercasedEmail.includes(lowercasedValue) ||
+					lowercasedRole.includes(lowercasedValue) ||
+					lowercasedCompany.includes(lowercasedValue) ||
+					lowercasedCompanyType.includes(lowercasedValue)
+				);
+			});
+			if (!result || result.length === 0) {
+				setSuggestions([]);
+			}
+			else {
+				setSuggestions(result);
+			}
+		}
 	};
+	// useEffect(() => {
+	// 	if (users && users.length > 0) {
+	// 		setSuggestions([...users])
+	// 	}
+	// }, [users])
 
 	// Confirm Delete Model
 	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
 		setShowConfirmDeleteModal(showConfirmDeleteModal);
 		setSelectedUserId(user_id);
 	};
+
 	const closeConfirmDeleteModal = () => {
 		setShowConfirmDeleteModal(false);
 	};
@@ -146,6 +181,8 @@ export default function Invite() {
 				setError({ type: 'Error', message: errorMsg });
 			});
 	};
+
+	console.log(suggestions)
 
 	return (
 		<div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
@@ -192,8 +229,8 @@ export default function Invite() {
 								</tr>
 							</thead>
 							<tbody>
-								{suggestions.length > 0 ? (
-									suggestions.map((row) => (
+								{(searchTerm && (suggestions?.length > 0))
+									? (suggestions.map((row) => (
 										<tr
 											key={row.name}
 											className='table-row-height'
@@ -202,7 +239,7 @@ export default function Invite() {
 												<Body
 													color={BodyColor.muted}
 													type={BodyType.p3}
-													>
+												>
 													{row.email_id}
 												</Body>
 											</td>
@@ -227,47 +264,55 @@ export default function Invite() {
 													<MdDeleteSweep fontSize={20} />
 												</Button>
 											</td>
-										</tr>
-
-									))
-								) : (
-									users.map((row) => (
-										<tr
-											key={row.name}
-											className='table-row-height'
-										>
-											<td className='text-start fs-14'>{row.name}<br />
-											<Body
-													color={BodyColor.muted}
-													type={BodyType.p3}
-													>
-													{row.email_id}
-												</Body>
+										</tr>))
+									)
+									: ((searchTerm && (suggestions.length === 0))
+										? (<tr>
+											<td colSpan={5} className='text-center fs-14'>
+												No matches found!
 											</td>
-											<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
-											<td className='text-center fs-14'>{row.company}</td>
-											<td className='text-center fs-14'>{row.company_type}</td>
-											<td className='text-center'>
-												<Button
-													theme={ButtonTheme.muted}
-													size={ButtonSize.default}
-													variant={ButtonVariant.transparent}
-													onClick={() => handleEditClick(row)}
+										</tr>)
+										: (
+											users?.map((row) => (
+												<tr
+													key={row.name}
+													className='table-row-height'
 												>
-													<MdModeEdit fontSize={20} />
-												</Button>
-												<Button
-													theme={ButtonTheme.warning}
-													size={ButtonSize.default}
-													variant={ButtonVariant.transparent}
-													onClick={() => openConfirmDeleteModal(true, row.user_id)}
-												>
-													<MdDeleteSweep fontSize={20} />
-												</Button>
-											</td>
-										</tr>
-									))
-								)}
+													<td className='text-start fs-14'>{row.name}<br />
+														<Body
+															color={BodyColor.muted}
+															type={BodyType.p3}
+														>
+															{row.email_id}
+														</Body>
+													</td>
+													<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
+													<td className='text-center fs-14'>{row.company}</td>
+													<td className='text-center fs-14'>{row.company_type}</td>
+													<td className='text-center'>
+														<Button
+															theme={ButtonTheme.muted}
+															size={ButtonSize.default}
+															variant={ButtonVariant.transparent}
+															onClick={() => handleEditClick(row)}
+														>
+															<MdModeEdit fontSize={20} />
+														</Button>
+														<Button
+															theme={ButtonTheme.warning}
+															size={ButtonSize.default}
+															variant={ButtonVariant.transparent}
+															onClick={() => openConfirmDeleteModal(true, row.user_id)}
+														>
+															<MdDeleteSweep fontSize={20} />
+														</Button>
+													</td>
+												</tr>
+											))
+										)
+									)
+								}
+								
 							</tbody>
 						</table>
 					</div>}
