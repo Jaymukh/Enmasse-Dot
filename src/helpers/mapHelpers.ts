@@ -15,7 +15,7 @@ const useMapHelpers = () => {
             }
             return value;
         }
-        return '__';
+        return '--';
     };
 
     const getSelectedObject = () => {

@@ -169,7 +169,7 @@ const StateMap: React.FC<StateMapProps> = ({
                             fillColor: '#FFFFFF',
                             strokeColor: '#FFFFFF',
                             strokeOpacity: 1,
-                            strokeWeight: 1,
+                            strokeWeight: 2,
                             zIndex: 100,
                             map: map,
                         });

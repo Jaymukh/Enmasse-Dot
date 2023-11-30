@@ -25,11 +25,11 @@ function App() {
 			<Spinner />
 			<Toast />
 			<BrowserRouter>
-				<Provider config={rollbarConfig}>
-					<ErrorBoundary>
+				{/* <Provider config={rollbarConfig}>
+					<ErrorBoundary> */}
 						<Router />
-					</ErrorBoundary>
-				</Provider>
+					{/* </ErrorBoundary>
+				</Provider> */}
 			</BrowserRouter>
 		</div>
 	);

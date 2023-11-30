@@ -180,7 +180,7 @@ export default function Login() {
                                     classname='eye-icon'
                                     onClick={toggleVisibility}
                                 >
-                                    {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}                                    
+                                    {isVisible ? <FaEye fontSize={22} /> : <FaEyeSlash fontSize={22} />}
                                 </Body>
                             </div>
                             {errors?.password?.message
@@ -200,12 +200,12 @@ export default function Login() {
                                 theme={ButtonTheme.primary}
                                 variant={ButtonVariant.bordered}
                             >
-                                {isSubmitting 
-                                && <Body
-                                type={BodyType.p3}
-                                color={BodyColor.dark}
-                                classname='spinner-border spinner-border-sm me-3'
-                            />
+                                {isSubmitting
+                                    && <Body
+                                        type={BodyType.p3}
+                                        color={BodyColor.dark}
+                                        classname='spinner-border spinner-border-sm me-3'
+                                    />
                                 }Login
                             </Button>
                         </form>

@@ -43,7 +43,7 @@ const FamilyDetails = () => {
     return (
         <div className='mx-0'>
             <div className='row d-flex justify-content-between align-items-center py-2 m-0'>
-                <div className='col-4 p-0'>
+                <div className='col-xl-4 col-lg-4 col-md-4 col-sm-12 p-0'>
                     <Heading
                         title={properties?.name}
                         type={TypographyType.h4}
@@ -52,7 +52,7 @@ const FamilyDetails = () => {
                     />
                 </div>
                 {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
-                    <div className='col-5 d-flex align-items-center justify-content-around py-2 coverage-div'>
+                    <div className='co-xll-5 col-lg-5 col-md-6 col-sm-12 d-flex align-items-center justify-content-around py-2 coverage-div'>
                         <Heading
                             title='EI Coverage'
                             colour={TypographyColor.dark}
@@ -70,8 +70,8 @@ const FamilyDetails = () => {
                     </div>}
             </div>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
-                <img className='col-2 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
-                <div className='col-10 white-bg py-4 px-4 rounded-end'>
+                <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
+                <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 white-bg py-4 px-4 rounded-end'>
                     <div className='d-flex flex-row mb-2'>
                         <Heading
                             title={familyDetails?.familyName}

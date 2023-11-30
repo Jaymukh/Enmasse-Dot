@@ -46,31 +46,31 @@ const DashBoard = () => {
 
     return (
         <div className='row w-100 primary-bg m-0 px-4 pb-5 mb-5' style={{ height: '100vh', overflow: 'auto' }}>
-            <div className='col-12 p-0 my-2'>
+            <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2'>
                 <FamilyDetails />
             </div>
-            <div className='col-5 p-0 my-2'>
+            <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 p-0 my-2'>
                 <OverViewMap />
             </div>
-            <div className='col-7 p-0 my-2 d-flex flex-column justify-content-between'>
+            <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 p-0 my-2 d-flex flex-column justify-content-between'>
                 <LineGraph classname='mb-3' category='EH Growth' graphData={cifData?.ehGrowthGraphData?.ehGrowth} />
                 <LineGraph category='Average EH Transactional Value' graphData={cifData?.ehGrowthGraphData?.averageEhTransactionalValue} />
             </div>
-            <div className='col-5 p-0 my-2'>
+            <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 p-0 my-2'>
                 <BubbleGraph />
             </div>
-            <div className='col-7 p-0 my-2'>
+            <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 p-0 my-2'>
                 <BarGraphContainer />
             </div>
             {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
-                <div className='col-12 p-0 my-2'>
+                <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2'>
                     <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo?.data} breakdownType={cifData?.geoInfo?.breakdownType} />
                 </div>}
-            <div className={`col-12 p-0 my-2 ${(mapFeatures?.cifData?.properties?.geo_name === 'district' ? 'mb-5' : '')}`}>
+            <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 ${(mapFeatures?.cifData?.properties?.geo_name === 'district' ? 'mb-5' : '')}`}>
                 <ScatterGraph geoName={mapFeatures?.cifData?.properties?.geo_name} />
             </div>
             {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
-                <div className='col-12 p-0 my-2 mb-5 pb-5'>
+                <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 mb-5 pb-5'>
                     <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} breakdownType={cifData?.metricBreakdownInfo?.breakdownType} />
                 </div>}
         </div>

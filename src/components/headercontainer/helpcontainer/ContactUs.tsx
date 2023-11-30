@@ -7,7 +7,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
 import { useCIFService } from '../../../services';
 import { Heading, TypographyType, TypographyColor } from '../../ui/typography/Heading';
-import Body, {BodyType, BodyColor} from '../../ui/typography/Body';
+import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import { rollbar } from '../../../constants';
 
 interface ContactUsProps {

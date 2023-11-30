@@ -44,11 +44,11 @@ const OverViewMap = () => {
                     classname='pb-2 text-start ps-1'
                 />
                 <div className='row d-flex justify-content-between px-1'>
-                    <div className="col-7 d-flex flex-column align-items-center justify-content-center static-map">
+                    <div className="col-xl-7 col-lg-7 col-md-9 d-flex flex-column align-items-center justify-content-center static-map">
                         <StaticMap noMarkers={true} />
                         <Legend classname='mt-2' />
                     </div>
-                    <div className='col-5 d-flex flex-column'>
+                    <div className='col-xl-5 col-lg-5 col-md-3 d-flex flex-column'>
                         {cardData.map((item: any, index: number) => <StatisticsCard data={item} index={index} />)}
                     </div>
                 </div>

@@ -62,7 +62,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
     const validationOptions = [
         { key: 'lengthCheck', text: '8 Characters' },
         { key: 'specialChar', text: 'Contains Special character' },
-        { key: 'uppercase', text: 'Contains Uppercase' },        
+        { key: 'uppercase', text: 'Contains Uppercase' },
         { key: 'number', text: 'Contains Number' },
     ];
 

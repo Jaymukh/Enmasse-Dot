@@ -205,7 +205,7 @@ export default function Invite() {
 												<Body
 													color={BodyColor.muted}
 													type={BodyType.p3}
-													>
+												>
 													{row.email_id}
 												</Body>
 											</td>
@@ -240,10 +240,10 @@ export default function Invite() {
 											className='table-row-height'
 										>
 											<td className='text-start fs-14'>{row.name}<br />
-											<Body
+												<Body
 													color={BodyColor.muted}
 													type={BodyType.p3}
-													>
+												>
 													{row.email_id}
 												</Body>
 											</td>

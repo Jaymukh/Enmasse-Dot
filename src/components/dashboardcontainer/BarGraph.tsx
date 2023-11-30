@@ -49,7 +49,7 @@ const BarGraph: React.FC<BarGraphProps> = ({ selected }) => {
                 borderColor: '#108041',
                 borderWidth: 0,
                 borderRadius: 5,
-                barPercentage: 0.3, //previously it was 0.6
+                barPercentage: 0.6, //previously it was 0.6
             },
         ],
     };

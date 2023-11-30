@@ -28,7 +28,7 @@ const useUserService = () => {
                 const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.root : location.pathname;
                 if (user.is_first_login) {
                     setOverlay(true);
-                    acceptAgreement();                    
+                    acceptAgreement();
                 }
                 navigate({
                     pathname: from,
@@ -66,14 +66,14 @@ const useUserService = () => {
 
     const getAll = () => {
         return fetchWrapper.get(APIS.USERS.GET_ALL_USERS).then(response => {
-			setUsers(response);
-			setSpinner(false);
-		}).catch(error => {
-			setSpinner(false);
-			const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-			setError({ type: 'Error', message: errorMsg });
+            setUsers(response);
+            setSpinner(false);
+        }).catch(error => {
+            setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
             rollbar.error(error);
-		})
+        })
     };
 
     const getUserDetails = () => {
@@ -91,7 +91,7 @@ const useUserService = () => {
                 rollbar.error(error);
             });
     };
-    
+
     const updateUserDetails = (updatedData: any) => {
         return fetchWrapper.put(APIS.USERS.UPDATE_LOGGED_USER, updatedData);
     }

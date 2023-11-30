@@ -34,6 +34,7 @@ const BarGraphContainer = () => {
         }
 
     }, [coreSolutionsData?.coreSolutionsByEH]);
+    console.log(coreSolutionsData?.coreSolutionsByEH)
     return (
         <div className='h-100'>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>

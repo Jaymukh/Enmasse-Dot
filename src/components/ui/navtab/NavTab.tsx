@@ -7,7 +7,6 @@ interface NavTabProps {
 }
 
 const NavTab: React.FC<NavTabProps> = ({ navItems, selected, handleTabClick }) => {
-    // console.log(selected?.coreSolution, navItems)
     return (
         <ul className="nav nav-tabs" id="myTabs" role="tablist">
             {navItems?.map((item: any, index: number) => (

@@ -160,15 +160,15 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         type={TypographyType.h6}
                         classname='Note'
                     />
-                        <Button
-                            theme={ButtonTheme.primary}
-                            size={ButtonSize.large}
-                            variant={ButtonVariant.bordered}
-                            onClick={() => handleSubmitInviteNew()}
-                            classname='my-3 height-3'
-                        >
-                            Invite
-                        </Button>
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.large}
+                        variant={ButtonVariant.bordered}
+                        onClick={() => handleSubmitInviteNew()}
+                        classname='my-3 height-3'
+                    >
+                        Invite
+                    </Button>
                 </div>
             </Drawer>
 

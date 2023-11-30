@@ -40,14 +40,17 @@ export interface ehGrowthGraphDataProps {
 }
 
 export interface inOutFlowDataProps {
-    geoId: number,
-    parentId: number,
-    geoValue: string,
-    dataPeriod: string,
-    medianAnnualIncome: number | null,
-    medianAnnualBorrow: number | null,
-    outflow: number | null,
-    inflow: number | null
+    show: boolean;
+    data: {
+        geoId: number,
+        parentId: number,
+        geoValue: string,
+        dataPeriod: string,
+        medianAnnualIncome: number | null,
+        medianAnnualBorrow: number | null,
+        outflow: number | null,
+        inflow: number | null
+    }[]
 }
 
 export interface coreSolutionDataProps {
@@ -65,7 +68,7 @@ export interface CoreSolutionByEH {
     pointsOfInterest: number;
     percentageContribution: number;
     subcategory: Subcategory[];
-    color?: string | undefined;    
+    color?: string | undefined;
 }
 
 export interface Subcategory {
@@ -77,7 +80,7 @@ export interface cifProps {
     geoInfo: geoInfoProps;
     metricBreakdownInfo: metricBreakdownInfoProps;
     ehGrowthGraphData: ehGrowthGraphDataProps;
-    inOutFlowData: inOutFlowDataProps[];
+    inOutFlowData: inOutFlowDataProps;
     coreSolutionsData: coreSolutionDataProps;
 }
 

@@ -133,7 +133,7 @@ const DistrictSidebar = () => {
                         />
                         <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
                     </div>
-                    <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
+                    <div className='row data-card d-flex flex-row mx-0 mt-2 mb-3 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-green'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}
@@ -178,9 +178,10 @@ const DistrictSidebar = () => {
                         </div>
                     </div>
                 </div>
+                <hr className='m-0 data-card'/>
                 {properties?.showExploreMore ?
-                    <div className='m-0 p-0'>
-                        {properties?.EICoverage && (properties?.geo_name !== 'district') && <div className='row data-card d-flex flex-row mx-0 my-2 px-2 pt-2 pb-3'>
+                    <div className='m-0 mt-1 p-0'>
+                        {properties?.EICoverage && (properties?.geo_name !== 'district') && <div className='row data-card d-flex flex-row mx-0 mb-2 mt-3 px-2 pt-2 pb-3'>
                             <div className='d-flex justify-content-between align-items-center m-0 p-0 pb-2'>
                                 <div className='d-flex justify-content-start align-items-center m-0 p-0'>
                                     <Heading

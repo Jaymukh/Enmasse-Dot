@@ -72,7 +72,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
     }
 
     const calculateMedian = (keyName: 'outflow' | 'inflow') => {
-        const filteredData = inOutFlowData.filter(item => item[keyName] !== null);
+        const filteredData = inOutFlowData?.data.filter((item: any) => item[keyName] !== null);
         if (filteredData.length === 0) {
             return 0;
         }
@@ -87,12 +87,12 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
     }
 
     useEffect(() => {
-        if (inOutFlowData && inOutFlowData.length > 0) {
+        if (inOutFlowData?.data && inOutFlowData?.data.length > 0) {
             const x = calculateMedian('outflow');
             const y = calculateMedian('inflow');
             setCenter({ x: x, y: y })
         }
-    }, [inOutFlowData])
+    }, [inOutFlowData?.data])
 
     return (
         <div className={`h-100 ${geoName === 'district' ? 'mb-5 pb-5' : ''}`}>
@@ -115,12 +115,12 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                             labelKey='value'
                             valueKey='value'
                             size={SelectSize.small}
-                            disabled={inOutFlowData?.length > 0 ? false : true}
+                            disabled={inOutFlowData?.data?.length > 0 ? false : true}
                         />
                     </div>
                 </div>
 
-                {inOutFlowData?.length > 0
+                {inOutFlowData?.data?.length > 0
                     ? <ScatterChart width={1275} height={429} margin={{ top: 60, right: 20, bottom: 20, left: 20 }} className='px-1'>
                         <defs>
                             <ArrowMarker />
@@ -135,7 +135,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                             <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: 5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10} />
                         </YAxis>
                         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                        <Scatter data={inOutFlowData} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
+                        <Scatter data={inOutFlowData?.data} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
 
                         <ReferenceLine x={center.x ? center.x : 0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
                         <ReferenceLine y={center.y ? center.y : 0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
