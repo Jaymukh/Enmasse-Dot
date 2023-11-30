@@ -2,8 +2,8 @@
 // External libraries
 import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { PiArrowRightBold } from 'react-icons/pi';
+import { useNavigate } from 'react-router-dom';
+import { LiaArrowRightSolid } from 'react-icons/lia';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 // CSS
@@ -23,18 +23,6 @@ import WIPImage from '../../../utils/images/work_in_progress.svg';
 import { RouteConstants } from '../../../constants';
 import { useSettingsService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
-
-
-const options = [
-    {
-        currency: "US Dollar",
-        symbol: "$"
-    },
-    {
-        currency: "Indian Rupee",
-        symbol: '₹'
-    }
-];
 
 const DistrictSidebar = () => {
     const navigate = useNavigate();
@@ -542,7 +530,7 @@ const DistrictSidebar = () => {
                     classname='my-4 w-100'
                 >
                     Explore More
-                    <PiArrowRightBold className='ms-2' />
+                    <LiaArrowRightSolid className='ms-2' fontSize={22} />
                 </Button>
             </div>
             {requestDataDrawerOpen && <RequestData requestDataDrawerOpen={requestDataDrawerOpen} handleRequestDataDrawer={handleRequestDataDrawer} />}

@@ -2,10 +2,10 @@ import '../../styles/main.css';
 import React, { ChangeEvent, useState } from "react";
 import * as Constants from '../../utils/constants/Constants';
 import Switch from '../ui/switch/Switch';
-import { BsFillChatLeftTextFill } from 'react-icons/bs';
+import { MdChat } from "react-icons/md";
 import { MdLayers } from 'react-icons/md';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { IoIosArrowForward } from 'react-icons/io';
+import { IoChevronForwardSharp } from 'react-icons/io5';
 import { PiRadioButtonLight } from 'react-icons/pi';
 import { Legend } from '../ui/legend/Legend';
 import { mapFeatureState } from '../../states';
@@ -90,7 +90,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 }
                 <div className={`d-flex justify-content-between align-items-center bg-white mt-3 px-2 py-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center'>
-                        <BsFillChatLeftTextFill className='' fontSize={20} />
+                        <MdChat className='' fontSize={20} />
                         <Heading
                             title='View Stories'
                             type={TypographyType.h4}
@@ -123,7 +123,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         onClick={() => handleRequestLayersDrawer(true)}
                         classname='h-auto p-0'
                     >
-                        <IoIosArrowForward fontSize={22} />
+                        <IoChevronForwardSharp fontSize={22} />
                     </Button>
                 </div>
             </div>
