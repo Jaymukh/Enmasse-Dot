@@ -536,10 +536,10 @@ const DistrictSidebar = () => {
                 <Button
                     disabled={!properties?.showExploreMore}
                     theme={ButtonTheme.primary}
-                    size={ButtonSize.large}
+                    size={ButtonSize.small}
                     variant={ButtonVariant.bordered}
                     onClick={() => handleExploreMore(properties?.geo_id)}
-                    classname='height-3 my-4'
+                    classname='my-4 w-100'
                 >
                     Explore More
                     <PiArrowRightBold className='ms-2' />

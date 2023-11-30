@@ -70,7 +70,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         {options?.map((option: Option) => (
                             <div className="d-flex flex-row justify-content-start my-2 ms-1" key={option.label}>
                                 <input
-                                    className="me-2 input-rb mt-1"
+                                    className="me-2 input-rb"
                                     size={1.5}
                                     type="radio"
                                     value={option.key}

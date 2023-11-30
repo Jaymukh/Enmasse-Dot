@@ -149,7 +149,7 @@ const Settings = () => {
                         type={TypographyType.h5}
                         classname='mt-2 text-start'
                     />
-                    <div className={`d-flex justify-content-between align-items-center px-2 py-2 input-div ${!editMode ? 'disabled-div' : ''}`} aria-disabled={true}>
+                    <div className={`d-flex justify-content-between align-items-center px-2 py-2 input-div disabled-div`} aria-disabled={true}>
                         <Body
                             type={BodyType.p2}
                             color={BodyColor.dark}
