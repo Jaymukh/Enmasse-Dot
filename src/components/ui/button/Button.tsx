@@ -30,6 +30,7 @@ interface ButtonProps {
     size?: ButtonSize,
     theme?: ButtonTheme,
     classname?: string,
+    style?: any,
     disabled?: boolean,
     children?: React.ReactNode,
     type?: "button" | "submit" | "reset";
@@ -93,7 +94,8 @@ export const Button = ({
     disabled,
     children,
     type,
-    classname
+    classname,
+    style
 }: ButtonProps) => {
     return (
         <button
@@ -101,6 +103,7 @@ export const Button = ({
             onClick={onClick}
             disabled={disabled}
             type={type}
+            style={style}
         >
             {children}
         </button>

@@ -393,7 +393,9 @@ ul {
 }
 
 .map-container-sm {
-    width: 16.5rem;
+    /* width: 16.5rem;
+    height: 16rem; */
+    max-width: 16.5rem;
     height: 16rem;
 }
 
@@ -415,8 +417,8 @@ ul {
     background-color: var(--white-1);
     height: 2rem;
     width: 2rem;
-    margin-top: 2rem;
     border-style: outset;
+    border-radius: 1rem;
     border-color: var(--black-1);
     border-width: 2px;
     opacity: unset;
@@ -427,8 +429,8 @@ ul {
     background-color: var(--white-1);
     height: 2rem;
     width: 2rem;
-    margin-top: 2rem;
     border-style: outset;
+    border-radius: 1rem;
     border-color: var(--black-1);
     border-width: 2px;
     opacity: unset;

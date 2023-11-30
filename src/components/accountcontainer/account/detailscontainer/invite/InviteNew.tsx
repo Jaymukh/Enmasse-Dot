@@ -133,11 +133,13 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     />
                     <Select
                         options={settings?.company_types}
+                        onChange={(e) => handleChangeData(e)}
                         value={newData?.company_type}
                         labelKey='name'
                         valueKey='name'
                         size={SelectSize.large}
                         name='company_type'
+                        placeholder='Select'
                     />
                     <Heading
                         title='Role*'
@@ -152,14 +154,15 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         labelKey='name'
                         valueKey='name'
                         size={SelectSize.large}
-                        name='role'
+                        name='role'                        
+                        placeholder='Select'
                     />
                     <Heading
                         title='Note: Admins will be able to invite users to the platform'
                         colour={TypographyColor.dark}
                         type={TypographyType.h6}
                         classname='Note'
-                    />
+                    />                    
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}

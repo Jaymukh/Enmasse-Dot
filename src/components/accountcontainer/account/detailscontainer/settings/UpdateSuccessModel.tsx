@@ -22,15 +22,6 @@ const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, hand
     return (
         <>
             <Modal showModal={showModal} classname='width-30' >
-                <div className='d-flex flex-row justify-content-end'>
-                    <Button
-                        theme={ButtonTheme.primary}
-                        size={ButtonSize.default}
-                        variant={ButtonVariant.transparent}
-                        onClick={() => handleShowModal(false, false)}
-                        classname='btn-close'
-                    />
-                </div>
                 <div className='d-flex justify-content-center'>
                     <img src={CheckGIF} alt="Created Successfully GIF" height={200} width={200} ></img>
                 </div>
