@@ -129,6 +129,7 @@ export default function EditProfile({
                     size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
                     name='company_type'
+                    classname='px-3'
                 />
                 <Heading
                     title='Company*'
@@ -171,6 +172,7 @@ export default function EditProfile({
                     onChange={(e) => handleChangeData(e)}
                     name='role'
                     disabled={true}
+                    classname='px-3'
                 />
                 <Button
                     theme={ButtonTheme.primary}

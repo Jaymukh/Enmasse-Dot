@@ -310,7 +310,7 @@ const DistrictSidebar = () => {
                                         type={BodyType.p4}
                                         color={BodyColor.secondary}
                                         classname='m-0'>
-                                        Average Annual EH Spend
+                                        Average Annual EH Spend on Core Solutions
                                     </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
@@ -479,7 +479,7 @@ const DistrictSidebar = () => {
                                         type={BodyType.p4}
                                         color={BodyColor.dark}
                                         classname='m-0'>
-                                        Average Annual EH Income from Variable Sources
+                                        Average Annual EH Income from Formal Sources
                                     </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
