@@ -23,7 +23,7 @@ import familySkeleton from '../../utils/images/family-skeleton.png';
 const FamilyDetails = () => {
     const navigate = useNavigate();
     const mapFeatures = useRecoilValue(mapFeatureState);
-    const { getCurrencyWithSymbol } = useMapHelpers();
+    const { getCurrencyWithSymbol, getCoreSolutions } = useMapHelpers();
 
     const { family, properties } = useRecoilValue(storiesState);
     const [familyDetails, setFamilyDetails] = useState<any>({});
@@ -86,20 +86,22 @@ const FamilyDetails = () => {
                             {familyDetails?.address}
                         </Body>
                     </div>
+                    {getCoreSolutions(familyDetails?.familyDetails)?.name && 
                     <div className='d-flex flex-row mb-2'>
                         <Body
                             type={BodyType.p2}
                             color={BodyColor.primary}
                             classname='text-center'>
-                            {getCurrencyWithSymbol(familyDetails?.familyDetails?.spendOnEducation, familyDetails?.familyDetails?.spendOnEducationUOM)}
+                            {getCoreSolutions(familyDetails?.familyDetails)?.value}
                         </Body>
                         <Body
                             type={BodyType.p4}
                             color={BodyColor.muted}
                             classname='ms-2 me-4 mt-1'>
-                            Annual Household Spend on Education
+                            Annual Household Spend on {getCoreSolutions(familyDetails?.familyDetails)?.name}
                         </Body>
                     </div>
+}
                     <Body
                         type={BodyType.p3}
                         color={BodyColor.dark}

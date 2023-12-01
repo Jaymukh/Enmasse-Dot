@@ -19,7 +19,7 @@ interface FamilyDetailsContainerProps {
 }
 
 const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
-    const { getCurrencyWithSymbol } = useMapHelpers();
+    const { getCurrencyWithSymbol, getCoreSolutions } = useMapHelpers();
     const [searchParams, setSearchParams] = useSearchParams();
     const mapServices = useMapsService();
 
@@ -45,19 +45,22 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                         </Body>
                     </div>
                     <div className="d-flex flex-column align-items-end justify-content-start  text-end">
-                        {/* heading will come here */}
-                        <Heading
-                            title={getCurrencyWithSymbol(selectedData?.familyDetails?.spendOnEducation, selectedData?.familyDetails?.spendOnEducationUOM)}
-                            type={TypographyType.h5}
-                            colour={TypographyColor.primary}
-                            classname='me-1 my-0'
-                        />
-                        <Body
-                            type={BodyType.p4}
-                            color={BodyColor.secondary}
-                        >
-                            Annual Household Spend on Education
-                        </Body>
+                        {getCoreSolutions(selectedData?.familyDetails)?.name &&
+                            <>
+                                <Heading
+                                    title={getCoreSolutions(selectedData?.familyDetails)?.value}
+                                    type={TypographyType.h5}
+                                    colour={TypographyColor.primary}
+                                    classname='me-1 my-0'
+                                />
+                                <Body
+                                    type={BodyType.p4}
+                                    color={BodyColor.secondary}
+                                >
+                                    Annual Household Spend on {getCoreSolutions(selectedData?.familyDetails)?.name}
+                                </Body>
+                            </>
+                        }
                     </div>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-between my-2">
@@ -105,20 +108,20 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                             Household Borrowing
                         </Body>
                     </div>
-                        <div className="d-flex flex-row align-items-center">
-                            <Heading
-                                title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdIncome, selectedData?.familyDetails?.incomeUOM)}
-                                type={TypographyType.h5}
-                                colour={TypographyColor.dark}
-                                classname='m-0 me-1'
-                            />
-                            <Body
-                                type={BodyType.p4}
-                                color={BodyColor.secondary}
-                                classname='m-0'>
-                                Household Income
-                            </Body>
-                        </div >
+                    <div className="d-flex flex-row align-items-center">
+                        <Heading
+                            title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdIncome, selectedData?.familyDetails?.incomeUOM)}
+                            type={TypographyType.h5}
+                            colour={TypographyColor.dark}
+                            classname='m-0 me-1'
+                        />
+                        <Body
+                            type={BodyType.p4}
+                            color={BodyColor.secondary}
+                            classname='m-0'>
+                            Household Income
+                        </Body>
+                    </div >
                 </div >
                 <div className="card-body text-start">
                     {selectedData?.image && selectedData?.image[0] &&

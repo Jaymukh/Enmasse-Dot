@@ -29,7 +29,7 @@ const FamiliesDetailsContainer = () => {
     const storiesService = useStoriesService();
     const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
-    const { getCurrencyWithSymbol, getSelectedObject } = useMapHelpers();
+    const { getCurrencyWithSymbol, getSelectedObject, getCoreSolutions } = useMapHelpers();
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
     const [iterator, setIterator] = useState(0);
     const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 })
@@ -134,18 +134,20 @@ const FamiliesDetailsContainer = () => {
                                         classname='text-left mb-2'>
                                         {data?.district}, {data?.state}, {data?.country}
                                     </Body>
-                                    <Body
-                                        type={BodyType.p4}
-                                        color={BodyColor.dark}
-                                        classname='d-flex flex-row align-items-center mx-0'>
-                                        <Heading
-                                            title={getCurrencyWithSymbol(data?.familyDetails.spendOnEducation, data?.familyDetails.spendOnEducationUOM)}
-                                            type={TypographyType.h5}
-                                            colour={TypographyColor.primary}
-                                            classname='me-1 my-0'
-                                        />
-                                        Annual Household Spend on Education
-                                    </Body>
+                                    {getCoreSolutions(data?.familyDetails)?.name && 
+                                        <Body
+                                            type={BodyType.p4}
+                                            color={BodyColor.dark}
+                                            classname='d-flex flex-row align-items-center mx-0'>
+                                            <Heading
+                                                title={getCoreSolutions(data.familyDetails)?.value}
+                                                type={TypographyType.h5}
+                                                colour={TypographyColor.primary}
+                                                classname='me-1 my-0'
+                                            />
+                                            Annual Household Spend on {getCoreSolutions(data.familyDetails)?.name}
+                                        </Body>
+                                    }
                                 </div>
                             </Card>
                         </div>

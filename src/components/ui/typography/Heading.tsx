@@ -18,7 +18,7 @@ export enum TypographyType {
 }
 
 interface HeadingOne {
-    title: string | number;
+    title: string | number | undefined;
     type: TypographyType;
     colour: TypographyColor;
     classname?: string;

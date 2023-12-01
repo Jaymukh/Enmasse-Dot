@@ -27,9 +27,26 @@ const useMapHelpers = () => {
         return params;
     }
 
+    const getCoreSolutions = (data: any) => {
+        const coreSolutionList = [
+            { name: 'Education', key: 'spendOnEducation' },
+            { name: 'Healthcare', key: 'spendOnHealthCare' },
+            { name: 'Financial Solutions', key: 'spendOnFinancialSolution' },
+            { name: 'Agri Markets', key: 'spendOnAgricultureMarket' }
+        ];
+        const item = coreSolutionList.find(({ key }) => data?.hasOwnProperty(key));
+
+        if (item) {
+            return { key: item.key, name: item.name, value: getCurrencyWithSymbol(data[item.key], data[item.key + 'UOM'] ) };
+        }
+
+        return null;
+    }
+
     return {
         getCurrencyWithSymbol,
         getSelectedObject,
+        getCoreSolutions,
     };
 };
 
