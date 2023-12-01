@@ -84,7 +84,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
     //       console.log('Cropped Image:', croppedImage);
     //     }
     //   };
-
+console.log(zoomLevel, zoomLevel/2)
 
     return (
         <div>
@@ -106,7 +106,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                     />
                 </div>
                 <div className="d-flex flex-column justify-content-center align-items-center my-2">
-                    <div className="upload-image-box my-3 d-flex justify-content-center align-items-center bg-light" >
+                    <div className="upload-image-box mt-3 mb-2 d-flex justify-content-center align-items-center bg-light" >
                         {loggedUser?.profile_picture || newImage ? (
                             <img src={newImage ? newImage : loggedUser?.profile_picture} ref={imageRef} alt="Profile" style={{ width: `${zoomLevel}%` }} />
                         ) : (
@@ -115,7 +115,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                     </div>
                     {newImage ?
                         (<>
-                            <div className='d-flex flex-row justify-content-around'>
+                            <div className='d-flex flex-row justify-content-around align-items-center w-100'>
                                 <Button
                                     theme={ButtonTheme.primary}
                                     size={ButtonSize.medium}
@@ -132,6 +132,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     max={maxZoom}
                                     value={zoomLevel}
                                     onChange={handleSliderChange}
+                                    style={{ background: `linear-gradient(to right, rgba(17, 24, 39, 1) ${zoomLevel/2}%, rgba(217, 217, 217, 1) ${100 - (zoomLevel/2)}%)` }}
                                 />
                                 <Button
                                     theme={ButtonTheme.primary}
@@ -165,12 +166,12 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     type='button'
                                     classname='me-2'
                                 >
-                                    <MdDeleteSweep fontSize={20} className='color-orange' />
+                                    <MdDeleteSweep fontSize={20} className='color-orange me-2' />
                                     Delete
                                 </Button>
                                 <label className="bg-dark rounded px-3 height-2-25 d-flex align-items-center justify-content-center m-auto">
                                     <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
-                                    <div className="">
+                                    <div className="d-flex">
                                         <BiUpload fontSize={20} className='me-2 text-white' />
                                         <Body
                                             color={BodyColor.white}
@@ -183,7 +184,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                             </div> :
                             <label className="bg-dark rounded p-3 height-2-25 d-flex align-items-center justify-content-center m-auto">
                                 <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
-                                <div className="file-input-content">
+                                <div className="d-flex file-input-content">
                                     <BiUpload fontSize={20} className='me-2 text-white' />
                                     <Body
                                         color={BodyColor.white}

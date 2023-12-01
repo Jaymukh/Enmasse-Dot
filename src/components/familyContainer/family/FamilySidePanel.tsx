@@ -99,7 +99,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                     onClick={() => handleCarouselSlide((selectedStory?.index - 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                 >
-                    <MdOutlineArrowBack className="iconNextPrev" aria-hidden="true"></MdOutlineArrowBack>
+                    <MdOutlineArrowBack className="iconNextPrev" aria-hidden="true"/>
                 </button>
                 <div className="h-100">
                     {stories?.family?.map((data, index) => (
