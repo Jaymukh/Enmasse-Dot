@@ -103,10 +103,10 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                 </button>
                 <div className="h-100">
                     {stories?.family?.map((data, index) => (
-                        <div className={`carousel-item bg-white h-100 ${index === selectedStory?.index ? ' active' : ''}`} key={index}>
-                            <div className="d-flex flex-row align-items-center h-100 w-100">
-                                <img src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family" />
-                                <div className="d-flex flex-column align-items-start justify-content-center my-auto mx-2 px-1 w-100 h-100">
+                        <div className={`carousel-item h-100 ${index === selectedStory?.index ? ' active' : ''}`} key={index}>
+                            <div className="d-flex flex-row align-items-center h-100 w-100 rounded">
+                                <img src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} width="100" height="100" className="d-block carousel-img rounded-start bg-white" alt="Family" />
+                                <div className="d-flex flex-column align-items-start justify-content-center my-auto px-2 w-100 h-100 rounded-end bg-white">
                                     <div className='d-flex flex-row justify-content-between align-items-center w-100 m-auto my-0 py-0' >
                                         <Heading
                                             title={data?.familyName}
