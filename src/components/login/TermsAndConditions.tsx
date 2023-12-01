@@ -17,7 +17,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 	return (
 		<div>
 			<Modal showModal={showModal} classname='width-62-5'>
-				<div className=' modal-header d-flex flex-row justify-content-between w-100'>
+				<div className=' modal-header d-flex flex-row justify-content-between align-items-center w-100 border-0 pb-0'>
 					<div className="d-flex flex-row align-items-center">
 						<Heading
 							title='Terms and Conditions'
@@ -42,11 +42,11 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						classname='btn-close mx-3 w-auto my-auto'
 					/>
 				</div>
-				<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 modal-padding">
+				<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 pt-0 modal-padding">
 					<div className=" d-flex flex-column justify-content-start modal-dialog-scrollable my-2">
 						<Body
 							type={BodyType.p2}
-							color={BodyColor.dark}
+							color={BodyColor.secondary}
 							classname='text-start'
 						>
 							Please read these Terms and Conditions (“Terms”) carefully before using our services. By accessing or using our services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you may not use our services.
@@ -59,7 +59,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						/>
 						<Body
 							type={BodyType.p2}
-							color={BodyColor.dark}
+							color={BodyColor.secondary}
 							classname='text-start'
 						>
 							1.1 These Terms apply to all users of our services, including but not limited to website visitors, customers, and clients. <br />
@@ -74,7 +74,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						/>
 						<Body
 							type={BodyType.p2}
-							color={BodyColor.dark}
+							color={BodyColor.secondary}
 							classname='text-start'
 						>
 							2.1 All content and materials provided through our services, including but not limited to text, graphics, logos, images, videos, and software, are the property of our company and are protected by applicable intellectual property laws. <br />
@@ -88,7 +88,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						/>
 						<Body
 							type={BodyType.p2}
-							color={BodyColor.dark}
+							color={BodyColor.secondary}
 							classname='text-start'
 						>
 							3.1 By using our services, you agree to provide accurate and current information and to ensure the security of your account credentials.
@@ -97,8 +97,9 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 					<Button
 						theme={ButtonTheme.primary}
 						size={ButtonSize.medium}
-						variant={ButtonVariant.contained}
+						variant={ButtonVariant.bordered}
 						onClick={() => handleModal({ tncModal: false })}
+						classname='height-3'
 					>
 						Agree
 					</Button>

@@ -2,7 +2,7 @@
 @import url("../../../utils/fonts/fonts.css");
 
 .btn_primary {
-	/* (bordered) black button with black backgrount and with black border */
+	/* (bordered) black button with black background and with black border */
 	background-color: var(--blue-0);
 	border: 1px solid var(--blue-0);
 	border-radius: 5px;
@@ -24,7 +24,7 @@
 }
 
 .btn_primary:disabled, .btn_primary:disabled:hover {
-	/* (bordered) black button with black backgrount and with black border */
+	/* (bordered) black button with black background and with black border */
 	background-color: var(--blue-0);
 	border-color: var(--blue-0);
 	border-radius: 5px;
