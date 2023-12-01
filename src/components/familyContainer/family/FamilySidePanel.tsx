@@ -1,7 +1,7 @@
 // External libraries
 import React from 'react';
 import { useRecoilState } from "recoil";
-import { MdOutlineArrowBack , MdOutlineArrowForward } from 'react-icons/md';
+import { MdOutlineArrowBack, MdOutlineArrowForward } from 'react-icons/md';
 import { FiArrowRight } from 'react-icons/fi';
 
 // CSS
@@ -42,85 +42,33 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                 </div>
                 <Legend />
             </Card>
-            {/* <div id="carouselExampleControlsNoTouching" className="carousel slide custom-carousel d-flex justify-content-center my-3 mx-auto bg-white align-items-center" data-bs-touch="false" data-bs-interval="false"  >
-                <div className="carousel-inner h-100">
-                    {stories?.family?.map((data, index) => (
-                        <div className={`carousel-item h-100 ${index === selectedStory?.index ? ' active' : ''}`} key={index}>
-                            <div className="d-flex flex-row align-items-center h-100">
-                                <img src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} width="100" height="100" className="d-block carousel-img" alt="Family" />
-                                <div className="d-flex flex-column align-items-start justify-content-center my-auto mx-2 px-1 w-100 h-100">
-                                    <div className='d-flex flex-row justify-content-between align-items-center w-100 m-auto my-0 py-0' >
-                                        <Heading
-                                            title={data?.familyName}
-                                            type={TypographyType.h4}
-                                            colour={TypographyColor.dark}
-                                        />
-                                        <Body
-                                            type={BodyType.p3}
-                                            color={BodyColor.dark}
-                                        >
-                                            {iterator}/{stories?.family.length}
-                                        </Body>
-                                    </div>
-                                    <Body
-                                        type={BodyType.p3}
-                                        color={BodyColor.dark}
-                                        classname='my-0'
-                                    >
-                                        {data?.district}, {data?.state}, {data?.country}
-                                    </Body>
-                                    <button className='border-0 bg-white color-green m-0 fs-12 p-0' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <button className="carousel-control-prev PrevBtn rounded-circle bg-white"
-                    onClick={() => handleCarouselSlide((selectedStory?.index - 1 + stories?.family.length) % stories?.family.length)}
-                    type="button"
-                    data-bs-target="#carouselExampleControlsNoTouching"
-                    data-bs-slide="prev"
-                >
-                    <MdOutlineArrowBack  className="iconNextPrev" fontSize={20} aria-hidden="true" />
-                </button>
-
-                <button className="carousel-control-next NextBtn rounded-circle bg-white"
-                    onClick={() => handleCarouselSlide((selectedStory?.index + 1 + stories?.family.length) % stories?.family.length)}
-                    type="button"
-                    data-bs-target="#carouselExampleControlsNoTouching"
-                    data-bs-slide="next"
-                >
-                    <MdOutlineArrowForward className='iconNextPrev' fontSize={20} aria-hidden="true" />
-                </button>
-            </div> */}
-            <div className='d-flex flex-row justify-content-center align-items-center my-3' >
+            <div className='d-flex flex-row justify-content-center align-items-center my-3 w-100' >
                 <button className="PrevBtn"
                     onClick={() => handleCarouselSlide((selectedStory?.index - 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                 >
-                    <MdOutlineArrowBack className="iconNextPrev" aria-hidden="true"/>
+                    <MdOutlineArrowBack className="iconNextPrev" aria-hidden="true" />
                 </button>
-                <div className="h-100">
+                <div className="h-100" style={{width: '95%'}}>
                     {stories?.family?.map((data, index) => (
                         <div className={`carousel-item h-100 ${index === selectedStory?.index ? ' active' : ''}`} key={index}>
                             <div className="d-flex flex-row align-items-center h-100 w-100 rounded">
                                 <img src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} width="100" height="100" className="d-block carousel-img rounded-start bg-white" alt="Family" />
                                 <div className="d-flex flex-column align-items-start justify-content-center my-auto px-2 w-100 h-100 rounded-end bg-white">
-                                    <div className='d-flex flex-row justify-content-between align-items-center w-100 m-auto my-0 py-0' >
-                                        <Heading
-                                            title={data?.familyName}
-                                            type={TypographyType.h4}
-                                            colour={TypographyColor.dark}
-                                            classname='text-start'
-                                        />
+                                    <div className='d-flex flex-row justify-content-end align-items-center w-100 m-auto my-0 py-0' >
                                         <Body
-                                            type={BodyType.p3}
+                                            type={BodyType.p4}
                                             color={BodyColor.dark}
                                         >
                                             {iterator}/{stories?.family.length}
                                         </Body>
                                     </div>
+                                    <Heading
+                                        title={data?.familyName}
+                                        type={TypographyType.h4}
+                                        colour={TypographyColor.dark}
+                                        classname='text-start'
+                                    />
                                     <Body
                                         type={BodyType.p3}
                                         color={BodyColor.dark}
