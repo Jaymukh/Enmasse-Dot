@@ -19,7 +19,7 @@ const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: a
     return (
         <g>
             <text x={cx} y={cy - 10} textAnchor="middle" fill="black" fontSize={12} fontWeight={500}>
-                {payload?.geoValue}
+                {payload?.geo_value}
             </text>
         </g>
     );
