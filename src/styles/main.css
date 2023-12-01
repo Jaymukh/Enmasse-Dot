@@ -413,7 +413,7 @@ ul {
 }
 
 .PrevBtn {
-    margin-left: -1.4rem;
+    margin-right: -0.8rem;
     background-color: var(--white-1);
     height: 2rem;
     width: 2rem;
@@ -422,10 +422,12 @@ ul {
     border-color: var(--black-1);
     border-width: 2px;
     opacity: unset;
+    box-shadow: 4px rgba(0,0,0,0.2);
+    z-index: 1000;
 }
 
 .NextBtn {
-    margin-right: -1.4rem;
+    margin-left: -0.8rem;
     background-color: var(--white-1);
     height: 2rem;
     width: 2rem;
@@ -434,6 +436,8 @@ ul {
     border-color: var(--black-1);
     border-width: 2px;
     opacity: unset;
+    box-shadow: 4px rgba(0,0,0,0.2);
+    z-index: 1000;
 }
 
 .dialog-div {
