@@ -118,6 +118,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='company_type'
+                        classname='px-3'
                     />
                     <Heading
                         title='Role*'
@@ -133,6 +134,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='role'
+                        classname='px-3'
                     />
                     <Body
                         type={BodyType.p3}

@@ -756,12 +756,16 @@ th {
     width: 5rem !important;
 }
 
+.width-10 {
+    width: 10rem !important;
+}
+
 .width-26-625 {
     width: 26.625rem
 }
 
-.width-10 {
-    width: 10rem !important;
+.width-31 {
+    width: 31rem;
 }
 
 .green-card-sm {

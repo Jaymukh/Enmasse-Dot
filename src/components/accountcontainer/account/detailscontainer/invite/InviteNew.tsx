@@ -140,6 +140,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={SelectSize.large}
                         name='company_type'
                         placeholder='Select'
+                        classname='px-3'
                     />
                     <Heading
                         title='Role*'
@@ -156,6 +157,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={SelectSize.large}
                         name='role'                        
                         placeholder='Select'
+                        classname='px-3'
                     />
                     <Heading
                         title='Note: Admins will be able to invite users to the platform'
