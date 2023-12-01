@@ -3,19 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useRecoilValue } from 'recoil';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import * as d3 from "d3";
-
-// CSS
 import '../../styles/main.css';
-
-// Components
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import NoVisualData from './NoVisualData';
 import { cifState } from '../../states';
-
-// Utilities
 import { BubbleNode, colorDescription } from '../../utils/constants/Constants';
 
 const BubbleGraph = () => {
@@ -24,6 +18,7 @@ const BubbleGraph = () => {
 	const { coreSolutionsData } = useRecoilValue(cifState);
 	const options: any[] = [];
 	const currentYear = new Date().getFullYear();
+	const fontSizeList = [22, 18, 14, 10];
 
 	for (let year = currentYear - 10; year <= currentYear; year++) {
 		options.push({ key: year, value: year.toString() });
@@ -109,13 +104,13 @@ const BubbleGraph = () => {
 								{root && root
 									.descendants()
 									.slice(1)
-									.map((node) => (
+									.map((node, index) => (
 										<text
 											key={node.data.coreSolution}
 											x={node.x}
 											y={node.y}
-											fontSize={14}
-											fontWeight={0.4}
+											fontSize={fontSizeList[index]}
+											fontWeight={0.5}
 											textAnchor="middle"
 											alignmentBaseline="middle"
 											fill="#ffffff"

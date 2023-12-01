@@ -767,3 +767,35 @@ th {
 .green-card-sm {
     border-radius: 0.875rem;
 }
+
+input[type="range"] {    
+    -webkit-appearance: none; /* WebKit/Blink browsers */    
+    appearance: none; /* Firefox */
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    /* background: linear-gradient(to right, var(--blue-0) 50%, var(--scrollbar-track) 50%); */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* Styling for the slider thumb/handle */
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--blue-0);
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    /* Styling for Firefox */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--blue-0);
+    cursor: pointer;
+  }
