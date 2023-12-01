@@ -8,6 +8,8 @@ interface FamilyDetails {
     incomeUOM: string;
     householdBorrowing: string;
     borrowUOM: string;
+    spendOnEducation: string;
+    spendOnEducationUOM: string;
 }
 
 interface Family {

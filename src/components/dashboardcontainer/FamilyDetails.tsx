@@ -91,13 +91,13 @@ const FamilyDetails = () => {
                             type={BodyType.p2}
                             color={BodyColor.primary}
                             classname='text-center'>
-                            {getCurrencyWithSymbol(familyDetails?.familyDetails?.householdSpend, familyDetails?.familyDetails?.spendUOM)}
+                            {getCurrencyWithSymbol(familyDetails?.familyDetails?.spendOnEducation, familyDetails?.familyDetails?.spendOnEducationUOM)}
                         </Body>
                         <Body
                             type={BodyType.p4}
                             color={BodyColor.muted}
                             classname='ms-2 me-4 mt-1'>
-                            Annual Household Spend
+                            Annual Household Spend on Education
                         </Body>
                     </div>
                     <Body

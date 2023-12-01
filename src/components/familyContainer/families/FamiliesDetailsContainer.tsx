@@ -139,7 +139,7 @@ const FamiliesDetailsContainer = () => {
                                         color={BodyColor.dark}
                                         classname='d-flex flex-row align-items-center mx-0'>
                                         <Heading
-                                            title={getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}
+                                            title={getCurrencyWithSymbol(data?.familyDetails.spendOnEducation, data?.familyDetails.spendOnEducationUOM)}
                                             type={TypographyType.h5}
                                             colour={TypographyColor.primary}
                                             classname='me-1 my-0'
