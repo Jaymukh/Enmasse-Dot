@@ -61,61 +61,50 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     </div>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-between my-2">
-                    {
-                        selectedData?.familyDetails?.familyMembers &&
-                        <div className="d-flex flex-row justify-content-center align-items-center">
-                            <Heading
-                                title={selectedData?.familyDetails?.familyMembers}
-                                type={TypographyType.h5}
-                                colour={TypographyColor.dark}
-                                classname='m-0 me-1'
-                            />
-                            <Body
-                                type={BodyType.p4}
-                                color={BodyColor.secondary}
-                                classname='m-0'>
-                                Family members
-                            </Body>
-                        </div>
-                    }
-                    {
-                        selectedData?.familyDetails?.householdSpend &&
-                        <div className="d-flex flex-row justify-content-center align-items-center">
-                            <Heading
-                                title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}
-                                type={TypographyType.h5}
-                                colour={TypographyColor.dark}
-                                classname='m-0 me-1'
-                            />
-                            <Body
-                                type={BodyType.p4}
-                                color={BodyColor.secondary}
-                                classname='m-0'>
-                                Household Spend
-                            </Body>
 
-                        </div>
-                    }
-                    {
-                        selectedData?.familyDetails?.householdBorrowing &&
-                        <div className="d-flex flex-row justify-content-center align-items-center">
-                            <Heading
-                                title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdBorrowing, selectedData?.familyDetails?.borrowUOM)}
-                                type={TypographyType.h5}
-                                colour={TypographyColor.dark}
-                                classname='m-0 me-1'
-                            />
-                            <Body
-                                type={BodyType.p4}
-                                color={BodyColor.secondary}
-                                classname='m-0'>
-                                Household Borrowing
-                            </Body>
+                    <div className="d-flex flex-row justify-content-center align-items-center">
+                        <Heading
+                            title={getCurrencyWithSymbol(selectedData?.familyDetails?.familyMembers)}
+                            type={TypographyType.h5}
+                            colour={TypographyColor.dark}
+                            classname='m-0 me-1'
+                        />
+                        <Body
+                            type={BodyType.p4}
+                            color={BodyColor.secondary}
+                            classname='m-0'>
+                            Family members
+                        </Body>
+                    </div>
+                    <div className="d-flex flex-row justify-content-center align-items-center">
+                        <Heading
+                            title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}
+                            type={TypographyType.h5}
+                            colour={TypographyColor.dark}
+                            classname='m-0 me-1'
+                        />
+                        <Body
+                            type={BodyType.p4}
+                            color={BodyColor.secondary}
+                            classname='m-0'>
+                            Household Spend
+                        </Body>
 
-                        </div>
-                    }
-                    {
-                        selectedData?.familyDetails?.householdIncome &&
+                    </div>
+                    <div className="d-flex flex-row justify-content-center align-items-center">
+                        <Heading
+                            title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdBorrowing, selectedData?.familyDetails?.borrowUOM)}
+                            type={TypographyType.h5}
+                            colour={TypographyColor.dark}
+                            classname='m-0 me-1'
+                        />
+                        <Body
+                            type={BodyType.p4}
+                            color={BodyColor.secondary}
+                            classname='m-0'>
+                            Household Borrowing
+                        </Body>
+                    </div>
                         <div className="d-flex flex-row align-items-center">
                             <Heading
                                 title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdIncome, selectedData?.familyDetails?.incomeUOM)}
@@ -130,7 +119,6 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                                 Household Income
                             </Body>
                         </div >
-                    }
                 </div >
                 <div className="card-body text-start">
                     {selectedData?.image && selectedData?.image[0] &&

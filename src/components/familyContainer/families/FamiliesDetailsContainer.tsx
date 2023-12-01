@@ -125,7 +125,7 @@ const FamiliesDetailsContainer = () => {
                                             type={BodyType.p4}
                                             color={BodyColor.primary}
                                             classname='mx-0 mb-1 bg-green-1 px-2 py-1 green-card-sm'>
-                                            {data?.familyDetails.familyMembers ? data?.familyDetails.familyMembers : '_ _'} members
+                                            {getCurrencyWithSymbol(data?.familyDetails.familyMembers)} members
                                         </Body>
                                     </div>
                                     <Body
@@ -134,22 +134,18 @@ const FamiliesDetailsContainer = () => {
                                         classname='text-left mb-2'>
                                         {data?.district}, {data?.state}, {data?.country}
                                     </Body>
-                                    {(data?.familyDetails.familyMembers) &&
-                                        (<div>
-                                            <Body
-                                                type={BodyType.p4}
-                                                color={BodyColor.dark}
-                                                classname='d-flex flex-row align-items-center mx-0'>
-                                                <Heading
-                                                    title={getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}
-                                                    type={TypographyType.h5}
-                                                    colour={TypographyColor.primary}
-                                                    classname='me-1 my-0'
-                                                />
-                                                Annual Household Spend on Education
-                                            </Body>
-                                        </div>)
-                                    }
+                                    <Body
+                                        type={BodyType.p4}
+                                        color={BodyColor.dark}
+                                        classname='d-flex flex-row align-items-center mx-0'>
+                                        <Heading
+                                            title={getCurrencyWithSymbol(data?.familyDetails.householdSpend, data?.familyDetails.spendUOM)}
+                                            type={TypographyType.h5}
+                                            colour={TypographyColor.primary}
+                                            classname='me-1 my-0'
+                                        />
+                                        Annual Household Spend on Education
+                                    </Body>
                                 </div>
                             </Card>
                         </div>
