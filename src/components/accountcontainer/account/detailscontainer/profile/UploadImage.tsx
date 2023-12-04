@@ -132,7 +132,7 @@ console.log(zoomLevel, zoomLevel/2)
                                     max={maxZoom}
                                     value={zoomLevel}
                                     onChange={handleSliderChange}
-                                    style={{ background: `linear-gradient(to right, rgba(17, 24, 39, 1) ${zoomLevel/2}%, rgba(217, 217, 217, 1) ${100 - (zoomLevel/2)}%)` }}
+                                    // style={{ background: `linear-gradient(to right, rgba(17, 24, 39, 1) ${(zoomLevel/2) - 10}%, rgba(217, 217, 217, 1) ${110 - (zoomLevel/2)}%)` }}
                                 />
                                 <Button
                                     theme={ButtonTheme.primary}
