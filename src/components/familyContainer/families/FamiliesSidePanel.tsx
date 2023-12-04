@@ -9,7 +9,7 @@ import '../../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import { Legend } from '../../ui/legend/Legend';
-import StaticMap from '../../StaticMap';
+import StaticMap from '../../ui/maps/StaticMap';
 import { storiesState } from '../../../states';
 
 
