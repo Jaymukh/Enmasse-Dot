@@ -88,12 +88,12 @@ const UploadImage: React.FC<UploadImageProps> = ({
     return (
         <div>
             <Modal showModal={showUploadImageModal} classname='width-30' >
-                <div className='d-flex flex-row justify-content-between align-items-center'>
+                <div className='d-flex flex-row justify-content-between align-items-center mx-1 mt-1 mb-0'>
                     <Heading
                         title='Profile Photo'
-                        type={TypographyType.h2}
+                        type={TypographyType.h4}
                         colour={TypographyColor.dark}
-                        classname=''
+                        classname='m-0'
                     />
                     <Button
                         theme={ButtonTheme.primary}
@@ -104,8 +104,8 @@ const UploadImage: React.FC<UploadImageProps> = ({
                         classname='btn-close'
                     />
                 </div>
-                <div className="d-flex flex-column justify-content-center align-items-center my-2">
-                    <div className="upload-image-box mt-3 mb-2 d-flex justify-content-center align-items-center bg-light" >
+                <div className="d-flex flex-column justify-content-center align-items-center mb-2 mx-1">
+                    <div className="upload-image-box mb-2 d-flex justify-content-center align-items-center bg-light" >
                         {loggedUser?.profile_picture || newImage ? (
                             <img src={newImage ? newImage : loggedUser?.profile_picture} ref={imageRef} alt="Profile" style={{ width: `${zoomLevel}%` }} />
                         ) : (
@@ -114,7 +114,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                     </div>
                     {newImage ?
                         (<>
-                            <div className='d-flex flex-row justify-content-around align-items-center w-100'>
+                            <div className='d-flex flex-row justify-content-around align-items-center w-100 mx-1 mb-2'>
                                 <Button
                                     theme={ButtonTheme.primary}
                                     size={ButtonSize.medium}
@@ -146,7 +146,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                             </div>
                             <Button
                                 theme={ButtonTheme.primary}
-                                size={ButtonSize.medium}
+                                size={ButtonSize.default}
                                 variant={ButtonVariant.bordered}
                                 onClick={() => handleSaveImage()}
                                 type='button'
