@@ -1,6 +1,6 @@
 import '../../styles/main.css';
 import { useState } from 'react';
-import globe from '../../utils/images/globe.png';
+import globe from '../../utils/images/world_map.svg';
 import ForgotPassword from './ForgotPassword';
 import EmailSent from './EmailSent';
 import TermsAndConditions from './TermsAndConditions';
@@ -98,7 +98,7 @@ export default function Login() {
             <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
                 <div className='col-md-6 col-xl-6 login-update-box lightGrayBackground'>
                     <div className='loginCardAlign'>
-                        <img src={globe} alt='enmasse' />
+                        <img src={globe} alt='enmasse' width={454} height={338} />
                         <div>
                             <Heading
                                 title='enmasse'

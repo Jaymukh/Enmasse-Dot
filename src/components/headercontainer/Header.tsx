@@ -33,8 +33,8 @@ function Header() {
 
 	return (
 		<div className="d-flex flex-wrap justify-content-between align-items-center border-bottom bg-white w-100" style={{ height: '8.25vh' }} >
-			<div className="d-flex flex-wrap mx-3 align-items-center">
-				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer' width={218} height={16} />
+			<div className="d-flex flex-wrap mx-2 align-items-center">
+				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer ms-0' width={218} height={16} />
 			</div>
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />
