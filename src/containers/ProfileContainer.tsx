@@ -1,7 +1,7 @@
 import '../styles/main.css';
-import Header from './headercontainer/Header';
-import AccountHeader from './accountcontainer/AccountHeader';
-import Account from './accountcontainer/account/Account';
+import Header from '../components/headercontainer/Header';
+import AccountHeader from '../components/accountcontainer/AccountHeader';
+import Account from '../components/accountcontainer/account/Account';
 import { RouteConstants } from '../constants';
 
 const ProfileContainer = () => {

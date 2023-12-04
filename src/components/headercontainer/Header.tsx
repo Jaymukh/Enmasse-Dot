@@ -1,5 +1,5 @@
-import '../../styles/main.css';
 import React, { useState } from 'react';
+import '../../styles/main.css';
 import Logo from '../../utils/images/EnmasseDOTSLogo.svg';
 import { BsFillBookmarksFill } from 'react-icons/bs';
 import AccountOptions from './AccountOptions';
@@ -34,7 +34,7 @@ function Header() {
 	return (
 		<div className="d-flex flex-wrap justify-content-between align-items-center border-bottom bg-white w-100" style={{ height: '8.25vh' }} >
 			<div className="d-flex flex-wrap mx-3 align-items-center">
-				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer' />
+				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer' width={218} height={16} />
 			</div>
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />

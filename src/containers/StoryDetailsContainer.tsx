@@ -1,7 +1,7 @@
 import '../styles/main.css';
-import Header from './headercontainer/Header';
-import FamilyHeader from './familyContainer/FamilyHeader';
-import Family from './familyContainer/family/Family';
+import Header from '../components/headercontainer/Header';
+import FamilyHeader from '../components/familyContainer/FamilyHeader';
+import Family from '../components/familyContainer/family/Family';
 
 const StoryDetailsContainer = () => {
     return (

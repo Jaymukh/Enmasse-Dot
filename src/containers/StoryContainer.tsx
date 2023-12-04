@@ -1,8 +1,8 @@
 import '../styles/main.css';
-import Header from './headercontainer/Header';
-import FamiliesSidePanel from './familyContainer/families/FamiliesSidePanel';
-import FamiliesDetailsContainer from './familyContainer/families/FamiliesDetailsContainer';
-import AccountHeader from './accountcontainer/AccountHeader';
+import Header from '../components/headercontainer/Header';
+import FamiliesSidePanel from '../components/familyContainer/families/FamiliesSidePanel';
+import FamiliesDetailsContainer from '../components/familyContainer/families/FamiliesDetailsContainer';
+import AccountHeader from '../components/accountcontainer/AccountHeader';
 import { useRecoilState } from 'recoil';
 import { storiesState } from '../states';
 import { useEffect, useState } from 'react';

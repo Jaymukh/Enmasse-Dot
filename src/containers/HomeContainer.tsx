@@ -1,6 +1,6 @@
 import '../styles/main.css';
-import Header from './headercontainer/Header';
-import MapContainer from './mapContainer/MapContainer';
+import Header from '../components/headercontainer/Header';
+import MapContainer from '../components/mapContainer/MapContainer';
 
 const HomeContainer = () => {
 

@@ -1,7 +1,7 @@
 import '../styles/main.css';
-import Header from './headercontainer/Header';
-import DashBoard from './dashboardcontainer/DashBoard';
-import AccountHeader from './accountcontainer/AccountHeader';
+import Header from '../components/headercontainer/Header';
+import DashBoard from '../components/dashboardcontainer/DashBoard';
+import AccountHeader from '../components/accountcontainer/AccountHeader';
 
 const DashBoardContainer = () => {
 	return (

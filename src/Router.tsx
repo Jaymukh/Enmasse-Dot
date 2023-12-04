@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { RouteConstants } from "./constants";
 import { useRecoilValue } from "recoil";
 import { authState } from './states';
-import StoryDetailsContainer from './components/StoryDetailsContainer';
+import StoryDetailsContainer from './containers/StoryDetailsContainer';
 
 interface ProtectedRouteProps {
     auth: any;
@@ -22,10 +22,10 @@ const Router = () => {
 
     const Login = useMemo(() => React.lazy(() => import("./components/login/Login")), []);
     const UpdatePassword = useMemo(() => React.lazy(() => import("./components/login/UpdatePassword")), []);
-    const HomeContainer = useMemo(() => React.lazy(() => import("./components/HomeContainer")), []);
-    const DashboardContainer = useMemo(() => React.lazy(() => import("./components/DashboardContainer")), []);
-    const StoryContainer = useMemo(() => React.lazy(() => import("./components/StoryContainer")), []);
-    const ProfileContainer = useMemo(() => React.lazy(() => import("./components/ProfileContainer")), []);
+    const HomeContainer = useMemo(() => React.lazy(() => import("./containers/HomeContainer")), []);
+    const DashboardContainer = useMemo(() => React.lazy(() => import("./containers/DashboardContainer")), []);
+    const StoryContainer = useMemo(() => React.lazy(() => import("./containers/StoryContainer")), []);
+    const ProfileContainer = useMemo(() => React.lazy(() => import("./containers/ProfileContainer")), []);
 
 
     return (
