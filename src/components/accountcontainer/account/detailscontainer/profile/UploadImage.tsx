@@ -84,7 +84,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
     //       console.log('Cropped Image:', croppedImage);
     //     }
     //   };
-console.log(zoomLevel, zoomLevel/2)
 
     return (
         <div>
