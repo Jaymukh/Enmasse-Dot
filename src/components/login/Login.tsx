@@ -148,7 +148,7 @@ export default function Login() {
                                     {errors?.email_id?.message}
                                 </Body>
                             }
-                            <div className='d-flex flex-row justify-content-between align-items-center mt-2'>
+                            <div className='d-flex flex-row justify-content-between align-items-center mt-2 '>
                                 <Heading
                                     title='Password'
                                     type={TypographyType.h5}

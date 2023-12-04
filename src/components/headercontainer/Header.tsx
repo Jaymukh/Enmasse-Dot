@@ -1,6 +1,6 @@
 import '../../styles/main.css';
 import React, { useState } from 'react';
-import Logo from '../../utils/images/Enmasse DOTS logo 1.png';
+import Logo from '../../utils/images/EnmasseDOTSLogo.svg';
 import { BsFillBookmarksFill } from 'react-icons/bs';
 import AccountOptions from './AccountOptions';
 import ExploreNow from './ExploreNow';

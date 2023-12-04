@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import '../styles/main.css';
+import '../../../styles/main.css';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import * as MapConstants from './../utils/json/googlemapstyle';
-import { useMapsService } from '../services';
-import { errorState, geoJsonState, spinnerState, storiesState } from '../states';
+import * as MapConstants from '../../../utils/json/googlemapstyle';
+import { useMapsService } from '../../../services';
+import { errorState, geoJsonState, spinnerState, storiesState } from '../../../states';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
-import markerBlack from '../utils/images/location-on.svg';
-import markerGrey from '../utils/images/location-on-grey.svg';
-import { rollbar } from '../constants';
+import markerBlack from '../../../utils/images/location-on.svg';
+import markerGrey from '../../../utils/images/location-on-grey.svg';
+import { rollbar } from '../../../constants';
 
 interface StaticMapProps {
 	coordinates?: any;

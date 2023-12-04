@@ -11,7 +11,7 @@ import '../../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
-import StaticMap from '../../StaticMap';
+import StaticMap from '../../ui/maps/StaticMap';
 import { Legend } from '../../ui/legend/Legend';
 import { storiesState } from "../../../states";
 
@@ -72,7 +72,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                     <Body
                                         type={BodyType.p3}
                                         color={BodyColor.dark}
-                                        classname='my-0 text-start'
+                                        classname='my-1 text-start'
                                     >
                                         {data?.district}, {data?.state}, {data?.country}
                                     </Body>

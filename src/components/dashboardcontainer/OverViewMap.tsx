@@ -10,7 +10,7 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import StatisticsCard from "./StatisticsCard";
 import { Legend } from '../ui/legend/Legend';
-import StaticMap from "../StaticMap";
+import StaticMap from "../ui/maps/StaticMap";
 import { mapFeatureState } from '../../states';
 
 // Utilities
