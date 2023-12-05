@@ -123,8 +123,7 @@ export default function Invite() {
 				const lowercasedEmail = item?.email_id?.toLowerCase();
 				const lowercasedRole = item?.role?.toLowerCase();
 				const lowercasedCompany = item?.company?.toLowerCase();
-				const lowercasedCompanyType = item?.company_type?.toLowerCase();
-				
+				const lowercasedCompanyType = item?.company_type?.toLowerCase();				
 
 				return (
 					lowercasedName.includes(lowercasedValue) ||
@@ -310,7 +309,8 @@ export default function Invite() {
 								
 							</tbody>
 						</table>
-					</div>}
+					</div>
+				}
 			</div>
 
 			{selectedData &&

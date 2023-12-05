@@ -60,7 +60,7 @@ const DistrictSidebar = () => {
     }
 
     return (
-        <div className='py-2 bg-white px-0 h-100 me-0' >
+        <div className='py-2 bg-white px-0 h-100 me-0' style={{ height: '85.5vh' }} >
             <div className='row d-flex justify-content-between align-items-center px-3 py-2 me-1'>
                 <Heading
                     title={properties?.region}
@@ -80,7 +80,7 @@ const DistrictSidebar = () => {
                     />
                 </div>
             </div>
-            <div className="row d-flex justify-content-center pt-1 mx-0 px-3 h-100 pb-5" style={{ overflow: 'auto' }}>
+            <div className="row d-flex justify-content-center pt-1 mx-0 px-3" style={{ overflow: 'auto', height: '68vh' }}>
                 <div className='row data-card px-3 d-flex flex-row mx-0 my-2' style={{ height: 'fit-content' }}>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
                         <Heading
@@ -166,7 +166,7 @@ const DistrictSidebar = () => {
                         </div>
                     </div>
                 </div>
-                <hr className='m-0 data-card'/>
+                <hr className='m-0 data-card' />
                 {properties?.showExploreMore ?
                     <div className='m-0 mt-1 p-0'>
                         {properties?.EICoverage && (properties?.geo_name !== 'district') && <div className='row data-card d-flex flex-row mx-0 mb-2 mt-3 px-2 pt-2 pb-3'>
@@ -520,14 +520,17 @@ const DistrictSidebar = () => {
                         >
                             Request Data
                         </Button>
-                    </div>}
+                    </div>
+                }
+            </div>
+            <div className="p-3 d-flex justify-content-center align-items-center">
                 <Button
                     disabled={!properties?.showExploreMore}
                     theme={ButtonTheme.primary}
                     size={ButtonSize.small}
                     variant={ButtonVariant.bordered}
                     onClick={() => handleExploreMore(properties?.geo_id)}
-                    classname='my-4 w-100'
+                    classname='mb-0 w-100 bottom-0'
                 >
                     Explore More
                     <LiaArrowRightSolid className='ms-2' fontSize={22} />

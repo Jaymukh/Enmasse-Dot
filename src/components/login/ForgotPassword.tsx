@@ -31,8 +31,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
 
 
     return (
-        <Modal showModal={showModal} >
-            <div className='d-flex flex-row justify-content-between align-items-center'>
+        <Modal showModal={showModal} classname='width-62-5' >
+            <div className='d-flex flex-row justify-content-between align-items-center w-100'>
                 <Heading
                     title='Forgot Password'
                     type={TypographyType.h4}
@@ -55,7 +55,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
             >
                 Enter your email, we will send you instructions.
             </Body>
-            <div className=" d-flex flex-column justify-content-start my-2" >
+            <div className=" d-flex flex-column justify-content-start my-2 w-100" >
                 <Heading
                     title='Email'
                     type={TypographyType.h4}
