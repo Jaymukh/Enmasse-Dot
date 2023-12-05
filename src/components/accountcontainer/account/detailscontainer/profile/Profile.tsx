@@ -18,6 +18,7 @@ import { errorState, loggedUserState, spinnerState, User } from "../../../../../
 // Utilities
 import { useUserService } from '../../../../../services';
 import { rollbar } from '../../../../../constants';
+import { useMapHelpers } from '../../../../../helpers';
 
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
@@ -30,9 +31,14 @@ export default function Profile() {
     const [showUploadImageModal, setShowUploadImageModal] = useState(false);
     const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
     const [newImage, setNewImage] = useState<string | undefined>(undefined);
-    const [zoomLevel, setZoomLevel] = useState<number>(100);
-    const minZoom = 50;
-    const maxZoom = 200;
+    const [zoom, setZoom] = useState<number>(1);
+    const [croppedAreaPixels, setCroppedAreaPixels] = useState<{ width: number; height: number; x: number; y: number; }>({ width: 0, height: 0, x: 0, y: 0 });
+    const [croppedImage, setCroppedImage] = useState<any>(null);
+    const [crop, setCrop] = useState({ x: 0, y: 0 });
+    const { getCroppedImg } = useMapHelpers();
+
+    const minZoom = 1;
+    const maxZoom = 3;
 
     const handleOpen = (flag?: boolean) => {
         if (flag) {
@@ -73,16 +79,17 @@ export default function Profile() {
     const openUploadImageModal = () => {
         setShowUploadImageModal(true);
     };
+
     const closeUploadImageModal = () => {
         setShowUploadImageModal(false);
         setNewImage(undefined);
 
     };
+
     const handleImageChange = (e: any) => {
         const selectedImage = e.target.files[0];
         setNewImage(URL.createObjectURL(selectedImage));
     };
-
 
     // Function to convert an image URL to base64
     const imageUrlToBase64 = async (url: any) => {
@@ -100,99 +107,57 @@ export default function Profile() {
             return null;
         }
     };
-    const handleSaveImage = () => {
-        if (newImage) {
-            setSpinner(true);
-            imageUrlToBase64(newImage)
-                .then((base64Data) => {
-                    if (typeof base64Data === 'string' && base64Data.length > 0) {
-                        const maxImageSize = 1 * 64 * 1024; // 64KB (adjust as needed)
-                        const img = new Image();
-                        img.src = base64Data; // Image is the base64 image 
-                        const sizeInBytes = new TextEncoder().encode(base64Data).length;
-                        const sizeInKB = sizeInBytes / 1024;
-                        const sizeInMB = sizeInKB / 1024;
-                        img.onload = () => {
-                            if (img.width * img.height <= maxImageSize) {
-                                // The image is smaller than 100KB, no need to resize
-                                const resizedImage = base64Data;
-                                if (resizedImage) {
-                                    userService.updateUserImage({ 'image': resizedImage })
-                                        .then((response: any) => {
-                                            if (response) {
-                                                setSpinner(false);
-                                                userService.getUserDetails();
-                                                setShowUploadImageModal(false);
-                                                setError({ type: 'Success', message: 'Successfully Uploaded profile picture.' });
-                                                setNewImage(undefined);
-                                            }
-                                        })
-                                        .catch(error => {
-                                            setSpinner(false);
-                                            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                                            setError({ type: 'Error', message: errorMsg });
-                                            rollbar.error(error);
-                                        });
-                                }
 
-                            } else {
-                                // Resize the image
-                                const scaleFactor = Math.sqrt(maxImageSize / (img.width * img.height));
-                                const canvas = document.createElement('canvas');
-                                canvas.width = img.width * scaleFactor;
-                                canvas.height = img.height * scaleFactor;
-                                const ctx = canvas.getContext('2d');
-                                ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
-                                const resizedImage = canvas.toDataURL('image/jpeg', 0.7); // Adjust format and quality as 
-                                const sizeInBytes = new TextEncoder().encode(resizedImage).length;
-                                const sizeInKB = sizeInBytes / 1024;
-                                const sizeInMB = sizeInKB / 1024;
-                                if (resizedImage) {
-                                    userService.updateUserImage({ 'image': resizedImage })
-                                        .then((response: any) => {
-                                            if (response) {
-                                                setSpinner(false);
-                                                userService.getUserDetails();
-                                                setShowUploadImageModal(false);
-                                                setError({ type: 'Success', message: 'Successfully Uploaded profile picture.' });
-                                                setNewImage(undefined);
-                                            }
-                                        })
-                                        .catch(error => {
-                                            setSpinner(false);
-                                            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                                            setError({ type: 'Error', message: errorMsg });
-                                            rollbar.error(error);
-                                        });
-                                }
-                            }
-                        };
+    const handleCropComplete = (croppedArea: any, croppedAreaPixels: any) => {
+        setCroppedAreaPixels(croppedAreaPixels);
+    }
 
+    const handleSaveImage = async () => {
+        try {
+            const croppedImage = await getCroppedImg(
+                newImage,
+                croppedAreaPixels,
+                0
+            )
+            const base64Img = await imageUrlToBase64(croppedImage);
+            setCroppedImage(base64Img);
+            userService.updateUserImage({ 'image': base64Img })
+                .then((response: any) => {
+                    if (response) {
+                        setSpinner(false);
+                        userService.getUserDetails();
+                        setShowUploadImageModal(false);
+                        setError({ type: 'Success', message: 'Successfully Uploaded profile picture.' });
+                        setNewImage(undefined);
                     }
+                })
+                .catch(error => {
+                    setSpinner(false);
+                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    setError({ type: 'Error', message: errorMsg });
+                    rollbar.error(error);
                 });
+        } catch (e) {
+            console.error(e)
         }
-        else {
-            console.log('Please select an Image.');
-        }
-
-    };
+    }
 
 
     // Function to handle zoom slider changes
     const handleZoomIn = () => {
-        if (zoomLevel < maxZoom) {
-            setZoomLevel(zoomLevel + 10);
+        if (zoom < maxZoom) {
+            setZoom(zoom + 0.1);
         }
     };
 
     const handleZoomOut = () => {
-        if (zoomLevel > minZoom) {
-            setZoomLevel(zoomLevel - 10);
+        if (zoom > minZoom) {
+            setZoom(zoom - 0.1);
         }
     };
 
-    const handleSliderChange = (e: any) => {
-        setZoomLevel(parseInt(e.target.value, 10));
+    const handleSliderChange = (value: any) => {
+        setZoom(Number(value));
     };
 
     const handleDeleteModel = (showDeleteImageModal: boolean) => {
@@ -244,7 +209,7 @@ export default function Profile() {
                 <div className="col-3 p-0 fs-64 ms-3" >
                     <div className='d-flex flex-column justify-content-start align-items-start' style={{ width: '12.5rem', height: '12.5rem' }}>
                         <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center bg-light" >
-                            {loggedUser?.profile_picture ? <img src={loggedUser?.profile_picture} alt="Profile" className='' /> :
+                            {loggedUser?.profile_picture ? <img src={loggedUser?.profile_picture} alt="Profile" className='w-100 h-100' /> :
                                 <span className='d-flex flex-column justify-content-center align-items-center w-100 h-100' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>
                                     {loggedUser.initial}
                                 </span>
@@ -362,15 +327,13 @@ export default function Profile() {
                     handleOpen={handleOpen}
                 />
             )}
-            {openUploadImageModal &&
+            {showUploadImageModal &&
                 <UploadImage
                     showUploadImageModal={showUploadImageModal}
-                    setShowUploadImageModal={setShowUploadImageModal}
-                    openUploadImageModal={openUploadImageModal}
                     closeUploadImageModal={closeUploadImageModal}
                     handleImageChange={handleImageChange}
-                    zoomLevel={zoomLevel}
-                    setZoomLevel={setZoomLevel}
+                    zoom={zoom}
+                    setZoom={setZoom}
                     newImage={newImage}
                     handleSaveImage={handleSaveImage}
                     handleZoomIn={handleZoomIn}
@@ -379,6 +342,9 @@ export default function Profile() {
                     minZoom={minZoom}
                     maxZoom={maxZoom}
                     handleDeleteModel={handleDeleteModel}
+                    handleCropComplete={handleCropComplete}
+                    crop={crop}
+                    setCrop={setCrop}
                 />}
 
             {showDeleteImageModal && <DeleteImage showDeleteImageModal={showDeleteImageModal}
