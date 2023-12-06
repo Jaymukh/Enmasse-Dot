@@ -830,3 +830,18 @@ input[type="range"]::-moz-range-thumb {
     font-size: 0.625rem;
     font-family: "Poppins-Medium", sans-serif;
 }
+
+.story-list-img {
+    min-height: 14rem;
+    max-height: 14rem;
+    min-width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.carousel-img {
+    height: 6.125rem;
+    max-width: 5.1875rem;
+    min-width: 5.1875rem;
+    object-fit: cover;
+}

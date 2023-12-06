@@ -25,7 +25,7 @@ const StatisticsCard = ({ data, index }: StatisticsCardProps) => {
             />
             <Body
                 type={BodyType.p3}
-                color={index === 4 ? BodyColor.white : BodyColor.muted}
+                color={index === 4 ? BodyColor.white : BodyColor.secondary}
                 classname='m-0 text-start'>
                 {data.title}
             </Body>

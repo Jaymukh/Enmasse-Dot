@@ -39,7 +39,8 @@ const FamilyDetails = () => {
         if (family?.length > 0) {
             setFamilyDetails(family[0]);
         }
-    }, [family])
+    }, [family]);
+
     return (
         <div className='mx-0'>
             <div className='row d-flex justify-content-between align-items-center py-2 m-0'>
@@ -81,7 +82,7 @@ const FamilyDetails = () => {
                         />
                         <Body
                             type={BodyType.p3}
-                            color={BodyColor.dark}
+                            color={BodyColor.secondary}
                             classname='ms-3'>
                             {familyDetails?.address}
                         </Body>
@@ -96,7 +97,7 @@ const FamilyDetails = () => {
                         </Body>
                         <Body
                             type={BodyType.p4}
-                            color={BodyColor.muted}
+                            color={BodyColor.secondary}
                             classname='ms-2 me-4 mt-1'>
                             Annual Household Spend on {getCoreSolutions(familyDetails?.familyDetails)?.name}
                         </Body>
@@ -104,7 +105,7 @@ const FamilyDetails = () => {
 }
                     <Body
                         type={BodyType.p3}
-                        color={BodyColor.dark}
+                        color={BodyColor.secondary}
                         classname='text-start'>
                         {familyDetails?.description}
                     </Body>
