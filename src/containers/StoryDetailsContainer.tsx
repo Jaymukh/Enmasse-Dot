@@ -8,7 +8,7 @@ const StoryDetailsContainer = () => {
         <div className='w-100 primary-bg fixed-header'>
             <Header />
             <div className="w-100 z-index-0" style={{ height: '91.75vh', position: 'inherit' }}>
-                <FamilyHeader />
+                {/* <FamilyHeader /> */}
                 <Family />
             </div>
         </div>

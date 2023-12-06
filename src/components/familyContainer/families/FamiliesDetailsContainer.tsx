@@ -111,7 +111,7 @@ const FamiliesDetailsContainer = () => {
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-lg-4 col-md-6 col-sm-12 px-0 cursor-pointer'>
-                            <Card size={CardSize.medium} variant={CardVariant.bordered} classname='m-2 mb-4' onClick={() => handleFamilyVisible(data, index)}>
+                            <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 mb-4 p-0' onClick={() => handleFamilyVisible(data, index)}>
                                 <img className="rounded-top story-list-img" src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} alt={data?.familyName} />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">

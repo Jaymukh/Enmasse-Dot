@@ -29,7 +29,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
     const [stories] = useRecoilState(storiesState);
 
     return (
-        <div className='col-lg-3 col-md-4 col-sm-12 d-flex flex-column my-4 px-3 h-auto'>
+        <div className='col-lg-4 col-md-4 col-sm-12 d-flex flex-column my-4 px-3 h-auto'>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mt-1 mx-0 white-bg'>
                 <Heading
                     title={stories?.properties?.region}
@@ -47,7 +47,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                     onClick={() => handleCarouselSlide((selectedStory?.index - 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                 >
-                    <MdOutlineArrowBack className="iconNextPrev" aria-hidden="true" />
+                    <MdOutlineArrowBack className="iconNextPrev" aria-hidden="true" fontSize={20} />
                 </button>
                 <div className="h-100" style={{width: '95%'}}>
                     {stories?.family?.map((data, index) => (
@@ -74,7 +74,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                         color={BodyColor.dark}
                                         classname='my-1 text-start'
                                     >
-                                        {data?.district}, {data?.state}, {data?.country}
+                                        {data?.address}
                                     </Body>
                                     <button className='border-0 bg-white color-green m-0 fs-12 p-0' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
                                 </div>
