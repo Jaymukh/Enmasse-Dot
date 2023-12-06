@@ -15,6 +15,7 @@ import { mapFeatureState } from '../../states';
 
 // Utilities
 import { useMapHelpers } from '../../helpers';
+import InfoPanel from '../ui/InfoPanel';
 
 
 const OverViewMap = () => {
@@ -37,12 +38,15 @@ const OverViewMap = () => {
     return (
         <div className="me-3 h-100">
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
-                <Heading
-                    title='Overall Information'
-                    type={TypographyType.h5}
-                    colour={TypographyColor.dark}
-                    classname='pb-2 text-start ps-1'
-                />
+                <div className='d-flex flex-row justify-content-start align-items-center'>
+                    <Heading
+                        title='Overall Information'
+                        type={TypographyType.h5}
+                        colour={TypographyColor.dark}
+                        classname='text-start px-1 my-0'
+                    />
+                    <InfoPanel fontSize={15} text='Hi ! This is info text.' />
+                </div>
                 <div className='row d-flex justify-content-between px-1'>
                     <div className="col-xl-7 col-lg-7 col-md-9 d-flex flex-column align-items-center justify-content-center static-map">
                         <StaticMap noMarkers={true} />

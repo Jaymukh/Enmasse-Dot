@@ -14,6 +14,7 @@ import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import Select, { SelectSize } from '../ui/select/Select';
 import NoVisualData from './NoVisualData';
 import { cifState } from '../../states';
+import InfoPanel from '../ui/InfoPanel';
 
 const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
     return (
@@ -103,9 +104,9 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                             title='EH Inflow & Outflow'
                             type={TypographyType.h5}
                             colour={TypographyColor.dark}
-                            classname='text-start px-1'
+                            classname='text-start px-1 my-0'
                         />
-                        <AiOutlineInfoCircle fontSize={15} className='icon-color-5 mb-2' />
+                        <InfoPanel fontSize={15} text='Hi ! This is info text.' />
                     </div>
                     <div className='col-1'>
                         <Select

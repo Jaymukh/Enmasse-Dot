@@ -19,6 +19,7 @@ import '../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import NoVisualData from './NoVisualData';
+import InfoPanel from '../ui/InfoPanel';
 
 ChartJS.register(
     CategoryScale,
@@ -131,12 +132,15 @@ const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData })
     return (
         <div className={`h-auto ${classname}`}>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
-                <Heading
-                    title={category}
-                    colour={TypographyColor.dark}
-                    type={TypographyType.h5}
-                    classname='mt-2 text-start'
-                />
+                <div className='d-flex flex-row justify-content-start align-items-center'>
+                    <Heading
+                        title={category}
+                        type={TypographyType.h5}
+                        colour={TypographyColor.dark}
+                        classname='text-start px-1 my-0'
+                    />
+                    <InfoPanel fontSize={15} text='Hi ! This is info text.' />
+                </div>
                 {data
                     ? <Line data={data} options={options} height={60} />
                     : <NoVisualData displayImage={false} />}
