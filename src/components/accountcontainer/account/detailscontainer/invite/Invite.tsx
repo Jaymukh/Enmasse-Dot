@@ -216,9 +216,9 @@ export default function Invite() {
 							<thead>
 								<tr>
 									<th className='text-start table-header-text'>Name</th>
-									<th className='text-center table-header-text'>Role</th>
-									<th className='text-center table-header-text'>Company</th>
-									<th className='text-center table-header-text'>Company type</th>
+									<th className='text-start table-header-text'>Role</th>
+									<th className='text-start table-header-text'>Company</th>
+									<th className='text-start table-header-text'>Company type</th>
 									<th className='text-center table-header-text'>Action</th>
 								</tr>
 							</thead>
@@ -237,9 +237,9 @@ export default function Invite() {
 													{row.email_id}
 												</Body>
 											</td>
-											<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
-											<td className='text-center fs-14'>{row.company}</td>
-											<td className='text-center fs-14'>{row.company_type}</td>
+											<td className='text-start fs-14'><div className='color-green text-start'>{row.role}</div></td>
+											<td className='text-start fs-14'>{row.company}</td>
+											<td className='text-start fs-14'>{row.company_type}</td>
 											<td className='text-center'>
 												<Button
 													theme={ButtonTheme.muted}
@@ -280,9 +280,9 @@ export default function Invite() {
 															{row.email_id}
 														</Body>
 													</td>
-													<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
-													<td className='text-center fs-14 color-black'>{row.company}</td>
-													<td className='text-center fs-14 color-black'>{row.company_type}</td>
+													<td className='text-start fs-14'><div className='color-green text-start'>{row.role}</div></td>
+													<td className='text-start fs-14 color-black'>{row.company}</td>
+													<td className='text-start fs-14 color-black'>{row.company_type}</td>
 													<td className='text-center'>
 														<Button
 															theme={ButtonTheme.muted}
