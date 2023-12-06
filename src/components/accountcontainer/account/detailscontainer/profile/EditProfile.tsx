@@ -1,6 +1,6 @@
 // External libraries
 import React, { useEffect, useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // CSS
 import '../../../../../styles/main.css';
@@ -11,7 +11,7 @@ import { Heading, TypographyColor, TypographyType } from '../../../../ui/typogra
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Input } from '../../../../ui/input/Input';
 import Drawer from '../../../../ui/Drawer';
-import { AllSettingsState, User, errorState } from "../../../../../states";
+import { AllSettingsState, User, errorState, spinnerState } from "../../../../../states";
 
 // Utilities
 import { useSettingsService } from '../../../../../services';
@@ -32,15 +32,28 @@ export default function EditProfile({
 
     // all settings's data
     const settingsService = useSettingsService();
-    const settings = useRecoilValue(AllSettingsState);
+    const [settings, setSettings] = useRecoilState(AllSettingsState);
     const setError = useSetRecoilState(errorState);
+    const setSpinner = useSetRecoilState(spinnerState);
+    const [updatedData, setUpdatedData] = useState<User>(selectedData);
 
+    const fetchAllSettings = () => {
+        setSpinner(true);
+        settingsService.getAllSettings().then((response) => {
+            if (response) {
+                setSettings(response);
+                setSpinner(false);
+            }
+        }).catch(error => {
+            setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+        });
+    }
     //function to get all the settings details
     useEffect(() => {
-        settingsService.getAllSettings();
+        fetchAllSettings();
     }, []);
-
-    const [updatedData, setUpdatedData] = useState<User>(selectedData);
 
     const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault();

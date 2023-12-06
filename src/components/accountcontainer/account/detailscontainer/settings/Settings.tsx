@@ -1,7 +1,7 @@
 // External libraries
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { MdModeEdit } from 'react-icons/md';
 import { MdLock } from 'react-icons/md';
 
@@ -17,7 +17,7 @@ import Body, { BodyType, BodyColor } from '../../../../ui/typography/Body';
 import ChangePassword from './ChangePassword';
 import UpdateSuccessModal from './UpdateSuccessModel';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
-import { AllSettingsState, UserSettingsState, SettingsData, UserSettings } from "../../../../../states";
+import { AllSettingsState, UserSettingsState, SettingsData, UserSettings, errorState, spinnerState } from "../../../../../states";
 
 // Utilities
 import { RouteConstants } from '../../../../../constants';
@@ -29,10 +29,12 @@ const Settings = () => {
     const [showModal, setShowModal] = useState(false);
     const [open, setOpen] = useState(false);
     // all settings's data
-    const settingsService = useSettingsService();
-    const settings: SettingsData = useRecoilValue(AllSettingsState);
-    const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
+    const settingsService = useSettingsService();    
+    const [settings, setSettings] = useRecoilState(AllSettingsState);
+    const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
     const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
+    const setSpinner = useSetRecoilState(spinnerState);
+    const setError = useSetRecoilState(errorState);
 
     const handleUpdateClick = () => {
         handleDrawer(false);
@@ -56,10 +58,39 @@ const Settings = () => {
         setIsChecked(!isChecked);
     };
 
+    const fetchAllSettings = () => {
+        setSpinner(true);
+        settingsService.getAllSettings().then((response) => {
+            if (response) {
+                setSettings(response);
+                setSpinner(false);
+            }
+        }).catch(error => {
+            setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+        });
+    }
+
+    const fetchUserSettings = () => {
+        setSpinner(true);
+        settingsService.getUserSettings().then((response) => {
+            if (response) {
+                setUserSettings(response);
+                setSpinner(false);
+            }
+        }).catch(error => {
+            setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+
+        });
+    }
+
     //function to get all the user's setting
     useEffect(() => {
-        settingsService.getAllSettings();
-        settingsService.getUserSettings();
+        fetchAllSettings();
+        fetchUserSettings();
     }, []);
 
 

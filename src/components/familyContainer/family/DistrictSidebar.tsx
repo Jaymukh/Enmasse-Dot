@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import React, { useState, useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { LiaArrowRightSolid } from 'react-icons/lia';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
@@ -16,7 +16,7 @@ import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import Select, { SelectSize } from '../../ui/select/Select';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import RequestData from './RequestData';
-import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings } from '../../../states';
+import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings, errorState } from '../../../states';
 
 // Utilities
 import WIPImage from '../../../utils/images/work_in_progress.svg';
@@ -29,8 +29,9 @@ const DistrictSidebar = () => {
     const { cifData: { properties } } = useRecoilValue(mapFeatureState);
     const [currency, setCurrency] = useState<string>("$");
     const settingsService = useSettingsService();
-    const settings: SettingsData = useRecoilValue(AllSettingsState);
-    const usersettings = useRecoilValue<UserSettings>(UserSettingsState);
+    const [settings, setSettings] = useRecoilState(AllSettingsState);
+    const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
+    const setError = useSetRecoilState(errorState);
     const { getCurrencyWithSymbol } = useMapHelpers();
 
 
@@ -41,11 +42,35 @@ const DistrictSidebar = () => {
         setRequestDataDrawerOpen(requestDataDrawerOpen);
     };
 
+    const fetchUserSettings = () => {
+        settingsService.getUserSettings().then((response) => {
+            if (response) {
+                setUserSettings(response);
+                // setSpinner(false);
+            }
+        }).catch(error => {
+            // setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+
+        });
+    }
+
+    const fetchAllSettings = () => {
+        settingsService.getAllSettings().then((response) => {
+            if (response) {
+                setSettings(response);
+            }
+        }).catch(error => {
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+        });
+    }
 
     //function to get all the user's setting
     useEffect(() => {
-        settingsService.getAllSettings();
-        settingsService.getUserSettings();
+        fetchAllSettings();
+        fetchUserSettings();
     }, []);
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {

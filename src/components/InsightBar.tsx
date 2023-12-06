@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/main.css';
 import Select, { SelectSize } from './ui/select/Select';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { mapFeatureState } from '../states/MapFeatureState';
 import { useSettingsService } from '../services';
-import { AllSettingsState, UserSettingsState } from '../states';
+import { AllSettingsState, UserSettingsState, errorState } from '../states';
 import { Heading, TypographyColor, TypographyType } from './ui/typography/Heading'
 import Body, { BodyColor, BodyType } from './ui/typography/Body';
 import { useMapHelpers } from '../helpers';
@@ -21,23 +21,46 @@ const options = [
 ];
 
 export default function InsightBar() {
-    const [visible, setVisible] = useState(true);
     const [currency, setCurrency] = useState("US Dollar");
     const mapFeatures = useRecoilValue(mapFeatureState);
-    // all settings's data
     const settingsService = useSettingsService();
-    const settings = useRecoilValue(AllSettingsState);
-    const usersettings = useRecoilValue(UserSettingsState);
+    const [settings, setSettings] = useRecoilState(AllSettingsState);
+    const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
+    const setError = useSetRecoilState(errorState);
     const { getCurrencyWithSymbol } = useMapHelpers();
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
     }
 
-    //function to get all the user's setting
+    const fetchAllSettings = () => {
+        settingsService.getAllSettings().then((response) => {
+            if (response) {
+                setSettings(response);
+            }
+        }).catch(error => {
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+        });
+    }
+
+    const fetchUserSettings = () => {
+        settingsService.getUserSettings().then((response) => {
+            if (response) {
+                setUserSettings(response);
+                // setSpinner(false);
+            }
+        }).catch(error => {
+            // setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+
+        });
+    }
+
     useEffect(() => {
-        settingsService.getAllSettings();
-        settingsService.getUserSettings();
+        fetchAllSettings();
+        fetchUserSettings();
     }, []);
 
     return (
@@ -70,7 +93,7 @@ export default function InsightBar() {
                 <div className="row d-flex justify-content-center py-2 mx-0 px-4">
                     <div className='row data-card px-3 d-flex flex-row mx-0 my-2'>
                         <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
-                        <Heading
+                            <Heading
                                 title={mapFeatures.cifData?.properties?.totalHouseholds ? mapFeatures.cifData?.properties?.totalHouseholds : "__"}
                                 colour={TypographyColor.dark}
                                 type={TypographyType.h5}

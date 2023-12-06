@@ -33,7 +33,6 @@ export default function Profile() {
     const [newImage, setNewImage] = useState<string | undefined>(undefined);
     const [zoom, setZoom] = useState<number>(1);
     const [croppedAreaPixels, setCroppedAreaPixels] = useState<{ width: number; height: number; x: number; y: number; }>({ width: 0, height: 0, x: 0, y: 0 });
-    const [croppedImage, setCroppedImage] = useState<any>(null);
     const [crop, setCrop] = useState({ x: 0, y: 0 });
     const { getCroppedImg } = useMapHelpers();
 
@@ -74,8 +73,6 @@ export default function Profile() {
             });
     };
 
-    // functions for Upload Image Modal
-
     const openUploadImageModal = () => {
         setShowUploadImageModal(true);
     };
@@ -104,6 +101,7 @@ export default function Profile() {
             return base64Data;
         } catch (error) {
             console.error('Error converting image to base64:', error);
+            setError({ type: 'Error', message: 'Error converting image to base64' });
             return null;
         }
     };
@@ -113,6 +111,7 @@ export default function Profile() {
     }
 
     const handleSaveImage = async () => {
+        setSpinner(true);
         try {
             const croppedImage = await getCroppedImg(
                 newImage,
@@ -120,7 +119,6 @@ export default function Profile() {
                 0
             )
             const base64Img = await imageUrlToBase64(croppedImage);
-            setCroppedImage(base64Img);
             userService.updateUserImage({ 'image': base64Img })
                 .then((response: any) => {
                     if (response) {
@@ -142,8 +140,6 @@ export default function Profile() {
         }
     }
 
-
-    // Function to handle zoom slider changes
     const handleZoomIn = () => {
         if (zoom < maxZoom) {
             setZoom(zoom + 0.1);

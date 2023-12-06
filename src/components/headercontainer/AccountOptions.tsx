@@ -6,7 +6,7 @@ import { MdLogout } from 'react-icons/md';
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { RouteConstants } from '../../constants';
-import { loggedUserState } from '../../states';
+import { AllSettingsState, UserSettingsState, errorState, loggedUserState } from '../../states';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSettingsService, useUserService } from '../../services';
 import { ButtonAvatar } from '../ui/button/ButtonAvatar';
@@ -22,12 +22,40 @@ const AccountOptions = () => {
 	const userService = useUserService();
 	const settingsService = useSettingsService();
 	const loggedUser = useRecoilValue(loggedUserState);
+	const setSettings = useSetRecoilState(AllSettingsState);
+    const setUserSettings = useSetRecoilState(UserSettingsState);
+    const setError = useSetRecoilState(errorState);
 	const setVisiblePanel = useSetRecoilState(visiblePanelState);
+
+	const fetchUserSettings = () => {
+		settingsService.getUserSettings().then((response) => {
+			if (response) {
+				setUserSettings(response);
+				// setSpinner(false);
+			}
+		}).catch(error => {
+			// setSpinner(false);
+			const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+			setError({ type: 'Error', message: errorMsg });
+
+		});
+	}
+
+	const fetchAllSettings = () => {
+		settingsService.getAllSettings().then((response) => {
+			if (response) {
+				setSettings(response);
+			}
+		}).catch(error => {
+			const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+			setError({ type: 'Error', message: errorMsg });
+		});
+	}
 
 	useEffect(() => {
 		userService.getUserDetails();
-		settingsService.getAllSettings();
-		settingsService.getUserSettings();
+		fetchAllSettings();
+		fetchUserSettings();
 	}, []);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -72,7 +100,7 @@ const AccountOptions = () => {
 					bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}
 					classname=''
 				/>
-				<IoMdArrowDropdown fontSize={22} className='ms-1 px-0' color='rgba(28, 27, 31, 1)'  />
+				<IoMdArrowDropdown fontSize={22} className='ms-1 px-0' color='rgba(28, 27, 31, 1)' />
 			</div>
 
 			{Boolean(anchorEl) &&

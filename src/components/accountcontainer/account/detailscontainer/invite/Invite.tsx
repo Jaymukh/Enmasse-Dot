@@ -110,20 +110,20 @@ export default function Invite() {
 	const handleInputChange = (value: string) => {
 		console.log(suggestions)
 		setSuggestions([]);
-		var result = [];		
+		var result = [];
 		console.log(users)
 		setSearchTerm(value);
-		if (!value) {			
+		if (!value) {
 			setSuggestions([]);
 			setSearchTerm('');
 		} else {
 			const lowercasedValue = value.toLowerCase();
-			 result = users?.filter((item: any) => {
+			result = users?.filter((item: any) => {
 				const lowercasedName = item?.name?.toLowerCase();
 				const lowercasedEmail = item?.email_id?.toLowerCase();
 				const lowercasedRole = item?.role?.toLowerCase();
 				const lowercasedCompany = item?.company?.toLowerCase();
-				const lowercasedCompanyType = item?.company_type?.toLowerCase();				
+				const lowercasedCompanyType = item?.company_type?.toLowerCase();
 
 				return (
 					lowercasedName.includes(lowercasedValue) ||
@@ -194,7 +194,7 @@ export default function Invite() {
 						suggestions={suggestions}
 						hideSuggestionBox={true}
 						placeholderValue='Search'
-						classname='height-2-25'
+						classname='height-2-25 table-search'
 					/>
 					<Button
 						theme={ButtonTheme.secondary}
@@ -215,11 +215,11 @@ export default function Invite() {
 						<table className=''>
 							<thead>
 								<tr>
-									<th className='text-start fs-14 font-weight-bold'>Name</th>
-									<th className='text-center fs-14 font-weight-bold'>Role</th>
-									<th className='text-center fs-14 font-weight-bold'>Company</th>
-									<th className='text-center fs-14 font-weight-bold'>Company type</th>
-									<th className='text-center fs-14 font-weight-bold'>Action</th>
+									<th className='text-start table-header-text'>Name</th>
+									<th className='text-center table-header-text'>Role</th>
+									<th className='text-center table-header-text'>Company</th>
+									<th className='text-center table-header-text'>Company type</th>
+									<th className='text-center table-header-text'>Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -281,8 +281,8 @@ export default function Invite() {
 														</Body>
 													</td>
 													<td className='text-center fs-14'><div className='color-green'>{row.role}</div></td>
-													<td className='text-center fs-14'>{row.company}</td>
-													<td className='text-center fs-14'>{row.company_type}</td>
+													<td className='text-center fs-14 color-black'>{row.company}</td>
+													<td className='text-center fs-14 color-black'>{row.company_type}</td>
 													<td className='text-center'>
 														<Button
 															theme={ButtonTheme.muted}
@@ -306,7 +306,7 @@ export default function Invite() {
 										)
 									)
 								}
-								
+
 							</tbody>
 						</table>
 					</div>

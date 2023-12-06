@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import React, { useState, useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // CSS
 import '../../../../../styles/main.css';
@@ -13,7 +13,7 @@ import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import Select, { SelectSize } from '../../../../ui/select/Select';
 import { Input } from '../../../../ui/input/Input';
 import Drawer from '../../../../ui/Drawer';
-import { AllSettingsState, User, errorState } from "../../../../../states";
+import { AllSettingsState, User, errorState, spinnerState } from "../../../../../states";
 
 // Utilities
 import { useSettingsService } from '../../../../../services';
@@ -29,18 +29,30 @@ const EditInvite: React.FC<EditInviteProps> = ({
     handleCloseDialog,
     handleUpdate
 }) => {
-    // all settings's data
     const settingsService = useSettingsService();
-    const settings = useRecoilValue(AllSettingsState);
+    const [settings, setSettings] = useRecoilState(AllSettingsState);
     const setError = useSetRecoilState(errorState);
+    const setSpinner = useSetRecoilState(spinnerState);
+    const [updatedData, setUpdatedData] = useState<User>(selectedData);
+
+    const fetchAllSettings = () => {
+        setSpinner(true);
+        settingsService.getAllSettings().then((response) => {
+            if (response) {
+                setSettings(response);
+                setSpinner(false);
+            }
+        }).catch(error => {
+            setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+        });
+    }
 
     //function to get all the settings details
     useEffect(() => {
-        settingsService.getAllSettings();
-    }, []);
-
-    // State variables for managing the input
-    const [updatedData, setUpdatedData] = useState<User>(selectedData);
+        fetchAllSettings();
+    }, []);  
 
     const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault();

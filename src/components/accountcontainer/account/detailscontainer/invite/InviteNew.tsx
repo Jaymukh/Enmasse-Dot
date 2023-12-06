@@ -1,6 +1,6 @@
 // External libraries
 import React, { useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // CSS
 import '../../../../../styles/main.css';
@@ -12,7 +12,7 @@ import { Heading, TypographyColor, TypographyType } from '../../../../ui/typogra
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import { Input } from '../../../../ui/input/Input';
 import Drawer from '../../../../ui/Drawer';
-import { loggedUserState, AllSettingsState, errorState } from "../../../../../states";
+import { loggedUserState, AllSettingsState, errorState, spinnerState } from "../../../../../states";
 
 // Utilities
 import { useUserService, useSettingsService } from '../../../../../services';
@@ -45,8 +45,9 @@ const InviteNew: React.FC<InviteNewProps> = ({
 
     const userService = useUserService();
     const loggedUser = useRecoilValue(loggedUserState);
-    const settings = useRecoilValue(AllSettingsState);
+    const [settings, setSettings] = useRecoilState(AllSettingsState);
     const setError = useSetRecoilState(errorState);
+    const setSpinner = useSetRecoilState(spinnerState);
     const settingsService = useSettingsService();
 
 
@@ -71,10 +72,23 @@ const InviteNew: React.FC<InviteNewProps> = ({
             setError({ type: 'Error', message: "All fields are mendatory!" });
         }
     };
+    const fetchAllSettings = () => {
+        setSpinner(true);
+        settingsService.getAllSettings().then((response) => {
+            if (response) {
+                setSettings(response);
+                setSpinner(false);
+            }
+        }).catch(error => {
+            setSpinner(false);
+            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            setError({ type: 'Error', message: errorMsg });
+        });
+    }
 
     //function to get all the settings details
     useEffect(() => {
-        settingsService.getAllSettings();
+        fetchAllSettings();
     }, []);
 
     return (
