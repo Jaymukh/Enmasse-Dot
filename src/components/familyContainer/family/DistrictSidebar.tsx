@@ -16,6 +16,7 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import Select, { SelectSize } from '../../ui/select/Select';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
+import InfoPanel from '../../ui/InfoPanel';
 import RequestData from './RequestData';
 import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings, errorState } from '../../../states';
 
@@ -147,7 +148,9 @@ const DistrictSidebar = () => {
                             type={TypographyType.h5}
                             classname='me-2 my-0'
                         />
-                        <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
+                        {properties?.enMassesThesis?.override
+                            && <InfoPanel fontSize={20} text={properties?.enMassesThesis?.infoButton} />
+                        }
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 mt-2 mb-3 px-0'>
                         <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-green'>
@@ -206,7 +209,7 @@ const DistrictSidebar = () => {
                                         type={TypographyType.h5}
                                         classname='me-2 my-0 text-start'
                                     />
-                                    <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
+                                    <InfoPanel fontSize={20} text={properties?.EICoverage?.infobutton} />
                                 </div>
                                 <Body
                                     type={BodyType.p4}
@@ -226,7 +229,9 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0 text-start'
                                 />
-                                <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
+                                {properties?.EHEconomicActivityIndicators?.override
+                                    && <InfoPanel fontSize={20} text={properties?.EHEconomicActivityIndicators?.infoButton} />
+                                }
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
@@ -248,6 +253,7 @@ const DistrictSidebar = () => {
                                         colour={TypographyColor.dark}
                                         type={TypographyType.h5}
                                         classname='m-0'
+
                                     />
                                     <Body
                                         type={BodyType.p4}
@@ -310,7 +316,9 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
+                                {properties?.EHSpend?.override
+                                    && <InfoPanel fontSize={20} text={properties?.EHSpend?.infoButton} />
+                                }
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
@@ -422,7 +430,9 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
+                                {properties?.EHBorrow?.override
+                                    && <InfoPanel fontSize={20} text={properties?.EHBorrow?.infoButton} />
+                                }
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
@@ -479,7 +489,9 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                <AiOutlineInfoCircle fontSize={20} className='icon-color-5' />
+                                {properties?.EHIncome?.override
+                                    && <InfoPanel fontSize={20} text={properties?.EHIncome?.infoButton} />
+                                }
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>

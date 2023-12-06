@@ -12,6 +12,7 @@ import NoVisualData from './NoVisualData';
 
 // Utilities
 import { TableHeaderProps } from '../../constants';
+import InfoPanel from '../ui/InfoPanel';
 
 interface TableViewProps {
     data: any;
@@ -28,9 +29,9 @@ const TableView: React.FC<TableViewProps> = ({ data, headerData, breakdownType }
                         title={(breakdownType && headerData?.ID === 'metric-breakdown') ? `${breakdownType} ${headerData.NAME}` : `${headerData.NAME}`}
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='text-start px-1'
+                        classname='text-start px-1 my-0'
                     />
-                    <AiOutlineInfoCircle fontSize={15} className='icon-color-5 mb-2' />
+                    <InfoPanel fontSize={15} text='Hi ! This is info text.' />
                 </div>
 
                 {(data && data?.length > 0)

@@ -11,6 +11,7 @@ import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import NoVisualData from './NoVisualData';
 import { cifState } from '../../states';
 import { BubbleNode, colorDescription } from '../../utils/constants/Constants';
+import InfoPanel from "../ui/InfoPanel";
 
 const BubbleGraph = () => {
 	const [data, setData] = useState<BubbleNode>();
@@ -68,10 +69,11 @@ const BubbleGraph = () => {
 							title='Core Solutions by EH'
 							type={TypographyType.h5}
 							colour={TypographyColor.dark}
-							classname='text-start px-1'
+							classname='text-start px-1 my-0'
 						/>
-						<AiOutlineInfoCircle fontSize={15} className='icon-color-5 mb-2' />
+						<InfoPanel fontSize={15} text='Hi ! This is info text.' />
 					</div>
+
 					<div className='col-2'>
 						<Select
 							options={options}

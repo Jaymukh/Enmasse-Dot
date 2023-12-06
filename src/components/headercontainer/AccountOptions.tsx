@@ -94,7 +94,6 @@ const AccountOptions = () => {
 		<div className='account-menu' ref={menuRef}>
 			<div className='d-flex flex-row justify-content-center align-items-center' onClick={handleClick}>
 				<ButtonAvatar
-					// onClick={handleClick}
 					image={loggedUser?.profile_picture}
 					initial={loggedUser.initial}
 					bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}

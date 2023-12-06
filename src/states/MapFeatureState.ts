@@ -14,10 +14,10 @@ export interface Suggestion {
 export interface CifData {
     type: string;
     properties: {
-        geo_name: string;
         geo_id: string;
         region: string;
         address: string;
+        geo_name: string;
         totalPopulationActualValue: number;
         totalPopulation: string;
         totalHouseholdsActualValue: number;
@@ -31,6 +31,8 @@ export interface CifData {
             averageAnnualEHTransactionalValueActualValue: number;
             averageAnnualEHTransactionalValue: string;
             averageAnnualEHTransactionalValueUOM: string;
+            infoButton: string;
+            override: boolean;
         };
         EHEconomicActivityIndicators: {
             showPOI: boolean;
@@ -44,6 +46,8 @@ export interface CifData {
             financialSolutionsActivityPointsOfInterest: string;
             healthcareActivityPointsOfInterestActualValue: number;
             healthcareActivityPointsOfInterest: string;
+            infoButton: string;
+            override: boolean;
         };
         EHSpend: {
             showSpend: boolean;
@@ -68,6 +72,8 @@ export interface CifData {
             AvergeAnnualEHSpendOnHealthcareActualValue: number;
             AvergeAnnualEHSpendOnHealthcare: string;
             healthcareSpendUOM: string;
+            infoButton: string;
+            override: boolean;
         };
         EHIncome: {
             showIncome: boolean;
@@ -80,6 +86,8 @@ export interface CifData {
             averageAnnualEHIncomeFromInformalSourcesActualValue: number;
             averageAnnualEHIncomeFromInformalSources: string;
             averageAnnualEHIncomeFromInformalSourcesUOM: string;
+            infoButton: string;
+            override: boolean;
         };
         EHBorrow: {
             showBorrow: boolean;
@@ -92,10 +100,14 @@ export interface CifData {
             averageAnnualEHBorrowingFromInformalSourcesActualValue: number;
             averageAnnualEHBorrowingFromInformalSources: string;
             averageAnnualEHBorrowingFromInformalSourcesUOM: string;
+            infoButton: string;
+            override: boolean;
         };
         EICoverage: {
+            showCoverage: boolean;
             covered: number;
             total: number;
+            infobutton: string;
         };
         showExploreMore: boolean;
     };

@@ -14,6 +14,7 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 import RequestLayers from "./RequestLayers";
 import { Heading, TypographyType, TypographyColor } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
+import InfoPanel from '../ui/InfoPanel';
 
 interface Option {
     label: string;
@@ -57,7 +58,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 classname='my-0 ms-2 text-start'
                             />
                         </div>
-                        <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
+                        <InfoPanel fontSize={15} text='Core Solutions' />
                         <Switch
                             isChecked={isChecked?.coreSolution}
                             toggleSwitch={toggleSwitch}
@@ -81,7 +82,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                     type={BodyType.p2}
                                     color={BodyColor.dark}
                                     classname='text-start'
-                                    >
+                                >
                                     {option.label}
                                 </Body>
                             </div>
@@ -97,7 +98,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             colour={TypographyColor.dark}
                             classname='my-0 mx-2 text-start'
                         />
-                        <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
+                        <InfoPanel fontSize={15} text='View Stories' />
                     </div>
                     <Switch
                         isChecked={isChecked?.viewStories}
@@ -114,7 +115,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             colour={TypographyColor.dark}
                             classname='my-0 mx-2 text-start'
                         />
-                        <AiOutlineInfoCircle fontSize={15} className='icon-color-5' />
+                        <InfoPanel fontSize={15} text='Request Layers' />
                     </div>
                     <Button
                         theme={ButtonTheme.primary}
