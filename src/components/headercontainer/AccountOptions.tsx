@@ -13,6 +13,7 @@ import { ButtonAvatar } from '../ui/button/ButtonAvatar';
 import { Button, ButtonTheme, ButtonVariant, ButtonSize } from '../ui/button/Button';
 import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import { visiblePanelState } from '../../states';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 
 const AccountOptions = () => {
@@ -23,8 +24,8 @@ const AccountOptions = () => {
 	const settingsService = useSettingsService();
 	const loggedUser = useRecoilValue(loggedUserState);
 	const setSettings = useSetRecoilState(AllSettingsState);
-    const setUserSettings = useSetRecoilState(UserSettingsState);
-    const setError = useSetRecoilState(errorState);
+	const setUserSettings = useSetRecoilState(UserSettingsState);
+	const setError = useSetRecoilState(errorState);
 	const setVisiblePanel = useSetRecoilState(visiblePanelState);
 
 	const fetchUserSettings = () => {
@@ -97,14 +98,14 @@ const AccountOptions = () => {
 					image={loggedUser?.profile_picture}
 					initial={loggedUser.initial}
 					bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}
-					classname=''
+					classname='me-1'
 				/>
 				<IoMdArrowDropdown fontSize={22} className='ms-1 px-0' color='rgba(28, 27, 31, 1)' />
 			</div>
 
 			{Boolean(anchorEl) &&
 				(<ul className='account-menu-dropdown '>
-					<li className='menu-item fs-16' onClick={(event) => handleClickMenuItem(event, 'profile')}>
+					<li className='menu-item' onClick={(event) => handleClickMenuItem(event, 'profile')}>
 						<ButtonAvatar
 							image={loggedUser?.profile_picture}
 							initial={loggedUser.initial}
@@ -112,14 +113,12 @@ const AccountOptions = () => {
 							classname=''
 							disabled={false}
 						/>
-						<Body
-							color={BodyColor.dark}
-							type={BodyType.p1}
-							classname='text-wrap text-start'
-						>
-							{loggedUser.name}
-						</Body>
-
+						<Heading
+							title={loggedUser.name}
+							colour={TypographyColor.dark}
+							type={TypographyType.h4}
+							classname='text-start text-wrap ps-2 m-0'
+						/>
 					</li>
 					{Constants.accountMenuItems.map((item) => (
 						(loggedUser.role === 'Admin' || item.key !== 2) && (
@@ -128,14 +127,14 @@ const AccountOptions = () => {
 								className='menu-item d-flex fs-16'
 								onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
 							>
-								<div>{item.icon}</div>
-								<Body
-									color={BodyColor.dark}
-									type={BodyType.p1}
-									classname=''
-								>
-									{item.text}
-								</Body>
+								<div className='ps-1'>{item.icon}</div>
+						
+								<Heading
+									title={item.text}
+									colour={TypographyColor.dark}
+									type={TypographyType.h4}
+									classname='text-start text-wrap ps-2 m-0'
+								/>
 							</li>
 						)
 					))}

@@ -231,12 +231,12 @@ export const accountMenuItems: AccountMenuItem[] = [
     {
         key: 1,
         text: "Settings",
-        icon: <IoSettingsSharp className='fs-21' color='rgba(28, 27, 31, 1)' />,
+        icon: <IoSettingsSharp className='fs-23' color='rgba(28, 27, 31, 1)' />,
     },
     {
         key: 2,
         text: "Invite",
-        icon: <MdGroupAdd className='fs-21' color='rgba(28, 27, 31, 1)' />,
+        icon: <MdGroupAdd className='fs-23' color='rgba(28, 27, 31, 1)' />,
     },
 ];
 // Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\settings\Settings.tsx language selectbox
