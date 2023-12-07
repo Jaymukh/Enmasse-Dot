@@ -210,27 +210,27 @@ export default function Login() {
                             </Button>
                         </form>
                         <Body
-                            type={BodyType.p3}
-                            color={BodyColor.muted}
+                            type={BodyType.p1}
+                            color={BodyColor.secondary}
                             classname='mb-0 mt-2'
                         >
-                            By clicking on continue you are agreeing to the Enmasse
+                            By clicking on continue you are agreeing to the Enmasse 
                             <Button
                                 theme={ButtonTheme.primary}
-                                size={ButtonSize.small}
+                                size={ButtonSize.large}
                                 variant={ButtonVariant.transparent}
                                 onClick={() => handleModal({ tncModal: true })}
-                                classname='underline-text h-auto ps-0 pe-1 black'
+                                classname='underline-text h-auto px-1 w-auto'
                             >
                                 Terms & conditions
                             </Button>
                             and
                             <Button
                                 theme={ButtonTheme.primary}
-                                size={ButtonSize.small}
+                                size={ButtonSize.large}
                                 variant={ButtonVariant.transparent}
                                 onClick={() => handleModal({ tncModal: true })}
-                                classname='underline-text h-auto ps-1 black'
+                                classname='underline-text h-auto ps-1 black w-auto'
                             >
                                 Privacy policies
                             </Button>
