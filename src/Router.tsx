@@ -17,6 +17,10 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath }) =
     return <Outlet />;
 }
 
+const Fallback = () => {
+
+}
+
 const Router = () => {
     const auth = useRecoilValue(authState);
 
@@ -27,13 +31,20 @@ const Router = () => {
     const StoryContainer = useMemo(() => React.lazy(() => import("./containers/StoryContainer")), []);
     const ProfileContainer = useMemo(() => React.lazy(() => import("./containers/ProfileContainer")), []);
 
-
     return (
-        <Suspense fallback={<div className=""></div>}>
+        <Suspense fallback={
+            <div className="wrapper">
+                <div className="overlay d-flex justify-content-center align-items-center">
+                    <div className="spinner-wrapper w-100">
+                        <div className="spinner-border spinner-size" role="status" />
+                    </div>
+                </div>
+            </div>
+        }>
             <Routes>
                 <Route path={RouteConstants.login} element={<Login />} />
                 <Route path={RouteConstants.update_password} element={<UpdatePassword />} />
-                <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} />}>                    
+                <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} />}>
                     {/* <Route path={RouteConstants.root} element={<HomeContainer />} /> */}
                     <Route path={RouteConstants.root} element={<HomeContainer />} />
                     <Route path={RouteConstants.dashboards} element={<DashboardContainer />} />
