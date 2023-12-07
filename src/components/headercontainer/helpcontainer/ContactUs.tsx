@@ -70,7 +70,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
     return (
         <Drawer
             id='contact-us'
-            title={`Contact us ${geoJSON?.rootProperties?.Name ? `(${geoJSON?.rootProperties?.Name})` : ''}`}
+            title='Contact us'
             isOpen={contactUsDrawerOpen}
             toggleFunction={handleContactUsDrawer}
         >
