@@ -64,7 +64,7 @@ const BubbleGraph = () => {
 		<div className="h-100 me-3">
 			<Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
 				<div className='row px-2 d-flex justify-content-between'>
-					<div className='m-0 p-0 d-flex col-4 align-items-center'>
+					<div className='m-0 p-0 d-flex col-6 align-items-center'>
 						<Heading
 							title='Core Solutions by EH'
 							type={TypographyType.h5}
