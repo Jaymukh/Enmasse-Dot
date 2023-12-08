@@ -2,7 +2,6 @@
 // External libraries
 import React, { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 
 // CSS
@@ -19,7 +18,7 @@ import InfoPanel from '../ui/InfoPanel';
 const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
     return (
         <g>
-            <text x={cx} y={cy - 10} textAnchor="middle" fill="black" fontSize={12} fontWeight={500}>
+            <text x={cx} y={cy - 10} textAnchor="middle" fill="rgba(0, 0, 0, 0.6)" fontSize={10} fontWeight={500}>
                 {payload?.geo_value}
             </text>
         </g>
@@ -36,7 +35,7 @@ const ArrowMarker = () => (
         orient="auto"
         markerUnits="strokeWidth"
     >
-        <path d="M0,0 L40,20 L0,40" fill="none" stroke="gray" />
+        <path d="M0,-10 L30,20 L0,50" fill="none" stroke="rgba(205, 205, 205, 1)" />
     </marker>
 );
 
@@ -50,7 +49,7 @@ const ReverseArrowMarker = () => (
         orient="auto"
         markerUnits="strokeWidth"
     >
-        <path d="M40,0 L0,20 L40,40" fill="none" stroke="gray" />
+        <path d="M30,0 L0,20 L40,47" fill="none" stroke="rgba(205, 205, 205, 1)" />
     </marker>
 )
 
@@ -109,36 +108,49 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                             />
                             <InfoPanel fontSize={20} text='Hi ! This is info text.' />
                         </div>
-
+                        <div className='col-1'>
+                            <Select
+                                options={options}
+                                onChange={handleChangeYear}
+                                value={selectedYear}
+                                labelKey='value'
+                                valueKey='value'
+                                size={SelectSize.small}
+                                // disabled={coreSolutionsData?.coreSolutionsByEH?.length > 0 ? false : true}
+                                disabled={true}
+                            />
+                        </div>
                         {inOutFlowData?.data?.length > 0
-                            ? <ScatterChart width={1275} height={429} margin={{ top: 60, right: 20, bottom: 20, left: 20 }} className='px-1'>
+                            ? 
+                            
+                            <ScatterChart width={1280} height={429} margin={{ top: 20, right: 20, bottom: 20, left: 20 }} className='col-12 px-1'>
                                 <defs>
                                     <ArrowMarker />
                                 </defs>
                                 <defs>
                                     <ReverseArrowMarker />
                                 </defs>
-                                <XAxis type="number" dataKey="outflow" name="x" strokeWidth='0.35' strokeOpacity='0.5' fontSize={10} >
+                                <XAxis type="number" dataKey="outflow" name="Outflow" strokeWidth='0.35' strokeOpacity='0.5' fontSize={10} >
                                     <Label value="OUTFLOW: Spend" position="bottom" offset={5} fontWeight={500} fill='000000' fontSize={10} />
                                 </XAxis>
-                                <YAxis type="number" dataKey="inflow" name="y" strokeWidth='0.35' strokeOpacity='0.5' className='mb-3' fontSize={10} >
-                                    <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: -5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10}/>
+                                <YAxis type="number" dataKey="inflow" name="Inflow" strokeWidth='0.35' strokeOpacity='0.5' className='mb-3' fontSize={10} >
+                                    <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: -5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10} />
                                 </YAxis>
                                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                                <Scatter data={inOutFlowData?.data} fill="rgba(75, 192, 192, 0.6)" shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
+                                <Scatter data={inOutFlowData?.data} fill="rgba(0, 0, 0, 0.6)" opacity={0.6} shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
 
-                                <ReferenceLine x={center.x ? center.x : 0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                                <ReferenceLine y={center.y ? center.y : 0} stroke="gray" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                                <text x={90} y={55} textAnchor="start" fill="#000000" fontSize={10}>
+                                <ReferenceLine x={center.x ? center.x : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
+                                <ReferenceLine y={center.y ? center.y : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
+                                <text x={90} y={20} textAnchor="start" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
                                     Low Inflow & High Outflow
                                 </text>
-                                <text x={1250} y={55} textAnchor="end" fill="#000000" fontSize={10}>
+                                <text x={1250} y={20} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
                                     High Inflow & Outflow
                                 </text>
-                                <text x={90} y={375} textAnchor="start" fill="#000000" fontSize={10}>
+                                <text x={90} y={375} textAnchor="start" fill="#000000" fontSize={10} fontWeight={500} >
                                     Low Inflow & Outflow
                                 </text>
-                                <text x={1250} y={375} textAnchor="end" fill="#000000" fontSize={10}>
+                                <text x={1250} y={375} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
                                     High Inflow & Low Outflow
                                 </text>
                             </ScatterChart>
