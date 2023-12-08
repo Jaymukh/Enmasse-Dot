@@ -587,7 +587,7 @@ th {
 .map-popup-story-img {
     object-fit: cover;
     height: 100%;
-    width: 3.5rem;
+    width: 100%;
 }
 
 /* Map Info popup starts*/
