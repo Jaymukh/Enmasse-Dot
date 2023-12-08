@@ -110,7 +110,7 @@ const DistrictSidebar = () => {
                 </div>
             </div>
             <div className="row d-flex justify-content-center pt-1 mx-0 px-3" style={{ overflow: 'auto', height: pathname === '/' ? '68vh' : '72vh' }}>
-                <div className='row data-card px-3 d-flex flex-row mx-0 my-2' style={{ height: 'fit-content' }}>
+                <div className='row data-card px-2 d-flex flex-row mx-0 my-2' style={{ height: 'fit-content' }}>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
                         <Heading
                             title={getCurrencyWithSymbol(properties?.totalPopulation)}
@@ -125,7 +125,7 @@ const DistrictSidebar = () => {
                             Total Population
                         </Body>
                     </div>
-                    <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>
+                    <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-2 d-flex flex-column align-items-start text-start'>
                         <Heading
                             title={getCurrencyWithSymbol(properties?.totalHouseholds)}
                             colour={TypographyColor.dark}
@@ -153,7 +153,7 @@ const DistrictSidebar = () => {
                         }
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 mt-2 mb-3 px-0'>
-                        <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-green'>
+                        <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-green'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}
                                 colour={TypographyColor.secondary}
@@ -234,7 +234,7 @@ const DistrictSidebar = () => {
                                 }
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                                <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
+                                <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}
                                         colour={TypographyColor.secondary}
@@ -321,7 +321,7 @@ const DistrictSidebar = () => {
                                 }
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                                <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
+                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHSpend?.annualEHSpend, properties?.EHSpend?.annualEHSpendUOM)}
                                         colour={TypographyColor.secondary}
@@ -435,7 +435,7 @@ const DistrictSidebar = () => {
                                 }
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                                <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
+                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}
                                         colour={TypographyColor.secondary}
@@ -494,7 +494,7 @@ const DistrictSidebar = () => {
                                 }
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                                <div className='col-12 px-3 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
+                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHIncome?.annualEHIncome, properties?.EHIncome?.annualEHIncomeUOM)}
                                         colour={TypographyColor.secondary}

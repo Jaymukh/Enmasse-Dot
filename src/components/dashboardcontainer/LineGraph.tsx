@@ -139,7 +139,7 @@ const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData })
                         colour={TypographyColor.dark}
                         classname='text-start px-1 my-0'
                     />
-                    <InfoPanel fontSize={15} text='Hi ! This is info text.' />
+                    <InfoPanel fontSize={20} text='Hi ! This is info text.' />
                 </div>
                 {data
                     ? <Line data={data} options={options} height={60} />
