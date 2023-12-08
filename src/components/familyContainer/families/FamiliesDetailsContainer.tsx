@@ -198,7 +198,7 @@ const FamiliesDetailsContainer = () => {
                             >
                                 {paginationData?.page_no ? paginationData?.page_no : 1}
                             </Body>
-                            of {totalStoryInfo.totalPages}
+                            of {totalStoryInfo.totalPages ? totalStoryInfo?.totalPages : 1}
                         </div>
                         <Button
                             theme={paginationData.page_no === totalStoryInfo.totalPages ? ButtonTheme.muted : ButtonTheme.primary}
