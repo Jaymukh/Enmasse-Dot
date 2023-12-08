@@ -58,7 +58,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 classname='my-0 ms-2 text-start'
                             />
                         </div>
-                        <InfoPanel fontSize={15} text='Core Solutions' />
+                        <InfoPanel fontSize={20} text='Core Solutions' classname='me-1' />
                         <Switch
                             isChecked={isChecked?.coreSolution}
                             toggleSwitch={toggleSwitch}
@@ -98,7 +98,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             colour={TypographyColor.dark}
                             classname='my-0 mx-2 text-start'
                         />
-                        <InfoPanel fontSize={15} text='View Stories' />
+                        <InfoPanel fontSize={20} text='View Stories' />
                     </div>
                     <Switch
                         isChecked={isChecked?.viewStories}
@@ -115,7 +115,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             colour={TypographyColor.dark}
                             classname='my-0 mx-2 text-start'
                         />
-                        <InfoPanel fontSize={15} text='Request Layers' />
+                        <InfoPanel fontSize={20} text='Request Layers' />
                     </div>
                     <Button
                         theme={ButtonTheme.primary}

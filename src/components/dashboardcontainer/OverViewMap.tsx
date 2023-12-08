@@ -45,7 +45,7 @@ const OverViewMap = () => {
                         colour={TypographyColor.dark}
                         classname='text-start px-1 my-0'
                     />
-                    <InfoPanel fontSize={15} text='Hi ! This is info text.' />
+                    <InfoPanel fontSize={20} text='Hi ! This is info text.' />
                 </div>
                 <div className='row d-flex justify-content-between px-1'>
                     <div className="col-xl-7 col-lg-7 col-md-9 d-flex flex-column align-items-center justify-content-center static-map">
