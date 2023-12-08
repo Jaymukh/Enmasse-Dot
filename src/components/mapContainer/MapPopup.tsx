@@ -15,7 +15,7 @@ interface MapPopupProps {
 
 const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index }) => {
     const navigate = useNavigate();
-    const { getCurrencyWithSymbol, getCoreSolutions } = useMapHelpers();
+    const { getCoreSolutions } = useMapHelpers();
 
     const handlePopupClick = (geoIdArray: any[], geoHierarchyLevel: number) => {
         let geo_id = geoHierarchyLevel === 1 ? geoIdArray[1] : geoIdArray[0];
@@ -36,7 +36,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     color={BodyColor.secondary}
                     classname='map-popup-description text-start my-0'
                 >
-                    <span className="pe-1">{properties.familyDetails.familyMembers} </span>
+                    <span className="">{properties.familyDetails.familyMembers} </span>
                     Family members
                 </Body>
                 <Body
@@ -44,7 +44,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     color={BodyColor.secondary}
                     classname='map-popup-description text-start my-0'
                 >
-                    <span className="color-green pe-1">{getCoreSolutions(properties.familyDetails)?.value} </span>
+                    <span className="color-green">{getCoreSolutions(properties.familyDetails)?.value} </span>
                     Annual household spend on {getCoreSolutions(properties.familyDetails)?.name}
                 </Body>
                 <Button
