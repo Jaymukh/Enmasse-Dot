@@ -56,6 +56,7 @@ const ReverseArrowMarker = () => (
 const ScatterGraph = ({ geoName }: { geoName: string }) => {
     const { inOutFlowData } = useRecoilValue(cifState);
     const [center, setCenter] = useState<{ x: number | null, y: number | null }>({ x: 0, y: 0 });
+    const [data, setData] = useState<any>(inOutFlowData?.data);
 
     const options: any[] = [];
     const currentYear = new Date().getFullYear();
@@ -90,7 +91,8 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
         if (inOutFlowData?.data && inOutFlowData?.data.length > 0) {
             const x = calculateMedian('outflow');
             const y = calculateMedian('inflow');
-            setCenter({ x: x, y: y })
+            setCenter({ x: x, y: y });
+            setData(inOutFlowData?.data);
         }
     }, [inOutFlowData?.data])
 
@@ -120,9 +122,8 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                                 disabled={true}
                             />
                         </div>
-                        {inOutFlowData?.data?.length > 0
-                            ? 
-                            
+                        {data && data?.length > 0
+                            ?                             
                             <ScatterChart width={1280} height={429} margin={{ top: 20, right: 20, bottom: 20, left: 20 }} className='col-12 px-1'>
                                 <defs>
                                     <ArrowMarker />
@@ -137,7 +138,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                                     <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: -5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10} />
                                 </YAxis>
                                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                                <Scatter data={inOutFlowData?.data} fill="rgba(0, 0, 0, 0.6)" opacity={0.6} shape={<CustomizedDot cx={0} cy={0} payload={undefined} />} />
+                                <Scatter data={data} fill="rgba(0, 0, 0, 0.6)" opacity={0.6} shape={<CustomizedDot cx={0} cy={0} payload={data} />} />
 
                                 <ReferenceLine x={center.x ? center.x : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
                                 <ReferenceLine y={center.y ? center.y : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
