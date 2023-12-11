@@ -597,12 +597,13 @@ th {
 }
 
 .popup {
-    display: none;
+    /* display: none; */
     position: absolute;
     background-color: var(--white-1);
     min-width: 10rem;
     /* max-width: 15rem; */
     width: auto;
+    left: -250%;
     text-wrap: wrap;
     height: auto;
     min-height: 1rem;

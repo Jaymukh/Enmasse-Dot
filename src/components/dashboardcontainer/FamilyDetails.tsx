@@ -72,50 +72,51 @@ const FamilyDetails = () => {
                         </Body>
                     </div>}
             </div>
-            <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
-                <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
-                <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 white-bg py-4 px-4 rounded-end'>
-                    <div className='d-flex flex-row mb-2'>
-                        <Heading
-                            title={familyDetails?.familyName}
-                            colour={TypographyColor.dark}
-                            type={TypographyType.h4}
-                            classname='m-0'
-                        />
+            {family?.length > 0
+                && <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
+                    <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
+                    <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 white-bg py-4 px-4 rounded-end'>
+                        <div className='d-flex flex-row mb-2'>
+                            <Heading
+                                title={familyDetails?.familyName}
+                                colour={TypographyColor.dark}
+                                type={TypographyType.h4}
+                                classname='m-0'
+                            />
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.secondary}
+                                classname='ms-3'>
+                                {familyDetails?.address}
+                            </Body>
+                        </div>
+                        {getCoreSolutions(familyDetails?.familyDetails)?.name &&
+                            <div className='d-flex flex-row mb-2'>
+                                <Body
+                                    type={BodyType.p2}
+                                    color={BodyColor.primary}
+                                    classname='text-center'>
+                                    {getCoreSolutions(familyDetails?.familyDetails)?.value}
+                                </Body>
+                                <Body
+                                    type={BodyType.p4}
+                                    color={BodyColor.secondary}
+                                    classname='ms-2 me-4 mt-1'>
+                                    Annual Household Spend on {getCoreSolutions(familyDetails?.familyDetails)?.name}
+                                </Body>
+                            </div>
+                        }
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.secondary}
-                            classname='ms-3'>
-                            {familyDetails?.address}
+                            classname='text-start'>
+                            {familyDetails?.description}
                         </Body>
+                        <div className='d-flex justify-content-start mt-2'>
+                            <button className='rounded text-start ps-0 border-0 fs-10 white-bg fw-bold color-green' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
+                        </div>
                     </div>
-                    {getCoreSolutions(familyDetails?.familyDetails)?.name && 
-                    <div className='d-flex flex-row mb-2'>
-                        <Body
-                            type={BodyType.p2}
-                            color={BodyColor.primary}
-                            classname='text-center'>
-                            {getCoreSolutions(familyDetails?.familyDetails)?.value}
-                        </Body>
-                        <Body
-                            type={BodyType.p4}
-                            color={BodyColor.secondary}
-                            classname='ms-2 me-4 mt-1'>
-                            Annual Household Spend on {getCoreSolutions(familyDetails?.familyDetails)?.name}
-                        </Body>
-                    </div>
-}
-                    <Body
-                        type={BodyType.p3}
-                        color={BodyColor.secondary}
-                        classname='text-start'>
-                        {familyDetails?.description}
-                    </Body>
-                    <div className='d-flex justify-content-start mt-2'>
-                        <button className='rounded text-start ps-0 border-0 fs-10 white-bg fw-bold color-green' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
-                    </div>
-                </div>
-            </Card>
+                </Card>}
         </div>
     )
 }
