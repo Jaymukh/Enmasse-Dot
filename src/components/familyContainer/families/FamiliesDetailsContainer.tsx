@@ -175,7 +175,7 @@ const FamiliesDetailsContainer = () => {
                             type={BodyType.p3}
                             color={BodyColor.dark}
                             classname='my-2 ms-2'>
-                            {(stories?.totalStories) ? (iterator * paginationData.storiespp + 1) : 0} - {((iterator * paginationData.storiespp + paginationData.storiespp) < (stories?.totalStories)) ? (iterator * paginationData.storiespp + paginationData.storiespp) : (stories?.totalStories ? stories?.totalStories : 0)} of {stories?.totalStories ? stories?.totalStories : 0} items
+                            {(stories?.totalStories ) ? (iterator * paginationData.storiespp + 1) : 0} - {((iterator * paginationData.storiespp + paginationData.storiespp) < (stories?.totalStories)) ? (iterator * paginationData.storiespp + paginationData.storiespp) : (stories?.totalStories ? stories?.totalStories : 0 )} of {stories?.totalStories ? stories?.totalStories : 0} items
                         </Body>
                     </div>
                     <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
@@ -196,9 +196,9 @@ const FamiliesDetailsContainer = () => {
                                 type={BodyType.p3}
                                 classname='border rounded mx-1 px-2 py-1'
                             >
-                                {paginationData?.page_no}
+                                {paginationData?.page_no ? paginationData?.page_no : 1}
                             </Body>
-                            of {totalStoryInfo.totalPages ? totalStoryInfo.totalPages : 1 }
+                            of {totalStoryInfo.totalPages ? totalStoryInfo?.totalPages : 1}
                         </div>
                         <Button
                             theme={paginationData.page_no === totalStoryInfo.totalPages ? ButtonTheme.muted : ButtonTheme.primary}

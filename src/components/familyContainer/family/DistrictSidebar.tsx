@@ -91,12 +91,16 @@ const DistrictSidebar = () => {
     return (
         <div className='py-2 bg-white px-0 h-100 me-0' style={{ height: pathname === '/' ? '85.5vh' : '91.75vh' }} >
             <div className='row d-flex justify-content-between align-items-center px-3 py-2 me-1'>
-                <Heading
-                    title={properties?.region}
-                    colour={TypographyColor.dark}
-                    type={TypographyType.h4}
-                    classname='col-6 m-0 text-start'
-                />
+                <div className='d-flex justify-content-start align-items-center col-6 m-0 text-start'>
+                    <Heading
+                        title={properties?.region}
+                        colour={TypographyColor.dark}
+                        type={TypographyType.h4}
+                        classname='me-2 my-0'
+                    />
+                    <InfoPanel fontSize={20} text='India' />
+
+                </div>
                 <div className='col-6 p-0'>
                     <Select
                         options={settings?.currencies}
