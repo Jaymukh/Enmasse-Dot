@@ -62,7 +62,7 @@ const FamilyDetails = () => {
                             classname='mt-2 w-auto text-end text-nowrap pe-2 '
                         />
                         {/* <AiOutlineInfoCircle fontSize={35} className='me-2 icon-color-5' /> */}
-                        <InfoPanel fontSize={20} text='Hi ! This is info text.' />
+                        <InfoPanel fontSize={20} text={mapFeatures?.cifData?.properties?.EICoverage?.infobutton} />
                         <ProgressBar coverage={mapFeatures?.cifData?.properties?.EICoverage} />
                         <Body
                             type={BodyType.p3}

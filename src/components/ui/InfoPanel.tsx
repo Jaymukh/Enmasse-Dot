@@ -15,17 +15,22 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
     const [showMore, setShowMore] = useState(false);
 
     const handlePopup = () => {
-        const wordLimit = 7;
-        const words = text.split(/\s+/).filter((word: any) => word !== '');
+        if (text) {
+            const wordLimit = 7;
+            const words = text?.split(/\s+/).filter((word: any) => word !== '');
 
-        if (words.length > wordLimit) {
-            // Truncate the input to the word limit
-            const truncatedInput = words.slice(0, wordLimit).join(' ');
-            setInfoText(truncatedInput);
-            setShowMore(true);
+            if (words?.length > wordLimit) {
+                // Truncate the input to the word limit
+                const truncatedInput = words?.slice(0, wordLimit).join(' ');
+                setInfoText(truncatedInput);
+                setShowMore(true);
+            }
+            else {
+                setInfoText(text);
+            }
         }
-        else {
-            setInfoText(text);
+        else{
+            setInfoText('Info text');
         }
         setShowPopup(true);
     }
@@ -61,18 +66,18 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                 <div className={`popup ${classname}`} style={{ zIndex: 1000 }}>
                     <p className='m-0'>
                         {infoText}
-                        {showMore 
-                        && <>
-                        ... <Button
-                            theme={ButtonTheme.success}
-                            size={ButtonSize.default}
-                            variant={ButtonVariant.transparent}
-                            onClick={() => handleReadMore()}
-                            classname='m-0 h-auto'
-                        >
-                            Read More
-                        </Button>
-                        </>
+                        {showMore
+                            && <>
+                                ... <Button
+                                    theme={ButtonTheme.success}
+                                    size={ButtonSize.default}
+                                    variant={ButtonVariant.transparent}
+                                    onClick={() => handleReadMore()}
+                                    classname='m-0 h-auto'
+                                >
+                                    Read More
+                                </Button>
+                            </>
                         }
                     </p>
                 </div>

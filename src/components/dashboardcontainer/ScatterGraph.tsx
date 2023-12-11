@@ -106,7 +106,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                                 colour={TypographyColor.dark}
                                 classname='text-start px-1 my-0'
                             />
-                            <InfoPanel fontSize={20} text='Hi ! This is info text.' />
+                            <InfoPanel fontSize={20} text={inOutFlowData?.infoButton} />
                         </div>
                         <div className='col-1'>
                             <Select

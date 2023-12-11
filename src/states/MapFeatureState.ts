@@ -22,6 +22,8 @@ export interface CifData {
         totalPopulation: string;
         totalHouseholdsActualValue: number;
         totalHouseholds: string;
+        infoButton: string;
+        override: boolean;
         enMassesThesis: {
             totalAddressableMarketActualValue: number;
             totalAddressableMarket: string;

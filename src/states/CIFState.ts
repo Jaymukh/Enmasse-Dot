@@ -1,9 +1,10 @@
 import { atom } from 'recoil';
 
 export interface geoInfoProps {
-    breakdownType: string;
-    data: geoInfoTableProps[];
     show: boolean;
+    breakdownType: string;
+    infoButton: string;
+    data: geoInfoTableProps[];
 }
 
 
@@ -18,7 +19,9 @@ export interface geoInfoTableProps {
 }
 
 export interface metricBreakdownInfoProps {
+    show: boolean;
     breakdownType: string;
+    infoButton: string;
     data: metricBreakdownInfoTableProps[];
 }
 
@@ -29,18 +32,20 @@ export interface metricBreakdownInfoTableProps {
     medianAnnualEhSpend: number | null,
     medianAnnualEhBorrowing: number | null,
     medianAnnualEhIncome: number | null,
-    ehTransactionValue: number | null
+    ehTransactionValue: number | null,
 }
 
 export interface ehGrowthGraphDataProps {
     geoId: string,
     geoName: string,
-    ehGrowth: { value: string | null, period: string }[],
+    infoButton: string,
+    ehGrowth: { value: string | null, period: string, actualValue: number | null, }[],
     averageEhTransactionalValue: { value: null | string, uom: null | string, period: string | null }[]
 }
 
 export interface inOutFlowDataProps {
     show: boolean;
+    infoButton: string;
     data: {
         geoId: number,
         parentId: number,
@@ -59,6 +64,7 @@ export interface coreSolutionDataProps {
         geoName: string,
         region: string
     },
+    infoButton: string;
     coreSolutionsByEH: CoreSolutionByEH[]
 }
 

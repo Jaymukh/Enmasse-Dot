@@ -17,10 +17,11 @@ import InfoPanel from '../ui/InfoPanel';
 interface TableViewProps {
     data: any;
     headerData: TableHeaderProps;
+    infoButton: string;
     breakdownType?: string
 }
 
-const TableView: React.FC<TableViewProps> = ({ data, headerData, breakdownType }) => {
+const TableView: React.FC<TableViewProps> = ({ data, headerData, infoButton, breakdownType }) => {
     return (
         <div>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3'>
@@ -31,7 +32,7 @@ const TableView: React.FC<TableViewProps> = ({ data, headerData, breakdownType }
                         colour={TypographyColor.dark}
                         classname='text-start px-1 my-0'
                     />
-                    <InfoPanel fontSize={20} text='Hi ! This is info text.' />
+                    <InfoPanel fontSize={20} text={infoButton} />
                 </div>
 
                 {(data && data?.length > 0)

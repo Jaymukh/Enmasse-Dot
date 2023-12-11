@@ -98,8 +98,9 @@ const DistrictSidebar = () => {
                         type={TypographyType.h4}
                         classname='me-2 my-0'
                     />
-                    <InfoPanel fontSize={20} text='India' />
-
+                    {properties?.override
+                        && <InfoPanel fontSize={20} text={properties?.infoButton} />
+                    }
                 </div>
                 <div className='col-6 p-0'>
                     <Select
