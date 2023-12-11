@@ -66,20 +66,6 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                 <div className={`popup ${classname}`} style={{ zIndex: 1000 }}>
                     <p className='m-0 text-start info-text-wrap'>
                         {infoText}
-<<<<<<< HEAD
-                        {showMore
-                            && <>
-                                ... <Button
-                                    theme={ButtonTheme.success}
-                                    size={ButtonSize.default}
-                                    variant={ButtonVariant.transparent}
-                                    onClick={() => handleReadMore()}
-                                    classname='m-0 h-auto'
-                                >
-                                    Read More
-                                </Button>
-                            </>
-=======
                         {showMore 
                         && <>
                         ... <Button
@@ -92,7 +78,6 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                             Read More
                         </Button>
                         </>
->>>>>>> fc371bc512820dcad1d1fe468d51199bb654b3f0
                         }
                     </p>
                 </div>
