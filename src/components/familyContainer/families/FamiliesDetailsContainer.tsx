@@ -181,6 +181,7 @@ const FamiliesDetailsContainer = () => {
                     <div className='w-auto d-flex flex-row justify-content-around align-items-center'>
                         <Button
                             theme={paginationData.page_no === 1 ? ButtonTheme.muted : ButtonTheme.primary}
+                            // theme={paginationData.page_no === 0 ? ButtonTheme.muted : ButtonTheme.primary}
                             size={ButtonSize.default}
                             variant={ButtonVariant.transparent}
                             disabled={paginationData.page_no === 1}
@@ -196,9 +197,9 @@ const FamiliesDetailsContainer = () => {
                                 type={BodyType.p3}
                                 classname='border rounded mx-1 px-2 py-1'
                             >
-                                {paginationData?.page_no ? paginationData?.page_no : 1}
+                                {paginationData?.page_no ? paginationData?.page_no : 0}
                             </Body>
-                            of {totalStoryInfo.totalPages ? totalStoryInfo?.totalPages : 1}
+                            of {totalStoryInfo.totalPages ? totalStoryInfo?.totalPages : 0}
                         </div>
                         <Button
                             theme={paginationData.page_no === totalStoryInfo.totalPages ? ButtonTheme.muted : ButtonTheme.primary}

@@ -55,7 +55,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                 className="cursor-pointer infoIcon"
                 onClick={() => handlePopup()}
             >
-                <AiOutlineInfoCircle fontSize={fontSize} className='icon-color-5' />
+                <AiOutlineInfoCircle fontSize={fontSize} className='icon-color-5 mx-1' />
             </div>
             {showPopup && (
                 <div className={`popup ${classname}`} style={{ zIndex: 1000 }}>
