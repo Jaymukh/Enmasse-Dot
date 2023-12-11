@@ -54,7 +54,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                         <div className={`carousel-item h-100 ${index === selectedStory?.index ? ' active' : ''}`} key={index}>
                             <div className="d-flex flex-row align-items-center h-100 w-100 rounded">
                                 <img src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} width="100" height="100" className="d-block carousel-img rounded-start bg-white" alt="Family" />
-                                <div className="d-flex flex-column align-items-start justify-content-center my-auto px-2 w-100 h-100 rounded-end bg-white">
+                                <div className="d-flex flex-column align-items-start justify-content-center my-auto ps-3 pe-2 w-100 h-100 rounded-end bg-white">
                                     <div className='d-flex flex-row justify-content-end align-items-center w-100 m-auto my-0 py-0' >
                                         <Body
                                             type={BodyType.p4}
@@ -67,11 +67,11 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                         title={data?.familyName}
                                         type={TypographyType.h4}
                                         colour={TypographyColor.dark}
-                                        classname='text-start'
+                                        classname='text-start m-0'
                                     />
                                     <Body
                                         type={BodyType.p3}
-                                        color={BodyColor.dark}
+                                        color={BodyColor.secondary}
                                         classname='my-1 text-start'
                                     >
                                         {data?.address}
