@@ -59,7 +59,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
             </div>
             {showPopup && (
                 <div className={`popup ${classname}`} style={{ zIndex: 1000 }}>
-                    <p className='m-0'>
+                    <p className='m-0 text-start info-text-wrap'>
                         {infoText}
                         {showMore 
                         && <>
@@ -68,7 +68,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                             size={ButtonSize.default}
                             variant={ButtonVariant.transparent}
                             onClick={() => handleReadMore()}
-                            classname='m-0 h-auto'
+                            classname='m-0 h-auto p-0'
                         >
                             Read More
                         </Button>

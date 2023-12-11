@@ -76,7 +76,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                     >
                                         {data?.address}
                                     </Body>
-                                    <button className='border-0 bg-white color-green m-0 fs-12 p-0' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
+                                    <button className='border-0 bg-white color-green m-0 fs-12 p-0 scatter-graph-axis-label' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
                                 </div>
                             </div>
                         </div>
