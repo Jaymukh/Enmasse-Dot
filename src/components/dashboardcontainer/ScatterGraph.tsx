@@ -15,10 +15,10 @@ import NoVisualData from './NoVisualData';
 import { cifState } from '../../states';
 import InfoPanel from '../ui/InfoPanel';
 
-const CustomizedDot = ({ cx, cy, payload }: { cx: number, cy: number, payload: any }) => {
+const CustomizedDot = ({ cx, cy, payload }: { cx?: number, cy?: number, payload?: any }) => {
     return (
         <g>
-            <text x={cx} y={cy - 10} textAnchor="middle" fill="rgba(0, 0, 0, 0.6)" fontSize={10} fontWeight={500}>
+            <text x={cx} y={cy! - 10} textAnchor="middle" fill="rgba(0, 0, 0, 0.6)" fontSize={10} fontWeight={500}>
                 {payload?.geo_value}
             </text>
         </g>
@@ -138,7 +138,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                                     <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: -5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10} />
                                 </YAxis>
                                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                                <Scatter data={data} fill="rgba(0, 0, 0, 0.6)" opacity={0.6} shape={<CustomizedDot cx={0} cy={0} payload={data} />} />
+                                <Scatter data={data} fill="rgba(0, 0, 0, 0.6)" opacity={0.6} shape={<CustomizedDot />} />
 
                                 <ReferenceLine x={center.x ? center.x : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
                                 <ReferenceLine y={center.y ? center.y : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
