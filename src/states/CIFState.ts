@@ -39,8 +39,8 @@ export interface ehGrowthGraphDataProps {
     geoId: string,
     geoName: string,
     infoButton: string,
-    ehGrowth: { value: string | null, period: string, actualValue: number | null, }[],
-    averageEhTransactionalValue: { value: null | string, uom: null | string, period: string | null }[]
+    ehGrowth: {infobutton: string, data: { value: string | null, period: string, actualValue: number | null, }[]},
+    averageEhTransactionalValue: {infobutton: string, data:{ value: null | string, uom: null | string, period: string | null }[]}
 }
 
 export interface inOutFlowDataProps {

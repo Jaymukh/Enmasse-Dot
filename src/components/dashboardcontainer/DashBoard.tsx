@@ -53,8 +53,8 @@ const DashBoard = () => {
                 <OverViewMap />
             </div>
             <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 p-0 my-2 d-flex flex-column justify-content-between'>
-                <LineGraph classname='mb-3' category='EH Growth' graphData={cifData?.ehGrowthGraphData?.ehGrowth} />
-                <LineGraph category='Average EH Transactional Value' graphData={cifData?.ehGrowthGraphData?.averageEhTransactionalValue} />
+                <LineGraph classname='mb-3' category='EH Growth' graphData={cifData?.ehGrowthGraphData?.ehGrowth?.data} infobutton={cifData?.ehGrowthGraphData?.ehGrowth?.infobutton} />
+                <LineGraph category='Average EH Transactional Value' graphData={cifData?.ehGrowthGraphData?.averageEhTransactionalValue?.data} infobutton={cifData?.ehGrowthGraphData?.averageEhTransactionalValue?.infobutton} />
             </div>
             <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 p-0 my-2'>
                 <BubbleGraph />

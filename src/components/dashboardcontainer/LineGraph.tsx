@@ -35,9 +35,10 @@ interface LineGraphProps {
     classname?: string;
     category: string;
     graphData: any;
+    infobutton: string;
 }
 
-const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData }) => {
+const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData, infobutton }) => {
     const [data, setData] = useState<any>(null);
 
     useEffect(() => {
@@ -139,7 +140,7 @@ const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData })
                         colour={TypographyColor.dark}
                         classname='text-start px-1 my-0'
                     />
-                    <InfoPanel fontSize={20} text={graphData?.infoButton} />
+                    <InfoPanel fontSize={20} text={infobutton} />
                 </div>
                 {data
                     ? <Line data={data} options={options} height={60} />

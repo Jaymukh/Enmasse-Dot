@@ -9,3 +9,7 @@
     top: auto !important;
     margin: auto;
 }
+.modalHeight {
+    height: 100vh !important;
+    overflow: hidden;
+}

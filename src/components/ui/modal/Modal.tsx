@@ -10,7 +10,7 @@ interface ModalProps {
 const Modal = ({ showModal, children, classname }: ModalProps) => {
     return (
         <div>
-            {showModal && <div className={`modal border-rounded ${showModal ? 'show' : ''} ${classname} d-flex justify-content-center align-items-center m-auto`} tabIndex={-1} role="dialog" style={{ display: showModal ? 'block' : 'none' }}>
+            {showModal && <div className={`modal border-rounded ${styles.modalHeight} ${showModal ? 'show' : ''} ${classname} d-flex justify-content-center align-items-center m-auto`} tabIndex={-1} role="dialog" style={{ display: showModal ? 'block' : 'none' }}>
                 <div className="modal-dialog modal-dialog-centered m-auto">
                     <div className={`modal-content `}>
                         <div className="modal-body d-flex flex-column justify-content-center w-auto m-2">
