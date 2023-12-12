@@ -84,7 +84,8 @@ const ExploreNow = () => {
 		}
 		else {
 			setHasData(true);
-			setSelectedValue({ state: '', district: '' })
+			setSelectedValue({ state: '', district: '' });
+			setValue('');
 		}
 	}
 	const handleViewAvailableStates = () => {

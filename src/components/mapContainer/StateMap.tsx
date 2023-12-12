@@ -33,7 +33,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const mapRef = useRef(null);
     const mapServices = useMapsService();
     const [map, setMap] = useState<google.maps.Map | null>(null);
-    const [circles, setCircles] = useState<google.maps.Circle[]>([]);
+    const [circles, setCircles] = useState<google.maps.Marker[]>([]);
     const [selectedRb, setSelectedRb] = useState(0);
     const [coreSolutions, setCoreSolutions] = useState<Option[]>([]);
     const [selectedCoreSoln, setSelectedCoreSoln] = useState<Option>();
@@ -150,34 +150,48 @@ const StateMap: React.FC<StateMapProps> = ({
 
                 const radii = type !== coreSumType ? [coreSumType, type] : [type];
 
-                let zoom = map?.getZoom() ?? 0;
+                // let zoom = map?.getZoom() ?? 0;
 
                 return radii.map((radius, i) => {
                     if (radius) {
-                        let zoomFactor = 5.5;
-                        if (zoom >= 7) {
-                            zoomFactor = 4;
-                        } else if (zoom >= 5) {
-                            zoomFactor = 4.5;
-                        }
-                        const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
+                        // let zoomFactor = 5.5;
+                        // if (zoom >= 7) {
+                        //     zoomFactor = 4;
+                        // } else if (zoom >= 5) {
+                        //     zoomFactor = 4.5;
+                        // }
+                        // const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
                         const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-                        return new window.google.maps.Circle({
-                            center,
-                            radius: circleRadius,
-                            fillOpacity,
-                            fillColor: '#FFFFFF',
-                            strokeColor: '#FFFFFF',
-                            strokeOpacity: 1,
-                            strokeWeight: 2,
-                            zIndex: 100,
-                            map: map,
-                        });
+                        // return new window.google.maps.Circle({
+                        //     center,
+                        //     radius: circleRadius,
+                        //     fillOpacity,
+                        //     fillColor: '#FFFFFF',
+                        //     strokeColor: '#FFFFFF',
+                        //     strokeOpacity: 1,
+                        //     strokeWeight: 2,
+                        //     zIndex: 100,
+                        //     map: map,
+                        // });
+                        return new window.google.maps.Marker({
+                            position: new google.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]),
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                fillColor: '#FFFFFF',
+                                fillOpacity,
+                                strokeWeight: 2,
+                                strokeColor: '#FFFFFF',
+                                rotation: 0,
+                                scale: feature.properties[radius]*30,
+                            },
+                            map: map
+                        })
                     }
                     return null;
                 });
             });
-            setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Circle[]);
+            // setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Circle[]);
+            setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Marker[]);
         }
     }, [map, map?.getZoom(), mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
 
