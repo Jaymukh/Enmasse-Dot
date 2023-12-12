@@ -73,7 +73,7 @@ const FamilyDetails = () => {
                     </div>}
             </div>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
-                <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
+                <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }} loading='lazy' ></img>
                 <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 white-bg py-4 px-4 rounded-end'>
                     <div className='d-flex flex-row mb-2'>
                         <Heading
