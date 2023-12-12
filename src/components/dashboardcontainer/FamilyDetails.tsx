@@ -48,7 +48,7 @@ const FamilyDetails = () => {
                 <div className='col-xl-4 col-lg-4 col-md-4 col-sm-12 p-0'>
                     <Heading
                         title={properties?.name}
-                        type={TypographyType.h4}
+                        type={TypographyType.h2}
                         colour={TypographyColor.dark}
                         classname='text-start'
                     />
