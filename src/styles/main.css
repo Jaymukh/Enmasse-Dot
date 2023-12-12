@@ -609,7 +609,7 @@ th {
     min-height: 1rem;
     /* max-height: 5rem; */
     padding: 0.5rem;
-    font-size: 12px;
+    font-size: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--light-grey-2);
     border-radius: 0.5rem;    
