@@ -30,7 +30,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
 
     return (
         <div className='col-lg-4 col-md-4 col-sm-12 d-flex flex-column my-4 px-3 h-auto'>
-            <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mt-1 mx-0 white-bg'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mx-0 white-bg'>
                 <Heading
                     title={stories?.properties?.region}
                     colour={TypographyColor.dark}
