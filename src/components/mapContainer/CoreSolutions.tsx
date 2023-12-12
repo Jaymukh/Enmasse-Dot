@@ -69,7 +69,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 {isChecked?.coreSolution && options?.length > 0 &&
                     <div className="bg-white mt-1 py-3 px-3">
                         {options?.map((option: Option) => (
-                            <div className="d-flex flex-row justify-content-start my-2 ms-1" key={option.label}>
+                            <div className="d-flex flex-row justify-content-start align-items-center my-2 ms-1" key={option.label}>
                                 <input
                                     className="me-2 input-rb"
                                     size={1.5}

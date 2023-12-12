@@ -90,7 +90,7 @@ const BubbleGraph = () => {
 				<div className='d-flex justify-content-center align-items-center h-auto w-100'>
 					{coreSolutionsData?.coreSolutionsByEH?.length > 0 ?
 						<div className='m-0 p-0'>
-							<svg width={500} height={320} style={{ display: "inline-block" }}>
+							<svg width={window.innerWidth * 0.36} height={window.innerHeight * 0.505} style={{ display: "inline-block" }}>
 								{root && root
 									.descendants()
 									.slice(1)

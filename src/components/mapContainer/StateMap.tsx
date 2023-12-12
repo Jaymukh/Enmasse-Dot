@@ -141,10 +141,10 @@ const StateMap: React.FC<StateMapProps> = ({
         clearCircles();
         if (map && mapFeatures?.circles && mapFeatures?.circles?.length > 0 && isChecked?.coreSolution) {
             const newCircles = mapFeatures?.circles?.map((feature: any) => {
-                const center = {
-                    lat: feature.geometry.coordinates[1],
-                    lng: feature.geometry.coordinates[0],
-                };
+                // const center = {
+                //     lat: feature.geometry.coordinates[1],
+                //     lng: feature.geometry.coordinates[0],
+                // };
                 const type = selectedCoreSoln?.type;
                 const coreSumType = coreSolutions[0].type;
 

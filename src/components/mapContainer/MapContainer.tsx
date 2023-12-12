@@ -119,6 +119,7 @@ function MapContainer() {
         mapServices.getMaps(Number(geo_id)).then((data: any) => {
             setGeoJSON(data);
             setSpinner(false);
+            fetchMapCircles(geo_id);
         }).catch(error => {
             setSpinner(false);
             errorHandler(error);
@@ -175,18 +176,18 @@ function MapContainer() {
         if (selected.district) {
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.district);
-            fetchMapCircles(selected.district);
+            // fetchMapCircles(selected.district);
             fetchFeaturedStories(selected.district);
             mapServices?.getCifData(selected.district);
         } else if (selected.state) {
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.state);
-            fetchMapCircles(selected.state);
+            // fetchMapCircles(selected.state);
             fetchFeaturedStories(selected.state);
             mapServices?.getCifData(selected.state);
         } else if (selected.country) {
             fetchGeoJsonData(selected.country);
-            fetchMapCircles(selected.country);
+            // fetchMapCircles(selected.country);
             fetchFeaturedStories(selected.country);
             mapServices?.getCifData(selected.country);
         }

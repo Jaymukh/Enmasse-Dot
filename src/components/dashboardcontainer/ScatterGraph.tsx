@@ -100,7 +100,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
         <div className={`h-100 ${geoName === 'district' ? 'mb-5 pb-5' : ''}`}>
             <div className='m-0 p-0' style={{ display: geoName === 'district' ? 'none' : 'flex' }}>
                 <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
-                    <div className='row px-2 pt-2 d-flex justify-content-between'>
+                    <div className='row p-0 m-0 d-flex justify-content-between'>
                         <div className='m-0 p-0 d-flex col-4 align-items-center'>
                             <Heading
                                 title='EH Inflow & Outflow'
@@ -123,38 +123,39 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                             />
                         </div>
                         {data && data?.length > 0
-                            ?                             
-                            <ScatterChart width={1280} height={429} margin={{ top: 20, right: 20, bottom: 20, left: 20 }} className='col-12 px-1'>
-                                <defs>
-                                    <ArrowMarker />
-                                </defs>
-                                <defs>
-                                    <ReverseArrowMarker />
-                                </defs>
-                                <XAxis type="number" dataKey="outflow" name="Outflow" strokeWidth='0.35' strokeOpacity='0.5' fontSize={10} >
-                                    <Label value="OUTFLOW: Spend" position="bottom" offset={5} fontWeight={500} fill='000000' fontSize={10} />
-                                </XAxis>
-                                <YAxis type="number" dataKey="inflow" name="Inflow" strokeWidth='0.35' strokeOpacity='0.5' className='mb-3' fontSize={10} >
-                                    <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: -5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10} />
-                                </YAxis>
-                                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                                <Scatter data={data} fill="rgba(0, 0, 0, 0.6)" opacity={0.6} shape={<CustomizedDot />} />
-
-                                <ReferenceLine x={center.x ? center.x : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                                <ReferenceLine y={center.y ? center.y : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                                <text x={90} y={20} textAnchor="start" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
-                                    Low Inflow & High Outflow
-                                </text>
-                                <text x={1250} y={20} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
-                                    High Inflow & Outflow
-                                </text>
-                                <text x={90} y={375} textAnchor="start" fill="#000000" fontSize={10} fontWeight={500} >
-                                    Low Inflow & Outflow
-                                </text>
-                                <text x={1250} y={375} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
-                                    High Inflow & Low Outflow
-                                </text>
-                            </ScatterChart>
+                            ?
+                            <div className='m-0 p-0 col-12 px-1'>
+                                <ScatterChart width={window.innerWidth * 0.92} height={window.innerHeight * 0.67} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                                    <defs>
+                                        <ArrowMarker />
+                                    </defs>
+                                    <defs>
+                                        <ReverseArrowMarker />
+                                    </defs>
+                                    <XAxis type="number" dataKey="outflow" name="Outflow" strokeWidth='0.35' strokeOpacity='0.5' fontSize={10} >
+                                        <Label value="OUTFLOW: Spend" position="bottom" offset={5} fontWeight={500} fill='000000' fontSize={10} />
+                                    </XAxis>
+                                    <YAxis type="number" dataKey="inflow" name="Inflow" strokeWidth='0.35' strokeOpacity='0.5' className='mb-3' fontSize={10} >
+                                        <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: -5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10} />
+                                    </YAxis>
+                                    <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                                    <Scatter data={data} fill="rgba(0, 0, 0, 0.6)" opacity={0.6} shape={<CustomizedDot />} />
+                                    <ReferenceLine x={center.x ? center.x : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
+                                    <ReferenceLine y={center.y ? center.y : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
+                                    <text x={90} y={20} textAnchor="start" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
+                                        Low Inflow & High Outflow
+                                    </text>
+                                    <text x={1250} y={20} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
+                                        High Inflow & Outflow
+                                    </text>
+                                    <text x={90} y={375} textAnchor="start" fill="#000000" fontSize={10} fontWeight={500} >
+                                        Low Inflow & Outflow
+                                    </text>
+                                    <text x={1250} y={375} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
+                                        High Inflow & Low Outflow
+                                    </text>
+                                </ScatterChart>
+                            </div>
                             : <NoVisualData displayImage={true} />}
                     </div>
                 </Card>
