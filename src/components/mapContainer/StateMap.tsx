@@ -75,8 +75,12 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     const clearCircles = () => {
-        circles.forEach((circle) => circle.setMap(null));
-        setCircles([]);
+        setCircles((prevCircles) => {
+            prevCircles.forEach((circle) => {
+                circle.setMap(null);
+            });
+            return [];
+        });
     };
 
     const handleFocused = (index: number) => {
@@ -173,7 +177,7 @@ const StateMap: React.FC<StateMapProps> = ({
                         //     zIndex: 100,
                         //     map: map,
                         // });
-                        return new window.google.maps.Marker({
+                        return new google.maps.Marker({
                             position: new google.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]),
                             icon: {
                                 path: google.maps.SymbolPath.CIRCLE,
@@ -182,7 +186,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                 strokeWeight: 2,
                                 strokeColor: '#FFFFFF',
                                 rotation: 0,
-                                scale: feature.properties[radius]*30,
+                                scale: feature.properties[radius] * 30,
                             },
                             map: map
                         })
