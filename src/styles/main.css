@@ -484,6 +484,7 @@ ul {
     height: 3.25rem;
     text-align: start;
     padding: 0rem 0.875rem;
+    font-weight: 500;
 }
 
 .dashboard-table-container td {
