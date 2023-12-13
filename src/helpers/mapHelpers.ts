@@ -21,8 +21,9 @@ const useMapHelpers = () => {
     const getSelectedObject = () => {
         const params: any = {};
         searchParams?.toString().split('&').forEach((param) => {
-            const [key, value] = param.split('=');
-            params[key] = Number(value);
+            let [key, value]: any = param.split('=');
+            value = Number(value) ? Number(value) : value;
+            params[key] = value;
         });
         return params;
     }
