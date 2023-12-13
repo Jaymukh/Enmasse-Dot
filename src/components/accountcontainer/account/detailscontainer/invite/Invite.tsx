@@ -108,40 +108,33 @@ export default function Invite() {
 	var [suggestions, setSuggestions] = useState<User[]>([]);
 
 	const handleInputChange = (value: string) => {
-		console.log('suggestions', suggestions);
-		console.log('users',  users);
-		setSuggestions([]);
 		setSearchTerm(value);
-		if (!value) {
-			setSuggestions([]);
-			setSearchTerm('');
+	  };
+	  
+	  useEffect(() => {
+		if (!searchTerm) {
+		  setSuggestions([]);
 		} else {
-			const lowercasedValue = value.toLowerCase();
-			const result = users?.filter((item: any) => {
-				const lowercasedName = item?.name?.toLowerCase();
-				const lowercasedEmail = item?.email_id?.toLowerCase();
-				const lowercasedRole = item?.role?.toLowerCase();
-				const lowercasedCompany = item?.company?.toLowerCase();
-				const lowercasedCompanyType = item?.company_type?.toLowerCase();
-
-				return (
-					lowercasedName.startsWith(lowercasedValue) ||
-					lowercasedEmail.startsWith(lowercasedValue) ||
-					lowercasedRole.startsWith(lowercasedValue) ||
-					lowercasedCompany.startsWith(lowercasedValue) ||
-					lowercasedCompanyType.startsWith(lowercasedValue)
-				);
-			});
-			setSuggestions(result || []);
-
-			// if (!result || result.length === 0) {
-			// 	setSuggestions([]);
-			// }
-			// else {
-			// 	setSuggestions(result);
-			// }
+		  const lowercasedValue = searchTerm.toLowerCase();
+		  const result = users?.filter((item: any) => {
+			const lowercasedName = item?.name?.toLowerCase();
+			const lowercasedEmail = item?.email_id?.toLowerCase();
+			const lowercasedRole = item?.role?.toLowerCase();
+			const lowercasedCompany = item?.company?.toLowerCase();
+			const lowercasedCompanyType = item?.company_type?.toLowerCase();
+	  
+			return (
+			  lowercasedName.startsWith(lowercasedValue) ||
+			  lowercasedEmail.startsWith(lowercasedValue) ||
+			  lowercasedRole.startsWith(lowercasedValue) ||
+			  lowercasedCompany.startsWith(lowercasedValue) ||
+			  lowercasedCompanyType.startsWith(lowercasedValue)
+			);
+		  });
+	  
+		  setSuggestions(result || []);
 		}
-	};
+	  }, [searchTerm]);
 
 	// Confirm Delete Model
 	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
