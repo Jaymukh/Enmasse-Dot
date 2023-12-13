@@ -55,7 +55,6 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
 
         if (payloadData.message) {
             setSpinner(true);
-            console.log(payloadData);
             cifService.sendEmail(payloadData).then((response: any) => {
                 if (response) {
                     setError({ type: 'Success', message: response.message });

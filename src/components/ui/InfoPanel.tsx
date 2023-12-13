@@ -13,13 +13,13 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
     const [showPopup, setShowPopup] = useState(false);
     const [infoText, setInfoText] = useState('');
     const [showMore, setShowMore] = useState(false);
-    
+
     const handlePopup = () => {
         if (text) {
             const charLimit = 50;
             if (text?.length > charLimit) {
                 const shortText = text?.slice(0, charLimit);
-            
+
                 setInfoText(shortText);
                 setShowMore(true);
             }
@@ -31,8 +31,8 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
             setInfoText('Info text');
         }
         setShowPopup(true);
-    }    
-    
+    }
+
 
     const handleClickOutside = (event: { target: any; }) => {
         if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -63,7 +63,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
             </div>
             {showPopup && (
                 <div className={`popup ${classname}`} style={{ zIndex: 1000 }}>
-                    <p className='m-0 text-start info-text-wrap'>
+                    {/* <p className='m-0 text-start info-text-wrap'>
                         {infoText}
                         {showMore
                             && <>
@@ -78,7 +78,21 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                                 </Button>
                             </>
                         }
-                    </p>
+                    </p> */}
+                    <p className='m-0 text-start info-text-wrap' dangerouslySetInnerHTML={{ __html: infoText }} />
+                    {showMore
+                        && <span className='text-start'>
+                            ... <Button
+                                theme={ButtonTheme.success}
+                                size={ButtonSize.default}
+                                variant={ButtonVariant.transparent}
+                                onClick={() => handleReadMore()}
+                                classname='m-0 h-auto p-0'
+                            >
+                                Read More
+                            </Button>
+                        </span>
+                    }
                 </div>
             )}
         </div>

@@ -11,7 +11,6 @@ import { RouteConstants } from '../constants';
 const StoryContainer = () => {
     const [stories] = useRecoilState(storiesState);
     const [routeTo, setRouteTo] = useState<string>('');
-    console.log(stories, routeTo)
 
     useEffect(() => {
         if(stories?.family && stories?.family[0] ) {
