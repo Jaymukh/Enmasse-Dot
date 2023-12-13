@@ -17,7 +17,7 @@ const StoryContainer = () => {
             const story = stories?.family[0];
             let routeValue = `${RouteConstants.root}?`
             if(story?.geoHierarchyLevel && story?.parent_id ) {
-                routeValue = story?.geoHierarchyLevel === 2 ? routeValue + `country=${story?.parent_id[2]}` : routeValue + `country=${story?.parent_id[2]}&state=${story?.parent_id[1]}`;
+                routeValue = story?.geoHierarchyLevel === 2 || story?.geoHierarchyLevel === 1 ? routeValue + `country=${story?.parent_id[2]}` : routeValue + `country=${story?.parent_id[2]}&state=${story?.parent_id[1]}`;
             }
             setRouteTo(routeValue);
         }
