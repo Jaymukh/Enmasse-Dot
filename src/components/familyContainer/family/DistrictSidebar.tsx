@@ -98,9 +98,7 @@ const DistrictSidebar = () => {
                         type={TypographyType.h4}
                         classname='me-2 my-0'
                     />
-                    {properties?.override
-                        && <InfoPanel fontSize={20} text={properties?.infoButton} />
-                    }
+                    <InfoPanel fontSize={20} text={properties?.infoButton} />
                 </div>
                 <div className='col-6 p-0'>
                     <Select
@@ -153,9 +151,7 @@ const DistrictSidebar = () => {
                             type={TypographyType.h5}
                             classname='me-2 my-0'
                         />
-                        {properties?.enMassesThesis?.override
-                            && <InfoPanel fontSize={20} text={properties?.enMassesThesis?.infoButton} />
-                        }
+                        <InfoPanel fontSize={20} text={properties?.enMassesThesis?.infoButton} />
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 mt-2 mb-3 px-0'>
                         <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-green'>
@@ -234,9 +230,7 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0 text-start'
                                 />
-                                {properties?.EHEconomicActivityIndicators?.override
-                                    && <InfoPanel fontSize={20} text={properties?.EHEconomicActivityIndicators?.infoButton} />
-                                }
+                                <InfoPanel fontSize={20} text={properties?.EHEconomicActivityIndicators?.infoButton} />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
@@ -321,9 +315,7 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                {properties?.EHSpend?.override
-                                    && <InfoPanel fontSize={20} text={properties?.EHSpend?.infoButton} />
-                                }
+                                <InfoPanel fontSize={20} text={properties?.EHSpend?.infoButton} />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
@@ -435,9 +427,7 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                {properties?.EHBorrow?.override
-                                    && <InfoPanel fontSize={20} text={properties?.EHBorrow?.infoButton} />
-                                }
+                                <InfoPanel fontSize={20} text={properties?.EHBorrow?.infoButton} />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
@@ -494,9 +484,7 @@ const DistrictSidebar = () => {
                                     type={TypographyType.h5}
                                     classname='me-2 my-0'
                                 />
-                                {properties?.EHIncome?.override
-                                    && <InfoPanel fontSize={20} text={properties?.EHIncome?.infoButton} />
-                                }
+                                <InfoPanel fontSize={20} text={properties?.EHIncome?.infoButton} />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
                                 <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
