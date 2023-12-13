@@ -142,16 +142,16 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                                     <Scatter data={data} fill="rgba(0, 0, 0, 0.6)" opacity={0.6} shape={<CustomizedDot />} />
                                     <ReferenceLine x={center.x ? center.x : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
                                     <ReferenceLine y={center.y ? center.y : 0} stroke="rgba(205, 205, 205, 1)" strokeWidth='0.35' strokeOpacity='0.5' markerStart="url(#reverse-arrow)" markerEnd="url(#arrow)" />
-                                    <text x={90} y={20} textAnchor="start" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
+                                    <text x={window.innerWidth * 0.0658} y={window.innerHeight * 0.0311} textAnchor="start" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
                                         Low Inflow & High Outflow
                                     </text>
-                                    <text x={1250} y={20} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
+                                    <text x={window.innerWidth * 0.915} y={window.innerHeight * 0.0311} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
                                         High Inflow & Outflow
                                     </text>
-                                    <text x={90} y={375} textAnchor="start" fill="#000000" fontSize={10} fontWeight={500} >
+                                    <text x={window.innerWidth * 0.0658} y={window.innerHeight * 0.5832} textAnchor="start" fill="#000000" fontSize={10} fontWeight={500} >
                                         Low Inflow & Outflow
                                     </text>
-                                    <text x={1250} y={375} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
+                                    <text x={window.innerWidth * 0.915} y={window.innerHeight * 0.5832} textAnchor="end" fill="rgba(0, 0, 0, 1)" fontSize={10} fontWeight={500} >
                                         High Inflow & Low Outflow
                                     </text>
                                 </ScatterChart>
