@@ -108,15 +108,16 @@ export default function Invite() {
 	var [suggestions, setSuggestions] = useState<User[]>([]);
 
 	const handleInputChange = (value: string) => {
+		console.log('suggestions', suggestions);
+		console.log('users',  users);
 		setSuggestions([]);
-		var result = [];
 		setSearchTerm(value);
 		if (!value) {
 			setSuggestions([]);
 			setSearchTerm('');
 		} else {
 			const lowercasedValue = value.toLowerCase();
-			result = users?.filter((item: any) => {
+			const result = users?.filter((item: any) => {
 				const lowercasedName = item?.name?.toLowerCase();
 				const lowercasedEmail = item?.email_id?.toLowerCase();
 				const lowercasedRole = item?.role?.toLowerCase();
@@ -124,26 +125,23 @@ export default function Invite() {
 				const lowercasedCompanyType = item?.company_type?.toLowerCase();
 
 				return (
-					lowercasedName.includes(lowercasedValue) ||
-					lowercasedEmail.includes(lowercasedValue) ||
-					lowercasedRole.includes(lowercasedValue) ||
-					lowercasedCompany.includes(lowercasedValue) ||
-					lowercasedCompanyType.includes(lowercasedValue)
+					lowercasedName.startsWith(lowercasedValue) ||
+					lowercasedEmail.startsWith(lowercasedValue) ||
+					lowercasedRole.startsWith(lowercasedValue) ||
+					lowercasedCompany.startsWith(lowercasedValue) ||
+					lowercasedCompanyType.startsWith(lowercasedValue)
 				);
 			});
-			if (!result || result.length === 0) {
-				setSuggestions([]);
-			}
-			else {
-				setSuggestions(result);
-			}
+			setSuggestions(result || []);
+
+			// if (!result || result.length === 0) {
+			// 	setSuggestions([]);
+			// }
+			// else {
+			// 	setSuggestions(result);
+			// }
 		}
 	};
-	// useEffect(() => {
-	// 	if (users && users.length > 0) {
-	// 		setSuggestions([...users])
-	// 	}
-	// }, [users])
 
 	// Confirm Delete Model
 	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
@@ -173,6 +171,8 @@ export default function Invite() {
 				rollbar.error(error);
 			});
 	};
+
+	console.log(suggestions)
 
 	return (
 		<div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
