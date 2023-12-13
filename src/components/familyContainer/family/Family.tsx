@@ -57,12 +57,15 @@ const Family = () => {
     }
 
     useEffect(() => {
-        const paginationData = {
-            geo_code: Number(searchParams.get('geo_code')),
-            page_no: Number(searchParams.get('page_no')),
-            storiespp: Number(searchParams.get('storiespp')),
-        }
-        storiesService.getAllStories(paginationData);
+        const currentParams = new URLSearchParams(searchParams.toString());
+        currentParams.delete('story_id');
+        let queryParams: any = {};
+        currentParams.toString().split('&').forEach((param) => {
+            let [key, value]: any = param.split('=');
+            value = Number(value) ? Number(value) : value;
+            queryParams[key] = value;
+        });
+        storiesService.getAllStories(queryParams);
     }, []);
 
     useEffect(() => {
@@ -90,12 +93,12 @@ const Family = () => {
         <div className='row w-100 m-0'>
             <div className='col-9 p-0'>
                 <FamilyHeader />
-                <div className='row w-100 m-0' style={{height: '86.25vh'}}>
+                <div className='row w-100 m-0' style={{ height: '86.25vh' }}>
                     <FamilySidePanel selectedStory={selectedStory} handleCarouselSlide={handleCarouselSlide} iterator={pageInfo.story_id} handleBackClick={handleBackClick} />
                     <FamilyDetailsContainer selectedData={selectedStory?.story} />
                 </div>
             </div>
-            <div className='col-3 p-0 bg-white' style={{height: '91.75rem'}}>
+            <div className='col-3 p-0 bg-white' style={{ height: '91.75rem' }}>
                 <DistrictSidebar />
             </div>
         </div>

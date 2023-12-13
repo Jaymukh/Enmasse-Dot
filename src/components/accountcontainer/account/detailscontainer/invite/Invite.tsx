@@ -108,10 +108,8 @@ export default function Invite() {
 	var [suggestions, setSuggestions] = useState<User[]>([]);
 
 	const handleInputChange = (value: string) => {
-		console.log(suggestions)
 		setSuggestions([]);
 		var result = [];
-		console.log(users)
 		setSearchTerm(value);
 		if (!value) {
 			setSuggestions([]);
@@ -175,8 +173,6 @@ export default function Invite() {
 				rollbar.error(error);
 			});
 	};
-
-	console.log(suggestions)
 
 	return (
 		<div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
