@@ -73,7 +73,6 @@ const BubbleGraph = () => {
 						/>
 						<InfoPanel fontSize={20} text={coreSolutionsData?.infoButton} />
 					</div>
-
 					<div className='col-2'>
 						<Select
 							options={options}

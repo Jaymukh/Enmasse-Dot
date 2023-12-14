@@ -454,7 +454,7 @@ ul {
     border-radius: 10px !important;
 }
 
-.dashboard-table-container table { 
+.dashboard-table-container table {
     width: 100%;
     border-collapse: separate;
     border: none;
@@ -475,7 +475,8 @@ ul {
     border-color: inherit;
 }
 
-.dashboard-table-container th, td {
+.dashboard-table-container th,
+td {
     vertical-align: center;
     height: 3.25rem;
     text-align: start;
@@ -966,6 +967,13 @@ input[type="range"]::-moz-range-thumb {
     object-fit: cover;
 }
 
-.scatter-graph-axis-label {
+.ff-poppins-medium {
     font-family: "Poppins-Medium", sans-serif;
+}
+
+.scatter-tooltip {
+    background-color: var(--white-1);
+    box-shadow: 0 2px 4px var(--black-1);
+    border: 1px solid #ccc;
+    border-radius: 0.3125rem;
 }
