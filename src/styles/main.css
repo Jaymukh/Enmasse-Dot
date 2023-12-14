@@ -456,7 +456,7 @@ ul {
     overflow-y: auto !important;
 }
 
-.dashboard-table-container table { 
+.dashboard-table-container table {
     width: 100%;
     border-collapse: separate;
     border-left: 0;
@@ -479,7 +479,8 @@ ul {
     border-color: inherit;
 }
 
-.dashboard-table-container th, td {
+.dashboard-table-container th,
+td {
     vertical-align: center;
     height: 3.25rem;
     text-align: start;
@@ -488,7 +489,7 @@ ul {
 }
 
 .dashboard-table-container td {
-    border-top: 1px solid var(--table-border);  
+    border-top: 1px solid var(--table-border);
 }
 
 .primary-bg {
@@ -614,7 +615,7 @@ ul {
     font-size: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--light-grey-2);
-    border-radius: 0.5rem;    
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -901,6 +902,13 @@ input[type="range"]::-moz-range-thumb {
     object-fit: cover;
 }
 
-.scatter-graph-axis-label {
+.ff-poppins-medium {
     font-family: "Poppins-Medium", sans-serif;
+}
+
+.scatter-tooltip {
+    background-color: var(--white-1);
+    box-shadow: 0 2px 4px var(--black-1);
+    border: 1px solid #ccc;
+    border-radius: 0.3125rem;
 }

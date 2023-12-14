@@ -49,7 +49,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                 >
                     <MdOutlineArrowBack className="iconNextPrev" aria-hidden="true" fontSize={20} />
                 </button>
-                <div className="h-100" style={{width: '95%'}}>
+                <div className="h-100" style={{ width: '95%' }}>
                     {stories?.family?.map((data, index) => (
                         <div className={`carousel-item h-100 ${index === selectedStory?.index ? ' active' : ''}`} key={index}>
                             <div className="d-flex flex-row align-items-center h-100 w-100 rounded">
@@ -76,7 +76,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                     >
                                         {data?.address}
                                     </Body>
-                                    <button className='border-0 bg-white color-green m-0 fs-12 p-0 scatter-graph-axis-label' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
+                                    <button className='border-0 bg-white color-green m-0 fs-12 p-0 ff-poppins-medium' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
                                 </div>
                             </div>
                         </div>
