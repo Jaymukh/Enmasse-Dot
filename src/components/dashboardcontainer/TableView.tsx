@@ -27,7 +27,7 @@ const TableView: React.FC<TableViewProps> = ({ data, headerData, infoButton, bre
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3'>
                 <div className='d-flex align-items-center m-0 p-0 mb-3'>
                     <Heading
-                        title={(breakdownType && headerData?.ID === 'metric-breakdown') ? `${breakdownType} ${headerData.NAME}` : `${headerData.NAME}`}
+                        title={(breakdownType) ? `${breakdownType}-wise ${headerData.NAME}` : `${headerData.NAME}`}
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
                         classname='text-start px-1 my-0'

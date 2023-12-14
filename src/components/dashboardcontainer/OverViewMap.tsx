@@ -27,9 +27,9 @@ const OverViewMap = () => {
         if (cifData) {
             setCardData([
                 { title: 'Total Population', value: cifData?.totalPopulation },
-                { title: 'Total Household', value: cifData?.totalHouseholds },
+                { title: 'Number of Households ', value: cifData?.totalHouseholds },
                 { title: 'Number of Entrepreneurial Households (EH)', value: cifData?.enMassesThesis?.numberOfEntrepreneurialHouseholds },
-                { title: 'Average Annual EH Transactional Value', value: getCurrencyWithSymbol(cifData?.enMassesThesis?.averageAnnualEHTransactionalValue, cifData?.enMassesThesis?.averageAnnualEHTransactionalValueUOM) },
+                { title: 'Average Annual Core Transactional Value (CTV)', value: getCurrencyWithSymbol(cifData?.enMassesThesis?.averageAnnualEHTransactionalValue, cifData?.enMassesThesis?.averageAnnualEHTransactionalValueUOM) },
                 { title: 'Total Addressable Market', value: getCurrencyWithSymbol(cifData?.enMassesThesis?.totalAddressableMarket, cifData?.enMassesThesis?.totalAddressableMarketUOM) },
             ])
         }

@@ -109,32 +109,32 @@ export default function Invite() {
 
 	const handleInputChange = (value: string) => {
 		setSearchTerm(value);
-	  };
-	  
-	  useEffect(() => {
+	};
+
+	useEffect(() => {
 		if (!searchTerm) {
-		  setSuggestions([]);
+			setSuggestions([]);
 		} else {
-		  const lowercasedValue = searchTerm.toLowerCase();
-		  const result = users?.filter((item: any) => {
-			const lowercasedName = item?.name?.toLowerCase();
-			const lowercasedEmail = item?.email_id?.toLowerCase();
-			const lowercasedRole = item?.role?.toLowerCase();
-			const lowercasedCompany = item?.company?.toLowerCase();
-			const lowercasedCompanyType = item?.company_type?.toLowerCase();
-	  
-			return (
-			  lowercasedName.startsWith(lowercasedValue) ||
-			  lowercasedEmail.startsWith(lowercasedValue) ||
-			  lowercasedRole.startsWith(lowercasedValue) ||
-			  lowercasedCompany.startsWith(lowercasedValue) ||
-			  lowercasedCompanyType.startsWith(lowercasedValue)
-			);
-		  });
-	  
-		  setSuggestions(result || []);
+			const lowercasedValue = searchTerm.toLowerCase();
+			const result = users?.filter((item: any) => {
+				const lowercasedName = item?.name?.toLowerCase();
+				const lowercasedEmail = item?.email_id?.toLowerCase();
+				const lowercasedRole = item?.role?.toLowerCase();
+				const lowercasedCompany = item?.company?.toLowerCase();
+				const lowercasedCompanyType = item?.company_type?.toLowerCase();
+
+				return (
+					lowercasedName.startsWith(lowercasedValue) ||
+					lowercasedEmail.startsWith(lowercasedValue) ||
+					lowercasedRole.startsWith(lowercasedValue) ||
+					lowercasedCompany.startsWith(lowercasedValue) ||
+					lowercasedCompanyType.startsWith(lowercasedValue)
+				);
+			});
+
+			setSuggestions(result || []);
 		}
-	  }, [searchTerm]);
+	}, [searchTerm]);
 
 	// Confirm Delete Model
 	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
@@ -200,7 +200,7 @@ export default function Invite() {
 			<hr className='mb-4' />
 			<div className="w-auto h-75 mx-4 d-flex justify-content-center m-auto overflow-hidden">
 				{!spinner &&
-					<div className='dashboard-table-container w-100'>
+					<div className='dashboard-table-container'>
 						<table className=''>
 							<thead>
 								<tr>
@@ -216,7 +216,6 @@ export default function Invite() {
 									? (suggestions.map((row) => (
 										<tr
 											key={row.name}
-											className='table-row-height'
 										>
 											<td className='text-start fs-14'>{row.name}<br />
 												<Body
@@ -259,7 +258,6 @@ export default function Invite() {
 											users?.map((row) => (
 												<tr
 													key={row.name}
-													className='table-row-height'
 												>
 													<td className='text-start fs-14'>{row.name}<br />
 														<Body
@@ -300,6 +298,93 @@ export default function Invite() {
 						</table>
 					</div>
 				}
+
+				{/* <div className="dashboard-table-container">
+					<table>
+						<thead>
+							<tr>
+								<th>Header 1</th>
+								<th>Header 2</th>
+								<th>Header 3</th>
+								<th>Header jkhds sjhds</th>
+								<th>Header 3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+								<td>Data 3</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+							</tr>
+							<tr>
+								<td>Data 1 <br/> kz,ndk</td>
+								<td>Data 2</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+								<td>Data 3</td>
+							</tr>
+							<tr>
+								<td>Data 1</td>
+								<td>Data 2</td>
+								<td>Data 3</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+							</tr>
+							<tr>
+								<td>Data 1</td>
+								<td>Data 2</td>
+								<td>Data 3</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+							</tr>
+							<tr>
+								<td>Data 1</td>
+								<td>Data 2</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+								<td>Data 3</td>
+							</tr>
+							<tr>
+								<td>Data 1</td>
+								<td>Data 2</td>
+								<td>Data 3</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+							</tr>
+							<tr>
+								<td>Data 1</td>
+								<td>Data 2</td>
+								<td>Data 3</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+							</tr>
+							<tr>
+								<td>Data 1</td>
+								<td>Data 2</td>
+								<td>Data 3</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+							</tr>
+							
+							<tr>
+								<td>Data 1</td>
+								<td>Data 2</td>
+								<td>Data 3</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+							</tr>
+							<tr>
+								<td>Data 1</td>
+								<td>Data 2</td>
+								<td>Data 3</td>
+								<td>Data 1kjshdkjshd</td>
+								<td>Da</td>
+							</tr>
+						</tbody>
+					</table>
+				</div> */}
 			</div>
 
 			{selectedData &&

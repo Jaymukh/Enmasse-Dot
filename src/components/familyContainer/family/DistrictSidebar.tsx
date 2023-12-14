@@ -139,7 +139,7 @@ const DistrictSidebar = () => {
                             type={BodyType.p3}
                             color={BodyColor.secondary}
                             classname='m-0'>
-                            Total Households
+                            Number of Households 
                         </Body>
                     </div>
                 </div>
@@ -179,7 +179,7 @@ const DistrictSidebar = () => {
                                 type={BodyType.p4}
                                 color={BodyColor.secondary}
                                 classname='m-0'>
-                                Average Annual EH Transactional Value
+                                Average Annual Core Transactional Value (CTV)
                             </Body>
                         </div>
                         <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
@@ -258,7 +258,7 @@ const DistrictSidebar = () => {
                                         type={BodyType.p4}
                                         color={BodyColor.secondary}
                                         classname='m-0'>
-                                        Healthcare activity points of interest
+                                        Healthcare ecosystem markers 
                                     </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start' >
@@ -272,7 +272,7 @@ const DistrictSidebar = () => {
                                         type={BodyType.p4}
                                         color={BodyColor.secondary}
                                         classname='m-0'>
-                                        Education activity points of interest
+                                        Education ecosystem markers 
                                     </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end border-top'>
@@ -286,7 +286,7 @@ const DistrictSidebar = () => {
                                         type={BodyType.p4}
                                         color={BodyColor.secondary}
                                         classname='m-0'>
-                                        Agri Markets activity points of interest
+                                        Agricultural ecosystem markers 
                                     </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
@@ -300,7 +300,7 @@ const DistrictSidebar = () => {
                                         type={BodyType.p4}
                                         color={BodyColor.secondary}
                                         classname='m-0'>
-                                        Financial Solutions activity points of interest
+                                        Financial Solutions ecosystem markers 
                                     </Body>
                                 </div>
                             </div>
@@ -329,7 +329,7 @@ const DistrictSidebar = () => {
                                         type={BodyType.p4}
                                         color={BodyColor.white}
                                         classname='m-0'>
-                                        Annual EH Spend
+                                        Average Annual EH Spend 
                                     </Body>
                                 </div>
                                 <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 my-0 p-2 d-flex flex-column align-items-start text-start border-end'>

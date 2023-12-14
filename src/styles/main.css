@@ -308,10 +308,6 @@ ul {
     border: 1px solid var(--black-2);
 }
 
-.table-row-height {
-    height: 3.94rem;
-}
-
 /* accountoptions */
 
 .account-menu {
@@ -401,15 +397,12 @@ ul {
 }
 
 .map-container-sm {
-    /* width: 16.5rem;
-    height: 16rem; */
     max-width: 16.5rem;
     height: 16rem;
 }
 
 .static-map {
     height: 22rem;
-    /* width: 20rem; */
 }
 
 .icon-color-5 {
@@ -453,6 +446,9 @@ ul {
 }
 
 .dashboard-table-container {
+    width: 100%;
+    height: fit-content;
+    max-height: 100%;
     overflow-y: auto !important;
     border: 1px solid var(--table-border);
     border-radius: 10px !important;
@@ -461,6 +457,7 @@ ul {
 
 .dashboard-table-container table {
     width: 100%;
+    max-height: 100%;
     border: none;
     border-spacing: 0px !important;
     font-family: "Poppins-Medium", sans-serif;
@@ -474,9 +471,50 @@ th {
     font-weight: 500;
 }
 
+.dashboard-table-container tbody tr {
+    height: 3.94rem;
+}
 .dashboard-table-container tr:not(:last-child) td,
 th {
     border-bottom: 1px solid var(--table-border);
+}
+/* .dashboard-table-container thead tr,
+.dashboard-table-container tbody tr:not(:last-child) {
+    border-bottom: 1px solid var(--table-border) !important;
+} */
+
+.dashboard-table-container th {
+    color: var(--black-14);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--white-1);
+}
+
+/* demotable starts here */
+/* .dashboard-table-container {
+    width: 100%;
+    height: 100%;
+}
+
+.dashboard-table-container table {
+    border-collapse: initial;
+    width: 100%;
+    max-height: 100%;
+    border: 1px solid var(--table-border);
+    border-radius: 10px;
+    overflow: hidden;
+    border-spacing: 0px !important;
+    font-family: "Poppins-Medium", sans-serif;
+}
+
+.dashboard-table-container th,
+.dashboard-table-container td {
+    height: 3.25rem;
+    text-align: start;
+    padding: 0rem 0.875rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--table-border) !important;
 }
 
 .dashboard-table-container th {
@@ -487,6 +525,28 @@ th {
     background-color: var(--white-1);
 }
 
+.dashboard-table-container tbody {
+    height: calc(100% - 3.25rem);
+    overflow-y: scroll;
+    display: block;
+}
+
+.dashboard-table-container tr {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard-table-container thead tr,
+.dashboard-table-container tbody tr:not(:last-child) {
+    border-bottom: 1px solid var(--table-border) !important;
+}
+
+.dashboard-table-container tbody td {
+    box-sizing: border-box;
+    overflow: hidden;
+} */
+
+/* demotable ends here */
 .primary-bg {
     background-color: var(--app-background);
 }
@@ -610,11 +670,12 @@ th {
     font-size: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--light-grey-2);
-    border-radius: 0.5rem;    
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: left;
     align-items: left;
+    /* text-overflow: ellipsis; */
 }
 
 .info-text-wrap {
