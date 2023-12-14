@@ -103,7 +103,7 @@ export default function InsightBar() {
                                 color={BodyColor.dark}
                                 classname='m-0'
                             >
-                                Total Households
+                                Number of Households 
                             </Body>
                         </div>
                         <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>

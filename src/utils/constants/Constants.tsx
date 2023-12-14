@@ -470,7 +470,7 @@ export const dashboardCardInfo: DashboardCardInfo[] = [
         value: '1.4 Billion',
     },
     {
-        title: "Total Households",
+        title: "Number of Households",
         value: '285 Million',
     },
     {

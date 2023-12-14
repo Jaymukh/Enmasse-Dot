@@ -13,7 +13,7 @@ interface TableProps {
 const TABLE_HEADERS: TableProps = {
     GEO_INFO_TABLE: {
         ID: 'geo-info',
-        NAME: 'Heading',
+        NAME: 'Summary Breakdown',
         KEYS: [
             { KEY: 'geoName', VALUE: 'State' },
             { KEY: 'area', VALUE: 'Area (sq.Km)' },
@@ -24,7 +24,7 @@ const TABLE_HEADERS: TableProps = {
     },
     METRIC_BREAKDOWN_TABLE: {
         ID: 'metric-breakdown',
-        NAME: 'wise metric breakdown',
+        NAME: 'CTV Breakdown',
         KEYS: [
             { KEY: 'geoName', VALUE: 'State' },
             { KEY: 'entrepreneurialHouseholds', VALUE: 'Entrepreneurial Households' },
