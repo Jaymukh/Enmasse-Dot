@@ -124,11 +124,11 @@ export default function Invite() {
 				const lowercasedCompanyType = item?.company_type?.toLowerCase();
 
 				return (
-					lowercasedName.startsWith(lowercasedValue) ||
-					lowercasedEmail.startsWith(lowercasedValue) ||
-					lowercasedRole.startsWith(lowercasedValue) ||
-					lowercasedCompany.startsWith(lowercasedValue) ||
-					lowercasedCompanyType.startsWith(lowercasedValue)
+					lowercasedName.includes(lowercasedValue) ||
+					lowercasedEmail.includes(lowercasedValue) ||
+					lowercasedRole.includes(lowercasedValue) ||
+					lowercasedCompany.includes(lowercasedValue) ||
+					lowercasedCompanyType.includes(lowercasedValue)
 				);
 			});
 
