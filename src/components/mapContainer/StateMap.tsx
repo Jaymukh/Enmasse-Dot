@@ -12,7 +12,7 @@ import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 import { Breadcrumb, BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
-import { geoJsonState, mapFeatureState, spinnerState } from '../../states';
+import { geoJsonState, mapFeatureState } from '../../states';
 
 // Utilities
 import * as MapConstants from '../../utils/json/googlemapstyle'
@@ -48,7 +48,6 @@ const StateMap: React.FC<StateMapProps> = ({
     const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
-    const spinner = useRecoilValue(spinnerState);
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const [center, setCenter] = useState({
@@ -179,7 +178,7 @@ const StateMap: React.FC<StateMapProps> = ({
             });
             setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Marker[]);
         }
-    }, [map, map?.getZoom(), mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
+    }, [map, mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
         clearCircles();
