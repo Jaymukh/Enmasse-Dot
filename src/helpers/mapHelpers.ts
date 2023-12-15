@@ -21,6 +21,17 @@ const useMapHelpers = () => {
         return '--';
     };
 
+    const getNumberWithZero = (value: null | number | string) => {
+        if (value !== undefined && value !== null) {
+            const numericValue = typeof value === 'string' ? parseInt(value, 10) : value;
+            if (numericValue < 10) {
+                return '0' + numericValue.toString();
+            }
+            return numericValue.toString();
+        }
+        return '--';
+    };
+
     const getSelectedObject = () => {
         const params: any = {};
         searchParams?.toString().split('&').forEach((param) => {
@@ -154,6 +165,7 @@ const useMapHelpers = () => {
 
     return {
         getCurrencyWithSymbol,
+        getNumberWithZero,
         getSelectedObject,
         getCoreSolutions,
         createImage,

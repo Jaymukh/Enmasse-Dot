@@ -30,7 +30,7 @@ const FamiliesDetailsContainer = () => {
     const storiesService = useStoriesService();
     const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
-    const { getCurrencyWithSymbol, getSelectedObject, getCoreSolutions } = useMapHelpers();
+    const { getCurrencyWithSymbol, getNumberWithZero, getSelectedObject, getCoreSolutions } = useMapHelpers();
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
     const [iterator, setIterator] = useState(0);
     const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 })
@@ -126,7 +126,7 @@ const FamiliesDetailsContainer = () => {
                                             type={BodyType.p4}
                                             color={BodyColor.primary}
                                             classname='mx-0 mb-1 bg-green-1 px-2 py-1 green-card-sm'>
-                                            {getCurrencyWithSymbol(data?.familyDetails.familyMembers)} members
+                                            {getNumberWithZero(data?.familyDetails.familyMembers)} members
                                         </Body>
                                     </div>
                                     <Body

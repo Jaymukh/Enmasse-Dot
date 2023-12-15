@@ -19,7 +19,7 @@ interface FamilyDetailsContainerProps {
 }
 
 const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
-    const { getCurrencyWithSymbol, getCoreSolutions } = useMapHelpers();
+    const { getCurrencyWithSymbol, getCoreSolutions, getNumberWithZero } = useMapHelpers();
     const [searchParams, setSearchParams] = useSearchParams();
     const mapServices = useMapsService();
 
@@ -68,7 +68,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     <div className="d-flex flex-row align-items-center justify-content-between my-2">
                         <div className="d-flex flex-row justify-content-center align-items-center">
                             <Heading
-                                title={getCurrencyWithSymbol(selectedData?.familyDetails?.familyMembers)}
+                                title={getNumberWithZero(selectedData?.familyDetails?.familyMembers)}
                                 type={TypographyType.h5}
                                 colour={TypographyColor.dark}
                                 classname='m-0 me-1'

@@ -2,7 +2,8 @@
 import React from 'react';
 import { useRecoilState } from "recoil";
 import { MdOutlineArrowBack, MdOutlineArrowForward } from 'react-icons/md';
-import { FiArrowRight } from 'react-icons/fi';
+import { IoIosArrowRoundForward } from "react-icons/io";
+
 
 // CSS
 import '../../../styles/main.css';
@@ -76,7 +77,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                     >
                                         {data?.address}
                                     </Body>
-                                    <button className='border-0 bg-white color-green m-0 fs-10 p-0 ff-poppins-medium' onClick={handleBackClick}>View all<FiArrowRight className='ms-1' /></button>
+                                    <button className='border-0 bg-white color-green m-0 fs-10 p-0 ff-poppins-medium' onClick={handleBackClick}>View all<IoIosArrowRoundForward fontSize={20} fontWeight={500} className='ms-1' /></button>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +88,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                     onClick={() => handleCarouselSlide((selectedStory?.index + 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                 >
-                    <MdOutlineArrowForward className='iconNextPrev' fontSize={20} aria-hidden="true"></MdOutlineArrowForward>
+                    <MdOutlineArrowForward className='iconNextPrev' fontSize={20}  aria-hidden="true"></MdOutlineArrowForward>
                 </button>
             </div>
         </div >
