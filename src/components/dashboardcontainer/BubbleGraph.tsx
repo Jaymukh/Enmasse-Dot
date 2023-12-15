@@ -1,7 +1,6 @@
 // External libraries
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from 'recoil';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
 import * as d3 from "d3";
 import '../../styles/main.css';
 import Select, { SelectSize } from '../ui/select/Select';

@@ -1,8 +1,14 @@
+// External libraries
 import { useSetRecoilState, useRecoilState } from 'recoil';
-import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
-import { authState, loggedUserState, usersState, spinnerState, overlayState, errorState } from '../states';
 import { useNavigate, useLocation } from 'react-router-dom';
+
+// Components
+import { authState, loggedUserState, usersState, spinnerState, overlayState, errorState } from '../states';
+
+// Utilities
 import { APIS, RouteConstants, rollbar } from '../constants';
+import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
+
 
 const useUserService = () => {
     const fetchWrapper = useFetchWrapper();

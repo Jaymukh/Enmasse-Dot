@@ -1,5 +1,4 @@
 // External libraries
-import React from 'react';
 import { useRecoilValue } from 'recoil';
 
 // CSS

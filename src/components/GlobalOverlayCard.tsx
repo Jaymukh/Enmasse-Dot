@@ -1,7 +1,13 @@
+// CSS
 import '../styles/main.css';
-import * as Constants from '../utils/constants/Constants';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from './ui/typography/Heading'
 import Body, { BodyColor, BodyType } from './ui/typography/Body';
+
+// Utilities
+import * as Constants from '../utils/constants/Constants';
+
 
 const GlobalOverlayCard = () => {
     const item = Constants.countryData[0];

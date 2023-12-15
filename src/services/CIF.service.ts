@@ -1,7 +1,14 @@
+// External libraries
+import { useSetRecoilState } from 'recoil';
+
+
+// Components
+import { cifState, spinnerState } from "../states";
+
+// Utilities
 import { useFetchWrapper } from '../helpers';
 import { APIS } from '../constants';
-import { cifState, spinnerState } from "../states";
-import { useSetRecoilState } from 'recoil';
+
 
 const useCIFService = () => {
     const fetchWrapper = useFetchWrapper();
@@ -75,7 +82,7 @@ const useCIFService = () => {
 
     const sendEmail = (payload: any) => {
         setSpinner(true);
-        return fetchWrapper.post(APIS.CIF.SEND_EMAIL , payload);
+        return fetchWrapper.post(APIS.CIF.SEND_EMAIL, payload);
     }
 
     return {

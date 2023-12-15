@@ -1,4 +1,7 @@
+// CSS
 import '../styles/main.css';
+
+// Components
 import Header from '../components/headercontainer/Header';
 import Family from '../components/familyContainer/family/Family';
 

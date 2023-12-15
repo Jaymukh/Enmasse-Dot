@@ -1,6 +1,7 @@
 // External libraries
 import React, { useRef, useState } from 'react';
 import { useRecoilValue } from "recoil";
+import Cropper from 'react-easy-crop';
 import { BiUpload } from 'react-icons/bi';
 import { MdDeleteSweep } from 'react-icons/md'
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
@@ -15,7 +16,6 @@ import { Heading, TypographyColor, TypographyType } from '../../../../ui/typogra
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import Modal from '../../../../ui/modal/Modal';
 import { loggedUserState, User } from "../../../../../states";
-import Cropper from 'react-easy-crop';
 
 
 interface UploadImageProps {

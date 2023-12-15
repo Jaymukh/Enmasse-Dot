@@ -1,9 +1,17 @@
-import '../../styles/main.css';
+// External libraries
 import React from 'react';
-import Drawer from '../ui/Drawer';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
+import Drawer from '../ui/Drawer';
+
+// Utilities
 import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
+
 
 interface WIPDrawerProps {
 	open: boolean;

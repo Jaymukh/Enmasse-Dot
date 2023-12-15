@@ -1,22 +1,30 @@
-import '../styles/main.css';
-import Header from '../components/headercontainer/Header';
-import FamiliesSidePanel from '../components/familyContainer/families/FamiliesSidePanel';
-import FamiliesDetailsContainer from '../components/familyContainer/families/FamiliesDetailsContainer';
-import AccountHeader from '../components/accountcontainer/AccountHeader';
+// External libraries
 import { useRecoilState } from 'recoil';
-import { storiesState } from '../states';
 import { useEffect, useState } from 'react';
+
+// CSS
+import '../styles/main.css';
+
+// Components
+import FamiliesDetailsContainer from '../components/familyContainer/families/FamiliesDetailsContainer';
+import FamiliesSidePanel from '../components/familyContainer/families/FamiliesSidePanel';
+import AccountHeader from '../components/accountcontainer/AccountHeader';
+import Header from '../components/headercontainer/Header';
+import { storiesState } from '../states';
+
+// Utilities
 import { RouteConstants } from '../constants';
+
 
 const StoryContainer = () => {
     const [stories] = useRecoilState(storiesState);
     const [routeTo, setRouteTo] = useState<string>('');
 
     useEffect(() => {
-        if(stories?.family && stories?.family[0] ) {
+        if (stories?.family && stories?.family[0]) {
             const story = stories?.family[0];
             let routeValue = `${RouteConstants.root}?`
-            if(story?.geoHierarchyLevel && story?.parent_id ) {
+            if (story?.geoHierarchyLevel && story?.parent_id) {
                 routeValue = story?.geoHierarchyLevel === 2 || story?.geoHierarchyLevel === 1 ? routeValue + `country=${story?.parent_id[2]}` : routeValue + `country=${story?.parent_id[2]}&state=${story?.parent_id[1]}`;
             }
             setRouteTo(routeValue);

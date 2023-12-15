@@ -1,17 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import '../../styles/main.css';
 import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api';
-import * as MapConstants from '../../utils/json/googlemapstyle'
-import * as Constants from '../../utils/constants/Constants';
+import { useRecoilValue } from 'recoil';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
-import { useRecoilValue } from 'recoil';
-import { geoJsonState } from '../../states/GeoJSONState';
 import { Breadcrumb, BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
-import { mapFeatureState } from '../../states/MapFeatureState';
+import { geoJsonState, mapFeatureState } from '../../states';
+
+// Utilities
+import * as MapConstants from '../../utils/json/googlemapstyle'
+import * as Constants from '../../utils/constants/Constants';
 import { useMapsService } from '../../services';
+
 
 interface Option {
     label: string;

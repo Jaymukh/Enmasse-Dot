@@ -19,7 +19,6 @@ import { authState, errorState } from '../../../../../states';
 
 // Utilities
 import { useUserService } from '../../../../../services';
-
 import { rollbar } from '../../../../../constants';
 
 interface ChangePasswordProps {

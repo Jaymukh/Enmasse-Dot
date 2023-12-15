@@ -1,15 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, { useState, useEffect, useRef } from 'react';
-import '../../../styles/main.css';
 import { MdHelpCenter } from 'react-icons/md';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
-import Body, {BodyColor, BodyType} from '../../ui/typography/Body';
-import * as Constants from '../../../utils/constants/Constants';
-import { overlayState, helpState } from '../../../states';
 import { useRecoilState, useSetRecoilState } from 'recoil';
+
+// CSS
+import '../../../styles/main.css';
+
+// Components
+import WIPDrawer from '../../mapContainer/WIPDrawer';
 import ContactUs from './ContactUs';
 import OverlayModal from './OverlayModal';
-import WIPDrawer from '../../mapContainer/WIPDrawer';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
+import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
+import { overlayState, helpState } from '../../../states';
+
+// Utilities
+import * as Constants from '../../../utils/constants/Constants';
+
 
 const HelpOptions = () => {
 	const menuRef = useRef<HTMLDivElement | null>(null);
@@ -99,8 +107,8 @@ const HelpOptions = () => {
 						>
 							<div>{item.icon}</div>
 							<Body
-							type={BodyType.p2}
-							color={BodyColor.dark}
+								type={BodyType.p2}
+								color={BodyColor.dark}
 							>{item.text}</Body>
 						</li>
 					))}

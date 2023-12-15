@@ -1,7 +1,13 @@
+// External libraries
+import { useSetRecoilState } from 'recoil';
+
+// Components
+import { errorState, mapFeatureState, spinnerState } from "../states";
+
+// Utilities
 import { useFetchWrapper } from '../helpers';
 import { APIS, rollbar } from '../constants';
-import { errorState, mapFeatureState, spinnerState } from "../states";
-import { useSetRecoilState } from 'recoil';
+
 
 const useMapsService = () => {
     const fetchWrapper = useFetchWrapper();

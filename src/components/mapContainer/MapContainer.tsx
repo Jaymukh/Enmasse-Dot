@@ -1,15 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import '../../styles/main.css';
+// External libraries
 import React, { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
-import { useMapsService } from '../../services';
-import { geoJsonState, spinnerState, mapFeatureState, errorState } from '../../states';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
 import { BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
+import { geoJsonState, spinnerState, mapFeatureState, errorState } from '../../states';
+
+// Utilities
+import { useMapsService } from '../../services';
 import { rollbar } from '../../constants';
+
 
 const countries = [{ geo_id: 1, name: 'India' }];
 

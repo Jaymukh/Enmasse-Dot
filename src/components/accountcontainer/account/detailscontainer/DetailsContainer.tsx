@@ -9,16 +9,9 @@ import Settings from './settings/Settings';
 import Invite from './invite/Invite';
 import { visiblePanelState } from '../../../../states';
 
-// Utilities
-import { useUserService } from '../../../../services';
-
 
 const DetailsContainer = () => {
     const visiblePanel = useRecoilValue(visiblePanelState);
-
-	// useEffect(() => {
-	// 	userService.getUserDetails();
-	// }, []);
 
     return (
         <div className='col-9 h-100 z-index-0 pe-5'>

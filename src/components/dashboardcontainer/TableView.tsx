@@ -8,11 +8,11 @@ import '../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import Table, { TableSize } from '../ui/table/Table';
+import InfoPanel from '../ui/InfoPanel';
 import NoVisualData from './NoVisualData';
 
 // Utilities
 import { TableHeaderProps } from '../../constants';
-import InfoPanel from '../ui/InfoPanel';
 
 interface TableViewProps {
     data: any;

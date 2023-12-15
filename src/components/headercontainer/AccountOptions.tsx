@@ -1,19 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// External libraries
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/main.css';
-import * as Constants from '../../utils/constants/Constants';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { MdLogout } from 'react-icons/md';
 import { IoMdArrowDropdown } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../constants';
-import { AllSettingsState, UserSettingsState, errorState, loggedUserState } from '../../states';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { useSettingsService, useUserService } from '../../services';
-import { ButtonAvatar } from '../ui/button/ButtonAvatar';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonVariant, ButtonSize } from '../ui/button/Button';
-import Body, { BodyColor, BodyType } from '../ui/typography/Body';
-import { visiblePanelState } from '../../states';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import { ButtonAvatar } from '../ui/button/ButtonAvatar';
+import { AllSettingsState, UserSettingsState, errorState, loggedUserState, visiblePanelState } from '../../states';
+
+// Utilities
+import * as Constants from '../../utils/constants/Constants';
+import { RouteConstants } from '../../constants';
+import { useSettingsService, useUserService } from '../../services';
 
 
 const AccountOptions = () => {
@@ -128,7 +133,7 @@ const AccountOptions = () => {
 								onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
 							>
 								<div className='ps-1'>{item.icon}</div>
-						
+
 								<Heading
 									title={item.text}
 									colour={TypographyColor.dark}

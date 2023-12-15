@@ -2,10 +2,8 @@
 // External libraries
 import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { LiaArrowRightSolid } from 'react-icons/lia';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { useLocation } from 'react-router-dom';
 
 // CSS
 import '../../../styles/main.css';
@@ -18,7 +16,7 @@ import Select, { SelectSize } from '../../ui/select/Select';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import InfoPanel from '../../ui/InfoPanel';
 import RequestData from './RequestData';
-import { mapFeatureState, AllSettingsState, UserSettingsState, SettingsData, UserSettings, errorState } from '../../../states';
+import { mapFeatureState, AllSettingsState, UserSettingsState, errorState } from '../../../states';
 
 // Utilities
 import WIPImage from '../../../utils/images/work_in_progress.svg';

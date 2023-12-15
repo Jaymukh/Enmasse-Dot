@@ -1,12 +1,20 @@
+// External libraries
 import React from 'react';
-import '../../styles/main.css';
+import { useSetRecoilState } from 'recoil';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import * as MapConstants from '../../utils/json/googlemapstyle';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import GlobalOverlayCard from '../GlobalOverlayCard';
 import InsightBar from '../InsightBar';
-import { useSetRecoilState } from 'recoil';
 import { errorState } from '../../states';
+
+// Utilities
+import * as MapConstants from '../../utils/json/googlemapstyle';
 import { rollbar } from '../../constants';
+
 
 interface GlobalMapProps {
 	features?: any; // Replace 'any' with the actual type of 'features' if available

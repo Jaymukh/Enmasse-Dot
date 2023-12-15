@@ -1,9 +1,16 @@
-import React from 'react';
-import '../../styles/main.css';
-import { BiArrowBack } from 'react-icons/bi';
+// External libraries
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { BiArrowBack } from 'react-icons/bi';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+
+// Utilities
 import { RouteConstants } from '../../constants';
+
 
 function FamilyHeader() {
     const navigate = useNavigate();

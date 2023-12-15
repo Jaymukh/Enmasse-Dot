@@ -1,22 +1,28 @@
-import '../../styles/main.css';
+// External libraries
 import { useState } from 'react';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from "react-hook-form";
+import { useSetRecoilState } from "recoil";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import globe from '../../utils/images/world_map.svg';
 import ForgotPassword from './ForgotPassword';
 import EmailSent from './EmailSent';
 import TermsAndConditions from './TermsAndConditions';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from "react-hook-form";
-import { useUserService } from '../../services';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
-import { FaEye } from 'react-icons/fa';
-import { FaEyeSlash } from 'react-icons/fa';
-import { useSetRecoilState } from "recoil";
 import { errorState, spinnerState } from "../../states";
-import { Input } from '../ui/input/Input';
+
+// Utilities
 import { rollbar } from '../../constants';
+import { useUserService } from '../../services';
+
 
 interface IFormValues {
     email_id: string;

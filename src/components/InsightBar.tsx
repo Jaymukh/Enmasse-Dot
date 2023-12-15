@@ -1,13 +1,20 @@
+// External libraries
 import React, { useState, useEffect } from 'react';
-import '../styles/main.css';
-import Select, { SelectSize } from './ui/select/Select';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { mapFeatureState } from '../states/MapFeatureState';
-import { useSettingsService } from '../services';
-import { AllSettingsState, UserSettingsState, errorState } from '../states';
+
+// CSS
+import '../styles/main.css';
+
+// Components
+import { AllSettingsState, UserSettingsState, errorState, mapFeatureState } from '../states';
 import { Heading, TypographyColor, TypographyType } from './ui/typography/Heading'
 import Body, { BodyColor, BodyType } from './ui/typography/Body';
+import Select, { SelectSize } from './ui/select/Select';
+
+// Utilities
+import { useSettingsService } from '../services';
 import { useMapHelpers } from '../helpers';
+
 
 const options = [
     {
@@ -103,7 +110,7 @@ export default function InsightBar() {
                                 color={BodyColor.dark}
                                 classname='m-0'
                             >
-                                Number of Households 
+                                Number of Households
                             </Body>
                         </div>
                         <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 ps-3 d-flex flex-column align-items-start text-start'>

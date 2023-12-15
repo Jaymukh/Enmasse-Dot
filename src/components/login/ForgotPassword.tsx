@@ -1,13 +1,21 @@
+// External libraries
 import React from 'react';
+import { useSetRecoilState } from "recoil";
+
+// CSS
 import '../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
-import { Input } from '../ui/input/Input';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
+import { Input } from '../ui/input/Input';
 import Modal from '../ui/modal/Modal';
-import { useUserService } from '../../services';
-import { useSetRecoilState } from "recoil";
 import { spinnerState } from "../../states";
+
+// Utilities
+import { useUserService } from '../../services';
+
 
 interface ForgotPasswordProps {
     showModal: boolean;

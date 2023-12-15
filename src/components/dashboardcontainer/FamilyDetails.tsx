@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 // CSS
 import '../../styles/main.css';

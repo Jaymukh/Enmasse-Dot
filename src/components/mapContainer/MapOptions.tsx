@@ -1,11 +1,15 @@
-import '../../styles/main.css';
+// External libraries
 import { useState } from 'react';
-import { FiDownload } from 'react-icons/fi';
-import { MdBookmarks } from 'react-icons/md';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import WIPDrawer from './WIPDrawer';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import Select, { SelectSize } from '../ui/select/Select';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
+
 
 interface MapOptionsProps {
     handleCountryChange: () => void;
