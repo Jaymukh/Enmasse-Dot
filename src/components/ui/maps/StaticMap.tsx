@@ -134,30 +134,31 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 
 	return (
 		<div style={{ height: '100%', width: '100%' }} className='d-flex flex-column align-items-center justify-content-center'>
-			{apiKey && (<LoadScript googleMapsApiKey={apiKey}>
-				<GoogleMap
-					ref={mapRef}
-					zoom={6}
-					mapContainerStyle={MapConstants.containerStyle}
-					center={center}
-					onLoad={handleMapLoad}
-					options={mapOptions}
-				>
-					{markers?.map((marker: any, index: number) => (
-						<Marker
-							key={index}
-							position={{
-								lng: marker.geometry.coordinates[0],
-								lat: marker.geometry.coordinates[1]
-							}}
-							icon={{
-								url: focusedMarker === index ? markerBlack : markerGrey,
-							}}
-						//onClick={() => handleMarkerClick(marker, index)}
-						/>
-					))}
-				</GoogleMap>
-			</LoadScript>)}
+			{apiKey && (
+				<LoadScript googleMapsApiKey={apiKey} >
+					<GoogleMap
+						ref={mapRef}
+						zoom={6}
+						mapContainerStyle={MapConstants.containerStyle}
+						center={center}
+						onLoad={handleMapLoad}
+						options={mapOptions}
+					>
+						{markers?.map((marker: any, index: number) => (
+							<Marker
+								key={index}
+								position={{
+									lng: marker.geometry.coordinates[0],
+									lat: marker.geometry.coordinates[1]
+								}}
+								icon={{
+									url: focusedMarker === index ? markerBlack : markerGrey,
+								}}
+							//onClick={() => handleMarkerClick(marker, index)}
+							/>
+						))}
+					</GoogleMap>
+				</LoadScript>)}
 		</div>
 	);
 };

@@ -17,10 +17,6 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath }) =
     return <Outlet />;
 }
 
-const Fallback = () => {
-
-}
-
 const Router = () => {
     const auth = useRecoilValue(authState);
 
