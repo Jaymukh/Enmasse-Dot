@@ -16,13 +16,16 @@ import { cifState } from '../../states';
 import InfoPanel from '../ui/InfoPanel';
 
 const CustomizedDot = ({ cx, cy, payload }: { cx?: number, cy?: number, payload?: any }) => {
-    return (
-        <g>
-            <text x={cx} y={cy} textAnchor="middle" fill="rgba(0, 0, 0, 0.6)" fontSize={10} fontWeight={500}>
-                {payload?.geo_value}
-            </text>
-        </g>
-    );
+    if (payload && (payload?.inflow !== null || payload?.outflow !== null)) {
+        return (
+            <g>
+                <text x={cx} y={cy} textAnchor="middle" fill="rgba(0, 0, 0, 0.6)" fontSize={10} fontWeight={500}>
+                    {payload?.geo_value}
+                </text>
+            </g>
+        );
+    }
+    return null;
 };
 
 const CustomTooltip = ({ active, payload, label }: any) => {
