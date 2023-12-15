@@ -41,7 +41,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                             />
                             <Body
                                 type={BodyType.p3}
-                                color={BodyColor.dark}
+                                color={BodyColor.secondary}
                                 classname='mt-0' >
                                 {selectedData?.address}
                             </Body>
@@ -66,7 +66,6 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                         </div>
                     </div>
                     <div className="d-flex flex-row align-items-center justify-content-between my-2">
-
                         <div className="d-flex flex-row justify-content-center align-items-center">
                             <Heading
                                 title={getCurrencyWithSymbol(selectedData?.familyDetails?.familyMembers)}
@@ -127,7 +126,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     </div >
                     <div className="card-body text-start">
                         {selectedData?.image && selectedData?.image[0] &&
-                            <img src={selectedData?.image[0]} alt="Family" width="100%" height="auto" className='imgBorderRadious my-2' />
+                            <img src={selectedData?.image[0]} alt="Family" width="100%" height="auto" className='rounded my-2' />
                         }
                         {selectedData?.description && selectedData?.description[0]
                             && <Body
@@ -139,10 +138,10 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                         }
                         <div className='d-flex flex-row justify-content-around my-2'>
                             {selectedData?.image && selectedData?.image[1] &&
-                                <img src={selectedData?.image[1]} alt="Family" width="50%" height="auto" className='imgBorderRadious me-1' />
+                                <img src={selectedData?.image[1]} alt="Family" width="50%" height="auto" className='rounded me-1' />
                             }
                             {selectedData?.image && selectedData?.image[2] &&
-                                <img src={selectedData?.image[2]} alt="Family" width="50%" height="auto" className='imgBorderRadious' />
+                                <img src={selectedData?.image[2]} alt="Family" width="50%" height="auto" className='rounded' />
                             }
                         </div>
                         {selectedData?.description && selectedData?.description[1]
