@@ -13,6 +13,7 @@ import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 // Utilities
 import { RouteConstants } from '../../constants';
 import { useMapHelpers } from '../../helpers';
+import familySkeleton from '../../utils/images/family-skeleton.png';
 
 
 interface MapPopupProps {
@@ -36,7 +37,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     return (
         <div className="map-popup-grey-text rounded row h-100 w-100" onClick={() => handleFocused(index)}>
             <div className="col-4 px-0">
-                <img className="map-popup-story-img rounded" src={properties.image} alt={properties.familyName} />
+                <img className="map-popup-story-img rounded" src={properties.image ? properties.image : familySkeleton} alt={properties.familyName} />
             </div>
             <div className="col-8 px-0 d-flex flex-column justify-content-start ps-1">
                 <Body

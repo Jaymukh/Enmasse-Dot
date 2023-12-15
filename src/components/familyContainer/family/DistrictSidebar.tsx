@@ -87,8 +87,8 @@ const DistrictSidebar = () => {
     }
 
     return (
-        <div className='py-2 bg-white px-0 h-100 me-0' style={{ height: pathname === '/' ? '85.5vh' : '91.75vh' }} >
-            <div className='row d-flex justify-content-between align-items-center px-3 py-2 me-1' style={{height: '10%'}}>
+        <div className='w-100 py-2 bg-white px-0 me-0' style={{ height: pathname === '/' ? '85.5vh' : '91.75vh' }} >
+            <div className='w-100 d-flex justify-content-between align-items-center px-3 py-auto' style={{height: '10%'}}>
                 <div className='d-flex justify-content-start align-items-center col-6 m-0 text-start'>
                     <Heading
                         title={properties?.region}
@@ -98,7 +98,7 @@ const DistrictSidebar = () => {
                     />
                     <InfoPanel fontSize={20} text={properties?.infoButton} />
                 </div>
-                <div className='col-6 p-0'>
+                <div className='col-5 p-0'>
                     <Select
                         options={settings?.currencies}
                         value={usersettings?.currency}
