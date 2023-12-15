@@ -99,6 +99,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                     type="text"
                     placeholder="Enter your name"
                     value={loggedUser.name}
+                    disabled={true}
                 />
                 <Heading
                     title='Email*'
@@ -110,6 +111,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                     type="email"
                     placeholder="Enter your Email ID"
                     value={loggedUser.email_id}
+                    disabled={true}
                 />
                 <Heading
                     title='Message*'
