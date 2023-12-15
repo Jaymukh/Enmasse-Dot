@@ -12,7 +12,7 @@ import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 import { Breadcrumb, BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
-import { geoJsonState, mapFeatureState } from '../../states';
+import { geoJsonState, mapFeatureState, spinnerState } from '../../states';
 
 // Utilities
 import * as MapConstants from '../../utils/json/googlemapstyle'
@@ -48,6 +48,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
+    const spinner = useRecoilValue(spinnerState);
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const [center, setCenter] = useState({
@@ -152,38 +153,13 @@ const StateMap: React.FC<StateMapProps> = ({
         clearCircles();
         if (map && mapFeatures?.circles && mapFeatures?.circles?.length > 0 && isChecked?.coreSolution) {
             const newCircles = mapFeatures?.circles?.map((feature: any) => {
-                // const center = {
-                //     lat: feature.geometry.coordinates[1],
-                //     lng: feature.geometry.coordinates[0],
-                // };
                 const type = selectedCoreSoln?.type;
                 const coreSumType = coreSolutions[0].type;
 
                 const radii = type !== coreSumType ? [coreSumType, type] : [type];
-
-                // let zoom = map?.getZoom() ?? 0;
-
                 return radii.map((radius, i) => {
                     if (radius) {
-                        // let zoomFactor = 5.5;
-                        // if (zoom >= 7) {
-                        //     zoomFactor = 4;
-                        // } else if (zoom >= 5) {
-                        //     zoomFactor = 4.5;
-                        // }
-                        // const circleRadius = Number(feature.properties[radius] * (Math.pow(10, zoomFactor)));
                         const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-                        // return new window.google.maps.Circle({
-                        //     center,
-                        //     radius: circleRadius,
-                        //     fillOpacity,
-                        //     fillColor: '#FFFFFF',
-                        //     strokeColor: '#FFFFFF',
-                        //     strokeOpacity: 1,
-                        //     strokeWeight: 2,
-                        //     zIndex: 100,
-                        //     map: map,
-                        // });
                         return new google.maps.Marker({
                             position: new google.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]),
                             icon: {
@@ -196,15 +172,14 @@ const StateMap: React.FC<StateMapProps> = ({
                                 scale: feature.properties[radius] * 30,
                             },
                             map: map
-                        })
+                        });
                     }
                     return null;
                 });
             });
-            // setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Circle[]);
             setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Marker[]);
         }
-    }, [map, map?.getZoom(), mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
+    }, [map, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
         clearCircles();
@@ -215,7 +190,7 @@ const StateMap: React.FC<StateMapProps> = ({
         if (!mapFeatures.featuredStories?.featuredStories?.length) {
             setIsChecked({ ...isChecked, viewStories: false });
         }
-    }, [mapFeatures.featuredStories])
+    }, [mapFeatures.featuredStories]);
 
     return (
         <div className='row mx-0'

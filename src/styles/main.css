@@ -485,8 +485,9 @@ td {
 }
 
 .dashboard-table-container tbody tr {
-    height: 3.94rem;
+    height: 2.81rem;
 }
+
 .dashboard-table-container tr:not(:last-child) td,
 th {
     border-bottom: 1px solid var(--table-border);
