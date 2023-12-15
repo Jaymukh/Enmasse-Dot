@@ -179,7 +179,7 @@ const StateMap: React.FC<StateMapProps> = ({
             });
             setCircles(newCircles.flat().filter(circle => circle !== null) as google.maps.Marker[]);
         }
-    }, [map, selectedCoreSoln, isChecked.coreSolution]);
+    }, [map, map?.getZoom(), mapFeatures.circles, selectedCoreSoln, isChecked.coreSolution]);
 
     useEffect(() => {
         clearCircles();
@@ -191,6 +191,8 @@ const StateMap: React.FC<StateMapProps> = ({
             setIsChecked({ ...isChecked, viewStories: false });
         }
     }, [mapFeatures.featuredStories]);
+
+    console.log(circles?.length);
 
     return (
         <div className='row mx-0'
