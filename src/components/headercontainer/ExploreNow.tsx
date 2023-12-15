@@ -128,7 +128,7 @@ const ExploreNow = () => {
 					>
 						Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
 					</Body>
-					<div className='d-flex flex-row justify-content-start mb-2'>
+					<div className='d-flex flex-row justify-content-start my-2'>
 						{Object.values(selectedValue)?.map((item, index) => (
 							item &&
 							(<>
