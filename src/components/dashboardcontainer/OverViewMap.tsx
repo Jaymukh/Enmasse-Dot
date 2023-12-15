@@ -11,11 +11,11 @@ import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import StatisticsCard from "./StatisticsCard";
 import { Legend } from '../ui/legend/Legend';
 import StaticMap from "../ui/maps/StaticMap";
+import InfoPanel from '../ui/InfoPanel';
 import { mapFeatureState } from '../../states';
 
 // Utilities
 import { useMapHelpers } from '../../helpers';
-import InfoPanel from '../ui/InfoPanel';
 
 
 const OverViewMap = () => {

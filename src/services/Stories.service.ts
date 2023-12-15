@@ -1,8 +1,14 @@
-import { useFetchWrapper } from '../helpers';
-import { APIS, rollbar } from '../constants';
-import { storiesState, errorState } from "../states";
+// External libraries
 import { useSetRecoilState } from 'recoil';
 // import { useRecoilState, useSetRecoilState } from "recoil";
+
+// Components
+import { storiesState, errorState } from "../states";
+
+// Utilities
+import { useFetchWrapper } from '../helpers';
+import { APIS, rollbar } from '../constants';
+
 
 const useStoriesService = () => {
     const setStories = useSetRecoilState(storiesState);

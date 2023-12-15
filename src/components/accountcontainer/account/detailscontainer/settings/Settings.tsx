@@ -1,7 +1,7 @@
 // External libraries
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { MdModeEdit } from 'react-icons/md';
 import { MdLock } from 'react-icons/md';
 
@@ -17,7 +17,7 @@ import Body, { BodyType, BodyColor } from '../../../../ui/typography/Body';
 import ChangePassword from './ChangePassword';
 import UpdateSuccessModal from './UpdateSuccessModel';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
-import { AllSettingsState, UserSettingsState, SettingsData, UserSettings, errorState, spinnerState } from "../../../../../states";
+import { AllSettingsState, UserSettingsState, errorState, spinnerState } from "../../../../../states";
 
 // Utilities
 import { RouteConstants } from '../../../../../constants';

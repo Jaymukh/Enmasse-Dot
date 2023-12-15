@@ -1,20 +1,26 @@
-import '../../styles/main.css';
+// External libraries
 import React, { ChangeEvent, useState } from "react";
-import * as Constants from '../../utils/constants/Constants';
-import Switch from '../ui/switch/Switch';
-import { MdChat } from "react-icons/md";
-import { MdLayers } from 'react-icons/md';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { useRecoilValue } from 'recoil';
+import { MdChat, MdLayers } from "react-icons/md";
 import { IoChevronForwardSharp } from 'react-icons/io5';
 import { PiRadioButtonLight } from 'react-icons/pi';
-import { Legend } from '../ui/legend/Legend';
-import { mapFeatureState } from '../../states';
-import { useRecoilValue } from 'recoil';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import RequestLayers from "./RequestLayers";
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyType, TypographyColor } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import InfoPanel from '../ui/InfoPanel';
+import Switch from '../ui/switch/Switch';
+import { Legend } from '../ui/legend/Legend';
+import { mapFeatureState } from '../../states';
+
+// Utilities
+import * as Constants from '../../utils/constants/Constants';
+
 
 interface Option {
     label: string;

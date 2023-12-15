@@ -1,8 +1,13 @@
+// External libraries
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { authState, errorState } from '../states';
-import { APIS, RouteConstants, rollbar } from '../constants';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
+
+// Components
+import { authState, errorState } from '../states';
+
+// Utilities
+import { APIS, RouteConstants, rollbar } from '../constants';
 
 
 function useFetchWrapper() {

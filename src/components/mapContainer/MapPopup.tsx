@@ -1,11 +1,19 @@
+// External libraries
 import React from 'react';
-import '../../styles/main.css';
 import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../constants';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
+
+// Utilities
+import { RouteConstants } from '../../constants';
 import { useMapHelpers } from '../../helpers';
+
 
 interface MapPopupProps {
     properties: any;

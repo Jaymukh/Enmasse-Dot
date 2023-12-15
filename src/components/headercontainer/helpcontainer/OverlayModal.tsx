@@ -1,13 +1,20 @@
+// External libraries
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+
+// CSS
 import '../../../styles/main.css';
-import IndiaMap from '../../../utils/images/IndiaMap.png';
-import CoreSolutions from '../../../utils/images/CoreSolutions.png';
-import * as Constants from '../../../utils/constants/Constants';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import Modal from '../../ui/modal/Modal';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { overlayState, helpState } from '../../../states';
+
+// Utilities
+import IndiaMap from '../../../utils/images/IndiaMap.png';
+import CoreSolutions from '../../../utils/images/CoreSolutions.png';
+import * as Constants from '../../../utils/constants/Constants';
 
 interface OverlayModalProps {
     handleContactUsDrawer: (contactUsDrawerOpen: boolean) => void;

@@ -1,6 +1,9 @@
+// External libraries
 import { useRecoilValue } from 'recoil';
-import { AllSettingsState } from '../states';
 import { useSearchParams } from 'react-router-dom';
+
+// Components
+import { AllSettingsState } from '../states';
 
 const useMapHelpers = () => {
     const [searchParams, setSearchParams] = useSearchParams();

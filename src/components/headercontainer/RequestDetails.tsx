@@ -1,11 +1,19 @@
-import '../../styles/main.css';
-import React, { useState } from 'react';
+// External libraries
+import { useState } from 'react';
 import { HiMiniPhone } from 'react-icons/hi2';
-import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
-import Drawer from '../ui/Drawer';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
+import Drawer from '../ui/Drawer';
+
+// Utilities
+import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
+
 
 const RequestDetails = () => {
 	const [open, setOpen] = useState(false);

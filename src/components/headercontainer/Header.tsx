@@ -1,33 +1,40 @@
-import React, { useState } from 'react';
-import '../../styles/main.css';
-import Logo from '../../utils/images/EnmasseDOTSLogo.svg';
+// External libraries
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BsFillBookmarksFill } from 'react-icons/bs';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import AccountOptions from './AccountOptions';
 import ExploreNow from './ExploreNow';
-import { useNavigate } from 'react-router-dom';
-import { RouteConstants } from '../../constants/routeConstants';
 import WIPDrawer from '../mapContainer/WIPDrawer';
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import HelpOptions from './helpcontainer/HelpOptions';
+import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+
+// Utilities
+import Logo from '../../utils/images/EnmasseDOTSLogo.svg';
+import { RouteConstants } from '../../constants';
 
 
 function Header() {
 	const navigate = useNavigate();
 	const onLogoClick = () => {
 		navigate(`${RouteConstants.root}?country=1`);
-	}	
+	}
 
 	const [open, setOpen] = useState(false);
-	const [text, setText] = useState<{title: string, description: string}>({title: '', description: ''});
+	const [text, setText] = useState<{ title: string, description: string }>({ title: '', description: '' });
 	const bookmarkDescription = 'Bookmarks can help you revisit your maps of interest and help you compare with other maps for quicker analysis!'
 
 	const closeWIPDrawer = () => {
 		setOpen(false);
-		setText({title: '', description: ''});
+		setText({ title: '', description: '' });
 	};
 
 	const handleDrawer = (title: string) => {
-		setText({title: title, description: bookmarkDescription});
+		setText({ title: title, description: bookmarkDescription });
 		setOpen(true);
 	}
 
@@ -48,7 +55,7 @@ function Header() {
 				>
 					<MdHelpCenter fontSize={25} />
 				</Button> */}
-				<HelpOptions  />
+				<HelpOptions />
 				<Button
 					theme={ButtonTheme.primary}
 					size={ButtonSize.small}

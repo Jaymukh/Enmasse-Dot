@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, Label, ReferenceLine } from 'recharts';
 

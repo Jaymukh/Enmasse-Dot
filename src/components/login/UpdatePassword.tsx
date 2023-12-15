@@ -1,22 +1,29 @@
+// External libraries
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { GiPlainCircle } from 'react-icons/gi';
 import { GoCheckCircleFill } from 'react-icons/go';
-import { FaEye } from 'react-icons/fa';
-import { FaEyeSlash } from 'react-icons/fa';
-import globe from '../../utils/images/globe.png';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { useUserService } from '../../services';
-import { useNavigate } from 'react-router-dom';
-import { RouteConstants, rollbar } from '../../constants';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
-import CheckGIF from "../../utils/images/CheckMarkGIF.gif";
-import { useSetRecoilState } from 'recoil';
-import { errorState } from '../../states';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
+import { errorState } from '../../states';
+
+// Utilities
+import { useUserService } from '../../services';
+import { RouteConstants, rollbar } from '../../constants';
+import CheckGIF from "../../utils/images/CheckMarkGIF.gif";
+import globe from '../../utils/images/globe.png';
+
 
 const UpdatePassword = () => {
     const navigate = useNavigate();

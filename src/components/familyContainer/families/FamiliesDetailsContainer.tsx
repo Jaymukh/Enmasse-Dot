@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecoilState } from "recoil";
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
@@ -23,6 +23,7 @@ import familySkeleton from '../../../utils/images/family-skeleton.png';
 import { RouteConstants } from '../../../constants';
 import { useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
+
 
 const FamiliesDetailsContainer = () => {
     const navigate = useNavigate();

@@ -1,17 +1,24 @@
-import '../../styles/main.css';
+// External libraries
 import { useState } from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { MdOutlineTravelExplore } from 'react-icons/md';
+
+// CSS
+import '../../styles/main.css';
+
+// Components
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { mapFeatureState } from '../../states/MapFeatureState';
-import { useMapsService } from '../../services/Maps.service';
-import { errorState, spinnerState } from '../../states';
+import { errorState, spinnerState, mapFeatureState } from '../../states';
+
+// Utilities
 import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
 import { rollbar } from '../../constants';
+import { useMapsService } from '../../services';
+
 
 const ExploreNow = () => {
 	const mapsService = useMapsService();

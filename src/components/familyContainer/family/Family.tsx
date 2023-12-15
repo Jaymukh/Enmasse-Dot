@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
