@@ -191,7 +191,6 @@ const StateMap: React.FC<StateMapProps> = ({
         }
     }, [mapFeatures.featuredStories]);
 
-    console.log(circles?.length);
 
     return (
         <div className='row mx-0'

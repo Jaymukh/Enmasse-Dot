@@ -98,7 +98,7 @@ const DistrictSidebar = () => {
                     />
                     <InfoPanel fontSize={20} text={properties?.infoButton} />
                 </div>
-                <div className='col-5 p-0'>
+                <div className='col-6 p-0'>
                     <Select
                         options={settings?.currencies}
                         value={usersettings?.currency}
@@ -110,7 +110,7 @@ const DistrictSidebar = () => {
                     />
                 </div>
             </div>
-            <div className="row d-flex justify-content-center pt-1 mx-0 px-3" style={{ overflow: 'auto', height: pathname === '/' ? '68vh' : '72vh' }}>
+            <div className="row d-flex justify-content-center pt-1 mx-0 px-3" style={{ overflowY: 'auto', overflowX: 'hidden', height: pathname === '/' ? '68vh' : '72vh' }}>
                 <div className='row data-card px-2 d-flex flex-row mx-0 my-2' style={{ height: 'fit-content' }}>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
                         <Heading

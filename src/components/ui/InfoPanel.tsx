@@ -11,6 +11,7 @@ interface InfoPanelProps {
 const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
     const menuRef = useRef<HTMLDivElement | null>(null);
     const [showPopup, setShowPopup] = useState(false);
+    const [popupStyle, setPopupStyle] = useState<{ left: number | string; right: number | string; width: any; transform?: string; }>({ left: '', right: '', width: 192 });
     const [infoText, setInfoText] = useState('');
     const [showMore, setShowMore] = useState(false);
 
@@ -19,7 +20,6 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
             const charLimit = 50;
             if (text?.length > charLimit) {
                 const shortText = text?.slice(0, charLimit) + '...';
-
                 setInfoText(shortText);
                 setShowMore(true);
             }
@@ -29,6 +29,27 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
         }
         else {
             setInfoText('Info text');
+        }
+        // Determine the position of the info button
+        const popupWidth = 192;
+        const infoButtonPosition = menuRef.current?.getBoundingClientRect();
+
+        if (infoButtonPosition) {
+            const hasSpaceOnLeft = infoButtonPosition.left >= popupWidth / 2;
+            const hasSpaceOnRight = window.innerWidth - infoButtonPosition.right >= popupWidth / 2;
+
+            if (hasSpaceOnLeft && hasSpaceOnRight) {
+                // Enough space on both sides, center the popup
+                setPopupStyle({ left: '50%', right: 'auto', width: popupWidth, transform: 'translateX(-50%)' });
+            } else if (hasSpaceOnLeft) {
+                // Not enough space on the right, position on the left
+                const rightPosition = -(window.innerWidth - infoButtonPosition.right + window.scrollX - 10);
+                setPopupStyle({ left: 'auto', right: rightPosition, width: popupWidth, transform: 'none' });
+            } else if (hasSpaceOnRight) {
+                // Not enough space on the left, position on the right
+                const lefttPosition = - (infoButtonPosition.left + window.scrollX - 10);
+                setPopupStyle({ left: lefttPosition, right: 'auto', width: popupWidth, transform: 'none' });
+            }
         }
         setShowPopup(true);
     }
@@ -62,7 +83,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                 <AiOutlineInfoCircle fontSize={fontSize} className='icon-color-5 mx-1' />
             </div>
             {showPopup && (
-                <div className={`popup ${classname}`} style={{ zIndex: 1000 }}>
+                <div className={`popup ${classname}`} style={{ ...popupStyle }}>
                     <p className='m-0 text-start info-text-wrap' dangerouslySetInnerHTML={{ __html: infoText }} />
                     {showMore
                         &&

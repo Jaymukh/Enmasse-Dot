@@ -666,37 +666,17 @@ th {
 .info-container {
     position: relative;
 }
-/* 
-.popup {
-    position: absolute;
-    background-color: var(--white-1);
-    min-width: 10rem;
-    width: max-content;
-    max-width: 12rem;
-    left: -250%;
-    height: auto;
-    min-height: 1rem;
-    padding: 0.5rem;
-    font-size: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--light-grey-2);
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-} */
 
 .popup {
     position: absolute;
+    top: 100% !important; 
+    left: 50% ;
+    transform: translateX(-50%);
+    z-index: 1000;
     background-color: var(--white-1);
     min-width: 10rem;
     width: max-content;
     max-width: 12rem;
-    /* Adjusted the left property to center the popup */
-    left: 50%;
-    transform: translateX(-50%);
-    /* Rest of your styles remain the same */
     height: auto;
     min-height: 1rem;
     padding: 0.5rem;
@@ -709,6 +689,7 @@ th {
     justify-content: left;
     align-items: left;
 }
+
 
 .info-text-wrap {
     white-space: pre-line;
