@@ -55,7 +55,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
             <div className='mt-3'>
                 <div className={`mt-1 bg-white px-2 py-2 ${!options?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center justify-content-between'>
-                        {/* <div className='d-flex align-items-center'>
+                        <div className='d-flex align-items-center'>
                             <PiRadioButtonLight fontSize={22} />
                             <Heading
                                 title='Core Solutions'
@@ -63,7 +63,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 colour={TypographyColor.dark}
                                 classname='my-0 ms-2 text-start'
                             />
-                        </div> */}
+                        </div>
                         <InfoPanel fontSize={20} text='Core Solutions have a strong tendency to grow together' classname='me-1' />
                         <Switch
                             isChecked={isChecked?.coreSolution}
