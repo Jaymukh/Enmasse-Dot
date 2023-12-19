@@ -60,7 +60,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
 
     return (
         <div>
-            <Modal showModal={showUploadImageModal} classname='width-30' >
+            <Modal showModal={showUploadImageModal} >
                 <div className=''>
                     <div className='d-flex flex-row justify-content-between align-items-center mt-1 mb-3'>
                         <Heading
@@ -165,7 +165,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     <div className="upload-image-box mb-4 d-flex justify-content-center align-items-center bg-light" >
                                         <span className='m-auto fs-64 w-100 h-100 d-flex flex-column justify-content-center align-items-center' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>
                                     </div>
-                                    <label className="bg-dark rounded p-3 height-2-25 d-flex align-items-center justify-content-center m-auto"  style={{ width: 'fit-content' }}>
+                                    <label className="bg-dark rounded p-3 height-2-25 d-flex align-items-center justify-content-center"  style={{ width: 'fit-content' }}>
                                         <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                         <div className="d-flex">
                                             <BiUpload fontSize={20} className='me-2 text-white' />
