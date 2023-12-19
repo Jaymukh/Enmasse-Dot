@@ -1,6 +1,5 @@
 // External libraries
 import React from 'react';
-import { useSetRecoilState } from "recoil";
 
 // CSS
 import '../../styles/main.css';
@@ -11,11 +10,6 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import { Input } from '../ui/input/Input';
 import Modal from '../ui/modal/Modal';
-import { spinnerState } from "../../states";
-
-// Utilities
-import { useUserService } from '../../services';
-
 
 interface ForgotPasswordProps {
     showModal: boolean;
@@ -25,6 +19,7 @@ interface ForgotPasswordProps {
     handleSendEmail: () => void;
 }
 
+
 const ForgotPassword: React.FC<ForgotPasswordProps> = (
     {
         showModal,
@@ -33,13 +28,9 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
         handleEmailChange,
         handleSendEmail
     }) => {
-    const userService = useUserService();
-    const setSpinner = useSetRecoilState(spinnerState);
-
-
 
     return (
-        <Modal showModal={showModal} classname='width-62-5' >
+        <Modal showModal={showModal} classname='width-30' >
             <div className='d-flex flex-row justify-content-between align-items-center w-100'>
                 <Heading
                     title='Forgot Password'
@@ -81,7 +72,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                     theme={ButtonTheme.primary}
                     classname='mb-2 mt-4'
                     size={ButtonSize.large}
-                    variant={ButtonVariant.contained}
+                    variant={ButtonVariant.bordered}
                     onClick={handleSendEmail}
                 >
                     Send Email

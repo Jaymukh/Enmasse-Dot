@@ -120,7 +120,7 @@ const ExploreNow = () => {
 					/>
 					<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
 				</div>
-				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27rem', maxWidth: '56.27rem' }}>
+				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27rem', maxWidth: '60rem' }}>
 					<Body
 						type={BodyType.p2}
 						color={BodyColor.muted}

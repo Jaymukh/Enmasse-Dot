@@ -150,21 +150,30 @@ ul {
 }
 
 /* modal width & height */
-.width-18-75.modal {
-    --bs-modal-width: 18.75rem !important;
+.modal {
+    max-height: 100vh;
+    overflow: hidden;
+    min-height: 100vh;
+    height: 100vh !important;
+    margin: auto;
+    --bs-modal-width: 100vw !important;
 }
 
-.width-30.modal {
-    --bs-modal-width: 30rem !important;
+.width-18-75.modal-dialog {
+    width: 18.75rem !important;
 }
 
-.width-62-5.modal {
-    --bs-modal-width: 62.5rem !important;
+.width-30.modal-dialog {
+    width: 30rem !important;
+}
+
+.width-62-5.modal-dialog {
+    width: 62.5rem !important;
 }
 
 .height-90.modal {
-    height: 90vh !important;
-    min-width: 90vh !important;
+    height: 100vh !important;
+    min-width: 100vh !important;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -449,7 +458,7 @@ ul {
     width: 100%;
     height: fit-content;
     max-height: 100%;
-    overflow-y: auto !important;    
+    overflow-y: auto !important;
     border: 1px solid var(--table-border);
     border-radius: 10px !important;
 }
@@ -669,8 +678,8 @@ th {
 
 .popup {
     position: absolute;
-    top: 100% !important; 
-    left: 50% ;
+    top: 100% !important;
+    left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
     background-color: var(--white-1);
@@ -689,7 +698,6 @@ th {
     justify-content: left;
     align-items: left;
 }
-
 
 .info-text-wrap {
     white-space: pre-line;
