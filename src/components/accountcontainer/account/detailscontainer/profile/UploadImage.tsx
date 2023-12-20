@@ -134,7 +134,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     <div className="upload-image-box mb-3 d-flex justify-content-center align-items-center bg-light" >
                                         <img src={loggedUser?.profile_picture} ref={imageRef} alt="Profile" className='w-100 h-100' />
                                     </div>
-                                    <div className="d-flex flex-row justify-content-between mt-1">
+                                    <div className="d-flex flex-row justify-content-between align-items-center mt-1">
                                         <Button
                                             theme={ButtonTheme.secondary}
                                             size={ButtonSize.small}
@@ -146,7 +146,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                             <MdDeleteSweep fontSize={20} className='color-orange me-2' />
                                             Delete
                                         </Button>
-                                        <label className="bg-dark rounded px-3 height-2-25 d-flex align-items-center justify-content-center m-auto">
+                                        <label className="bg-dark rounded px-3 height-2-25 d-flex align-items-center justify-content-center">
                                             <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                             <div className="d-flex">
                                                 <BiUpload fontSize={20} className='me-2 text-white' />

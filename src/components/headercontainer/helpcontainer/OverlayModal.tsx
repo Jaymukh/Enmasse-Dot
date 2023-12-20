@@ -52,7 +52,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
         <div>
             <Modal showModal={overlay} classname='width-62-5'>
                 {(showHelp === 0)
-                    && <div className='d-flex flex-row justify-content-center mb-2'>
+                    && <div className='d-flex flex-row justify-content-center mb-2 w-100'>
                         <div className="col-6">
                             <img src={IndiaMap} alt="India Map" width='75%' />
                         </div>
@@ -89,7 +89,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                         </div>
                         <div className='d-flex flex-row justify-content-center mb-2'>
                             <div className="col-6">
-                                <img src={CoreSolutions} alt="Core Solutions" width='50%' />
+                                <img src={CoreSolutions} alt="Core Solutions" width='75%' />
                             </div>
                             <div className="col-6 d-flex flex-column justify-content-center align-items-start text-start">
                                 <Heading
