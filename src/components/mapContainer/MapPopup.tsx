@@ -1,5 +1,5 @@
 // External libraries
-import React from 'react';
+import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,6 +26,12 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     const navigate = useNavigate();
     const { getCoreSolutions } = useMapHelpers();
 
+    const [loaded, setLoaded] = useState(false);
+    
+    const handleImageLoad = () => {
+        setLoaded(true);
+    }
+
     const handlePopupClick = (geoIdArray: any[], geoHierarchyLevel: number) => {
         let geo_id = geoHierarchyLevel === 1 ? geoIdArray[1] : geoIdArray[0];
         navigate({
@@ -37,8 +43,8 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     return (
         <div className="map-popup-grey-text rounded row h-100 w-100" onClick={() => handleFocused(index)}>
             <div className="col-4 px-0 img-box position-relative">
-            <div className="image-placeholder w-100 h-100 position-absolute"></div>
-                <img className="map-popup-story-img rounded" src={properties.image && properties.image.length > 0 ? properties.image : familySkeleton} alt={properties.familyName} />
+                {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>}
+                <img className="map-popup-story-img rounded" src={properties.image && properties.image.length > 0 ? properties.image : familySkeleton} alt={properties.familyName} onLoad={handleImageLoad} />
             </div>
             <div className="col-8 px-0 d-flex flex-column justify-content-start ps-1">
                 <Body

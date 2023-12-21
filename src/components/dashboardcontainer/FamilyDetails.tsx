@@ -27,13 +27,18 @@ const FamilyDetails = () => {
 
     const { family, properties } = useRecoilValue(storiesState);
     const [familyDetails, setFamilyDetails] = useState<any>({});
+    const [loaded, setLoaded] = useState(false);
 
     const handleViewButtonClick = () => {
         navigate({
             pathname: RouteConstants.stories,
             search: `?geo_code=${properties?.geo_id}&page_no=1&storiespp=2`,
         });
-    }
+    };    
+    
+    const handleImageLoad = () => {
+        setLoaded(true);
+    };
 
     useEffect(() => {
         if (family?.length > 0) {
@@ -72,7 +77,8 @@ const FamilyDetails = () => {
             </div>
             {family?.length > 0
                 && <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
-                    <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }}></img>
+                    {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
+                    <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }} onLoad={handleImageLoad}></img>
                     <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 white-bg py-4 px-4 rounded-end'>
                         <div className='d-flex flex-row mb-2'>
                             <Heading

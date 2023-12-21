@@ -33,7 +33,12 @@ const FamiliesDetailsContainer = () => {
     const { getCurrencyWithSymbol, getNumberWithZero, getSelectedObject, getCoreSolutions } = useMapHelpers();
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
     const [iterator, setIterator] = useState(0);
-    const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 })
+    const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 });
+    const [loaded, setLoaded] = useState(false);
+    
+    const handleImageLoad = () => {
+        // setLoaded(true);
+    };
 
     const handleChangeData = (event: any) => {
         const value = Number(event.target.value);
@@ -113,7 +118,8 @@ const FamiliesDetailsContainer = () => {
                     {stories?.family?.map((data, index) => (
                         <div className='col-lg-4 col-md-6 col-sm-12 px-0'>
                             <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 mb-4 p-0 cursor-pointer' onClick={() => handleFamilyVisible(data, index)}>
-                                <img className="rounded-top story-list-img" src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} alt={data?.familyName} />
+                            {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
+                                <img className="rounded-top story-list-img" src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} alt={data?.familyName} onLoad={handleImageLoad} />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
                                         <Heading
