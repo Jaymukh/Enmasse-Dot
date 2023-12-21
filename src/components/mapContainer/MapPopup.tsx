@@ -36,8 +36,9 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
 
     return (
         <div className="map-popup-grey-text rounded row h-100 w-100" onClick={() => handleFocused(index)}>
-            <div className="col-4 px-0">
-                <img className="map-popup-story-img rounded" src={properties.image ? properties.image : familySkeleton} alt={properties.familyName} />
+            <div className="col-4 px-0 img-box position-relative">
+            <div className="image-placeholder w-100 h-100 position-absolute"></div>
+                <img className="map-popup-story-img rounded" src={properties.image && properties.image.length > 0 ? properties.image : familySkeleton} alt={properties.familyName} />
             </div>
             <div className="col-8 px-0 d-flex flex-column justify-content-start ps-1">
                 <Body
