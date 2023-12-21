@@ -27,18 +27,20 @@ const FamilyDetails = () => {
 
     const { family, properties } = useRecoilValue(storiesState);
     const [familyDetails, setFamilyDetails] = useState<any>({});
+    const [description, setDescription] = useState('');
     const [loaded, setLoaded] = useState(false);
 
     const handleViewButtonClick = () => {
         navigate({
             pathname: RouteConstants.stories,
             search: `?geo_code=${properties?.geo_id}&page_no=1&storiespp=2`,
-        });
+        }); 
     };    
     
     const handleImageLoad = () => {
         setLoaded(true);
     };
+
 
     useEffect(() => {
         if (family?.length > 0) {
@@ -46,6 +48,18 @@ const FamilyDetails = () => {
         }
     }, [family]);
 
+    useEffect(() => {
+        if (familyDetails?.description && familyDetails?.description[0]) {
+            const charLimit = 580;
+            if (familyDetails?.description[0]?.length > charLimit) {
+                const shortDescription = familyDetails?.description[0]?.slice(0, charLimit) + '...';
+                setDescription(shortDescription);
+            }
+            else {
+                setDescription(familyDetails?.description[0]);
+            }
+        }
+    } );
     return (
         <div className='mx-0'>
             <div className='row d-flex justify-content-between align-items-center py-2 m-0'>
@@ -78,7 +92,7 @@ const FamilyDetails = () => {
             {family?.length > 0
                 && <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
                     {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
-                    <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover' }} onLoad={handleImageLoad}></img>
+                    <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover', maxWidth: '100%', maxHeight: '12rem' }} onLoad={handleImageLoad}></img>
                     <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 white-bg py-4 px-4 rounded-end'>
                         <div className='d-flex flex-row mb-2'>
                             <Heading
@@ -114,7 +128,7 @@ const FamilyDetails = () => {
                             type={BodyType.p3}
                             color={BodyColor.secondary}
                             classname='text-start'>
-                            {familyDetails?.description}
+                            {description}
                         </Body>
                         <div className='d-flex justify-content-start mt-2'>
                             <button className='rounded text-start ps-0 border-0 fs-10 white-bg ff-poppins-medium color-green' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
