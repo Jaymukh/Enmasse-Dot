@@ -1,6 +1,6 @@
 // External libraries
 import React, { useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 // CSS
 import '../../../../../styles/main.css';

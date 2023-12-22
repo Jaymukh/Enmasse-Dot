@@ -1,10 +1,6 @@
 // External libraries
 import React from 'react';
-
-// CSS
-import '../../styles/main.css';
-
-
+import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -15,8 +11,10 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import { CoreSolutionByEH } from '../../states';
+
+// CSS
+import '../../styles/main.css';
+
 
 ChartJS.register(
     CategoryScale,

@@ -24,7 +24,7 @@ interface MapPopupProps {
 
 const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index }) => {
     const navigate = useNavigate();
-    const { getCoreSolutions } = useMapHelpers();
+    const { getCoreSolutions, getNumberWithZero } = useMapHelpers();
 
     const [loaded, setLoaded] = useState(false);
     
@@ -52,7 +52,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     color={BodyColor.secondary}
                     classname='map-popup-description text-start my-0'
                 >
-                    <span className="">{properties.familyDetails.familyMembers} </span>
+                    <span className="">{getNumberWithZero(properties.familyDetails.familyMembers)} </span>
                     Family members
                 </Body>
                 <Body

@@ -20,11 +20,11 @@ import { RouteConstants } from '../../constants';
 import familySkeleton from '../../utils/images/family-skeleton.png';
 import InfoPanel from '../ui/InfoPanel';
 
+
 const FamilyDetails = () => {
     const navigate = useNavigate();
     const mapFeatures = useRecoilValue(mapFeatureState);
     const { getCurrencyWithSymbol, getCoreSolutions } = useMapHelpers();
-
     const { family, properties } = useRecoilValue(storiesState);
     const [familyDetails, setFamilyDetails] = useState<any>({});
     const [description, setDescription] = useState('');
@@ -40,7 +40,6 @@ const FamilyDetails = () => {
     const handleImageLoad = () => {
         setLoaded(true);
     };
-
 
     useEffect(() => {
         if (family?.length > 0) {

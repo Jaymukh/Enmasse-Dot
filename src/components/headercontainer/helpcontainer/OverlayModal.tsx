@@ -52,7 +52,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
         <div>
             <Modal showModal={overlay} classname='width-62-5'>
                 {(showHelp === 0)
-                    && <div className='d-flex flex-row justify-content-center mb-2 w-100'>
+                    && <div className='d-flex flex-row justify-content-center mb-2 w-100' style={{height: '70vh'}}>
                         <div className="col-6">
                             <img src={IndiaMap} alt="India Map" width='75%' />
                         </div>
@@ -83,15 +83,15 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                     </div>
                 }
                 {(0 < showHelp) && (showHelp <= Constants.helpContent.length) && (
-                    <div>
+                    <div style={{height: '70vh'}}>
                         <div className='d-flex flex-row justify-content-end w-100 pb-1'>
                             <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleModal()}></Button>
                         </div>
                         <div className='d-flex flex-row justify-content-center mb-2'>
-                            <div className="col-6">
-                                <img src={CoreSolutions} alt="Core Solutions" width='75%' />
+                            <div className="col-5" style={{height: 'auto'}}>
+                                <img src={CoreSolutions} alt="Core Solutions" width='85%' />
                             </div>
-                            <div className="col-6 d-flex flex-column justify-content-center align-items-start text-start">
+                            <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
                                 <Heading
                                     title={Constants.helpContent[showHelp - 1].title}
                                     type={TypographyType.h2}
@@ -110,7 +110,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                                         theme={ButtonTheme.secondary}
                                         size={ButtonSize.default}
                                         variant={ButtonVariant.bordered}
-                                        classname='h-2 mt-2'
+                                        classname='h-2 mt-4'
                                         onClick={() => handleContactNow()}
                                     >
                                         Contact Now
