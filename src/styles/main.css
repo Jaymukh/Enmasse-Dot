@@ -767,6 +767,7 @@ th {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         margin: auto;
         width: 100vw;
         height: 50vh;
@@ -788,8 +789,9 @@ th {
 .login-update-box {
     display: flex;
     justify-content: center;
-    margin: auto;
-    width: 50vw;
+    align-items: center;
+    margin: 0;
+    padding: 0;
     height: 100vh;
 }
 

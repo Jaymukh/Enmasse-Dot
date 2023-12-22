@@ -74,7 +74,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                                 theme={ButtonTheme.primary}
                                 size={ButtonSize.default}
                                 variant={ButtonVariant.bordered}
-                                classname='h-2'
+                                classname='h-2 mt-4'
                                 onClick={() => nextHelp()}
                             >
                                 Continue

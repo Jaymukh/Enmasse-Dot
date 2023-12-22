@@ -100,7 +100,7 @@ const UpdatePassword = () => {
     return (
         <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
             <div className='col-md-6 col-xl-6 login-update-box lightGrayBackground'>
-                <div className='col-12 my-5 d-flex flex-column align-items-start'>
+                <div className='W-100 d-flex flex-column align-items-center justify-content-center'>
                     <div className='loginCardAlign my-5'>
                         <img src={globe} alt='enmasse' />
                         <div>
