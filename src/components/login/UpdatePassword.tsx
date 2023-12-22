@@ -241,7 +241,7 @@ const UpdatePassword = () => {
                             variant={ButtonVariant.bordered}
                             type='submit'
                             classname='mt-3'
-                            disabled={!isValid}
+                            // disabled={!isValid}
                         >
                             {isSubmitting
                                 && <Body
