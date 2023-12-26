@@ -28,12 +28,14 @@ interface Option {
 
 interface StateMapProps {
     selected: any;
+    updateSelected: (key: string, value: any) => void;
     breadcrumbs: BreadcrumbItem[];
     handleBreadcrumbClick: (item: BreadcrumbItem, index: number) => void;
 }
 
 const StateMap: React.FC<StateMapProps> = ({
     selected,
+    updateSelected,
     breadcrumbs,
     handleBreadcrumbClick
 }) => {
@@ -64,7 +66,18 @@ const StateMap: React.FC<StateMapProps> = ({
         keyboardShortcuts: false,
         gestureHandling: "none", //manual zoom handling
         zoomControl: false,
+        clickableIcons: true,
     };
+
+    const onClickMapFeature = (feature: any) => {
+        if (selected.district) {
+            return;
+        } else if (selected.state) {
+            updateSelected('district', feature?.id);
+        } else if (selected.country) {
+            updateSelected('state', feature?.id);
+        }
+    }
 
     const toggleSwitch = (event?: React.ChangeEvent<HTMLInputElement>) => {
         const name: string = event?.target?.name!;
@@ -114,6 +127,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 map.data.remove(feature);
             });
             map.data.addGeoJson(geoJSON);
+            map.data.addListener('click', (event: any) => onClickMapFeature(event?.feature?.h));
 
             map.data.setStyle((feature) => {
                 const fillColor = feature.getProperty('Color');
@@ -159,7 +173,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 return radii.map((radius, i) => {
                     if (radius) {
                         const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-                        return new google.maps.Marker({
+                        const marker = new google.maps.Marker({
                             position: new google.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]),
                             icon: {
                                 path: google.maps.SymbolPath.CIRCLE,
@@ -170,8 +184,10 @@ const StateMap: React.FC<StateMapProps> = ({
                                 rotation: 0,
                                 scale: feature.properties[radius] * 30,
                             },
-                            map: map
+                            map: map,
                         });
+                        marker?.addListener('click', () => onClickMapFeature(feature));
+                        return marker;
                     }
                     return null;
                 });

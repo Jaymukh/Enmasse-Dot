@@ -219,6 +219,7 @@ function MapContainer() {
             ) : (
                 <StateMap
                     selected={selected}
+                    updateSelected={updateSelected}
                     breadcrumbs={breadcrumbList}
                     handleBreadcrumbClick={handleBreadcrumbClick}
                 />
