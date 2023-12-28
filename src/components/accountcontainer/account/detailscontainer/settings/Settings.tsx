@@ -22,6 +22,7 @@ import { AllSettingsState, UserSettingsState, errorState, spinnerState } from ".
 // Utilities
 import { RouteConstants } from '../../../../../constants';
 import { useSettingsService } from '../../../../../services'
+import InfoPanel from '../../../../ui/InfoPanel';
 
 const Settings = () => {
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Settings = () => {
     const [showModal, setShowModal] = useState(false);
     const [open, setOpen] = useState(false);
     // all settings's data
-    const settingsService = useSettingsService();    
+    const settingsService = useSettingsService();
     const [settings, setSettings] = useRecoilState(AllSettingsState);
     const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
     const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
@@ -129,12 +130,15 @@ const Settings = () => {
             <hr />
             <div className="row w-100 h-90 mx-0">
                 <div className='col-5 d-flex justify-content-start flex-column text-justify mb-4 mx-4 px-0'>
-                    <Heading
-                        title='Language Preference'
-                        colour={TypographyColor.dark}
-                        type={TypographyType.h5}
-                        classname='mt-2 text-start'
-                    />
+                    <div className='d-flex flex-row justify-content-start align-items-center'>
+                        <Heading
+                            title='Language Preference'
+                            colour={TypographyColor.dark}
+                            type={TypographyType.h5}
+                            classname='mt-2 text-start'
+                        />
+                        <InfoPanel fontSize={20} text='Change your language' />
+                    </div>
                     <Select
                         options={settings?.languages}
                         value={usersettings?.language}
@@ -144,12 +148,15 @@ const Settings = () => {
                         name='language'
                         disabled={true}
                     />
-                    <Heading
-                        title='Currency Preference'
-                        colour={TypographyColor.dark}
-                        type={TypographyType.h5}
-                        classname='mt-2 text-start'
-                    />
+                    <div className='d-flex flex-row justify-content-start align-items-center'>
+                        <Heading
+                            title='Currency Preference'
+                            colour={TypographyColor.dark}
+                            type={TypographyType.h5}
+                            classname='mt-2 text-start'
+                        />
+                        <InfoPanel fontSize={20} text='Change currency' />
+                    </div>
                     <Select
                         options={settings?.currencies}
                         value={usersettings?.currency}
@@ -159,12 +166,15 @@ const Settings = () => {
                         name='currency'
                         disabled={true}
                     />
-                    <Heading
-                        title='Location Focus'
-                        colour={TypographyColor.dark}
-                        type={TypographyType.h5}
-                        classname='mt-2 text-start'
-                    />
+                    <div className='d-flex flex-row justify-content-start align-items-center'>
+                        <Heading
+                            title='Location Focus'
+                            colour={TypographyColor.dark}
+                            type={TypographyType.h5}
+                            classname='mt-2 text-start'
+                        />
+                        <InfoPanel fontSize={20} text='Change your location' />
+                    </div>
                     <Select
                         options={settings?.locations}
                         value={usersettings?.location}
@@ -174,12 +184,15 @@ const Settings = () => {
                         name='location'
                         disabled={true}
                     />
-                    <Heading
-                        title='Notifications'
-                        colour={TypographyColor.dark}
-                        type={TypographyType.h5}
-                        classname='mt-2 text-start'
-                    />
+                    <div className='d-flex flex-row justify-content-start align-items-center'>
+                        <Heading
+                            title='Notifications'
+                            colour={TypographyColor.dark}
+                            type={TypographyType.h5}
+                            classname='mt-2 text-start'
+                        />
+                        <InfoPanel fontSize={20} text='Turn on/off Notification' />
+                    </div>
                     <div className={`d-flex justify-content-between align-items-center px-2 py-2 input-div disabled-div`} aria-disabled={true}>
                         <Body
                             type={BodyType.p2}
