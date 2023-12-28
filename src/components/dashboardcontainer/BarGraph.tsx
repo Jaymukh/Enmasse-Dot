@@ -11,6 +11,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { colorDescription } from '../../utils/constants/Constants';
 
 // CSS
 import '../../styles/main.css';
@@ -33,18 +34,17 @@ interface BarGraphProps {
 const BarGraph: React.FC<BarGraphProps> = ({ selected }) => {
     const xAxisData = selected?.subcategory?.map((data: any) => data['name']);
     const yAxisData = selected?.subcategory?.map((data: any) => data['value']);
-
     const data = {
         labels: xAxisData,
         datasets: [
             {
                 label: selected?.coreSolution,
                 data: yAxisData,
-                backgroundColor: '#108041',
-                borderColor: '#108041',
+                backgroundColor: colorDescription[selected?.type],
+                borderColor: colorDescription[selected?.type],
                 borderWidth: 0,
                 borderRadius: 5,
-                barPercentage: 0.6, //previously it was 0.6
+                barPercentage: 0.6,
             },
         ],
     };
@@ -75,6 +75,18 @@ const BarGraph: React.FC<BarGraphProps> = ({ selected }) => {
         plugins: {
             legend: {
                 display: false,
+            },
+            tooltip: {
+                callbacks: {
+                    title: (context: any) => {
+                        return `${context[0].dataset.label}`;
+                    },
+                    label: (context: any) => {
+                        const index = context.dataIndex;
+                        const description =  selected?.subcategory?.[index].description;
+                        return `${description}`;
+                    },
+                },
             },
         },
     };
