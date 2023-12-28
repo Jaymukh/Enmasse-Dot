@@ -476,6 +476,7 @@ ul {
     vertical-align: middle;
     border-color: inherit;
     border-collapse: separate;
+    font-size: 1rem;
 }
 
 .dashboard-table-container tr {

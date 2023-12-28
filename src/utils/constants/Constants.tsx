@@ -8,9 +8,9 @@ import Joshi from '../images/Joshi.png'
 import Shah from '../images/Shah.png'
 
 export const storiesSelectOptions = [
-    { key: 2, value: 2 },
-    { key: 5, value: 5 },
-    { key: 10, value: 10 }
+    { key: 25, value: 25 },
+    { key: 50, value: 50 },
+    { key: 100, value: 100 }
 ];
 export interface Option {
     key: number;

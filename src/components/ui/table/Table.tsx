@@ -89,7 +89,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
                 <thead>
                     <tr>
                         {headers?.KEYS?.map((item, index) => (
-                            <th className='fs-10 text-start'>
+                            <th className='text-start'>
                                 <div className='d-flex flex-row align-items-center'>
                                     <p className='pt-3 pe-2'>{item.KEY === 'geoName' ? breakdownType : item.VALUE}</p>
                                     <div className='d-flex flex-column'>

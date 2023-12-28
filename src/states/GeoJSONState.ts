@@ -15,7 +15,6 @@ export interface geoJSONProps {
         Name: string;
         id: string;
         region: string;
-
     }
 }
 

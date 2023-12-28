@@ -202,11 +202,11 @@ export default function Invite() {
 						<table className=''>
 							<thead>
 								<tr>
-									<th className='text-start table-header-text'>Name</th>
-									<th className='text-start table-header-text'>Role</th>
-									<th className='text-start table-header-text'>Company</th>
-									<th className='text-start table-header-text'>Company type</th>
-									<th className='text-center table-header-text'>Action</th>
+									<th className='text-start'>Name</th>
+									<th className='text-start'>Role</th>
+									<th className='text-start'>Company</th>
+									<th className='text-start'>Company type</th>
+									<th className='text-center'>Action</th>
 								</tr>
 							</thead>
 							<tbody>

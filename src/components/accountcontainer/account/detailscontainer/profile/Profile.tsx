@@ -19,14 +19,18 @@ import { errorState, loggedUserState, spinnerState, User } from "../../../../../
 import { useUserService } from '../../../../../services';
 import { rollbar } from '../../../../../constants';
 import { useMapHelpers } from '../../../../../helpers';
+import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 
 export default function Profile() {
     const [selectedData, setSelectedData] = useState<User | null>(null);
-    const [open, setOpen] = useState<boolean>(false);
+    // const [open, setOpen] = useState<boolean>(false);
     const loggedUser = useRecoilValue<User>(loggedUserState);
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
     const setError = useSetRecoilState(errorState);
+
+    const [open, setOpen] = useState(false);
+	const [text, setText] = useState<string>('');
 
     const [showUploadImageModal, setShowUploadImageModal] = useState(false);
     const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
@@ -39,39 +43,49 @@ export default function Profile() {
     const minZoom = 1;
     const maxZoom = 3;
 
-    const handleOpen = (flag?: boolean) => {
-        if (flag) {
-            setSelectedData(loggedUser);
-            setOpen(flag);
-        } else {
-            setSelectedData(null);
-            setOpen(flag!);
-        }
-    };
+    const closeWIPDrawer = () => {
+		setOpen(false);
+		setText('');
+	};
+
+	const handleWIPDrawer = (text: string) => {
+		setText(text);
+		setOpen(true);
+	}
+
+    // const handleOpen = (flag?: boolean) => {
+    //     if (flag) {
+    //         setSelectedData(loggedUser);
+    //         setOpen(flag);
+    //     } else {
+    //         setSelectedData(null);
+    //         setOpen(flag!);
+    //     }
+    // };
 
     const handleCloseDialog = () => {
         setSelectedData(null);
     };
 
-    const handleUpdate = (updatedData: any) => {
-        setSpinner(true);
-        const payload = { ...updatedData, country: 'India' };
-        userService.updateUserDetails(payload)
-            .then((response: any) => {
-                if (response) {
-                    handleCloseDialog();
-                    setSpinner(false);
-                    userService.getUserDetails();
-                    setError({ type: 'Success', message: response.msg });
-                }
-            })
-            .catch((error: any) => {
-                setSpinner(false);
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
-            });
-    };
+    // const handleUpdate = (updatedData: any) => {
+    //     setSpinner(true);
+    //     const payload = { ...updatedData, country: 'India' };
+    //     userService.updateUserDetails(payload)
+    //         .then((response: any) => {
+    //             if (response) {
+    //                 handleCloseDialog();
+    //                 setSpinner(false);
+    //                 userService.getUserDetails();
+    //                 setError({ type: 'Success', message: response.msg });
+    //             }
+    //         })
+    //         .catch((error: any) => {
+    //             setSpinner(false);
+    //             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+    //             setError({ type: 'Error', message: errorMsg });
+    //             rollbar.error(error);
+    //         });
+    // };
 
     const openUploadImageModal = () => {
         setShowUploadImageModal(true);
@@ -194,7 +208,8 @@ export default function Profile() {
                     theme={ButtonTheme.secondary}
                     size={ButtonSize.default}
                     variant={ButtonVariant.bordered}
-                    onClick={() => handleOpen(true)}
+                    // onClick={() => handleOpen(true)}
+                    onClick={() => handleWIPDrawer('Edit Profile')}
                 >
                     <MdModeEdit className='me-1 mb-1' fontSize={22} />
                     Edit
@@ -248,30 +263,6 @@ export default function Profile() {
                                 classname='text-start m-0'
                             />
                         </li>
-                        <li >
-                            <Body
-                                type={BodyType.p2}
-                                color={BodyColor.secondary}
-                                classname='mb-1 text-start'>Phone Number:</Body>
-                            <Heading
-                                title={loggedUser.phone_number}
-                                type={TypographyType.h4}
-                                colour={TypographyColor.dark}
-                                classname='text-start m-0'
-                            />
-                        </li>
-                        <li >
-                            <Body
-                                type={BodyType.p2}
-                                color={BodyColor.secondary}
-                                classname='mb-1 text-start'>Role:</Body>
-                            <Heading
-                                title={loggedUser.role}
-                                type={TypographyType.h4}
-                                colour={TypographyColor.dark}
-                                classname='text-start m-0'
-                            />
-                        </li>
                     </ul>
                 </div>
                 <div className="col-4">
@@ -288,41 +279,19 @@ export default function Profile() {
                                 classname='text-start m-0'
                             />
                         </li>
-                        <li >
-                            <Body
-                                type={BodyType.p2}
-                                color={BodyColor.secondary}
-                                classname='mb-1 text-start'>Designation:</Body>
-                            <Heading
-                                title={loggedUser.designation}
-                                type={TypographyType.h4}
-                                colour={TypographyColor.dark}
-                                classname='text-start m-0'
-                            />
-                        </li>
-                        <li >
-                            <Body
-                                type={BodyType.p2}
-                                color={BodyColor.secondary}
-                                classname='mb-1 text-start'>Country:</Body>
-                            <Heading
-                                title={loggedUser.country}
-                                type={TypographyType.h4}
-                                colour={TypographyColor.dark}
-                                classname='text-start m-0'
-                            />
-                        </li>
                     </ul>
                 </div>
             </div>
-            {selectedData && (
+            {/* {selectedData && (
                 <EditProfile
                     selectedData={selectedData}
                     handleUpdate={handleUpdate}
                     open={open}
                     handleOpen={handleOpen}
                 />
-            )}
+            )} */}
+            {open && <WIPDrawer open={open} title={text} closeWIPDrawer={closeWIPDrawer} />}
+
             {showUploadImageModal &&
                 <UploadImage
                     showUploadImageModal={showUploadImageModal}
