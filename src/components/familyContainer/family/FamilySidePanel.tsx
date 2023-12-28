@@ -41,7 +41,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                 <div className='map-container-sm d-flex mx-auto justify-content-start'>
                     <StaticMap coordinates={selectedStory?.story?.geometry?.coordinates} />
                 </div>
-                <Legend />
+                <Legend classname='mt-2' />
             </Card>
             <div className='d-flex flex-row justify-content-center align-items-center my-3 w-100' >
                 <button className="PrevBtn"

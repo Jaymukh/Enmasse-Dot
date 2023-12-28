@@ -26,7 +26,7 @@ const FamiliesSidePanel = () => {
                 <div className='map-container-sm d-flex mx-auto justify-content-start'>
                     <StaticMap />
                 </div>
-                <Legend />
+                <Legend classname='mt-2'/>
             </Card>
         </div>
     );

@@ -135,7 +135,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 </div>
             </div>
             <div className='mb-3'>
-                <Legend hasLegendValue={true} />
+                <Legend />
             </div>
 
             {requestLayersDrawerOpen && <RequestLayers requestLayersDrawerOpen={requestLayersDrawerOpen} handleRequestLayersDrawer={handleRequestLayersDrawer} />}
