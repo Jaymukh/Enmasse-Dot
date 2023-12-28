@@ -15,8 +15,8 @@ import { loggedUserState, AllSettingsState, errorState, spinnerState } from "../
 
 // Utilities
 import { useUserService, useSettingsService } from '../../../../../services';
-
 import { rollbar } from '../../../../../constants';
+
 interface NewData {
     name: string | undefined;
     email_id: string | undefined;

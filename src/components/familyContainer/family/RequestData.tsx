@@ -30,8 +30,8 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
     const setError = useSetRecoilState(errorState);
 
     const [payloadData, setPayloadData] = useState<
-        { email_id: string, name: string, company: string, message: string, geo_name: string, purpose: string }>
-        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Data' });
+        { email_id: string, name: string, company: string, message: string, geo_code: string, geo_name: string, purpose: string }>
+        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_code: geoJSON?.rootProperties?.id, geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Data' });
 
     const handleChangeData = (e: any) => {
         e.preventDefault();
