@@ -202,8 +202,8 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [selected.country, selected.state, selected.district]);
 
     useEffect(() => {
-        if (!mapFeatures.featuredStories?.featuredStories?.length) {
-            setIsChecked({ ...isChecked, viewStories: false });
+        if (mapFeatures.featuredStories?.featuredStories?.length > 0 ) {
+            setIsChecked({ ...isChecked, viewStories: true });
         }
     }, [mapFeatures.featuredStories]);
 
@@ -238,7 +238,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                     onLoad={handleMapLoad}
                                     options={mapOptions}
                                 >
-                                    {mapFeatures.featuredStories?.featuredStories && isChecked?.viewStories && (
+                                    {mapFeatures.featuredStories?.featuredStories && isChecked?.viewStories && Object.keys(geoJSON).length && (
                                         mapFeatures.featuredStories?.featuredStories?.map((feature: any, index: number) => (
                                             <InfoWindow
                                                 position={{

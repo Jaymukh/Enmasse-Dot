@@ -126,7 +126,6 @@ function MapContainer() {
     const fetchGeoJsonData = (geo_id: string) => {
         mapServices.getMaps(Number(geo_id)).then((data: any) => {
             setGeoJSON(data);
-            console.log('geojsondata', data);
             setSpinner(false);
             fetchMapCircles(geo_id);
         }).catch(error => {
