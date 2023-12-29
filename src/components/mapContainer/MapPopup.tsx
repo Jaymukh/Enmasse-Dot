@@ -12,6 +12,7 @@ import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 
 // Utilities
 import { RouteConstants } from '../../constants';
+import * as Constants from '../../utils/constants/Constants'
 import { useMapHelpers } from '../../helpers';
 import familySkeleton from '../../utils/images/family-skeleton.png';
 
@@ -36,7 +37,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
         let geo_id = geoHierarchyLevel === 1 ? geoIdArray[1] : geoIdArray[0];
         navigate({
             pathname: RouteConstants.stories,
-            search: `?geo_code=${geo_id}&page_no=1&storiespp=2`,
+            search: `?geo_code=${geo_id}&page_no=1&storiespp=${Constants.storiesSelectOptions[0].value}`,
         });
     };
 

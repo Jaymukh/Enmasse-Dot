@@ -17,6 +17,7 @@ import { mapFeatureState, storiesState } from '../../states';
 // Utilities
 import { useMapHelpers } from '../../helpers';
 import { RouteConstants } from '../../constants';
+import * as Constants from '../../utils/constants/Constants';
 import familySkeleton from '../../utils/images/family-skeleton.png';
 import InfoPanel from '../ui/InfoPanel';
 
@@ -33,7 +34,7 @@ const FamilyDetails = () => {
     const handleViewButtonClick = () => {
         navigate({
             pathname: RouteConstants.stories,
-            search: `?geo_code=${properties?.geo_id}&page_no=1&storiespp=2`,
+            search: `?geo_code=${properties?.geo_id}&page_no=1&storiespp=${Constants.storiesSelectOptions[0].value}`,
         }); 
     };    
     

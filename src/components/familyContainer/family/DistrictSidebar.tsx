@@ -87,7 +87,7 @@ const DistrictSidebar = () => {
     }
 
     return (
-        <div className='w-100 py-2 bg-white px-0 me-0' style={{ height: pathname === '/' ? '85.5vh' : '91.75vh' }} >
+        <div className='w-100 bg-white px-0 me-0' style={{ height: pathname === '/' ? '85.5vh' : '91.75vh' }} >
             <div className='w-100 d-flex justify-content-between align-items-center px-3 py-auto' style={{height: '10%'}}>
                 <div className='d-flex justify-content-start align-items-center col-6 m-0 text-start'>
                     <Heading
@@ -220,7 +220,8 @@ const DistrictSidebar = () => {
                             <ProgressBar coverage={properties?.EICoverage} />
                         </div>}
 
-                        {properties?.EHEconomicActivityIndicators?.showPOI && <div className='d-flex flex-column justify-content-center pb-1 pt-2 px-0'>
+                        {properties?.EHEconomicActivityIndicators?.showPOI 
+                        && <div className='d-flex flex-column justify-content-center pb-1 pt-2 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
                                 <Heading
                                     title='EH Economic Activity Indicators'
@@ -305,7 +306,8 @@ const DistrictSidebar = () => {
 
                         </div>}
 
-                        {properties?.EHSpend?.showSpend && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
+                        {properties?.EHSpend?.showSpend 
+                        && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
                                 <Heading
                                     title='EH Spend'
@@ -417,7 +419,8 @@ const DistrictSidebar = () => {
                             </div>
                         </div>}
 
-                        {properties?.EHBorrow?.showBorrow && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
+                        {properties?.EHBorrow?.showBorrow 
+                        && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
                                 <Heading
                                     title='EH Borrowing'
@@ -474,7 +477,8 @@ const DistrictSidebar = () => {
                         </div>
                         }
 
-                        {properties?.EHIncome?.showIncome && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
+                        {properties?.EHIncome?.showIncome 
+                        && <div className='d-flex flex-column justify-content-center pb-1 px-0'>
                             <div className='d-flex justify-content-start align-items-center'>
                                 <Heading
                                     title='EH Income'
@@ -529,8 +533,8 @@ const DistrictSidebar = () => {
                                 </div>
                             </div>
                         </div>}
-                    </div> :
-                    <div className='row d-flex flex-row m-0 p-0 justify-content-center align-items-center'>
+                    </div> 
+                    : <div className='row d-flex flex-row m-0 p-0 justify-content-center align-items-center'>
                         <img src={WIPImage} alt='WIP' width="40%" height='50%' />
                         <Heading
                             title='Work in progress.'

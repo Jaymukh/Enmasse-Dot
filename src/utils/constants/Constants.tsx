@@ -10,7 +10,7 @@ import Shah from '../images/Shah.png'
 export const storiesSelectOptions = [
     { key: 25, value: 25 },
     { key: 50, value: 50 },
-    { key: 100, value: 100 }
+    { key: 75, value: 75 }
 ];
 export interface Option {
     key: number;
