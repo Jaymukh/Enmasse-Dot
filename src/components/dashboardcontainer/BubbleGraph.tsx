@@ -68,6 +68,7 @@ const BubbleGraph = () => {
 					style: {
 						color: '#FFFFFF',
 						textOutline: 'none',
+						fontWeight: 'normal'
 					},
 				},
 				marker: {
