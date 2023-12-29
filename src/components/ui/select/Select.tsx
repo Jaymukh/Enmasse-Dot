@@ -53,7 +53,7 @@ const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classn
             onChange={onChange}
             disabled={disabled}
             name={name}
-            placeholder={placeholder}
+            //placeholder={placeholder}
         >
             {placeholder && <option value="" selected disabled>Select</option>}
             {options?.map((option: any, key: number) => (
