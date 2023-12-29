@@ -1,24 +1,22 @@
 // External libraries
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRecoilValue } from 'recoil';
-import * as d3 from "d3";
 import '../../styles/main.css';
 import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
-import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 import NoVisualData from './NoVisualData';
 import { cifState } from '../../states';
-import { BubbleNode, colorDescription } from '../../utils/constants/Constants';
 import InfoPanel from "../ui/InfoPanel";
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
+import HCMore from 'highcharts/highcharts-more'; // Importing the highcharts-more module for packedbubble chart
+HCMore(Highcharts); // Initialize the highcharts-more module
 
 const BubbleGraph = () => {
-	const [data, setData] = useState<BubbleNode>();
-	const [root, setRoot] = useState<d3.HierarchyCircularNode<BubbleNode>>();
 	const { coreSolutionsData } = useRecoilValue(cifState);
 	const options: any[] = [];
 	const currentYear = new Date().getFullYear();
-	const fontSizeList = [22, 18, 14, 10];
 
 	for (let year = currentYear - 10; year <= currentYear; year++) {
 		options.push({ key: year, value: year.toString() });
@@ -31,32 +29,76 @@ const BubbleGraph = () => {
 		setSelctedYear(value);
 	}
 
-	useEffect(() => {
-		if (coreSolutionsData?.coreSolutionsByEH?.length > 0) {
-			const coreSolutionsByEH = [...coreSolutionsData?.coreSolutionsByEH];
-			const modifiedCoreSolutions = coreSolutionsByEH.map(child => {
-				return { ...child, color: colorDescription[child.type] };
-			});
-
-			const modifiedParentNode = { children: modifiedCoreSolutions };
-			setData(modifiedParentNode);
-			const hierarchy = d3
-				.hierarchy<BubbleNode>(modifiedParentNode)
-				.sum((d) => {
-					if (d.pointsOfInterest) {
-						return d.pointsOfInterest;
-					}
-					return 0;
-				})
-				.sort((a, b) => (b.value || 0) - (a.value || 0));
-
-			const packGenerator = d3.pack<BubbleNode>().size([500, 300]).padding(15);
-			const root = packGenerator(hierarchy);
-			setRoot(root);
+	const option = {
+		chart: {
+			type: 'packedbubble',
+			height: 'auto',
+			width: window.innerWidth * 0.36,
+			style: {
+				fontFamily: 'Poppins, sans-serif'
+			}
+		},
+		title: {
+			text: '',
+		},
+		tooltip: {
+			useHTML: true,
+			pointFormat: '<b>{point.name}:</b> {point.value}'
+		},
+		plotOptions: {
+			packedbubble: {
+				minSize: '20%',
+				maxSize: '100%',
+				layoutAlgorithm: {},
+				dataLabels: {
+					enabled: true,
+					alignTo: 'circle',
+					formatter: function (this: any): string {
+						var fontSize = Math.ceil(0.09 * this.point.marker.radius + 8);
+						return '<span style="font-size: ' + fontSize + 'px">' + this.point.displayValue + '</span>';
+					},
+					filter: {
+						property: 'y',
+						operator: '>',
+						value: 0
+					},
+					style: {
+						color: '#FFFFFF',
+						textOutline: 'none',
+					},
+				},
+				marker: {
+					fillOpacity: 1,
+					borderWidth: 0
+				},
+				legendType: 'point',
+				animation: false,
+			},
+		},
+		series: [{
+			type: 'packedbubble',
+			name: 'Core Solutions by EH',
+			data: coreSolutionsData?.coreSolutionsByEH?.map((item, index) => {
+				const colors = ['#00529B', '#F47A1F', '#108041', '#007CC3'];
+				return {
+					name: item.coreSolution,
+					value: item.pointsOfInterest,
+					z: item.percentageContribution / 100,
+					displayValue: `${item.percentageContribution}%`,
+					color: colors[index]
+				};
+			}),
+		}],
+		legend: {
+			enabled: true,
+			useHTML: true,
+			labelFormatter: function (this: any): string {
+				const color = this.color;
+				const name = this.name;
+				return '<div style="display: flex; align-items: center;"><div style="width: 10px; height: 10px; border-radius: 50%; background-color: ' + color + '; margin-right: 5px;"></div>' + name + '</div>';
+			}
 		}
-
-	}, [coreSolutionsData]);
-
+	};
 
 
 	return (
@@ -85,56 +127,10 @@ const BubbleGraph = () => {
 						/>
 					</div>
 				</div>
-				<div className='d-flex justify-content-center align-items-center h-auto w-100'>
+				<div className='d-flex justify-content-center align-items-center h-auto w-auto bubble-chart-container'>
 					{coreSolutionsData?.coreSolutionsByEH?.length > 0 ?
-						<div className='m-0 p-0'>
-							<svg width={window.innerWidth * 0.36} height={window.innerHeight * 0.505} style={{ display: "inline-block" }}>
-								{root && root
-									.descendants()
-									.slice(1)
-									.map((node) => (
-										<circle
-											key={node.data.coreSolution}
-											cx={node.x}
-											cy={node.y}
-											r={node.r}
-											fill={node.data.color}
-											fillOpacity={1}
-										/>
-									))}
-								{root && root
-									.descendants()
-									.slice(1)
-									.map((node, index) => (
-										<text
-											key={node.data.coreSolution}
-											x={node.x}
-											y={node.y}
-											fontSize={fontSizeList[index]}
-											fontWeight={0.5}
-											textAnchor="middle"
-											alignmentBaseline="middle"
-											fill="#ffffff"
-										>
-											{`${node.data.percentageContribution || 0}%`}
-										</text>
-									))}
-							</svg>
-							<div className='d-flex w-100 justify-content-center align-items-center'>
-								{data?.children?.map((child, index) => (
-									<div className='d-flex ms-2'>
-										<div className='bubble-legend me-1' style={{ backgroundColor: `${child.color}` }}></div	>
-										<Body
-											type={BodyType.p4}
-											color={BodyColor.muted}
-											classname='m-0 p-0'>
-											{child.coreSolution}
-										</Body>
-									</div>
-								))}
-							</div>
-						</div> :
-						<NoVisualData displayImage={true} size='large' />
+						<HighchartsReact highcharts={Highcharts} options={option} />
+						: <NoVisualData displayImage={true} size='large' />
 					}
 				</div>
 			</Card>
