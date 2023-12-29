@@ -52,6 +52,8 @@ const BubbleGraph = () => {
 			packedbubble: {
 				minSize: '20%',
 				maxSize: '100%',
+				allowDrag: false,
+				useSimulation: false,
 				layoutAlgorithm: {},
 				dataLabels: {
 					enabled: true,
