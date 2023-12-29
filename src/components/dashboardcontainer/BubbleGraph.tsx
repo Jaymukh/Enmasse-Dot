@@ -129,7 +129,7 @@ const BubbleGraph = () => {
 							valueKey='value'
 							size={SelectSize.small}
 							// disabled={coreSolutionsData?.coreSolutionsByEH?.length > 0 ? false : true}
-							disabled={true}
+							//disabled={true}
 						/>
 					</div>
 				</div>
