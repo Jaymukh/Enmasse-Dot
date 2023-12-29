@@ -1006,6 +1006,10 @@ input[type="range"]::-moz-range-thumb {
     /* Customize the animation duration */
 }
 
+.bubble-chart-container {
+    font-family: "Poppins-Medium", sans-serif !important;
+}
+
 @keyframes loading {
     0% {
         background-position: 200% 0;
