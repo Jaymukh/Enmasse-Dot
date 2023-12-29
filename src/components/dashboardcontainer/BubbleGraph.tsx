@@ -38,6 +38,9 @@ const BubbleGraph = () => {
 				fontFamily: 'Poppins, sans-serif'
 			}
 		},
+		credits: {
+			enabled: false,
+		},
 		title: {
 			text: '',
 		},
