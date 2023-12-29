@@ -32,8 +32,8 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
     // const location = geoJSON?.rootProperties?.Name + geoJSON?.rootProperties?.id + geoJSON?.rootProperties?.region;
 
     const [payloadData, setPayloadData] = useState
-        <{ email_id: string, name: string, company: string, message: string, geo_code: string, geo_name: string, purpose: string }>
-        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_code: '1', geo_name: 'India', purpose: 'Contact Us' });
+        <{ email_id: string, name: string, company: string, message: string, purpose: string }>
+        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', purpose: 'Contact Us' });
 
     const handleChangeData = (e: any) => {
         e.preventDefault();
