@@ -110,7 +110,7 @@ const DistrictSidebar = () => {
                     />
                 </div>
             </div>
-            <div className="row d-flex justify-content-center pt-1 mx-0 px-3" style={{ overflowY: 'auto', overflowX: 'hidden', height: pathname === '/' ? '68vh' : '72vh' }}>
+            <div className="row d-flex justify-content-center pt-1 mx-0 px-3" style={{ overflowY: 'auto', overflowX: 'hidden', height: '80%' }}>
                 <div className='row data-card px-2 d-flex flex-row mx-0 my-2' style={{ height: 'fit-content' }}>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
                         <Heading
@@ -558,7 +558,7 @@ const DistrictSidebar = () => {
                     </div>
                 }
             </div>
-            <div className="p-3 d-flex justify-content-center align-items-center">
+            <div className="p-3 d-flex justify-content-center align-items-center" style={{height: '10%'}}>
                 <Button
                     disabled={!properties?.showExploreMore}
                     theme={ButtonTheme.primary}

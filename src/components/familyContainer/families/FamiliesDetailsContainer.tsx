@@ -113,7 +113,7 @@ const FamiliesDetailsContainer = () => {
                 />
                 <FamiliesSorting handlePaginationData={handlePaginationData} />
             </div>
-            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflow: 'auto' }}>
+            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflowX: 'hidden', overflowY: 'auto' }}>
                 <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-lg-4 col-md-6 col-sm-12 px-0'>
