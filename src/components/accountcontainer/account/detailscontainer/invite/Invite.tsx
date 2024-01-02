@@ -111,63 +111,30 @@ export default function Invite() {
 		setSearchTerm(value);
 	};
 
-	// useEffect(() => {
-	// 	if (!searchTerm) {
-	// 		setSuggestions([]);
-	// 	} else {
-	// 		const lowercasedValue = searchTerm.toLowerCase().trim();
-	// 		const result = users?.filter((item: any) => {
-	// 			const lowercasedName = item?.name?.toLowerCase().trim();
-	// 			const lowercasedEmail = item?.email_id?.toLowerCase().trim();
-	// 			const lowercasedRole = item?.role?.toLowerCase().trim();
-	// 			const lowercasedCompany = item?.company?.toLowerCase().trim();
-	// 			const lowercasedCompanyType = item?.company_type?.toLowerCase().trim();
-
-	// 			return (
-	// 				lowercasedName.includes(lowercasedValue) ||
-	// 				lowercasedEmail.includes(lowercasedValue) ||
-	// 				lowercasedRole.includes(lowercasedValue) ||
-	// 				lowercasedCompany.includes(lowercasedValue) ||
-	// 				lowercasedCompanyType.includes(lowercasedValue)
-	// 			);
-	// 		});
-
-	// 		setSuggestions(result || []);
-	// 	}
-	// }, [searchTerm]);
-
 	useEffect(() => {
-		console.log('Search Term:', searchTerm);
-		const lowercasedValue = searchTerm.toLowerCase().trim();
-		console.log('Lowercased Value:', lowercasedValue);
-	
-		const result = users?.filter((item: any) => {
-			const lowercasedName = item?.name?.toLowerCase().trim();
-			const lowercasedEmail = item?.email_id?.toLowerCase().trim();
-			const lowercasedRole = item?.role?.toLowerCase().trim();
-			const lowercasedCompany = item?.company?.toLowerCase().trim();
-			const lowercasedCompanyType = item?.company_type?.toLowerCase().trim();
-	
-			console.log('Lowercased Name:', lowercasedName);
-			console.log('Lowercased Email:', lowercasedEmail);
-			console.log('Lowercased Role:', lowercasedRole);
-			console.log('Lowercased Company:', lowercasedCompany);
-			console.log('Lowercased Company Type:', lowercasedCompanyType);
-	
-			return (
-				lowercasedName.includes(lowercasedValue) ||
-				lowercasedEmail.includes(lowercasedValue) ||
-				lowercasedRole.includes(lowercasedValue) ||
-				lowercasedCompany.includes(lowercasedValue) ||
-				lowercasedCompanyType.includes(lowercasedValue)
-			);
-		});
-	
-		console.log('Result:', result);
-	
-		setSuggestions(result || []);
-	}, [searchTerm]);
-	
+		if (!searchTerm) {
+			setSuggestions([]);
+		} else {
+			const lowercasedValue = searchTerm.toLowerCase();
+			const result = users?.filter((item: any) => {
+				const lowercasedName = item?.name?.toLowerCase();
+				const lowercasedEmail = item?.email_id?.toLowerCase();
+				const lowercasedRole = item?.role?.toLowerCase();
+				const lowercasedCompany = item?.company?.toLowerCase();
+				const lowercasedCompanyType = item?.company_type?.toLowerCase();
+
+				return (
+					lowercasedName.includes(lowercasedValue) ||
+					lowercasedEmail.includes(lowercasedValue) ||
+					lowercasedRole.includes(lowercasedValue) ||
+					lowercasedCompany.includes(lowercasedValue) ||
+					lowercasedCompanyType.includes(lowercasedValue)
+				);
+			});
+
+			setSuggestions(result || []);
+		}
+	}, [searchTerm]);	
 
 	// Confirm Delete Model
 	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
