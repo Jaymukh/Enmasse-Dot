@@ -83,71 +83,69 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                     </div>
                 }
                 {(0 < showHelp) && (showHelp <= Constants.helpContent.length) && (
-                    <div style={{ height: '70vh' }}>
+                    <div style={{ height: '70vh' }} className='d-flex flex-column justify-content-between'>
                         <div className='d-flex flex-row justify-content-end w-100 pb-1'>
                             <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleModal()}></Button>
                         </div>
-                        <div className='d-flex flex-column justify-content-between' style={{height: '90%'}}>
-                            <div className='d-flex flex-row justify-content-center mb-2'>
-                                <div className="col-5" style={{ height: 'auto' }}>
-                                    <img src={CoreSolutions} alt="Core Solutions" width='85%' />
-                                </div>
-                                <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
-                                    <Heading
-                                        title={Constants.helpContent[showHelp - 1].title}
-                                        type={TypographyType.h2}
-                                        colour={TypographyColor.dark}
-                                        classname='test-start mb-3'
-                                    />
-                                    <Body
-                                        type={BodyType.p2}
-                                        color={BodyColor.dark}
-                                        classname='text-start'
-                                    >
-                                        {Constants.helpContent[showHelp - 1].description}
-                                    </Body>
-                                    {(showHelp === Constants.helpContent.length)
-                                        && <Button
-                                            theme={ButtonTheme.secondary}
-                                            size={ButtonSize.default}
-                                            variant={ButtonVariant.bordered}
-                                            classname='h-2 mt-4'
-                                            onClick={() => handleContactNow()}
-                                        >
-                                            Contact Now
-                                        </Button>}
-                                </div>
+                        <div className='d-flex flex-row justify-content-center align-items-center mb-2 h-75'>
+                            <div className="col-5" style={{ height: 'auto' }}>
+                                <img src={CoreSolutions} alt="Core Solutions" width='85%' />
                             </div>
-                            <div className='d-flex flex-row justify-content-between align-items-center mb-2'>
+                            <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
+                                <Heading
+                                    title={Constants.helpContent[showHelp - 1].title}
+                                    type={TypographyType.h2}
+                                    colour={TypographyColor.dark}
+                                    classname='test-start mb-3'
+                                />
                                 <Body
                                     type={BodyType.p2}
                                     color={BodyColor.dark}
                                     classname='text-start'
                                 >
-                                    {showHelp}/{Constants.helpContent.length}
+                                    {Constants.helpContent[showHelp - 1].description}
                                 </Body>
-                                <div className='d-flex flex-row justify-items-end align-items-center' >
-                                    {(showHelp > 1)
-                                        && <Button
-                                            theme={ButtonTheme.secondary}
-                                            size={ButtonSize.default}
-                                            variant={ButtonVariant.bordered}
-                                            classname='h-2 me-2'
-                                            onClick={previousHelp}
-                                        >
-                                            Previous
-                                        </Button>
-                                    }
-                                    <Button
-                                        theme={ButtonTheme.primary}
+                                {(showHelp === Constants.helpContent.length)
+                                    && <Button
+                                        theme={ButtonTheme.secondary}
                                         size={ButtonSize.default}
                                         variant={ButtonVariant.bordered}
-                                        classname='h-2'
-                                        onClick={nextHelp}
+                                        classname='h-2 mt-4'
+                                        onClick={() => handleContactNow()}
                                     >
-                                        {(showHelp < Constants.helpContent.length) ? 'Next' : 'Continue'}
+                                        Contact Now
+                                    </Button>}
+                            </div>
+                        </div>
+                        <div className='d-flex flex-row justify-content-between align-items-center mb-2'>
+                            <Body
+                                type={BodyType.p2}
+                                color={BodyColor.dark}
+                                classname='text-start'
+                            >
+                                {showHelp}/{Constants.helpContent.length}
+                            </Body>
+                            <div className='d-flex flex-row justify-items-end align-items-center' >
+                                {(showHelp > 1)
+                                    && <Button
+                                        theme={ButtonTheme.secondary}
+                                        size={ButtonSize.default}
+                                        variant={ButtonVariant.bordered}
+                                        classname='h-2 me-2'
+                                        onClick={previousHelp}
+                                    >
+                                        Previous
                                     </Button>
-                                </div>
+                                }
+                                <Button
+                                    theme={ButtonTheme.primary}
+                                    size={ButtonSize.default}
+                                    variant={ButtonVariant.bordered}
+                                    classname='h-2'
+                                    onClick={nextHelp}
+                                >
+                                    {(showHelp < Constants.helpContent.length) ? 'Next' : 'Continue'}
+                                </Button>
                             </div>
                         </div>
                     </div>
