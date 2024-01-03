@@ -16,7 +16,7 @@ interface StatisticsCardProps {
 const StatisticsCard = ({ data, index }: StatisticsCardProps) => {
 
     return (
-        <div className={`d-flex flex-column align-items-start justify-content-center px-2 py-2 my-1 ${index < 4 ? 'white-bg dashboard-col' : 'bg-green dashboard-col-green'}`}>
+        <div className={`d-flex flex-column align-items-start justify-content-center px-2 py-2 my-1 ${index < 4 ? 'bg-white gray-border-with-radius' : 'bg-purple purple-border-with-radius'}`}>
             <Heading
                 title={data.value}
                 colour={index === 4 ? TypographyColor.secondary : TypographyColor.dark}

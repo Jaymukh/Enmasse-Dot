@@ -223,7 +223,7 @@ export default function Invite() {
 													{row.email_id}
 												</Body>
 											</td>
-											<td className='text-start fs-14'><div className='color-green text-start'>{row.role}</div></td>
+											<td className='text-start fs-14'><div className='color-purple text-start'>{row.role}</div></td>
 											<td className='text-start fs-14'>{row.company}</td>
 											<td className='text-start fs-14'>{row.company_type}</td>
 											<td className='text-center'>
@@ -265,7 +265,7 @@ export default function Invite() {
 															{row.email_id}
 														</Body>
 													</td>
-													<td className='text-start fs-14'><div className='color-green text-start'>{row.role}</div></td>
+													<td className='text-start fs-14'><div className='color-purple text-start'>{row.role}</div></td>
 													<td className='text-start fs-14 color-black'>{row.company}</td>
 													<td className='text-start fs-14 color-black'>{row.company_type}</td>
 													<td className='text-center'>

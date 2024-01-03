@@ -5,7 +5,8 @@ export enum TypographyColor {
     secondary, /* dark gray*/
     muted, /* light gray*/
     warning, /* red*/
-    dark /* black*/
+    dark, /* black*/
+    purple
 }
 
 export enum TypographyType {
@@ -33,11 +34,17 @@ const getColor = (color: TypographyColor) => {
         case TypographyColor.secondary:
             className = `${styles.white}`;
             break;
+        case TypographyColor.muted:
+            className = `${styles.muted}`;
+            break;
         case TypographyColor.warning:
             className = `${styles.warning}`;
             break;
         case TypographyColor.dark:
             className = `${styles.dark}`;
+            break;
+        case TypographyColor.purple:
+            className = `${styles.purple}`;
             break;
     }
     return className;

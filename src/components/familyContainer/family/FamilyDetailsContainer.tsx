@@ -52,7 +52,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                                     <Heading
                                         title={getCoreSolutions(selectedData?.familyDetails)?.value}
                                         type={TypographyType.h5}
-                                        colour={TypographyColor.primary}
+                                        colour={TypographyColor.purple}
                                         classname='me-1 my-0'
                                     />
                                     <Body

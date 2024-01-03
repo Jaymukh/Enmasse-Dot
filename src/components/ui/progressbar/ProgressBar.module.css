@@ -3,11 +3,11 @@
 .progress_container {
     padding: 0;
     height: 0.3125rem;
-    background-color: var(--blue-1);
+    background-color: var(--purple-1);
     width: 100%;
 }
 
 .progressbar {
-    background-color: var(--blue-0);
+    background-color: var(--purple-0);
     border-radius: inherit;
 }

@@ -3,6 +3,18 @@
 html {
     --app-background: rgba(244, 246, 248, 1);
     --light-app-background: rgba(208, 226, 225, 1);
+
+    --purple-0: rgba(43, 13, 92, 1);
+    --purple-1: rgba(43, 13, 92, 0.1);
+    --purple-2: rgba(43, 13, 92, 0.2);
+    --purple-3: rgba(43, 13, 92, 0.3);
+    --purple-4: rgba(43, 13, 92, 0.4);
+    --purple-5: rgba(43, 13, 92, 0.5);
+    --purple-6: rgba(43, 13, 92, 0.6);
+    --purple-7: rgba(43, 13, 92, 0.7);
+    --purple-8: rgba(43, 13, 92, 0.8);
+    --purple-9: rgba(43, 13, 92, 0.9);
+    --purple-10: rgba(17, 24, 39, 1);
     
     --black-0: rgba(0, 0, 0, 1);
     --black-1: rgba(0, 0, 0, 0.1); 
@@ -27,6 +39,7 @@ html {
 
 
     --white-1: #FFFFFF;
+    --white-0: rgba(255, 255, 255, 1);
 
     --warning-0: #D55038;
     --rejected-0: rgba(180, 51, 28, 1);

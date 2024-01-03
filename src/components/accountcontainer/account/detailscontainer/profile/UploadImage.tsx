@@ -69,7 +69,8 @@ const UploadImage: React.FC<UploadImageProps> = ({
                             colour={TypographyColor.dark}
                             classname='m-0 mb-2'
                         />
-                        <button className='btn-close p-0' onClick={() => closeUploadImageModal()}></button>
+                        {/* <button className='btn-close p-0' onClick={() => closeUploadImageModal()}></button> */}
+                        <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close p-0" onClick={() => closeUploadImageModal()}></Button>
                     </div>
                     <div>
                         {newImage ?

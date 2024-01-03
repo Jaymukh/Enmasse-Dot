@@ -62,7 +62,7 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 				<BiMenuAltLeft fontSize={22} />
 			</Button>
 			{Boolean(anchorEl) &&
-				(<ul className='family-menu-dropdown '>
+				(<ul className='family-menu-dropdown'>
 					{Constants.familiesSortingItems.map((item) => (
 						<li
 							key={item.key}
@@ -71,7 +71,7 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 						>
 							<Heading
 								title={item.text}
-								colour={selectedItem === item ? TypographyColor.primary : TypographyColor.dark}
+								colour={selectedItem === item ? TypographyColor.purple : TypographyColor.muted}
 								type={TypographyType.h5}
 							/>
 						</li>

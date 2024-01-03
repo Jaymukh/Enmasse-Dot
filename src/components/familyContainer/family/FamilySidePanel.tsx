@@ -31,7 +31,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
 
     return (
         <div className='col-lg-4 col-md-4 col-sm-12 d-flex flex-column my-4 px-3 h-auto'>
-            <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mx-0 white-bg'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mx-0 bg-white'>
                 <Heading
                     title={stories?.properties?.region}
                     colour={TypographyColor.dark}
@@ -77,7 +77,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                     >
                                         {data?.address}
                                     </Body>
-                                    <button className='border-0 bg-white color-green m-0 fs-10 p-0 ff-poppins-medium' onClick={handleBackClick}>View all<IoIosArrowRoundForward fontSize={20} fontWeight={500} className='ms-1' /></button>
+                                    <button className='border-0 bg-white color-purple m-0 fs-10 p-0 ff-poppins-medium' onClick={handleBackClick}>View all<IoIosArrowRoundForward fontSize={20} fontWeight={500} className='ms-1' /></button>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                     onClick={() => handleCarouselSlide((selectedStory?.index + 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
                 >
-                    <MdOutlineArrowForward className='iconNextPrev' fontSize={20}  aria-hidden="true"></MdOutlineArrowForward>
+                    <MdOutlineArrowForward className='iconNextPrev' fontSize={20}  aria-hidden="true" />
                 </button>
             </div>
         </div >

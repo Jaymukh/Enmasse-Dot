@@ -152,7 +152,7 @@ const DistrictSidebar = () => {
                         <InfoPanel fontSize={20} text={properties?.enMassesThesis?.infoButton} />
                     </div>
                     <div className='row data-card d-flex flex-row mx-0 mt-2 mb-3 px-0'>
-                        <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-green'>
+                        <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-purple'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}
                                 colour={TypographyColor.secondary}
@@ -232,16 +232,16 @@ const DistrictSidebar = () => {
                                 <InfoPanel fontSize={20} text={properties?.EHEconomicActivityIndicators?.infoButton} />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                                <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top primary-bgColor text-white'>
+                                <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-purple-1'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}
-                                        colour={TypographyColor.secondary}
+                                        colour={TypographyColor.purple}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
                                     <Body
                                         type={BodyType.p4}
-                                        color={BodyColor.white}
+                                        color={BodyColor.purple}
                                         classname='m-0'>Points of Interest
                                     </Body>
                                 </div>
@@ -318,16 +318,16 @@ const DistrictSidebar = () => {
                                 <InfoPanel fontSize={20} text={properties?.EHSpend?.infoButton} />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
+                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top bg-purple-1'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHSpend?.annualEHSpend, properties?.EHSpend?.annualEHSpendUOM)}
-                                        colour={TypographyColor.secondary}
+                                        colour={TypographyColor.purple}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
                                     <Body
                                         type={BodyType.p4}
-                                        color={BodyColor.white}
+                                        color={BodyColor.purple}
                                         classname='m-0'>
                                         Average Annual EH Spend 
                                     </Body>
@@ -431,16 +431,16 @@ const DistrictSidebar = () => {
                                 <InfoPanel fontSize={20} text={properties?.EHBorrow?.infoButton} />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
+                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top bg-purple-1'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}
-                                        colour={TypographyColor.secondary}
+                                        colour={TypographyColor.purple}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
                                     <Body
                                         type={BodyType.p4}
-                                        color={BodyColor.white}
+                                        color={BodyColor.purple}
                                         classname='m-0'>
                                         Average Annual EH Borrowing
                                     </Body>
@@ -489,16 +489,16 @@ const DistrictSidebar = () => {
                                 <InfoPanel fontSize={20} text={properties?.EHIncome?.infoButton} />
                             </div>
                             <div className='row data-card d-flex flex-row mx-0 my-2 px-0'>
-                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top primary-bgColor text-white'>
+                                <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top bg-purple-1'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHIncome?.annualEHIncome, properties?.EHIncome?.annualEHIncomeUOM)}
-                                        colour={TypographyColor.secondary}
+                                        colour={TypographyColor.purple}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
                                     <Body
                                         type={BodyType.p4}
-                                        color={BodyColor.white}
+                                        color={BodyColor.purple}
                                         classname='m-0'>
                                         Average Annual EH Income
                                     </Body>

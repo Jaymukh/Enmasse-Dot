@@ -61,11 +61,11 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     color={BodyColor.secondary}
                     classname='map-popup-description text-start my-0'
                 >
-                    <span className="color-green">{getCoreSolutions(properties.familyDetails)?.value} </span>
+                    <span className="color-purple">{getCoreSolutions(properties.familyDetails)?.value} </span>
                     Annual household spend on {getCoreSolutions(properties.familyDetails)?.name}
                 </Body>
                 <Button
-                    theme={ButtonTheme.success}
+                    theme={ButtonTheme.primary}
                     size={ButtonSize.xsmall}
                     variant={ButtonVariant.transparent}
                     // onClick={() => handlePopupClick(properties.parentID)}

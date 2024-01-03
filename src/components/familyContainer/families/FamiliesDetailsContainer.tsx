@@ -130,8 +130,8 @@ const FamiliesDetailsContainer = () => {
                                         />
                                         <Body
                                             type={BodyType.p4}
-                                            color={BodyColor.primary}
-                                            classname='mx-0 mb-1 bg-green-1 px-2 py-1 green-card-sm'>
+                                            color={BodyColor.purple}
+                                            classname='mx-0 mb-1 bg-purple-1 px-2 py-1 green-card-sm'>
                                             {getNumberWithZero(data?.familyDetails.familyMembers)} members
                                         </Body>
                                     </div>
@@ -149,7 +149,7 @@ const FamiliesDetailsContainer = () => {
                                             <Heading
                                                 title={getCoreSolutions(data.familyDetails)?.value}
                                                 type={TypographyType.h5}
-                                                colour={TypographyColor.primary}
+                                                colour={TypographyColor.purple}
                                                 classname='me-1 my-0'
                                             />
                                             Annual Household Spend on {getCoreSolutions(data.familyDetails)?.name}

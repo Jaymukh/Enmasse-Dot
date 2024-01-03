@@ -93,7 +93,7 @@ const FamilyDetails = () => {
                 && <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
                     {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
                     <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover', maxWidth: '100%', maxHeight: '12rem' }} onLoad={handleImageLoad}></img>
-                    <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 white-bg py-4 px-4 rounded-end'>
+                    <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 bg-white py-4 px-4 rounded-end'>
                         <div className='d-flex flex-row mb-2'>
                             <Heading
                                 title={familyDetails?.familyName}
@@ -112,7 +112,7 @@ const FamilyDetails = () => {
                             <div className='d-flex flex-row mb-2'>
                                 <Body
                                     type={BodyType.p2}
-                                    color={BodyColor.primary}
+                                    color={BodyColor.purple}
                                     classname='text-center'>
                                     {getCoreSolutions(familyDetails?.familyDetails)?.value}
                                 </Body>
@@ -131,7 +131,7 @@ const FamilyDetails = () => {
                             {description}
                         </Body>
                         <div className='d-flex justify-content-start mt-2'>
-                            <button className='rounded text-start ps-0 border-0 fs-10 white-bg ff-poppins-medium color-green' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
+                            <button className='rounded text-start ps-0 border-0 fs-10 bg-white ff-poppins-medium color-purple' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
                         </div>
                     </div>
                 </Card>}

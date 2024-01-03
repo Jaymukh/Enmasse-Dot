@@ -63,7 +63,7 @@ function Header() {
 					onClick={() => handleDrawer('Add Bookmark')}
 					classname='px-0 mx-4'
 				>
-					<BsFillBookmarksFill fontSize={20} className='iconNextPrev' />
+					<BsFillBookmarksFill fontSize={20}  />
 				</Button>
 				<AccountOptions />
 			</div>

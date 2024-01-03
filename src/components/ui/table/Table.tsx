@@ -1,9 +1,9 @@
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi';
 import styles from "./Table.module.css";
 import { useMapHelpers } from '../../../helpers';
 import { RouteConstants, TableHeaderProps } from '../../../constants';
-import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
 
 interface TableProps {
     headers: TableHeaderProps;
@@ -94,7 +94,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
                                     <p className='pt-3 pe-2'>{item.KEY === 'geoName' ? breakdownType : item.VALUE}</p>
                                     <div className='d-flex flex-column'>
                                         <BiSolidUpArrow name='asc' fontSize={9} color='#939393' onClick={() => handleSortTable(item, 'desc')} />
-                                        <BiSolidDownArrow name='desc' fontSize={9} color='#367A2B' onClick={() => handleSortTable(item, 'asc')} />
+                                        <BiSolidDownArrow name='desc' fontSize={9} color='#2B0D5C' onClick={() => handleSortTable(item, 'asc')} />
                                     </div>
                                 </div>
                             </th>
@@ -106,7 +106,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
                         <tr key={index}>
                             {headers?.KEYS?.map((key, keyIndex) => (
                                 <td
-                                    className={`fs-14 ${keyIndex === 0 ? 'color-green' : ''}`}
+                                    className={`fs-14 ${keyIndex === 0 ? 'color-purple' : ''}`}
                                     style={{ cursor: `${keyIndex === 0 ? 'pointer' : 'default'}` }}
                                     onClick={() => handleColClick(item, keyIndex)}
                                 >

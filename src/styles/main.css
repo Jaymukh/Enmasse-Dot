@@ -55,12 +55,26 @@
     color: var(--black-0);
 }
 
+.color-purple {
+    color: var(--purple-0);
+}
+
 .bg-green {
     background-color: var(--green-0);
 }
 
 .bg-green-1 {
     background-color: var(--green-1);
+}
+
+.bg-purple {
+    background-color: var(--purple-0);
+}
+.bg-purple-1 {
+    background-color: var(--purple-1);
+}
+.bg-white {
+    background-color: var(--white-0);
 }
 
 .offcanvas {
@@ -98,8 +112,8 @@ ul {
 }
 
 .li-selected {
-    background-color: var(--green-1);
-    border-left: 4px solid var(--green-0);
+    background-color: var(--purple-1);
+    border-left: 4px solid var(--purple-0);
 }
 
 .li-not-selected {
@@ -245,7 +259,7 @@ ul {
     position: absolute;
     top: 7px;
     right: 15px;
-    background-color: var(--green-0);
+    background-color: var(--purple-0);
     height: 0.6rem;
     width: 0.6rem;
     border-radius: 0.3rem;
@@ -581,6 +595,16 @@ th {
     border-radius: 5px;
 }
 
+.gray-border-with-radius {
+    border: 1px solid var(--black-3);
+    border-radius: 5px;
+}
+
+.purple-border-with-radius {
+    border: 1px solid var(--purple-0);
+    border-radius: 5px;
+}
+
 .h-2 {
     height: 2rem !important;
 
@@ -625,10 +649,6 @@ th {
 
 .fs-64 {
     font-size: 4rem;
-}
-
-.white-bg {
-    background-color: var(--white-1);
 }
 
 .profile-image-box {
@@ -719,10 +739,6 @@ th {
 } */
 
 /* Map Info popup end*/
-
-.primary-bgColor {
-    background-color: var(--blue-0)
-}
 
 .upload-image-box {
     width: 18.75rem;

@@ -93,3 +93,7 @@
 .warning {
     color: var(--warning-0);
 }
+
+.purple {
+    color: var(--purple-10);
+}

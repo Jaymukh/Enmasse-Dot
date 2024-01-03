@@ -176,7 +176,7 @@ const ExploreNow = () => {
 													(item.has_data
 														&& <Body
 															type={BodyType.p1}
-															color={BodyColor.primary}
+															color={BodyColor.purple}
 															classname='col-4 text-start mb-1 p-0'
 															key={district.geo_id}>{district.geo_value}
 														</Body>

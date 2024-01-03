@@ -3,8 +3,8 @@
 
 .btn_primary {
 	/* (bordered) black button with black background and with black border */
-	background-color: var(--blue-0);
-	border: 1px solid var(--blue-0);
+	background-color: var(--purple-0);
+	border: 1px solid var(--purple-0);
 	border-radius: 5px;
 	color: var(--white-1);
 	height: 2.25rem;
@@ -15,9 +15,9 @@
 .btn_primary:hover {
     /* (bordered) hover */
     background-color: var(--white-1);
-    border: 1px solid var(--blue-0);
+    border: 1px solid var(--purple-0);
     border-radius: 5px;
-    color: var(--blue-0);
+    color: var(--purple-0);
     height: 2.25rem;
     font-weight: 500;
     font-family: "Poppins-Medium", sans-serif;
@@ -25,8 +25,8 @@
 
 .btn_primary:disabled, .btn_primary:disabled:hover {
 	/* (bordered) black button with black background and with black border */
-	background-color: var(--blue-0);
-	border-color: var(--blue-0);
+	background-color: var(--purple-0);
+	border-color: var(--purple-0);
 	border-radius: 5px;
 	color: var(--white-1);
 	height: 2.25rem;
@@ -38,7 +38,7 @@
 .btn_primary_contained {
 	/* black button with black background and without border */
 	border: none;
-	background-color: var(--blue-0);
+	background-color: var(--purple-0);
 	border-radius: 5px;
 	color: var(--white-1);
 	height: 2.25rem;
@@ -50,7 +50,7 @@
 	background-color: var(--white-1);
 	border: none;
 	border-radius: 5px;
-	color: var(--blue-0);
+	color: var(--purple-0);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -58,7 +58,7 @@
 
 .btn_primary_contained:disabled, .btn_primary_contained:disabled:hover {
 	/* black button with black background and without border */
-	background-color: var(--blue-0);
+	background-color: var(--purple-0);
 	border-radius: 5px;
 	color: var(--white-1);
 	height: 2.25rem;
@@ -71,8 +71,8 @@
 	/* black button without backgrount and without border */
 	background-color: transparent;
 	border: none;
-	color: var(--blue-0);
-	height: 2.25rem !important;
+	color: var(--purple-0);
+	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -80,7 +80,7 @@
 .btn_primary_transparent:hover {
 	background-color: transparent;
 	border: 0;
-	color: var(--black-5);
+	color: var(--purple-5);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -90,7 +90,7 @@
 	/* black button without backgrount and without border */
 	background-color: transparent;
 	border: none;
-	color: var(--blue-0);
+	color: var(--purple-0);
 	height: 2.25rem !important;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -100,16 +100,16 @@
 .btn_secondary {
 	/* (bordered) white button with white backgrount and with white border */
 	background-color: var(--white-1);
-	border: 1px solid var(--blue-0);
+	border: 1px solid var(--purple-0);
 	border-radius: 5px;
-	color: var(--blue-0);
+	color: var(--purple-0);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
 
 .btn_secondary:hover {
-	background-color: var(--blue-0);
+	background-color: var(--purple-0);
 	border: 1px solid var(--white-1);
 	border-radius: 5px;
 	color: var(--white-1);
@@ -123,7 +123,7 @@
 	background-color: var(--white-1);
 	border-color: var(--white-1);
 	border-radius: 5px;
-	color: var(--blue-0);
+	color: var(--purple-0);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -135,14 +135,14 @@
 	background-color: var(--white-1);
 	border: none;
 	border-radius: 5px;
-	color: var(--blue-0);
+	color: var(--purple-0);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
 
 .btn_secondary_contained:hover {
-	background-color: var(--blue-0);
+	background-color: var(--purple-0);
 	border-radius: 5px;
 	border: none;
 	color: var(--white-1);
@@ -155,7 +155,7 @@
 	/* white button with white backgrount and without border */
 	background-color: var(--white-1);
 	border-radius: 5px;
-	color: var(--blue-0);
+	color: var(--purple-0);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -175,7 +175,7 @@
 .btn_secondary_transparent:hover {
 	background-color: transparent;
 	border: none !important;
-	color: var(--blue-0);
+	color: var(--purple-0);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -194,8 +194,8 @@
 
 .btn_muted {
 	/* (bordered) lightgray button with lightgray border and lightgray background color */
-	background-color: var(--black-5);
-	border: 1px solid var(--black-5);
+	background-color: var(--purple-5);
+	border: 1px solid var(--purple-5);
 	border-radius: 5px;
 	color: var(--white-1);
 	height: 2.25rem;
@@ -205,9 +205,9 @@
 
 .btn_muted:hover {
 	background-color: var(--white-1);
-	border: 1px solid var(--black-5);
+	border: 1px solid var(--purple-5);
 	border-radius: 5px;
-	color: var(--black-5);
+	color: var(--purple-5);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -215,7 +215,7 @@
 
 .btn_muted_contained {
 	/* lightgray button without border and with lightgray background color */
-	background-color: var(--black-5);
+	background-color: var(--purple-5);
 	border: none;
 	border-radius: 5px;
 	color: var(--white-1);
@@ -228,7 +228,7 @@
 	background-color: var(--white-1);
 	border: none;
 	border-radius: 5px;
-	color: var(--black-5);
+	color: var(--purple-5);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -238,7 +238,7 @@
 	/* lightgray button without border and without background color */
 	background-color: transparent;
 	border: none;
-	color: var(--black-5);
+	color: var(--purple-5);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
@@ -247,7 +247,7 @@
 .btn_muted_transparent:hover {
 	background-color: transparent;
 	border: none;
-	color: var(--black-3);
+	color: var(--purple-3);
 	height: 2.25rem;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;

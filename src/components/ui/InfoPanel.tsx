@@ -88,7 +88,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                     {showMore
                         &&
                         <Button
-                            theme={ButtonTheme.success}
+                            theme={ButtonTheme.primary}
                             size={ButtonSize.xsmall}
                             variant={ButtonVariant.transparent}
                             onClick={() => handleReadMore()}
