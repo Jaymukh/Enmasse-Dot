@@ -257,7 +257,7 @@ ul {
 
 .green-circle {
     position: absolute;
-    top: 7px;
+    top: 3px;
     right: 15px;
     background-color: var(--purple-0);
     height: 0.6rem;

@@ -69,8 +69,8 @@ const UploadImage: React.FC<UploadImageProps> = ({
                             colour={TypographyColor.dark}
                             classname='m-0 mb-2'
                         />
-                        {/* <button className='btn-close p-0' onClick={() => closeUploadImageModal()}></button> */}
-                        <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close p-0" onClick={() => closeUploadImageModal()}></Button>
+                        <button className='btn-close p-0' onClick={() => closeUploadImageModal()}></button>
+                        {/* <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close p-0" onClick={() => closeUploadImageModal()}></Button> */}
                     </div>
                     <div>
                         {newImage ?
@@ -147,7 +147,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                             <MdDeleteSweep fontSize={20} className='color-orange me-2' />
                                             Delete
                                         </Button>
-                                        <label className="bg-dark rounded px-3 height-2-25 d-flex align-items-center justify-content-center">
+                                        <label className="bg-purple rounded px-3 height-2-25 d-flex align-items-center justify-content-center">
                                             <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                             <div className="d-flex">
                                                 <BiUpload fontSize={20} className='me-2 text-white' />

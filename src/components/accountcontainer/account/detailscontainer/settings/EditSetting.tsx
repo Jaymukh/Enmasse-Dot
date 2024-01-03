@@ -6,7 +6,7 @@ import '../../../../../styles/main.css';
 
 // Components
 import { Heading, TypographyColor, TypographyType } from '../../../../ui/typography/Heading';
-import Body, {BodyType, BodyColor } from '../../../../ui/typography/Body';
+import Body, { BodyType, BodyColor } from '../../../../ui/typography/Body';
 import Drawer from '../../../../ui/Drawer';
 
 // Utilities
@@ -35,12 +35,11 @@ const EditSetting: React.FC<EditSettingProps> = ({ editMode, handleEditClick }) 
                                 type={TypographyType.h6}
                                 colour={TypographyColor.dark}
                             />
-                            <Body 
-                            type={BodyType.p3}
-                            color={BodyColor.dark}
-                            classname=''>
-                            Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.
-                        </Body>
+                            <Body
+                                type={BodyType.p3}
+                                color={BodyColor.dark}>
+                                Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.
+                            </Body>
                         </div>
                     </div>
                 </div>

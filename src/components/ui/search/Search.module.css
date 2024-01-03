@@ -29,8 +29,8 @@ input {
 }
 
 .suggestions_item:hover {
-    background-color: var(--green-8);
-    color: var(--black-0);
+    background-color: var(--purple-0);
+    color: var(--white-0);
 }
 
 .suggestion_height {

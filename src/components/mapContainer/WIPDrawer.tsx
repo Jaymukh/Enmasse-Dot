@@ -41,7 +41,7 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer, desc
 					<div className='bookmark-div'>
 						<div className="d-flex justify-content-center align-items-center mx-2 py-5">
 							<div className="mx-4 my-1 dialog-div d-flex flex-column justify-content-center align-items-center py-5">
-								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
+								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width={300} height={200}/>
 								<Heading
 									title='Work in progress.'
 									type={TypographyType.h5}
