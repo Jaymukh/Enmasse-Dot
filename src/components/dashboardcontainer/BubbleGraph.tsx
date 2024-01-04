@@ -28,7 +28,9 @@ const BubbleGraph = () => {
 		const value = event.target.value;
 		setSelctedYear(value);
 	}
-
+	
+	const sortedData = [...(coreSolutionsData?.coreSolutionsByEH || [])].sort((a, b) => b.percentageContribution - a.percentageContribution);
+	
 	const option = {
 		chart: {
 			type: 'packedbubble',
@@ -84,8 +86,10 @@ const BubbleGraph = () => {
 		series: [{
 			type: 'packedbubble',
 			name: 'Core Solutions by EH',
-			data: coreSolutionsData?.coreSolutionsByEH?.map((item, index) => {
-				const colors = ['#00529B', '#F47A1F', '#108041', '#007CC3'];
+			// data: coreSolutionsData?.coreSolutionsByEH?.map((item, index) => { 
+				// const colors = ['#00529B', '#F47A1F', '#108041', '#007CC3'];
+			data: sortedData?.map((item, index) => {
+				const colors = ['#2A6D96', '#AF5F1E', '#1D9366', '#B23440'];
 				return {
 					name: item.coreSolution,
 					value: item.pointsOfInterest,
