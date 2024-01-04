@@ -45,7 +45,7 @@ const DashBoard = () => {
     }, [geoCode]);
 
     return (
-        <div className='row w-100 primary-bg m-0 px-4 pb-5 mb-5' style={{ height: '100vh', overflow: 'auto' }}>
+        <div className='row w-100 primary-bg m-0 px-4 pb-5 mb-5' style={{ height: '100vh', overflowY: 'auto', overflowX: 'hidden' }}>
             <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2'>
                 <FamilyDetails />
             </div>
