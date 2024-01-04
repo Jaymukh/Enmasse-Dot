@@ -127,7 +127,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 map.data.remove(feature);
             });
             map.data.addGeoJson(geoJSON);
-            map.data.addListener('click', (event: any) => onClickMapFeature(event?.feature?.h));
+            map.data.addListener('click', (event: any) => onClickMapFeature(event?.feature?.Ig));
 
             map.data.setStyle((feature) => {
                 const fillColor = feature.getProperty('Color');
