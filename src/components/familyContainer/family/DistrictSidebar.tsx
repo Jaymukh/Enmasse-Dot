@@ -235,13 +235,13 @@ const DistrictSidebar = () => {
                                 <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-purple-1'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}
-                                        colour={TypographyColor.purple}
+                                        colour={TypographyColor.dark}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
                                     <Body
                                         type={BodyType.p4}
-                                        color={BodyColor.purple}
+                                        color={BodyColor.dark}
                                         classname='m-0'>Points of Interest
                                     </Body>
                                 </div>
@@ -321,13 +321,13 @@ const DistrictSidebar = () => {
                                 <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top bg-purple-1'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHSpend?.annualEHSpend, properties?.EHSpend?.annualEHSpendUOM)}
-                                        colour={TypographyColor.purple}
+                                        colour={TypographyColor.dark}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
                                     <Body
                                         type={BodyType.p4}
-                                        color={BodyColor.purple}
+                                        color={BodyColor.dark}
                                         classname='m-0'>
                                         Average Annual EH Spend 
                                     </Body>
@@ -434,13 +434,13 @@ const DistrictSidebar = () => {
                                 <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top bg-purple-1'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHBorrow?.averageAnnualEHBorrowing, properties?.EHBorrow?.averageAnnualEHBorrowingUOM)}
-                                        colour={TypographyColor.purple}
+                                        colour={TypographyColor.dark}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
                                     <Body
                                         type={BodyType.p4}
-                                        color={BodyColor.purple}
+                                        color={BodyColor.dark}
                                         classname='m-0'>
                                         Average Annual EH Borrowing
                                     </Body>
@@ -492,13 +492,13 @@ const DistrictSidebar = () => {
                                 <div className='col-12 p-2 d-flex flex-column align-items-start justify-content-center text-start border-bottom rounded-top bg-purple-1'>
                                     <Heading
                                         title={getCurrencyWithSymbol(properties?.EHIncome?.annualEHIncome, properties?.EHIncome?.annualEHIncomeUOM)}
-                                        colour={TypographyColor.purple}
+                                        colour={TypographyColor.dark}
                                         type={TypographyType.h5}
                                         classname='m-0'
                                     />
                                     <Body
                                         type={BodyType.p4}
-                                        color={BodyColor.purple}
+                                        color={BodyColor.dark}
                                         classname='m-0'>
                                         Average Annual EH Income
                                     </Body>
