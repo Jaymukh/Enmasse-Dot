@@ -14,7 +14,7 @@
 
 .nav-link.active {
     color: var(--black-0) !important;
-    border-bottom: 0.125rem solid var(--green-0) !important;
+    border-bottom: 0.125rem solid var(--purple-0) !important;
 }
 
 .nav-link:focus, .nav-link:hover {
