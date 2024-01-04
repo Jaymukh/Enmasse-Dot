@@ -10,7 +10,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import '../../styles/main.css';
 
 // Components
-import globe from '../../utils/images/LoginGlobe.svg'
+import globe from '../../utils/images/LoginGlobe.svg';
 import ForgotPassword from './ForgotPassword';
 import EmailSent from './EmailSent';
 import TermsAndConditions from './TermsAndConditions';
