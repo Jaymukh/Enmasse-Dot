@@ -22,9 +22,9 @@ const BarGraphContainer = () => {
     //     { key: 3, label: 'Financial Solutions', active: false, id: 'financial_solutions' },
     // ];
 
-    const sortedData = [...(coreSolutionsData?.coreSolutionsByEH || [])].sort((a, b) => b.percentageContribution - a.percentageContribution);
-    const [selected, setSelected] = useState<CoreSolutionByEH | undefined>(sortedData[0] || []);
-    // const [selected, setSelected] = useState<{data: CoreSolutionByEH || undefined, index: number || undefined }>({data: sortedData[0], index: 0});
+    
+    const [selected, setSelected] = useState<CoreSolutionByEH | undefined>(coreSolutionsData?.coreSolutionsByEH[0] || []);
+    
 
     const handleTabClick = (item: CoreSolutionByEH, index: number) => {
         setSelected(item);
@@ -32,7 +32,7 @@ const BarGraphContainer = () => {
 
     useEffect(() => {
         if (coreSolutionsData?.coreSolutionsByEH?.length > 0) {
-            setSelected(sortedData[0]);
+            setSelected(coreSolutionsData?.coreSolutionsByEH[0]);
         }
 
     }, [coreSolutionsData?.coreSolutionsByEH]);

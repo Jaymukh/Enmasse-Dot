@@ -29,7 +29,7 @@ const BubbleGraph = () => {
 		setSelctedYear(value);
 	}
 	
-	const sortedData = [...(coreSolutionsData?.coreSolutionsByEH || [])].sort((a, b) => b.percentageContribution - a.percentageContribution);
+	// const sortedData = [...(coreSolutionsData?.coreSolutionsByEH || [])].sort((a, b) => b.percentageContribution - a.percentageContribution);
 	
 	const option = {
 		chart: {
@@ -86,10 +86,11 @@ const BubbleGraph = () => {
 		series: [{
 			type: 'packedbubble',
 			name: 'Core Solutions by EH',
-			// data: coreSolutionsData?.coreSolutionsByEH?.map((item, index) => { 
+			data: coreSolutionsData?.coreSolutionsByEH?.map((item, index) => { 
 				// const colors = ['#00529B', '#F47A1F', '#108041', '#007CC3'];
-			data: sortedData?.map((item, index) => {
-				const colors = ['#2A6D96', '#AF5F1E', '#1D9366', '#B23440'];
+			// data: sortedData?.map((item, index) => {
+				// { Healthcare: 'red #B23440',Education: 'yellow #AF5F1E', Agri_Markets: 'green #1D9366',  Financial_Solutions: 'blue #2A6D96' }
+				const colors = ['#B23440', '#AF5F1E','#1D9366', '#2A6D96'];
 				return {
 					name: item.coreSolution,
 					value: item.pointsOfInterest,
