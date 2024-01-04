@@ -34,8 +34,6 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 		setSelctedYear(value);
 	}
 	
-	const sortedData = [...(coreSolutionsData?.coreSolutionsByEH || [])].sort((a, b) => b.percentageContribution - a.percentageContribution);
-	
 	const option = {
 		chart: {
 			type: 'packedbubble',
@@ -99,7 +97,7 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 		series: [{
 			type: 'packedbubble',
 			name: 'Core Solutions by EH',
-			data: sortedData?.map((item) => {
+			data: coreSolutionsData?.coreSolutionsByEH?.map((item) => {
 				return {
 					name: item.coreSolution,
 					value: item.pointsOfInterest,
