@@ -517,7 +517,7 @@ export const bubbleData: BubbleNode = {
     ]
 }
 // const colors = ['#2A6D96', '#AF5F1E', '#1D9366', '#B23440'];
-export const colorDescription: Record<string, string> = { Healthcare: '#00529B', Agri_Markets: '#108041', Education: '#F47A1F', Financial_Solutions: ' #007CC3' };
+export const colorDescription: Record<string, string> = { Healthcare: '#AF5F1E', Agri_Markets: '#1D9366', Education: '#2A6D96', Financial_Solutions: ' #B23440' };
 
 //
 

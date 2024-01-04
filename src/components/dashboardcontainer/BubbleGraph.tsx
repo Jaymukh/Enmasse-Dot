@@ -7,6 +7,7 @@ import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import NoVisualData from './NoVisualData';
 import { CoreSolutionByEH, cifState } from '../../states';
+import { colorDescription } from '../../utils/constants/Constants';
 import InfoPanel from "../ui/InfoPanel";
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
@@ -98,16 +99,13 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 		series: [{
 			type: 'packedbubble',
 			name: 'Core Solutions by EH',
-			// data: coreSolutionsData?.coreSolutionsByEH?.map((item, index) => { 
-				// const colors = ['#00529B', '#F47A1F', '#108041', '#007CC3'];
-			data: sortedData?.map((item, index) => {
-				const colors = ['#2A6D96', '#AF5F1E', '#1D9366', '#B23440'];
+			data: sortedData?.map((item) => {
 				return {
 					name: item.coreSolution,
 					value: item.pointsOfInterest,
 					z: item.percentageContribution / 100,
 					displayValue: `${item.percentageContribution}%`,
-					color: colors[index]
+					color: colorDescription[item?.type]
 				};
 			}),
 		}],
