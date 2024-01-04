@@ -6,14 +6,18 @@ import Select, { SelectSize } from '../ui/select/Select';
 import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import NoVisualData from './NoVisualData';
-import { cifState } from '../../states';
+import { CoreSolutionByEH, cifState } from '../../states';
 import InfoPanel from "../ui/InfoPanel";
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HCMore from 'highcharts/highcharts-more'; // Importing the highcharts-more module for packedbubble chart
 HCMore(Highcharts); // Initialize the highcharts-more module
 
-const BubbleGraph = () => {
+interface BubbleGraphProps {
+	handleTabClick: (item: CoreSolutionByEH) => void;
+}
+
+const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 	const { coreSolutionsData } = useRecoilValue(cifState);
 	const options: any[] = [];
 	const currentYear = new Date().getFullYear();
@@ -80,6 +84,13 @@ const BubbleGraph = () => {
 				},
 				legendType: 'point',
 				animation: false,
+				point: {
+					events: {
+						click: function (this: any) {
+							handleTabClick(coreSolutionsData?.coreSolutionsByEH[this?.index]);
+						}
+					}
+				}
 			},
 		},
 		series: [{

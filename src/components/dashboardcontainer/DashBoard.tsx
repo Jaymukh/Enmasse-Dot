@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ import LineGraph from './LineGraph';
 import OverViewMap from './OverViewMap';
 import ScatterGraph from './ScatterGraph';
 import TableView from './TableView';
-import { cifState, mapFeatureState } from '../../states';
+import { cifState, mapFeatureState, CoreSolutionByEH } from '../../states';
 
 // Utilities
 import { useCIFService, useMapsService, useStoriesService } from '../../services';
@@ -27,6 +27,19 @@ const DashBoard = () => {
     const cifData = useRecoilValue(cifState);
     const mapFeatures = useRecoilValue(mapFeatureState);
     const geoCode = searchParams.get('geo_code');
+
+    const [selected, setSelected] = useState<CoreSolutionByEH | undefined>(cifData?.coreSolutionsData?.coreSolutionsByEH![0] || []);
+
+    const handleTabClick = (item: CoreSolutionByEH) => {
+        setSelected(item);
+    }
+
+    useEffect(() => {
+        if (cifData?.coreSolutionsData?.coreSolutionsByEH?.length > 0) {
+            setSelected(cifData?.coreSolutionsData.coreSolutionsByEH[0]);
+        }
+
+    }, [cifData?.coreSolutionsData?.coreSolutionsByEH]);
 
     useEffect(() => {
         if (geoCode) {
@@ -57,10 +70,10 @@ const DashBoard = () => {
                 <LineGraph category='Average EH Transactional Value' graphData={cifData?.ehGrowthGraphData?.averageEhTransactionalValue?.data} infobutton={cifData?.ehGrowthGraphData?.averageEhTransactionalValue?.infobutton} />
             </div>
             <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 p-0 my-2'>
-                <BubbleGraph />
+                <BubbleGraph handleTabClick={handleTabClick}/>
             </div>
             <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 p-0 my-2'>
-                <BarGraphContainer />
+                <BarGraphContainer selected={selected} handleTabClick={handleTabClick} />
             </div>
             {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
                 <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2'>
