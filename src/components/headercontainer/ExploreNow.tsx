@@ -15,7 +15,7 @@ import Modal from '../ui/modal/Modal';
 import { errorState, spinnerState, mapFeatureState } from '../../states';
 
 // Utilities
-import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
+import WorkInProgressImage from '../../utils/images/WIP-FINAL.svg';
 import { rollbar } from '../../constants';
 import { useMapsService } from '../../services';
 

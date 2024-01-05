@@ -12,7 +12,7 @@ import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import Drawer from '../ui/Drawer';
 
 // Utilities
-import WorkInProgressImage from '../../utils/images/work_in_progress.svg';
+import WorkInProgressImage from '../../utils/images/WIP-FINAL.svg';
 
 
 const RequestDetails = () => {

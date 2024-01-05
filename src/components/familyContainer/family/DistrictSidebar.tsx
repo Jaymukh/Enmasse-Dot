@@ -19,7 +19,7 @@ import RequestData from './RequestData';
 import { mapFeatureState, AllSettingsState, UserSettingsState, errorState } from '../../../states';
 
 // Utilities
-import WIPImage from '../../../utils/images/work_in_progress.svg';
+import WIPImage from '../../../utils/images/WIP-FINAL.svg';
 import { RouteConstants } from '../../../constants';
 import { useSettingsService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';

@@ -6,7 +6,7 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 import Body, { BodyColor, BodyType } from '../ui/typography/Body';
 
 // Utilities
-import WIPImage from '../../utils/images/work_in_progress.svg';
+import WIPImage from '../../utils/images/WIP-FINAL.svg';
 
 interface NoVisualDataProps {
     displayImage?: boolean;
