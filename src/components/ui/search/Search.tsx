@@ -6,7 +6,7 @@ interface SearchProps {
     handleInputChange: (value: string) => void;
     handleSelectValue?: (value: string) => void;
     data?: any;
-    value: string;
+    searchTerm: string;
     suggestions?: any;
     labelKey?: any;
     valueKey?: any;
@@ -15,10 +15,10 @@ interface SearchProps {
     classname?: string;
 }
 
-const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions, labelKey, valueKey, hideSuggestionBox, placeholderValue, classname }: SearchProps) => {
+const Search = ({ handleInputChange, handleSelectValue, data, searchTerm, suggestions, labelKey, valueKey, hideSuggestionBox, placeholderValue, classname }: SearchProps) => {
     const [hideSuggestions, setHideSuggestions] = useState<boolean>(true);
 
-    const handleSelectOption = (value: any) => {
+    const handleSelectOption = (value: any) => {        
         if (handleSelectValue) {
             handleSelectValue(value);
         }
@@ -36,7 +36,7 @@ const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions
                     }}
                     type="text"
                     placeholder={placeholderValue}
-                    value={value}
+                    value={searchTerm}
                     className={classname}
                     onChange={(e) => {
                         handleInputChange(e.target.value);
@@ -51,10 +51,9 @@ const Search = ({ handleInputChange, handleSelectValue, data, value, suggestions
                 >
                     {suggestions?.map((suggestion: any) => (
                         <div
-                            className={`text-start py-1 ${styles.suggestions_item}`}
-                            onClick={() => handleSelectOption(suggestion[labelKey])}
+                            className={`text-start py-1 ${styles.suggestions_item}`}                            
                         >
-                            <p className='px-3 m-0'>{suggestion[labelKey]}</p>
+                            <p className='px-3 m-0' onClick={() => handleSelectOption(suggestion[labelKey])}>{suggestion[labelKey]}</p>
                         </div>
                     ))}
                 </div>

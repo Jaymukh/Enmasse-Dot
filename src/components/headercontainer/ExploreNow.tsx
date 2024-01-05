@@ -25,26 +25,27 @@ const ExploreNow = () => {
 	const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
 	const setSpinner = useSetRecoilState(spinnerState);
 	const setError = useSetRecoilState(errorState);
-	const [showModal, setshowModal] = useState<boolean>(false);
+	const [showModal, setShowModal] = useState<boolean>(false);
 	const [results, setResults] = useState<any>(mapFeatures.suggestions);
-	const [value, setValue] = useState<string>('');
+	const [searchTerm, setSearchTerm] = useState<string>('');
 	const [selectedValue, setSelectedValue] = useState<{ state: string, district: string }>({ state: '', district: '' });
 	const [suggestions, setSuggestions] = useState<any>(mapFeatures.suggestions);
 	const [hasData, setHasData] = useState(true);
 
 	const handleInputChange = (value: string) => {
-		setValue(value);
 		if (!value) {
+			setSearchTerm('');
 			setSuggestions(mapFeatures.suggestions);
 		} else {
+			setSearchTerm(value);
 			const result = suggestions?.filter((item: any) => item?.geo_value?.toLowerCase().includes(value.toLowerCase()));
 			setSuggestions(result);
 		}
 	}
 
 	const handleSelectValue = (value: string) => {
-		setValue('');
 		const filteredData = suggestions?.find((item: any) => item.geo_value?.toLowerCase().includes(value.toLowerCase()));
+		setSearchTerm('');
 		if (filteredData?.has_data) {
 			setHasData(true);
 			if (filteredData?.children) {
@@ -60,6 +61,8 @@ const ExploreNow = () => {
 			setHasData(false);
 		}
 	}
+	
+	
 
 	const handleCloseSelected = (index: number) => {
 		const objKeys: Array<keyof typeof selectedValue> = ['state', 'district'];
@@ -71,7 +74,7 @@ const ExploreNow = () => {
 	}
 
 	const handleModalOpen = (flag: boolean) => {
-		setshowModal(flag);
+		setShowModal(flag);
 		if (flag === true) {
 			setSpinner(true);
 			mapsService.getExploreNow().then(data => {
@@ -92,7 +95,7 @@ const ExploreNow = () => {
 		else {
 			setHasData(true);
 			setSelectedValue({ state: '', district: '' });
-			setValue('');
+			setSearchTerm('');
 		}
 	}
 	const handleViewAvailableStates = () => {
@@ -150,7 +153,7 @@ const ExploreNow = () => {
 						handleInputChange={handleInputChange}
 						handleSelectValue={handleSelectValue}
 						data={mapFeatures.suggestions}
-						value={value}
+						searchTerm={searchTerm}
 						suggestions={suggestions}
 						labelKey='geo_value'
 						valueKey='geo_value'
@@ -219,3 +222,5 @@ const ExploreNow = () => {
 };
 
 export default ExploreNow;
+
+

@@ -177,7 +177,7 @@ export default function Invite() {
 				<div className='col-8 d-flex flex-row justify-content-end align-items-center px-0'>
 					<Search
 						handleInputChange={handleInputChange}
-						value={searchTerm}
+						searchTerm={searchTerm}
 						suggestions={suggestions}
 						hideSuggestionBox={true}
 						placeholderValue='Search'
