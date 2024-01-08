@@ -28,11 +28,10 @@ const EmailSent: React.FC<EmailSentProps> = ({
                 <div className='d-flex flex-row-reverse'>
                     <Button
                         theme={ButtonTheme.dark}
-                        size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
                         onClick={() => handleModal({ sendMailModal: false })}
                         type='button'
-                        classname='btn-close mx-3 w-auto my-auto'
+                        classname='btn-close'
                     />
                 </div>
                 <div className=" d-flex flex-column justify-content-center my-2">

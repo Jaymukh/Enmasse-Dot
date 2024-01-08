@@ -54,11 +54,10 @@ const Toast = () => {
                 <div className='d-flex align-items-start h-100 py-3 pe-1'>
                     <Button
                         theme={ButtonTheme.dark}
-                        size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
                         onClick={onClose}
                         type='button'
-                        classname='btn-close m-0 w-auto p-2'
+                        classname='btn-close'
                     />
                 </div>
 

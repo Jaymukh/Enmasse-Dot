@@ -41,11 +41,10 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 					</div>
 					<Button
 						theme={ButtonTheme.dark}
-						size={ButtonSize.medium}
 						variant={ButtonVariant.transparent}
 						onClick={() => handleModal({ tncModal: false })}
 						type='button'
-						classname='btn-close mx-3 w-auto py-0'
+						classname='btn-close'
 					/>
 				</div>
 				<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 pt-0 modal-padding">

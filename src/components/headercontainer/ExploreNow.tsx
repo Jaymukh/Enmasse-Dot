@@ -123,11 +123,10 @@ const ExploreNow = () => {
 					/>
 					<Button
 						theme={ButtonTheme.dark}
-						size={ButtonSize.medium}
 						variant={ButtonVariant.transparent}
 						onClick={() => handleModalOpen(false)}
 						type='button'
-						classname='btn-close m-0 w-auto'
+						classname='btn-close'
 					/>
 				</div>
 				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27rem', maxWidth: '60rem' }}>
@@ -149,11 +148,10 @@ const ExploreNow = () => {
 								/>
 								<Button
 									theme={ButtonTheme.dark}
-									size={ButtonSize.medium}
 									variant={ButtonVariant.transparent}
 									onClick={() => handleCloseSelected(index)}
 									type='button'
-									classname='btn-close m-0 w-auto p-2'
+									classname='btn-close'
 								/>
 							</>)
 						))}

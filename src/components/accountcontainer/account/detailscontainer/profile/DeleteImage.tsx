@@ -26,7 +26,7 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
         <div>
             <Modal showModal={showDeleteImageModal} classname='width-18-75' >
                 <div className='d-flex flex-row justify-content-end w-100 p-0'>
-                    <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close my-auto w-auto" onClick={() => handleDeleteModel(false)}></Button>
+                    <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleDeleteModel(false)}></Button>
                 </div>
                 <div d-flex justify-content-center>
                     <MdCancel className='text-center fs-60 color-orange' />

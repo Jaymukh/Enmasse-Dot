@@ -58,7 +58,7 @@ const DashBoard = () => {
     }, [geoCode]);
 
     return (
-        <div className='row w-100 primary-bg m-0 px-4 pb-5 mb-5' style={{ height: '100vh', overflowY: 'auto', overflowX: 'hidden' }}>
+        <div className='row w-100 primary-bg m-0 px-4' style={{ height: '86.25vh', overflowY: 'auto', overflowX: 'hidden' }}>
             <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2'>
                 <FamilyDetails />
             </div>
@@ -83,7 +83,7 @@ const DashBoard = () => {
                 <ScatterGraph geoName={mapFeatures?.cifData?.properties?.geo_name} />
             </div>}
             {cifData?.metricBreakdownInfo?.show &&
-                <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 mb-5 pb-5'>
+                <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 mt-2 mb-4'>
                     <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} infoButton={cifData?.metricBreakdownInfo?.infoButton} breakdownType={cifData?.metricBreakdownInfo?.breakdownType} classname='dashboard-table-container' />
                 </div>}
         </div>

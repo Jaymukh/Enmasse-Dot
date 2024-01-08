@@ -23,11 +23,10 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                     />
                     <Button
                         theme={ButtonTheme.dark}
-                        size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
                         onClick={() => toggleFunction(false)}
-                        type='button'
-                        classname='btn-close text-reset my-0 w-auto px-2 py-0'
+                        // type='button'
+                        classname='btn-close'
                     />
                 </div>
                 <div className="my-3" style={{ overflowY: 'auto', overflowX: 'hidden' }}>

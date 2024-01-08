@@ -40,11 +40,10 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                 />
                 <Button
                     theme={ButtonTheme.dark}
-                    size={ButtonSize.medium}
                     variant={ButtonVariant.transparent}
                     onClick={() => handleModal({ passwordModal: false })}
                     type='button'
-                    classname='btn-close m-0 w-auto p-2'
+                    classname='btn-close'
                 />
             </div>
             <Body
