@@ -70,7 +70,7 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     const onClickMapFeature = (feature: any) => {
-        debugger
+        console.log(feature);
         if (selected.district) {
             return;
         } else if (selected.state) {
@@ -105,7 +105,6 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     const handleFocused = (index: number) => {
-        debugger
         setFocused(index);
     };
 
@@ -129,7 +128,8 @@ const StateMap: React.FC<StateMapProps> = ({
                 map.data.remove(feature);
             });
             map.data.addGeoJson(geoJSON);
-            map.data.addListener('click', (event: any) => onClickMapFeature(event?.feature?.Ig));
+            // map.data.addListener('click', (event: any) => onClickMapFeature(event?.feature?.Ig));
+            map.data.addListener('click', (event: any) => onClickMapFeature(event?.feature?.h));
 
             map.data.setStyle((feature) => {
                 const fillColor = feature.getProperty('Color');
