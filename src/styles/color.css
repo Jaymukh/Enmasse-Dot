@@ -1,7 +1,8 @@
 /* include all the color variable */
 
 html {
-    --app-background: rgba(244, 246, 248, 1);
+    /* --app-background: rgba(244, 246, 248, 1); */
+    --app-background: rgba(245, 246, 248, 1);
     --light-app-background: rgba(208, 226, 225, 1);
 
     --purple-0: rgba(43, 13, 92, 1);

@@ -40,7 +40,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						</Body>
 					</div>
 					<Button
-						theme={ButtonTheme.primary}
+						theme={ButtonTheme.dark}
 						size={ButtonSize.medium}
 						variant={ButtonVariant.transparent}
 						onClick={() => handleModal({ tncModal: false })}

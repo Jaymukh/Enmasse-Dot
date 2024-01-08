@@ -11,7 +11,7 @@ import Body, { BodyType, BodyColor } from '../../../../ui/typography/Body';
 import Modal from '../../../../ui/modal/Modal';
 
 // Utilities
-import CheckGIF from "../../../../../utils/images/CheckMarkGIF.gif";
+import CheckGIF from "../../../../../utils/images/Accept State-01.svg";
 
 
 interface UpdateSuccessModalProps {

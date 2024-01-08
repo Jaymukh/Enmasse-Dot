@@ -5,6 +5,7 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { BiSolidErrorCircle } from 'react-icons/bi';
 import { errorState } from '../../../states';
 import { useRecoilState } from 'recoil';
+import { Button, ButtonSize, ButtonTheme, ButtonVariant } from '../button/Button';
 
 const Toast = () => {
     const [error, setError] = useRecoilState(errorState);
@@ -51,7 +52,14 @@ const Toast = () => {
                     </div>
                 </div>
                 <div className='d-flex align-items-start h-100 py-3 pe-1'>
-                    <button className='btn-close' onClick={onClose}></button>
+                    <Button
+                        theme={ButtonTheme.dark}
+                        size={ButtonSize.medium}
+                        variant={ButtonVariant.transparent}
+                        onClick={onClose}
+                        type='button'
+                        classname='btn-close m-0 w-auto p-2'
+                    />
                 </div>
 
             </div>}

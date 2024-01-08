@@ -19,6 +19,7 @@ export enum ButtonSize {
 export enum ButtonTheme {
     primary,
     secondary,
+    dark,
     muted,
     warning,
     success
@@ -68,6 +69,10 @@ const getTypeVariantClass = (theme: ButtonTheme, variant: ButtonVariant) => {
         case ButtonTheme.secondary:
             className = variant === ButtonVariant.transparent ? `${styles.btn_secondary_transparent}` :
                 (className = variant === ButtonVariant.contained ? `${styles.btn_secondary_contained}` : `${styles.btn_secondary}`);
+            break;
+        case ButtonTheme.dark:
+            className = variant === ButtonVariant.transparent ? `${styles.btn_dark_transparent}` :
+                (className = variant === ButtonVariant.contained ? `${styles.btn_dark_contained}` : `${styles.btn_dark}`);
             break;
         case ButtonTheme.muted:
             className = variant === ButtonVariant.transparent ? `${styles.btn_muted_transparent}` :

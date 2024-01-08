@@ -2,7 +2,7 @@
 @import url("../../../utils/fonts/fonts.css");
 
 .btn_primary {
-	/* (bordered) black button with black background and with black border */
+	/* (bordered) purple button with purple background and with purple border */
 	background-color: var(--purple-0);
 	border: 1px solid var(--purple-0);
 	border-radius: 5px;
@@ -24,7 +24,7 @@
 }
 
 .btn_primary:disabled, .btn_primary:disabled:hover {
-	/* (bordered) black button with black background and with black border */
+	/* (bordered) purple button with purple background and with purple border */
 	background-color: var(--purple-0);
 	border-color: var(--purple-0);
 	border-radius: 5px;
@@ -36,7 +36,7 @@
 }
 
 .btn_primary_contained {
-	/* black button with black background and without border */
+	/* purple button with purple background and without border */
 	border: none;
 	background-color: var(--purple-0);
 	border-radius: 5px;
@@ -57,7 +57,7 @@
 }
 
 .btn_primary_contained:disabled, .btn_primary_contained:disabled:hover {
-	/* black button with black background and without border */
+	/* purple button with purple background and without border */
 	background-color: var(--purple-0);
 	border-radius: 5px;
 	color: var(--white-1);
@@ -68,7 +68,7 @@
 }
 
 .btn_primary_transparent {
-	/* black button without backgrount and without border */
+	/* purple button without backgrount and without border */
 	background-color: transparent;
 	border: none;
 	color: var(--purple-0);
@@ -87,7 +87,7 @@
 }
 
 .btn_primary_transparent:disabled, .btn_primary_transparent:disabled:hover {
-	/* black button without backgrount and without border */
+	/* purple button without backgrount and without border */
 	background-color: transparent;
 	border: none;
 	color: var(--purple-0);
@@ -187,6 +187,102 @@
 	border: none !important;
 	color: var(--white-1);
 	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
+.btn_dark {
+	/* (bordered) black button with black background and with black border */
+	background-color: var(--black-0);
+	border: 1px solid var(--black-0);
+	border-radius: 5px;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_dark:hover {
+    /* (bordered) hover */
+    background-color: var(--white-1);
+    border: 1px solid var(--black-0);
+    border-radius: 5px;
+    color: var(--black-0);
+    height: 2.25rem;
+    font-weight: 500;
+    font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_dark:disabled, .btn_dark:disabled:hover {
+	/* (bordered) black button with black background and with black border */
+	background-color: var(--black-0);
+	border-color: var(--black-0);
+	border-radius: 5px;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
+.btn_dark_contained {
+	/* black button with black background and without border */
+	border: none;
+	background-color: var(--black-0);
+	border-radius: 5px;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_dark_contained:hover {
+	background-color: var(--white-1);
+	border: none;
+	border-radius: 5px;
+	color: var(--black-0);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_dark_contained:disabled, .btn_dark_contained:disabled:hover {
+	/* black button with black background and without border */
+	background-color: var(--black-0);
+	border-radius: 5px;
+	color: var(--white-1);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+	opacity: 0.5;
+}
+
+.btn_dark_transparent {
+	/* black button without backgrount and without border */
+	background-color: transparent;
+	border: none;
+	color: var(--black-0);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_dark_transparent:hover {
+	background-color: transparent;
+	border: 0;
+	color: var(--black-5);
+	height: 2.25rem;
+	font-weight: 500;
+	font-family: "Poppins-Medium", sans-serif;
+}
+
+.btn_dark_transparent:disabled, .btn_dark_transparent:disabled:hover {
+	/* black button without backgrount and without border */
+	background-color: transparent;
+	border: none;
+	color: var(--black-0);
+	height: 2.25rem !important;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
