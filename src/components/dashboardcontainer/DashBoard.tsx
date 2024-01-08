@@ -70,19 +70,19 @@ const DashBoard = () => {
                 <LineGraph category='Average EH Transactional Value' graphData={cifData?.ehGrowthGraphData?.averageEhTransactionalValue?.data} infobutton={cifData?.ehGrowthGraphData?.averageEhTransactionalValue?.infobutton} />
             </div>
             <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 p-0 my-2'>
-                <BubbleGraph handleTabClick={handleTabClick}/>
+                <BubbleGraph handleTabClick={handleTabClick} />
             </div>
             <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 p-0 my-2'>
                 <BarGraphContainer selected={selected} handleTabClick={handleTabClick} />
             </div>
-            {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
-                <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2'>
+            {cifData?.geoInfo?.show &&
+                <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 ${cifData?.inOutFlowData?.show || cifData?.metricBreakdownInfo?.show ? '' : 'mb-5'}`}>
                     <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo?.data} infoButton={cifData?.geoInfo?.infoButton} breakdownType={cifData?.geoInfo?.breakdownType} />
                 </div>}
-            <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 ${(mapFeatures?.cifData?.properties?.geo_name === 'district' ? 'mb-5' : '')}`}>
+            {cifData?.inOutFlowData?.show && <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 ${cifData?.metricBreakdownInfo?.show ? '' : 'mb-5'}`}>
                 <ScatterGraph geoName={mapFeatures?.cifData?.properties?.geo_name} />
-            </div>
-            {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
+            </div>}
+            {cifData?.metricBreakdownInfo?.show &&
                 <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 mb-5 pb-5'>
                     <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} infoButton={cifData?.metricBreakdownInfo?.infoButton} breakdownType={cifData?.metricBreakdownInfo?.breakdownType} />
                 </div>}
