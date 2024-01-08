@@ -30,7 +30,7 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer, desc
 				isOpen={open}
 				toggleFunction={closeWIPDrawer}
 			>
-				<div>
+				{/* <div> */}
 					<Body
 						type={BodyType.p2}
 						color={BodyColor.dark}
@@ -39,14 +39,14 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer, desc
 						{description}
 					</Body>
 					<div className='bookmark-div'>
-						<div className="d-flex justify-content-center align-items-center mx-2 py-5">
+						<div className="d-flex justify-content-center align-items-center mx-2 pt-5">
 							<div className="mx-4 my-1 dialog-div d-flex flex-column justify-content-center align-items-center py-5">
 								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width={300} height={200}/>
 								<Heading
 									title='Work in progress.'
 									type={TypographyType.h5}
 									colour={TypographyColor.dark}
-									classname='pt-5'
+									classname='pt-2'
 								/>
 								<Body
 									type={BodyType.p3}
@@ -58,7 +58,7 @@ const WIPDrawer: React.FC<WIPDrawerProps> = ({ open, title, closeWIPDrawer, desc
 							</div>
 						</div>
 					</div>
-				</div>
+				{/* </div> */}
 			</Drawer>
 		</>
 	);

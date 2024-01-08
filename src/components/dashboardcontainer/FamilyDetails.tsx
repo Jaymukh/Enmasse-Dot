@@ -18,7 +18,7 @@ import { mapFeatureState, storiesState } from '../../states';
 import { useMapHelpers } from '../../helpers';
 import { RouteConstants } from '../../constants';
 import * as Constants from '../../utils/constants/Constants';
-import familySkeleton from '../../utils/images/family-skeleton.png';
+import familySkeleton from '../../utils/images/EH Sillhouettes-5-01.svg';
 import InfoPanel from '../ui/InfoPanel';
 
 

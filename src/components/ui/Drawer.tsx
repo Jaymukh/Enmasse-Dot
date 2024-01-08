@@ -14,7 +14,7 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
     return (
         <div className={`offcanvas offcanvas-end h-100 drawer-shadow border-0 overflow-auto ${isOpen ? 'show' : ''}`} id={id}>
             <div>
-                <div className="d-flex flex-row justify-content-between align-items-center">
+                <div className="d-flex flex-row justify-content-between align-items-center m-0 py-0">
                     <Heading
                         title={title}
                         type={TypographyType.h4}
@@ -27,10 +27,10 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                         variant={ButtonVariant.transparent}
                         onClick={() => toggleFunction(false)}
                         type='button'
-                        classname='btn-close text-reset m-0 w-auto p-2'
+                        classname='btn-close text-reset my-0 w-auto px-2 py-0'
                     />
                 </div>
-                <div className="my-3 h-100" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
+                <div className="my-3" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
                     {children}
                 </div>
             </div>

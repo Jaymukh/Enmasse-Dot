@@ -19,7 +19,7 @@ import { storiesState } from "../../../states";
 
 // Utilities
 import { storiesSelectOptions } from '../../../utils/constants/Constants';
-import familySkeleton from '../../../utils/images/family-skeleton.png';
+import familySkeleton from '../../../utils/images/EH Sillhouettes-5-01.svg';
 import { RouteConstants } from '../../../constants';
 import { useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';

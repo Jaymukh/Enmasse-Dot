@@ -14,7 +14,7 @@ import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import { RouteConstants } from '../../constants';
 import * as Constants from '../../utils/constants/Constants'
 import { useMapHelpers } from '../../helpers';
-import familySkeleton from '../../utils/images/family-skeleton.png';
+import familySkeleton from '../../utils/images/EH Sillhouettes-5-01.svg';
 
 
 interface MapPopupProps {

@@ -22,7 +22,7 @@ import { errorState } from '../../states';
 import { useUserService } from '../../services';
 import { RouteConstants, rollbar } from '../../constants';
 import CheckGIF from "../../utils/images/Accept State-01.svg";
-import globe from '../../utils/images/globe.png';
+import globe from '../../utils/images/LoginGlobe.svg';
 
 
 const UpdatePassword = () => {
@@ -99,28 +99,25 @@ const UpdatePassword = () => {
 
     return (
         <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
-            <div className='col-md-6 col-xl-6 login-update-box lightGrayBackground'>
-                <div className='W-100 d-flex flex-column align-items-center justify-content-center'>
-                    <div className='loginCardAlign my-5'>
-                        <img src={globe} alt='enmasse' />
-                        <div>
-                            <Heading
-                                title='enmasse'
-                                type={TypographyType.h2}
-                                colour={TypographyColor.dark}
-                            />
-                            <Body
-                                type={BodyType.p1}
-                                color={BodyColor.muted}
-                                classname='text-start'
-                            >
-                                Our team of skilled professionals id committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
-                            </Body>
-                        </div>
+            <div className='col-md-6 col-xl-6 login-update-box bg-white'>
+                <div className='loginCardAlign'>
+                    <img src={globe} alt='enmasse' width={454} height={338} />
+                    <div>
+                        <Heading
+                            title='enmasse'
+                            type={TypographyType.h2}
+                            colour={TypographyColor.dark}
+                        />
+                        <Body
+                            type={BodyType.p3}
+                            color={BodyColor.muted}
+                        >
+                            Our team of skilled professionals is committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
+                        </Body>
                     </div>
                 </div>
             </div>
-            <div className='col-md-6 col-md-6 login-update-box bg-white'>
+            <div className='col-md-6 col-md-6 login-update-box'>
                 {passwordCreated ?
                     <div className='loginCardAlign'>
                         <div className='d-flex justify-content-center'>
@@ -241,7 +238,7 @@ const UpdatePassword = () => {
                             variant={ButtonVariant.bordered}
                             type='submit'
                             classname='mt-3'
-                            // disabled={!isValid}
+                        // disabled={!isValid}
                         >
                             {isSubmitting
                                 && <Body

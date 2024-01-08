@@ -45,7 +45,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						variant={ButtonVariant.transparent}
 						onClick={() => handleModal({ tncModal: false })}
 						type='button'
-						classname='btn-close mx-3 w-auto my-auto'
+						classname='btn-close mx-3 w-auto py-0'
 					/>
 				</div>
 				<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 pt-0 modal-padding">

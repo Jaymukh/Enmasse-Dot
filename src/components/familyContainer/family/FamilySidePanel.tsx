@@ -17,7 +17,7 @@ import { Legend } from '../../ui/legend/Legend';
 import { storiesState } from "../../../states";
 
 // Utilities
-import familySkeleton from '../../../utils/images/family-skeleton.png';
+import familySkeleton from '../../../utils/images/EH Sillhouettes-5-01.svg';
 
 interface FamilySidePanelProps {
     selectedStory: { index: number, story: any };
