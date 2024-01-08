@@ -51,7 +51,7 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 		},
 		tooltip: {
 			useHTML: true,
-			pointFormat: '<b>{point.name}:</b> {point.value}'
+			pointFormat: '<b>{point.name}:</b> {point.displayPOI}'
 		},
 		plotOptions: {
 			packedbubble: {
@@ -101,6 +101,7 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 				return {
 					name: item.coreSolution,
 					value: item.pointsOfInterest,
+					displayPOI: item.pointsOfInterest.toLocaleString(),
 					z: item.percentageContribution / 100,
 					displayValue: `${item.percentageContribution}%`,
 					color: colorDescription[item?.type]
