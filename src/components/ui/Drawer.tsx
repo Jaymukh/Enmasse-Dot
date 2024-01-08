@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
+import { Button, ButtonSize, ButtonTheme, ButtonVariant } from './button/Button';
 
 interface DrawerProps {
     id: string;
@@ -20,11 +21,13 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                         colour={TypographyColor.dark}
                         classname='p-0 text-start pe-3 m-0'
                     />
-                    <button
-                        type="button"
-                        className="btn-close text-reset m-0 p-0"
+                    <Button
+                        theme={ButtonTheme.dark}
+                        size={ButtonSize.medium}
+                        variant={ButtonVariant.transparent}
                         onClick={() => toggleFunction(false)}
-                        aria-label="Close"
+                        type='button'
+                        classname='btn-close text-reset m-0 w-auto p-2'
                     />
                 </div>
                 <div className="my-3 h-100" style={{ overflowY: 'auto', overflowX: 'hidden' }}>

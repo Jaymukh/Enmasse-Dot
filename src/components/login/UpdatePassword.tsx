@@ -21,7 +21,7 @@ import { errorState } from '../../states';
 // Utilities
 import { useUserService } from '../../services';
 import { RouteConstants, rollbar } from '../../constants';
-import CheckGIF from "../../utils/images/CheckMarkGIF.gif";
+import CheckGIF from "../../utils/images/Accept State-01.svg";
 import globe from '../../utils/images/globe.png';
 
 

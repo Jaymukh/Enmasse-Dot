@@ -11,7 +11,7 @@ import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import Modal from '../../../../ui/modal/Modal';
 
 // Utilities
-import CheckGIF from "../../../../../utils/images/CheckMarkGIF.gif";
+import CheckGIF from "../../../../../utils/images/Accept State-01.svg";
 
 interface InviteSentProps {
     openInviteSent: boolean;
@@ -30,12 +30,12 @@ const InviteSent: React.FC<InviteSentProps> = ({
             <Modal showModal={openInviteSent} classname='width-30' >
                 <div className='d-flex flex-row-reverse'>
                     <Button
-                        theme={ButtonTheme.primary}
+                        theme={ButtonTheme.dark}
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         onClick={() => handleInviteSentModal()}
                         type='button'
-                        classname='btn-close my-auto h-auto w-auto'
+                        classname='btn-close my-auto w-auto'
                     />
                 </div>
                 <div className="d-flex flex-column justify-content-center align-items-center m-0 p-0">

@@ -70,6 +70,7 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     const onClickMapFeature = (feature: any) => {
+        debugger
         if (selected.district) {
             return;
         } else if (selected.state) {
@@ -104,6 +105,7 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     const handleFocused = (index: number) => {
+        debugger
         setFocused(index);
     };
 

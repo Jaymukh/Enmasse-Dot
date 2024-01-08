@@ -102,7 +102,7 @@ export default function Login() {
     return (
         <div>
             <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
-                <div className='col-md-6 col-xl-6 login-update-box lightGrayBackground'>
+                <div className='col-md-6 col-xl-6 login-update-box bg-white'>
                     <div className='loginCardAlign'>
                         <img src={globe} alt='enmasse' width={454} height={338} />
                         <div>
@@ -120,7 +120,7 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                <div className='col-md-6 col-md-6 login-update-box bg-white'>
+                <div className='col-md-6 col-md-6 login-update-box '>
                     <div className='loginCardAlign' >
                         <Heading
                             title='Login'

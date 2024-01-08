@@ -61,8 +61,8 @@ const ExploreNow = () => {
 			setHasData(false);
 		}
 	}
-	
-	
+
+
 
 	const handleCloseSelected = (index: number) => {
 		const objKeys: Array<keyof typeof selectedValue> = ['state', 'district'];
@@ -121,7 +121,14 @@ const ExploreNow = () => {
 						type={TypographyType.h2}
 						colour={TypographyColor.dark}
 					/>
-					<button type='button' className='btn-close' onClick={() => handleModalOpen(false)}></button>
+					<Button
+						theme={ButtonTheme.dark}
+						size={ButtonSize.medium}
+						variant={ButtonVariant.transparent}
+						onClick={() => handleModalOpen(false)}
+						type='button'
+						classname='btn-close m-0 w-auto'
+					/>
 				</div>
 				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27rem', maxWidth: '60rem' }}>
 					<Body
@@ -140,10 +147,13 @@ const ExploreNow = () => {
 									type={TypographyType.h4}
 									colour={TypographyColor.dark}
 								/>
-								<button
-									type='button'
-									className='btn-close mx-2 fs-12'
+								<Button
+									theme={ButtonTheme.dark}
+									size={ButtonSize.medium}
+									variant={ButtonVariant.transparent}
 									onClick={() => handleCloseSelected(index)}
+									type='button'
+									classname='btn-close m-0 w-auto p-2'
 								/>
 							</>)
 						))}

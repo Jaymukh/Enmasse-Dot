@@ -77,14 +77,14 @@ const DashBoard = () => {
             </div>
             {cifData?.geoInfo?.show &&
                 <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 ${cifData?.inOutFlowData?.show || cifData?.metricBreakdownInfo?.show ? '' : 'mb-5'}`}>
-                    <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo?.data} infoButton={cifData?.geoInfo?.infoButton} breakdownType={cifData?.geoInfo?.breakdownType} />
+                    <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo?.data} infoButton={cifData?.geoInfo?.infoButton} breakdownType={cifData?.geoInfo?.breakdownType} classname='summary-breakdown-table-container' />
                 </div>}
             {cifData?.inOutFlowData?.show && <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 ${cifData?.metricBreakdownInfo?.show ? '' : 'mb-5'}`}>
                 <ScatterGraph geoName={mapFeatures?.cifData?.properties?.geo_name} />
             </div>}
             {cifData?.metricBreakdownInfo?.show &&
                 <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0 my-2 mb-5 pb-5'>
-                    <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} infoButton={cifData?.metricBreakdownInfo?.infoButton} breakdownType={cifData?.metricBreakdownInfo?.breakdownType} />
+                    <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} infoButton={cifData?.metricBreakdownInfo?.infoButton} breakdownType={cifData?.metricBreakdownInfo?.breakdownType} classname='dashboard-table-container' />
                 </div>}
         </div>
     )

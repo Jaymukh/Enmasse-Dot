@@ -18,10 +18,11 @@ interface TableViewProps {
     data: any;
     headerData: TableHeaderProps;
     infoButton: string;
-    breakdownType?: string
+    breakdownType?: string;
+    classname?: string;
 }
 
-const TableView: React.FC<TableViewProps> = ({ data, headerData, infoButton, breakdownType }) => {
+const TableView: React.FC<TableViewProps> = ({ data, headerData, infoButton, breakdownType, classname }) => {
     return (
         <div>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3'>
@@ -36,7 +37,7 @@ const TableView: React.FC<TableViewProps> = ({ data, headerData, infoButton, bre
                 </div>
 
                 {(data && data?.length > 0)
-                    ? <Table headers={headerData} data={data} size={TableSize.medium} breakdownType={breakdownType} />
+                    ? <Table headers={headerData} data={data} size={TableSize.medium} breakdownType={breakdownType} classname={classname} />
                     : <NoVisualData displayImage={true} />}
             </Card>
         </div>

@@ -85,7 +85,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                 {(0 < showHelp) && (showHelp <= Constants.helpContent.length) && (
                     <div style={{ height: '70vh' }} className='d-flex flex-column justify-content-between'>
                         <div className='d-flex flex-row justify-content-end w-100 pb-1'>
-                            <Button type="button" theme={ButtonTheme.secondary} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleModal()}></Button>
+                            <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleModal()}></Button>
                         </div>
                         <div className='d-flex flex-row justify-content-center align-items-center mb-2 h-75'>
                             <div className="col-5" style={{ height: 'auto' }}>

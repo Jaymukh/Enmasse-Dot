@@ -39,7 +39,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                     classname='text-start'
                 />
                 <Button
-                    theme={ButtonTheme.primary}
+                    theme={ButtonTheme.dark}
                     size={ButtonSize.medium}
                     variant={ButtonVariant.transparent}
                     onClick={() => handleModal({ passwordModal: false })}

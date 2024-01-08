@@ -10,6 +10,7 @@ interface TableProps {
     data: any[];
     size: TableSize;
     breakdownType?: string;
+    classname?: string;
 }
 
 interface TableRowProps {
@@ -36,7 +37,7 @@ const getSizeClass = (size: TableSize) => {
     return className;
 }
 
-const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, breakdownType }) => {
+const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, breakdownType, classname }) => {
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
     const [tableData, setTableData] = useState<any>(data);
@@ -84,7 +85,7 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
         }
     }
     return (
-        <div className={`dashboard-table-container mx-1 ${getSizeClass(size)}`}>
+        <div className={`${classname} mx-1 ${getSizeClass(size)}`}>
             <table>
                 <thead>
                     <tr>

@@ -27,7 +27,7 @@ const EmailSent: React.FC<EmailSentProps> = ({
             <Modal showModal={showModal} classname='width-18-75' >
                 <div className='d-flex flex-row-reverse'>
                     <Button
-                        theme={ButtonTheme.primary}
+                        theme={ButtonTheme.dark}
                         size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
                         onClick={() => handleModal({ sendMailModal: false })}
