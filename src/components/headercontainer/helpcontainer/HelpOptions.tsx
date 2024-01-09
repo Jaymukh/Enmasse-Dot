@@ -17,6 +17,7 @@ import { overlayState, helpState } from '../../../states';
 
 // Utilities
 import * as Constants from '../../../utils/constants/Constants';
+import RoadmapModal from './RoadmapModal';
 
 
 const HelpOptions = () => {
@@ -25,7 +26,10 @@ const HelpOptions = () => {
 	const [overlay, setOverlay] = useRecoilState(overlayState);
 	const setShow = useSetRecoilState(helpState);
 	const [contactUsDrawerOpen, setContactUsDrawerOpen] = useState(false);
-	const [roadmapDrawerOpen, setRoadmapDrawerOpen] = useState(false);
+	const [roadmapDrawerOpen, setRoadmapDrawerOpen] = useState(false);	
+
+    const [openRoadmapModal, setOpenRoadmapModal] = useState(false);
+	const [showRoadmap, setShowRoadmap] = useState(1);
 	const [text, setText] = useState('');
 
 	const closeWIPDrawer = () => {
@@ -33,10 +37,10 @@ const HelpOptions = () => {
 		setText('');
 	};
 
-	const openWIPDrawer = (title: string) => {
-		setText(title);
-		setRoadmapDrawerOpen(true);
-	}
+	// const openWIPDrawer = (title: string) => {
+	// 	setText(title);
+	// 	setRoadmapDrawerOpen(true);
+	// }
 
 	const handleContactUsDrawer = (contactUsDrawerOpen: boolean) => {
 		setContactUsDrawerOpen(contactUsDrawerOpen);
@@ -46,9 +50,10 @@ const HelpOptions = () => {
 		setShow(1);
 	};
 
-	// useEffect(() => {
-	// 	userService.getUserDetails();
-	// }, []);
+	const handleRoadmapClick = (openRoadmapModal: boolean) => {
+		setOpenRoadmapModal(openRoadmapModal);
+		setShowRoadmap(1);
+	};
 
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		Boolean(anchorEl) ? setAnchorEl(null) : setAnchorEl(event.currentTarget);
@@ -63,7 +68,7 @@ const HelpOptions = () => {
 				handleHelpClick();
 				break;
 			case 3:
-				openWIPDrawer('Roadmap');
+				handleRoadmapClick(true);
 				break;
 		}
 		handleClose();
@@ -120,8 +125,11 @@ const HelpOptions = () => {
 			{/* drawer for roadmap */}
 			{roadmapDrawerOpen && <WIPDrawer open={roadmapDrawerOpen} title={text} closeWIPDrawer={closeWIPDrawer} />}
 
-			{/* drawer for Help */}
+			{/* modal for Help */}
 			{overlay && <OverlayModal handleContactUsDrawer={handleContactUsDrawer} />}
+
+			{/* modal for Roadmap */}
+			{openRoadmapModal && <RoadmapModal showRoadmap={showRoadmap} setShowRoadmap={setShowRoadmap} openRoadmapModal={openRoadmapModal} setOpenRoadmapModal={setOpenRoadmapModal} handleRoadmapClick={handleRoadmapClick} handleContactUsDrawer={handleContactUsDrawer}  />}
 		</div >
 	);
 }

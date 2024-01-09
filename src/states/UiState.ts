@@ -5,14 +5,14 @@ export const visiblePanelState = atom({
     default: window.location.pathname || '/profile',
 });
 
-export const overlayState = atom({
-    key: 'overlay',
-    default: false,
-});
-
 export const helpState = atom({
     key: 'showHelp',
     default: 0,
+});
+
+export const overlayState = atom({
+    key: 'overlay',
+    default: false,
 });
 
 export const spinnerState = atom({

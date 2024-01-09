@@ -26,7 +26,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
     const setShowHelp = useSetRecoilState(helpState);
     const showHelp = useRecoilValue(helpState);
 
-    const handleModal = () => {
+    const handleOverlayModal = () => {
         setOverlay(false);
     };
 
@@ -85,10 +85,10 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                 {(0 < showHelp) && (showHelp <= Constants.helpContent.length) && (
                     <div style={{ height: '70vh' }} className='d-flex flex-column justify-content-between'>
                         <div className='d-flex flex-row justify-content-end w-100 pb-1'>
-                            <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleModal()}></Button>
+                            <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleOverlayModal()}></Button>
                         </div>
-                        <div className='d-flex flex-row justify-content-center align-items-center mb-2 h-75'>
-                            <div className="col-5" style={{ height: 'auto' }}>
+                        <div className='d-flex flex-row align-items-center h-75 mx-3'>
+                            <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: 'auto' }}>
                                 <img src={CoreSolutions} alt="Core Solutions" width='85%' />
                             </div>
                             <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
@@ -117,7 +117,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                                     </Button>}
                             </div>
                         </div>
-                        <div className='d-flex flex-row justify-content-between align-items-center mb-2'>
+                        <div className='d-flex flex-row justify-content-between align-items-center mb-2 mx-3'>
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.dark}

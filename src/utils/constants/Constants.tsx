@@ -6,6 +6,11 @@ import Navale from '../images/Navale.png'
 import Ashe from '../images/Ashe.png'
 import Joshi from '../images/Joshi.png'
 import Shah from '../images/Shah.png'
+import BringData from '../images/Roadmap-Bring data-01.svg'
+import District from '../images/Roadmap-District-01.svg'
+import DownloadData from '../images/Roadmap-Download Data-01.svg'
+import Layers from '../images/Roadmap-Layers-01.svg'
+import YoyRefresh from '../images/Roadmap-YoY Refresh-01.svg'
 
 export const storiesSelectOptions = [
     { key: 25, value: 25 },
@@ -47,6 +52,45 @@ export const helpContent: HelpContent[] = [
     {
         title: 'Need to contact us?',
         description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+    }
+];
+// Enmasse-Dot\src\components\mapContainer\RoadmapModal.tsx
+export interface RoadmapContent {
+    title: string;
+    description: string;
+    image: any;
+}
+
+export const roadmapContent: RoadmapContent[] = [
+    {
+        title: 'Bring data',
+        description: 'Entrepreneurial households represent households with its members engaged in opportunities of potential growth and economic activities',
+        image: BringData,
+    },
+    {
+        title: 'District',
+        description: 'Coverage depicts the total count of regions (states/districts) evaluated by enmasse team.',
+        image: District,
+    },
+    {
+        title: 'Download data',
+        description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+        image: DownloadData,
+    },
+    {
+        title: 'Layers',
+        description: 'Coverage depicts the total count of regions (states/districts) evaluated by enmasse team.',
+        image: Layers,
+    },
+    {
+        title: 'YoY Refresh',
+        description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+        image: YoyRefresh,
+    },
+    {
+        title: 'Need to contact us?',
+        description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+        image: YoyRefresh,
     }
 ];
 // Enmasse-Dot\src\components\InsightBar.tsx
@@ -126,74 +170,6 @@ export const sidebarData: SidebarItem[] = [
         option: 'Invite',
     }
 ];
-// Enmasse-Dot\src\components\accountcontainer\account\detailscontainer\invite\Invite.tsx
-export interface InviteData {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
-    company: string;
-    companyType: string;
-}
-
-export const inviteData: InviteData[] = [
-    {
-        id: '0',
-        name: 'JAY',
-        email: 'jay@gmail.com',
-        role: 'Admin',
-        company: 'Enmasse',
-        companyType: 'Enmasse'
-    },
-    {
-        id: '1',
-        name: 'SUDHA',
-        email: 'sudha@gmail.com',
-        role: 'Admin',
-        company: 'Tarento',
-        companyType: 'Enmasse'
-    },
-    {
-        id: '2',
-        name: 'DAYANA',
-        email: 'dayana@gmail.com',
-        role: 'Admin',
-        company: 'Enmasse',
-        companyType: 'Enmasse'
-    },
-    {
-        id: '3',
-        name: 'ILMA',
-        email: 'ilma@gmail.com',
-        role: 'Admin',
-        company: 'Enmasse',
-        companyType: 'Business'
-    },
-    {
-        id: '4',
-        name: 'Hashini',
-        email: 'hashini@gmail.com',
-        role: 'Admin',
-        company: 'Enmasse',
-        companyType: 'Enmasse'
-    },
-    {
-        id: '5',
-        name: 'Aditya',
-        email: 'aditya@gmail.com',
-        role: 'Admin',
-        company: 'Tarento',
-        companyType: 'Enmasse'
-    },
-    {
-        id: '6',
-        name: 'Shakshi',
-        email: 'shakshi@gmail.com',
-        role: 'Admin',
-        company: 'Enmasse',
-        companyType: 'Enmasse'
-    },
-];
 
 //
 export interface HelpMenuItem {
@@ -224,7 +200,6 @@ export interface AccountMenuItem {
     key: number;
     text: string;
     icon: JSX.Element;
-
 }
 
 export const accountMenuItems: AccountMenuItem[] = [
