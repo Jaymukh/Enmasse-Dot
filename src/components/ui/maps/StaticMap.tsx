@@ -7,8 +7,8 @@ import { useMapsService } from '../../../services';
 import { errorState, geoJsonState, spinnerState, storiesState } from '../../../states';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
-import markerBlack from '../../../utils/images/location-on.svg';
-import markerGrey from '../../../utils/images/location-on-grey.svg';
+import markerPurple from '../../../utils/images/Location pin-purple-01.svg';
+import markerGrey from '../../../utils/images/location-gray.svg';
 import { rollbar } from '../../../constants';
 
 interface StaticMapProps {
@@ -152,7 +152,7 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 									lat: marker.geometry.coordinates[1]
 								}}
 								icon={{
-									url: focusedMarker === index ? markerBlack : markerGrey,
+									url: focusedMarker === index ? markerPurple : markerGrey,
 								}}
 							//onClick={() => handleMarkerClick(marker, index)}
 							/>

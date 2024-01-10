@@ -1,5 +1,6 @@
+
 // External libraries
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 // CSS
 import '../../../styles/main.css';
@@ -9,12 +10,12 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import Modal from '../../ui/modal/Modal';
-import { overlayState, helpState } from '../../../states';
+import { spinnerState } from '../../../states';
+import { Spinner } from '../../ui/spinner/Spinner';
 
 // Utilities
-import IndiaMap from '../../../utils/images/IndiaMap.png';
-import CoreSolutions from '../../../utils/images/CoreSolutions.png';
 import * as Constants from '../../../utils/constants/Constants';
+import { useEffect, useState } from 'react';
 
 interface RoadmapModalProps {
     showRoadmap: number;
@@ -26,12 +27,9 @@ interface RoadmapModalProps {
 }
 
 const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap, openRoadmapModal, setOpenRoadmapModal, handleRoadmapClick, handleContactUsDrawer }) => {
-    // const [overlay, setOverlay] = useRecoilState(overlayState);
-    // const [showHelp, setShowHelp] = useRecoilState(helpState);
 
-    // const handleRoadmapClick = (openRoadmapModal: boolean) => {
-    //     setOpenRoadmapModal(openRoadmapModal);
-    // };
+    const [spinner, setSpinner] = useRecoilState(spinnerState);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const nextRoadmap = () => {
         if (showRoadmap < Constants.roadmapContent.length) {
@@ -49,7 +47,14 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
     const handleContactNow = () => {
         setOpenRoadmapModal(false);
         handleContactUsDrawer(true);
-    }
+    };
+    const handleImageLoad = () => {
+        setImageLoaded(true);
+    };
+
+    useEffect(() => {
+        setSpinner(!imageLoaded);
+    }, [imageLoaded]);
 
     return (
         <div>
@@ -60,7 +65,7 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
                     </div>
                     <div className='d-flex flex-row align-items-center h-75 mx-3'>
                         <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: 'auto' }}>
-                            <img src={Constants.roadmapContent[showRoadmap - 1].image} alt="Core Solutions" width='85%' />
+                            <img src={Constants.roadmapContent[showRoadmap - 1].image} onLoad={handleImageLoad} alt="Core Solutions" width='85%' style={{ display: imageLoaded ? 'block' : 'none' }} />
                         </div>
                         <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
                             <Heading
