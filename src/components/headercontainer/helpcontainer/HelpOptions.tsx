@@ -18,6 +18,7 @@ import { overlayState, helpState } from '../../../states';
 // Utilities
 import * as Constants from '../../../utils/constants/Constants';
 import RoadmapModal from './RoadmapModal';
+import RoadmapContact from './RoadmapContact';
 
 
 const HelpOptions = () => {
@@ -26,22 +27,26 @@ const HelpOptions = () => {
 	const [overlay, setOverlay] = useRecoilState(overlayState);
 	const setShow = useSetRecoilState(helpState);
 	const [contactUsDrawerOpen, setContactUsDrawerOpen] = useState(false);
-	const [roadmapDrawerOpen, setRoadmapDrawerOpen] = useState(false);	
+	// const [roadmapDrawerOpen, setRoadmapDrawerOpen] = useState(false);	
+	const [roadmapContactDrawerOpen, setRoadmapContactDrawerOpen] = useState(false);
 
     const [openRoadmapModal, setOpenRoadmapModal] = useState(false);
 	const [showRoadmap, setShowRoadmap] = useState(1);
 	const [text, setText] = useState('');
 
-	const closeWIPDrawer = () => {
-		setRoadmapDrawerOpen(false);
-		setText('');
-	};
+	// const closeWIPDrawer = () => {
+	// 	setRoadmapDrawerOpen(false);
+	// 	setText('');
+	// };
 
 	// const openWIPDrawer = (title: string) => {
 	// 	setText(title);
 	// 	setRoadmapDrawerOpen(true);
 	// }
 
+	const handleRoadmapContactDrawer = (roadmapContactDrawerOpen: boolean) => {
+		setRoadmapContactDrawerOpen(roadmapContactDrawerOpen);
+	};
 	const handleContactUsDrawer = (contactUsDrawerOpen: boolean) => {
 		setContactUsDrawerOpen(contactUsDrawerOpen);
 	};
@@ -123,13 +128,16 @@ const HelpOptions = () => {
 			{contactUsDrawerOpen && (<ContactUs contactUsDrawerOpen={contactUsDrawerOpen} handleContactUsDrawer={handleContactUsDrawer} />)}
 
 			{/* drawer for roadmap */}
-			{roadmapDrawerOpen && <WIPDrawer open={roadmapDrawerOpen} title={text} closeWIPDrawer={closeWIPDrawer} />}
+			{/* {roadmapDrawerOpen && <WIPDrawer open={roadmapDrawerOpen} title={text} closeWIPDrawer={closeWIPDrawer} />} */}
 
 			{/* modal for Help */}
 			{overlay && <OverlayModal handleContactUsDrawer={handleContactUsDrawer} />}
 
 			{/* modal for Roadmap */}
-			{openRoadmapModal && <RoadmapModal showRoadmap={showRoadmap} setShowRoadmap={setShowRoadmap} openRoadmapModal={openRoadmapModal} setOpenRoadmapModal={setOpenRoadmapModal} handleRoadmapClick={handleRoadmapClick} handleContactUsDrawer={handleContactUsDrawer}  />}
+			{openRoadmapModal && <RoadmapModal showRoadmap={showRoadmap} setShowRoadmap={setShowRoadmap} openRoadmapModal={openRoadmapModal} setOpenRoadmapModal={setOpenRoadmapModal} handleRoadmapClick={handleRoadmapClick} handleRoadmapContactDrawer={handleRoadmapContactDrawer}  />}
+
+			{/* Roadmap Contact drawer */}
+			{roadmapContactDrawerOpen && (<RoadmapContact roadmapContactDrawerOpen={roadmapContactDrawerOpen} handleRoadmapContactDrawer={handleRoadmapContactDrawer} />)}
 		</div >
 	);
 }

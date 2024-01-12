@@ -23,10 +23,10 @@ interface RoadmapModalProps {
     openRoadmapModal: boolean;
     setOpenRoadmapModal: (openRoadmapModal: boolean) => void;
     handleRoadmapClick: (openRoadmapModal: boolean) => void;
-    handleContactUsDrawer: (contactUsDrawerOpen: boolean) => void;
+    handleRoadmapContactDrawer: (roadmapContactDrawerOpen: boolean) => void;
 }
 
-const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap, openRoadmapModal, setOpenRoadmapModal, handleRoadmapClick, handleContactUsDrawer }) => {
+const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap, openRoadmapModal, setOpenRoadmapModal, handleRoadmapClick, handleRoadmapContactDrawer }) => {
 
     const [spinner, setSpinner] = useRecoilState(spinnerState);
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -46,7 +46,7 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
     };
     const handleContactNow = () => {
         setOpenRoadmapModal(false);
-        handleContactUsDrawer(true);
+        handleRoadmapContactDrawer(true);
     };
     const handleImageLoad = () => {
         setImageLoaded(true);

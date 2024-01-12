@@ -4,7 +4,7 @@ import { RouteConstants } from "./constants";
 import { useRecoilValue } from "recoil";
 import { authState } from './states';
 import StoryDetailsContainer from './containers/StoryDetailsContainer';
-import spinnerGif from './utils/images/spinnerGIF.gif'
+import { Spinner } from "./components/ui/spinner/Spinner";
 
 interface ProtectedRouteProps {
     auth: any;
@@ -30,16 +30,17 @@ const Router = () => {
 
     return (
         <Suspense fallback={
-            <div className="wrapper">
-                <div className="overlay d-flex justify-content-center align-items-center">
-                    {/* <div className="spinner-wrapper w-100">
-                        <div className="spinner-border spinner-size" role="status" />
-                    </div> */}
-                    <div className="w-100">
-                        <img src={spinnerGif} alt="spinner" style={{width: '10rem', height: '10rem'}} />
-                    </div>
-                </div>
-            </div>
+            <Spinner />
+            // <div className="wrapper">
+            //     <div className="overlay d-flex justify-content-center align-items-center">
+            //         {/* <div className="spinner-wrapper w-100">
+            //             <div className="spinner-border spinner-size" role="status" />
+            //         </div> */}
+            //         <div className="w-100">
+            //             <img src={spinnerGif} alt="spinner" style={{width: '10rem', height: '10rem'}} />
+            //         </div>
+            //     </div>
+            // </div>
         }>
             <Routes>
                 <Route path={RouteConstants.login} element={<Login />} />
