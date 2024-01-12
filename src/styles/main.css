@@ -54,7 +54,9 @@
 .color-black {
     color: var(--black-0);
 }
-
+.color-black-15 {
+    color: var(--black-15);
+}
 .color-purple {
     color: var(--purple-0);
 }
@@ -161,6 +163,9 @@ ul {
 .data-card {
     border-radius: 0.5rem;
     border: 1px solid var(--black-1);
+}
+.hr-border {
+    border-top: 3px solid rgba(17, 24, 39, 0.10);
 }
 
 /* modal width & height */

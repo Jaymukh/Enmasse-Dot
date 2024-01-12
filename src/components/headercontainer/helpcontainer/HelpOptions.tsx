@@ -26,7 +26,6 @@ const HelpOptions = () => {
 	const [overlay, setOverlay] = useRecoilState(overlayState);
 	const setShow = useSetRecoilState(helpState);
 	const [contactUsDrawerOpen, setContactUsDrawerOpen] = useState(false);
-	// const [roadmapDrawerOpen, setRoadmapDrawerOpen] = useState(false);	
 	const [roadmapContactDrawerOpen, setRoadmapContactDrawerOpen] = useState(false);
 
     const [openRoadmapModal, setOpenRoadmapModal] = useState(false);
