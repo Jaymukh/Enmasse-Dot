@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import React, { useEffect, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 
 // CSS
@@ -38,8 +38,10 @@ function MapContainer() {
         }
     }
 
+    const mapFeatures = useRecoilValue(mapFeatureState);
     const [searchParams, setSearchParams] = useSearchParams(getSearchParams());
-    const [breadcrumbList, setBreadcrumbList] = useState<BreadcrumbItem[]>([{ key: 'country', geo_id: 1, label: 'India', link: '?&country=1' }])
+    const [breadcrumbList, setBreadcrumbList] = useState<BreadcrumbItem[]>([{ key: 'country', geo_id: 1, label: 'India', link: '?&country=1' }]);
+    const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
 
     const getSelectedObject = () => {
         const params: Record<string, string> = {};
@@ -128,6 +130,7 @@ function MapContainer() {
             setGeoJSON(data);
             setSpinner(false);
             fetchMapCircles(geo_id);
+            fetchFeaturedStories(geo_id);            
         }).catch(error => {
             setSpinner(false);
             errorHandler(error);
@@ -185,18 +188,18 @@ function MapContainer() {
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.district);
             // fetchMapCircles(selected.district);
-            fetchFeaturedStories(selected.district);
+            // fetchFeaturedStories(selected.district);
             mapServices?.getCifData(selected.district);
         } else if (selected.state) {
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.state);
             // fetchMapCircles(selected.state);
-            fetchFeaturedStories(selected.state);
+            // fetchFeaturedStories(selected.state);
             mapServices?.getCifData(selected.state);
         } else if (selected.country) {
             fetchGeoJsonData(selected.country);
             // fetchMapCircles(selected.country);
-            fetchFeaturedStories(selected.country);
+            // fetchFeaturedStories(selected.country);
             mapServices?.getCifData(selected.country);
         }
     }, [selected.country, selected.state, selected.district]);
@@ -222,6 +225,8 @@ function MapContainer() {
                     updateSelected={updateSelected}
                     breadcrumbs={breadcrumbList}
                     handleBreadcrumbClick={handleBreadcrumbClick}
+                    isChecked={isChecked}
+                    setIsChecked={setIsChecked}
                 />
             )}
         </div>

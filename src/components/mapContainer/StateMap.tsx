@@ -31,13 +31,17 @@ interface StateMapProps {
     updateSelected: (key: string, value: any) => void;
     breadcrumbs: BreadcrumbItem[];
     handleBreadcrumbClick: (item: BreadcrumbItem, index: number) => void;
+    isChecked: any;
+    setIsChecked: (isChecked: any) => void;
 }
 
 const StateMap: React.FC<StateMapProps> = ({
     selected,
     updateSelected,
     breadcrumbs,
-    handleBreadcrumbClick
+    handleBreadcrumbClick,
+    isChecked,
+    setIsChecked
 }) => {
     const mapRef = useRef(null);
     const mapServices = useMapsService();
@@ -47,7 +51,6 @@ const StateMap: React.FC<StateMapProps> = ({
     const [coreSolutions, setCoreSolutions] = useState<Option[]>([]);
     const [selectedCoreSoln, setSelectedCoreSoln] = useState<Option>();
     const [focused, setFocused] = useState(0);
-    const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
 
@@ -69,14 +72,45 @@ const StateMap: React.FC<StateMapProps> = ({
         clickableIcons: true,
     };
 
+    // function to find object which has geoName and geoId
+    interface FeatureObject {
+        [key: string]: any;
+    }
+    const findObject = (obj: FeatureObject): FeatureObject | null => {
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                if (typeof obj[key] === 'object' && obj[key] !== null) {
+                    // Recursively search in nested objects
+                    const result = findObject(obj[key]);
+                    if (result) {
+                        return result;
+                    }
+                } else if (
+                    key === 'id' &&
+                    typeof obj[key] === 'number' &&
+                    obj.hasOwnProperty('Name') &&
+                    typeof obj['Name'] === 'string' &&
+                    obj.hasOwnProperty('region') &&
+                    typeof obj['region'] === 'string' &&
+                    obj.hasOwnProperty('Color') &&
+                    typeof obj['Color'] === 'string'
+                ) {
+                    // Check if the object matches the desired structure
+                    return obj;
+                }
+            }
+        }
+        return null; // Return null if no match is found
+    };
+
     const onClickMapFeature = (feature: any) => {
-        console.log(feature);
+        const desiredObject = findObject(feature);
         if (selected.district) {
             return;
         } else if (selected.state) {
-            updateSelected('district', feature?.id);
+            updateSelected('district', desiredObject?.id);
         } else if (selected.country) {
-            updateSelected('state', feature?.id);
+            updateSelected('state', desiredObject?.id);
         }
     }
 
@@ -128,8 +162,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 map.data.remove(feature);
             });
             map.data.addGeoJson(geoJSON);
-            // map.data.addListener('click', (event: any) => onClickMapFeature(event?.feature?.Ig));
-            map.data.addListener('click', (event: any) => onClickMapFeature(event?.feature?.h));
+            map.data.addListener('click', (event: any) => onClickMapFeature(event.feature));
 
             map.data.setStyle((feature) => {
                 const fillColor = feature.getProperty('Color');
@@ -204,10 +237,10 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [selected.country, selected.state, selected.district]);
 
     useEffect(() => {
-        if (mapFeatures.featuredStories?.featuredStories?.length > 0 ) {
+        if (mapFeatures.featuredStories?.featuredStories?.length > 0) {
             setIsChecked({ ...isChecked, viewStories: true });
         }
-    }, [mapFeatures.featuredStories]);
+    }, [map, mapFeatures.featuredStories, isChecked.viewStories]);
 
 
     return (
@@ -243,6 +276,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                     {mapFeatures.featuredStories?.featuredStories && isChecked?.viewStories && Object.keys(geoJSON).length && (
                                         mapFeatures.featuredStories?.featuredStories?.map((feature: any, index: number) => (
                                             <InfoWindow
+                                                key={index}
                                                 position={{
                                                     lng: feature.properties.geometry.coordinates[0],
                                                     lat: feature.properties.geometry.coordinates[1]
