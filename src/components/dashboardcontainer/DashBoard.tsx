@@ -28,7 +28,7 @@ const DashBoard = () => {
     const mapFeatures = useRecoilValue(mapFeatureState);
     const geoCode = searchParams.get('geo_code');
 
-    const [selected, setSelected] = useState<CoreSolutionByEH | undefined>(cifData?.coreSolutionsData?.coreSolutionsByEH![0] || []);
+    const [selected, setSelected] = useState<CoreSolutionByEH | undefined>(cifData?.coreSolutionsData?.coreSolutionsByEH && cifData?.coreSolutionsData?.coreSolutionsByEH![0] || []);
 
     const handleTabClick = (item: CoreSolutionByEH) => {
         setSelected(item);

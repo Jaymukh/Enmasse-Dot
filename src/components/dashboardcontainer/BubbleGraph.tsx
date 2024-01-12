@@ -147,9 +147,9 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 					</div>
 				</div>
 				<div className='d-flex justify-content-center align-items-center h-auto w-auto bubble-chart-container'>
-					{coreSolutionsData?.coreSolutionsByEH?.length > 0 ?
-						<HighchartsReact highcharts={Highcharts} options={option} />
-						: <NoVisualData displayImage={true} size='large' />
+					{coreSolutionsData?.coreSolutionsByEH?.length === 0 ?
+						<NoVisualData displayImage={true} size='large' /> 
+						: <HighchartsReact highcharts={Highcharts} options={option} />
 					}
 				</div>
 			</Card>
