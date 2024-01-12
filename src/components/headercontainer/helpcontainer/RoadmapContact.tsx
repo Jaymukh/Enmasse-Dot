@@ -11,7 +11,7 @@ import { Heading, TypographyType, TypographyColor } from '../../ui/typography/He
 import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import { Input } from '../../ui/input/Input';
 import Drawer from '../../ui/Drawer';
-import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
+import { loggedUserState, User, spinnerState, errorState } from "../../../states";
 
 // Utilities
 import { useCIFService } from '../../../services';
@@ -25,11 +25,9 @@ interface RoadmapContactProps {
 
 export default function RoadmapContact({ roadmapContactDrawerOpen, handleRoadmapContactDrawer }: RoadmapContactProps) {
     const loggedUser = useRecoilValue<User>(loggedUserState);
-    const geoJSON = useRecoilValue(geoJsonState)
     const cifService = useCIFService();
     const setSpinner = useSetRecoilState(spinnerState);
     const setError = useSetRecoilState(errorState);
-    // const location = geoJSON?.rootProperties?.Name + geoJSON?.rootProperties?.id + geoJSON?.rootProperties?.region;
 
     const [payloadData, setPayloadData] = useState
         <{ email_id: string, name: string, company: string, message: string, purpose: string }>

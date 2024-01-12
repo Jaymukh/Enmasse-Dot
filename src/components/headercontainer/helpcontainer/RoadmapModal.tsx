@@ -1,6 +1,6 @@
 
 // External libraries
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 // CSS
 import '../../../styles/main.css';
@@ -11,7 +11,6 @@ import { Heading, TypographyColor, TypographyType } from '../../ui/typography/He
 import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import Modal from '../../ui/modal/Modal';
 import { spinnerState } from '../../../states';
-import { Spinner } from '../../ui/spinner/Spinner';
 
 // Utilities
 import * as Constants from '../../../utils/constants/Constants';
@@ -26,9 +25,9 @@ interface RoadmapModalProps {
     handleRoadmapContactDrawer: (roadmapContactDrawerOpen: boolean) => void;
 }
 
-const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap, openRoadmapModal, setOpenRoadmapModal, handleRoadmapClick, handleRoadmapContactDrawer }) => {
+const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap, openRoadmapModal, setOpenRoadmapModal, handleRoadmapContactDrawer }) => {
 
-    const [spinner, setSpinner] = useRecoilState(spinnerState);
+    const setSpinner = useSetRecoilState(spinnerState);
     const [imageLoaded, setImageLoaded] = useState(false);
 
     const nextRoadmap = () => {

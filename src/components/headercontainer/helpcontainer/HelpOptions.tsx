@@ -8,7 +8,6 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import '../../../styles/main.css';
 
 // Components
-import WIPDrawer from '../../mapContainer/WIPDrawer';
 import ContactUs from './ContactUs';
 import OverlayModal from './OverlayModal';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/Button';
@@ -32,17 +31,6 @@ const HelpOptions = () => {
 
     const [openRoadmapModal, setOpenRoadmapModal] = useState(false);
 	const [showRoadmap, setShowRoadmap] = useState(1);
-	const [text, setText] = useState('');
-
-	// const closeWIPDrawer = () => {
-	// 	setRoadmapDrawerOpen(false);
-	// 	setText('');
-	// };
-
-	// const openWIPDrawer = (title: string) => {
-	// 	setText(title);
-	// 	setRoadmapDrawerOpen(true);
-	// }
 
 	const handleRoadmapContactDrawer = (roadmapContactDrawerOpen: boolean) => {
 		setRoadmapContactDrawerOpen(roadmapContactDrawerOpen);
@@ -126,9 +114,6 @@ const HelpOptions = () => {
 			}
 			{/* drawer for contact us */}
 			{contactUsDrawerOpen && (<ContactUs contactUsDrawerOpen={contactUsDrawerOpen} handleContactUsDrawer={handleContactUsDrawer} />)}
-
-			{/* drawer for roadmap */}
-			{/* {roadmapDrawerOpen && <WIPDrawer open={roadmapDrawerOpen} title={text} closeWIPDrawer={closeWIPDrawer} />} */}
 
 			{/* modal for Help */}
 			{overlay && <OverlayModal handleContactUsDrawer={handleContactUsDrawer} />}

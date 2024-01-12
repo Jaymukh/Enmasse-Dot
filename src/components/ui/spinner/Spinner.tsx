@@ -10,9 +10,6 @@ export const Spinner = () => {
             {spinner &&
                 <div className="spinner-wrapper1">
                     <div className="spinner-overlay1 d-flex justify-content-center align-items-center">
-                        {/* <div className="spinner-wrapper w-100">
-                            <div className="spinner-border spinner-size" role="status" />
-                        </div> */}
                         <div className="w-100">
                             <img src={spinnerGif} alt="spinner" className="spinner-size" />
                         </div>
