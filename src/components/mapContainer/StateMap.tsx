@@ -76,12 +76,12 @@ const StateMap: React.FC<StateMapProps> = ({
     interface FeatureObject {
         [key: string]: any;
     }
-    const findObject = (obj: FeatureObject): FeatureObject | null => {
+    const findRegionObject = (obj: FeatureObject): FeatureObject | null => {
         for (const key in obj) {
             if (obj.hasOwnProperty(key)) {
                 if (typeof obj[key] === 'object' && obj[key] !== null) {
                     // Recursively search in nested objects
-                    const result = findObject(obj[key]);
+                    const result = findRegionObject(obj[key]);
                     if (result) {
                         return result;
                     }
@@ -104,15 +104,15 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     const onClickMapFeature = (feature: any) => {
-        const desiredObject = findObject(feature);
+        const clickedRegion = findRegionObject(feature);
         if (selected.district) {
             return;
         } else if (selected.state) {
-            updateSelected('district', desiredObject?.id);
+            updateSelected('district', clickedRegion?.id);
         } else if (selected.country) {
-            updateSelected('state', desiredObject?.id);
+            updateSelected('state', clickedRegion?.id);
         }
-    }
+    };
 
     const toggleSwitch = (event?: React.ChangeEvent<HTMLInputElement>) => {
         const name: string = event?.target?.name!;
@@ -237,10 +237,10 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [selected.country, selected.state, selected.district]);
 
     useEffect(() => {
-        if (mapFeatures.featuredStories?.featuredStories?.length > 0) {
-            setIsChecked({ ...isChecked, viewStories: true });
+        if (mapFeatures.featuredStories?.featuredStories?.length === 0) {
+            setIsChecked({ ...isChecked, viewStories: false });
         }
-    }, [map, mapFeatures.featuredStories, isChecked.viewStories]);
+    }, [map, mapFeatures.featuredStories]);
 
 
     return (

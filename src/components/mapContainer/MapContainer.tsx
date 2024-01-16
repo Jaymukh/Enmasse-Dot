@@ -41,7 +41,7 @@ function MapContainer() {
     const mapFeatures = useRecoilValue(mapFeatureState);
     const [searchParams, setSearchParams] = useSearchParams(getSearchParams());
     const [breadcrumbList, setBreadcrumbList] = useState<BreadcrumbItem[]>([{ key: 'country', geo_id: 1, label: 'India', link: '?&country=1' }]);
-    const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: false });
+    const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: true });
 
     const getSelectedObject = () => {
         const params: Record<string, string> = {};

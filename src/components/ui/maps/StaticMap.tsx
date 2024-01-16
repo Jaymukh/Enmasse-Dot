@@ -8,7 +8,7 @@ import { errorState, geoJsonState, spinnerState, storiesState } from '../../../s
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 import markerPurple from '../../../utils/images/Location pin-purple-01.svg';
-import markerGrey from '../../../utils/images/location-gray.svg';
+import markerGrey from '../../../utils/images/Location pin-gray-01.svg';
 import { rollbar } from '../../../constants';
 
 interface StaticMapProps {
