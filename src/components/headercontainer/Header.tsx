@@ -14,7 +14,7 @@ import HelpOptions from './helpcontainer/HelpOptions';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 
 // Utilities
-import Logo from '../../utils/images/EnmasseDOTSLogo.svg';
+import Logo from '../../utils/images/EPIC logo and intelligence-01.svg';
 import { RouteConstants } from '../../constants';
 
 
@@ -41,7 +41,7 @@ function Header() {
 	return (
 		<div className="d-flex flex-wrap justify-content-between align-items-center border-bottom bg-white w-100" style={{ height: '8.25vh' }} >
 			<div className="d-flex flex-wrap mx-2 align-items-center">
-				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer ms-0' width={218} height={16} />
+				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer ms-0' width={230} height={40} />
 			</div>
 			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
 				<ExploreNow />
