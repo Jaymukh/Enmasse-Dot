@@ -54,7 +54,8 @@ function useFetchWrapper() {
                         localStorage.setItem('user', JSON.stringify(updatedAuth));
                         config.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     } catch (error: any) {
-                        const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                        const errorMsg = error?.response?.data?.message;
+                        // const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                         setError({ type: 'Error', message: errorMsg });
                         rollbar.error(error);
                         localStorage.removeItem('user');

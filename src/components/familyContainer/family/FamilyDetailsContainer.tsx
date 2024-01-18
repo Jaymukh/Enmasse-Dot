@@ -80,7 +80,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                                 Family members
                             </Body>
                         </div>
-                        <div className="d-flex flex-row justify-content-center align-items-center">
+                        {/* <div className="d-flex flex-row justify-content-center align-items-center">
                             <Heading
                                 title={getCurrencyWithSymbol(selectedData?.familyDetails?.householdSpend, selectedData?.familyDetails?.spendUOM)}
                                 type={TypographyType.h5}
@@ -122,7 +122,7 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                                 classname='m-0'>
                                 Household Income
                             </Body>
-                        </div >
+                        </div > */}
                     </div >
                     <div className="card-body text-start">
                         {selectedData?.image && selectedData?.image[0] &&

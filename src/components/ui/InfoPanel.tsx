@@ -12,24 +12,24 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
     const menuRef = useRef<HTMLDivElement | null>(null);
     const [showPopup, setShowPopup] = useState(false);
     const [popupStyle, setPopupStyle] = useState<{ left: number | string; right: number | string; width: any; transform?: string; }>({ left: '', right: '', width: 192 });
-    const [infoText, setInfoText] = useState('');
-    const [showMore, setShowMore] = useState(false);
+    // const [infoText, setInfoText] = useState('');
+    // const [showMore, setShowMore] = useState(false);
 
     const handlePopup = () => {
-        if (text) {
-            const charLimit = 50;
-            if (text?.length > charLimit) {
-                const shortText = text?.slice(0, charLimit) + '...';
-                setInfoText(shortText);
-                setShowMore(true);
-            }
-            else {
-                setInfoText(text);
-            }
-        }
-        else {
-            setInfoText('Info text');
-        }
+        // if (text) {
+        //     const charLimit = 50;
+        //     if (text?.length > charLimit) {
+        //         const shortText = text?.slice(0, charLimit) + '...';
+        //         setInfoText(shortText);
+        //         setShowMore(true);
+        //     }
+        //     else {
+        //         setInfoText(text);
+        //     }
+        // }
+        // else {
+        //     setInfoText('Info text');
+        // }
         // Determine the position of the info button
         const popupWidth = 192;
         const infoButtonPosition = menuRef.current?.getBoundingClientRect();
@@ -69,10 +69,10 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
         };
     }, []);
 
-    const handleReadMore = () => {
-        setInfoText(text);
-        setShowMore(false);
-    }
+    // const handleReadMore = () => {
+    //     setInfoText(text);
+    //     setShowMore(false);
+    // }
 
     return (
         <div className="info-container" ref={menuRef}>
@@ -84,8 +84,8 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
             </div>
             {showPopup && (
                 <div className={`popup ${classname}`} style={{ ...popupStyle }}>
-                    <p className='m-0 text-start info-text-wrap' dangerouslySetInnerHTML={{ __html: infoText }} />
-                    {showMore
+                    <p className='m-0 text-start info-text-wrap' dangerouslySetInnerHTML={{ __html: text }} />
+                    {/* {showMore
                         &&
                         <Button
                             theme={ButtonTheme.primary}
@@ -96,7 +96,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                         >
                             Read More
                         </Button>
-                    }
+                    } */}
                 </div>
             )}
         </div>
