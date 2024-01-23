@@ -92,7 +92,7 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
                                 </Button>}
                         </div>
                     </div>
-                    <div className='d-flex flex-row justify-content-between align-items-center mb-2 mx-3'>
+                    <div className='d-flex flex-row justify-content-between align-items-center mb-2 mx-3 ps-5 pe-2'>
                         <Body
                             type={BodyType.p2}
                             color={BodyColor.dark}
