@@ -9,6 +9,8 @@ import './styles/main.css';
 import { Spinner } from './components/ui/spinner/Spinner';
 import Toast from './components/ui/toast/Toast';
 import { Provider, ErrorBoundary } from '@rollbar/react';
+import { useEffect } from 'react';
+import ReactGA from 'react-ga';
 
 
 function App() {
@@ -19,6 +21,10 @@ function App() {
 		captureUncaught: true,
 		captureUnhandledRejections: true,
 	};
+
+	useEffect(() => {
+		ReactGA.initialize('G-X0L51SRSXG');
+	  }, []);
 
 	return (
 		<div className="App">

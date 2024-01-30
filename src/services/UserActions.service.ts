@@ -8,6 +8,7 @@ import { authState, loggedUserState, usersState, spinnerState, overlayState, err
 // Utilities
 import { APIS, RouteConstants, rollbar } from '../constants';
 import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
+import ReactGA from 'react-ga';
 
 
 const useUserService = () => {
@@ -46,6 +47,10 @@ const useUserService = () => {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
                 rollbar.error(error);
+                ReactGA.exception({
+                    description: errorMsg,
+                    fatal: false, // Set to true for fatal errors
+                  });
             });
 
     }

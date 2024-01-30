@@ -56,7 +56,7 @@ function useFetchWrapper() {
                     } catch (error: any) {
                         const errorMsg = error?.response?.data?.message;
                         // const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
-                        setError({ type: 'Error', message: errorMsg });
+                        // setError({ type: 'Error', message: errorMsg });
                         rollbar.error(error);
                         localStorage.removeItem('user');
                         setAuth({});
