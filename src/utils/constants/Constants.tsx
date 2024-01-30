@@ -63,33 +63,33 @@ export interface RoadmapContent {
 
 export const roadmapContent: RoadmapContent[] = [
     {
-        title: 'Bring data',
-        description: 'Entrepreneurial households represent households with its members engaged in opportunities of potential growth and economic activities',
+        title: 'Bring your own data',
+        description: 'Visualise your company’s presence on the map and compare it with the growth of other points of interest.',
         image: BringData,
     },
     {
-        title: 'District',
-        description: 'Coverage depicts the total count of regions (states/districts) evaluated by enmasse team.',
+        title: 'Increased Coverage',
+        description: 'We would be expanding our coverage to provide insights on 400 districts in India in 2024.',
         image: District,
     },
     {
-        title: 'Download data',
-        description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+        title: 'Download Data',
+        description: 'We will offer you the ability to download data from the platform and mould it as per your requirements',
         image: DownloadData,
     },
     {
         title: 'Layers',
-        description: 'Coverage depicts the total count of regions (states/districts) evaluated by enmasse team.',
+        description: 'We will be introducing more insightful layers to your platform in 2024.',
         image: Layers,
     },
     {
-        title: 'YoY Refresh',
-        description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+        title: 'Data Refresh',
+        description: 'We intend to have the first time comparison in the platform, allowing you to map EH growth',
         image: YoyRefresh,
     },
     {
-        title: 'Need to contact us?',
-        description: 'Stories provide an insight into the lifestyle, expenses and aspirations of the family housed in that region of interest.',
+        title: 'Contact Us',
+        description: 'Would you like a feature to be included in this platform? Tell us how we can support you better.',
         image: YoyRefresh,
     }
 ];
