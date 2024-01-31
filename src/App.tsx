@@ -23,7 +23,7 @@ function App() {
 	};
 
 	useEffect(() => {
-		ReactGA.initialize('G-X0L51SRSXG');
+		ReactGA.initialize('UA-300704168-1');
 	  }, []);
 
 	return (
