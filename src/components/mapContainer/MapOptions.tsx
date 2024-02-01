@@ -69,16 +69,16 @@ function MapOptions({
                     >
                         Country
                     </Body>
-                    {/* <Button
+                    <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
-                        // onClick={handleCountryChange}
+                        onClick={handleCountryChange}
                         classname='h-auto text-start ps-2 py-0 mb-0'
                     >
                         {!global ? 'Select' : 'India'}
-                    </Button> */}
-                    <Select
+                    </Button>
+                    {/* <Select
                         options={country}
                         value={1}
                         labelKey='name'
@@ -87,7 +87,7 @@ function MapOptions({
                         placeholder='Select'
                         classname='text-start'
                         disabled={true}
-                    />
+                    /> */}
                 </div>
                 {global && selected.country ? (
                     <div className='select-right-margin py-0 h-100 d-flex flex-column justify-content-center'>

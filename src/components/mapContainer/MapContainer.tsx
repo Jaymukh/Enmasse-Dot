@@ -62,7 +62,7 @@ function MapContainer() {
     }
 
     const handleCountryChange = () => {
-        setGlobal(!global);
+        // setGlobal(!global);
         // setTimeout(() => {
         //     navigate(global ? `${RouteConstants.explore}?country=1` : RouteConstants.root);
         // });
