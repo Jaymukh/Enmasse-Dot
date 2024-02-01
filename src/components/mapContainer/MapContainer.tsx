@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import React, { useEffect, useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilSnapshot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 
 // CSS
@@ -130,7 +130,7 @@ function MapContainer() {
             setGeoJSON(data);
             setSpinner(false);
             fetchMapCircles(geo_id);
-            fetchFeaturedStories(geo_id);            
+            fetchFeaturedStories(geo_id);
         }).catch(error => {
             setSpinner(false);
             errorHandler(error);
@@ -166,6 +166,10 @@ function MapContainer() {
     };
 
     useEffect(() => {
+        setSelected({ country: searchParams.get('country'), state: searchParams.get('state'), district: searchParams.get('district') });
+    }, [searchParams.get('country'), searchParams.get('state'), searchParams.get('district')])
+
+    useEffect(() => {
         if (selected) {
             const currentParams = new URLSearchParams();
             for (const key in selected) {
@@ -187,19 +191,13 @@ function MapContainer() {
         if (selected.district) {
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.district);
-            // fetchMapCircles(selected.district);
-            // fetchFeaturedStories(selected.district);
             mapServices?.getCifData(selected.district);
         } else if (selected.state) {
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.state);
-            // fetchMapCircles(selected.state);
-            // fetchFeaturedStories(selected.state);
             mapServices?.getCifData(selected.state);
         } else if (selected.country) {
             fetchGeoJsonData(selected.country);
-            // fetchMapCircles(selected.country);
-            // fetchFeaturedStories(selected.country);
             mapServices?.getCifData(selected.country);
         }
     }, [selected.country, selected.state, selected.district]);

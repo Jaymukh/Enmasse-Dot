@@ -84,16 +84,23 @@
 }
 
 .secondary {
-    color: var(--grey-0); /*dark gray */
+    color: var(--grey-0);
+    /*dark gray */
 }
 
 .muted {
-    color: var(--black-6); /*lightgray*/
+    color: var(--black-6);
+    /*lightgray*/
 }
+
 .warning {
     color: var(--warning-0);
 }
 
 .purple {
     color: var(--purple-0);
+}
+
+.cursor_pointer {
+    cursor: pointer;
 }

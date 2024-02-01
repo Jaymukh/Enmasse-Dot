@@ -16,12 +16,14 @@ import { errorState, spinnerState, mapFeatureState } from '../../states';
 
 // Utilities
 import WorkInProgressImage from '../../utils/images/WIP-FINAL.svg';
-import { rollbar } from '../../constants';
+import { RouteConstants, rollbar } from '../../constants';
 import { useMapsService } from '../../services';
+import { useNavigate } from 'react-router-dom';
 
 
 const ExploreNow = () => {
 	const mapsService = useMapsService();
+	const navigate = useNavigate();
 	const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
 	const setSpinner = useSetRecoilState(spinnerState);
 	const setError = useSetRecoilState(errorState);
@@ -62,8 +64,6 @@ const ExploreNow = () => {
 		}
 	}
 
-
-
 	const handleCloseSelected = (index: number) => {
 		const objKeys: Array<keyof typeof selectedValue> = ['state', 'district'];
 		setSelectedValue({ ...selectedValue, [objKeys[index]]: '' });
@@ -98,9 +98,19 @@ const ExploreNow = () => {
 			setSearchTerm('');
 		}
 	}
+
 	const handleViewAvailableStates = () => {
 		setHasData(true);
 		setSuggestions(mapFeatures.suggestions);
+	}
+
+	const handleClick = (state_id: number, district_id?: number) => {
+		
+		const search = district_id ? `?country=1&state=${state_id}&district=${district_id}` : `?country=1&state=${state_id}`;
+		navigate({
+			pathname: RouteConstants.root,
+			search: search,
+		});
 	}
 
 	return (
@@ -180,6 +190,7 @@ const ExploreNow = () => {
 												type={TypographyType.h4}
 												colour={TypographyColor.dark}
 												classname='text-start'
+												onClick={() => handleClick(item.geo_id)}
 											/>
 											<hr className='mt-0'></hr>
 											<div className='row m-0 p-0'>
@@ -189,7 +200,10 @@ const ExploreNow = () => {
 															type={BodyType.p1}
 															color={BodyColor.purple}
 															classname='col-4 text-start mb-1 p-0'
-															key={district.geo_id}>{district.geo_value}
+															key={district.geo_id}
+															onClick={() => handleClick(item.geo_id, district.geo_id)}
+														>
+															{district.geo_value}
 														</Body>
 													)))}
 											</div>
