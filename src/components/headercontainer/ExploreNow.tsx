@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { MdOutlineTravelExplore } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 // CSS
 import '../../styles/main.css';
@@ -10,6 +11,7 @@ import '../../styles/main.css';
 import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
+import { SpinnerLite } from '../ui/spinner/SpinnerLite';
 import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
 import { errorState, spinnerLiteState, mapFeatureState } from '../../states';
@@ -18,11 +20,6 @@ import { errorState, spinnerLiteState, mapFeatureState } from '../../states';
 import WorkInProgressImage from '../../utils/images/WIP-FINAL.svg';
 import { RouteConstants, rollbar } from '../../constants';
 import { useMapsService } from '../../services';
-<<<<<<< HEAD
-import { useNavigate } from 'react-router-dom';
-=======
-import { SpinnerLite } from '../ui/spinner/SpinnerLite';
->>>>>>> ec5cfb75054a5244df0fb2de611d56dfcc3ea235
 
 
 const ExploreNow = () => {
