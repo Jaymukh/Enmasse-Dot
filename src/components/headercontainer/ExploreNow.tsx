@@ -186,38 +186,6 @@ const ExploreNow = () => {
 						/>
 					</div>
 					{hasData ?
-<<<<<<< HEAD
-						<div className='my-2 position-inherit' style={{ maxHeight: '52vh', overflowY: 'auto', overflowX: 'hidden', minHeight: '52vh' }}>
-							<div>
-								{results?.map((item: any) => (
-									(item.has_data &&
-										<div key={item.geo_id} className='my-2'>
-											<Heading
-												title={item.geo_value}
-												type={TypographyType.h4}
-												colour={TypographyColor.dark}
-												classname='text-start'
-												onClick={() => handleClick(item.geo_id)}
-											/>
-											<hr className='mt-0'></hr>
-											<div className='row m-0 p-0'>
-												{item.children.map((district: any) => (
-													(item.has_data
-														&& <Body
-															type={BodyType.p1}
-															color={BodyColor.purple}
-															classname='col-4 text-start mb-1 p-0'
-															key={district.geo_id}
-															onClick={() => handleClick(item.geo_id, district.geo_id)}
-														>
-															{district.geo_value}
-														</Body>
-													)))}
-											</div>
-										</div>)
-								))}
-							</div>
-=======
 						<div className='my-2 d-flex justify-content-center align-items-center' style={{ maxHeight: '52vh', overflowY: 'auto', overflowX: 'hidden', minHeight: '52vh', width: '58vw' }}>
 							{ spinnerLite 
 								? <SpinnerLite /> 
@@ -230,6 +198,7 @@ const ExploreNow = () => {
 													type={TypographyType.h4}
 													colour={TypographyColor.dark}
 													classname='text-start'
+													onClick={() => handleClick(item.geo_id)}
 												/>
 												<hr className='mt-0'></hr>
 												<div className='row m-0 p-0'>
@@ -240,6 +209,7 @@ const ExploreNow = () => {
 																color={BodyColor.purple}
 																classname='col-4 text-start mb-1 p-0'
 																key={district.geo_id}>{district.geo_value}
+																onClick={() => handleClick(item.geo_id, district.geo_id)}
 															</Body>
 														)))}
 												</div>
@@ -247,7 +217,6 @@ const ExploreNow = () => {
 									))}
 								</div>
 							}
->>>>>>> ec5cfb75054a5244df0fb2de611d56dfcc3ea235
 						</div> :
 						<div className='d-flex justify-content-center align-items-center'>
 							<div className="mx-4 mt-4 mb-0 d-flex flex-column justify-content-center align-items-center" style={{ width: '23rem' }}>
