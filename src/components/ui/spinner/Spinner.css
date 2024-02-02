@@ -6,11 +6,8 @@
     top: 0;
     left: 0;
     position: fixed;
-    /* opacity: 0.35; */
-    /* backdrop-filter: blur(10px); */
     background: var(--purple-0);
     z-index: 9999;
-    /* z-index: 1050; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,12 +15,6 @@
 
 .spinner-overlay1 {
     position: absolute;
-    /* opacity: 1; */
-    /* top: 50%;
-    left: 50%;
-    margin: -25px 0 0 -25px; */
-    /* z-index: 1050; */
-    /* z-index: 2000; */
 }
 
 .spinner-size {
@@ -32,3 +23,25 @@
    opacity: 1;   
    z-index: 9999;
 }
+
+/* spinner lite */
+
+.spinner-lite-wrapper {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: relative;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner-lite-overlay {
+    position: absolute; 
+    height: 80%;
+    width: 80%; 
+}
+
+

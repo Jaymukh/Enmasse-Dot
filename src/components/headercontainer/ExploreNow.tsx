@@ -12,18 +12,19 @@ import { Heading, TypographyColor, TypographyType } from '../ui/typography/Headi
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import Search from '../ui/search/Search';
 import Modal from '../ui/modal/Modal';
-import { errorState, spinnerState, mapFeatureState } from '../../states';
+import { errorState, spinnerLiteState, mapFeatureState } from '../../states';
 
 // Utilities
 import WorkInProgressImage from '../../utils/images/WIP-FINAL.svg';
 import { rollbar } from '../../constants';
 import { useMapsService } from '../../services';
+import { SpinnerLite } from '../ui/spinner/SpinnerLite';
 
 
 const ExploreNow = () => {
 	const mapsService = useMapsService();
 	const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
-	const setSpinner = useSetRecoilState(spinnerState);
+	const [spinnerLite, setSpinnerLite] = useRecoilState(spinnerLiteState);
 	const setError = useSetRecoilState(errorState);
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const [results, setResults] = useState<any>(mapFeatures.suggestions);
@@ -76,7 +77,7 @@ const ExploreNow = () => {
 	const handleModalOpen = (flag: boolean) => {
 		setShowModal(flag);
 		if (flag === true) {
-			setSpinner(true);
+			setSpinnerLite(true);
 			mapsService.getExploreNow().then(data => {
 				setMapFeatures(prevMapFeatures => ({
 					...prevMapFeatures,
@@ -84,9 +85,9 @@ const ExploreNow = () => {
 				}));
 				setSuggestions(data);
 				setResults(data);
-				setSpinner(false);
+				setSpinnerLite(false);
 			}).catch(error => {
-				setSpinner(false);
+				setSpinnerLite(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
 				rollbar.error(error);
@@ -115,7 +116,7 @@ const ExploreNow = () => {
 				Explore Now
 			</Button>
 			<Modal showModal={showModal} classname='width-62-5 h-100 m-5 p-1'>
-				<div className='d-flex flex-row justify-content-between mb-2'>
+				<div className='d-flex flex-row justify-content-between mb-2 mx-2'>
 					<Heading
 						title='Explore Now'
 						type={TypographyType.h2}
@@ -129,73 +130,78 @@ const ExploreNow = () => {
 						classname='btn-close'
 					/>
 				</div>
-				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27rem', maxWidth: '60rem' }}>
-					<Body
-						type={BodyType.p2}
-						color={BodyColor.muted}
-						classname='text-start'
-					>
-						Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
-					</Body>
-					<div className='d-flex flex-row justify-content-start my-2'>
-						{Object.values(selectedValue)?.map((item, index) => (
-							item &&
-							(<>
-								<Heading
-									title={item}
-									type={TypographyType.h4}
-									colour={TypographyColor.dark}
-								/>
-								<Button
-									theme={ButtonTheme.dark}
-									variant={ButtonVariant.transparent}
-									onClick={() => handleCloseSelected(index)}
-									type='button'
-									classname='btn-close'
-								/>
-							</>)
-						))}
+				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27vw', maxWidth: '60vw' }}>
+					<div className='mx-2'>
+						<Body
+							type={BodyType.p2}
+							color={BodyColor.muted}
+							classname='text-start'
+						>
+							Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
+						</Body>
+						<div className='d-flex flex-row justify-content-start m-2'>
+							{Object.values(selectedValue)?.map((item, index) => (
+								item &&
+								(<>
+									<Heading
+										title={item}
+										type={TypographyType.h4}
+										colour={TypographyColor.dark}
+									/>
+									<Button
+										theme={ButtonTheme.dark}
+										variant={ButtonVariant.transparent}
+										onClick={() => handleCloseSelected(index)}
+										type='button'
+										classname='btn-close'
+									/>
+								</>)
+							))}
 
+						</div>
+						<Search
+							handleInputChange={handleInputChange}
+							handleSelectValue={handleSelectValue}
+							data={mapFeatures.suggestions}
+							searchTerm={searchTerm}
+							suggestions={suggestions}
+							labelKey='geo_value'
+							valueKey='geo_value'
+							hideSuggestionBox={false}
+							placeholderValue={selectedValue?.state ? 'Search by District' : 'Search by State'}
+							classname='height-3 width-26-625'
+						/>
 					</div>
-					<Search
-						handleInputChange={handleInputChange}
-						handleSelectValue={handleSelectValue}
-						data={mapFeatures.suggestions}
-						searchTerm={searchTerm}
-						suggestions={suggestions}
-						labelKey='geo_value'
-						valueKey='geo_value'
-						hideSuggestionBox={false}
-						placeholderValue={selectedValue?.state ? 'Search by District' : 'Search by State'}
-						classname='height-3 width-26-625'
-					/>
 					{hasData ?
-						<div className='my-2 position-inherit' style={{ maxHeight: '52vh', overflowY: 'auto', overflowX: 'hidden', minHeight: '52vh' }}>
-							<div>
-								{results?.map((item: any) => (
-									(item.has_data &&
-										<div key={item.geo_id} className='my-2'>
-											<Heading
-												title={item.geo_value}
-												type={TypographyType.h4}
-												colour={TypographyColor.dark}
-												classname='text-start'
-											/>
-											<hr className='mt-0'></hr>
-											<div className='row m-0 p-0'>
-												{item.children.map((district: any) => (
-													(item.has_data
-														&& <Body
-															type={BodyType.p1}
-															color={BodyColor.purple}
-															classname='col-4 text-start mb-1 p-0'
-															key={district.geo_id}>{district.geo_value}
-														</Body>
-													)))}
-											</div>
-										</div>)
-								))}
-							</div>
+						<div className='my-2 d-flex justify-content-center align-items-center' style={{ maxHeight: '52vh', overflowY: 'auto', overflowX: 'hidden', minHeight: '52vh', width: '58vw' }}>
+							{ spinnerLite 
+								? <SpinnerLite /> 
+								: <div className='' style={{width: '56.5vw'}}>
+									{results?.map((item: any) => (
+										(item.has_data &&
+											<div key={item.geo_id} className='my-2'>
+												<Heading
+													title={item.geo_value}
+													type={TypographyType.h4}
+													colour={TypographyColor.dark}
+													classname='text-start'
+												/>
+												<hr className='mt-0'></hr>
+												<div className='row m-0 p-0'>
+													{item.children.map((district: any) => (
+														(item.has_data
+															&& <Body
+																type={BodyType.p1}
+																color={BodyColor.purple}
+																classname='col-4 text-start mb-1 p-0'
+																key={district.geo_id}>{district.geo_value}
+															</Body>
+														)))}
+												</div>
+											</div>)
+									))}
+								</div>
+							}
 						</div> :
 						<div className='d-flex justify-content-center align-items-center'>
 							<div className="mx-4 mt-4 mb-0 d-flex flex-column justify-content-center align-items-center" style={{ width: '23rem' }}>

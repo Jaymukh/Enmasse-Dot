@@ -1,4 +1,5 @@
 // External libraries
+import { useState, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // CSS
@@ -9,18 +10,21 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import Modal from '../../ui/modal/Modal';
-import { overlayState, helpState } from '../../../states';
+import { overlayState, helpState, spinnerLiteState } from '../../../states';
 
 // Utilities
 import IndiaMap from '../../../utils/images/IndiaMap.png';
 import CoreSolutions from '../../../utils/images/CoreSolutions.png';
 import * as Constants from '../../../utils/constants/Constants';
+import { SpinnerLite } from '../../ui/spinner/SpinnerLite';
 
 interface OverlayModalProps {
     handleContactUsDrawer: (contactUsDrawerOpen: boolean) => void;
 }
 
 const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) => {
+    const setSpinnerLite = useSetRecoilState(spinnerLiteState);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const overlay = useRecoilValue(overlayState);
     const setOverlay = useSetRecoilState(overlayState);
     const setShowHelp = useSetRecoilState(helpState);
@@ -47,6 +51,15 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
         setOverlay(false);
         handleContactUsDrawer(true);
     }
+    const handleImageLoad = () => {
+        setImageLoaded(true);
+        console.log("isImageLoaded:", imageLoaded); 
+    };
+
+    useEffect(() => {
+        setSpinnerLite(!imageLoaded);
+        console.log("isImageLoaded useEffect :", imageLoaded); 
+    }, [imageLoaded]);
 
     return (
         <div>
@@ -89,7 +102,8 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                         </div>
                         <div className='d-flex flex-row align-items-center h-75 mx-3'>
                             <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: 'auto' }}>
-                                <img src={CoreSolutions} alt="Core Solutions" width='85%' />
+                                <img src={CoreSolutions} alt="Core Solutions" onLoad={handleImageLoad} width='85%' style={{ display: imageLoaded? 'block' : 'none' }} />
+                            {(imageLoaded === false)  && <SpinnerLite /> }
                             </div>
                             <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
                                 <Heading

@@ -1,14 +1,15 @@
 // External libraries
 import Router from './Router';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider, ErrorBoundary } from '@rollbar/react';
 
 // CSS
 import './styles/main.css';
 
 // Components
 import { Spinner } from './components/ui/spinner/Spinner';
+// import { SpinnerLite } from './components/ui/spinner/SpinnerLite';
 import Toast from './components/ui/toast/Toast';
-import { Provider, ErrorBoundary } from '@rollbar/react';
 
 
 function App() {

@@ -1,15 +1,15 @@
 import './Spinner.css';
-import { spinnerState } from '../../../states';
+import { spinnerLiteState } from '../../../states';
 import { useRecoilState } from 'recoil';
 import spinnerGif from '../../../utils/images/spinnerGIF.gif'
 
-export const Spinner = () => {
-    const [spinner] = useRecoilState(spinnerState);
+export const SpinnerLite = () => {
+    const [spinnerLite] = useRecoilState(spinnerLiteState);
     return (
         <>
-            {spinner &&
-                <div className="spinner-wrapper1">
-                    <div className="spinner-overlay1 d-flex justify-content-center align-items-center">
+            {spinnerLite &&
+                <div className="spinner-lite-wrapper">
+                    <div className="spinner-lite-overlay d-flex justify-content-center align-items-center">
                         <div className="w-100">
                             <img src={spinnerGif} alt="spinner" className="spinner-size" />
                         </div>

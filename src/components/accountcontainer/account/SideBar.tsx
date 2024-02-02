@@ -28,7 +28,8 @@ const SideBar = () => {
             <div className="h-100 bg-white full-height d-flex flex-column justify-content-between w-100" style={{ height: '81.5vh' }}>
                 <ul className='sidebar-ul'>
                     {Constants.sidebarData.map((data, index) => (
-                        (loggedUser.role === 'Admin' || data.index !== 2) && (
+                        (loggedUser.role === 'Admin' || data.index !== 2) 
+                        && (
                             <li className='p-0 m-0' key={index}>
                                 <button
                                     className={`list-item-button ${'/' + (data.option).toLowerCase() === visiblePanel ? 'li-selected' : 'li-not-selected'
@@ -48,7 +49,8 @@ const SideBar = () => {
                                         classname='my-0'
                                     />
                                 </button>
-                            </li>)
+                            </li>
+                        )
                     ))}
                 </ul>
             </div>
