@@ -1,5 +1,6 @@
 
 // External libraries
+import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 
 // CSS
@@ -10,11 +11,11 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../../ui/button/
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import Modal from '../../ui/modal/Modal';
-import { spinnerState } from '../../../states';
+import { spinnerLiteState } from '../../../states';
 
 // Utilities
 import * as Constants from '../../../utils/constants/Constants';
-import { useEffect, useState } from 'react';
+import { SpinnerLite } from '../../ui/spinner/SpinnerLite';
 
 interface RoadmapModalProps {
     showRoadmap: number;
@@ -27,7 +28,7 @@ interface RoadmapModalProps {
 
 const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap, openRoadmapModal, setOpenRoadmapModal, handleRoadmapContactDrawer }) => {
 
-    const setSpinner = useSetRecoilState(spinnerState);
+    const setSpinnerLite = useSetRecoilState(spinnerLiteState);
     const [imageLoaded, setImageLoaded] = useState(false);
 
     const nextRoadmap = () => {
@@ -49,10 +50,12 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
     };
     const handleImageLoad = () => {
         setImageLoaded(true);
+        console.log("isImageLoaded:", imageLoaded); 
     };
 
     useEffect(() => {
-        setSpinner(!imageLoaded);
+        setSpinnerLite(!imageLoaded);
+        console.log("isImageLoaded useEffect :", imageLoaded); 
     }, [imageLoaded]);
 
     return (
@@ -62,9 +65,10 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
                     <div className='d-flex flex-row justify-content-end w-100 pb-1'>
                         <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => setOpenRoadmapModal(false)}></Button>
                     </div>
-                    <div className='d-flex flex-row align-items-center h-75 mx-3'>
-                        <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: 'auto' }}>
-                            <img src={Constants.roadmapContent[showRoadmap - 1].image} onLoad={handleImageLoad} alt="Core Solutions" width='85%' style={{ display: imageLoaded ? 'block' : 'none' }} />
+                    <div className='d-flex flex-row align-items-center mx-3' style={{height: '52.5vh'}}>
+                        <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: '52.5vh', width: '26vw' }}>
+                            <img src={Constants.roadmapContent[showRoadmap - 1].image} onLoad={handleImageLoad} alt="Core Solutions" width='85%' style={{ display: imageLoaded? 'block' : 'none' }} /> 
+                            {(imageLoaded === false)  && <SpinnerLite /> }
                         </div>
                         <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
                             <Heading

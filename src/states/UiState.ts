@@ -19,3 +19,8 @@ export const spinnerState = atom({
     key: 'spinner',
     default: false,
 })
+
+export const spinnerLiteState = atom({
+    key: 'spinnerLite',
+    default: false,
+})

@@ -126,12 +126,13 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
                     </div >
                     <div className="card-body text-start">
                         {selectedData?.image && selectedData?.image[0] &&
-                            <img src={selectedData?.image[0]} alt="Family" width="100%" height="auto" className='rounded my-2' />
+                            <img src={selectedData?.image[0]} alt="Family" width="100%" style={{width: '100%', maxHeight: '60vh',objectFit: 'cover'}} className='rounded my-2' />
                         }
                         {selectedData?.description && selectedData?.description[0]
                             && <Body
                                 type={BodyType.p3}
                                 color={BodyColor.secondary}
+                                classname='mt-2'
                             >
                                 {selectedData?.description[0]}
                             </Body>
