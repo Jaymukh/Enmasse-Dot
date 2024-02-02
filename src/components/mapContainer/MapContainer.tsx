@@ -66,7 +66,7 @@ function MapContainer() {
         // setTimeout(() => {
         //     navigate(global ? `${RouteConstants.explore}?country=1` : RouteConstants.root);
         // });
-        setSelected({ country: 1 });
+        updateSelected('country', 1);
     };
 
     const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

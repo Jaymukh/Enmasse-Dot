@@ -187,9 +187,9 @@ const ExploreNow = () => {
 					</div>
 					{hasData ?
 						<div className='my-2 d-flex justify-content-center align-items-center' style={{ maxHeight: '52vh', overflowY: 'auto', overflowX: 'hidden', minHeight: '52vh', width: '58vw' }}>
-							{ spinnerLite 
-								? <SpinnerLite /> 
-								: <div className='' style={{width: '56.5vw'}}>
+							{spinnerLite
+								? <SpinnerLite />
+								: <div className='' style={{ width: '56.5vw' }}>
 									{results?.map((item: any) => (
 										(item.has_data &&
 											<div key={item.geo_id} className='my-2'>
@@ -208,8 +208,10 @@ const ExploreNow = () => {
 																type={BodyType.p1}
 																color={BodyColor.purple}
 																classname='col-4 text-start mb-1 p-0'
-																key={district.geo_id}>{district.geo_value}
+																key={district.geo_id}
 																onClick={() => handleClick(item.geo_id, district.geo_id)}
+															>
+																{district.geo_value}
 															</Body>
 														)))}
 												</div>
