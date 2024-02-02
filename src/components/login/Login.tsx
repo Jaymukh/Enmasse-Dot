@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import ReactGA from 'react-ga';
 
 // CSS
 import '../../styles/main.css';
@@ -61,6 +62,10 @@ export default function Login() {
     const { errors, isSubmitting, isValid } = formState;
 
     const onSubmit = (values: IFormValues) => {
+        ReactGA.exception({
+            description: 'An error ocurred',
+            fatal: true
+        });
         if (Object.values(errors).length > 0) {
             return;
         }
@@ -220,7 +225,7 @@ export default function Login() {
                             color={BodyColor.secondary}
                             classname='mb-0 mt-2'
                         >
-                            By clicking on continue you are agreeing to the Enmasse 
+                            By clicking on continue you are agreeing to the Enmasse
                             <Button
                                 theme={ButtonTheme.primary}
                                 size={ButtonSize.large}

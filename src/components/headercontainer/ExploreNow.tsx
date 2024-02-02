@@ -109,7 +109,10 @@ const ExploreNow = () => {
 	}
 
 	const handleClick = (state_id: number, district_id?: number) => {
-		
+		setShowModal(false);
+		setHasData(true);
+		setSelectedValue({ state: '', district: '' });
+		setSearchTerm('');
 		const search = district_id ? `?country=1&state=${state_id}&district=${district_id}` : `?country=1&state=${state_id}`;
 		navigate({
 			pathname: RouteConstants.root,
