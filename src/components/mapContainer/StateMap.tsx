@@ -193,7 +193,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
             // Set map center and zoom level based on bounding box
             map.fitBounds(bounds);
-            setCenter({ lat: bounds.getCenter().lat(), lng: bounds.getCenter().lng() });
+            setCenter({ lat: bounds?.getCenter()?.lat(), lng: bounds?.getCenter()?.lng() });
         }
     }, [map, geoJSON]);
 
