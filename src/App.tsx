@@ -8,7 +8,6 @@ import './styles/main.css';
 
 // Components
 import { Spinner } from './components/ui/spinner/Spinner';
-// import { SpinnerLite } from './components/ui/spinner/SpinnerLite';
 import Toast from './components/ui/toast/Toast';
 import { useEffect } from 'react';
 import ReactGA from 'react-ga';
