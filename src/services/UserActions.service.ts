@@ -29,7 +29,7 @@ const useUserService = () => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 setAuth(user);
-                setSpinner(false);
+                // setSpinner(false);
                 getUserDetails();
                 // get return url from location state or default to home page
                 const from = (!location.pathname || location.pathname === '/login') ? RouteConstants.root : location.pathname;
