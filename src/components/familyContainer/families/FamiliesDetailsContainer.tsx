@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import { useState, useEffect } from 'react';
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 
@@ -15,13 +15,13 @@ import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import Select, { SelectSize } from '../../ui/select/Select';
 import FamiliesSorting from './FamiliesSorting';
-import { storiesState } from "../../../states";
+import { storiesState, errorState, mapFeatureState } from '../../../states';
 
 // Utilities
 import { storiesSelectOptions } from '../../../utils/constants/Constants';
 import familySkeleton from '../../../utils/images/EH Sillhouettes-5-01.svg';
 import { RouteConstants } from '../../../constants';
-import { useStoriesService } from '../../../services';
+import { useStoriesService, useMapsService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 
 
@@ -30,12 +30,15 @@ const FamiliesDetailsContainer = () => {
     const storiesService = useStoriesService();
     const [searchParams, setSearchParams] = useSearchParams();
     const [stories] = useRecoilState(storiesState);
+    const mapServices = useMapsService();
+    const setMapFeatures = useSetRecoilState(mapFeatureState);
+    const setError = useSetRecoilState(errorState);
     const { getCurrencyWithSymbol, getNumberWithZero, getSelectedObject, getCoreSolutions } = useMapHelpers();
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
     const [iterator, setIterator] = useState(0);
     const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 });
     const [loaded, setLoaded] = useState(false);
-    
+
     const handleImageLoad = () => {
         // setLoaded(true);
     };
@@ -51,12 +54,23 @@ const FamiliesDetailsContainer = () => {
     };
 
     const handleFamilyVisible = (data: any, index: number) => {
-        searchParams.set('story_id', (index + 1).toString());
-        setSearchParams(searchParams);
-        navigate({
-            pathname: RouteConstants.story_details,
-            search: `?${searchParams.toString()}`,
+        const geo_id = data?.parent_id[0];
+        mapServices.getCifData(geo_id).then((response) => {
+            if (response) {
+                setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
+                searchParams.set('story_id', (index + 1).toString());
+                setSearchParams(searchParams);
+                navigate({
+                    pathname: RouteConstants.story_details,
+                    search: `?${searchParams.toString()}`,
+                });
+                console.log(geo_id);
+            }
+        }).catch(error => {
+            const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+            setError({ type: 'Error', message: errorMsg });
         });
+
     };
 
     const handleNextClick = () => {
@@ -118,7 +132,7 @@ const FamiliesDetailsContainer = () => {
                     {stories?.family?.map((data, index) => (
                         <div className='col-lg-4 col-md-6 col-sm-12 px-0'>
                             <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 mb-4 p-0 cursor-pointer' onClick={() => handleFamilyVisible(data, index)}>
-                            {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
+                                {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
                                 <img className="rounded-top story-list-img" src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} alt={data?.familyName} onLoad={handleImageLoad} />
                                 <div className="text-start p-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
@@ -141,7 +155,7 @@ const FamiliesDetailsContainer = () => {
                                         classname='text-left mb-2'>
                                         {data?.district}, {data?.state}, {data?.country}
                                     </Body>
-                                    {getCoreSolutions(data?.familyDetails)?.name && 
+                                    {getCoreSolutions(data?.familyDetails)?.name &&
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.dark}
@@ -182,7 +196,7 @@ const FamiliesDetailsContainer = () => {
                             type={BodyType.p3}
                             color={BodyColor.dark}
                             classname='my-2 ms-2'>
-                            {(stories?.totalStories ) ? (iterator * paginationData.storiespp + 1) : 0} - {((iterator * paginationData.storiespp + paginationData.storiespp) < (stories?.totalStories)) ? (iterator * paginationData.storiespp + paginationData.storiespp) : (stories?.totalStories ? stories?.totalStories : 0 )} of {stories?.totalStories ? stories?.totalStories : 0} items
+                            {(stories?.totalStories) ? (iterator * paginationData.storiespp + 1) : 0} - {((iterator * paginationData.storiespp + paginationData.storiespp) < (stories?.totalStories)) ? (iterator * paginationData.storiespp + paginationData.storiespp) : (stories?.totalStories ? stories?.totalStories : 0)} of {stories?.totalStories ? stories?.totalStories : 0} items
                         </Body>
                     </div>
                     <div className='w-auto d-flex flex-row justify-content-around align-items-center'>

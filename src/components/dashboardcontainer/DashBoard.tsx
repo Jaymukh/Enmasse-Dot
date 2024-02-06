@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 
 // Components
@@ -12,7 +12,7 @@ import LineGraph from './LineGraph';
 import OverViewMap from './OverViewMap';
 import ScatterGraph from './ScatterGraph';
 import TableView from './TableView';
-import { cifState, mapFeatureState, CoreSolutionByEH } from '../../states';
+import { cifState, mapFeatureState, CoreSolutionByEH, errorState } from '../../states';
 
 // Utilities
 import { useCIFService, useMapsService, useStoriesService } from '../../services';
@@ -21,12 +21,13 @@ import { TABLE_HEADERS } from '../../constants';
 
 const DashBoard = () => {
     const cifService = useCIFService();
-    const mapService = useMapsService();
+    const mapServices = useMapsService();
     const storiesService = useStoriesService();
     const [searchParams] = useSearchParams();
     const cifData = useRecoilValue(cifState);
-    const mapFeatures = useRecoilValue(mapFeatureState);
+    const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
     const geoCode = searchParams.get('geo_code');
+    const setError = useSetRecoilState(errorState);
 
     const [selected, setSelected] = useState<CoreSolutionByEH | undefined>(cifData?.coreSolutionsData?.coreSolutionsByEH && cifData?.coreSolutionsData?.coreSolutionsByEH![0] || []);
 
@@ -34,6 +35,16 @@ const DashBoard = () => {
         setSelected(item);
     }
 
+    const fetchCifData = (geoCode: number) => {
+        mapServices.getCifData(geoCode).then((response) => {
+            if (response) {
+                setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
+            }
+        }).catch(error => {
+            const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+            setError({ type: 'Error', message: errorMsg });
+        });
+    };
     useEffect(() => {
         if (cifData?.coreSolutionsData?.coreSolutionsByEH?.length > 0) {
             setSelected(cifData?.coreSolutionsData.coreSolutionsByEH[0]);
@@ -48,7 +59,7 @@ const DashBoard = () => {
             cifService.getInOutFlowData(Number(geoCode));
             cifService.getMetricBreakdownData(Number(geoCode));
             cifService.getCoreSolutionsGraphData(Number(geoCode));
-            mapService.getCifData(Number(geoCode));
+            fetchCifData(Number(geoCode));
             storiesService.getAllStories({
                 geo_code: Number(geoCode),
                 page_no: 1,
