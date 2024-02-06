@@ -6,13 +6,12 @@ import { errorState, mapFeatureState, spinnerState } from "../states";
 
 // Utilities
 import { useFetchWrapper } from '../helpers';
-import { APIS, rollbar } from '../constants';
+import { APIS } from '../constants';
 
 
 const useMapsService = () => {
     const fetchWrapper = useFetchWrapper();
     const setMapFeatures = useSetRecoilState(mapFeatureState);
-    const setSpinner = useSetRecoilState(spinnerState);
     const setError = useSetRecoilState(errorState);
 
     const getDropdownList = (geoCode: number) => {
@@ -38,7 +37,6 @@ const useMapsService = () => {
             }).catch(error => {
                 const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
                 setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
                 // setSpinner(false);
             });
     }

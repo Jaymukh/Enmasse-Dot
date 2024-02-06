@@ -20,7 +20,7 @@ import { errorState } from '../../states';
 
 // Utilities
 import { useUserService } from '../../services';
-import { RouteConstants, rollbar } from '../../constants';
+import { RouteConstants, } from '../../constants';
 import CheckGIF from "../../utils/images/Accept State-01.svg";
 import globe from '../../utils/images/LoginGlobe.svg';
 
@@ -89,7 +89,6 @@ const UpdatePassword = () => {
             .catch(error => {
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
             });
     };
     const handleContinue = () => {

@@ -7,7 +7,7 @@ import { storiesState, errorState } from "../states";
 
 // Utilities
 import { useFetchWrapper } from '../helpers';
-import { APIS, rollbar } from '../constants';
+import { APIS } from '../constants';
 
 
 const useStoriesService = () => {
@@ -31,7 +31,6 @@ const useStoriesService = () => {
             }).catch(error => {
                 const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
                 setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
             });
     }
 

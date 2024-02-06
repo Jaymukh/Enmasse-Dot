@@ -15,7 +15,6 @@ import { loggedUserState, AllSettingsState, errorState, spinnerState } from "../
 
 // Utilities
 import { useUserService, useSettingsService } from '../../../../../services';
-import { rollbar } from '../../../../../constants';
 
 interface NewData {
     name: string | undefined;
@@ -64,7 +63,6 @@ const InviteNew: React.FC<InviteNewProps> = ({
                 .catch(error => {
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
-                    rollbar.error(error);
                 });
         }
         else {

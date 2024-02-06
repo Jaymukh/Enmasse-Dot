@@ -21,7 +21,6 @@ import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import { errorState, spinnerState } from "../../states";
 
 // Utilities
-import { rollbar } from '../../constants';
 import { useUserService } from '../../services';
 
 
@@ -93,7 +92,6 @@ export default function Login() {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
             });
         setEmail('');
         handleModal({ passwordModal: false });

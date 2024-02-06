@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { authState, loggedUserState, usersState, spinnerState, overlayState, errorState } from '../states';
 
 // Utilities
-import { APIS, RouteConstants, rollbar } from '../constants';
+import { APIS, RouteConstants } from '../constants';
 import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
 import ReactGA from 'react-ga';
 
@@ -46,7 +46,6 @@ const useUserService = () => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
                 ReactGA.exception({
                     description: errorMsg,
                     fatal: false, // Set to true for fatal errors
@@ -70,7 +69,6 @@ const useUserService = () => {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
             });
 
     }
@@ -83,7 +81,6 @@ const useUserService = () => {
             setSpinner(false);
             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
             setError({ type: 'Error', message: errorMsg });
-            rollbar.error(error);
         })
     };
 
@@ -99,7 +96,6 @@ const useUserService = () => {
                 // setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
             });
     };
 

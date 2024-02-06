@@ -17,7 +17,6 @@ import { errorState, loggedUserState, spinnerState, User } from "../../../../../
 
 // Utilities
 import { useUserService } from '../../../../../services';
-import { rollbar } from '../../../../../constants';
 import { useMapHelpers } from '../../../../../helpers';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
 
@@ -83,7 +82,6 @@ export default function Profile() {
     //             setSpinner(false);
     //             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
     //             setError({ type: 'Error', message: errorMsg });
-    //             rollbar.error(error);
     //         });
     // };
 
@@ -147,7 +145,6 @@ export default function Profile() {
                     setSpinner(false);
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
-                    rollbar.error(error);
                 });
         } catch (e) {
             console.error(e)
@@ -190,7 +187,6 @@ export default function Profile() {
                 setSpinner(false);
                 const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
-                rollbar.error(error);
             });
         setShowDeleteImageModal(false);
     }

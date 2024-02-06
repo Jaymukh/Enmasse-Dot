@@ -18,7 +18,7 @@ import { errorState, spinnerLiteState, mapFeatureState } from '../../states';
 
 // Utilities
 import WorkInProgressImage from '../../utils/images/WIP-FINAL.svg';
-import { RouteConstants, rollbar } from '../../constants';
+import { RouteConstants } from '../../constants';
 import { useMapsService } from '../../services';
 
 
@@ -90,7 +90,6 @@ const ExploreNow = () => {
 				setSpinnerLite(false);
 				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
-				rollbar.error(error);
 			});
 		}
 		else {

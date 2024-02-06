@@ -10,11 +10,14 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 
 // Utilities
 import { RouteConstants } from '../../constants';
+import { spinnerState } from '../../states';
+import { useSetRecoilState } from 'recoil';
 
 
 function FamilyHeader() {
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
+    const setSpinner = useSetRecoilState(spinnerState);
 
     const onNavigateBack = () => {
         const currentParams = new URLSearchParams(searchParams.toString());
@@ -23,6 +26,7 @@ function FamilyHeader() {
             pathname: RouteConstants.stories,
             search: `?${currentParams.toString()}`,
         });
+        setSpinner(true);
     }
 
     return (

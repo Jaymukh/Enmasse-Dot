@@ -15,7 +15,6 @@ import { loggedUserState, User, geoJsonState, spinnerState, errorState } from ".
 
 // Utilities
 import { useCIFService } from '../../../services';
-import { rollbar } from '../../../constants';
 
 interface RequestDataProps {
     requestDataDrawerOpen: boolean,
@@ -65,7 +64,6 @@ export default function RequestData({ requestDataDrawerOpen, handleRequestDataDr
                 .catch((error: any) => {
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
-                    rollbar.error(error);
                     setSpinner(false);
                 });
         }

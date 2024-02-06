@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { authState, errorState } from '../states';
 
 // Utilities
-import { APIS, RouteConstants, rollbar } from '../constants';
+import { APIS, RouteConstants } from '../constants';
 
 
 function useFetchWrapper() {
@@ -58,7 +58,6 @@ function useFetchWrapper() {
                         //const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Token is invalid or expired. trying to relogin"
                         const errorMsg = "Token Expired please try to relogin."
                         setError({ type: 'Error', message: errorMsg });
-                        rollbar.error(error);
                         localStorage.removeItem('user');
                         setAuth({});
                         navigate(RouteConstants.login);

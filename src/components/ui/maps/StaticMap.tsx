@@ -9,7 +9,6 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 import markerPurple from '../../../utils/images/Location pin-purple-01.svg';
 import markerGrey from '../../../utils/images/Location pin-gray-01.svg';
-import { rollbar } from '../../../constants';
 
 interface StaticMapProps {
 	coordinates?: any;
@@ -53,7 +52,6 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 	const errorHandler = (error: any) => {
 		const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
 		setError({ type: 'Error', message: errorMsg });
-		rollbar.error(error);
 	};
 
 	const fetchGeoJsonData = (geo_id: string) => {
@@ -135,7 +133,9 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 	return (
 		<div style={{ height: '100%', width: '100%' }} className='d-flex flex-column align-items-center justify-content-center'>
 			{apiKey && (
-				<LoadScript googleMapsApiKey={apiKey} >
+				<LoadScript
+					googleMapsApiKey={apiKey}
+				>
 					<GoogleMap
 						ref={mapRef}
 						zoom={6}

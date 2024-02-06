@@ -16,7 +16,6 @@ import { geoJsonState, spinnerState, mapFeatureState, errorState } from '../../s
 
 // Utilities
 import { useMapsService } from '../../services';
-import { rollbar } from '../../constants';
 
 
 const countries = [{ geo_id: 1, name: 'India' }];
@@ -162,7 +161,6 @@ function MapContainer() {
     const errorHandler = (error: any) => {
         const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
         setError({ type: 'Error', message: errorMsg });
-        rollbar.error(error);
     };
 
     useEffect(() => {

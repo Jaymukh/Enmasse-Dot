@@ -13,7 +13,6 @@ import { errorState } from '../../states';
 
 // Utilities
 import * as MapConstants from '../../utils/json/googlemapstyle';
-import { rollbar } from '../../constants';
 
 
 interface GlobalMapProps {
@@ -40,7 +39,6 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
 				}
 			} else {
 				setError({ type: 'Error', message: 'Geocode was not successful' });
-				rollbar.error('Geocode was not successful');
 			}
 		});
 	};

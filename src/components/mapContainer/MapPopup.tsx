@@ -15,6 +15,8 @@ import { RouteConstants } from '../../constants';
 import * as Constants from '../../utils/constants/Constants'
 import { useMapHelpers } from '../../helpers';
 import familySkeleton from '../../utils/images/EH Sillhouettes-5-01.svg';
+import { spinnerState } from '../../states';
+import { useSetRecoilState } from 'recoil';
 
 
 interface MapPopupProps {
@@ -26,9 +28,10 @@ interface MapPopupProps {
 const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index }) => {
     const navigate = useNavigate();
     const { getCoreSolutions, getNumberWithZero } = useMapHelpers();
+    const setSpinner = useSetRecoilState(spinnerState);
 
     const [loaded, setLoaded] = useState(false);
-    
+
     const handleImageLoad = () => {
         setLoaded(true);
     }
@@ -39,6 +42,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
             pathname: RouteConstants.stories,
             search: `?geo_code=${geo_id}&page_no=1&storiespp=${Constants.storiesSelectOptions[0].value}`,
         });
+        setSpinner(true);
     };
 
     return (

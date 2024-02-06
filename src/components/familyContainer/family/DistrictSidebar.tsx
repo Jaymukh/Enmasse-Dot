@@ -16,7 +16,7 @@ import Select, { SelectSize } from '../../ui/select/Select';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import InfoPanel from '../../ui/InfoPanel';
 import RequestData from './RequestData';
-import { mapFeatureState, AllSettingsState, UserSettingsState, errorState } from '../../../states';
+import { mapFeatureState, AllSettingsState, UserSettingsState, errorState, spinnerState } from '../../../states';
 
 // Utilities
 import WIPImage from '../../../utils/images/WIP-FINAL.svg';
@@ -34,6 +34,7 @@ const DistrictSidebar = () => {
     const [settings, setSettings] = useRecoilState(AllSettingsState);
     const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
     const setError = useSetRecoilState(errorState);
+    const setSpinner = useSetRecoilState(spinnerState);
     const { getCurrencyWithSymbol } = useMapHelpers();
 
 
@@ -84,6 +85,7 @@ const DistrictSidebar = () => {
             pathname: RouteConstants.dashboards,
             search: `?geo_code=${geo_id}`,
         });
+        setSpinner(true)
     }
 
     return (

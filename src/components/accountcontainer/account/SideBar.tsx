@@ -1,5 +1,5 @@
 // External libraries
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useNavigate } from 'react-router-dom';
 
 // CSS
@@ -8,7 +8,7 @@ import '../../../styles/main.css';
 // Components
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
-import { loggedUserState, visiblePanelState } from '../../../states';
+import { loggedUserState, spinnerState, visiblePanelState } from '../../../states';
 
 // Utilities
 import * as Constants from '../../../utils/constants/Constants';
@@ -17,10 +17,12 @@ const SideBar = () => {
     const navigate = useNavigate();
     const loggedUser = useRecoilValue(loggedUserState);
     const [visiblePanel, setVisiblePanel] = useRecoilState(visiblePanelState);
+    const setSpinner = useSetRecoilState(spinnerState);
 
     const handleItemClick = (data: string) => {
+        setSpinner(true);
         setVisiblePanel('/' + data);
-        navigate('/' + data);
+        navigate('/' + data);        
     }
 
     return (

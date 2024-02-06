@@ -15,7 +15,6 @@ import { loggedUserState, User, spinnerState, errorState } from "../../../states
 
 // Utilities
 import { useCIFService } from '../../../services';
-import { rollbar } from '../../../constants';
 
 
 interface RoadmapContactProps {
@@ -65,7 +64,6 @@ export default function RoadmapContact({ roadmapContactDrawerOpen, handleRoadmap
                 .catch(error => {
                     const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
-                    rollbar.error(error);
                     setSpinner(false);
                 });
         }

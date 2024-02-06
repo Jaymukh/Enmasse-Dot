@@ -21,26 +21,16 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath }) =
 const Router = () => {
     const auth = useRecoilValue(authState);
 
-    const Login = useMemo(() => React.lazy(() => import("./components/login/Login")), []);
-    const UpdatePassword = useMemo(() => React.lazy(() => import("./components/login/UpdatePassword")), []);
-    const HomeContainer = useMemo(() => React.lazy(() => import("./containers/HomeContainer")), []);
-    const DashboardContainer = useMemo(() => React.lazy(() => import("./containers/DashboardContainer")), []);
-    const StoryContainer = useMemo(() => React.lazy(() => import("./containers/StoryContainer")), []);
-    const ProfileContainer = useMemo(() => React.lazy(() => import("./containers/ProfileContainer")), []);
+    const Login = React.lazy(() => import("./components/login/Login"));
+    const UpdatePassword = React.lazy(() => import("./components/login/UpdatePassword"));
+    const HomeContainer = React.lazy(() => import("./containers/HomeContainer"));
+    const DashboardContainer = React.lazy(() => import("./containers/DashboardContainer"));
+    const StoryContainer = React.lazy(() => import("./containers/StoryContainer"));
+    const ProfileContainer = React.lazy(() => import("./containers/ProfileContainer"));
 
     return (
         <Suspense fallback={
             <Spinner />
-            // <div className="wrapper">
-            //     <div className="overlay d-flex justify-content-center align-items-center">
-            //         {/* <div className="spinner-wrapper w-100">
-            //             <div className="spinner-border spinner-size" role="status" />
-            //         </div> */}
-            //         <div className="w-100">
-            //             <img src={spinnerGif} alt="spinner" style={{width: '10rem', height: '10rem'}} />
-            //         </div>
-            //     </div>
-            // </div>
         }>
             <Routes>
                 <Route path={RouteConstants.login} element={<Login />} />

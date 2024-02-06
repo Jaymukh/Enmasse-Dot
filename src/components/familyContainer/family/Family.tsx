@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 // CSS
@@ -11,7 +11,7 @@ import '../../../styles/main.css';
 import FamilyDetailsContainer from './FamilyDetailsContainer';
 import DistrictSidebar from './DistrictSidebar';
 import FamilySidePanel from './FamilySidePanel';
-import { storiesState } from '../../../states';
+import { spinnerState, storiesState } from '../../../states';
 
 // Utilities
 import { RouteConstants } from '../../../constants';
@@ -31,6 +31,7 @@ const Family = () => {
     const navigate = useNavigate();
     const storiesService = useStoriesService();
     const stories = useRecoilValue(storiesState);
+    const setSpinner = useSetRecoilState(spinnerState);
     const [searchParams, setSearchParams] = useSearchParams();
     const { getSelectedObject } = useMapHelpers();
     const [pageInfo, setPageInfo] = useState<any>(getSelectedObject());
@@ -54,6 +55,7 @@ const Family = () => {
             pathname: RouteConstants.stories,
             search: `?${currentParams.toString()}`,
         });
+        setSpinner(true);
     }
 
     useEffect(() => {
