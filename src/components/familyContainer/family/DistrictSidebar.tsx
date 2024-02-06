@@ -48,13 +48,10 @@ const DistrictSidebar = () => {
         settingsService.getUserSettings().then((response) => {
             if (response) {
                 setUserSettings(response);
-                // setSpinner(false);
             }
         }).catch(error => {
-            // setSpinner(false);
             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
             setError({ type: 'Error', message: errorMsg });
-
         });
     }
 

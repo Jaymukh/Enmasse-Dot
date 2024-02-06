@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 // CSS
@@ -11,11 +11,12 @@ import '../../../styles/main.css';
 import FamilyDetailsContainer from './FamilyDetailsContainer';
 import DistrictSidebar from './DistrictSidebar';
 import FamilySidePanel from './FamilySidePanel';
-import { storiesState } from '../../../states';
+import { errorState, mapFeatureState, storiesState } from '../../../states';
 
 // Utilities
 import { RouteConstants } from '../../../constants';
-import { useStoriesService } from '../../../services';
+import * as Constants from '../../../utils/constants/Constants'
+import { useMapsService, useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 import FamilyHeader from '../FamilyHeader';
 
@@ -31,21 +32,51 @@ const Family = () => {
     const navigate = useNavigate();
     const storiesService = useStoriesService();
     const stories = useRecoilValue(storiesState);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();    
+    const mapServices = useMapsService();
+    const setMapFeatures = useSetRecoilState(mapFeatureState);
+    const setError = useSetRecoilState(errorState);
     const { getSelectedObject } = useMapHelpers();
     const [pageInfo, setPageInfo] = useState<any>(getSelectedObject());
     const [selectedStory, setSelectedStory] = useState<{ index: number, story: any }>({ index: Number(searchParams.get('story_id')) - 1, story: {} });
 
     const handleCarouselSlide = (index: number) => {
-        setPageInfo({
-            ...pageInfo,
-            story_id: (index + 1)
-        })
-        setSelectedStory({
-            index: index,
-            story: stories?.family[index]
+        let geo_id = stories?.family[index].parent_id[0];
+        mapServices.getCifData(geo_id).then((response) => {
+            if (response) {
+                setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
+                setPageInfo({
+                    ...pageInfo,
+                    story_id: (index + 1)
+                })
+                setSelectedStory({
+                    index: index,
+                    story: stories?.family[index]
+                });                
+            }
+        }).catch(error => {
+            const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+            setError({ type: 'Error', message: errorMsg });
         });
+        
     };
+    // const handleCarouselSlide = (index: number) => {
+    //     let geo_id = stories?.family[index].parent_id[0];
+    //     setPageInfo({
+    //         ...pageInfo,
+    //         story_id: (index + 1)
+    //     })
+    //     setSelectedStory({
+    //         index: index,
+    //         story: stories?.family[index]
+    //     });
+    //     searchParams.set('story_id', (index + 1).toString());
+    //     setSearchParams(searchParams);
+    //     navigate({
+    //         pathname: RouteConstants.story_details,
+    //         search: `?geo_code=${geo_id}&page_no=1&storiespp=${Constants.storiesSelectOptions[0].value}?${searchParams.toString()}`,
+    //     });
+    // };
 
     const handleBackClick = () => {
         const currentParams = new URLSearchParams(searchParams.toString());
