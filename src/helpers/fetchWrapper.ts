@@ -55,8 +55,8 @@ function useFetchWrapper() {
                         config.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     } catch (error: any) {
                         // const errorMsg = error?.response?.data?.message;
-                        //const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Token is invalid or expired. trying to relogin"
-                        const errorMsg = "Token Expired please try to relogin."
+                        const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Token is invalid or expired. trying to relogin"
+                        //const errorMsg = "Token Expired please try to relogin."
                         setError({ type: 'Error', message: errorMsg });
                         localStorage.removeItem('user');
                         setAuth({});
