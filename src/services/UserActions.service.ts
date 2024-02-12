@@ -44,12 +44,12 @@ const useUserService = () => {
             })
             .catch(error => {
                 setSpinner(false);
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
                 ReactGA.exception({
                     description: errorMsg,
                     fatal: false, // Set to true for fatal errors
-                  });
+                });
             });
 
     }
@@ -67,7 +67,7 @@ const useUserService = () => {
             })
             .catch(error => {
                 setSpinner(false);
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
             });
 
@@ -79,7 +79,7 @@ const useUserService = () => {
             setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
             setError({ type: 'Error', message: errorMsg });
         })
     };
@@ -94,7 +94,7 @@ const useUserService = () => {
         })
             .catch(error => {
                 // setSpinner(false);
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
             });
     };

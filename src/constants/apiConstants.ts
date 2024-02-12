@@ -5,7 +5,7 @@ const APIS: any = {
         GET_LOGGED_USER: "/users/me/",
         UPDATE_LOGGED_USER: '/users/update/my/details/',
         GET_ALL_USERS: "/users/all/",
-        GET_REFRESH_TOKEN: "/users/token-refresh/",
+        GET_NEW_ACCESS_TOKEN: "/users/token-refresh/",
         INVITE_NEW: '/users/invite/',
         EDIT_INVITE: '/users/update/',
         REINVITE: '/users/reinvite/',
@@ -26,7 +26,7 @@ const APIS: any = {
         GET_CIRCLE: '/maps/getcircle',
         GET_CIF_DATA: '/maps/cif',
         GET_EXPLORE_NOW: '/maps/explorenow',
-        GET_CORE_SOLUTIONS:  '/maps/coresolutionfilter',
+        GET_CORE_SOLUTIONS: '/maps/coresolutionfilter',
     },
     STORIES: {
         GET_ALL_STORIES: '/story/viewstory',

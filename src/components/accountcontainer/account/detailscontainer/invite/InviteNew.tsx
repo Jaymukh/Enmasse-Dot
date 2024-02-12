@@ -61,7 +61,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     }
                 })
                 .catch(error => {
-                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
                 });
         }
@@ -78,7 +78,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
             }
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
             setError({ type: 'Error', message: errorMsg });
         });
     }
@@ -166,7 +166,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         labelKey='name'
                         valueKey='name'
                         size={SelectSize.large}
-                        name='role'                        
+                        name='role'
                         placeholder='Select'
                         classname='px-3'
                     />
@@ -175,7 +175,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         colour={TypographyColor.dark}
                         type={TypographyType.h6}
                         classname='Note'
-                    />                    
+                    />
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.large}

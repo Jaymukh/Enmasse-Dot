@@ -12,7 +12,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath }) => {
-    if (!Object.keys(auth).length) {
+    if (auth && !Object.keys(auth).length) {
         return <Navigate to={redirectPath} />;
     }
     return <Outlet />;

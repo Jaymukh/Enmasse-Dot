@@ -12,7 +12,6 @@ import { APIS, RouteConstants } from '../constants';
 
 function useFetchWrapper() {
     const [auth, setAuth] = useRecoilState(authState);
-    const setError = useSetRecoilState(errorState);
     const navigate = useNavigate();
 
     // Create an Axios instance with common headers
@@ -30,19 +29,16 @@ function useFetchWrapper() {
                 config.headers['Authorization'] = '';
                 return config;
             }
-            // Add Bearer token if user is logged in and token is not expired
-            //const token = auth?.tokens?.access;
             const user = localStorage.getItem('user');
             if (user != null) {
                 const token = JSON.parse(user)?.tokens?.access;
-                const isLoggedIn = !!token;
-                const isTokenExpired = checkTokenExpired(token);
-                if (isLoggedIn && !isTokenExpired) {
+                const isTokenExpired = checkTokenExpiry(token);
+                if (!isTokenExpired) {
                     config.headers['Authorization'] = `Bearer ${token}`;
-                } if (isLoggedIn && isTokenExpired) {
+                } else {
                     try {
-                        const response = await getRefreshToken();
-                        const newAccessToken = response.access;
+                        const data = await getRefreshToken();
+                        const newAccessToken = data.access;
                         const updatedAuth = {
                             ...auth,
                             tokens: {
@@ -54,14 +50,10 @@ function useFetchWrapper() {
                         localStorage.setItem('user', JSON.stringify(updatedAuth));
                         config.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     } catch (error: any) {
-                        // const errorMsg = error?.response?.data?.message;
-                        //const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Token is invalid or expired. trying to relogin"
-                        const errorMsg = "Token Expired please try to relogin."
-                        setError({ type: 'Error', message: errorMsg });
                         localStorage.removeItem('user');
                         setAuth({});
                         navigate(RouteConstants.login);
-                        // You can choose to log the user out or handle this error differently
+                        throw error;
                     }
                 }
                 return config;
@@ -81,7 +73,7 @@ function useFetchWrapper() {
     };
 
     function handleResponse(response: AxiosResponse) {
-        if (response.statusText !== 'OK') {
+        if (response.status !== 200) {
             if ([401, 403].includes(response.status) && auth?.token) {
                 // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
                 localStorage.removeItem('user');
@@ -93,30 +85,32 @@ function useFetchWrapper() {
         return response.data;
     };
 
-    function checkTokenExpired(accessToken: any) {
-        if (!accessToken) {
-            // Token is missing; consider it expired.
-            return true;
-        }
-        try {
-            const tokenData = JSON.parse(atob(accessToken.split('.')[1]));
-            const expirationTime = tokenData.exp * 1000;
-            const currentTime = Date.now();
-            return currentTime >= expirationTime;
-        } catch (error) {
-            // Error parsing the token; consider it expired.
-            return true;
-        }
-    }
-
     async function getRefreshToken() {
         const refresh = auth?.tokens?.refresh;
-        const requestOptions = {
-            'Content-Type': 'application/json',
-            refresh
-        };
-        const response = await axios.post(APIS.USERS.GET_REFRESH_TOKEN, requestOptions);
-        return handleResponse(response);
+        const access = auth?.tokens?.access;
+        const expiryDuration = 600000;
+        const isExpired = checkTokenExpiry(refresh);
+        if (isExpired) {
+            localStorage.removeItem('user');
+            setAuth(null);
+            const error = { response: { data: { detail: 'Invalid refresh token' } } }
+            throw error;
+        } else {
+            const headers = {
+                'Authorization': `Bearer ${access}`,
+                'Content-Type': 'application/json'
+            };
+            const response = await axios.post(APIS.USERS.GET_NEW_ACCESS_TOKEN, { refresh }, { headers });
+            return handleResponse(response);
+        }
+
+    }
+
+    function checkTokenExpiry(token: any) {
+        const tokenData = JSON.parse(atob(token.split('.')[1]));
+        const expiryTime = tokenData.exp * 1000;
+        const currentTime = Date.now();
+        return currentTime >= expiryTime;
     }
 }
 

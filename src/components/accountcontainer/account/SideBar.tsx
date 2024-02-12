@@ -19,10 +19,10 @@ const SideBar = () => {
     const [visiblePanel, setVisiblePanel] = useRecoilState(visiblePanelState);
     const setSpinner = useSetRecoilState(spinnerState);
 
-    const handleItemClick = (data: string) => {
-        setSpinner(true);
+    const handleItemClick = (data: string) => {        
         setVisiblePanel('/' + data);
-        navigate('/' + data);        
+        navigate('/' + data);   
+        setSpinner(true);     
     }
 
     return (

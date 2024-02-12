@@ -12,7 +12,7 @@ import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
 import { BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
-import { geoJsonState, spinnerState, mapFeatureState, errorState } from '../../states';
+import { geoJsonState, spinnerState, mapFeatureState, errorState, gMapAPIKeyState } from '../../states';
 
 // Utilities
 import { useMapsService } from '../../services';
@@ -30,6 +30,7 @@ function MapContainer() {
     const setGeoJSON = useSetRecoilState(geoJsonState);
     const setMapFeatures = useSetRecoilState(mapFeatureState);
     const setError = useSetRecoilState(errorState);
+    const setGMapAPIKey = useSetRecoilState(gMapAPIKeyState);
 
     const getSearchParams = () => {
         if (global) {
@@ -127,7 +128,7 @@ function MapContainer() {
     const fetchGeoJsonData = (geo_id: string) => {
         mapServices.getMaps(Number(geo_id)).then((data: any) => {
             setGeoJSON(data);
-            setSpinner(false);
+            setSpinner(false);            
             fetchMapCircles(geo_id);
             fetchFeaturedStories(geo_id);
         }).catch(error => {
@@ -159,7 +160,7 @@ function MapContainer() {
     }
 
     const errorHandler = (error: any) => {
-        const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+        const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
         setError({ type: 'Error', message: errorMsg });
     };
 

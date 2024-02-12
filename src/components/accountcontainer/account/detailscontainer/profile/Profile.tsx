@@ -29,7 +29,7 @@ export default function Profile() {
     const setError = useSetRecoilState(errorState);
 
     const [open, setOpen] = useState(false);
-	const [text, setText] = useState<string>('');
+    const [text, setText] = useState<string>('');
 
     const [showUploadImageModal, setShowUploadImageModal] = useState(false);
     const [showDeleteImageModal, setShowDeleteImageModal] = useState(false);
@@ -43,14 +43,14 @@ export default function Profile() {
     const maxZoom = 3;
 
     const closeWIPDrawer = () => {
-		setOpen(false);
-		setText('');
-	};
+        setOpen(false);
+        setText('');
+    };
 
-	const handleWIPDrawer = (text: string) => {
-		setText(text);
-		setOpen(true);
-	}
+    const handleWIPDrawer = (text: string) => {
+        setText(text);
+        setOpen(true);
+    }
 
     // const handleOpen = (flag?: boolean) => {
     //     if (flag) {
@@ -80,7 +80,7 @@ export default function Profile() {
     //         })
     //         .catch((error: any) => {
     //             setSpinner(false);
-    //             const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+    //             const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
     //             setError({ type: 'Error', message: errorMsg });
     //         });
     // };
@@ -143,7 +143,7 @@ export default function Profile() {
                 })
                 .catch(error => {
                     setSpinner(false);
-                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
                     setError({ type: 'Error', message: errorMsg });
                 });
         } catch (e) {
@@ -185,7 +185,7 @@ export default function Profile() {
             })
             .catch(error => {
                 setSpinner(false);
-                const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
             });
         setShowDeleteImageModal(false);

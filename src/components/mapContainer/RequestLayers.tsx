@@ -31,7 +31,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
 
     const [payloadData, setPayloadData] = useState<
         { email_id: string, name: string, company: string, message: string, geo_code: string, geo_name: string, purpose: string }>
-        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_code: geoJSON?.rootProperties?.id , geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Layers' });
+        ({ email_id: loggedUser?.email_id, name: loggedUser?.name, company: loggedUser?.company, message: '', geo_code: geoJSON?.rootProperties?.id, geo_name: geoJSON?.rootProperties?.Name, purpose: 'Request Layers' });
 
     const handleChangeData = (e: any) => {
         e.preventDefault();
@@ -62,7 +62,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                 setSpinner(false);
             })
                 .catch(error => {
-                    const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+                    const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
                     setError({ type: 'Success', message: errorMsg });
                     setSpinner(false);
                 });

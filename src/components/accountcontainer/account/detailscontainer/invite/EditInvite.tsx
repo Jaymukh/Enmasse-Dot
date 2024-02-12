@@ -44,7 +44,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
             }
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
             setError({ type: 'Error', message: errorMsg });
         });
     }
@@ -52,7 +52,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
     //function to get all the settings details
     useEffect(() => {
         fetchAllSettings();
-    }, []);  
+    }, []);
 
     const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault();

@@ -422,5 +422,3 @@ export const staticMapStyle = [
 		]
 	}
 ];
-
-export const googleMapsApiKey = 'AIzaSyBS2A07XHOScEqDgy9d3iKhGSb1IfHQnkE';

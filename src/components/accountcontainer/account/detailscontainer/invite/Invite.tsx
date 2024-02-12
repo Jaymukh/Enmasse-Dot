@@ -77,7 +77,7 @@ export default function Invite() {
 			})
 			.catch(error => {
 				setSpinner(false);
-				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+				const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
 			});
 	};
@@ -132,7 +132,7 @@ export default function Invite() {
 
 			setSuggestions(result || []);
 		}
-	}, [searchTerm]);	
+	}, [searchTerm]);
 
 	// Confirm Delete Model
 	const openConfirmDeleteModal = (showConfirmDeleteModal: boolean, user_id: string) => {
@@ -157,7 +157,7 @@ export default function Invite() {
 			})
 			.catch(error => {
 				setSpinner(false);
-				const errorMsg = error?.response?.data?.message ? error?.response?.data?.message : "Something went wrong. Please try again."
+				const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
 				setError({ type: 'Error', message: errorMsg });
 			});
 	};

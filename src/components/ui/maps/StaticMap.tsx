@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import '../../../styles/main.css';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';
 import * as MapConstants from '../../../utils/json/googlemapstyle';
 import { useMapsService } from '../../../services';
-import { errorState, geoJsonState, spinnerState, storiesState } from '../../../states';
+import { errorState, gMapAPIKeyState, geoJsonState, spinnerState, storiesState } from '../../../states';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 import markerPurple from '../../../utils/images/Location pin-purple-01.svg';
@@ -33,6 +33,11 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 
 	const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
+	const { isLoaded } = useJsApiLoader({
+		id: 'google-map-script',
+		googleMapsApiKey: apiKey || ''
+	  })
+
 	const mapOptions = {
 		disableDefaultUI: true,
 		zoomControl: false,
@@ -50,7 +55,7 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 	}, []);
 
 	const errorHandler = (error: any) => {
-		const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+		const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
 		setError({ type: 'Error', message: errorMsg });
 	};
 
@@ -97,7 +102,7 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 			});
 			map.data.addGeoJson(geoJSON);
 
-			map.data.setStyle((feature) => {
+			map.data.setStyle((feature: any) => {
 				const fillColor = feature.getProperty('Color');
 				return {
 					fillColor,
@@ -132,33 +137,34 @@ const StaticMap: React.FC<StaticMapProps> = ({ coordinates, noMarkers }) => {
 
 	return (
 		<div style={{ height: '100%', width: '100%' }} className='d-flex flex-column align-items-center justify-content-center'>
-			{apiKey && (
-				<LoadScript
-					googleMapsApiKey={apiKey}
-				>
-					<GoogleMap
-						ref={mapRef}
-						zoom={6}
-						mapContainerStyle={MapConstants.containerStyle}
-						center={center}
-						onLoad={handleMapLoad}
-						options={mapOptions}
-					>
-						{markers?.map((marker: any, index: number) => (
-							<Marker
-								key={index}
-								position={{
-									lng: marker.geometry.coordinates[0],
-									lat: marker.geometry.coordinates[1]
-								}}
-								icon={{
-									url: focusedMarker === index ? markerPurple : markerGrey,
-								}}
-							//onClick={() => handleMarkerClick(marker, index)}
-							/>
-						))}
-					</GoogleMap>
-				</LoadScript>)}
+			{isLoaded &&
+			// && (
+			// 	<LoadScript
+			// 		googleMapsApiKey={apiKey}
+			// 	>
+			<GoogleMap
+				ref={mapRef}
+				zoom={6}
+				mapContainerStyle={MapConstants.containerStyle}
+				center={center}
+				onLoad={handleMapLoad}
+				options={mapOptions}
+			>
+				{markers?.map((marker: any, index: number) => (
+					<Marker
+						key={index}
+						position={{
+							lng: marker.geometry.coordinates[0],
+							lat: marker.geometry.coordinates[1]
+						}}
+						icon={{
+							url: focusedMarker === index ? markerPurple : markerGrey,
+						}}
+					//onClick={() => handleMarkerClick(marker, index)}
+					/>
+				))}
+			</GoogleMap>}
+			
 		</div>
 	);
 };

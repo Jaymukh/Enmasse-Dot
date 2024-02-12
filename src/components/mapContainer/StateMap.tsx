@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api';
-import { useRecoilValue } from 'recoil';
+import { GoogleMap, LoadScript, InfoWindow, useJsApiLoader } from '@react-google-maps/api';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // CSS
 import '../../styles/main.css';
@@ -12,7 +12,7 @@ import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 import { Breadcrumb, BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
-import { geoJsonState, mapFeatureState } from '../../states';
+import { errorState, gMapAPIKeyState, geoJsonState, mapFeatureState } from '../../states';
 
 // Utilities
 import * as MapConstants from '../../utils/json/googlemapstyle'
@@ -53,8 +53,13 @@ const StateMap: React.FC<StateMapProps> = ({
     const [focused, setFocused] = useState(0);
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
+    const setError = useSetRecoilState(errorState);
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: apiKey || '',
+    })
     const [center, setCenter] = useState({
         lat: 22.7196,
         lng: 73.97449
@@ -150,8 +155,8 @@ const StateMap: React.FC<StateMapProps> = ({
                 setSelectedCoreSoln(data[0]);
                 setIsChecked({ ...isChecked, coreSolution: data.length > 0 });
             }).catch(error => {
-                // const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
-                // setError({ type: 'Error', message: errorMsg });
+                const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
+                setError({ type: 'Error', message: errorMsg });
             });
         }
     }, [geoJSON]);
@@ -164,7 +169,7 @@ const StateMap: React.FC<StateMapProps> = ({
             map.data.addGeoJson(geoJSON);
             map.data.addListener('click', (event: any) => onClickMapFeature(event.feature));
 
-            map.data.setStyle((feature) => {
+            map.data.setStyle((feature: any) => {
                 const fillColor = feature.getProperty('Color');
                 return {
                     fillColor,
@@ -208,8 +213,8 @@ const StateMap: React.FC<StateMapProps> = ({
                 return radii.map((radius, i) => {
                     if (radius) {
                         const fillOpacity = i === 0 && radii.length > 1 ? 0 : 0.5;
-                        const marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]),
+                        const marker = new window.google.maps.Marker({
+                            position: new window.google.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]),
                             icon: {
                                 path: google.maps.SymbolPath.CIRCLE,
                                 fillColor: '#FFFFFF',
@@ -261,46 +266,43 @@ const StateMap: React.FC<StateMapProps> = ({
                         />
                     </div>
                     <div className='col-xl-9 col-lg-9 col-md-12 p-0' style={{ height: '80.25vh' }}>
-                        {apiKey && (
-                            <LoadScript
-                                googleMapsApiKey={apiKey}
+                        {isLoaded &&
+
+                            <GoogleMap
+                                ref={mapRef}
+                                zoom={6}
+                                mapContainerStyle={MapConstants.containerStyle}
+                                center={center}
+                                onLoad={handleMapLoad}
+                                options={mapOptions}
                             >
-                                <GoogleMap
-                                    ref={mapRef}
-                                    zoom={6}
-                                    mapContainerStyle={MapConstants.containerStyle}
-                                    center={center}
-                                    onLoad={handleMapLoad}
-                                    options={mapOptions}
-                                >
-                                    {mapFeatures.featuredStories?.featuredStories && isChecked?.viewStories && Object.keys(geoJSON).length && (
-                                        mapFeatures.featuredStories?.featuredStories?.map((feature: any, index: number) => (
-                                            <InfoWindow
-                                                key={index}
-                                                position={{
-                                                    lng: feature.properties.geometry.coordinates[0],
-                                                    lat: feature.properties.geometry.coordinates[1]
-                                                }}
-                                                // onClose={handleHoverEnd}                                                
-                                                options={{
-                                                    padding: 0,
-                                                    maxWidth: 224,
-                                                    borderRadius: 0,
-                                                    overflow: 'hidden',
-                                                    zIndex: focused === index ? 1000 : 0,
-                                                } as any}
-                                            >
-                                                <MapPopup
-                                                    properties={feature.properties}
-                                                    handleFocused={handleFocused}
-                                                    index={index}
-                                                />
-                                            </InfoWindow>
-                                        ))
-                                    )}
-                                </GoogleMap>
-                            </LoadScript>
-                        )}
+                                {mapFeatures.featuredStories?.featuredStories && isChecked?.viewStories && Object.keys(geoJSON).length && (
+                                    mapFeatures.featuredStories?.featuredStories?.map((feature: any, index: number) => (
+                                        <InfoWindow
+                                            key={index}
+                                            position={{
+                                                lng: feature.properties.geometry.coordinates[0],
+                                                lat: feature.properties.geometry.coordinates[1]
+                                            }}
+                                            // onClose={handleHoverEnd}                                                
+                                            options={{
+                                                padding: 0,
+                                                maxWidth: 224,
+                                                borderRadius: 0,
+                                                overflow: 'hidden',
+                                                zIndex: focused === index ? 1000 : 0,
+                                            } as any}
+                                        >
+                                            <MapPopup
+                                                properties={feature.properties}
+                                                handleFocused={handleFocused}
+                                                index={index}
+                                            />
+                                        </InfoWindow>
+                                    ))
+                                )}
+                            </GoogleMap>
+                        }
                     </div>
                 </div>
             </div>
