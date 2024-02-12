@@ -5,6 +5,7 @@ export interface geoJSONProps {
     features: any;
     legendProperties: {
         show: boolean;
+        legend_label: string;
         legend_end: string;
         legend_end_color: string;
         legend_mid: string

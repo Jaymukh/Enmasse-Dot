@@ -1,6 +1,7 @@
 // External libraries
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 
 // CSS
 import '../../../styles/main.css';
@@ -9,6 +10,7 @@ import '../../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+import { errorState, mapFeatureState } from '../../../states';
 
 // Utilities
 import { useMapHelpers } from '../../../helpers';
@@ -22,10 +24,19 @@ const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selecte
     const { getCurrencyWithSymbol, getCoreSolutions, getNumberWithZero } = useMapHelpers();
     const [searchParams, setSearchParams] = useSearchParams();
     const mapServices = useMapsService();
+    const setMapFeatures = useSetRecoilState(mapFeatureState);
+    const setError = useSetRecoilState(errorState);
 
-    useEffect(() => {
-        mapServices?.getCifData(Number(searchParams.get('geo_code')!));
-    }, []);
+    // useEffect(() => {
+    //     mapServices?.getCifData(Number(searchParams.get('geo_code')!)).then((response) => {
+    //         if (response) {
+    //             setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
+    //         }
+    //     }).catch(error => {
+    //         const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+    //         setError({ type: 'Error', message: errorMsg });
+    //     });
+    // }, []);
 
     return (
         <div className='col-lg-8 col-md-8 col-sm-12 my-4 ' >

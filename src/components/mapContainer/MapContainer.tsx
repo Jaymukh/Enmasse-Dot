@@ -159,6 +159,17 @@ function MapContainer() {
         });
     }
 
+    const fetchCifData = (geoCode: number) => {
+        mapServices.getCifData(geoCode).then((response) => {
+            if (response) {
+                setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
+            }
+        }).catch(error => {
+            const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+            setError({ type: 'Error', message: errorMsg });
+        });
+    };
+
     const errorHandler = (error: any) => {
         const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
         setError({ type: 'Error', message: errorMsg });
@@ -190,14 +201,17 @@ function MapContainer() {
         if (selected.district) {
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.district);
-            mapServices?.getCifData(selected.district);
+            // mapServices?.getCifData(selected.district);
+            fetchCifData(selected.district);
         } else if (selected.state) {
             fetchDropdownList(selected.state, 'districts');
             fetchGeoJsonData(selected.state);
-            mapServices?.getCifData(selected.state);
+            // mapServices?.getCifData(selected.state);
+            fetchCifData(selected.state);
         } else if (selected.country) {
             fetchGeoJsonData(selected.country);
-            mapServices?.getCifData(selected.country);
+            // mapServices?.getCifData(selected.country);
+            fetchCifData(selected.country);
         }
     }, [selected.country, selected.state, selected.district]);
 

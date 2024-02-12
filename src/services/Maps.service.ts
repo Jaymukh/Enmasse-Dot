@@ -27,18 +27,7 @@ const useMapsService = () => {
     }
 
     const getCifData = (geoCode: number) => {
-        // setSpinner(true);
-        return fetchWrapper.get(`${APIS.MAPS.GET_CIF_DATA}?geo-code=${geoCode}`)
-            .then((response) => {
-                // setSpinner(false);
-                if (response) {
-                    setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
-                }
-            }).catch(error => {
-                const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-                setError({ type: 'Error', message: errorMsg });
-                // setSpinner(false);
-            });
+        return fetchWrapper.get(`${APIS.MAPS.GET_CIF_DATA}?geo-code=${geoCode}`);
     }
 
     const getExploreNow = () => {
