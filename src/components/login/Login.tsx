@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import ReactGA from 'react-ga';
+import { FaAnglesDown } from "react-icons/fa6";
 
 // CSS
 import '../../styles/main.css';
@@ -120,6 +121,7 @@ export default function Login() {
                             >
                                 Our team of skilled professionals is committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
                             </Body>
+                            <a href="#login" className="down-arrow"> <FaAnglesDown /></a>
                         </div>
                     </div>
                 </div>
@@ -127,6 +129,7 @@ export default function Login() {
                     <div className='loginCardAlign' >
                         <Heading
                             title='Login'
+                            id='login'
                             type={TypographyType.h2}
                             colour={TypographyColor.dark}
                         />

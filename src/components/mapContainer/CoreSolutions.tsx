@@ -63,8 +63,8 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 colour={TypographyColor.dark}
                                 classname='my-0 ms-2 text-start'
                             />
+                            <InfoPanel fontSize={20} text='Core Solutions have a strong tendency to grow together' classname='me-1' />
                         </div>
-                        <InfoPanel fontSize={20} text='Core Solutions have a strong tendency to grow together' classname='me-1' />
                         <Switch
                             isChecked={isChecked?.coreSolution}
                             toggleSwitch={toggleSwitch}

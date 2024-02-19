@@ -5,6 +5,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import { GiPlainCircle } from 'react-icons/gi';
 import { GoCheckCircleFill } from 'react-icons/go';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaAnglesDown } from 'react-icons/fa6';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -113,6 +114,7 @@ const UpdatePassword = () => {
                         >
                             Our team of skilled professionals is committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
                         </Body>
+                        <a href="#login" className="down-arrow"> <FaAnglesDown /></a>
                     </div>
                 </div>
             </div>
@@ -150,6 +152,7 @@ const UpdatePassword = () => {
                     <form className='loginCardAlign' onSubmit={handleSubmit(onSubmit)}>
                         <Heading
                             title='Create a Password'
+                            id='login'
                             type={TypographyType.h2}
                             colour={TypographyColor.dark}
                             classname='mb-2'
