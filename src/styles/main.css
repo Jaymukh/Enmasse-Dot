@@ -54,9 +54,11 @@
 .color-black {
     color: var(--black-0);
 }
+
 .color-black-15 {
     color: var(--black-15);
 }
+
 .color-purple {
     color: var(--purple-0);
 }
@@ -72,9 +74,11 @@
 .bg-purple {
     background-color: var(--purple-0);
 }
+
 .bg-purple-1 {
     background-color: var(--purple-1);
 }
+
 .bg-white {
     background-color: var(--white-0);
 }
@@ -164,6 +168,7 @@ ul {
     border-radius: 0.5rem;
     border: 1px solid var(--black-1);
 }
+
 .hr-border {
     border-top: 3px solid rgba(17, 24, 39, 0.10);
 }
@@ -521,8 +526,9 @@ td {
 th {
     border-bottom: 1px solid var(--table-border);
 }
+
 .dashboard-table-container tr td:not(:first-child),
-.dashboard-table-container tr th:not(:first-child)  {
+.dashboard-table-container tr th:not(:first-child) {
     width: 15%;
 }
 
@@ -533,6 +539,7 @@ th {
     z-index: 1;
     background-color: var(--white-1);
 }
+
 /* state-wise-summary-breakdown-table */
 .summary-breakdown-table-container {
     width: 100%;
@@ -582,8 +589,9 @@ td {
 th {
     border-bottom: 1px solid var(--table-border);
 }
+
 .summary-breakdown-table-container tr td:not(:first-child),
-.summary-breakdown-table-container tr th:not(:first-child)  {
+.summary-breakdown-table-container tr th:not(:first-child) {
     width: 18%;
 }
 
@@ -594,6 +602,7 @@ th {
     z-index: 1;
     background-color: var(--white-1);
 }
+
 /* demotable starts here */
 /* .dashboard-table-container {
     width: 100%;
@@ -857,6 +866,19 @@ th {
         margin: auto;
         width: 100vw;
         height: 50vh;
+    }
+}
+
+.down-arrow {
+    display: none;
+    /* By default, hide the button */
+
+    @media (max-width: 850px) {
+        display: flex;
+        /* Show the button when screen size is less than 850px */
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
     }
 }
 
