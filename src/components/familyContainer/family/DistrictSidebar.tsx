@@ -196,7 +196,7 @@ const DistrictSidebar = () => {
                         </div>
                     </div>
                 </div>
-                <hr className='m-0 hr-border' />
+                <hr className='m-0 w-100 hr-border' />
                 {properties?.showExploreMore ?
                     <div className='m-0 mt-1 p-0 w-100'>
                         {properties?.EICoverage && (properties?.geo_name !== 'district') && <div className='row data-card d-flex flex-row mx-0 mb-2 mt-3 px-2 pt-2 pb-3'>
