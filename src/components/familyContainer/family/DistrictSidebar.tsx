@@ -110,8 +110,8 @@ const DistrictSidebar = () => {
                     />
                 </div>
             </div>
-            <div className="row d-flex justify-content-center pt-1 mx-0 px-3" style={{ overflowY: 'auto', overflowX: 'hidden', height: '80%' }}>
-                <div className='row data-card px-2 d-flex flex-row mx-0 my-2' style={{ height: 'fit-content' }}>
+            <div className="d-flex flex-column justify-content-start align-items-center w-100 pt-1 mx-0 px-3" style={{ overflowY: 'auto', overflowX: 'hidden', height: '80%' }}>
+                <div className='d-flex flex-row justify-content-between w-100 data-card px-2 d-flex flex-row mx-0 my-2' style={{ height: 'fit-content' }}>
                     <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 mx-0 px-0 my-0 py-2 border-end d-flex flex-column align-items-start text-start' >
                         <Heading
                             title={getCurrencyWithSymbol(properties?.totalPopulation)}
@@ -141,7 +141,7 @@ const DistrictSidebar = () => {
                         </Body>
                     </div>
                 </div>
-                <div className='d-flex flex-column justify-content-center pb-1 px-0'>
+                <div className='d-flex flex-column justify-content-start align-items-start w-100 pb-1 px-0'>
                     <div className='d-flex justify-content-start align-items-center'>
                         <Heading
                             title='EnMasses Thesis'
@@ -151,7 +151,7 @@ const DistrictSidebar = () => {
                         />
                         <InfoPanel fontSize={20} text={properties?.enMassesThesis?.infoButton} />
                     </div>
-                    <div className='row data-card d-flex flex-row mx-0 mt-2 mb-3 px-0'>
+                    <div className='row data-card d-flex flex-row w-100 mx-0 mt-2 mb-3 px-0'>
                         <div className='col-12 px-2 d-flex flex-column align-items-start justify-content-center text-start py-2 border-bottom rounded-top bg-purple'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}
@@ -198,7 +198,7 @@ const DistrictSidebar = () => {
                 </div>
                 <hr className='m-0 hr-border' />
                 {properties?.showExploreMore ?
-                    <div className='m-0 mt-1 p-0'>
+                    <div className='m-0 mt-1 p-0 w-100'>
                         {properties?.EICoverage && (properties?.geo_name !== 'district') && <div className='row data-card d-flex flex-row mx-0 mb-2 mt-3 px-2 pt-2 pb-3'>
                             <div className='d-flex justify-content-between align-items-center m-0 p-0 pb-2'>
                                 <div className='d-flex justify-content-start align-items-center m-0 p-0'>
