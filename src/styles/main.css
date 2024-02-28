@@ -45,6 +45,10 @@ body {
     height: 5.5vh;
 }
 
+.flexWrap {
+    flex-wrap: wrap;
+}
+
 /* color and background color classes */
 
 .color-green {
