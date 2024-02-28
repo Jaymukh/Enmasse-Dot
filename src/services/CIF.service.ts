@@ -17,7 +17,8 @@ const useCIFService = () => {
 
     const getInOutFlowData = (geoCode: number) => {
         setSpinner(true);
-        return fetchWrapper.get(`${APIS.CIF.GET_INOUTFLOW_DATA}?geo-code=${geoCode}`).then(data => {
+        const currency = localStorage.getItem('currency');
+        return fetchWrapper.get(`${APIS.CIF.GET_INOUTFLOW_DATA}?geo-code=${geoCode}&currency=${currency}`).then(data => {
             setDashboardData(prevCIFData => ({
                 ...prevCIFData,
                 inOutFlowData: data
@@ -30,7 +31,8 @@ const useCIFService = () => {
 
     const getEHGrowthData = (geoCode: number) => {
         setSpinner(true);
-        return fetchWrapper.get(`${APIS.CIF.GET_EH_GROWTH_DATA}?geo-code=${geoCode}`).then(data => {
+        const currency = localStorage.getItem('currency');
+        return fetchWrapper.get(`${APIS.CIF.GET_EH_GROWTH_DATA}?geo-code=${geoCode}&currency=${currency}`).then(data => {
             setDashboardData(prevCIFData => ({
                 ...prevCIFData,
                 ehGrowthGraphData: data
@@ -43,7 +45,8 @@ const useCIFService = () => {
 
     const getMetricBreakdownData = (geoCode: number) => {
         setSpinner(true);
-        return fetchWrapper.get(`${APIS.CIF.GET_METRIC_BREAKDOWN}?geo-code=${geoCode}`).then(data => {
+        const currency = localStorage.getItem('currency');
+        return fetchWrapper.get(`${APIS.CIF.GET_METRIC_BREAKDOWN}?geo-code=${geoCode}&currency=${currency}`).then(data => {
             setDashboardData(prevCIFData => ({
                 ...prevCIFData,
                 metricBreakdownInfo: data
@@ -56,7 +59,8 @@ const useCIFService = () => {
 
     const getGeoSpecificData = (geoCode: number) => {
         setSpinner(true);
-        return fetchWrapper.get(`${APIS.CIF.GET_GEO_SPECIFIC_DATA}?geo-code=${geoCode}`).then(data => {
+        const currency = localStorage.getItem('currency');
+        return fetchWrapper.get(`${APIS.CIF.GET_GEO_SPECIFIC_DATA}?geo-code=${geoCode}&currency=${currency}`).then(data => {
             setDashboardData(prevCIFData => ({
                 ...prevCIFData,
                 geoInfo: data
@@ -69,7 +73,8 @@ const useCIFService = () => {
 
     const getCoreSolutionsGraphData = (geoCode: number) => {
         setSpinner(true);
-        return fetchWrapper.get(`${APIS.CIF.GET_CORE_SOLUTIONS_DATA}?geo-code=${geoCode}`).then(data => {
+        const currency = localStorage.getItem('currency');
+        return fetchWrapper.get(`${APIS.CIF.GET_CORE_SOLUTIONS_DATA}?geo-code=${geoCode}&currency=${currency}`).then(data => {
             setDashboardData(prevCIFData => ({
                 ...prevCIFData,
                 coreSolutionsData: data

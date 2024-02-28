@@ -19,7 +19,8 @@ const useStoriesService = () => {
         const queryString = Object.entries(paginationData)
             .map(([key, value]) => `${key.replaceAll('_', '-')}=${value}`)
             .join('&');
-        const url = `${APIS.STORIES.GET_ALL_STORIES}?${queryString}`;
+        const currency = localStorage.getItem('currency');
+        const url = `${APIS.STORIES.GET_ALL_STORIES}?${queryString}&currency=${currency}`;
         return fetchWrapper.get(url)
             .then((response: any) => {
                 if (response) {
