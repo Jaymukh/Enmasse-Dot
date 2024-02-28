@@ -1,8 +1,8 @@
 // External libraries
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // Components
-import { errorState, mapFeatureState, spinnerState } from "../states";
+import { errorState, mapFeatureState, userCurrencyState } from "../states";
 
 // Utilities
 import { useFetchWrapper } from '../helpers';
@@ -13,13 +13,15 @@ const useMapsService = () => {
     const fetchWrapper = useFetchWrapper();
     const setMapFeatures = useSetRecoilState(mapFeatureState);
     const setError = useSetRecoilState(errorState);
+    
 
     const getDropdownList = (geoCode: number) => {
         return fetchWrapper.get(`${APIS.MAPS.GET_DROPDOWN}?geo-code=${geoCode}`);
     }
 
     const getMaps = (geoCode: number) => {
-        return fetchWrapper.get(`${APIS.MAPS.GET_MAPS}?geo-code=${geoCode}`);
+        const userCurrency = localStorage.getItem('currency');
+        return fetchWrapper.get(`${APIS.MAPS.GET_MAPS}?geo-code=${geoCode}&currency=${userCurrency}`);
     }
 
     const getCircle = (geoCode: number) => {
@@ -27,7 +29,8 @@ const useMapsService = () => {
     }
 
     const getCifData = (geoCode: number) => {
-        return fetchWrapper.get(`${APIS.MAPS.GET_CIF_DATA}?geo-code=${geoCode}`);
+        const userCurrency = localStorage.getItem('currency');
+        return fetchWrapper.get(`${APIS.MAPS.GET_CIF_DATA}?geo-code=${geoCode}&currency=${userCurrency}`);
     }
 
     const getExploreNow = () => {
@@ -35,7 +38,8 @@ const useMapsService = () => {
     }
 
     const getFeaturedStories = (geoCode: number) => {
-        return fetchWrapper.get(`${APIS.STORIES.GET_FEATURED_STORIES}?geo-code=${geoCode}`)
+        const userCurrency = localStorage.getItem('currency');
+        return fetchWrapper.get(`${APIS.STORIES.GET_FEATURED_STORIES}?geo-code=${geoCode}&currency=${userCurrency}`)
     }
 
     const getCoreSolutions = (geoCode: number) => {

@@ -12,7 +12,7 @@ import CoreSolutions from './CoreSolutions';
 import MapPopup from './MapPopup';
 import DistrictSideBar from '../familyContainer/family/DistrictSidebar';
 import { Breadcrumb, BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
-import { errorState, gMapAPIKeyState, geoJsonState, mapFeatureState } from '../../states';
+import { errorState, geoJsonState, mapFeatureState } from '../../states';
 
 // Utilities
 import * as MapConstants from '../../utils/json/googlemapstyle'

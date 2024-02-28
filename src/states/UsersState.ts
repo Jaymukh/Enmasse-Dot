@@ -24,3 +24,8 @@ export const loggedUserState = atom({
     key: 'loggedUser',
     default: {} as User
 });
+
+export const userCurrencyState = atom({
+    key: 'userCurrency',
+    default: localStorage.getItem('currency')  || ''
+});

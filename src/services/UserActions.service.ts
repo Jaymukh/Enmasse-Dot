@@ -3,7 +3,7 @@ import { useSetRecoilState, useRecoilState } from 'recoil';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 // Components
-import { authState, loggedUserState, usersState, spinnerState, overlayState, errorState } from '../states';
+import { authState, loggedUserState, usersState, spinnerState, overlayState, errorState, userCurrencyState } from '../states';
 
 // Utilities
 import { APIS, RouteConstants } from '../constants';
@@ -14,6 +14,7 @@ import ReactGA from 'react-ga';
 const useUserService = () => {
     const fetchWrapper = useFetchWrapper();
     const [auth, setAuth] = useRecoilState(authState);
+    const setUserCurrency = useSetRecoilState(userCurrencyState);
     const setOverlay = useSetRecoilState(overlayState);
     const setLoggedUser = useSetRecoilState(loggedUserState);
     const setUsers = useSetRecoilState(usersState);
@@ -28,7 +29,9 @@ const useUserService = () => {
             .then(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('currency', 'INR');
                 setAuth(user);
+                setUserCurrency('INR');
                 // setSpinner(false);
                 getUserDetails();
                 // get return url from location state or default to home page
@@ -61,7 +64,9 @@ const useUserService = () => {
             .then(response => {
                 // remove user from local storage, set auth state to null and redirect to login page
                 localStorage.removeItem('user');
+                localStorage.removeItem('currency');
                 setAuth({});
+                setUserCurrency('');
                 setSpinner(false);
                 navigate(RouteConstants.login);
             })

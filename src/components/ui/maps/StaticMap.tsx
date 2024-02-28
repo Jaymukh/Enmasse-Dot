@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import '../../../styles/main.css';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import * as MapConstants from '../../../utils/json/googlemapstyle';
 import { useMapsService } from '../../../services';
-import { errorState, gMapAPIKeyState, geoJsonState, spinnerState, storiesState } from '../../../states';
+import { errorState, geoJsonState, spinnerState, storiesState } from '../../../states';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 import markerPurple from '../../../utils/images/Location pin-purple-01.svg';

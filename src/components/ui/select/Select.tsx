@@ -42,7 +42,7 @@ const getSizeClass = (size: SelectSize) => {
 }
 
 const getTextColor = (value: any) => {
-    return value ? `${styles.select_text_selcted}` : `${styles.select_text_not_selected}` ;
+    return value ? `${styles.select_text_selcted}` : `${styles.select_text_not_selected}`;
 }
 
 const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name, placeholder }: SelectProps<any>) => {
@@ -53,12 +53,12 @@ const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classn
             onChange={onChange}
             disabled={disabled}
             name={name}
-            //placeholder={placeholder}
+        //placeholder={placeholder}
         >
             {placeholder && <option value="" selected disabled>Select</option>}
             {options?.map((option: any, key: number) => (
                 <option key={key} value={option[valueKey] as any} className={`${styles.select_text_selcted}`}>
-                    {option[labelKey]} {name === 'currency' ? `(${option[valueKey]})` : ''}
+                    {option[labelKey]} {name === 'currency' ? `(${option['symbol']})` : ''}
                 </option>
             ))}
         </select>

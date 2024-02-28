@@ -15,18 +15,9 @@ import { errorState, mapFeatureState, storiesState } from '../../../states';
 
 // Utilities
 import { RouteConstants } from '../../../constants';
-import * as Constants from '../../../utils/constants/Constants'
 import { useMapsService, useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 import FamilyHeader from '../FamilyHeader';
-
-interface FamilyProps {
-    selectedFamily: number;
-    handleCarouselSlide: (selectedFamily: number) => void;
-    selectedData: any;
-    handleBackClick: () => void;
-    iterator: number;
-}
 
 const Family = () => {
     const navigate = useNavigate();

@@ -12,7 +12,7 @@ import MapOptions from './MapOptions';
 import GlobalMap from './GlobalMap';
 import StateMap from './StateMap';
 import { BreadcrumbItem } from '../ui/breadcrumb/Breadcrumb';
-import { geoJsonState, spinnerState, mapFeatureState, errorState, gMapAPIKeyState } from '../../states';
+import { geoJsonState, spinnerState, mapFeatureState, errorState } from '../../states';
 
 // Utilities
 import { useMapsService } from '../../services';
@@ -30,7 +30,6 @@ function MapContainer() {
     const setGeoJSON = useSetRecoilState(geoJsonState);
     const setMapFeatures = useSetRecoilState(mapFeatureState);
     const setError = useSetRecoilState(errorState);
-    const setGMapAPIKey = useSetRecoilState(gMapAPIKeyState);
 
     const getSearchParams = () => {
         if (global) {

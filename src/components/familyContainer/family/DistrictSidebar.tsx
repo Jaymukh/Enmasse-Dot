@@ -2,7 +2,7 @@
 // External libraries
 import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { LiaArrowRightSolid } from 'react-icons/lia';
 
 // CSS
@@ -16,26 +16,30 @@ import Select, { SelectSize } from '../../ui/select/Select';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import InfoPanel from '../../ui/InfoPanel';
 import RequestData from './RequestData';
-import { mapFeatureState, AllSettingsState, UserSettingsState, errorState, spinnerState } from '../../../states';
+import { mapFeatureState, AllSettingsState, UserSettingsState, errorState, spinnerState, userCurrencyState, geoJsonState } from '../../../states';
 
 // Utilities
 import WIPImage from '../../../utils/images/WIP-FINAL.svg';
 import { RouteConstants } from '../../../constants';
-import { useSettingsService } from '../../../services';
+import { useMapsService, useSettingsService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 
 const DistrictSidebar = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [searchParams] = useSearchParams();
     const { pathname } = location;
     const { cifData: { properties } } = useRecoilValue(mapFeatureState);
-    const [currency, setCurrency] = useState<string>("$");
     const settingsService = useSettingsService();
     const [settings, setSettings] = useRecoilState(AllSettingsState);
+    const [currency, setCurrency] = useRecoilState(userCurrencyState);
     const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
     const setError = useSetRecoilState(errorState);
     const setSpinner = useSetRecoilState(spinnerState);
     const { getCurrencyWithSymbol } = useMapHelpers();
+    const mapServices = useMapsService();
+    const [geoJSON, setGeoJSON] = useRecoilState(geoJsonState)
+    const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
 
 
     //function to get all the user's setting
@@ -74,8 +78,54 @@ const DistrictSidebar = () => {
         fetchUserSettings();
     }, []);
 
+    const errorHandler = (error: any) => {
+        const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
+        setError({ type: 'Error', message: errorMsg });
+    };
+
+    const fetchGeoJsonData = (geo_id: string) => {
+        setSpinner(true);
+        mapServices.getMaps(Number(geo_id)).then((data: any) => {
+            setGeoJSON(data);
+            setSpinner(false);
+        }).catch(error => {
+            setSpinner(false);
+            errorHandler(error);
+        });
+    }
+
+    const fetchCifData = (geoCode: string) => {
+        mapServices.getCifData(Number(geoCode)).then((response) => {
+            if (response) {
+                setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
+            }
+        }).catch(error => {
+            const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+            setError({ type: 'Error', message: errorMsg });
+        });
+    };
+
+    const fetchFeaturedStories = (geo_id: string) => {
+        mapServices.getFeaturedStories(Number(geo_id)).then(data => {
+            setMapFeatures(prevMapFeatures => ({
+                ...prevMapFeatures,
+                featuredStories: data
+            }));
+        }).catch(error => {
+            errorHandler(error);
+        });
+    }
+
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        let geoCode = searchParams.get('geo_code');
+        if (!geoCode) {
+            geoCode = geoJSON?.rootProperties?.id;
+        }
         setCurrency(event.target.value);
+        localStorage.setItem("currency", event.target.value);
+        fetchGeoJsonData(geoCode);
+        fetchCifData(geoCode);
+        fetchFeaturedStories(geoCode);
     }
 
     const handleExploreMore = (geo_id: string) => {
@@ -101,12 +151,13 @@ const DistrictSidebar = () => {
                 <div className='col-6 p-0'>
                     <Select
                         options={settings?.currencies}
-                        value={usersettings?.currency}
+                        // value={usersettings?.currency}
+                        value={currency || usersettings?.currency}
                         labelKey='name'
-                        valueKey='symbol'
+                        valueKey='code'
                         size={SelectSize.small}
                         name='currency'
-                        disabled={true}
+                        onChange={handleChangeCurrency}
                     />
                 </div>
             </div>
