@@ -23,7 +23,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 	return (
 		<div>
 			<Modal showModal={showModal} classname='width-62-5'>
-				<div className=' modal-header d-flex flex-row justify-content-between align-items-center w-100 border-0 pb-0'>
+				<div className=' modal-header d-flex flex-row justify-content-between align-items-center w-100 border-0 padding-bottom-0'>
 					<div className="d-flex flex-row align-items-center">
 						<Heading
 							title='Terms and Conditions'
@@ -34,7 +34,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						<Body
 							type={BodyType.p2}
 							color={BodyColor.dark}
-							classname='text-start mx-2 mb-0'
+							classname='text-start margin-left-right-2 margin-bottom-0'
 						>
 							Last updated: DD/MM/YYYY
 						</Body>
@@ -47,8 +47,8 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						classname='btn-close'
 					/>
 				</div>
-				<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 pt-0 modal-padding">
-					<div className=" d-flex flex-column justify-content-start modal-dialog-scrollable my-2">
+				<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 padding-top-0 modal-padding">
+					<div className=" d-flex flex-column justify-content-start modal-dialog-scrollable margin-top-bottom-2">
 						<Body
 							type={BodyType.p2}
 							color={BodyColor.secondary}
@@ -75,7 +75,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 							title='2. Intellectual Property'
 							type={TypographyType.h3}
 							colour={TypographyColor.dark}
-							classname='text-start mt-4 margin-bottom-0-63'
+							classname='text-start margin-top-4 margin-bottom-0-63'
 						/>
 						<Body
 							type={BodyType.p2}
@@ -89,7 +89,7 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 							title='3. User Responsibilities'
 							type={TypographyType.h3}
 							colour={TypographyColor.dark}
-							classname='text-start mt-4 margin-bottom-0-63'
+							classname='text-start margin-top-4 margin-bottom-0-63'
 						/>
 						<Body
 							type={BodyType.p2}

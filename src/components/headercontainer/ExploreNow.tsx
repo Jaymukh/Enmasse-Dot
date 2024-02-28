@@ -124,11 +124,11 @@ const ExploreNow = () => {
 				variant={ButtonVariant.bordered}
 				onClick={() => handleModalOpen(true)}
 			>
-				<MdOutlineTravelExplore className='me-2' fontSize={20} />
+				<MdOutlineTravelExplore className='margin-right-2' fontSize={20} />
 				Explore Now
 			</Button>
-			<Modal showModal={showModal} classname='width-62-5 h-100 m-5 p-1'>
-				<div className='d-flex flex-row justify-content-between mb-2 mx-2'>
+			<Modal showModal={showModal} classname='width-62-5 h-100 margin-5 padding-1'>
+				<div className='d-flex flex-row justify-content-between margin-bottom-2 margin-left-right-2'>
 					<Heading
 						title='Explore Now'
 						type={TypographyType.h2}
@@ -143,7 +143,7 @@ const ExploreNow = () => {
 					/>
 				</div>
 				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27vw', maxWidth: '60vw' }}>
-					<div className='mx-2'>
+					<div className='margin-left-right-2'>
 						<Body
 							type={BodyType.p2}
 							color={BodyColor.muted}
@@ -151,7 +151,7 @@ const ExploreNow = () => {
 						>
 							Explore the available list of regions in our platform. Our team is working on getting more regions unlocked for you!
 						</Body>
-						<div className='d-flex flex-row justify-content-start m-2'>
+						<div className='d-flex flex-row justify-content-start align-items-center margin-2'>
 							{Object.values(selectedValue)?.map((item, index) => (
 								item &&
 								(<>
@@ -159,6 +159,7 @@ const ExploreNow = () => {
 										title={item}
 										type={TypographyType.h4}
 										colour={TypographyColor.dark}
+										classname='margin-bottom-0'
 									/>
 									<Button
 										theme={ButtonTheme.dark}
@@ -181,17 +182,17 @@ const ExploreNow = () => {
 							valueKey='geo_value'
 							hideSuggestionBox={false}
 							placeholderValue={selectedValue?.state ? 'Search by District' : 'Search by State'}
-							classname='height-3 width-26-625'
+							classname=''
 						/>
 					</div>
 					{hasData ?
-						<div className='my-2 d-flex justify-content-center align-items-center' style={{ maxHeight: '52vh', overflowY: 'auto', overflowX: 'hidden', minHeight: '52vh', width: '58vw' }}>
+						<div className='margin-top-bottom-2 d-flex justify-content-center align-items-start' style={{ maxHeight: '52vh', overflowY: 'auto', overflowX: 'hidden', minHeight: '52vh', width: '58vw' }}>
 							{spinnerLite
 								? <SpinnerLite />
 								: <div className='' style={{ width: '56.5vw' }}>
 									{results?.map((item: any) => (
 										(item.has_data &&
-											<div key={item.geo_id} className='my-2'>
+											<div key={item.geo_id} className='margin-top-bottom-2'>
 												<Heading
 													title={item.geo_value}
 													type={TypographyType.h4}
@@ -199,14 +200,14 @@ const ExploreNow = () => {
 													classname='text-start'
 													onClick={() => handleClick(item.geo_id)}
 												/>
-												<hr className='mt-0'></hr>
-												<div className='row m-0 p-0'>
+												<hr className='margin-top-0'></hr>
+												<div className='row margin-0 padding-0'>
 													{item.children.map((district: any) => (
 														(item.has_data
 															&& <Body
 																type={BodyType.p1}
 																color={BodyColor.purple}
-																classname='col-4 text-start mb-1 p-0'
+																classname='col-4 text-start margin-bottom-1 padding-0'
 																key={district.geo_id}
 																onClick={() => handleClick(item.geo_id, district.geo_id)}
 															>
@@ -220,18 +221,18 @@ const ExploreNow = () => {
 							}
 						</div> :
 						<div className='d-flex justify-content-center align-items-center'>
-							<div className="mx-4 mt-4 mb-0 d-flex flex-column justify-content-center align-items-center" style={{ width: '23rem' }}>
+							<div className="mx-4 margin-top-4 margin-bottom-0 d-flex flex-column justify-content-center align-items-center" style={{ width: '23rem' }}>
 								<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
 								<Heading
 									title="The state you're Searching is currently unavailable."
 									type={TypographyType.h5}
 									colour={TypographyColor.dark}
-									classname='pt-3 mb-1'
+									classname='padding-top-3 margin-bottom-1'
 								/>
 								<Body
 									type={BodyType.p3}
 									color={BodyColor.dark}
-									classname='text-center my-3 mx-0'
+									classname='text-center margin-top-bottom-3 margin-left-right-0'
 								>
 									Our team is actively developing these features for the upcoming updates. Keep an eye out for more information.
 								</Body>

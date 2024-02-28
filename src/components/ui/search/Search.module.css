@@ -1,16 +1,18 @@
 @import url("../../../styles/color.css");
 
 input {
-    border-radius: 0.3125rem;
+    border-radius: 0.703125vh;
     border: 1px solid var(--black-3);
-    padding: 0rem 2.7rem;
+    padding: 0rem 6.07500vh;
     position: relative;
-    font-size: 0.875rem;
+    font-size: 1.96875vh;
+    width: 59.90625vh;
+    height: 6.75vh;
 }
 
 .icon {
     position: absolute;
-    padding: 0rem 1rem;
+    padding: 0rem 2.25vh;
     /* transform: translate(56%, 20%); */
 }
 
@@ -20,12 +22,12 @@ input {
 }
 
 .suggestions_visible {
-    width: 26.625rem;
+    width: 59.90625vh;
     /* min-height: 6rem;
     max-height: 10rem; */
     overflow-y: scroll;
-    font-size: 0.875rem;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
+    font-size: 1.96875vh;
+    box-shadow: 0 0.28125vh 0.5625vh 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
 }
 
 .suggestions_item:hover {
@@ -34,8 +36,8 @@ input {
 }
 
 .suggestion_height {
-    min-height: 6rem;
-    max-height: 10rem;
+    min-height: 13.5vh;
+    max-height: 22.5vh;
 }
 
 .suggestion_menu {
@@ -48,11 +50,12 @@ input {
 	left: 0;
 	background-color: #fff;
 	z-index: 1000 !important;
-	border-radius: 0.3125rem;
-	min-width: 300px;
+	border-radius: 0.703125vh;
+	min-width: 42.1875vh;
 	padding: 0;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0.28125vh 0.5625vh rgba(0, 0, 0, 0.1);
 	border: 1px solid #ccc;
 }
+
 
 

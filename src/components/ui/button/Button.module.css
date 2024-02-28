@@ -5,9 +5,9 @@
 	/* (bordered) purple button with purple background and with purple border */
 	background-color: var(--purple-0);
 	border: 1px solid var(--purple-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -16,9 +16,9 @@
     /* (bordered) hover */
     background-color: var(--white-1);
     border: 1px solid var(--purple-0);
-    border-radius: 5px;
+    border-radius: 0.703125vh;
     color: var(--purple-0);
-    height: 2.25rem;
+    height: 5vh;
     font-weight: 500;
     font-family: "Poppins-Medium", sans-serif;
 }
@@ -27,9 +27,9 @@
 	/* (bordered) purple button with purple background and with purple border */
 	background-color: var(--purple-0);
 	border-color: var(--purple-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -39,9 +39,9 @@
 	/* purple button with purple background and without border */
 	border: none;
 	background-color: var(--purple-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -49,9 +49,9 @@
 .btn_primary_contained:hover {
 	background-color: var(--white-1);
 	border: none;
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--purple-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -59,9 +59,9 @@
 .btn_primary_contained:disabled, .btn_primary_contained:disabled:hover {
 	/* purple button with purple background and without border */
 	background-color: var(--purple-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -72,7 +72,7 @@
 	background-color: transparent;
 	border: none;
 	color: var(--purple-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -81,7 +81,7 @@
 	background-color: transparent;
 	border: 0;
 	color: var(--purple-5);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -101,9 +101,9 @@
 	/* (bordered) white button with white backgrount and with white border */
 	background-color: var(--white-1);
 	border: 1px solid var(--purple-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--purple-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -111,9 +111,9 @@
 .btn_secondary:hover {
 	background-color: var(--purple-0);
 	border: 1px solid var(--white-1);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -122,9 +122,9 @@
 	/* (bordered) white button with white backgrount and with white border */
 	background-color: var(--white-1);
 	border-color: var(--white-1);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--purple-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -134,19 +134,19 @@
 	/* white button with white backgrount and without border */
 	background-color: var(--white-1);
 	border: none;
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--purple-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
 
 .btn_secondary_contained:hover {
 	background-color: var(--purple-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	border: none;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -154,9 +154,9 @@
 .btn_secondary_contained:disabled, .btn_secondary_contained:disabled:hover {
 	/* white button with white backgrount and without border */
 	background-color: var(--white-1);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--purple-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -167,7 +167,7 @@
 	background-color: transparent;
 	border: none !important;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -176,7 +176,7 @@
 	background-color: transparent;
 	border: none !important;
 	color: var(--purple-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -186,7 +186,7 @@
 	background-color: transparent;
 	border: none !important;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -196,9 +196,9 @@
 	/* (bordered) black button with black background and with black border */
 	background-color: var(--black-0);
 	border: 1px solid var(--black-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -207,9 +207,9 @@
     /* (bordered) hover */
     background-color: var(--white-1);
     border: 1px solid var(--black-0);
-    border-radius: 5px;
+    border-radius: 0.703125vh;
     color: var(--black-0);
-    height: 2.25rem;
+    height: 5vh;
     font-weight: 500;
     font-family: "Poppins-Medium", sans-serif;
 }
@@ -218,9 +218,9 @@
 	/* (bordered) black button with black background and with black border */
 	background-color: var(--black-0);
 	border-color: var(--black-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -230,9 +230,9 @@
 	/* black button with black background and without border */
 	border: none;
 	background-color: var(--black-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -240,9 +240,9 @@
 .btn_dark_contained:hover {
 	background-color: var(--white-1);
 	border: none;
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--black-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -250,9 +250,9 @@
 .btn_dark_contained:disabled, .btn_dark_contained:disabled:hover {
 	/* black button with black background and without border */
 	background-color: var(--black-0);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -263,7 +263,7 @@
 	background-color: transparent;
 	border: none;
 	color: var(--black-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -272,7 +272,7 @@
 	background-color: transparent;
 	border: 0;
 	color: var(--black-5);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -292,9 +292,9 @@
 	/* (bordered) lightgray button with lightgray border and lightgray background color */
 	background-color: var(--black-5);
 	border: 1px solid var(--black-5);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -302,9 +302,9 @@
 .btn_muted:hover {
 	background-color: var(--white-1);
 	border: 1px solid var(--black-5);
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--black-5);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -313,9 +313,9 @@
 	/* lightgray button without border and with lightgray background color */
 	background-color: var(--black-5);
 	border: none;
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -323,9 +323,9 @@
 .btn_muted_contained:hover {
 	background-color: var(--white-1);
 	border: none;
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--black-5);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -335,7 +335,7 @@
 	background-color: transparent;
 	border: none;
 	color: var(--black-5);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -344,7 +344,7 @@
 	background-color: transparent;
 	border: none;
 	color: var(--black-3);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -354,7 +354,7 @@
 	border: 1px solid var(--rejected-0);
 	border-radius: 4px;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -364,7 +364,7 @@
 	border: 1px solid var(--rejected-0);
 	border-radius: 4px;
 	color: var(--rejected-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -374,7 +374,7 @@
 	border-color: var(--rejected-0);
 	border-radius: 4px;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -386,7 +386,7 @@
 	border: none;
 	border: none;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -396,7 +396,7 @@
 	border-radius: 4px;
 	border: none;
 	color: var(--rejected-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -406,7 +406,7 @@
 	border-radius: 4px;
 	border: none;
 	color: var(--white-1);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -416,7 +416,7 @@
 	background-color: transparent;
 	border: none !important;
 	color: var(--rejected-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 }
@@ -433,7 +433,7 @@
 	background-color: transparent;
 	border: none !important;
 	color: var(--rejected-0);
-	height: 2.25rem;
+	height: 5vh;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -466,30 +466,35 @@
 /* ButtonSize */
 
 .btn_xsmall {
-	font-size: 0.625rem !important; /* 10px */	
+	/* font-size: 0.625rem !important;  */
+	font-size: 1.40625vh !important; /* 10px */	
 	width: fit-content;
 	padding: 0 1rem;
 }
 
 .btn_small {
-	font-size: 0.75rem !important;	/* 12px */
+	/* font-size: 0.75rem !important;	 */
+	font-size: 1.6875vh !important;/* 12px */
 	width: fit-content;
 	padding: 0 1rem;
 }
 
 .btn_default {
-	font-size: 0.813rem;	/* 13px */
+	/* font-size: 0.813rem;	 */
+	font-size: 1.82925vh !important; /* 13px */
 	width: fit-content;
 	padding: 0 1rem;
 }
 
 .btn_medium {
-	font-size: 0.875rem !important;	/* 14px */
+	/* font-size: 0.875rem !important;	 */
+	font-size: 1.96875vh !important;/* 14px */
 	width: 198px;
 }
 
 .btn_large {
-	font-size: 1rem !important;	/* 16px */
+	/* font-size: 1rem !important;	 */
+	font-size: 2.25vh !important; /* 16px */
 	width: 100%;
 }
 

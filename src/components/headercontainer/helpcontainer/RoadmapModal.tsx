@@ -62,20 +62,20 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
         <div>
             <Modal showModal={openRoadmapModal} classname='width-62-5'>
                 <div style={{ height: '70vh' }} className='d-flex flex-column justify-content-between'>
-                    <div className='d-flex flex-row justify-content-end w-100 pb-1'>
+                    <div className='d-flex flex-row justify-content-end w-100 padding-bottom-1'>
                         <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => setOpenRoadmapModal(false)}></Button>
                     </div>
-                    <div className='d-flex flex-row align-items-center mx-3' style={{height: '52.5vh'}}>
+                    <div className='d-flex flex-row align-items-center margin-left-right-3' style={{height: '52.5vh'}}>
                         <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: '52.5vh', width: '26vw' }}>
                             <img src={Constants.roadmapContent[showRoadmap - 1].image} onLoad={handleImageLoad} alt="Core Solutions" width='85%' style={{ display: imageLoaded? 'block' : 'none' }} /> 
                             {(imageLoaded === false)  && <SpinnerLite /> }
                         </div>
-                        <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
+                        <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start padding-right-2">
                             <Heading
                                 title={Constants.roadmapContent[showRoadmap - 1].title}
                                 type={TypographyType.h2}
                                 colour={TypographyColor.dark}
-                                classname='test-start mb-3'
+                                classname='test-start margin-bottom-3'
                             />
                             <Body
                                 type={BodyType.p2}
@@ -89,14 +89,14 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
                                     theme={ButtonTheme.secondary}
                                     size={ButtonSize.default}
                                     variant={ButtonVariant.bordered}
-                                    classname='h-2 mt-4'
+                                    classname='h-2 margin-top-4'
                                     onClick={() => handleContactNow()}
                                 >
                                     Contact Now
                                 </Button>}
                         </div>
                     </div>
-                    <div className='d-flex flex-row justify-content-between align-items-center mb-2 mx-3 ps-5 pe-2'>
+                    <div className='d-flex flex-row justify-content-between align-items-center margin-bottom-2 margin-left-right-3 padding-left-5 padding-right-2'>
                         <Body
                             type={BodyType.p2}
                             color={BodyColor.dark}
@@ -110,7 +110,7 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
                                     theme={ButtonTheme.secondary}
                                     size={ButtonSize.default}
                                     variant={ButtonVariant.bordered}
-                                    classname='h-2 me-2'
+                                    classname='h-2 margin-right-2'
                                     onClick={previousHelp}
                                 >
                                     Previous

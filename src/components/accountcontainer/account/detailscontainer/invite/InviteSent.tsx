@@ -37,13 +37,13 @@ const InviteSent: React.FC<InviteSentProps> = ({
                         classname='btn-close'
                     />
                 </div>
-                <div className="d-flex flex-column justify-content-center align-items-center m-0 p-0">
-                    <img src={CheckGIF} alt="Created Successfully GIF" width={319} height={319} className='m-0 p-0'></img>
+                <div className="d-flex flex-column justify-content-center align-items-center margin-0 padding-0">
+                    <img src={CheckGIF} alt="Created Successfully GIF" width={319} height={319} className='margin-0 padding-0'></img>
                     <Heading
                         title='Invite sent'
                         type={TypographyType.h2}
                         colour={TypographyColor.dark}
-                        classname='mb-3'
+                        classname='margin-bottom-3'
                     />
                     <Body
                         type={BodyType.p3}

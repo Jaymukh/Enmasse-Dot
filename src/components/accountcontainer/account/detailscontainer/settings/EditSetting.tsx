@@ -26,7 +26,7 @@ const EditSetting: React.FC<EditSettingProps> = ({ editMode, handleEditClick }) 
             toggleFunction={handleEditClick}
         >
             <div className='d-flex justify-content-center flex-column'>
-                <div className="d-flex justify-content-center p-5">
+                <div className="d-flex justify-content-center padding-5">
                     <div className="" style={{ width: '18rem' }}>
                         <img src={WorkInProgressImage} className="card-img-top" alt="Work In Progress" width="100%" />
                         <div className="card-body">

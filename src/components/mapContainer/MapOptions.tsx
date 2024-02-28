@@ -48,24 +48,24 @@ function MapOptions({
     };
 
     return (
-        <div className='d-flex justify-content-start align-items-center border-bottom bg-white mx-0' style={{ height: '6.25vh' }}>
-            <div className='col-xl-7 col-md-7 justify-content-start d-flex flex-wrap h-100'>
-                <div className='select-right-margin py-0 h-100 px-3 d-flex align-items-center justify-content-center'>
+        <div className='d-flex justify-content-start align-items-center border-bottom bg-white margin-left-right-0' style={{ height: '6.25vh' }}>
+            <div className='col-xl-12 col-md-12 col-sm-12 justify-content-start d-flex flex-wrap h-100'>
+                <div className='select-right-margin padding-top-bottom-0 h-100 padding-left-right-3 d-flex align-items-center justify-content-center'>
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.medium}
                         variant={ButtonVariant.transparent}
                         // onClick={handleGlobal}
-                        classname='h-100 text-start ps-0 py-0'
+                        classname='h-100 text-start padding-left-0 padding-top-bottom-0'
                     >
                         Global
                     </Button>
                 </div>
-                <div className='select-right-margin py-0 h-100 d-flex flex-column align-items-start justify-content-center'>
+                <div className='select-right-margin padding-top-bottom-0 h-100 d-flex flex-column align-items-start justify-content-center'>
                     <Body
                         type={BodyType.p4}
                         color={BodyColor.secondary}
-                        classname='m-0 text-start ps-2 '
+                        classname='margin-0 text-start padding-left-2 '
                     >
                         Country
                     </Body>
@@ -74,7 +74,7 @@ function MapOptions({
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         onClick={handleCountryChange}
-                        classname='h-auto text-start ps-2 py-0 mb-0'
+                        classname='h-auto text-start padding-left-2 padding-top-bottom-0 margin-bottom-0'
                     >
                         {!global ? 'Select' : 'India'}
                     </Button>
@@ -90,11 +90,11 @@ function MapOptions({
                     /> */}
                 </div>
                 {global && selected.country ? (
-                    <div className='select-right-margin py-0 h-100 d-flex flex-column justify-content-center'>
+                    <div className='select-right-margin padding-top-bottom-0 h-100 d-flex flex-column justify-content-center'>
                         <Body
                             type={BodyType.p4}
                             color={BodyColor.secondary}
-                            classname='m-0 text-start ps-2'
+                            classname='margin-0 text-start padding-left-2'
                         >
                             State
                         </Body>
@@ -113,11 +113,11 @@ function MapOptions({
                     ''
                 )}
                 {global && selected.state ? (
-                    <div className='select-right-margin py-0 h-100 d-flex flex-column justify-content-center'>
+                    <div className='select-right-margin padding-top-bottom-0 h-100 d-flex flex-column justify-content-center'>
                         <Body
                             type={BodyType.p4}
                             color={BodyColor.secondary}
-                            classname='m-0 text-start ps-2'
+                            classname='margin-0 text-start padding-left-2'
                         >
                             District
                         </Body>
@@ -141,20 +141,20 @@ function MapOptions({
                     theme={ButtonTheme.primary}
                     size={ButtonSize.small}
                     variant={ButtonVariant.transparent}
-                    classname='m-0 h-auto'
+                    classname='margin-0 h-auto'
                     onClick={() => openWIPDrawer("Download data")}
                 >
-                    <FiDownload className='me-2' fontSize={15} />
+                    <FiDownload className='margin-right-2' fontSize={15} />
                     Download data
                 </Button>
                 <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.small}
                     variant={ButtonVariant.transparent}
-                    classname='m-0 h-auto'
+                    classname='margin-0 h-auto'
                     onClick={() => openWIPDrawer("Download data")}
                 >
-                    <MdBookmarks className='me-2' fontSize={15} />
+                    <MdBookmarks className='margin-right-2' fontSize={15} />
                     Bookmarks
                 </Button>
             </div> */}

@@ -103,9 +103,9 @@ const AccountOptions = () => {
 					image={loggedUser?.profile_picture}
 					initial={loggedUser.initial}
 					bgColor={!loggedUser?.profile_picture && loggedUser.userHSL}
-					classname='me-1'
+					classname='margin-right-1'
 				/>
-				<IoMdArrowDropdown fontSize={22} className='ms-1 px-0' color='rgba(28, 27, 31, 1)' />
+				<IoMdArrowDropdown fontSize={22} className='margin-left-1 padding-left-right-0' color='rgba(28, 27, 31, 1)' />
 			</div>
 
 			{Boolean(anchorEl) &&
@@ -122,7 +122,7 @@ const AccountOptions = () => {
 							title={loggedUser.name}
 							colour={TypographyColor.dark}
 							type={TypographyType.h4}
-							classname='text-start text-wrap ps-2 m-0'
+							classname='text-start text-wrap padding-left-2 margin-0'
 						/>
 					</li>
 					{Constants.accountMenuItems.map((item) => (
@@ -132,20 +132,20 @@ const AccountOptions = () => {
 								className='menu-item d-flex fs-16'
 								onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
 							>
-								<div className='ps-1'>{item.icon}</div>
+								<div className='padding-left-1'>{item.icon}</div>
 
 								<Heading
 									title={item.text}
 									colour={TypographyColor.dark}
 									type={TypographyType.h4}
-									classname='text-start text-wrap ps-2 m-0'
+									classname='text-start text-wrap padding-left-2 margin-0'
 								/>
 							</li>
 						)
 					))}
-					<hr className='m-0' />
-					<Button theme={ButtonTheme.primary} size={ButtonSize.large} variant={ButtonVariant.transparent} classname='menu-item d-flex logout my-1' onClick={handleLogout}>
-						<MdLogout className='me-3' fontSize={22} color='rgba(28, 27, 31, 1)' />
+					<hr className='margin-0' />
+					<Button theme={ButtonTheme.primary} size={ButtonSize.large} variant={ButtonVariant.transparent} classname='menu-item d-flex logout margin-top-bottom-1' onClick={handleLogout}>
+						<MdLogout className='margin-right-3' fontSize={22} color='rgba(28, 27, 31, 1)' />
 						Logout
 					</Button>
 				</ul>)

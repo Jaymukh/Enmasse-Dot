@@ -98,7 +98,7 @@ const UpdatePassword = () => {
 
 
     return (
-        <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
+        <div className='row margin-left-right-0' style={{ height: '100vh', width: '100vw' }} >
             <div className='col-md-6 col-xl-6 login-update-box bg-white'>
                 <div className='loginCardAlign'>
                     <img src={globe} alt='enmasse' width={454} height={338} />
@@ -128,12 +128,12 @@ const UpdatePassword = () => {
                             title='Created Successfully'
                             type={TypographyType.h2}
                             colour={TypographyColor.dark}
-                            classname='text-center mb-2'
+                            classname='text-center margin-bottom-2'
                         />
                         <Body
                             type={BodyType.p2}
                             color={BodyColor.muted}
-                            classname='mb-3 text-center'
+                            classname='margin-bottom-3 text-center'
                         >
                             Password created successfully!
                         </Body>
@@ -143,7 +143,7 @@ const UpdatePassword = () => {
                             variant={ButtonVariant.bordered}
                             type='button'
                             onClick={handleContinue}
-                            classname='mt-3'
+                            classname='margin-top-3'
                         >
                             Continue
                         </Button>
@@ -155,12 +155,12 @@ const UpdatePassword = () => {
                             id='login'
                             type={TypographyType.h2}
                             colour={TypographyColor.dark}
-                            classname='mb-2'
+                            classname='margin-bottom-2'
                         />
                         <Body
                             type={BodyType.p2}
                             color={BodyColor.muted}
-                            classname='mb-3'
+                            classname='margin-bottom-3'
                         >
                             Create password for your account.
                         </Body>
@@ -168,7 +168,7 @@ const UpdatePassword = () => {
                             title='Password'
                             type={TypographyType.h4}
                             colour={TypographyColor.dark}
-                            classname='mt-3 text-start'
+                            classname='margin-top-3 text-start'
                         />
                         <div className='input-wrapper'>
                             <input
@@ -179,7 +179,7 @@ const UpdatePassword = () => {
                                         handlePasswordChange(e)
                                     }
                                 })}
-                                className='my-1 px-2 inputBoxHeight w-100'
+                                className='margin-top-bottom-1 padding-left-right-2 inputBoxHeight w-100'
                                 placeholder='Enter your password here'
                             />
                             <Body
@@ -195,19 +195,19 @@ const UpdatePassword = () => {
                             && <Body
                                 type={BodyType.p3}
                                 color={BodyColor.warning}
-                                classname='m-0 p-0'
+                                classname='margin-0 padding-0'
                             >
                                 {errors?.new_password?.message}
                             </Body>
                         }
-                        <div className="row my-2">
+                        <div className="row margin-top-bottom-2">
                             {validationOptions.map((item: { key: string, text: string }, index: number) => (
-                                <div className='col-6 d-flex pe-0'>
+                                <div className='col-6 d-flex padding-right-0'>
                                     {conditions[item?.key as keyof typeof conditions] ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
                                     <Body
                                         type={BodyType.p3}
                                         color={BodyColor.dark}
-                                        classname='ms-2'>
+                                        classname='margin-left-2'>
                                         {item.text}
                                     </Body>
                                 </div>
@@ -223,13 +223,13 @@ const UpdatePassword = () => {
                             type="password"
                             // name="confirm_new_password"
                             {...register("confirm_new_password")}
-                            className='my-1 px-2 inputBoxHeight w-100'
+                            className='margin-top-bottom-1 padding-left-right-2 inputBoxHeight w-100'
                             placeholder='Re enter your password here' />
                         {errors?.confirm_new_password?.message
                             && <Body
                                 type={BodyType.p3}
                                 color={BodyColor.warning}
-                                classname='m-0 p-0'
+                                classname='margin-0 padding-0'
                             >
                                 {errors?.confirm_new_password?.message}
                             </Body>
@@ -239,14 +239,14 @@ const UpdatePassword = () => {
                             size={ButtonSize.large}
                             variant={ButtonVariant.bordered}
                             type='submit'
-                            classname='mt-3'
+                            classname='margin-top-3'
                         // disabled={!isValid}
                         >
                             {isSubmitting
                                 && <Body
                                     type={BodyType.p3}
                                     color={BodyColor.dark}
-                                    classname='spinner-border spinner-border-sm me-3'
+                                    classname='spinner-border spinner-border-sm margin-right-3'
                                 />
                             }
                             Create Password

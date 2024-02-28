@@ -53,7 +53,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
             >
                 Enter your email, we will send you instructions.
             </Body>
-            <div className=" d-flex flex-column justify-content-start my-2 w-100" >
+            <div className=" d-flex flex-column justify-content-start margin-top-bottom-2 w-100" >
                 <Heading
                     title='Email'
                     type={TypographyType.h4}
@@ -69,7 +69,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                 />
                 <Button
                     theme={ButtonTheme.primary}
-                    classname='mb-2 mt-4'
+                    classname='margin-bottom-2 margin-top-4'
                     size={ButtonSize.large}
                     variant={ButtonVariant.bordered}
                     onClick={handleSendEmail}

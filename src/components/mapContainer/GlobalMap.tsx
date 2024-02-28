@@ -51,14 +51,14 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
 	};
 
 	return (
-		<div className='map row mx-0'
+		<div className='map row margin-left-right-0'
 			style={{ height: '85.5vh', width: '100vw' }}
 		>
-			<div className='row bg-transparent h-100 w-100 overlay-card px-0 m-0'>
+			<div className='row bg-transparent h-100 w-100 overlay-card padding-left-right-0 margin-0'>
 				<div className='col-8'>
 					<GlobalOverlayCard />
 				</div>
-				<div className='col-4 px-0 d-flex justify-content-end'>
+				<div className='col-4 padding-left-right-0 d-flex justify-content-end'>
 					<InsightBar />
 				</div>
 			</div>

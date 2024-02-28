@@ -101,7 +101,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Name*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-0 mb-1'
+                        classname='margin-top-0 margin-bottom-1'
                     />
                     <Input
                         type="text"
@@ -114,7 +114,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Email*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-3 mb-1'
+                        classname='margin-top-3 margin-bottom-1'
                     />
                     <Input
                         type="email"
@@ -127,7 +127,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Company*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-3 mb-1'
+                        classname='margin-top-3 margin-bottom-1'
                     />
                     <Input
                         type="text"
@@ -140,7 +140,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         title='Company Type*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-3 mb-1'
+                        classname='margin-top-3 margin-bottom-1'
                     />
                     <Select
                         options={settings?.company_types}
@@ -151,13 +151,13 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={SelectSize.large}
                         name='company_type'
                         placeholder='Select'
-                        classname='px-3'
+                        classname='padding-left-right-3'
                     />
                     <Heading
                         title='Role*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-3 mb-1'
+                        classname='margin-top-3 margin-bottom-1'
                     />
                     <Select
                         options={settings?.roles}
@@ -168,7 +168,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={SelectSize.large}
                         name='role'
                         placeholder='Select'
-                        classname='px-3'
+                        classname='padding-left-right-3'
                     />
                     <Heading
                         title='Note: Admins will be able to invite users to the platform'
@@ -181,7 +181,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
                         onClick={() => handleSubmitInviteNew()}
-                        classname='my-3 height-3'
+                        classname='margin-top-bottom-3 height-3'
                     >
                         Invite
                     </Button>

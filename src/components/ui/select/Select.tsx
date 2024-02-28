@@ -48,7 +48,7 @@ const getTextColor = (value: any) => {
 const Select = ({ options, onChange, value, labelKey, valueKey, disabled, classname, size, name, placeholder }: SelectProps<any>) => {
     return (
         <select
-            className={`${getSizeClass(size)} ${classname} w-100 px-2 ${styles.select} ${getTextColor(value)}`}
+            className={`${getSizeClass(size)} ${classname} w-100 padding-left-right-2 ${styles.select} ${getTextColor(value)}`}
             value={value}
             onChange={onChange}
             disabled={disabled}

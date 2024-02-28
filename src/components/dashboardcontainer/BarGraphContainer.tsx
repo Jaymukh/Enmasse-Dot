@@ -23,7 +23,7 @@ const BarGraphContainer: React.FC<BarGraphContainerProps> = ({ selected, handleT
 
     return (
         <div className='h-100'>
-            <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='padding-3 h-100'>
                 <NavTab navItems={coreSolutionsData?.coreSolutionsByEH} selected={selected?.type} handleTabClick={handleTabClick} />
                 {(!selected?.subcategory && selected?.subcategory?.length === 0) ?
                     <NoVisualData displayImage={true} /> 

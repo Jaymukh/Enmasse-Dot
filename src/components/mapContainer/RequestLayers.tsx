@@ -83,7 +83,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                 <Body
                     type={BodyType.p1}
                     color={BodyColor.secondary}
-                    classname='mb-2'
+                    classname='margin-bottom-2'
                 >
                     We are working on developing layers that will help analyze opportunities better.To request layers, fill the following form. We will notify you once the layers have been updated.
                 </Body>
@@ -91,7 +91,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                     title='Name*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3'
+                    classname='margin-top-3'
                 />
                 <Input
                     type="text"
@@ -103,7 +103,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                     title='Email*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3'
+                    classname='margin-top-3'
                 />
                 <Input
                     type="email"
@@ -115,7 +115,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                     title='Message*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3'
+                    classname='margin-top-3'
                 />
                 <textarea
                     value={payloadData.message}
@@ -123,14 +123,14 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                     onChange={(e) => handleChangeData(e)}
                     placeholder="Type your request message (Max 250 words)"
                     style={{ height: '10rem' }}
-                    className='fs-13 p-3 rounded w-100'
+                    className='fs-13 padding-3 rounded w-100'
                 />
                 <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.large}
                     variant={ButtonVariant.bordered}
                     onClick={() => handleSendClick()}
-                    classname='my-3 height-3'
+                    classname='margin-top-bottom-3 height-3'
                 >
                     Send Request
                 </Button>

@@ -13,15 +13,15 @@ const AccountHeader: React.FC<{ routeTo?: string }> = ({ routeTo }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="w-100 d-flex align-items-center bg-white mx-0 ps-6 border-bottom z-index-0" style={{ height: '5.5vh' }}>
+        <div className="w-100 d-flex align-items-center bg-white margin-left-right-0 ps-6 border-bottom z-index-0" style={{ height: '5.5vh' }}>
             <Button
                 theme={ButtonTheme.primary}
                 size={ButtonSize.default}
                 variant={ButtonVariant.transparent}
                 onClick={() => routeTo ? navigate(routeTo) : navigate(-1)}
-                classname='m-0 h-auto'
+                classname='margin-0 h-auto'
             >
-                <BiArrowBack className='me-2 mb-1' fontSize={22} />
+                <BiArrowBack className='margin-right-2 margin-bottom-1' fontSize={22} />
                 Back
             </Button>
         </div>

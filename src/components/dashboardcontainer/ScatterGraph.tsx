@@ -31,10 +31,10 @@ const CustomizedDot = ({ cx, cy, payload }: { cx?: number, cy?: number, payload?
 const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="scatter-tooltip p-2">
-                <p className='m-0 p-0 fs-12 text-center ff-poppins-medium'>{payload[0].payload.geo_value}</p>
-                <p className='m-0 p-0 fs-10 text-start'>{`Inflow - ${payload[0].payload.inflow}`}</p>
-                <p className='m-0 p-0 fs-10 text-start'>{`Outflow - ${payload[0].payload.outflow}`}</p>
+            <div className="scatter-tooltip padding-2">
+                <p className='margin-0 padding-0 fs-12 text-center ff-poppins-medium'>{payload[0].payload.geo_value}</p>
+                <p className='margin-0 padding-0 fs-10 text-start'>{`Inflow - ${payload[0].payload.inflow}`}</p>
+                <p className='margin-0 padding-0 fs-10 text-start'>{`Outflow - ${payload[0].payload.outflow}`}</p>
             </div>
         );
     }
@@ -114,16 +114,16 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
     }, [inOutFlowData?.data])
 
     return (
-        <div className={`h-100 ${geoName === 'district' ? 'mb-5 pb-5' : ''}`}>
-            <div className='m-0 p-0' style={{ display: geoName === 'district' ? 'none' : 'flex' }}>
+        <div className={`h-100 ${geoName === 'district' ? 'margin-bottom-5 padding-bottom-5' : ''}`}>
+            <div className='margin-0 padding-0' style={{ display: geoName === 'district' ? 'none' : 'flex' }}>
                 <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
-                    <div className='row p-0 m-0 d-flex justify-content-between'>
-                        <div className='m-0 p-0 d-flex col-4 align-items-center'>
+                    <div className='row padding-0 margin-0 d-flex justify-content-between'>
+                        <div className='margin-0 padding-0 d-flex col-4 align-items-center'>
                             <Heading
                                 title='EH Inflow & Outflow'
                                 type={TypographyType.h5}
                                 colour={TypographyColor.dark}
-                                classname='text-start px-1 my-0'
+                                classname='text-start padding-left-right-1 margin-top-bottom-0'
                             />
                             <InfoPanel fontSize={20} text={inOutFlowData?.infoButton} />
                         </div>
@@ -141,7 +141,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                         </div>
                         {data && data?.length > 0
                             ?
-                            <div className='m-0 p-0 col-12 px-1'>
+                            <div className='margin-0 padding-0 col-12 padding-left-right-1'>
                                 <ScatterChart width={window.innerWidth * 0.92} height={window.innerHeight * 0.67} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                                     <defs>
                                         <ArrowMarker />
@@ -152,7 +152,7 @@ const ScatterGraph = ({ geoName }: { geoName: string }) => {
                                     <XAxis type="number" dataKey="outflow" name="Outflow" strokeWidth='0.35' strokeOpacity='0.5' fontSize={10} >
                                         <Label value="OUTFLOW: Spend" position="bottom" offset={5} fontWeight={500} fill='000000' fontSize={10} />
                                     </XAxis>
-                                    <YAxis type="number" dataKey="inflow" name="Inflow" strokeWidth='0.35' strokeOpacity='0.5' className='mb-3' fontSize={10} >
+                                    <YAxis type="number" dataKey="inflow" name="Inflow" strokeWidth='0.35' strokeOpacity='0.5' className='margin-bottom-3' fontSize={10} >
                                         <Label angle={270} value="INFLOW: Income + Borrowing" position={{ x: -5, y: 80 }} offset={30} fontWeight={500} fill='000000' fontSize={10} />
                                     </YAxis>
                                     <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />} />

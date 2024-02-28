@@ -128,20 +128,20 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         title='Old Password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-3 mb-1 text-start'
+                        classname='margin-top-3 margin-bottom-1 text-start'
                     />
                     <input
                         type="password"
                         //name='current_password'
                         {...register("current_password")}
-                        className='inputBoxHeight mb-1 mt-0 px-2 fs-14 w-100'
+                        className='inputBoxHeight margin-bottom-1 margin-top-0 padding-left-right-2 fs-14 w-100'
                         placeholder='Old password'
                     />
                     {errors?.current_password?.message &&
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.warning}
-                            classname='mb-1'>
+                            classname='margin-bottom-1'>
                             {errors?.current_password?.message}
                         </Body>
                     }
@@ -149,7 +149,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         title='New Password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-3 mb-1 text-start'
+                        classname='margin-top-3 margin-bottom-1 text-start'
                     />
                     <input
                         type="password"
@@ -159,7 +159,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                                 handlePasswordChange(e)
                             }
                         })}
-                        className='inputBoxHeight mb-1 mt-0 px-2 fs-14 w-100'
+                        className='inputBoxHeight margin-bottom-1 margin-top-0 padding-left-right-2 fs-14 w-100'
                         placeholder='New password'
                     />
                     {errors?.new_password?.message &&
@@ -170,14 +170,14 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                             {errors?.new_password?.message}
                         </Body>
                     }
-                    <div className="row mt-2">
+                    <div className="row margin-top-2">
                         {validationOptions.map((item: { key: string, text: string }) => (
-                            <div className="d-flex pe-0 mb-1">
+                            <div className="d-flex padding-right-0 margin-bottom-1">
                                 {conditions[item?.key as keyof typeof conditions] ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
                                 <Body
                                     type={BodyType.p3}
                                     color={BodyColor.secondary}
-                                    classname='ms-2 mb-1'>
+                                    classname='margin-left-2 margin-bottom-1'>
                                     {item.text}
                                 </Body>
                             </div>
@@ -187,13 +187,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                         title='Re enter new password*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-3 mb-1 text-start'
+                        classname='margin-top-3 margin-bottom-1 text-start'
                     />
                     <input
                         type="password"
                         //name='confirm_new_password'
                         {...register("confirm_new_password")}
-                        className='mb-1 mt-0 inputBoxHeight px-2 fs-14 w-100'
+                        className='margin-bottom-1 margin-top-0 inputBoxHeight padding-left-right-2 fs-14 w-100'
                         placeholder='Confirm new password'
                     />
                     {errors?.confirm_new_password?.message &&
@@ -206,7 +206,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                     }
                     <Button
                         type='submit'
-                        classname='mb-0 mt-4 height-3'
+                        classname='margin-bottom-0 margin-top-4 height-3'
                         size={ButtonSize.large}
                         theme={ButtonTheme.primary}
                         variant={ButtonVariant.bordered}
@@ -215,7 +215,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                             && <Body
                                 type={BodyType.p3}
                                 color={BodyColor.dark}
-                                classname='spinner-border spinner-border-sm me-3' />
+                                classname='spinner-border spinner-border-sm margin-right-3' />
                         }
                         Update
                     </Button>

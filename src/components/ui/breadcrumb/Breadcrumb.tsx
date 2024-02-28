@@ -17,7 +17,7 @@ type AriaCurrent = "page" | "step" | "location" | "date" | "time";
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, handleBreadcrumbClick }) => {
     return (
         <nav aria-label="breadcrumb">
-            <ol className="breadcrumb m-0">
+            <ol className="breadcrumb margin-0">
                 {items.map((item: BreadcrumbItem, index: number) => (
                     item.label &&
                     <li
@@ -30,7 +30,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, handleBreadcrumbC
                         {index === items.length - 1 ? (
                             item.label
                         ) : (
-                            <p className='m-0 p-0'>{item.label}</p>
+                            <p className='margin-0 padding-0'>{item.label}</p>
                         )}
                     </li>
                 ))}

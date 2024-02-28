@@ -163,37 +163,37 @@ export default function Invite() {
 	};
 
 	return (
-		<div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
-			<div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pe-4">
+		<div className='container bg-white margin-top-4 margin-right-5 padding-left-right-0' style={{ height: '90%' }}>
+			<div className="row margin-left-right-0 w-100 h-10 d-flex flex-row justify-content-between align-items-center padding-top-3 padding-right-4">
 				<Heading
 					title='Invite'
 					type={TypographyType.h2}
 					colour={TypographyColor.dark}
-					classname='col-2 ms-3 text-start ps-2'
+					classname='col-2 margin-left-3 text-start padding-left-2'
 				/>
-				<div className='col-8 d-flex flex-row justify-content-end align-items-center px-0'>
+				<div className='col-8 d-flex flex-row justify-content-end align-items-center padding-left-right-0'>
 					<Search
 						handleInputChange={handleInputChange}
 						searchTerm={searchTerm}
 						suggestions={suggestions}
 						hideSuggestionBox={true}
 						placeholderValue='Search'
-						classname='height-2-25 table-search'
+						classname='height-5 table-search'
 					/>
 					<Button
 						theme={ButtonTheme.secondary}
 						size={ButtonSize.default}
 						variant={ButtonVariant.bordered}
 						onClick={() => handleOpenInviteNew()}
-						classname='ms-2'
+						classname='margin-left-2'
 					>
-						<MdPersonAddAlt1 className='me-1' fontSize={22} />
+						<MdPersonAddAlt1 className='margin-right-1' fontSize={22} />
 						Invite New
 					</Button>
 				</div>
 			</div>
-			<hr className='mb-4' />
-			<div className="w-auto h-75 mx-4 d-flex justify-content-center m-auto overflow-hidden">
+			<hr className='margin-bottom-4' />
+			<div className="w-auto h-75 margin-left-right-4 d-flex justify-content-center m-auto overflow-hidden">
 				{!spinner &&
 					<div className='summary-breakdown-table-container'>
 						<table className=''>

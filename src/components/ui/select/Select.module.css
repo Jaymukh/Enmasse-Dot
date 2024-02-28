@@ -5,7 +5,7 @@
     -moz-appearance: none; /* Firefox */    
     -webkit-appearance: none; /* Safari and Chrome */    
     appearance: none;
-    padding: 0rem 5rem;
+    padding: 0rem 11.25vh;
     font-family: "Poppins-Medium", sans-serif;
 }
 
@@ -14,9 +14,9 @@
 }
 
 .select_small {
-    height: 2.125rem;
-    font-size: 0.875rem;
-    border-radius: 0.3125rem;
+    height: 4.78125vh;
+    font-size: 1.96875vh;
+    border-radius: 0.703125vh;
     border: 1px solid var(--black-2);
 }
 

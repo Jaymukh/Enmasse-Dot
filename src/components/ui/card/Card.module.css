@@ -8,24 +8,24 @@
 
 .card_bordered{ /* with border and background color */
 	background-color: var(--white-1);
-	border: 1px solid var(--black-1);
-	border-radius: 5px;
+	border: 0.140625vh solid var(--black-1);
+	border-radius: 0.703125vh;
 	color: var(--black-0);
 }
 .card_contained { /* without border and with background color */
 	background-color: var(--white-1);
 	border: none;
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--black-0);
-	padding: 1.25rem;
+	padding: 2.8125vh;
 }
 
 .card_transparent { /* without border and without background color */
 	background-color: transparent;
 	border: none;
-	border-radius: 5px;
+	border-radius: 0.703125vh;
 	color: var(--black-0);
-	padding: 1rem;
+	padding: 2.25vh;
 }
 
 /* CardSize */

@@ -96,14 +96,14 @@ const Settings = () => {
 
 
     return (
-        <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
-            <div className="w-100 mx-0 h-10 d-flex flex-row justify-content-between align-items-center pt-3 pe-4">
-                {/* <h5 className='mt-2 col-2 ms-3 text-start'>Settings</h5> */}
+        <div className='container bg-white margin-top-4 margin-right-5 padding-left-right-0' style={{ height: '90%' }}>
+            <div className="w-100 margin-left-right-0 h-10 d-flex flex-row justify-content-between align-items-center padding-top-3 padding-right-4">
+                {/* <h5 className='margin-top-2 col-2 margin-left-3 text-start'>Settings</h5> */}
                 <Heading
                     title='Settings'
                     type={TypographyType.h2}
                     colour={TypographyColor.dark}
-                    classname='col-2 ms-3 ps-2 text-start'
+                    classname='col-2 margin-left-3 padding-left-2 text-start'
                 />
                 <div className='col d-flex justify-content-end '>
                     <Button
@@ -112,7 +112,7 @@ const Settings = () => {
                         variant={ButtonVariant.bordered}
                         onClick={() => handleEditClick(!editMode)}
                     >
-                        <MdModeEdit className='me-1 mb-1' fontSize={20} />
+                        <MdModeEdit className='margin-right-1 margin-bottom-1' fontSize={20} />
                         Edit Settings
                     </Button>
                     <Button
@@ -120,22 +120,22 @@ const Settings = () => {
                         size={ButtonSize.default}
                         variant={ButtonVariant.bordered}
                         onClick={() => handleDrawer(true)}
-                        classname='ms-2'
+                        classname='margin-left-2'
                     >
-                        <MdLock className='me-1 mb-1' fontSize={20} />
+                        <MdLock className='margin-right-1 margin-bottom-1' fontSize={20} />
                         Change password
                     </Button>
                 </div>
             </div>
             <hr />
-            <div className="row w-100 h-90 mx-0">
-                <div className='col-5 d-flex justify-content-start flex-column text-justify mb-4 mx-4 px-0'>
+            <div className="row w-100 h-90 margin-left-right-0">
+                <div className='col-5 d-flex justify-content-start flex-column text-justify margin-bottom-4 margin-left-right-4 padding-left-right-0'>
                     <div className='d-flex flex-row justify-content-start align-items-center'>
                         <Heading
                             title='Language Preference'
                             colour={TypographyColor.dark}
                             type={TypographyType.h5}
-                            classname='mt-2 text-start'
+                            classname='margin-top-2 text-start'
                         />
                         <InfoPanel fontSize={20} text='Change your language' />
                     </div>
@@ -153,7 +153,7 @@ const Settings = () => {
                             title='Currency Preference'
                             colour={TypographyColor.dark}
                             type={TypographyType.h5}
-                            classname='mt-2 text-start'
+                            classname='margin-top-2 text-start'
                         />
                         <InfoPanel fontSize={20} text='Change currency' />
                     </div>
@@ -171,7 +171,7 @@ const Settings = () => {
                             title='Location Focus'
                             colour={TypographyColor.dark}
                             type={TypographyType.h5}
-                            classname='mt-2 text-start'
+                            classname='margin-top-2 text-start'
                         />
                         <InfoPanel fontSize={20} text='Change your location' />
                     </div>
@@ -189,11 +189,11 @@ const Settings = () => {
                             title='Notifications'
                             colour={TypographyColor.dark}
                             type={TypographyType.h5}
-                            classname='mt-2 text-start'
+                            classname='margin-top-2 text-start'
                         />
                         <InfoPanel fontSize={20} text='Turn on/off Notification' />
                     </div>
-                    <div className={`d-flex justify-content-between align-items-center px-2 py-2 input-div disabled-div`} aria-disabled={true}>
+                    <div className={`d-flex justify-content-between align-items-center padding-left-right-2 padding-top-bottom-2 input-div disabled-div`} aria-disabled={true}>
                         <Body
                             type={BodyType.p2}
                             color={BodyColor.dark}

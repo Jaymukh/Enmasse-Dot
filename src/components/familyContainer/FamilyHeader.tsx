@@ -30,7 +30,7 @@ function FamilyHeader() {
     }
 
     return (
-        <div className="w-100 d-flex align-items-center bg-white mx-0 ps-6 border-bottom z-index-0" style={{ height: '5.5vh' }}>
+        <div className="w-100 d-flex align-items-center bg-white margin-left-right-0 ps-6 border-bottom z-index-0" style={{ height: '5.5vh' }}>
             <Button
                 theme={ButtonTheme.primary}
                 size={ButtonSize.default}
@@ -38,7 +38,7 @@ function FamilyHeader() {
                 onClick={onNavigateBack}
                 classname='h-auto'
             >
-                <BiArrowBack className='me-2 h-auto' fontSize={22} />
+                <BiArrowBack className='margin-right-2 h-auto' fontSize={22} />
                 Back
             </Button>
         </div>

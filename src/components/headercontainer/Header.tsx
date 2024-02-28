@@ -40,10 +40,10 @@ function Header() {
 
 	return (
 		<div className="d-flex flex-wrap justify-content-between align-items-center border-bottom bg-white w-100" style={{ height: '8.25vh' }} >
-			<div className="d-flex flex-wrap mx-4 align-items-center">
-				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer ms-0' width={300} height={33} />
+			<div className="d-flex flex-wrap margin-left-right-4 align-items-center">
+				<img src={Logo} alt="logo" onClick={onLogoClick} className='cursor-pointer margin-left-0 logo-height'  />
 			</div>
-			<div className="d-flex flex-wrap justify-content-between align-items-center mx-4">
+			<div className="d-flex flex-wrap justify-content-between align-items-center margin-left-right-4">
 				<ExploreNow />
 				{/* <RequestDetails /> */}
 				{/* <Button
@@ -51,7 +51,7 @@ function Header() {
 					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
 					onClick={() => handleHelpClick()}
-					classname='ps-4 pe-0'
+					classname='padding-left-4 padding-right-0'
 				>
 					<MdHelpCenter fontSize={25} />
 				</Button> */}
@@ -61,7 +61,7 @@ function Header() {
 					size={ButtonSize.small}
 					variant={ButtonVariant.transparent}
 					onClick={() => handleDrawer('Add Bookmark')}
-					classname='px-0 mx-4'
+					classname='padding-left-right-0 margin-left-right-4'
 				>
 					<BsFillBookmarksFill fontSize={20}  />
 				</Button>

@@ -43,15 +43,15 @@ const Toast = () => {
 
     return (
         <>
-            {error && <div className={`d-flex align-items-center justify-content-between px-3 ${styles.alert_box} ${getTypeClass(error?.type)}`}>
+            {error && <div className={`d-flex align-items-center justify-content-between padding-left-right-3 ${styles.alert_box} ${getTypeClass(error?.type)}`}>
                 <div className='d-flex align-items-center'>
                     {error?.type === 'Error' ? <BiSolidErrorCircle fontSize={43} color='rgba(180, 51, 28, 1)' /> : <IoIosCheckmarkCircle fontSize={43} color='rgba(16, 128, 65, 1)' />}
-                    <div className='mx-3'>
-                        <h6 className={`${styles.alert_title} text-start mb-1 p-0`}>{error?.type}</h6>
-                        <p className={`${styles.alert_description} m-0 p-0 text-start`}>{error?.message}</p>
+                    <div className='margin-left-right-3'>
+                        <h6 className={`${styles.alert_title} text-start margin-bottom-1 padding-0`}>{error?.type}</h6>
+                        <p className={`${styles.alert_description} margin-0 padding-0 text-start`}>{error?.message}</p>
                     </div>
                 </div>
-                <div className='d-flex align-items-start h-100 py-3 pe-1'>
+                <div className='d-flex align-items-start h-100 padding-top-bottom-3 padding-right-1'>
                     <Button
                         theme={ButtonTheme.dark}
                         variant={ButtonVariant.transparent}

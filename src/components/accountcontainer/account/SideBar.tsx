@@ -26,13 +26,13 @@ const SideBar = () => {
     }
 
     return (
-        <div className='account-sidebar col-3 p-0 pe-3 h-100'>
+        <div className='account-sidebar col-3 padding-0 padding-right-3 h-100'>
             <div className="h-100 bg-white full-height d-flex flex-column justify-content-between w-100" style={{ height: '81.5vh' }}>
                 <ul className='sidebar-ul'>
                     {Constants.sidebarData.map((data, index) => (
                         (loggedUser.role === 'Admin' || data.index !== 2) 
                         && (
-                            <li className='p-0 m-0' key={index}>
+                            <li className='padding-0 margin-0' key={index}>
                                 <button
                                     className={`list-item-button ${'/' + (data.option).toLowerCase() === visiblePanel ? 'li-selected' : 'li-not-selected'
                                         }`}
@@ -41,14 +41,14 @@ const SideBar = () => {
                                     <Body 
                                     color={BodyColor.secondary}
                                     type={BodyType.p3}
-                                    classname='mx-3 li-icon'>
+                                    classname='margin-left-right-3 li-icon'>
                                         {data.icon}
                                     </Body>
                                     <Heading
                                         title={data.option}
                                         colour={TypographyColor.dark}
                                         type={TypographyType.h4}
-                                        classname='my-0'
+                                        classname='margin-top-bottom-0'
                                     />
                                 </button>
                             </li>

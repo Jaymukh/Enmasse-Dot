@@ -61,9 +61,9 @@ const FamilyDetails = () => {
         }
     } );
     return (
-        <div className='mx-0'>
-            <div className='row d-flex justify-content-between align-items-center py-2 m-0'>
-                <div className='col-xl-4 col-lg-4 col-md-4 col-sm-12 p-0'>
+        <div className='margin-left-right-0'>
+            <div className='row d-flex justify-content-between align-items-center padding-top-bottom-2 margin-0'>
+                <div className='col-xl-4 col-lg-4 col-md-4 col-sm-12 padding-0'>
                     <Heading
                         title={properties?.name}
                         type={TypographyType.h2}
@@ -72,44 +72,44 @@ const FamilyDetails = () => {
                     />
                 </div>
                 {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
-                    <div className='co-xll-5 col-lg-5 col-md-6 col-sm-12 d-flex align-items-center justify-content-around py-2 coverage-div'>
+                    <div className='co-xll-5 col-lg-5 col-md-6 col-sm-12 d-flex align-items-center justify-content-around padding-top-bottom-2 coverage-div'>
                         <Heading
                             title='EI Coverage'
                             colour={TypographyColor.dark}
                             type={TypographyType.h5}
-                            classname='mt-2 w-auto text-end text-nowrap pe-2 '
+                            classname='margin-top-2 w-auto text-end text-nowrap padding-right-2 '
                         />
                         <InfoPanel fontSize={20} text={mapFeatures?.cifData?.properties?.EICoverage?.infobutton} />
                         <ProgressBar coverage={mapFeatures?.cifData?.properties?.EICoverage} />
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.dark}
-                            classname='w-auto m-0 text-end text-nowrap ps-2'>
+                            classname='w-auto margin-0 text-end text-nowrap padding-left-2'>
                             {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.covered)} out Of {getCurrencyWithSymbol(mapFeatures?.cifData?.properties?.EICoverage?.total)} Districts
                         </Body>
                     </div>}
             </div>
             {family?.length > 0
-                && <Card size={CardSize.default} variant={CardVariant.contained} classname='mx-0 mt-2 p-0 row'>
+                && <Card size={CardSize.default} variant={CardVariant.contained} classname='margin-left-right-0 margin-top-2 padding-0 row'>
                     {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
-                    <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 pe-0 ps-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover', maxWidth: '100%', maxHeight: '12rem' }} onLoad={handleImageLoad}></img>
-                    <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 bg-white py-4 px-4 rounded-end'>
-                        <div className='d-flex flex-row mb-2'>
+                    <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 padding-right-0 padding-left-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover', maxWidth: '100%', maxHeight: '27vh' }} onLoad={handleImageLoad}></img>
+                    <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 bg-white padding-top-bottom-4 padding-left-right-4 rounded-end'>
+                        <div className='d-flex flex-row margin-bottom-2'>
                             <Heading
                                 title={familyDetails?.familyName}
                                 colour={TypographyColor.dark}
                                 type={TypographyType.h4}
-                                classname='m-0'
+                                classname='margin-0'
                             />
                             <Body
                                 type={BodyType.p3}
                                 color={BodyColor.secondary}
-                                classname='ms-3'>
+                                classname='margin-left-3'>
                                 {familyDetails?.address}
                             </Body>
                         </div>
                         {getCoreSolutions(familyDetails?.familyDetails)?.name &&
-                            <div className='d-flex flex-row mb-2'>
+                            <div className='d-flex flex-row margin-bottom-2'>
                                 <Body
                                     type={BodyType.p2}
                                     color={BodyColor.purple}
@@ -119,7 +119,7 @@ const FamilyDetails = () => {
                                 <Body
                                     type={BodyType.p4}
                                     color={BodyColor.secondary}
-                                    classname='ms-2 me-4 mt-1'>
+                                    classname='margin-left-2 margin-right-4 margin-top-1'>
                                     Annual Household Spend on {getCoreSolutions(familyDetails?.familyDetails)?.name}
                                 </Body>
                             </div>
@@ -130,8 +130,8 @@ const FamilyDetails = () => {
                             classname='text-start'>
                             {description}
                         </Body>
-                        <div className='d-flex justify-content-start mt-2'>
-                            <button className='rounded text-start ps-0 border-0 fs-10 bg-white ff-poppins-medium color-purple' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='ms-2' fontSize={18} /></button>
+                        <div className='d-flex justify-content-start margin-top-2'>
+                            <button className='rounded text-start padding-left-0 border-0 fs-10 bg-white ff-poppins-medium color-purple' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='margin-left-2' fontSize={18} /></button>
                         </div>
                     </div>
                 </Card>}

@@ -13,7 +13,7 @@ const ProfileContainer = () => {
 	return (
 		<div className='w-100 primary-bg fixed-header'>
 			<Header />
-			<div className="w-100 m-0 z-index-0" style={{ height: '91.75vh', position: 'inherit' }}>
+			<div className="w-100 margin-0 z-index-0" style={{ height: '91.75vh', position: 'inherit' }}>
 				<AccountHeader routeTo={`${RouteConstants.root}?country=1`} />
 				<Account />
 			</div>
