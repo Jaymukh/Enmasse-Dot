@@ -25,7 +25,7 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
     return (
         <div>
             <Modal showModal={showConfirmDeleteModal} classname='width-18-75' >
-                <div className='d-flex flex-row justify-content-end w-100 pb-1'>
+                <div className='d-flex flex-row justify-content-end w-100 padding-bottom-1'>
                     <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeConfirmDeleteModal()}></Button>
                 </div>
                 <div className='d-flex justify-content-center'>
@@ -45,7 +45,7 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
                     size={ButtonSize.large}
                     variant={ButtonVariant.bordered}
                     onClick={() => handleDeleteClick()}
-                    classname='my-2'
+                    classname='margin-top-bottom-2'
                 >
                     Delete
                 </Button>

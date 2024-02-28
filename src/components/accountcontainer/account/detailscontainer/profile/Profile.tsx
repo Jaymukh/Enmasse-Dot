@@ -192,13 +192,13 @@ export default function Profile() {
     }
 
     return (
-        <div className='container bg-white mt-4 me-5 px-0' style={{ height: '90%' }}>
-            <div className="row mx-0 w-100 h-10 d-flex flex-row justify-content-between pt-3 pe-4">
+        <div className='container bg-white margin-top-4 margin-right-5 padding-left-right-0' style={{ height: '90%' }}>
+            <div className="row margin-left-right-0 w-100 h-10 d-flex flex-row justify-content-between padding-top-3 padding-right-4">
                 <Heading
                     title='Profile'
                     type={TypographyType.h2}
                     colour={TypographyColor.dark}
-                    classname='col-2 ms-3 ps-2 text-start'
+                    classname='col-2 margin-left-3 padding-left-2 text-start'
                 />
                 <Button
                     theme={ButtonTheme.secondary}
@@ -207,13 +207,13 @@ export default function Profile() {
                     // onClick={() => handleOpen(true)}
                     onClick={() => handleWIPDrawer('Edit Profile')}
                 >
-                    <MdModeEdit className='me-1 mb-1' fontSize={22} />
+                    <MdModeEdit className='margin-right-1 margin-bottom-1' fontSize={22} />
                     Edit
                 </Button>
             </div>
-            <hr className='mb-4' />
-            <div className="row w-100 mx-2">
-                <div className="col-3 p-0 fs-64 ms-3" >
+            <hr className='margin-bottom-4' />
+            <div className="row w-100 margin-left-right-2">
+                <div className="col-3 padding-0 fs-64 margin-left-3" >
                     <div className='d-flex flex-column justify-content-start align-items-start' style={{ width: '12.5rem', height: '12.5rem' }}>
                         <div className="profile-image-box d-flex flex-column w-100 h-100 d-flex align-items-center justify-content-center bg-light" >
                             {loggedUser?.profile_picture ? <img src={loggedUser?.profile_picture} alt="Profile" className='w-100 h-100' /> :
@@ -227,9 +227,9 @@ export default function Profile() {
                             size={ButtonSize.small}
                             variant={ButtonVariant.contained}
                             onClick={() => openUploadImageModal()}
-                            classname='rounded-circle editImageBtn align-self-end p-0'
+                            classname='rounded-circle editImageBtn align-self-end padding-0'
                         >
-                            <MdModeEdit className='mx-1 mb-1' fontSize={22} />
+                            <MdModeEdit className='margin-left-right-1 margin-bottom-1' fontSize={22} />
                         </Button>
                     </div>
                 </div>
@@ -239,24 +239,24 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.secondary}
-                                classname='mb-1 text-start'>Name:</Body>
+                                classname='margin-bottom-1 text-start'>Name:</Body>
                             <Heading
                                 title={loggedUser.name}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start m-0'
+                                classname='text-start margin-0'
                             />
                         </li>
                         <li >
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.secondary}
-                                classname='mb-1 text-start'>Company:</Body>
+                                classname='margin-bottom-1 text-start'>Company:</Body>
                             <Heading
                                 title={loggedUser.company}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start m-0'
+                                classname='text-start margin-0'
                             />
                         </li>
                     </ul>
@@ -267,12 +267,12 @@ export default function Profile() {
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.secondary}
-                                classname='mb-1 text-start'>Email:</Body>
+                                classname='margin-bottom-1 text-start'>Email:</Body>
                             <Heading
                                 title={loggedUser.email_id}
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='text-start m-0'
+                                classname='text-start margin-0'
                             />
                         </li>
                     </ul>

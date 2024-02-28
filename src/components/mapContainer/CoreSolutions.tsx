@@ -51,9 +51,9 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     };
 
     return (
-        <div className='ms-3 d-flex flex-column justify-content-between h-100' >
-            <div className='mt-3'>
-                <div className={`mt-1 bg-white px-2 py-2 ${!options?.length ? 'disabled-div' : ''}`}>
+        <div className='margin-left-3 d-flex flex-column justify-content-between h-100' >
+            <div className='margin-top-3'>
+                <div className={`margin-top-1 bg-white padding-left-right-2 padding-top-bottom-2 ${!options?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center justify-content-between'>
                         <div className='d-flex align-items-center'>
                             <PiRadioButtonLight fontSize={22} />
@@ -61,10 +61,10 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 title='Core Solutions'
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='my-0 ms-2 text-start'
+                                classname='margin-top-bottom-0 margin-left-2 text-start'
                             />
+                            <InfoPanel fontSize={20} text='Core Solutions have a strong tendency to grow together' classname='margin-right-1' />
                         </div>
-                        <InfoPanel fontSize={20} text='Core Solutions have a strong tendency to grow together' classname='me-1' />
                         <Switch
                             isChecked={isChecked?.coreSolution}
                             toggleSwitch={toggleSwitch}
@@ -73,11 +73,11 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     </div>
                 </div>
                 {isChecked?.coreSolution && options?.length > 0 &&
-                    <div className="bg-white mt-1 py-3 px-3">
+                    <div className="bg-white margin-top-1 padding-3">
                         {options?.map((option: Option) => (
-                            <div className="d-flex flex-row justify-content-start align-items-center my-2 ms-1" key={option.label}>
+                            <div className="d-flex flex-row justify-content-start align-items-center margin-top-bottom-2 margin-left-1" key={option.label}>
                                 <input
-                                    className="me-2 input-rb"
+                                    className="margin-right-2 input-rb"
                                     size={1.5}
                                     type="radio"
                                     value={option.key}
@@ -95,14 +95,14 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         ))}
                     </div>
                 }
-                <div className={`d-flex justify-content-between align-items-center bg-white mt-3 px-2 py-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
+                <div className={`d-flex justify-content-between align-items-center bg-white margin-top-3 padding-left-right-2 padding-top-bottom-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center'>
                         <MdChat className='' fontSize={20} />
                         <Heading
                             title='View Stories'
                             type={TypographyType.h4}
                             colour={TypographyColor.dark}
-                            classname='my-0 mx-2 text-start'
+                            classname='margin-top-bottom-0 margin-left-right-2 text-start'
                         />
                         <InfoPanel fontSize={20} text='Real stories from the field help put the numbers in the right context' />
                     </div>
@@ -112,14 +112,14 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         name='viewStories'
                     />
                 </div>
-                <div className="d-flex justify-content-between align-items-center bg-white mt-3 px-2 py-2">
+                <div className="d-flex justify-content-between align-items-center bg-white margin-top-3 padding-left-right-2 padding-top-bottom-2">
                     <div className='d-flex align-items-center'>
                         <MdLayers fontSize={22} />
                         <Heading
                             title='Request Layers'
                             type={TypographyType.h4}
                             colour={TypographyColor.dark}
-                            classname='my-0 mx-2 text-start'
+                            classname='margin-top-bottom-0 margin-left-right-2 text-start'
                         />
                         <InfoPanel fontSize={20} text='Let us know if you would like further overlays here' />
                     </div>
@@ -128,13 +128,13 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         size={ButtonSize.default}
                         variant={ButtonVariant.transparent}
                         onClick={() => handleRequestLayersDrawer(true)}
-                        classname='h-auto p-0'
+                        classname='h-auto padding-0'
                     >
                         <IoChevronForwardSharp fontSize={22} />
                     </Button>
                 </div>
             </div>
-            <div className='mb-3'>
+            <div className='margin-bottom-3'>
                 <Legend />
             </div>
 

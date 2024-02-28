@@ -132,13 +132,13 @@ const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData, i
 
     return (
         <div className={`h-auto ${classname}`}>
-            <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='padding-3 h-100'>
                 <div className='d-flex flex-row justify-content-start align-items-center'>
                     <Heading
                         title={category}
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='text-start px-1 my-0'
+                        classname='text-start padding-left-right-1 margin-top-bottom-0'
                     />
                     <InfoPanel fontSize={20} text={infobutton} />
                 </div>

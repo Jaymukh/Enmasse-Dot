@@ -30,20 +30,20 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
     const [stories] = useRecoilState(storiesState);
 
     return (
-        <div className='col-lg-4 col-md-4 col-sm-12 d-flex flex-column my-4 px-3 h-auto'>
-            <Card size={CardSize.default} variant={CardVariant.contained} classname='py-3 mx-0 bg-white'>
+        <div className='col-lg-4 col-md-4 col-sm-12 d-flex flex-column margin-top-bottom-4 padding-left-right-3 h-auto'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='padding-top-bottom-3 margin-left-right-0 bg-white'>
                 <Heading
                     title={stories?.properties?.region}
                     colour={TypographyColor.dark}
                     type={TypographyType.h5}
-                    classname='text-start m-0'
+                    classname='text-start margin-0'
                 />
                 <div className='map-container-sm d-flex mx-auto justify-content-start'>
                     <StaticMap coordinates={selectedStory?.story?.geometry?.coordinates} />
                 </div>
-                <Legend classname='mt-2' />
+                <Legend classname='margin-top-2' />
             </Card>
-            <div className='d-flex flex-row justify-content-center align-items-center my-3 w-100' >
+            <div className='d-flex flex-row justify-content-center align-items-center margin-top-bottom-3 w-100' >
                 <button className="PrevBtn"
                     onClick={() => handleCarouselSlide((selectedStory?.index - 1 + stories?.family.length) % stories?.family.length)}
                     type="button"
@@ -55,8 +55,8 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                         <div className={`carousel-item h-100 ${index === selectedStory?.index ? ' active' : ''}`} key={index}>
                             <div className="d-flex flex-row align-items-center h-100 w-100 rounded">
                                 <img src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} width="100" height="100" className="d-block carousel-img rounded-start bg-white" alt="Family" />
-                                <div className="d-flex flex-column align-items-start justify-content-center my-auto ps-3 pe-2 w-100 h-100 rounded-end bg-white">
-                                    <div className='d-flex flex-row justify-content-end align-items-center w-100 m-auto my-0 py-0' >
+                                <div className="d-flex flex-column align-items-start justify-content-center my-auto padding-left-3 padding-right-2 w-100 h-100 rounded-end bg-white">
+                                    <div className='d-flex flex-row justify-content-end align-items-center w-100 m-auto margin-top-bottom-0 padding-top-bottom-0' >
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.dark}
@@ -68,16 +68,16 @@ const FamilySidePanel: React.FC<FamilySidePanelProps> = ({ selectedStory, handle
                                         title={data?.familyName}
                                         type={TypographyType.h4}
                                         colour={TypographyColor.dark}
-                                        classname='text-start m-0'
+                                        classname='text-start margin-0'
                                     />
                                     <Body
                                         type={BodyType.p3}
                                         color={BodyColor.secondary}
-                                        classname='my-1 text-start'
+                                        classname='margin-top-bottom-1 text-start'
                                     >
                                         {data?.address}
                                     </Body>
-                                    <button className='border-0 bg-white color-purple m-0 fs-10 p-0 ff-poppins-medium' onClick={handleBackClick}>View all<IoIosArrowRoundForward fontSize={20} fontWeight={500} className='ms-1' /></button>
+                                    <button className='border-0 bg-white color-purple margin-0 fs-10 padding-0 ff-poppins-medium' onClick={handleBackClick}>View all<IoIosArrowRoundForward fontSize={20} fontWeight={500} className='margin-left-1' /></button>
                                 </div>
                             </div>
                         </div>

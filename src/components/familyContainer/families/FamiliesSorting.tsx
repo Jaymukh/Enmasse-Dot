@@ -57,7 +57,7 @@ const FamiliesSorting = ({ handlePaginationData }: FamiliesSortingProps) => {
 				size={ButtonSize.small}
 				variant={ButtonVariant.transparent}
 				onClick={(e) => handleMenuClick(e)}
-				classname='m-0 h-auto'
+				classname='margin-0 h-auto'
 			>
 				<BiMenuAltLeft fontSize={22} />
 			</Button>

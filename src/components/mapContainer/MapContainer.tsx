@@ -215,7 +215,7 @@ function MapContainer() {
     }, [selected.country, selected.state, selected.district]);
 
     return (
-        <div className='MapContainer mx-0' style={{ height: '91.75vh' }}>
+        <div className='MapContainer margin-left-right-0' style={{ height: '91.75vh' }}>
             <MapOptions
                 handleCountryChange={handleCountryChange}
                 handleStateChange={handleStateChange}

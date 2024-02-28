@@ -121,15 +121,15 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 
 
 	return (
-		<div className="h-100 me-3">
-			<Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
-				<div className='row px-2 d-flex justify-content-between'>
-					<div className='m-0 p-0 d-flex col-6 align-items-center'>
+		<div className="h-100 margin-right-3">
+			<Card size={CardSize.default} variant={CardVariant.contained} classname='padding-3 h-100'>
+				<div className='row padding-left-right-2 d-flex justify-content-between'>
+					<div className='margin-0 padding-0 d-flex col-6 align-items-center'>
 						<Heading
 							title='Core Solutions by EH'
 							type={TypographyType.h5}
 							colour={TypographyColor.dark}
-							classname='text-start px-1 my-0'
+							classname='text-start padding-left-right-1 margin-top-bottom-0'
 						/>
 						<InfoPanel fontSize={20} text={coreSolutionsData?.infoButton} />
 					</div>

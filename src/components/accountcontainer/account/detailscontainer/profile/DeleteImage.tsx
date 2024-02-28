@@ -25,7 +25,7 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
     return (
         <div>
             <Modal showModal={showDeleteImageModal} classname='width-18-75' >
-                <div className='d-flex flex-row justify-content-end w-100 p-0'>
+                <div className='d-flex flex-row justify-content-end w-100 padding-0'>
                     <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleDeleteModel(false)}></Button>
                 </div>
                 <div d-flex justify-content-center>
@@ -39,13 +39,13 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
                 <Body
                     type={BodyType.p3}
                     color={BodyColor.secondary}
-                    classname='text-center mb-4'>Do you really want to delete this record? This process cannot be undone.</Body>
+                    classname='text-center margin-bottom-4'>Do you really want to delete this record? This process cannot be undone.</Body>
                 <Button
                     theme={ButtonTheme.warning}
                     size={ButtonSize.large}
                     variant={ButtonVariant.bordered}
                     onClick={() => handleDeleteClick()}
-                    classname='my-2 height-3'
+                    classname='margin-top-bottom-2 height-3'
                 >
                     Delete
                 </Button>

@@ -47,13 +47,13 @@ const Search = ({ handleInputChange, handleSelectValue, data, searchTerm, sugges
 
             {!hideSuggestionBox &&
                 <div
-                    className={`py-1 ${classname} ${hideSuggestions ? styles.suggestions_hidden : styles.suggestions_visible} ${styles.suggestion_menu_dropdown} ${suggestions?.length < 3 ? 'h-auto' : styles.suggestion_height}`}
+                    className={`padding-top-bottom-1 ${classname} ${hideSuggestions ? styles.suggestions_hidden : styles.suggestions_visible} ${styles.suggestion_menu_dropdown} ${suggestions?.length < 3 ? 'h-auto' : styles.suggestion_height}`}
                 >
                     {suggestions?.map((suggestion: any) => (
                         <div
-                            className={`text-start py-1 ${styles.suggestions_item}`}                            
+                            className={`text-start padding-top-bottom-1 ${styles.suggestions_item}`}                            
                         >
-                            <p className='px-3 m-0' onClick={() => handleSelectOption(suggestion[labelKey])}>{suggestion[labelKey]}</p>
+                            <p className='padding-left-right-3 margin-0' onClick={() => handleSelectOption(suggestion[labelKey])}>{suggestion[labelKey]}</p>
                         </div>
                     ))}
                 </div>

@@ -112,15 +112,15 @@ const Family = () => {
     }, [pageInfo]);
 
     return (
-        <div className='row w-100 m-0'>
-            <div className='col-9 p-0'>
+        <div className='row w-100 margin-0'>
+            <div className='col-9 padding-0'>
                 <FamilyHeader />
-                <div className='row w-100 m-0' style={{ height: '86.25vh' }}>
+                <div className='row w-100 margin-0' style={{ height: '86.25vh' }}>
                     <FamilySidePanel selectedStory={selectedStory} handleCarouselSlide={handleCarouselSlide} iterator={pageInfo.story_id} handleBackClick={handleBackClick} />
                     <FamilyDetailsContainer selectedData={selectedStory?.story} />
                 </div>
             </div>
-            <div className='col-3 p-0 bg-white' style={{ height: '91.75rem' }}>
+            <div className='col-3 padding-0 bg-white' style={{ height: '91.75rem' }}>
                 <DistrictSidebar />
             </div>
         </div>

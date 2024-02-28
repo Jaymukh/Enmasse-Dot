@@ -14,12 +14,12 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
     return (
         <div className={`offcanvas offcanvas-end h-100 drawer-shadow border-0 overflow-auto ${isOpen ? 'show' : ''}`} id={id}>
             <div>
-                <div className="d-flex flex-row justify-content-between align-items-center m-0 py-0">
+                <div className="d-flex flex-row justify-content-between align-items-center margin-0 padding-top-bottom-0">
                     <Heading
                         title={title}
                         type={TypographyType.h4}
                         colour={TypographyColor.dark}
-                        classname='p-0 text-start pe-3 m-0'
+                        classname='padding-0 text-start padding-right-3 margin-0'
                     />
                     <Button
                         theme={ButtonTheme.dark}
@@ -29,7 +29,7 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                         classname='btn-close'
                     />
                 </div>
-                <div className="my-3" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
+                <div className="margin-top-bottom-3" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
                     {children}
                 </div>
             </div>

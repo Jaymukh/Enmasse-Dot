@@ -90,7 +90,7 @@ const HelpOptions = () => {
 				size={ButtonSize.small}
 				variant={ButtonVariant.transparent}
 				onClick={(e) => handleMenuClick(e)}
-				classname='p-0 ms-4'
+				classname='padding-0 margin-left-4'
 			>
 				<MdHelpCenter fontSize={25} />
 			</Button>

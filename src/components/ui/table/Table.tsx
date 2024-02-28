@@ -85,14 +85,14 @@ const Table: React.FC<TableProps> = ({ headers, data, size = TableSize.medium, b
         }
     }
     return (
-        <div className={`${classname} mx-1 ${getSizeClass(size)}`}>
+        <div className={`${classname} margin-left-right-1 ${getSizeClass(size)}`}>
             <table>
                 <thead>
                     <tr>
                         {headers?.KEYS?.map((item, index) => (
                             <th className='text-start'>
                                 <div className='d-flex flex-row align-items-center'>
-                                    <p className='pt-3 pe-2'>{item.KEY === 'geoName' ? breakdownType : item.VALUE}</p>
+                                    <p className='padding-top-3 padding-right-2'>{item.KEY === 'geoName' ? breakdownType : item.VALUE}</p>
                                     <div className='d-flex flex-column'>
                                         <BiSolidUpArrow name='asc' fontSize={9} color='#939393' onClick={() => handleSortTable(item, 'desc')} />
                                         <BiSolidDownArrow name='desc' fontSize={9} color='#2B0D5C' onClick={() => handleSortTable(item, 'asc')} />

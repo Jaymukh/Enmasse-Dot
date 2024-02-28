@@ -14,7 +14,7 @@ const DetailsContainer = () => {
     const visiblePanel = useRecoilValue(visiblePanelState);
 
     return (
-        <div className='col-9 h-100 z-index-0 pe-5'>
+        <div className='col-9 h-100 z-index-0 padding-right-5'>
             {visiblePanel === '/profile' ? <Profile /> : visiblePanel === '/settings' ? <Settings /> : <Invite />}
         </div>
     );

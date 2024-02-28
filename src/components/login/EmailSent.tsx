@@ -34,7 +34,7 @@ const EmailSent: React.FC<EmailSentProps> = ({
                         classname='btn-close'
                     />
                 </div>
-                <div className=" d-flex flex-column justify-content-center my-2">
+                <div className=" d-flex flex-column justify-content-center margin-top-bottom-2">
                     <Heading
                         title='Email sent'
                         type={TypographyType.h4}
@@ -53,7 +53,7 @@ const EmailSent: React.FC<EmailSentProps> = ({
                         size={ButtonSize.large}
                         variant={ButtonVariant.contained}
                         onClick={() => handleModal({ sendMailModal: false })}
-                        classname='mt-4 mb-3'
+                        classname='margin-top-4 margin-bottom-3'
                     >
                         Back to Login
                     </Button>

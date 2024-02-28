@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import ReactGA from 'react-ga';
+import { FaAnglesDown } from "react-icons/fa6";
 
 // CSS
 import '../../styles/main.css';
@@ -104,7 +105,7 @@ export default function Login() {
 
     return (
         <div>
-            <div className='row mx-0' style={{ height: '100vh', width: '100vw' }} >
+            <div className='row margin-left-right-0' style={{ height: '100vh', width: '100vw' }} >
                 <div className='col-md-6 col-xl-6 login-update-box bg-white'>
                     <div className='loginCardAlign'>
                         <img src={globe} alt='enmasse' width={454} height={338} />
@@ -120,6 +121,7 @@ export default function Login() {
                             >
                                 Our team of skilled professionals is committed to delivering outstanding advisory services and customer support, enabling you to maximize your investment potential with us.
                             </Body>
+                            <a href="#login" className="down-arrow"> <FaAnglesDown /></a>
                         </div>
                     </div>
                 </div>
@@ -127,13 +129,14 @@ export default function Login() {
                     <div className='loginCardAlign' >
                         <Heading
                             title='Login'
+                            id='login'
                             type={TypographyType.h2}
                             colour={TypographyColor.dark}
                         />
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.muted}
-                            classname='mb-4'
+                            classname='margin-bottom-4'
                         >
                             Enter your email ID and Password to login
                         </Body>
@@ -145,24 +148,24 @@ export default function Login() {
                             />
                             <input
                                 {...register("email_id")}
-                                className='my-1 px-2 inputBoxHeight w-100'
+                                className='margin-top-bottom-1 padding-left-right-2 inputBoxHeight w-100'
                                 placeholder='Enter your email id here'
                             />
                             {errors?.email_id?.message
                                 && <Body
                                     type={BodyType.p3}
                                     color={BodyColor.warning}
-                                    classname='m-0 p-0'
+                                    classname='margin-0 padding-0'
                                 >
                                     {errors?.email_id?.message}
                                 </Body>
                             }
-                            <div className='d-flex flex-row justify-content-between align-items-center mt-2 '>
+                            <div className='d-flex flex-row justify-content-between align-items-center margin-top-2 '>
                                 <Heading
                                     title='Password'
                                     type={TypographyType.h5}
                                     colour={TypographyColor.dark}
-                                    classname='mb-0'
+                                    classname='margin-bottom-0'
                                 />
                                 <Button
                                     type='button'
@@ -180,7 +183,7 @@ export default function Login() {
                                     type={isVisible ? 'text' : 'password'}
                                     // name='password'
                                     {...register("password")}
-                                    className='my-1 px-2 inputBoxHeight w-100'
+                                    className='margin-top-bottom-1 padding-left-right-2 inputBoxHeight w-100'
                                     placeholder='Enter your password here'
                                 />
                                 <Body
@@ -196,14 +199,14 @@ export default function Login() {
                                 && <Body
                                     type={BodyType.p3}
                                     color={BodyColor.warning}
-                                    classname='m-0 p-0'
+                                    classname='margin-0 padding-0'
                                 >
                                     {errors?.password?.message}
                                 </Body>
                             }
                             <Button
                                 type='submit'
-                                classname='mb-2 mt-4 height-3'
+                                classname='margin-bottom-2 margin-top-4 height-3'
                                 disabled={!isValid}
                                 size={ButtonSize.large}
                                 theme={ButtonTheme.primary}
@@ -213,7 +216,7 @@ export default function Login() {
                                     && <Body
                                         type={BodyType.p3}
                                         color={BodyColor.dark}
-                                        classname='spinner-border spinner-border-sm me-3'
+                                        classname='spinner-border spinner-border-sm margin-right-3'
                                     />
                                 }Login
                             </Button>
@@ -221,7 +224,7 @@ export default function Login() {
                         <Body
                             type={BodyType.p1}
                             color={BodyColor.secondary}
-                            classname='mb-0 mt-2'
+                            classname='margin-bottom-0 margin-top-2'
                         >
                             By clicking on continue you are agreeing to the Enmasse
                             <Button
@@ -229,7 +232,7 @@ export default function Login() {
                                 size={ButtonSize.large}
                                 variant={ButtonVariant.transparent}
                                 onClick={() => handleModal({ tncModal: true })}
-                                classname='underline-text h-auto px-1 w-auto'
+                                classname='underline-text h-auto padding-left-right-1 w-auto'
                             >
                                 Terms & conditions
                             </Button>
@@ -239,7 +242,7 @@ export default function Login() {
                                 size={ButtonSize.large}
                                 variant={ButtonVariant.transparent}
                                 onClick={() => handleModal({ tncModal: true })}
-                                classname='underline-text h-auto ps-1 black w-auto'
+                                classname='underline-text h-auto padding-left-1 black w-auto'
                             >
                                 Privacy policies
                             </Button>

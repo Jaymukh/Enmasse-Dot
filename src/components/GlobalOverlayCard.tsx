@@ -30,9 +30,9 @@ const GlobalOverlayCard = () => {
         }
     ];
     return (
-        <div className='d-flex bg-transparent my-2' style={{ position: 'absolute', top: '0', zIndex: 1000 }}>
+        <div className='d-flex bg-transparent margin-top-bottom-2' style={{ position: 'absolute', top: '0', zIndex: 1000 }}>
             {cardItems.map((data, index) => (
-                <div key={data.value} className={`d-flex flex-column px-4 py-3 my-4 h-100 ${index < 3 ? 'right-border' : ''}`}>
+                <div key={data.value} className={`d-flex flex-column padding-left-right-4 padding-top-bottom-3 margin-top-bottom-4 h-100 ${index < 3 ? 'right-border' : ''}`}>
                     <Heading
                         title={data.value}
                         colour={TypographyColor.dark}

@@ -36,21 +36,21 @@ const OverViewMap = () => {
     }, [mapFeatures?.cifData]);
 
     return (
-        <div className="me-3 h-100">
-            <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3 h-100'>
+        <div className="margin-right-3 h-100">
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='padding-3 h-100'>
                 <div className='d-flex flex-row justify-content-start align-items-center'>
                     <Heading
                         title='Overall Information'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='text-start px-1 my-0'
+                        classname='text-start padding-left-right-1 margin-top-bottom-0'
                     />
                     {/* <InfoPanel fontSize={20} text={mapFeatures?.cifData?.properties?.infoButton} /> */}
                 </div>
-                <div className='row d-flex justify-content-between px-1'>
+                <div className='row d-flex justify-content-between padding-left-right-1'>
                     <div className="col-xl-7 col-lg-7 col-md-9 d-flex flex-column align-items-center justify-content-center static-map">
                         <StaticMap noMarkers={true} />
-                        <Legend classname='mt-2' />
+                        <Legend classname='margin-top-2' />
                     </div>
                     <div className='col-xl-5 col-lg-5 col-md-3 d-flex flex-column'>
                         {cardData.map((item: any, index: number) => <StatisticsCard data={item} index={index} />)}

@@ -8,13 +8,13 @@
 .nav-link {
     color: var(--black-7);
     font-family: "Poppins-Medium", sans-serif;
-    font-size: 0.875rem;
+    font-size: 1.96875vh;
     --bs-nav-tabs-border-width: 0
 }
 
 .nav-link.active {
     color: var(--black-0) !important;
-    border-bottom: 0.125rem solid var(--purple-0) !important;
+    border-bottom: 0.28125vh solid var(--purple-0) !important;
 }
 
 .nav-link:focus, .nav-link:hover {

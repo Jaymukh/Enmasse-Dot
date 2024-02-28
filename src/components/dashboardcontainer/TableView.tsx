@@ -25,13 +25,13 @@ interface TableViewProps {
 const TableView: React.FC<TableViewProps> = ({ data, headerData, infoButton, breakdownType, classname }) => {
     return (
         <div>
-            <Card size={CardSize.default} variant={CardVariant.contained} classname='p-3'>
-                <div className='d-flex align-items-center m-0 p-0 mb-3'>
+            <Card size={CardSize.default} variant={CardVariant.contained} classname='padding-3'>
+                <div className='d-flex align-items-center margin-0 padding-0 margin-bottom-3'>
                     <Heading
                         title={(breakdownType) ? `${breakdownType}-wise ${headerData.NAME}` : `${headerData.NAME}`}
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='text-start px-1 my-0'
+                        classname='text-start padding-left-right-1 margin-top-bottom-0'
                     />
                     <InfoPanel fontSize={20} text={infoButton} />
                 </div>

@@ -24,6 +24,7 @@ interface HeadingOne {
     colour: TypographyColor;
     classname?: string;
     onClick?: () => void;
+    id?: string;
 }
 
 const getColor = (color: TypographyColor) => {
@@ -76,8 +77,8 @@ const getType = (type: TypographyType) => {
     return className;
 }
 
-export const Heading = ({ type, colour, title, classname, onClick }: HeadingOne) => {
+export const Heading = ({ type, colour, title, classname, onClick, id }: HeadingOne) => {
     return (
-        <h1 className={`${getType(type)} ${getColor(colour)} ${classname}`} onClick={onClick} style={{ cursor: `${onClick ? 'pointer' : ''}` }}>{title}</h1>
+        <h1 className={`${getType(type)} ${getColor(colour)} ${classname}`} id={id} onClick={onClick} style={{ cursor: `${onClick ? 'pointer' : ''}` }}>{title}</h1>
     )
 }

@@ -90,7 +90,7 @@ export default function EditProfile({
                     title='Name*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-0 mb-1'
+                    classname='margin-top-0 margin-bottom-1'
                 />
                 <Input
                     type="text"
@@ -103,7 +103,7 @@ export default function EditProfile({
                     title='Email*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3 mb-1'
+                    classname='margin-top-3 margin-bottom-1'
                 />
                 <Input
                     type="email"
@@ -117,7 +117,7 @@ export default function EditProfile({
                     title='Phone Number*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3 mb-1'
+                    classname='margin-top-3 margin-bottom-1'
                 />
                 <Input
                     type="tel"
@@ -132,7 +132,7 @@ export default function EditProfile({
                     title='Country*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3 mb-1'
+                    classname='margin-top-3 margin-bottom-1'
                 />
                 <Select
                     options={settings?.countries}
@@ -142,13 +142,13 @@ export default function EditProfile({
                     size={SelectSize.large}
                     onChange={(e) => handleChangeData(e)}
                     name='company_type'
-                    classname='px-3'
+                    classname='padding-left-right-3'
                 />
                 <Heading
                     title='Company*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3 mb-1'
+                    classname='margin-top-3 margin-bottom-1'
                 />
                 <Input
                     type="text"
@@ -161,7 +161,7 @@ export default function EditProfile({
                     title='Designation*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3 mb-1'
+                    classname='margin-top-3 margin-bottom-1'
                 />
                 <Input
                     type="text"
@@ -174,7 +174,7 @@ export default function EditProfile({
                     title='Role*'
                     type={TypographyType.h5}
                     colour={TypographyColor.dark}
-                    classname='mt-3 mb-1'
+                    classname='margin-top-3 margin-bottom-1'
                 />
                 <Select
                     options={settings?.roles}
@@ -185,14 +185,14 @@ export default function EditProfile({
                     onChange={(e) => handleChangeData(e)}
                     name='role'
                     disabled={true}
-                    classname='px-3'
+                    classname='padding-left-right-3'
                 />
                 <Button
                     theme={ButtonTheme.primary}
                     size={ButtonSize.large}
                     variant={ButtonVariant.bordered}
                     onClick={() => handleUpdateClick()}
-                    classname='my-3 height-3'
+                    classname='margin-top-bottom-3 height-3'
                 >
                     Update
                 </Button>

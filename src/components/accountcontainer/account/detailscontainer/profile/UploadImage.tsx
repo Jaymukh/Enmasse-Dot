@@ -62,12 +62,12 @@ const UploadImage: React.FC<UploadImageProps> = ({
         <div>
             <Modal showModal={showUploadImageModal} >
                 <div className=''>
-                    <div className='d-flex flex-row justify-content-between align-items-center mt-1 mb-3'>
+                    <div className='d-flex flex-row justify-content-between align-items-center margin-top-1 margin-bottom-3'>
                         <Heading
                             title={newImage ? 'Update Profile Photo' : 'Profile Photo'}
                             type={TypographyType.h4}
                             colour={TypographyColor.dark}
-                            classname='m-0 mb-2'
+                            classname='margin-0 margin-bottom-2'
                         />
                         <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeUploadImageModal()}></Button>
                     </div>
@@ -86,14 +86,14 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                         onCropComplete={handleCropComplete}
                                     />
                                 </div>
-                                <div className='d-flex flex-row justify-content-around align-items-center w-100 mx-0 mb-3 mt-4'>
+                                <div className='d-flex flex-row justify-content-around align-items-center w-100 margin-left-right-0 margin-bottom-3 margin-top-4'>
                                     <Button
                                         theme={ButtonTheme.primary}
                                         size={ButtonSize.medium}
                                         variant={ButtonVariant.transparent}
                                         onClick={() => handleZoomOut()}
                                         type='button'
-                                        classname='w-auto m-auto ps-0 pe-2'
+                                        classname='w-auto m-auto padding-left-0 padding-right-2'
                                     >
                                         <AiFillMinusCircle fontSize={22} />
                                     </Button>
@@ -112,7 +112,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                         variant={ButtonVariant.transparent}
                                         onClick={() => handleZoomIn()}
                                         type='button'
-                                        classname='w-auto m-auto ps-2 pe-0'
+                                        classname='w-auto m-auto padding-left-2 padding-right-0'
                                     >
                                         <AiFillPlusCircle fontSize={22} />
                                     </Button>
@@ -125,31 +125,31 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     type='button'
                                     classname=''
                                 >
-                                    <IoMdCheckmark fontSize={20} className='me-2' />
+                                    <IoMdCheckmark fontSize={20} className='margin-right-2' />
                                     Save
                                 </Button>
                             </> :
                             (loggedUser?.profile_picture ? (
                                 <>
-                                    <div className="upload-image-box mb-3 d-flex justify-content-center align-items-center bg-light" >
+                                    <div className="upload-image-box margin-bottom-3 d-flex justify-content-center align-items-center bg-light" >
                                         <img src={loggedUser?.profile_picture} ref={imageRef} alt="Profile" className='w-100 h-100' />
                                     </div>
-                                    <div className="d-flex flex-row justify-content-between align-items-center mt-1">
+                                    <div className="d-flex flex-row justify-content-between align-items-center margin-top-1">
                                         <Button
                                             theme={ButtonTheme.secondary}
                                             size={ButtonSize.small}
                                             variant={ButtonVariant.bordered}
                                             onClick={() => handleDeleteModel(true)}
                                             type='button'
-                                            classname='me-2'
+                                            classname='margin-right-2'
                                         >
-                                            <MdDeleteSweep fontSize={20} className='color-orange me-2' />
+                                            <MdDeleteSweep fontSize={20} className='color-orange margin-right-2' />
                                             Delete
                                         </Button>
-                                        <label className="bg-purple rounded px-3 height-2-25 d-flex align-items-center justify-content-center">
+                                        <label className="bg-purple rounded padding-left-right-3 height-2-25 d-flex align-items-center justify-content-center">
                                             <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                             <div className="d-flex">
-                                                <BiUpload fontSize={20} className='me-2 text-white' />
+                                                <BiUpload fontSize={20} className='margin-right-2 text-white' />
                                                 <Body
                                                     color={BodyColor.white}
                                                     type={BodyType.p3}
@@ -162,13 +162,13 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                 </>
                             ) : (
                                 <>
-                                    <div className="upload-image-box mb-4 d-flex justify-content-center align-items-center bg-light" >
+                                    <div className="upload-image-box margin-bottom-4 d-flex justify-content-center align-items-center bg-light" >
                                         <span className='m-auto fs-64 w-100 h-100 d-flex flex-column justify-content-center align-items-center' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>
                                     </div>
-                                    <label className="bg-dark rounded p-3 height-2-25 d-flex align-items-center justify-content-center"  style={{ width: 'fit-content' }}>
+                                    <label className="bg-dark rounded padding-3 height-2-25 d-flex align-items-center justify-content-center"  style={{ width: 'fit-content' }}>
                                         <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                         <div className="d-flex">
-                                            <BiUpload fontSize={20} className='me-2 text-white' />
+                                            <BiUpload fontSize={20} className='margin-right-2 text-white' />
                                             <Body
                                                 color={BodyColor.white}
                                                 type={BodyType.p3}

@@ -81,7 +81,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Name*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-1'
+                        classname='margin-top-2 margin-bottom-1'
                     />
                     <Input
                         type="text"
@@ -94,7 +94,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Email*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-1'
+                        classname='margin-top-2 margin-bottom-1'
                     />
                     <Input
                         type="email"
@@ -107,7 +107,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Company*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-1'
+                        classname='margin-top-2 margin-bottom-1'
                     />
                     <Input
                         type="text"
@@ -120,7 +120,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         title='Company Type*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-1'
+                        classname='margin-top-2 margin-bottom-1'
                     />
                     <Select
                         options={settings?.company_types}
@@ -130,13 +130,13 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='company_type'
-                        classname='px-3'
+                        classname='padding-left-right-3'
                     />
                     <Heading
                         title='Role*'
                         type={TypographyType.h5}
                         colour={TypographyColor.dark}
-                        classname='mt-2 mb-1'
+                        classname='margin-top-2 margin-bottom-1'
                     />
                     <Select
                         options={settings?.roles}
@@ -146,7 +146,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         valueKey='name'
                         size={SelectSize.large}
                         name='role'
-                        classname='px-3'
+                        classname='padding-left-right-3'
                     />
                     <Body
                         type={BodyType.p3}
@@ -159,7 +159,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
                         onClick={() => handleUpdateClick()}
-                        classname='my-3 height-3'
+                        classname='margin-top-bottom-3 height-3'
                     >
                         Update
                     </Button>

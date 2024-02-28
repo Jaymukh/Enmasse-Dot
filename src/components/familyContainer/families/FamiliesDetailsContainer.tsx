@@ -117,24 +117,24 @@ const FamiliesDetailsContainer = () => {
     }, [paginationData])
 
     return (
-        <div className='col-lg-9 col-md-8 col-sm-12 ps-4 mb-5 py-0 h-100'>
+        <div className='col-lg-9 col-md-8 col-sm-12 padding-left-4 margin-bottom-5 padding-top-bottom-0 h-100'>
             <div className="d-flex flex-row justify-content-between align-items-center">
                 <Heading
                     title={`Families ${stories?.properties?.name ? `in ${stories?.properties?.name}` : ''}`}
                     type={TypographyType.h2}
                     colour={TypographyColor.dark}
-                    classname='text-start mt-4 ms-2'
+                    classname='text-start margin-top-4 margin-left-2'
                 />
                 <FamiliesSorting handlePaginationData={handlePaginationData} />
             </div>
-            <div className='w-100 h-100 mb-5 pb-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflowX: 'hidden', overflowY: 'auto' }}>
-                <div className='row m-0 p-0 w-100' style={{ marginBottom: '5rem' }}>
+            <div className='w-100 h-100 margin-bottom-5 padding-bottom-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflowX: 'hidden', overflowY: 'auto' }}>
+                <div className='row margin-0 padding-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
-                        <div className='col-lg-4 col-md-6 col-sm-12 px-0'>
-                            <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 mb-4 p-0 cursor-pointer' onClick={() => handleFamilyVisible(data, index)}>
+                        <div className='col-lg-4 col-md-6 col-sm-12 padding-left-right-0'>
+                            <Card size={CardSize.medium} variant={CardVariant.contained} classname='m-2 margin-bottom-4 padding-0 cursor-pointer' onClick={() => handleFamilyVisible(data, index)}>
                                 {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
                                 <img className="rounded-top story-list-img" src={data?.image && data?.image[0] ? data?.image[0] : familySkeleton} alt={data?.familyName} onLoad={handleImageLoad} />
-                                <div className="text-start p-3">
+                                <div className="text-start padding-3">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
                                         <Heading
                                             title={data?.familyName}
@@ -145,26 +145,26 @@ const FamiliesDetailsContainer = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.purple}
-                                            classname='mx-0 mb-1 bg-purple-1 px-2 py-1 green-card-sm'>
+                                            classname='margin-left-right-0 margin-bottom-1 bg-purple-1 padding-left-right-2 padding-top-bottom-1 green-card-sm'>
                                             {getNumberWithZero(data?.familyDetails.familyMembers)} members
                                         </Body>
                                     </div>
                                     <Body
                                         type={BodyType.p3}
                                         color={BodyColor.dark}
-                                        classname='text-left mb-2'>
+                                        classname='text-left margin-bottom-2'>
                                         {data?.district}, {data?.state}, {data?.country}
                                     </Body>
                                     {getCoreSolutions(data?.familyDetails)?.name &&
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.dark}
-                                            classname='d-flex flex-row align-items-center mx-0'>
+                                            classname='d-flex flex-row align-items-center margin-left-right-0'>
                                             <Heading
                                                 title={getCoreSolutions(data.familyDetails)?.value}
                                                 type={TypographyType.h5}
                                                 colour={TypographyColor.purple}
-                                                classname='me-1 my-0'
+                                                classname='margin-right-1 margin-top-bottom-0'
                                             />
                                             Annual Household Spend on {getCoreSolutions(data.familyDetails)?.name}
                                         </Body>
@@ -174,7 +174,7 @@ const FamiliesDetailsContainer = () => {
                         </div>
                     ))}
                 </div>
-                <div className="w-100 bg-white m-0 mb-5 d-flex flex-row justify-content-between rounded p-2 ms-2">
+                <div className="w-100 bg-white margin-0 margin-bottom-5 d-flex flex-row justify-content-between rounded padding-2 margin-left-2">
                     <div className='w-auto d-flex flex-row justify-content-start align-items-center'>
                         <Body
                             type={BodyType.p3}
@@ -190,12 +190,12 @@ const FamiliesDetailsContainer = () => {
                             valueKey='value'
                             size={SelectSize.small}
                             name='role'
-                            classname='width-5 ps-2'
+                            classname='width-5 padding-left-2'
                         />
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.dark}
-                            classname='my-2 ms-2'>
+                            classname='margin-top-bottom-2 margin-left-2'>
                             {(stories?.totalStories) ? (iterator * paginationData.storiespp + 1) : 0} - {((iterator * paginationData.storiespp + paginationData.storiespp) < (stories?.totalStories)) ? (iterator * paginationData.storiespp + paginationData.storiespp) : (stories?.totalStories ? stories?.totalStories : 0)} of {stories?.totalStories ? stories?.totalStories : 0} items
                         </Body>
                     </div>
@@ -207,16 +207,16 @@ const FamiliesDetailsContainer = () => {
                             variant={ButtonVariant.transparent}
                             disabled={paginationData.page_no === 1}
                             onClick={() => handlePreviousClick()}
-                            classname='m-0 h-auto'
+                            classname='margin-0 h-auto'
                         >
-                            <BsArrowLeft className='me-2 mb-1' fontSize={22} />
+                            <BsArrowLeft className='margin-right-2 margin-bottom-1' fontSize={22} />
                             Previous
                         </Button>
-                        <div className='d-flex flex-row justify-content-around align-items-center mx-2 h-auto fs-12'>
+                        <div className='d-flex flex-row justify-content-around align-items-center margin-left-right-2 h-auto fs-12'>
                             <Body
                                 color={BodyColor.dark}
                                 type={BodyType.p3}
-                                classname='border rounded mx-1 px-2 py-1'
+                                classname='border rounded margin-left-right-1 padding-left-right-2 padding-top-bottom-1'
                             >
                                 {paginationData?.page_no ? paginationData?.page_no : 0}
                             </Body>
@@ -228,10 +228,10 @@ const FamiliesDetailsContainer = () => {
                             variant={ButtonVariant.transparent}
                             disabled={paginationData.page_no === totalStoryInfo.totalPages}
                             onClick={() => handleNextClick()}
-                            classname=' m-0'
+                            classname=' margin-0'
                         >
                             Next
-                            <BsArrowRight className='ms-2 mb-1' fontSize={22} />
+                            <BsArrowRight className='margin-left-2 margin-bottom-1' fontSize={22} />
                         </Button>
                     </div>
                 </div>

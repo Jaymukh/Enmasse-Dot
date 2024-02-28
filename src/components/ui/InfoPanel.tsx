@@ -80,11 +80,11 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                 className="cursor-pointer infoIcon"
                 onClick={() => handlePopup()}
             >
-                <AiOutlineInfoCircle fontSize={fontSize} className='icon-color-5 mx-1' />
+                <AiOutlineInfoCircle fontSize={fontSize} className='icon-color-5 margin-left-right-1' />
             </div>
             {showPopup && (
                 <div className={`popup ${classname}`} style={{ ...popupStyle }}>
-                    <p className='m-0 text-start info-text-wrap' dangerouslySetInnerHTML={{ __html: text }} />
+                    <p className='margin-0 text-start info-text-wrap' dangerouslySetInnerHTML={{ __html: text }} />
                     {/* {showMore
                         &&
                         <Button
@@ -92,7 +92,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ text, fontSize, classname }) => {
                             size={ButtonSize.xsmall}
                             variant={ButtonVariant.transparent}
                             onClick={() => handleReadMore()}
-                            classname='m-0 h-auto p-0'
+                            classname='margin-0 h-auto padding-0'
                         >
                             Read More
                         </Button>

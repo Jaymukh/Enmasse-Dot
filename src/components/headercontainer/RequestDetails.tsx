@@ -28,9 +28,9 @@ const RequestDetails = () => {
 				theme={ButtonTheme.secondary}
 				size={ButtonSize.small}
 				variant={ButtonVariant.contained}
-				classname='ms-4'
+				classname='margin-left-4'
 				onClick={() => toggleDrawer()}>
-				<HiMiniPhone className='me-2' fontSize={20} />
+				<HiMiniPhone className='margin-right-2' fontSize={20} />
 				Request Details
 			</Button>
 			<Drawer
@@ -39,7 +39,7 @@ const RequestDetails = () => {
 				isOpen={open}
 				toggleFunction={toggleDrawer}
 			>
-				<div className='mx-3 my-1 dialog-div'>
+				<div className='margin-left-right-3 margin-top-bottom-1 dialog-div'>
 					<Heading
 						title='Why do we need this?'
 						type={TypographyType.h5}
@@ -53,13 +53,13 @@ const RequestDetails = () => {
 					>
 						To plot your business and recommend the best opportunities for you.
 					</Body>
-					<div className="d-flex flex-column justify-content-center align-items-center py-5">
+					<div className="d-flex flex-column justify-content-center align-items-center padding-top-bottom-5">
 						<img src={WorkInProgressImage} className="wip-img" alt="Work in progress" width="60%" />
 						<Heading
 							title='Work in progress'
 							type={TypographyType.h4}
 							colour={TypographyColor.dark}
-							classname='pt-5'
+							classname='padding-top-5'
 						/>
 						<Body
 						type={BodyType.p3}

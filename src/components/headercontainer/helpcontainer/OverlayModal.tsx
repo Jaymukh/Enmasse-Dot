@@ -65,7 +65,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
         <div>
             <Modal showModal={overlay} classname='width-62-5'>
                 {(showHelp === 0)
-                    && <div className='d-flex flex-row justify-content-center mb-2 w-100' style={{ height: '70vh' }}>
+                    && <div className='d-flex flex-row justify-content-center margin-bottom-2 w-100' style={{ height: '70vh' }}>
                         <div className="col-6">
                             <img src={IndiaMap} alt="India Map" width='75%' />
                         </div>
@@ -74,7 +74,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                                 title='Hello! Welcome to Enmasse | D.O.T.S'
                                 type={TypographyType.h2}
                                 colour={TypographyColor.dark}
-                                classname='mb-3'
+                                classname='margin-bottom-3'
                             />
                             <Body
                                 type={BodyType.p2}
@@ -87,7 +87,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                                 theme={ButtonTheme.primary}
                                 size={ButtonSize.default}
                                 variant={ButtonVariant.bordered}
-                                classname='h-2 mt-4'
+                                classname='h-2 margin-top-4'
                                 onClick={() => nextHelp()}
                             >
                                 Continue
@@ -97,20 +97,20 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                 }
                 {(0 < showHelp) && (showHelp <= Constants.helpContent.length) && (
                     <div style={{ height: '70vh' }} className='d-flex flex-column justify-content-between'>
-                        <div className='d-flex flex-row justify-content-end w-100 pb-1'>
+                        <div className='d-flex flex-row justify-content-end w-100 padding-bottom-1'>
                             <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleOverlayModal()}></Button>
                         </div>
-                        <div className='d-flex flex-row align-items-center h-75 mx-3'>
+                        <div className='d-flex flex-row align-items-center h-75 margin-left-right-3'>
                             <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: 'auto' }}>
                                 <img src={CoreSolutions} alt="Core Solutions" onLoad={handleImageLoad} width='85%' style={{ display: imageLoaded? 'block' : 'none' }} />
                             {(imageLoaded === false)  && <SpinnerLite /> }
                             </div>
-                            <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start pe-2">
+                            <div className="col-7 d-flex flex-column justify-content-center align-items-start text-start padding-right-2">
                                 <Heading
                                     title={Constants.helpContent[showHelp - 1].title}
                                     type={TypographyType.h2}
                                     colour={TypographyColor.dark}
-                                    classname='test-start mb-3'
+                                    classname='test-start margin-bottom-3'
                                 />
                                 <Body
                                     type={BodyType.p2}
@@ -124,14 +124,14 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                                         theme={ButtonTheme.secondary}
                                         size={ButtonSize.default}
                                         variant={ButtonVariant.bordered}
-                                        classname='h-2 mt-4'
+                                        classname='h-2 margin-top-4'
                                         onClick={() => handleContactNow()}
                                     >
                                         Contact Now
                                     </Button>}
                             </div>
                         </div>
-                        <div className='d-flex flex-row justify-content-between align-items-center mb-2 mx-3'>
+                        <div className='d-flex flex-row justify-content-between align-items-center margin-bottom-2 margin-left-right-3'>
                             <Body
                                 type={BodyType.p2}
                                 color={BodyColor.dark}
@@ -145,7 +145,7 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                                         theme={ButtonTheme.secondary}
                                         size={ButtonSize.default}
                                         variant={ButtonVariant.bordered}
-                                        classname='h-2 me-2'
+                                        classname='h-2 margin-right-2'
                                         onClick={previousHelp}
                                     >
                                         Previous

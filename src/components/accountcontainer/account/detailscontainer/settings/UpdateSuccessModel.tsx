@@ -25,7 +25,7 @@ const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, hand
                 <div className='d-flex justify-content-center'>
                     <img src={CheckGIF} alt="Created Successfully GIF" height={200} width={200} ></img>
                 </div>
-                <div className="modal-body m-2 py-0">
+                <div className="modal-body margin-2 padding-top-bottom-0">
                     <Heading
                         title='Password changed!'
                         colour={TypographyColor.dark}
@@ -42,7 +42,7 @@ const UpdateSuccessModal: React.FC<UpdateSuccessModalProps> = ({ showModal, hand
                         size={ButtonSize.large}
                         variant={ButtonVariant.bordered}
                         onClick={() => handleShowModal(false, true)}
-                        classname='mt-4'
+                        classname='margin-top-4'
                     >
                         Continue
                     </Button>

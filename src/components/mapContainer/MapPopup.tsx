@@ -47,15 +47,15 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
 
     return (
         <div className="map-popup-grey-text rounded row h-100 w-100" onClick={() => handleFocused(index)}>
-            <div className="col-4 px-0 img-box position-relative">
+            <div className="col-4 padding-left-right-0 img-box position-relative">
                 {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>}
                 <img className="map-popup-story-img rounded" src={properties.image && properties.image.length > 0 ? properties.image : familySkeleton} alt={properties.familyName} onLoad={handleImageLoad} />
             </div>
-            <div className="col-8 px-0 d-flex flex-column justify-content-start ps-1">
+            <div className="col-8 padding-left-right-0 d-flex flex-column justify-content-start padding-left-1">
                 <Body
                     type={BodyType.p4}
                     color={BodyColor.secondary}
-                    classname='map-popup-description text-start my-0'
+                    classname='map-popup-description text-start margin-top-bottom-0'
                 >
                     <span className="">{getNumberWithZero(properties.familyDetails.familyMembers)} </span>
                     Family members
@@ -63,7 +63,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                 <Body
                     type={BodyType.p4}
                     color={BodyColor.secondary}
-                    classname='map-popup-description text-start my-0'
+                    classname='map-popup-description text-start margin-top-bottom-0'
                 >
                     <span className="color-purple">{getCoreSolutions(properties.familyDetails)?.value} </span>
                     Annual household spend on {getCoreSolutions(properties.familyDetails)?.name}
@@ -74,10 +74,10 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     variant={ButtonVariant.transparent}
                     // onClick={() => handlePopupClick(properties.parentID)}
                     onClick={() => handlePopupClick(properties.parent_id, properties.geoHierarchyLevel)}
-                    classname='h-auto ps-0'
+                    classname='h-auto padding-left-0'
                 >
                     Read more
-                    <FiArrowRight className="ms-1" />
+                    <FiArrowRight className="margin-left-1" />
                 </Button>
             </div>
         </div>
