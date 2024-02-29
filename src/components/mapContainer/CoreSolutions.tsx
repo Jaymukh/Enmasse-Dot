@@ -54,8 +54,8 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
         <div className='margin-left-3 d-flex flex-column justify-content-between h-100' >
             <div className='margin-top-3'>
                 <div className={`margin-top-1 bg-white padding-left-right-2 padding-top-bottom-2 ${!options?.length ? 'disabled-div' : ''}`}>
-                    <div className='d-flex align-items-center justify-content-between'>
-                        <div className='d-flex align-items-center'>
+                    <div className='d-flex align-items-center justify-content-between flexWrap'>
+                        <div className='d-flex align-items-center flexWrap'>
                             <PiRadioButtonLight fontSize={22} />
                             <Heading
                                 title='Core Solutions'
@@ -75,7 +75,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                 {isChecked?.coreSolution && options?.length > 0 &&
                     <div className="bg-white margin-top-1 padding-3">
                         {options?.map((option: Option) => (
-                            <div className="d-flex flex-row justify-content-start align-items-center margin-top-bottom-2 margin-left-1" key={option.label}>
+                            <div className="d-flex flex-row justify-content-start align-items-center margin-top-bottom-2 margin-left-1 flexWrap" key={option.label}>
                                 <input
                                     className="margin-right-2 input-rb"
                                     size={1.5}
@@ -95,8 +95,8 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         ))}
                     </div>
                 }
-                <div className={`d-flex justify-content-between align-items-center bg-white margin-top-3 padding-left-right-2 padding-top-bottom-2 ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
-                    <div className='d-flex align-items-center'>
+                <div className={`d-flex justify-content-between align-items-center bg-white margin-top-3 padding-left-right-2 padding-top-bottom-2 flexWrap ${!mapFeatures.featuredStories?.featuredStories?.length ? 'disabled-div' : ''}`}>
+                    <div className='d-flex align-items-center flexWrap'>
                         <MdChat className='' fontSize={20} />
                         <Heading
                             title='View Stories'
@@ -112,8 +112,8 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                         name='viewStories'
                     />
                 </div>
-                <div className="d-flex justify-content-between align-items-center bg-white margin-top-3 padding-left-right-2 padding-top-bottom-2">
-                    <div className='d-flex align-items-center'>
+                <div className="d-flex justify-content-between align-items-center bg-white margin-top-3 padding-left-right-2 padding-top-bottom-2 flexWrap">
+                    <div className='d-flex align-items-center flexWrap'>
                         <MdLayers fontSize={22} />
                         <Heading
                             title='Request Layers'
