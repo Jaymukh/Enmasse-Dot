@@ -88,7 +88,6 @@ function useFetchWrapper() {
     async function getRefreshToken() {
         const refresh = auth?.tokens?.refresh;
         const access = auth?.tokens?.access;
-        const expiryDuration = 600000;
         const isExpired = checkTokenExpiry(refresh);
         if (isExpired) {
             localStorage.removeItem('user');
