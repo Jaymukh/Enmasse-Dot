@@ -138,32 +138,35 @@ const DistrictSidebar = () => {
 
     return (
         <div className='w-100 bg-white padding-left-right-0 margin-right-0' style={{ height: pathname === '/' ? '85.5vh' : '91.75vh' }} >
-            <div className='w-100 d-flex justify-content-between align-items-center padding-left-right-3 py-auto' style={{ height: '10%' }}>
-                <div className='d-flex justify-content-start align-items-center col-6 margin-0 text-start'>
-                    <Heading
-                        title={properties?.region}
-                        colour={TypographyColor.dark}
-                        type={TypographyType.h4}
-                        classname='margin-right-2 margin-top-bottom-0'
-                    />
-                    <InfoPanel fontSize={20} text={properties?.infoButton} />
-                </div>
-                <div className='col-6 padding-0'>
-                    <Select
-                        options={settings?.currencies}
-                        // value={usersettings?.currency}
-                        value={currency || usersettings?.currency}
-                        labelKey='name'
-                        valueKey='code'
-                        size={SelectSize.small}
-                        name='currency'
-                        onChange={handleChangeCurrency}
-                    />
+            {/* <div className='row w-100 d-flex justify-content-between align-items-center padding-left-right-3 py-auto' style={{ height: '10%' }}> */}
+            <div className="d-flex flex-column justify-content-start align-items-center w-100 padding-top-1 margin-left-right-0 padding-left-right-3" style={{ overflow: 'hidden', height: '10%' }}>
+                <div className='row d-flex flex-row justify-content-between w-100 d-flex flex-row margin-left-right-0 margin-top-bottom-2' style={{ height: 'fit-content' }}>
+                    <div className='d-flex justify-content-start align-items-center col-12 col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-0 text-start'>
+                        <Heading
+                            title={properties?.region}
+                            colour={TypographyColor.dark}
+                            type={TypographyType.h4}
+                            classname='margin-right-2 margin-top-bottom-0'
+                        />
+                        <InfoPanel fontSize={20} text={properties?.infoButton} />
+                    </div>
+                    <div className='col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 padding-0'>
+                        <Select
+                            options={settings?.currencies}
+                            // value={usersettings?.currency}
+                            value={currency || usersettings?.currency}
+                            labelKey='name'
+                            valueKey='code'
+                            size={SelectSize.small}
+                            name='currency'
+                            onChange={handleChangeCurrency}
+                        />
+                    </div>
                 </div>
             </div>
             <div className="d-flex flex-column justify-content-start align-items-center w-100 padding-top-1 margin-left-right-0 padding-left-right-3" style={{ overflowY: 'auto', overflowX: 'hidden', height: '80%' }}>
-                <div className='d-flex flex-row justify-content-between w-100 data-card padding-left-right-2 d-flex flex-row margin-left-right-0 margin-top-bottom-2' style={{ height: 'fit-content' }}>
-                    <div className='col-sm-11 col-md-11 col-lg-6 col-xl-6 margin-left-right-0 padding-left-right-0 margin-top-bottom-0 padding-top-bottom-2 border-end d-flex flex-column align-items-start text-start' >
+                <div className='row d-flex flex-row justify-content-between w-100 data-card d-flex flex-row margin-left-right-0 margin-top-bottom-2' style={{ height: 'fit-content' }}>
+                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right' >
                         <Heading
                             title={getCurrencyWithSymbol(properties?.totalPopulation)}
                             colour={TypographyColor.dark}
@@ -177,7 +180,7 @@ const DistrictSidebar = () => {
                             Total Population
                         </Body>
                     </div>
-                    <div className='col-sm-11 col-md-11	col-lg-6 col-xl-6 margin-left-right-0 padding-left-right-0 margin-top-bottom-0 padding-top-bottom-2 padding-left-2 d-flex flex-column align-items-start text-start'>
+                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start'>
                         <Heading
                             title={getCurrencyWithSymbol(properties?.totalHouseholds)}
                             colour={TypographyColor.dark}
@@ -217,7 +220,7 @@ const DistrictSidebar = () => {
                                 Total Addressable Market
                             </Body>
                         </div>
-                        <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-end'>
+                        <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.averageAnnualEHTransactionalValue, properties?.enMassesThesis?.averageAnnualEHTransactionalValueUOM)}
                                 colour={TypographyColor.dark}
@@ -251,7 +254,7 @@ const DistrictSidebar = () => {
                 {properties?.showExploreMore ?
                     <div className='margin-0 margin-top-1 padding-0 w-100'>
                         {properties?.EICoverage && (properties?.geo_name !== 'district') && <div className='row data-card d-flex flex-row margin-left-right-0 margin-bottom-2 margin-top-3 padding-left-right-2 padding-top-2 padding-bottom-3'>
-                            <div className='d-flex justify-content-between align-items-center margin-0 padding-0 padding-bottom-2'>
+                            <div className='d-flex justify-content-between align-items-center margin-0 padding-0 padding-bottom-2 flexWrap'>
                                 <div className='d-flex justify-content-start align-items-center margin-0 padding-0'>
                                     <Heading
                                         title='EI Coverage'
@@ -296,7 +299,7 @@ const DistrictSidebar = () => {
                                             classname='margin-0'>Points of Interest
                                         </Body>
                                     </div>
-                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-end'>
+                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right'>
                                         <Heading
                                             title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.healthcareActivityPointsOfInterest)}
                                             colour={TypographyColor.dark}
@@ -325,7 +328,7 @@ const DistrictSidebar = () => {
                                             Education ecosystem markers
                                         </Body>
                                     </div>
-                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-end border-top'>
+                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right border-top'>
                                         <Heading
                                             title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.agriMarketActivityPointsOfInterest)}
                                             colour={TypographyColor.dark}
@@ -383,7 +386,7 @@ const DistrictSidebar = () => {
                                             Average Annual EH Spend
                                         </Body>
                                     </div>
-                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-end'>
+                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right'>
                                         <Heading
                                             title={getCurrencyWithSymbol(properties?.EHSpend?.averageAnnualEHSpend, properties?.EHSpend?.averageAnnualEHSpendUOM)}
                                             colour={TypographyColor.dark}
@@ -411,7 +414,7 @@ const DistrictSidebar = () => {
                                             Average Annual EH Spend on Non-Core Solutions
                                         </Body>
                                     </div>
-                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-end border-top'>
+                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right border-top'>
                                         <Heading
                                             title={getCurrencyWithSymbol(properties?.EHSpend?.AvergeAnnualEHSpendOnHealthcare, properties?.EHSpend?.healthcareSpendUOM)}
                                             colour={TypographyColor.dark}
@@ -439,7 +442,7 @@ const DistrictSidebar = () => {
                                             Average Annual EH Spend on Education
                                         </Body>
                                     </div>
-                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-end border-top'>
+                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right border-top'>
                                         <Heading
                                             title={getCurrencyWithSymbol(properties?.EHSpend?.AvergeAnnualEHSpendOnAgriMarket, properties?.EHSpend?.agriMarketSpendUOM)}
                                             colour={TypographyColor.dark}
@@ -496,7 +499,7 @@ const DistrictSidebar = () => {
                                             Average Annual EH Borrowing
                                         </Body>
                                     </div>
-                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-end'>
+                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right'>
                                         <Heading
                                             title={getCurrencyWithSymbol(properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSources, properties?.EHBorrow?.averageAnuualEHBorrowingFromFormalSourcesUOM)}
                                             colour={TypographyColor.dark}
@@ -554,7 +557,7 @@ const DistrictSidebar = () => {
                                             Average Annual EH Income
                                         </Body>
                                     </div>
-                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-end'>
+                                    <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right'>
                                         <Heading
                                             title={getCurrencyWithSymbol(properties?.EHIncome?.averageAnnualEHIncomeFromVariableSources, properties?.EHIncome?.averageAnnualEHIncomeFromVariableSourcesUOM)}
                                             colour={TypographyColor.dark}
