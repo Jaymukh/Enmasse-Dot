@@ -251,12 +251,12 @@ const StateMap: React.FC<StateMapProps> = ({
     return (
         <div className='row margin-left-right-0'
             style={{ height: '85.5vh', zIndex: 999 }}>
-            <div className='col-xl-9 col-lg-9 col-md-9 col-sm-11 col-xs-12 margin-0 padding-0'>
+            <div className='col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 margin-0 padding-0'>
                 <div className='row margin-0 padding-0 h-100'>
                     <div className='col-12 padding-left-3 padding-top-bottom-2 bg-white border-bottom d-flex align-items-center' style={{ height: '5.25vh' }}>
                         <Breadcrumb items={breadcrumbs} handleBreadcrumbClick={handleBreadcrumbClick} />
                     </div>
-                    <div className='d-none d-sm-block col-xl-3 col-lg-3 col-md-3 col-sm-1 padding-0' style={{ backgroundColor: '#F4F6F8', height: '80.25vh' }}>
+                    <div className='d-none d-sm-none d-md-block col-md-3 col-lg-3 col-xl-3 padding-0' style={{ backgroundColor: '#F4F6F8', height: '80.25vh' }}>
                         <CoreSolutions
                             isChecked={isChecked}
                             toggleSwitch={toggleSwitch}
@@ -265,7 +265,7 @@ const StateMap: React.FC<StateMapProps> = ({
                             options={coreSolutions}
                         />
                     </div>
-                    <div className='col-xl-9 col-lg-9 col-md-9 col-sm-11 col-12 padding-0' style={{ height: '80.25vh' }}>
+                    <div className='col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 padding-0' style={{ height: '80.25vh' }}>
                         {isLoaded &&
 
                             <GoogleMap
@@ -306,7 +306,7 @@ const StateMap: React.FC<StateMapProps> = ({
                     </div>
                 </div>
             </div>
-            <div className='col-xl-3 col-lg-3 col-md-3 col-sm-1 col-0 padding-0 h-100'>
+            <div className='col-xl-3 col-lg-3 col-md-3 padding-0 h-100'>
                 <DistrictSideBar />
             </div>
         </div>
