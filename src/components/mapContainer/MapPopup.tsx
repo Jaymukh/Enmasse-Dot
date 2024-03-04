@@ -51,7 +51,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                 {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>}
                 <img className="map-popup-story-img rounded" src={properties.image && properties.image.length > 0 ? properties.image : familySkeleton} alt={properties.familyName} onLoad={handleImageLoad} />
             </div>
-            <div className="col-8 padding-left-right-0 d-flex flex-column justify-content-start padding-left-1">
+            <div className="col-8 padding-right-0 d-flex flex-column justify-content-start padding-left-1">
                 <Body
                     type={BodyType.p4}
                     color={BodyColor.secondary}
