@@ -1132,6 +1132,11 @@ th {
     width: 12.625rem;
 }
 
+.hover-popup-container {
+    margin-left: 0.1px;
+    width: 10rem;
+}
+
 .map-popup-description {
     line-height: 0.875rem;
 }

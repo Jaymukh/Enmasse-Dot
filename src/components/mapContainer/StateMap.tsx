@@ -18,6 +18,7 @@ import { errorState, geoJsonState, mapFeatureState } from '../../states';
 import * as MapConstants from '../../utils/json/googlemapstyle'
 import * as Constants from '../../utils/constants/Constants';
 import { useMapsService } from '../../services';
+import HoverPopup from './HoverPopup';
 
 
 interface Option {
@@ -50,6 +51,8 @@ const StateMap: React.FC<StateMapProps> = ({
     const [selectedRb, setSelectedRb] = useState(0);
     const [coreSolutions, setCoreSolutions] = useState<Option[]>([]);
     const [selectedCoreSoln, setSelectedCoreSoln] = useState<Option>();
+    const [isHover, setIsHover] = useState(false);
+    const [hoverData, setHoverData] = useState<any>();
     const [focused, setFocused] = useState(0);
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
@@ -109,13 +112,20 @@ const StateMap: React.FC<StateMapProps> = ({
     };
 
     const onClickMapFeature = (feature: any) => {
-        const clickedRegion = findRegionObject(feature);
+        var id;
+        var clickedRegion;
+        if (feature?.id) {
+            id = feature?.id;
+        } else {
+            clickedRegion = findRegionObject(feature);
+            id = clickedRegion?.id;
+        }
         if (selected.district) {
             return;
         } else if (selected.state) {
-            updateSelected('district', clickedRegion?.id);
+            updateSelected('district', id);
         } else if (selected.country) {
-            updateSelected('state', clickedRegion?.id);
+            updateSelected('state', id);
         }
     };
 
@@ -147,6 +157,12 @@ const StateMap: React.FC<StateMapProps> = ({
         setFocused(index);
     };
 
+    const onHoverMap = (feature: any) => {
+        setIsHover(true);
+        setHoverData(feature?.Gg);
+    };
+
+
     useEffect(() => {
         const geoCode = geoJSON?.rootProperties?.id;
         if (geoCode) {
@@ -168,6 +184,7 @@ const StateMap: React.FC<StateMapProps> = ({
             });
             map.data.addGeoJson(geoJSON);
             map.data.addListener('click', (event: any) => onClickMapFeature(event.feature));
+            map.data.addListener('mouseover', (event: any) => onHoverMap(event.feature));
 
             map.data.setStyle((feature: any) => {
                 const fillColor = feature.getProperty('Color');
@@ -247,6 +264,8 @@ const StateMap: React.FC<StateMapProps> = ({
         }
     }, [map, mapFeatures.featuredStories]);
 
+    console.log(hoverData)
+
 
     return (
         <div className='row margin-left-right-0'
@@ -301,6 +320,22 @@ const StateMap: React.FC<StateMapProps> = ({
                                         </InfoWindow>
                                     ))
                                 )}
+                                {isHover && hoverData &&
+                                    <InfoWindow
+                                        position={{
+                                            lat: hoverData?.coordinates[0],
+                                            lng: hoverData?.coordinates[1]
+                                        }}
+                                        options={{
+                                            padding: 0,
+                                            maxWidth: 224,
+                                            borderRadius: 0,
+                                            overflow: 'hidden',
+                                            zIndex: 1001
+                                        } as any}
+                                    >
+                                        <HoverPopup properties={hoverData} />
+                                    </InfoWindow>}
                             </GoogleMap>
                         }
                     </div>
