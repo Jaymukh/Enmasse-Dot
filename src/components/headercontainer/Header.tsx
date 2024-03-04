@@ -63,7 +63,7 @@ function Header() {
 					onClick={() => handleDrawer('Add Bookmark')}
 					classname='padding-left-right-0 margin-left-right-4'
 				>
-					<BsFillBookmarksFill fontSize={20}  />
+					<BsFillBookmarksFill fontSize={20} />
 				</Button>
 				<AccountOptions />
 			</div>

@@ -139,6 +139,16 @@ ul {
     margin-left: 0.75rem;
 }
 
+/* border class */
+.border-right {
+    border-right: 1px solid #dee2e6;
+}
+@media only screen and (max-width: 991px) {
+    .border-right {
+        border-right: none;
+    }   
+}
+
 /* margin class  */
 .margin-0 {
     margin: 0 !important;

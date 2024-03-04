@@ -51,7 +51,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     };
 
     return (
-        <div className='margin-left-3 d-flex flex-column justify-content-between h-100' >
+        <div className='margin-left-3 d-flex flex-column justify-content-between h-100' style={{overflowX: 'hidden', overflowY: 'auto'}} >
             <div className='margin-top-3'>
                 <div className={`margin-top-1 bg-white padding-left-right-2 padding-top-bottom-2 ${!options?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center justify-content-between flexWrap'>
