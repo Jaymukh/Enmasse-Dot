@@ -14,7 +14,7 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties }) => {
 
 
     return (
-        <div className="rounded row h-auto hover-popup-container" >
+        <div className="rounded row h-auto hover-popup-container pb-2" >
             <Heading
                 title={properties?.Name}
                 colour={TypographyColor.dark}

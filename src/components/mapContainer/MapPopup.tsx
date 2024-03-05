@@ -46,7 +46,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     };
 
     return (
-        <div className="map-popup-grey-text rounded row h-100 w-100" onClick={() => handleFocused(index)}>
+        <div className="map-popup-grey-text rounded row h-100 w-100 pb-2 mb-1" onClick={() => handleFocused(index)}>
             <div className="col-4 padding-left-right-0 img-box position-relative">
                 {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>}
                 <img className="map-popup-story-img rounded" src={properties.image && properties.image.length > 0 ? properties.image : familySkeleton} alt={properties.familyName} onLoad={handleImageLoad} />
