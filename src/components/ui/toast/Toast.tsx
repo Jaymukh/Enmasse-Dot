@@ -30,13 +30,11 @@ const Toast = () => {
         return className;
     }
 
-
-
     useEffect(() => {
         if (error) {
             const timer = setTimeout(() => {
                 onClose();
-            }, 3000);
+            }, 7000);
             return () => clearTimeout(timer);
         }
     }, [error]);

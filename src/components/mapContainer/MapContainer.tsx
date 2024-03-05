@@ -2,7 +2,7 @@
 // External libraries
 import React, { useEffect, useState } from 'react';
 import { useRecoilSnapshot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 // CSS
 import '../../styles/main.css';
@@ -30,6 +30,7 @@ function MapContainer() {
     const setGeoJSON = useSetRecoilState(geoJsonState);
     const setMapFeatures = useSetRecoilState(mapFeatureState);
     const setError = useSetRecoilState(errorState);
+    const history = useLocation();
 
     const getSearchParams = () => {
         if (global) {
@@ -123,15 +124,16 @@ function MapContainer() {
             errorHandler(error);
         });
     }
-
+    console.log(history)
     const fetchGeoJsonData = (geo_id: string) => {
         mapServices.getMaps(Number(geo_id)).then((data: any) => {
             setGeoJSON(data);
-            setSpinner(false);            
+            setSpinner(false);
             fetchMapCircles(geo_id);
             fetchFeaturedStories(geo_id);
         }).catch(error => {
             setSpinner(false);
+            window.history.back();
             errorHandler(error);
         });
     }

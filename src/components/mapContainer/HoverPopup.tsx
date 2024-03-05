@@ -10,8 +10,7 @@ interface HoverPopupProps {
 }
 
 const HoverPopup: React.FC<HoverPopupProps> = ({ properties }) => {
-    const { getCoreSolutions, getNumberWithZero } = useMapHelpers();
-
+    const { getCurrencyWithSymbol } = useMapHelpers();
 
     return (
         <div className="rounded row h-auto hover-popup-container pb-2" >
@@ -19,53 +18,56 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties }) => {
                 title={properties?.Name}
                 colour={TypographyColor.dark}
                 type={TypographyType.h5}
-                classname='m-0 p-0 pb-1 col-12'
+                classname='m-0 p-0 col-12 text-start'
             />
-            <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-center">
-                <Heading
-                    title='TAM: '
-                    colour={TypographyColor.dark}
-                    type={TypographyType.h6}
-                    classname='me-2 mb-0 text-start'
-                />
-                <Body
-                    type={BodyType.p3}
-                    color={BodyColor.dark}
-                    classname='text-start'
-                >
-                    {properties?.TAM}
-                </Body>
+            <div className="hover-popup-table d-flex flex-column p-0">
+                <div className="d-flex m-0 p-0 col-12 flex-row px-1 pt-1 popup-border-bottom align-items-center row">
+                    <Heading
+                        title='Number of EHs '
+                        colour={TypographyColor.dark}
+                        type={TypographyType.h6}
+                        classname='m-0 text-start col-7 p-0'
+                    />
+                    <Body
+                        type={BodyType.p3}
+                        color={BodyColor.dark}
+                        classname='text-start col-5 p-0 m-0'
+                    >
+                        {properties?.ehPopulation}
+                    </Body>
+                </div>
+                <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-start px-1 pt-1 popup-border-bottom align-items-center">
+                    <Heading
+                        title='Total CTV '
+                        colour={TypographyColor.dark}
+                        type={TypographyType.h6}
+                        classname='m-0 text-start col-7 p-0'
+                    />
+                    <Body
+                        type={BodyType.p3}
+                        color={BodyColor.dark}
+                        classname='text-start col-5 p-0 m-0'
+                    >
+                        {getCurrencyWithSymbol(properties?.TAM, properties?.tamUOM)}
+                    </Body>
+                </div>
+                <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-start px-1 pt-1 align-items-center">
+                    <Heading
+                        title='Total PoIs '
+                        colour={TypographyColor.dark}
+                        type={TypographyType.h6}
+                        classname='m-0 text-start col-7 p-0'
+                    />
+                    <Body
+                        type={BodyType.p3}
+                        color={BodyColor.dark}
+                        classname='text-start col-5 p-0 m-0'
+                    >
+                        {properties?.pointsOfInterest}
+                    </Body>
+                </div>
             </div>
-            <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-center">
-                <Heading
-                    title='EH Population: '
-                    colour={TypographyColor.dark}
-                    type={TypographyType.h6}
-                    classname='me-2 mb-0 text-start'
-                />
-                <Body
-                    type={BodyType.p3}
-                    color={BodyColor.dark}
-                    classname='text-start'
-                >
-                    {properties?.ehPopulation}
-                </Body>
-            </div>
-            <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-center">
-                <Heading
-                    title='POI: '
-                    colour={TypographyColor.dark}
-                    type={TypographyType.h6}
-                    classname='me-2 mb-0 text-start'
-                />
-                <Body
-                    type={BodyType.p3}
-                    color={BodyColor.dark}
-                    classname='text-start'
-                >
-                    {properties?.pointsOfInterest}
-                </Body>
-            </div>
+
         </div>
     );
 };
