@@ -57,6 +57,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
     const setError = useSetRecoilState(errorState);
+    const [isInsideGeoJsonBounds, setIsInsideGeoJsonBounds] = useState(true);
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const { isLoaded } = useJsApiLoader({
@@ -264,8 +265,11 @@ const StateMap: React.FC<StateMapProps> = ({
         }
     }, [map, mapFeatures.featuredStories]);
 
-    console.log(hoverData)
-
+    const handleMapHover = (event: any) => {
+        if (event) {
+            setHoverData(null);
+        } 
+    };
 
     return (
         <div className='row margin-left-right-0'
@@ -294,6 +298,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                 center={center}
                                 onLoad={handleMapLoad}
                                 options={mapOptions}
+                                onMouseMove={(event) => handleMapHover(event)}
                             >
                                 {mapFeatures.featuredStories?.featuredStories && isChecked?.viewStories && Object.keys(geoJSON).length && (
                                     mapFeatures.featuredStories?.featuredStories?.map((feature: any, index: number) => (
@@ -331,7 +336,8 @@ const StateMap: React.FC<StateMapProps> = ({
                                             maxWidth: 224,
                                             borderRadius: 0,
                                             overflow: 'hidden',
-                                            zIndex: 1001
+                                            zIndex: 1001,
+                                            disableCloseOnClick: true
                                         } as any}
                                     >
                                         <HoverPopup properties={hoverData} />

@@ -19,49 +19,49 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties }) => {
                 title={properties?.Name}
                 colour={TypographyColor.dark}
                 type={TypographyType.h5}
-                classname='m-0 p-0'
+                classname='m-0 p-0 pb-1 col-12'
             />
-            <div className="d-flex m-0 p-0 w-auto flex-row">
+            <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-center">
                 <Heading
                     title='TAM: '
                     colour={TypographyColor.dark}
                     type={TypographyType.h6}
-                    classname='me-2 mb-0'
+                    classname='me-2 mb-0 text-start'
                 />
                 <Body
                     type={BodyType.p3}
                     color={BodyColor.dark}
-                    classname='ms-2'
+                    classname='text-start'
                 >
                     {properties?.TAM}
                 </Body>
             </div>
-            <div className="d-flex m-0 p-0 w-auto">
+            <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-center">
                 <Heading
                     title='EH Population: '
                     colour={TypographyColor.dark}
                     type={TypographyType.h6}
-                    classname='me-2 mb-0'
+                    classname='me-2 mb-0 text-start'
                 />
                 <Body
                     type={BodyType.p3}
                     color={BodyColor.dark}
-                    classname='ms-2'
+                    classname='text-start'
                 >
                     {properties?.ehPopulation}
                 </Body>
             </div>
-            <div className="d-flex m-0 p-0 w-auto">
+            <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-center">
                 <Heading
                     title='POI: '
                     colour={TypographyColor.dark}
                     type={TypographyType.h6}
-                    classname='me-2 mb-0'
+                    classname='me-2 mb-0 text-start'
                 />
                 <Body
                     type={BodyType.p3}
                     color={BodyColor.dark}
-                    classname=''
+                    classname='text-start'
                 >
                     {properties?.pointsOfInterest}
                 </Body>
