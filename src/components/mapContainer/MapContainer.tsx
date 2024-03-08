@@ -124,7 +124,7 @@ function MapContainer() {
             errorHandler(error);
         });
     }
-    console.log(history)
+    
     const fetchGeoJsonData = (geo_id: string) => {
         mapServices.getMaps(Number(geo_id)).then((data: any) => {
             setGeoJSON(data);

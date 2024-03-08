@@ -21,7 +21,7 @@ import { mapFeatureState, AllSettingsState, UserSettingsState, errorState, spinn
 // Utilities
 import WIPImage from '../../../utils/images/WIP-FINAL.svg';
 import { RouteConstants } from '../../../constants';
-import { useMapsService, useSettingsService } from '../../../services';
+import { useMapsService, useSettingsService, useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 
 const DistrictSidebar = () => {
@@ -38,6 +38,7 @@ const DistrictSidebar = () => {
     const setSpinner = useSetRecoilState(spinnerState);
     const { getCurrencyWithSymbol } = useMapHelpers();
     const mapServices = useMapsService();
+    const storyServices = useStoriesService();
     const [geoJSON, setGeoJSON] = useRecoilState(geoJsonState)
     const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
 
@@ -116,6 +117,18 @@ const DistrictSidebar = () => {
         });
     }
 
+    const fetchAllStories = () => {
+        const currentParams = new URLSearchParams(searchParams.toString());
+        currentParams.delete('story_id');
+        let queryParams: any = {};
+        currentParams.toString().split('&').forEach((param) => {
+            let [key, value]: any = param.split('=');
+            value = Number(value) ? Number(value) : value;
+            queryParams[key] = value;
+        });
+        storyServices.getAllStories(queryParams);
+    }
+
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         let geoCode = searchParams.get('geo_code');
         if (!geoCode) {
@@ -124,8 +137,9 @@ const DistrictSidebar = () => {
         setCurrency(event.target.value);
         localStorage.setItem("currency", event.target.value);
         fetchGeoJsonData(geoCode);
-        fetchCifData(geoCode);
+        fetchCifData(mapFeatures?.cifData?.properties?.geo_id);
         fetchFeaturedStories(geoCode);
+        fetchAllStories()
     }
 
     const handleExploreMore = (geo_id: string) => {
