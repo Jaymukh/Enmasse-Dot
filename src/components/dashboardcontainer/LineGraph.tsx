@@ -131,7 +131,7 @@ const LineGraph: React.FC<LineGraphProps> = ({ classname, category, graphData, i
     };
 
     return (
-        <div className={`h-auto ${classname}`}>
+        <div className={` ${classname}`} style={{height: '100%'}}>
             <Card size={CardSize.default} variant={CardVariant.contained} classname='padding-3 h-100'>
                 <div className='d-flex flex-row justify-content-start align-items-center'>
                     <Heading

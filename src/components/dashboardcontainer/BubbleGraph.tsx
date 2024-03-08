@@ -121,10 +121,10 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 
 
 	return (
-		<div className="h-100 margin-right-3">
+		<div className="h-100 overflow-margin-right">
 			<Card size={CardSize.default} variant={CardVariant.contained} classname='padding-3 h-100'>
 				<div className='row padding-left-right-2 d-flex justify-content-between'>
-					<div className='margin-0 padding-0 d-flex col-6 align-items-center'>
+					<div className='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 margin-0 padding-0 d-flex align-items-center'>
 						<Heading
 							title='Core Solutions by EH'
 							type={TypographyType.h5}
@@ -133,7 +133,7 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({ handleTabClick }) => {
 						/>
 						<InfoPanel fontSize={20} text={coreSolutionsData?.infoButton} />
 					</div>
-					<div className='col-2'>
+					<div className='col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4'>
 						<Select
 							options={options}
 							onChange={handleChangeYear}
