@@ -176,7 +176,7 @@ const DistrictSidebar = () => {
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.secondary}
-                            classname='margin-0'>
+                            classname='margin-0 overflow-wrap-anywhere'>
                             Total Population
                         </Body>
                     </div>
@@ -190,7 +190,7 @@ const DistrictSidebar = () => {
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.secondary}
-                            classname='margin-0'>
+                            classname='margin-0 overflow-wrap-anywhere'>
                             Number of Households
                         </Body>
                     </div>
@@ -216,7 +216,7 @@ const DistrictSidebar = () => {
                             <Body
                                 type={BodyType.p4}
                                 color={BodyColor.white}
-                                classname='margin-0'>
+                                classname='margin-0 overflow-wrap-anywhere'>
                                 Total Addressable Market
                             </Body>
                         </div>
@@ -230,7 +230,7 @@ const DistrictSidebar = () => {
                             <Body
                                 type={BodyType.p4}
                                 color={BodyColor.secondary}
-                                classname='margin-0'>
+                                classname='margin-0 overflow-wrap-anywhere'>
                                 Average Annual Core Transactional Value (CTV)
                             </Body>
                         </div>
@@ -244,7 +244,7 @@ const DistrictSidebar = () => {
                             <Body
                                 type={BodyType.p4}
                                 color={BodyColor.secondary}
-                                classname='margin-0'>
+                                classname='margin-0 overflow-wrap-anywhere'>
                                 Number of Entrepreneurial Households (EH)
                             </Body>
                         </div>
@@ -310,7 +310,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Healthcare ecosystem markers
                                         </Body>
                                     </div>
@@ -324,7 +324,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Education ecosystem markers
                                         </Body>
                                     </div>
@@ -338,7 +338,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Agricultural ecosystem markers
                                         </Body>
                                     </div>
@@ -352,7 +352,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Financial Solutions ecosystem markers
                                         </Body>
                                     </div>
@@ -382,7 +382,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.dark}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend
                                         </Body>
                                     </div>
@@ -396,7 +396,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Core Solutions
                                         </Body>
                                     </div>
@@ -410,7 +410,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Non-Core Solutions
                                         </Body>
                                     </div>
@@ -424,7 +424,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Healthcare
                                         </Body>
                                     </div>
@@ -438,7 +438,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Education
                                         </Body>
                                     </div>
@@ -452,7 +452,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Agri Markets
                                         </Body>
                                     </div>
@@ -466,7 +466,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Financial Solutions
                                         </Body>
                                     </div>

@@ -63,7 +63,7 @@ const FamilyDetails = () => {
     return (
         <div className='margin-left-right-0'>
             <div className='row d-flex justify-content-between align-items-center padding-top-bottom-2 margin-0'>
-                <div className='col-xl-4 col-lg-4 col-md-4 col-sm-12 padding-0'>
+                <div className='col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 padding-0'>
                     <Heading
                         title={properties?.name}
                         type={TypographyType.h2}
@@ -72,7 +72,7 @@ const FamilyDetails = () => {
                     />
                 </div>
                 {(mapFeatures?.cifData?.properties?.geo_name !== 'district') &&
-                    <div className='co-xll-5 col-lg-5 col-md-6 col-sm-12 d-flex align-items-center justify-content-around padding-top-bottom-2 coverage-div'>
+                    <div className='co-xl-5 col-lg-5 col-md-6 col-sm-12 col-12 d-flex align-items-center justify-content-around padding-top-bottom-2 coverage-div'>
                         <Heading
                             title='EI Coverage'
                             colour={TypographyColor.dark}
@@ -92,8 +92,8 @@ const FamilyDetails = () => {
             {family?.length > 0
                 && <Card size={CardSize.default} variant={CardVariant.contained} classname='margin-left-right-0 margin-top-2 padding-0 row'>
                     {/* {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>} */}
-                    <img className='col-xl-2 col-lg-2 col-md-3 col-sm-9 padding-right-0 padding-left-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover', maxWidth: '100%', maxHeight: '27vh' }} onLoad={handleImageLoad}></img>
-                    <div className='col-xl-10 col-xl-10 col-md-9 col-sm-9 bg-white padding-top-bottom-4 padding-left-right-4 rounded-end'>
+                    <img className='col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 padding-right-0 padding-left-0 rounded-start' src={familyDetails?.image && familyDetails?.image[0] ? familyDetails?.image[0] : familySkeleton} alt={familyDetails?.familyName} style={{ objectFit: 'cover', maxWidth: '100%', maxHeight: '27vh' }} onLoad={handleImageLoad} />
+                    <div className='col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12 bg-white padding-top-bottom-4 padding-left-right-4 rounded-end'>
                         <div className='d-flex flex-row margin-bottom-2'>
                             <Heading
                                 title={familyDetails?.familyName}
@@ -134,7 +134,8 @@ const FamilyDetails = () => {
                             <button className='rounded text-start padding-left-0 border-0 fs-10 bg-white ff-poppins-medium color-purple' onClick={() => handleViewButtonClick()}>View all families<FiArrowRight className='margin-left-2' fontSize={18} /></button>
                         </div>
                     </div>
-                </Card>}
+                </Card>
+            }
         </div>
     )
 }

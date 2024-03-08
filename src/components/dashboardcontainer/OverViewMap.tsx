@@ -36,7 +36,7 @@ const OverViewMap = () => {
     }, [mapFeatures?.cifData]);
 
     return (
-        <div className="margin-right-3 h-100">
+        <div className="overflow-margin-right h-100">
             <Card size={CardSize.default} variant={CardVariant.contained} classname='padding-3 h-100'>
                 <div className='d-flex flex-row justify-content-start align-items-center'>
                     <Heading

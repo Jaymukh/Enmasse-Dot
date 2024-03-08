@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 
+// CSS
+import '../../styles/main.css';
+
 // Components
 import BarGraphContainer from './BarGraphContainer';
 import BubbleGraph from './BubbleGraph';
@@ -69,32 +72,32 @@ const DashBoard = () => {
     }, [geoCode]);
 
     return (
-        <div className='row w-100 primary-bg margin-0 padding-left-right-4' style={{ height: '86.25vh', overflowY: 'auto', overflowX: 'hidden' }}>
-            <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 padding-0 margin-top-bottom-2'>
+        <div className='row w-100 primary-bg margin-0 dashboard-padding' style={{ height: '86.25vh', overflowY: 'auto', overflowX: 'hidden' }}>
+            <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 padding-0 margin-top-bottom-2'>
                 <FamilyDetails />
             </div>
-            <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 padding-0 margin-top-bottom-2'>
+            <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 padding-0 margin-top-bottom-2'>
                 <OverViewMap />
             </div>
-            <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 padding-0 margin-top-bottom-2 d-flex flex-column justify-content-between'>
+            <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 padding-0 margin-top-bottom-2 d-flex flex-column justify-content-between'>
                 <LineGraph classname='margin-bottom-3' category='EH Growth' graphData={cifData?.ehGrowthGraphData?.ehGrowth?.data} infobutton={cifData?.ehGrowthGraphData?.ehGrowth?.infobutton} />
                 <LineGraph category='Average EH Transactional Value' graphData={cifData?.ehGrowthGraphData?.averageEhTransactionalValue?.data} infobutton={cifData?.ehGrowthGraphData?.averageEhTransactionalValue?.infobutton} />
             </div>
-            <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 padding-0 margin-top-bottom-2'>
+            <div className='col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 padding-0 margin-top-bottom-2'>
                 <BubbleGraph handleTabClick={handleTabClick} />
             </div>
-            <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 padding-0 margin-top-bottom-2'>
+            <div className='col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 padding-0 margin-top-bottom-2'>
                 <BarGraphContainer selected={selected} handleTabClick={handleTabClick} />
             </div>
             {cifData?.geoInfo?.show &&
-                <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 padding-0 margin-top-bottom-2 ${cifData?.inOutFlowData?.show || cifData?.metricBreakdownInfo?.show ? '' : 'margin-bottom-5'}`}>
+                <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 padding-0 margin-top-bottom-2 ${cifData?.inOutFlowData?.show || cifData?.metricBreakdownInfo?.show ? '' : 'margin-bottom-5'}`}>
                     <TableView headerData={TABLE_HEADERS.GEO_INFO_TABLE} data={cifData?.geoInfo?.data} infoButton={cifData?.geoInfo?.infoButton} breakdownType={cifData?.geoInfo?.breakdownType} classname='summary-breakdown-table-container' />
                 </div>}
-            {cifData?.inOutFlowData?.show && <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 padding-0 margin-top-bottom-2 ${cifData?.metricBreakdownInfo?.show ? '' : 'margin-bottom-5'}`}>
+            {cifData?.inOutFlowData?.show && <div className={`col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 padding-0 margin-top-bottom-2 ${cifData?.metricBreakdownInfo?.show ? '' : 'margin-bottom-5'}`}>
                 <ScatterGraph geoName={mapFeatures?.cifData?.properties?.geo_name} />
             </div>}
             {cifData?.metricBreakdownInfo?.show &&
-                <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 padding-0 margin-top-2 margin-bottom-4'>
+                <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 padding-0 margin-top-2 margin-bottom-4'>
                     <TableView headerData={TABLE_HEADERS.METRIC_BREAKDOWN_TABLE} data={cifData?.metricBreakdownInfo?.data} infoButton={cifData?.metricBreakdownInfo?.infoButton} breakdownType={cifData?.metricBreakdownInfo?.breakdownType} classname='dashboard-table-container' />
                 </div>}
         </div>
