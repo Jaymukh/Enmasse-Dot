@@ -20,11 +20,17 @@ import { mapFeatureState, AllSettingsState, UserSettingsState, errorState, spinn
 
 // Utilities
 import WIPImage from '../../../utils/images/WIP-FINAL.svg';
+import PoiIconAll from '../../../utils/images/POI_icon_all.svg';
+import PoiIconFilter from '../../../utils/images/POI_icon_filter.svg';
 import { RouteConstants } from '../../../constants';
 import { useMapsService, useSettingsService, useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 
-const DistrictSidebar = () => {
+interface DistrictSidebarProps {
+    selectedRb?: number;
+}
+
+const DistrictSidebar: React.FC<DistrictSidebarProps> = ({selectedRb}) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [searchParams] = useSearchParams();
@@ -220,7 +226,7 @@ const DistrictSidebar = () => {
                         <InfoPanel fontSize={20} text={properties?.enMassesThesis?.infoButton} />
                     </div>
                     <div className='row data-card d-flex flex-row w-100 margin-left-right-0 margin-top-2 margin-bottom-3 padding-left-right-0'>
-                        <div className='col-12 padding-left-right-2 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2 border-bottom rounded-top bg-purple'>
+                        <div className='col-12 padding-left-right-2 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2 border-bottom rounded-top bg-gradient'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}
                                 colour={TypographyColor.secondary}
@@ -300,19 +306,23 @@ const DistrictSidebar = () => {
                                     <InfoPanel fontSize={20} text={properties?.EHEconomicActivityIndicators?.infoButton} />
                                 </div>
                                 <div className='row data-card d-flex flex-row margin-left-right-0 margin-top-bottom-2 padding-left-right-0'>
-                                    <div className='col-12 padding-left-right-2 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2 border-bottom rounded-top bg-purple-1'>
-                                        <Heading
-                                            title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}
-                                            colour={TypographyColor.dark}
-                                            type={TypographyType.h5}
-                                            classname='margin-0'
-                                        />
-                                        <Body
-                                            type={BodyType.p4}
-                                            color={BodyColor.dark}
-                                            classname='margin-0'>Points of Interest
-                                        </Body>
+                                    <div className='col-12 d-flex flex-row justify-content-between padding-left-right-2  border-bottom rounded-top bg-purple-1'>
+                                        <div className='d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2'>
+                                            <Heading
+                                                title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}
+                                                colour={TypographyColor.dark}
+                                                type={TypographyType.h5}
+                                                classname='margin-0'
+                                            />
+                                            <Body
+                                                type={BodyType.p4}
+                                                color={BodyColor.dark}
+                                                classname='margin-0'>Points of Interest
+                                            </Body>
+                                        </div>
+                                        <img src={selectedRb === 0 ? PoiIconAll : PoiIconFilter} alt="circles" />
                                     </div>
+
                                     <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right'>
                                         <Heading
                                             title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.healthcareActivityPointsOfInterest)}

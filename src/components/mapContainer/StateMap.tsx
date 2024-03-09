@@ -290,7 +290,6 @@ const StateMap: React.FC<StateMapProps> = ({
                     </div>
                     <div className='col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 padding-0' style={{ height: '80.25vh' }}>
                         {isLoaded &&
-
                             <GoogleMap
                                 ref={mapRef}
                                 zoom={6}
@@ -348,7 +347,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 </div>
             </div>
             <div className='col-xl-3 col-lg-3 col-md-3 padding-0 h-100'>
-                <DistrictSideBar />
+                <DistrictSideBar selectedRb={selectedRb} />
             </div>
         </div>
     )

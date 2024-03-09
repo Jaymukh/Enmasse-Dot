@@ -158,8 +158,11 @@ body {
     background-color: var(--white-0);
 }
 
-.bg-gradient {
+/* .bg-gradient {
     background: linear-gradient(to right, rgba(43, 13, 92, 1) 70%, rgba(128, 169, 196, 1));
+} */
+.bg-gradient {
+    background: linear-gradient(to right, var(--purple-0) 75%, var(--moonstone-blue-0)) !important;
 }
 
 .offcanvas {
@@ -942,6 +945,7 @@ ul {
     overflow: auto;
     border: 1px solid var(--table-border);
     border-radius: 10px !important;
+
     @media only screen and (max-width: 856px) {
         width: 94vw;
     }
@@ -999,14 +1003,18 @@ th {
     z-index: 1;
     background-color: var(--white-1);
 }
+
 .dashboard-padding {
     padding: 0 2.25vh !important;
+
     @media only screen and (max-width: 856px) {
         padding: 0 !important;
     }
 }
+
 .overflow-margin-right {
     margin-right: 1.6875vh !important;
+
     @media only screen and (max-width: 856px) {
         margin-right: 0 !important;
     }
@@ -1021,6 +1029,7 @@ th {
     overflow-y: auto;
     border: 1px solid var(--table-border);
     border-radius: 10px !important;
+
     @media only screen and (max-width: 856px) {
         width: 94vw;
     }
@@ -1234,9 +1243,9 @@ th {
 
 .gm-style-iw button[title="Close"] {
     display: none !important;
-  }
+}
 
-.gm-style-iw-d  {
+.gm-style-iw-d {
     overflow-x: hidden !important;
 }
 
