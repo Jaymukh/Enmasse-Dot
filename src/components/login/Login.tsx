@@ -106,9 +106,9 @@ export default function Login() {
     return (
         <div>
             <div className='row margin-left-right-0' style={{ height: '100vh', width: '100vw' }} >
-                <div className='col-md-6 col-xl-6 login-update-box bg-white'>
+                <div className='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 login-update-box bg-white'>
                     <div className='loginCardAlign'>
-                        <img src={globe} alt='enmasse' width={454} height={338} />
+                        <img src={globe} alt='enmasse' style={{width: '100%'}} />
                         <div>
                             <Heading
                                 title='enmasse'
@@ -125,7 +125,7 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                <div className='col-md-6 col-md-6 login-update-box '>
+                <div className='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 login-update-box '>
                     <div className='loginCardAlign' >
                         <Heading
                             title='Login'
@@ -226,23 +226,23 @@ export default function Login() {
                             color={BodyColor.secondary}
                             classname='margin-bottom-0 margin-top-2'
                         >
-                            By clicking on continue you are agreeing to the Enmasse
+                            By clicking on continue you are agreeing to the Enmasse&nbsp;
                             <Button
                                 theme={ButtonTheme.primary}
                                 size={ButtonSize.large}
                                 variant={ButtonVariant.transparent}
                                 onClick={() => handleModal({ tncModal: true })}
-                                classname='underline-text h-auto padding-left-right-1 w-auto'
+                                classname='underline-text h-auto padding-0 w-auto'
                             >
                                 Terms & conditions
                             </Button>
-                            and
+                            &nbsp;and&nbsp; 
                             <Button
                                 theme={ButtonTheme.primary}
                                 size={ButtonSize.large}
                                 variant={ButtonVariant.transparent}
                                 onClick={() => handleModal({ tncModal: true })}
-                                classname='underline-text h-auto padding-left-1 black w-auto'
+                                classname='underline-text h-auto padding-0 black w-auto'
                             >
                                 Privacy policies
                             </Button>

@@ -158,9 +158,6 @@ body {
     background-color: var(--white-0);
 }
 
-/* .bg-gradient {
-    background: linear-gradient(to right, rgba(43, 13, 92, 1) 70%, rgba(128, 169, 196, 1));
-} */
 .bg-gradient {
     background: linear-gradient(to right, var(--purple-0) 75%, var(--moonstone-blue-0)) !important;
 }
@@ -1367,18 +1364,6 @@ th {
     background-color: var(--app-background);
 }
 
-@media only screen and (max-width: 850px) {
-    .login-update-box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        width: 100vw;
-        height: 50vh;
-    }
-}
-
 .down-arrow {
     display: none;
     /* By default, hide the button */
@@ -1411,6 +1396,37 @@ th {
     margin: 0;
     padding: 0;
     height: 100vh;
+
+    @media only screen and (max-width: 850px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: 100vw;
+        height: 100vh;
+        overflow-x: hidden;
+    }
+}
+
+.loginCardAlign {
+    width: 30vw;
+    background-color: transparent;
+    border: none;
+    border-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: start;
+    margin: auto;
+
+    @media only screen and (max-width: 480px) {
+        width: 90vw;
+    }
+
+    @media screen and (min-device-width: 481px) and (max-device-width: 850px) {
+        width: 60vw;
+    }
 }
 
 .inputBoxHeight {
@@ -1419,18 +1435,6 @@ th {
 
 .mediumMarginTopBottom {
     margin: 10px 0;
-}
-
-.loginCardAlign {
-    width: 26.625rem;
-    background-color: transparent;
-    border: none;
-    border-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    text-align: start;
-    margin: auto
 }
 
 .fixed-header {
