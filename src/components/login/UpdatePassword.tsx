@@ -100,9 +100,9 @@ const UpdatePassword = () => {
 
     return (
         <div className='row margin-left-right-0' style={{ height: '100vh', width: '100vw' }} >
-            <div className='col-md-6 col-xl-6 login-update-box bg-white'>
+            <div className='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 login-update-box bg-white'>
                 <div className='loginCardAlign'>
-                    <img src={globe} alt='enmasse' width={454} height={338} />
+                    <img src={globe} alt='enmasse'style={{width: '100%'}} />
                     <div>
                         <Heading
                             title='enmasse'
@@ -119,7 +119,7 @@ const UpdatePassword = () => {
                     </div>
                 </div>
             </div>
-            <div className='col-md-6 col-md-6 login-update-box'>
+            <div className='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 login-update-box '>
                 {passwordCreated ?
                     <div className='loginCardAlign'>
                         <div className='d-flex justify-content-center'>
@@ -203,8 +203,8 @@ const UpdatePassword = () => {
                         }
                         <div className="row margin-top-bottom-2">
                             {validationOptions.map((item: { key: string, text: string }, index: number) => (
-                                <div className='col-6 d-flex padding-right-0'>
-                                    {conditions[item?.key as keyof typeof conditions] ? <GoCheckCircleFill color='#108041' /> : <GiPlainCircle color='#CECECE' />}
+                                <div className='col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex align-items-center padding-right-0'>
+                                    {conditions[item?.key as keyof typeof conditions] ? <GoCheckCircleFill color='#108041' fontSize={18} /> : <GiPlainCircle color='#CECECE' fontSize={18} />}
                                     <Body
                                         type={BodyType.p3}
                                         color={BodyColor.dark}

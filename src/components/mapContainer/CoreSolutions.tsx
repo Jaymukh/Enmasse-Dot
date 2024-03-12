@@ -61,7 +61,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 title='Core Solutions'
                                 type={TypographyType.h4}
                                 colour={TypographyColor.dark}
-                                classname='margin-top-bottom-0 margin-left-2 text-start'
+                                classname='margin-top-bottom-0 margin-left-2 text-start overflow-wrap-anywhere'
                             />
                             <InfoPanel fontSize={20} text='Core Solutions have a strong tendency to grow together' classname='margin-right-1' />
                         </div>
@@ -87,7 +87,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                                 <Body
                                     type={BodyType.p2}
                                     color={BodyColor.dark}
-                                    classname='text-start'
+                                    classname='text-start overflow-wrap-anywhere'
                                 >
                                     {option.label}
                                 </Body>
@@ -102,7 +102,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             title='View Stories'
                             type={TypographyType.h4}
                             colour={TypographyColor.dark}
-                            classname='margin-top-bottom-0 margin-left-right-2 text-start'
+                            classname='margin-top-bottom-0 margin-left-right-2 text-start overflow-wrap-anywhere'
                         />
                         <InfoPanel fontSize={20} text='Real stories from the field help put the numbers in the right context' />
                     </div>
@@ -119,7 +119,7 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                             title='Request Layers'
                             type={TypographyType.h4}
                             colour={TypographyColor.dark}
-                            classname='margin-top-bottom-0 margin-left-right-2 text-start'
+                            classname='margin-top-bottom-0 margin-left-right-2 text-start overflow-wrap-anywhere'
                         />
                         <InfoPanel fontSize={20} text='Let us know if you would like further overlays here' />
                     </div>

@@ -20,11 +20,17 @@ import { mapFeatureState, AllSettingsState, UserSettingsState, errorState, spinn
 
 // Utilities
 import WIPImage from '../../../utils/images/WIP-FINAL.svg';
+import PoiIconAll from '../../../utils/images/POI_icon_all.svg';
+import PoiIconFilter from '../../../utils/images/POI_icon_filter.svg';
 import { RouteConstants } from '../../../constants';
 import { useMapsService, useSettingsService, useStoriesService } from '../../../services';
 import { useMapHelpers } from '../../../helpers';
 
-const DistrictSidebar = () => {
+interface DistrictSidebarProps {
+    selectedRb?: number;
+}
+
+const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [searchParams] = useSearchParams();
@@ -152,30 +158,27 @@ const DistrictSidebar = () => {
 
     return (
         <div className='w-100 bg-white padding-left-right-0 margin-right-0' style={{ height: pathname === '/' ? '85.5vh' : '91.75vh' }} >
-            {/* <div className='row w-100 d-flex justify-content-between align-items-center padding-left-right-3 py-auto' style={{ height: '10%' }}> */}
-            <div className="d-flex flex-column justify-content-start align-items-center w-100 padding-top-1 margin-left-right-0 padding-left-right-3" style={{ overflow: 'hidden', height: '10%' }}>
-                <div className='row d-flex flex-row justify-content-between w-100 d-flex flex-row margin-left-right-0 margin-top-bottom-2' style={{ height: 'fit-content' }}>
-                    <div className='d-flex justify-content-start align-items-center col-12 col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-0 text-start'>
-                        <Heading
-                            title={properties?.region}
-                            colour={TypographyColor.dark}
-                            type={TypographyType.h4}
-                            classname='margin-right-2 margin-top-bottom-0'
-                        />
-                        <InfoPanel fontSize={20} text={properties?.infoButton} />
-                    </div>
-                    <div className='col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 padding-0'>
-                        <Select
-                            options={settings?.currencies}
-                            // value={usersettings?.currency}
-                            value={currency || usersettings?.currency}
-                            labelKey='name'
-                            valueKey='code'
-                            size={SelectSize.small}
-                            name='currency'
-                            onChange={handleChangeCurrency}
-                        />
-                    </div>
+            <div className='w-100 d-flex justify-content-between align-items-center padding-left-right-3 py-auto' style={{ height: '10%' }}>
+                <div className='d-flex justify-content-start align-items-center col-6 margin-0 text-start'>
+                    <Heading
+                        title={properties?.region}
+                        colour={TypographyColor.dark}
+                        type={TypographyType.h4}
+                        classname='margin-right-2 margin-top-bottom-0'
+                    />
+                    <InfoPanel fontSize={20} text={properties?.infoButton} />
+                </div>
+                <div className='col-6 padding-0'>
+                    <Select
+                        options={settings?.currencies}
+                        // value={usersettings?.currency}
+                        value={currency || usersettings?.currency}
+                        labelKey='name'
+                        valueKey='code'
+                        size={SelectSize.small}
+                        name='currency'
+                        onChange={handleChangeCurrency}
+                    />
                 </div>
             </div>
             <div className="d-flex flex-column justify-content-start align-items-center w-100 padding-top-1 margin-left-right-0 padding-left-right-3" style={{ overflowY: 'auto', overflowX: 'hidden', height: '80%' }}>
@@ -190,7 +193,7 @@ const DistrictSidebar = () => {
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.secondary}
-                            classname='margin-0'>
+                            classname='margin-0 overflow-wrap-anywhere'>
                             Total Population
                         </Body>
                     </div>
@@ -204,7 +207,7 @@ const DistrictSidebar = () => {
                         <Body
                             type={BodyType.p3}
                             color={BodyColor.secondary}
-                            classname='margin-0'>
+                            classname='margin-0 overflow-wrap-anywhere'>
                             Number of Households
                         </Body>
                     </div>
@@ -220,7 +223,7 @@ const DistrictSidebar = () => {
                         <InfoPanel fontSize={20} text={properties?.enMassesThesis?.infoButton} />
                     </div>
                     <div className='row data-card d-flex flex-row w-100 margin-left-right-0 margin-top-2 margin-bottom-3 padding-left-right-0'>
-                        <div className='col-12 padding-left-right-2 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2 border-bottom rounded-top bg-purple'>
+                        <div className='col-12 padding-left-right-2 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2 border-bottom rounded-top bg-gradient'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}
                                 colour={TypographyColor.secondary}
@@ -230,7 +233,7 @@ const DistrictSidebar = () => {
                             <Body
                                 type={BodyType.p4}
                                 color={BodyColor.white}
-                                classname='margin-0'>
+                                classname='margin-0 overflow-wrap-anywhere'>
                                 Total Addressable Market
                             </Body>
                         </div>
@@ -244,7 +247,7 @@ const DistrictSidebar = () => {
                             <Body
                                 type={BodyType.p4}
                                 color={BodyColor.secondary}
-                                classname='margin-0'>
+                                classname='margin-0 overflow-wrap-anywhere'>
                                 Average Annual Core Transactional Value (CTV)
                             </Body>
                         </div>
@@ -258,7 +261,7 @@ const DistrictSidebar = () => {
                             <Body
                                 type={BodyType.p4}
                                 color={BodyColor.secondary}
-                                classname='margin-0'>
+                                classname='margin-0 overflow-wrap-anywhere'>
                                 Number of Entrepreneurial Households (EH)
                             </Body>
                         </div>
@@ -299,19 +302,24 @@ const DistrictSidebar = () => {
                                     />
                                     <InfoPanel fontSize={20} text={properties?.EHEconomicActivityIndicators?.infoButton} />
                                 </div>
-                                <div className='row data-card d-flex flex-row margin-left-right-0 margin-top-bottom-2 padding-left-right-0'>
-                                    <div className='col-12 padding-left-right-2 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2 border-bottom rounded-top bg-purple-1'>
-                                        <Heading
-                                            title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}
-                                            colour={TypographyColor.dark}
-                                            type={TypographyType.h5}
-                                            classname='margin-0'
-                                        />
-                                        <Body
-                                            type={BodyType.p4}
-                                            color={BodyColor.dark}
-                                            classname='margin-0'>Points of Interest
-                                        </Body>
+                                <div className='row data-card d-flex flex-row w-100 margin-left-right-0 margin-top-bottom-2 padding-left-right-0'>
+                                    <div className='col-12 d-flex flex-row justify-content-between padding-left-right-2  border-bottom rounded-top bg-purple-1'>
+                                        <div className='col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2'>
+                                            <Heading
+                                                title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}
+                                                colour={TypographyColor.dark}
+                                                type={TypographyType.h5}
+                                                classname='margin-0'
+                                            />
+                                            <Body
+                                                type={BodyType.p4}
+                                                color={BodyColor.dark}
+                                                classname='margin-0'>Points of Interest
+                                            </Body>
+                                        </div>
+                                        <div className='col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 d-flex justify-content-end align-items-center padding-top-bottom-2'>
+                                            <img src={selectedRb === 0 ? PoiIconAll : PoiIconFilter} alt="circles" />
+                                        </div>
                                     </div>
                                     <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right'>
                                         <Heading
@@ -319,12 +327,11 @@ const DistrictSidebar = () => {
                                             colour={TypographyColor.dark}
                                             type={TypographyType.h5}
                                             classname='margin-0'
-
                                         />
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Healthcare ecosystem markers
                                         </Body>
                                     </div>
@@ -338,7 +345,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Education ecosystem markers
                                         </Body>
                                     </div>
@@ -352,7 +359,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Agricultural ecosystem markers
                                         </Body>
                                     </div>
@@ -366,7 +373,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Financial Solutions ecosystem markers
                                         </Body>
                                     </div>
@@ -396,7 +403,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.dark}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend
                                         </Body>
                                     </div>
@@ -410,7 +417,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Core Solutions
                                         </Body>
                                     </div>
@@ -424,7 +431,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Non-Core Solutions
                                         </Body>
                                     </div>
@@ -438,7 +445,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Healthcare
                                         </Body>
                                     </div>
@@ -452,7 +459,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Education
                                         </Body>
                                     </div>
@@ -466,7 +473,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Agri Markets
                                         </Body>
                                     </div>
@@ -480,7 +487,7 @@ const DistrictSidebar = () => {
                                         <Body
                                             type={BodyType.p4}
                                             color={BodyColor.secondary}
-                                            classname='margin-0'>
+                                            classname='margin-0 overflow-wrap-anywhere'>
                                             Average Annual EH Spend on Financial Solutions
                                         </Body>
                                     </div>

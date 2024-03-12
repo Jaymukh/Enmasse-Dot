@@ -22,38 +22,38 @@
 */
 
 .h1 {
-    /* font-size: 1.875rem; */
-    font-size: 4.21875vh;
+    font-size: 1.875rem;
+    /* font-size: 4.21875vh; */
     font-family: "Poppins-Medium", sans-serif;
 }
 
 .h2 {
-    /* font-size: 1.5rem; */
-    font-size: 3.375vh;
+    font-size: 1.5rem;
+    /* font-size: 3.375vh; */
     font-family: "Poppins-Medium", sans-serif;
 }
 
 .h3 {
-    /* font-size: 1.125rem; */
-    font-size: 2.53125vh;
+    font-size: 1.125rem;
+    /* font-size: 2.53125vh; */
     font-family: "Poppins-Medium", sans-serif;
 }
 
 .h4 {
-    /* font-size: 1rem; */
-    font-size: 2.25vh;
+    font-size: 1rem;
+    /* font-size: 2.25vh; */
     font-family: "Poppins-Medium", sans-serif;
 }
 
 .h5 {
-    /* font-size: 0.875rem; */
-    font-size: 1.96875vh;
+    font-size: 0.875rem;
+    /* font-size: 1.96875vh; */
     font-family: "Poppins-Medium", sans-serif;
 }
 
 .h6 {
-    /* font-size: 0.75rem; */
-    font-size: 1.6875vh;
+    font-size: 0.75rem;
+    /* font-size: 1.6875vh; */
     font-family: "Poppins-Medium", sans-serif;
 }
 
@@ -63,14 +63,14 @@
 }
 
 .p1 {
-    /* font-size: 1rem; */
-    font-size: 2.25vh;
+    font-size: 1rem;
+    /* font-size: 2.25vh; */
     font-family: "Poppins-Regular", sans-serif;
 }
 
 .p2 {
-    /* font-size: 0.875rem; */
-    font-size: 1.96875vh;
+    font-size: 0.875rem;
+    /* font-size: 1.96875vh; */
     font-family: "Poppins-Regular", sans-serif;
 }
 
@@ -81,8 +81,8 @@
 }
 
 .p4 {
-    /* font-size: 0.625rem; */
-    font-size: 1.40625vh;
+    font-size: 0.625rem;
+    /* font-size: 1.40625vh; */
     font-family: "Poppins-Regular", sans-serif;
 }
 
