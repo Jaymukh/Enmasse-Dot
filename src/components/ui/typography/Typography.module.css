@@ -57,6 +57,11 @@
     font-family: "Poppins-Medium", sans-serif;
 }
 
+.h7 {
+    font-size: 1.40625vh;
+    font-family: "Poppins-Medium", sans-serif;
+}
+
 .p1 {
     /* font-size: 1rem; */
     font-size: 2.25vh;

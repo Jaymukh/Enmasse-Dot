@@ -45,7 +45,7 @@ const UpdatePassword = () => {
             .required('Confirm password is required'),
     });
 
-    const { handleSubmit, register, watch, formState } = useForm({
+    const { handleSubmit, register, formState } = useForm({
         resolver: yupResolver(validationSchema),
     });
     const { errors, isSubmitting, isValid } = formState;
@@ -92,6 +92,7 @@ const UpdatePassword = () => {
                 setError({ type: 'Error', message: errorMsg });
             });
     };
+    
     const handleContinue = () => {
         navigate(RouteConstants.login);
     }
@@ -240,7 +241,7 @@ const UpdatePassword = () => {
                             variant={ButtonVariant.bordered}
                             type='submit'
                             classname='margin-top-3'
-                        // disabled={!isValid}
+                            disabled={!isValid}
                         >
                             {isSubmitting
                                 && <Body

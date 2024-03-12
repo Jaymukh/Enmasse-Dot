@@ -12,7 +12,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth, redirectPath }) => {
-    if (auth && !Object.keys(auth).length) {
+    if (!auth || !Object.keys(auth).length) {
         return <Navigate to={redirectPath} />;
     }
     return <Outlet />;
@@ -33,7 +33,7 @@ const Router = () => {
             <Spinner />
         }>
             <Routes>
-                <Route path={RouteConstants.login} element={<Login />} />
+                <Route path={RouteConstants.login} element={auth && Object.keys(auth).length ? <Navigate to={RouteConstants.root} /> : <Login />} />
                 <Route path={RouteConstants.update_password} element={<UpdatePassword />} />
                 <Route element={<ProtectedRoute auth={auth} redirectPath={RouteConstants.login} />}>
                     {/* <Route path={RouteConstants.root} element={<HomeContainer />} /> */}

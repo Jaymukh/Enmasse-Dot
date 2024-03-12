@@ -25,6 +25,7 @@ function useFetchWrapper() {
     // Interceptor for adding authorization headers
     axiosInstance.interceptors.request.use(
         async (config: any) => {
+            if (config.url.includes(APIS.USERS.LOGIN)) return config;
             if (config.url.includes(APIS.USERS.SET_NEW_PASSWORD)) {
                 config.headers['Authorization'] = '';
                 return config;
@@ -66,11 +67,20 @@ function useFetchWrapper() {
     );
 
     return {
-        get: (url: string, params?: any) => axiosInstance.get(url, { params }).then(handleResponse),
-        post: (url: string, data?: any) => axiosInstance.post(url, data).then(handleResponse),
-        put: (url: string, data?: any) => axiosInstance.put(url, data).then(handleResponse),
-        delete: (url: string) => axiosInstance.delete(url).then(handleResponse),
+        get: (url: string, params?: any) => axiosInstance.get(getURL(url), { params }).then(handleResponse),
+        post: (url: string, data?: any) => axiosInstance.post(getURL(url), data).then(handleResponse),
+        put: (url: string, data?: any) => axiosInstance.put(getURL(url), data).then(handleResponse),
+        delete: (url: string) => axiosInstance.delete(getURL(url)).then(handleResponse),
     };
+
+    function getURL(url: string) {
+        let host = process.env.REACT_APP_API_HOST_DEV;
+        let baseURL = process.env.REACT_APP_API_BASE_URL;
+        if (window.location.host === host) {
+            url = baseURL + url;
+        }
+        return url;
+    }
 
     function handleResponse(response: AxiosResponse) {
         if (response.status !== 200) {

@@ -1,12 +1,13 @@
 import styles from "./Typography.module.css";
 
 export enum TypographyColor {
-    primary, /* green*/
-    secondary, /* dark gray*/
-    muted, /* light gray*/
-    warning, /* red*/
-    dark, /* black*/
-    purple
+    primary, /* green */
+    secondary, /* white */
+    muted, /* light gray */
+    warning, /* red */
+    dark, /* black */
+    purple, /* purple */
+    gray /* dark gray */
 }
 
 export enum TypographyType {
@@ -15,7 +16,8 @@ export enum TypographyType {
     h3, /* 1.125rem (18rem) */
     h4, /* 1rem (16px)*/
     h5, /* 0.875rem (14px) */
-    h6 /* 0.75rem (12px) */
+    h6, /* 0.75rem (12px) */
+    h7, /* 0.625rem (10px) */
 }
 
 interface HeadingOne {
@@ -48,6 +50,9 @@ const getColor = (color: TypographyColor) => {
         case TypographyColor.purple:
             className = `${styles.purple}`;
             break;
+        case TypographyColor.gray:
+            className = `${styles.secondary}`;
+            break;
     }
     return className;
 }
@@ -72,6 +77,9 @@ const getType = (type: TypographyType) => {
             break;
         case TypographyType.h6:
             className = `${styles.h6}`;
+            break;
+        case TypographyType.h7:
+            className = `${styles.h7}`;
             break;
     }
     return className;

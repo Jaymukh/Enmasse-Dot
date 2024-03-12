@@ -1144,14 +1144,6 @@ th {
     overflow-x: hidden !important;
 }
 
-.hover-popup-table {
-    border: 0.5px solid var(--table-border);
-}
-
-.popup-border-bottom {
-    border-bottom: 0.5px solid var(--table-border);
-}
-
 /* MapPopup */
 .map-popup-grey-text {
     margin-left: 0.1px;
@@ -1160,7 +1152,7 @@ th {
 
 .hover-popup-container {
     margin-left: 0.1px;
-    width: auto;
+    width: 8rem;
     margin-right: 0.1px
 }
 
