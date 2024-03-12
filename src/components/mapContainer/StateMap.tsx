@@ -262,22 +262,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const onHoverMap = (feature: any) => {
         setIsHover(true);
         const coordinates = feature?.Gg?.coordinates;
-        setHoverData({ ...feature?.Gg });
-        if (map) {
-            const pointPixel = map.getProjection()?.fromLatLngToPoint(new google.maps.LatLng(coordinates[0], coordinates[1]))
-            const bounds = map.getBounds();
-            console.log(bounds)
-            console.log(coordinates)
-            if (bounds) {
-                const yBound = [bounds.getSouthWest().lat(), bounds.getSouthWest().lng()];
-                const xBound = [bounds.getNorthEast().lat(), bounds.getNorthEast().lng()];
-                const yBoundPixel = map.getProjection()?.fromLatLngToPoint(new google.maps.LatLng(yBound[0], yBound[1]));
-                const xBoundPixel = map.getProjection()?.fromLatLngToPoint(new google.maps.LatLng(xBound[0], xBound[1]));
-                // console.log('yBoundPixel', yBoundPixel);
-                // console.log('xBoundPixel', xBoundPixel);
-            }
-
-        }
+        setHoverData({ ...feature?.Gg });        
     };
 
     const handleMapHover = (event: any) => {
@@ -285,31 +270,6 @@ const StateMap: React.FC<StateMapProps> = ({
             setHoverData(null);
         }
     };
-
-    const getInfowindowOffset = (coordinates: any) => {
-        var point = getPixelFromLatLng(new window.google.maps.LatLng(coordinates)),
-            mapHeight = map?.getDiv().offsetHeight,
-            spaceAtTop = point?.y, // Distance from the top of the map container to the marker
-            spaceAtBottom = mapHeight! - point?.y!,
-            offset;
-        console.log(point)
-        // Check if there's enough space at the top to display the info window
-        if (spaceAtTop! > spaceAtBottom) {
-            // Display at the bottom
-            offset = new google.maps.Size(0, -40); // Adjust this offset as needed
-        } else {
-            // Display at the top (default behavior)
-            offset = new google.maps.Size(0, 10); // Adjust this offset as needed
-        }
-
-        return offset;
-    }
-
-    const getPixelFromLatLng = (latLng: any) => {
-        var projection = map?.getProjection();
-        var point = projection?.fromLatLngToPoint(latLng);
-        return point;
-    }
 
     return (
         <div className='row margin-left-right-0'
