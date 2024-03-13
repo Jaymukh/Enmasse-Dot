@@ -254,8 +254,11 @@ const StateMap: React.FC<StateMapProps> = ({
     }, [selected.country, selected.state, selected.district]);
 
     useEffect(() => {
-        if (mapFeatures.featuredStories?.featuredStories?.length === 0) {
+        if ((mapFeatures?.featuredStories === null) || (Array.isArray(mapFeatures?.featuredStories) && mapFeatures?.featuredStories.length === 0) || (mapFeatures.featuredStories?.featuredStories?.length === 0)) {
             setIsChecked({ ...isChecked, viewStories: false });
+        }
+        else {
+            setIsChecked({ ...isChecked, viewStories: true });
         }
     }, [map, mapFeatures.featuredStories]);
 
