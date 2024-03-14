@@ -25,6 +25,7 @@ const useUserService = () => {
 
     const login = (data: any) => {
         setSpinner(true);
+        localStorage.removeItem('user');
         return fetchWrapper.post(APIS.USERS.LOGIN, data)
             .then(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
