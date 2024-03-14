@@ -26,7 +26,7 @@ function useFetchWrapper() {
     axiosInstance.interceptors.request.use(
         async (config: any) => {
             if ([APIS.USERS.LOGIN, APIS.USERS.FORGOT_PASSWORD, APIS.USERS.SET_NEW_PASSWORD].includes(config.url)) return config;
-            const user = localStorage.getItem('user');
+            const user = localStorage.getItem('user')  || null;
             if (user != null) {
                 const token = JSON.parse(user)?.tokens?.access;
                 const isTokenExpired = checkTokenExpiry(token);
