@@ -64,7 +64,6 @@ const FamiliesDetailsContainer = () => {
                     pathname: RouteConstants.story_details,
                     search: `?${searchParams.toString()}`,
                 });
-                console.log(geo_id);
             }
         }).catch(error => {
             const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";

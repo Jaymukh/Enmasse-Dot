@@ -25,11 +25,7 @@ function useFetchWrapper() {
     // Interceptor for adding authorization headers
     axiosInstance.interceptors.request.use(
         async (config: any) => {
-            if (config.url.includes(APIS.USERS.LOGIN)) return config;
-            if (config.url.includes(APIS.USERS.SET_NEW_PASSWORD)) {
-                config.headers['Authorization'] = '';
-                return config;
-            }
+            if ([APIS.USERS.LOGIN, APIS.USERS.FORGOT_PASSWORD, APIS.USERS.SET_NEW_PASSWORD].includes(config.url)) return config;
             const user = localStorage.getItem('user');
             if (user != null) {
                 const token = JSON.parse(user)?.tokens?.access;
@@ -67,10 +63,10 @@ function useFetchWrapper() {
     );
 
     return {
-        get: (url: string, params?: any) => axiosInstance.get(getURL(url), { params }).then(handleResponse),
-        post: (url: string, data?: any) => axiosInstance.post(getURL(url), data).then(handleResponse),
-        put: (url: string, data?: any) => axiosInstance.put(getURL(url), data).then(handleResponse),
-        delete: (url: string) => axiosInstance.delete(getURL(url)).then(handleResponse),
+        get: (url: string, params?: any) => axiosInstance.get(getURL(url), { params }).then(handleResponse).catch(error => console.log(error)),
+        post: (url: string, data?: any) => axiosInstance.post(getURL(url), data).then(handleResponse).catch(error => console.log(error)),
+        put: (url: string, data?: any) => axiosInstance.put(getURL(url), data).then(handleResponse).catch(error => console.log(error)),
+        delete: (url: string) => axiosInstance.delete(getURL(url)).then(handleResponse).catch(error => console.log(error)),
     };
 
     function getURL(url: string) {

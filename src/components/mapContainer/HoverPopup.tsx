@@ -5,8 +5,6 @@ import { useMapHelpers } from '../../helpers';
 import Body, { BodyType, BodyColor } from '../ui/typography/Body';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { useState } from 'react';
-import { Button, ButtonSize, ButtonTheme, ButtonVariant } from '../ui/button/Button';
-
 
 interface HoverPopupProps {
     properties: any;
@@ -35,50 +33,50 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties }) => {
             <div className="d-flex flex-column p-0 m-0">
                 <div className="d-flex m-0 p-0 col-12 flex-row align-items-center row">
                     <Heading
-                        title='Number of EHs: '
+                        title='No. of EHs: '
                         colour={TypographyColor.gray}
                         type={TypographyType.h7}
-                        classname='m-0 text-start col-7 p-0'
+                        classname='m-0 text-start col-6 p-0'
                     />
                     <Body
                         type={BodyType.p4}
                         color={BodyColor.secondary}
-                        classname='text-end col-5 p-0 m-0'
+                        classname='text-end col-6 p-0 m-0'
                     >
                         {properties?.ehPopulation}
                     </Body>
                 </div>
                 <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-start align-items-center">
                     <Heading
-                        title='Total CTV: '
+                        title='CTV: '
                         colour={TypographyColor.gray}
                         type={TypographyType.h7}
-                        classname='m-0 text-start col-5 p-0'
+                        classname='m-0 text-start col-3 p-0'
                     />
                     <Body
                         type={BodyType.p4}
                         color={BodyColor.secondary}
-                        classname='text-end col-7 p-0 m-0'
+                        classname='text-end col-9 p-0 m-0'
                     >
                         {getCurrencyWithSymbol(properties?.TAM, properties?.tamUOM)}
                     </Body>
                 </div>
                 <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-start align-items-center">
                     <Heading
-                        title='Total PoIs: '
+                        title='POIs: '
                         colour={TypographyColor.gray}
                         type={TypographyType.h7}
-                        classname='m-0 text-start col-7 p-0'
+                        classname='m-0 text-start col-3 p-0'
                     />
                     <Body
                         type={BodyType.p4}
                         color={BodyColor.secondary}
-                        classname='text-end col-5 p-0 m-0'
+                        classname='text-end col-9 p-0 m-0'
                     >
                         {properties?.pointsOfInterest}
                     </Body>
                 </div>
-                <div className="d-flex cursor-pointer justify-content-start align-items-center m-0 p-0">
+                <div className="d-flex cursor-pointer justify-content-start align-items-center">
                     <Heading
                         title='Explore'
                         colour={TypographyColor.purple}

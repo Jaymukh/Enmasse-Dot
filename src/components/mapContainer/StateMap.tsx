@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { GoogleMap, LoadScript, InfoWindow, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, InfoWindow, useJsApiLoader } from '@react-google-maps/api';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 // CSS
@@ -58,6 +59,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const mapFeatures = useRecoilValue(mapFeatureState);
     const setError = useSetRecoilState(errorState);
     const [isInsideGeoJsonBounds, setIsInsideGeoJsonBounds] = useState(true);
+    const [geoJsonBound, setGeoJsonBound] = useState({});
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const { isLoaded } = useJsApiLoader({
@@ -210,6 +212,7 @@ const StateMap: React.FC<StateMapProps> = ({
 
             // Set map center and zoom level based on bounding box
             map.fitBounds(bounds);
+            setGeoJsonBound(bounds.toJSON())
             setCenter({ lat: bounds?.getCenter()?.lat(), lng: bounds?.getCenter()?.lng() });
         }
     }, [map, geoJSON]);
@@ -262,8 +265,31 @@ const StateMap: React.FC<StateMapProps> = ({
     const onHoverMap = (feature: any) => {
         setIsHover(true);
         const coordinates = feature?.Gg?.coordinates;
-        setHoverData({ ...feature?.Gg });        
+        const boundary = map?.getBounds()?.toJSON();
+        let offset: any = 0
+
+        const distance = distanceFromMapTopToPoint(boundary, map?.getZoom(), coordinates[0]);
+        if (distance < 10500) {
+            offset = '200%'
+        }
+        setHoverData({ ...feature?.Gg });
     };
+
+    function distanceFromMapTopToPoint(mapBoundary: any, zoom: number | undefined, lat: any) {
+        // Calculate latitude difference between map north end and point
+        const mapNorthLat = mapBoundary.north;
+        const pointLat = lat;
+        const latDiff = Math.abs(mapNorthLat - pointLat);
+
+        // Calculate distance in degrees (latitude difference) between the map north end and the point
+        const degreeDistance = latDiff * 111.1; // 1 degree latitude ≈ 111 kilometers
+
+        // Calculate distance in pixels between the map top and the point
+        const mapHeight = 256 * Math.pow(2, zoom!); // Height of the map in pixels
+        const pixelDistance = ((degreeDistance / 360) * mapHeight); //dividing by 1.5*10**4 for simpler calculations
+
+        return pixelDistance;
+    }
 
     const handleMapHover = (event: any) => {
         if (event) {
@@ -338,6 +364,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                             zIndex: 2000,
                                             disableCloseOnClick: true,
                                             disableAutoPan: true,
+                                            pixelOffset: hoverData?.offset
                                         } as any}
                                     >
                                         <HoverPopup properties={hoverData} />

@@ -53,12 +53,10 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
     }
     const handleImageLoad = () => {
         setImageLoaded(true);
-        console.log("isImageLoaded:", imageLoaded); 
     };
 
     useEffect(() => {
         setSpinnerLite(!imageLoaded);
-        console.log("isImageLoaded useEffect :", imageLoaded); 
     }, [imageLoaded]);
 
     return (

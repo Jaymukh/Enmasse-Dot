@@ -50,12 +50,10 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
     };
     const handleImageLoad = () => {
         setImageLoaded(true);
-        console.log("isImageLoaded:", imageLoaded); 
     };
 
     useEffect(() => {
         setSpinnerLite(!imageLoaded);
-        console.log("isImageLoaded useEffect :", imageLoaded); 
     }, [imageLoaded]);
 
     return (
