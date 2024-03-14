@@ -28,9 +28,10 @@ import { useMapHelpers } from '../../../helpers';
 
 interface DistrictSidebarProps {
     selectedRb?: number;
+    coreSolutions?: any;
 }
 
-const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb }) => {
+const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolutions }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [searchParams] = useSearchParams();
@@ -223,7 +224,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb }) => {
                         <InfoPanel fontSize={20} text={properties?.enMassesThesis?.infoButton} />
                     </div>
                     <div className='row data-card d-flex flex-row w-100 margin-left-right-0 margin-top-2 margin-bottom-3 padding-left-right-0'>
-                        <div className='col-12 padding-left-right-2 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2 border-bottom rounded-top bg-gradient'>
+                        <div className='col-12 padding-left-right-2 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2 border-bottom rounded-top bg-gradient-dark'>
                             <Heading
                                 title={getCurrencyWithSymbol(properties?.enMassesThesis?.totalAddressableMarket, properties?.enMassesThesis?.totalAddressableMarketUOM)}
                                 colour={TypographyColor.secondary}
@@ -303,7 +304,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb }) => {
                                     <InfoPanel fontSize={20} text={properties?.EHEconomicActivityIndicators?.infoButton} />
                                 </div>
                                 <div className='row data-card d-flex flex-row w-100 margin-left-right-0 margin-top-bottom-2 padding-left-right-0'>
-                                    <div className='col-12 d-flex flex-row justify-content-between padding-left-right-2  border-bottom rounded-top bg-purple-1'>
+                                    <div className='col-12 d-flex flex-row justify-content-between padding-left-right-2  border-bottom rounded-top bg-gradient-light'>
                                         <div className='col-12 col-sm-6 col-md-6 col-lg-9 col-xl-9 d-flex flex-column align-items-start justify-content-center text-start padding-top-bottom-2'>
                                             <Heading
                                                 title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.pointsOfInterest)}
@@ -326,7 +327,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb }) => {
                                             title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.healthcareActivityPointsOfInterest)}
                                             colour={TypographyColor.dark}
                                             type={TypographyType.h5}
-                                            classname='margin-0'
+                                            classname={`margin-0 ${selectedRb === coreSolutions.find((item: any) => item.type === "Healthcare")?.key ? 'bg-purple color-white' : 'initial'}`}
                                         />
                                         <Body
                                             type={BodyType.p4}
@@ -340,7 +341,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb }) => {
                                             title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.educationActivityPointsOfInterest)}
                                             colour={TypographyColor.dark}
                                             type={TypographyType.h5}
-                                            classname='margin-0'
+                                            classname={`margin-0 ${selectedRb === coreSolutions.find((item: any) => item.type === "Education")?.key ? 'bg-purple color-white' : 'initial'}`}
                                         />
                                         <Body
                                             type={BodyType.p4}
@@ -354,7 +355,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb }) => {
                                             title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.agriMarketActivityPointsOfInterest)}
                                             colour={TypographyColor.dark}
                                             type={TypographyType.h5}
-                                            classname='margin-0'
+                                            classname={`margin-0 ${selectedRb === coreSolutions.find((item: any) => item.type === "Agri_Markets")?.key ? 'bg-purple color-white' : 'initial'}`}
                                         />
                                         <Body
                                             type={BodyType.p4}
@@ -368,7 +369,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb }) => {
                                             title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.financialSolutionsActivityPointsOfInterest)}
                                             colour={TypographyColor.dark}
                                             type={TypographyType.h5}
-                                            classname='margin-0'
+                                            classname={`margin-0 ${selectedRb === coreSolutions.find((item: any) => item.type === "Financial_Solutions")?.key ? 'bg-purple color-white' : 'initial'}`}
                                         />
                                         <Body
                                             type={BodyType.p4}

@@ -351,7 +351,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 </div>
             </div>
             <div className='col-xl-3 col-lg-3 col-md-3 padding-0 h-100'>
-                <DistrictSideBar selectedRb={selectedRb} />
+                <DistrictSideBar selectedRb={selectedRb} coreSolutions={coreSolutions} />
             </div>
         </div>
     )

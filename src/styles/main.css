@@ -130,6 +130,10 @@ body {
     color: var(--black-0);
 }
 
+.color-white {
+    color: var(--white-0);
+}
+
 .color-black-15 {
     color: var(--black-15);
 }
@@ -158,8 +162,12 @@ body {
     background-color: var(--white-0);
 }
 
-.bg-gradient {
+.bg-gradient-dark {
     background: linear-gradient(to right, var(--purple-0) 75%, var(--moonstone-blue-0)) !important;
+}
+
+.bg-gradient-light {
+    background: linear-gradient(to right, var(--purple-10) 70%, var(--purple-11)) !important;
 }
 
 .offcanvas {
