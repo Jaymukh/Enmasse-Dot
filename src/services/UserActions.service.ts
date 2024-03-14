@@ -40,10 +40,10 @@ const useUserService = () => {
                     setOverlay(true);
                     acceptAgreement();
                 }
-                // navigate({
-                //     pathname: from,
-                //     search: from === RouteConstants.root ? '?country=1' : '',
-                // });
+                navigate({
+                    pathname: from,
+                    search: from === RouteConstants.root ? '?country=1' : '',
+                });
             })
             .catch(error => {
                 setSpinner(false);
