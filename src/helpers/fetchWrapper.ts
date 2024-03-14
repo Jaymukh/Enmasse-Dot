@@ -25,7 +25,9 @@ function useFetchWrapper() {
     // Interceptor for adding authorization headers
     axiosInstance.interceptors.request.use(
         async (config: any) => {
-            if ([APIS.USERS.LOGIN, APIS.USERS.FORGOT_PASSWORD, APIS.USERS.SET_NEW_PASSWORD].includes(config.url)) return config;
+            if ([APIS.USERS.LOGIN, APIS.USERS.FORGOT_PASSWORD, APIS.USERS.SET_NEW_PASSWORD].includes(config.url)) {
+                return config;
+            }
             const user = localStorage.getItem('user');
             if (user != null) {
                 const token = JSON.parse(user)?.tokens?.access;
