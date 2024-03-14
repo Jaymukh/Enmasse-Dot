@@ -63,10 +63,10 @@ function useFetchWrapper() {
     );
 
     return {
-        get: (url: string, params?: any) => axiosInstance.get(getURL(url), { params }).then(handleResponse).catch(error => console.log(error)),
-        post: (url: string, data?: any) => axiosInstance.post(getURL(url), data).then(handleResponse).catch(error => console.log(error)),
-        put: (url: string, data?: any) => axiosInstance.put(getURL(url), data).then(handleResponse).catch(error => console.log(error)),
-        delete: (url: string) => axiosInstance.delete(getURL(url)).then(handleResponse).catch(error => console.log(error)),
+        get: (url: string, params?: any) => axiosInstance.get(getURL(url), { params }).then(handleResponse),
+        post: (url: string, data?: any) => axiosInstance.post(getURL(url), data).then(handleResponse),
+        put: (url: string, data?: any) => axiosInstance.put(getURL(url), data).then(handleResponse),
+        delete: (url: string) => axiosInstance.delete(getURL(url)).then(handleResponse),
     };
 
     function getURL(url: string) {
