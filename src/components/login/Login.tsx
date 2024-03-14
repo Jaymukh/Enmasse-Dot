@@ -85,7 +85,7 @@ export default function Login() {
         userService.forgotPassword({ "email_id": email })
             .then((response: any) => {
                 if (response) {
-                    setError({ type: 'Success', message: response.message });
+                    setError({ type: 'Success', message: response.detail });
                     setSpinner(false);
                 }
             })

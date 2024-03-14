@@ -51,7 +51,6 @@ export default function RoadmapContact({ roadmapContactDrawerOpen, handleRoadmap
     };
 
     const handleSendClick = () => {
-        console.log(payloadData)
         if (payloadData.message) {
             setSpinner(true);
             cifService.sendEmail(payloadData).then((response: any) => {

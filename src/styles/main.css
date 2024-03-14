@@ -1254,6 +1254,10 @@ th {
     overflow-x: hidden !important;
 }
 
+/* ..gm-style .gm-style-iw-c {
+    padding: 0.25rem !important;
+} */
+
 /* MapPopup */
 .map-popup-grey-text {
     margin-left: 0.1px;
@@ -1262,7 +1266,7 @@ th {
 
 .hover-popup-container {
     margin-left: 0.1px;
-    width: 8rem;
+    width: 7rem;
     margin-right: 0.1px
 }
 
