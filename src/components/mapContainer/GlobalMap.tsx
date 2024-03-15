@@ -34,7 +34,7 @@ const GlobalMap: React.FC<GlobalMapProps> = ({ features, handleImportFeature }) 
 			if (status === 'OK' && Array.isArray(results) && results.length > 0) {
 				const country = results.find((component) => component.types.includes('country'));
 				if (country) {
-					const countryCode = country.address_components?.[0]?.short_name || '';
+					// const countryCode = country.address_components?.[0]?.short_name || '';
 					//handleImportFeature(countryCode);
 				}
 			} else {

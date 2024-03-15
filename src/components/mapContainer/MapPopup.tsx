@@ -17,6 +17,7 @@ import { useMapHelpers } from '../../helpers';
 import familySkeleton from '../../utils/images/EH Sillhouettes-5-01.svg';
 import { spinnerState } from '../../states';
 import { useSetRecoilState } from 'recoil';
+import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 
 
 interface MapPopupProps {
@@ -46,12 +47,19 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
     };
 
     return (
-        <div className="map-popup-grey-text rounded row h-100 w-100 pb-2 mb-1" onClick={() => handleFocused(index)}>
+        <div className="map-popup-grey-text rounded row h-100 w-100 p-0 m-0" onClick={() => handleFocused(index)}>
             <div className="col-4 padding-left-right-0 img-box position-relative">
                 {!loaded && <div className="image-placeholder w-100 h-100 position-absolute"></div>}
                 <img className="map-popup-story-img rounded" src={properties.image && properties.image.length > 0 ? properties.image : familySkeleton} alt={properties.familyName} onLoad={handleImageLoad} />
             </div>
             <div className="col-8 padding-right-0 d-flex flex-column justify-content-start padding-left-1">
+                <Heading
+                    title={properties?.familyName}
+                    // colour={isFocused ? TypographyColor.purple : TypographyColor.gray}
+                    colour={TypographyColor.gray}
+                    type={TypographyType.h6}
+                    classname='m-0 p-0 text-start'
+                />
                 <Body
                     type={BodyType.p4}
                     color={BodyColor.secondary}
@@ -70,11 +78,11 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                 </Body>
                 <Button
                     theme={ButtonTheme.primary}
-                    size={ButtonSize.xsmall}
+                    size={ButtonSize.small}
                     variant={ButtonVariant.transparent}
                     // onClick={() => handlePopupClick(properties.parentID)}
                     onClick={() => handlePopupClick(properties.parent_id, properties.geoHierarchyLevel)}
-                    classname='h-auto padding-left-0'
+                    classname='h-auto padding-left-0 m-0 p-0'
                 >
                     Read more
                     <FiArrowRight className="margin-left-1" />

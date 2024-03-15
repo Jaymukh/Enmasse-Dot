@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // External libraries
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';

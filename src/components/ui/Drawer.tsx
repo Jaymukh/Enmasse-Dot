@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
-import { Button, ButtonSize, ButtonTheme, ButtonVariant } from './button/Button';
+import { Button, ButtonTheme, ButtonVariant } from './button/Button';
 
 interface DrawerProps {
     id: string;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import '../../styles/main.css'
-import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/Button';
+import '../../styles/main.css';
 
 interface InfoPanelProps {
     text: string;

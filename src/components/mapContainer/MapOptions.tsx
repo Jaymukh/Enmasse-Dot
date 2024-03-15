@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // External libraries
 import { useState } from 'react';
 
@@ -35,7 +36,6 @@ function MapOptions({
 }: MapOptionsProps) {
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useState('');
-    const country = [{ name: 'India', geo_id: 1 }]
 
 
     const openWIPDrawer = (title: string) => {

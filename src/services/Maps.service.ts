@@ -1,8 +1,3 @@
-// External libraries
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-
-// Components
-import { errorState, mapFeatureState, userCurrencyState } from "../states";
 
 // Utilities
 import { useFetchWrapper } from '../helpers';
@@ -10,10 +5,7 @@ import { APIS } from '../constants';
 
 
 const useMapsService = () => {
-    const fetchWrapper = useFetchWrapper();
-    const setMapFeatures = useSetRecoilState(mapFeatureState);
-    const setError = useSetRecoilState(errorState);
-    
+    const fetchWrapper = useFetchWrapper();    
 
     const getDropdownList = (geoCode: number) => {
         return fetchWrapper.get(`${APIS.MAPS.GET_DROPDOWN}?geo-code=${geoCode}`);

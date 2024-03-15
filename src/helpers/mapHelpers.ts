@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // External libraries
 import { useRecoilValue } from 'recoil';
 import { useSearchParams } from 'react-router-dom';

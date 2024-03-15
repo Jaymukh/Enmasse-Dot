@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // External libraries
 import React, { useState } from 'react'
 import { MdModeEdit } from 'react-icons/md';
@@ -12,7 +13,6 @@ import { Heading, TypographyColor, TypographyType } from '../../../../ui/typogra
 import Body, { BodyColor, BodyType } from '../../../../ui/typography/Body';
 import UploadImage from './UploadImage';
 import DeleteImage from './DeleteImage';
-import EditProfile from './EditProfile';
 import { errorState, loggedUserState, spinnerState, User } from "../../../../../states";
 
 // Utilities

@@ -33,12 +33,11 @@ const FamiliesDetailsContainer = () => {
     const mapServices = useMapsService();
     const setMapFeatures = useSetRecoilState(mapFeatureState);
     const setError = useSetRecoilState(errorState);
-    const { getCurrencyWithSymbol, getNumberWithZero, getSelectedObject, getCoreSolutions } = useMapHelpers();
+    const { getNumberWithZero, getSelectedObject, getCoreSolutions } = useMapHelpers();
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
     const [iterator, setIterator] = useState(0);
     const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 });
-    const [loaded, setLoaded] = useState(false);
-
+    
     const handleImageLoad = () => {
         // setLoaded(true);
     };

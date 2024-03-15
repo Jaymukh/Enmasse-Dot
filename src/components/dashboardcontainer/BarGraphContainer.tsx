@@ -1,5 +1,4 @@
 // External libraries
-import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 // CSS

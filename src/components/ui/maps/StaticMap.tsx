@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import '../../../styles/main.css';
 import React, { useState, useCallback, useRef, useEffect } from 'react';

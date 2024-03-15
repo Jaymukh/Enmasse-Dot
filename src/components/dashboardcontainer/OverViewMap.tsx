@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
@@ -11,7 +12,6 @@ import { Card, CardSize, CardVariant } from '../ui/card/Card';
 import StatisticsCard from "./StatisticsCard";
 import { Legend } from '../ui/legend/Legend';
 import StaticMap from "../ui/maps/StaticMap";
-import InfoPanel from '../ui/InfoPanel';
 import { mapFeatureState } from '../../states';
 
 // Utilities

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import React, { useEffect, useState } from 'react';
-import { useRecoilSnapshot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { useSearchParams } from 'react-router-dom';
 
 // CSS
 import '../../styles/main.css';
@@ -30,7 +30,6 @@ function MapContainer() {
     const setGeoJSON = useSetRecoilState(geoJsonState);
     const setMapFeatures = useSetRecoilState(mapFeatureState);
     const setError = useSetRecoilState(errorState);
-    const history = useLocation();
 
     const getSearchParams = () => {
         if (global) {
@@ -38,7 +37,6 @@ function MapContainer() {
         }
     }
 
-    const mapFeatures = useRecoilValue(mapFeatureState);
     const [searchParams, setSearchParams] = useSearchParams(getSearchParams());
     const [breadcrumbList, setBreadcrumbList] = useState<BreadcrumbItem[]>([{ key: 'country', geo_id: 1, label: 'India', link: '?&country=1' }]);
     const [isChecked, setIsChecked] = useState<any>({ coreSolution: false, viewStories: true });

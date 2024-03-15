@@ -5,7 +5,7 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { BiSolidErrorCircle } from 'react-icons/bi';
 import { errorState } from '../../../states';
 import { useRecoilState } from 'recoil';
-import { Button, ButtonSize, ButtonTheme, ButtonVariant } from '../button/Button';
+import { Button, ButtonTheme, ButtonVariant } from '../button/Button';
 
 const Toast = () => {
     const [error, setError] = useRecoilState(errorState);

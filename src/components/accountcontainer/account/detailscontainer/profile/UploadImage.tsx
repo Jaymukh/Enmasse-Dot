@@ -1,5 +1,5 @@
 // External libraries
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useRecoilValue } from "recoil";
 import Cropper from 'react-easy-crop';
 import { BiUpload } from 'react-icons/bi';

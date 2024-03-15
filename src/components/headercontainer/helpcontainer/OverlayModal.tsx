@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import { useState, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';

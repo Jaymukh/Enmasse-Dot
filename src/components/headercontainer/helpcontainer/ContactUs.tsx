@@ -11,7 +11,7 @@ import { Heading, TypographyType, TypographyColor } from '../../ui/typography/He
 import Body, { BodyType, BodyColor } from '../../ui/typography/Body';
 import { Input } from '../../ui/input/Input';
 import Drawer from '../../ui/Drawer';
-import { loggedUserState, User, geoJsonState, spinnerState, errorState } from "../../../states";
+import { loggedUserState, User, spinnerState, errorState } from "../../../states";
 
 // Utilities
 import { useCIFService } from '../../../services';
@@ -24,7 +24,6 @@ interface ContactUsProps {
 
 export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }: ContactUsProps) {
     const loggedUser = useRecoilValue<User>(loggedUserState);
-    const geoJSON = useRecoilValue(geoJsonState)
     const cifService = useCIFService();
     const setSpinner = useSetRecoilState(spinnerState);
     const setError = useSetRecoilState(errorState);

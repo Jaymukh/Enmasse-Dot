@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // External libraries
 import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
@@ -14,18 +16,6 @@ import Select, { SelectSize } from './ui/select/Select';
 // Utilities
 import { useSettingsService } from '../services';
 import { useMapHelpers } from '../helpers';
-
-
-const options = [
-    {
-        currency: "US Dollar",
-        symbol: "$"
-    },
-    {
-        currency: "Indian Rupee",
-        symbol: '₹'
-    }
-];
 
 export default function InsightBar() {
     const [currency, setCurrency] = useState("US Dollar");

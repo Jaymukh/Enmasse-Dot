@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';

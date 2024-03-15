@@ -1,6 +1,3 @@
-// External libraries
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-
 // CSS
 import '../../styles/main.css';
 

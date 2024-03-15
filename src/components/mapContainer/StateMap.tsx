@@ -343,6 +343,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                                 borderRadius: 0,
                                                 overflow: 'hidden',
                                                 zIndex: focused === index ? 1000 : 0,
+                                                disableAutoPan: true,
                                             } as any}
                                         >
                                             <MapPopup
@@ -354,24 +355,27 @@ const StateMap: React.FC<StateMapProps> = ({
                                     ))
                                 )}
                                 {isHover && hoverData &&
-                                    <InfoWindow
-                                        position={{
-                                            lat: hoverData?.coordinates[0],
-                                            lng: hoverData?.coordinates[1]
-                                        }}
-                                        options={{
-                                            padding: 0,
-                                            maxWidth: 224,
-                                            borderRadius: 0,
-                                            overflow: 'hidden',
-                                            zIndex: 2000,
-                                            disableCloseOnClick: true,
-                                            disableAutoPan: true,
-                                            pixelOffset: hoverData?.offset
-                                        } as any}
-                                    >
-                                        <HoverPopup properties={hoverData} />
-                                    </InfoWindow>}
+                                    <div className="hover-info-window">
+                                        <InfoWindow
+                                            position={{
+                                                lat: hoverData?.coordinates[0],
+                                                lng: hoverData?.coordinates[1]
+                                            }}
+                                            options={{
+                                                padding: 0,
+                                                maxWidth: 224,
+                                                borderRadius: 0,
+                                                overflow: 'hidden',
+                                                zIndex: 2000,
+                                                disableCloseOnClick: true,
+                                                disableAutoPan: true,
+                                                pixelOffset: hoverData?.offset
+                                            } as any}
+                                        >
+                                            <HoverPopup properties={hoverData} onClickMapFeature={onClickMapFeature} />
+                                        </InfoWindow>
+                                    </div>
+                                }
                             </GoogleMap>
                         }
                     </div>

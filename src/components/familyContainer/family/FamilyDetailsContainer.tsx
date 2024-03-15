@@ -1,8 +1,3 @@
-// External libraries
-import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-
 // CSS
 import '../../../styles/main.css';
 
@@ -10,22 +5,16 @@ import '../../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
-import { errorState, mapFeatureState } from '../../../states';
 
 // Utilities
 import { useMapHelpers } from '../../../helpers';
-import { useMapsService } from '../../../services';
 
 interface FamilyDetailsContainerProps {
     selectedData: any; // Update with appropriate type
 }
 
 const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
-    const { getCurrencyWithSymbol, getCoreSolutions, getNumberWithZero } = useMapHelpers();
-    const [searchParams, setSearchParams] = useSearchParams();
-    const mapServices = useMapsService();
-    const setMapFeatures = useSetRecoilState(mapFeatureState);
-    const setError = useSetRecoilState(errorState);
+    const { getCoreSolutions, getNumberWithZero } = useMapHelpers();
 
     // useEffect(() => {
     //     mapServices?.getCifData(Number(searchParams.get('geo_code')!)).then((response) => {

@@ -1,10 +1,10 @@
 // External libraries
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // Components
-import { authState, errorState } from '../states';
+import { authState } from '../states';
 
 // Utilities
 import { APIS, RouteConstants } from '../constants';

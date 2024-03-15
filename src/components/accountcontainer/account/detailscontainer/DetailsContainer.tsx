@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // External libraries
-import React, {useEffect}  from 'react';
 import { useRecoilValue } from "recoil";
 
 // Components
