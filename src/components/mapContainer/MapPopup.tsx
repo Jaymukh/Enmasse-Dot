@@ -65,7 +65,7 @@ const MapPopup: React.FC<MapPopupProps> = ({ properties, handleFocused, index })
                     color={BodyColor.secondary}
                     classname='map-popup-description text-start margin-top-bottom-0'
                 >
-                    <span className="">{getNumberWithZero(properties.familyDetails.familyMembers)} </span>
+                    <span className="">{properties.familyDetails.familyMembers} </span>
                     Family members
                 </Body>
                 <Body
