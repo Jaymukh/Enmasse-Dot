@@ -116,7 +116,7 @@ const FamiliesDetailsContainer = () => {
 
     return (
         <div className='col-lg-9 col-md-8 col-sm-12 padding-left-4 margin-bottom-5 padding-top-bottom-0 h-100'>
-            <div className="d-flex flex-row justify-content-between align-items-center">
+            <div className="d-flex flex-row justify-content-between align-items-center" style={{height: '10%'}}>
                 <Heading
                     title={`Families ${stories?.properties?.name ? `in ${stories?.properties?.name}` : ''}`}
                     type={TypographyType.h2}
@@ -125,7 +125,7 @@ const FamiliesDetailsContainer = () => {
                 />
                 <FamiliesSorting handlePaginationData={handlePaginationData} />
             </div>
-            <div className='w-100 h-100 margin-bottom-5 padding-bottom-5 w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflowX: 'hidden', overflowY: 'auto' }}>
+            <div className='w-100 d-flex flex-column justify-content-between no-scrollbar' style={{ overflowX: 'hidden', overflowY: 'auto', height: '90%' }}>
                 <div className='row margin-0 padding-0 w-100' style={{ marginBottom: '5rem' }}>
                     {stories?.family?.map((data, index) => (
                         <div className='col-lg-4 col-md-6 col-sm-12 padding-left-right-0'>

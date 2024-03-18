@@ -79,7 +79,7 @@ const getCursorStyle = (onClick?: any) => {
 
 const Body = ({ type, color, children, classname, style, onClick }: BodyProps) => {
     return (
-        <p className={`${getColor(color)} ${getType(type)} ${getCursorStyle(onClick)} ${classname} margin-0`} style={style} onClick={onClick} >{children}</p>
+        <p className={`${getColor(color)} ${getType(type)} ${getCursorStyle(onClick)} ${classname} m-0`} style={style} onClick={onClick} >{children}</p>
     )
 }
 
