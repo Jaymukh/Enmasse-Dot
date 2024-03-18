@@ -60,7 +60,7 @@ const FamilyDetails = () => {
                 setDescription(familyDetails?.description[0]);
             }
         }
-    } );
+    }, [familyDetails?.description] );
     return (
         <div className='margin-left-right-0'>
             <div className='row d-flex justify-content-between align-items-center padding-top-bottom-2 margin-0'>
