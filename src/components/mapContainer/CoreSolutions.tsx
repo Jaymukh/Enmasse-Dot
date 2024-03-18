@@ -49,9 +49,13 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
     const handleRequestLayersDrawer = (contactUsDrawerOpen: boolean) => {
         setRequestLayersDrawerOpen(contactUsDrawerOpen);
     };
+    const handleAnchorClick = (anchor: string) => {
+        // For scroll to the anchor/id
+        document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
-        <div className='margin-left-3 d-flex flex-column justify-content-between h-100' style={{overflowX: 'hidden', overflowY: 'auto'}} >
+        <div className='margin-left-3 d-flex flex-column justify-content-between h-100' style={{ overflowX: 'hidden', overflowY: 'auto' }} >
             <div className='margin-top-3'>
                 <div className={`margin-top-1 bg-white padding-left-right-2 padding-top-bottom-2 ${!options?.length ? 'disabled-div' : ''}`}>
                     <div className='d-flex align-items-center justify-content-between flexWrap'>
@@ -76,21 +80,18 @@ const CoreSolutions: React.FC<CoreSolutionsProps> = ({
                     <div className="bg-white margin-top-1 padding-3">
                         {options?.map((option: Option) => (
                             <div className="d-flex flex-row justify-content-start align-items-center margin-top-bottom-2 margin-left-1 flexWrap" key={option.label}>
-                                <input
-                                    className="margin-right-2 input-rb"
-                                    size={1.5}
-                                    type="radio"
-                                    value={option.key}
-                                    checked={selectedRb === option.key}
-                                    onChange={(event) => handleChangeRb(event, option)}
-                                />
-                                <Body
-                                    type={BodyType.p2}
-                                    color={BodyColor.dark}
-                                    classname='text-start overflow-wrap-anywhere'
-                                >
-                                    {option.label}
-                                </Body>
+                                <a href="#" className="" onClick={() => handleAnchorClick(option.type)} style={{ textDecoration: 'none', fontSize: '0.875rem', fontFamily: '"Poppins-Regular", sans-serif', display: 'flex', alignItems: 'center' }}>
+                                    <input
+                                        id={`radio-${option.key}`}
+                                        className="margin-right-2 input-rb"
+                                        size={1.5}
+                                        type="radio"
+                                        value={option.key}
+                                        checked={selectedRb === option.key}
+                                        onChange={(event) => handleChangeRb(event, option)}
+                                    />
+                                    <label htmlFor={`radio-${option.key}`}>{option.label}</label>
+                                </a>                                
                             </div>
                         ))}
                     </div>
