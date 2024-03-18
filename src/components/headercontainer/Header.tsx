@@ -19,15 +19,15 @@ import { RouteConstants } from '../../constants';
 
 
 function Header() {
-	const navigate = useNavigate();
-	const onLogoClick = () => {
-		navigate(`${RouteConstants.root}?country=1`);
-	}
-
+	const navigate = useNavigate();	
 	const [open, setOpen] = useState(false);
 	const [text, setText] = useState<{ title: string, description: string }>({ title: '', description: '' });
 	const bookmarkDescription = 'Bookmarks can help you revisit your maps of interest and help you compare with other maps for quicker analysis!'
 
+	const onLogoClick = () => {
+		navigate(`${RouteConstants.root}?country=1`);
+	}
+	
 	const closeWIPDrawer = () => {
 		setOpen(false);
 		setText({ title: '', description: '' });
