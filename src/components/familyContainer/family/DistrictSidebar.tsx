@@ -320,20 +320,19 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                                             </Body>
                                         </div>
                                         <div className='col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 d-flex justify-content-end align-items-center padding-top-bottom-2'>
-                                            <img src={selectedRb === 0 ? PoiIconAll : PoiIconFilter} alt="circles" />
+                                            {(selectedRb != undefined) && <img src={(selectedRb === 0) ? PoiIconAll : PoiIconFilter} alt="circles" />}
                                         </div>
                                     </div>
                                     <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right'>
-                                        <div className={`d-flex flex-row justify-content-start align-items-center ${selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key ? 'bg-purple padding-left-right-1' : 'initial'}`} style={{border: '1px', borderRadius: '2px'}} >
+                                        <div className={`d-flex flex-row justify-content-start align-items-center ${(coreSolutions && selectedRb && selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key) ? 'bg-purple padding-left-right-1' : 'initial'}`} style={{ border: '1px', borderRadius: '2px' }} >
                                             <Heading
                                                 id='Healthcare'
                                                 title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.healthcareActivityPointsOfInterest)}
                                                 colour={TypographyColor.dark}
                                                 type={TypographyType.h5}
-                                                classname={`margin-0 ${selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key ? 'color-white' : 'initial'}`}
-
+                                                classname={`margin-0 ${(coreSolutions && selectedRb && selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key) ? 'color-white' : 'initial'}`}
                                             />
-                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
+                                            {coreSolutions && selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
                                         </div>
                                         <Body
                                             type={BodyType.p4}
@@ -343,15 +342,15 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                                         </Body>
                                     </div>
                                     <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start justify-content-center text-start' >
-                                        <div className={`d-flex flex-row justify-content-start align-items-center ${selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key ? 'bg-purple padding-left-right-1 ' : 'initial'}`} style={{border: '1px', borderRadius: '2px'}} >
+                                        <div className={`d-flex flex-row justify-content-start align-items-center ${(coreSolutions && selectedRb && selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key) ? 'bg-purple padding-left-right-1' : 'initial'}`} style={{ border: '1px', borderRadius: '2px' }} >
                                             <Heading
                                                 id='Education'
                                                 title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.educationActivityPointsOfInterest)}
                                                 colour={TypographyColor.dark}
                                                 type={TypographyType.h5}
-                                                classname={`margin-0 ${selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key ? 'color-white' : 'initial'}`}
+                                                classname={`margin-0 ${(coreSolutions && selectedRb && selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key) ? 'color-white' : 'initial'}`}
                                             />
-                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
+                                            {coreSolutions && selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
                                         </div>
                                         <Body
                                             type={BodyType.p4}
@@ -361,15 +360,15 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                                         </Body>
                                     </div>
                                     <div className='col-sm-12 col-md-12	col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start text-start border-right border-top'>
-                                        <div className={`d-flex flex-row justify-content-start align-items-center ${selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key ? 'bg-purple padding-left-right-1' : 'initial'}`} style={{border: '1px', borderRadius: '2px'}} >
+                                        <div className={`d-flex flex-row justify-content-start align-items-center ${(coreSolutions && selectedRb && selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key) ? 'bg-purple padding-left-right-1' : 'initial'}`} style={{ border: '1px', borderRadius: '2px' }} >
                                             <Heading
                                                 id='Agri_Markets'
                                                 title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.agriMarketActivityPointsOfInterest)}
                                                 colour={TypographyColor.dark}
                                                 type={TypographyType.h5}
-                                                classname={`margin-0 ${selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key ? 'color-white' : 'initial'}`}
+                                                classname={`margin-0 ${(coreSolutions && selectedRb && selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key) ? 'color-white' : 'initial'}`}
                                             />
-                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
+                                            {coreSolutions && selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
                                         </div>
                                         <Body
                                             type={BodyType.p4}
@@ -379,15 +378,17 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                                         </Body>
                                     </div>
                                     <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 margin-top-bottom-0 padding-2 d-flex flex-column align-items-start justify-content-center text-start border-top' >
-                                        <div className={`d-flex flex-row justify-content-start align-items-center ${selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key ? 'bg-purple padding-left-right-1' : 'initial'}`} style={{border: '1px', borderRadius: '2px'}}>
+                                        <div className={`d-flex flex-row justify-content-start align-items-center ${(coreSolutions && selectedRb && selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key) ? 'bg-purple padding-left-right-1' : 'initial'}`} style={{ border: '1px', borderRadius: '2px' }}>
                                             <Heading
                                                 id='Financial_Solutions'
                                                 title={getCurrencyWithSymbol(properties?.EHEconomicActivityIndicators?.financialSolutionsActivityPointsOfInterest)}
                                                 colour={TypographyColor.dark}
                                                 type={TypographyType.h5}
-                                                classname={`margin-0 ${selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key ? 'color-white' : 'initial'}`}
+                                                classname={`margin-0 ${(coreSolutions && selectedRb && selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key) ? 'color-white' : 'initial'}`}
                                             />
-                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
+                                            {coreSolutions && selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key &&
+                                                <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />
+                                            }
                                         </div>
                                         <Body
                                             type={BodyType.p4}
