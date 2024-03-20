@@ -48,7 +48,7 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature, 
                         color={BodyColor.secondary}
                         classname='text-end col-6 p-0 m-0'
                     >
-                        {properties?.ehPopulation}
+                        {properties?.ehHouseholds}
                     </Body>
                 </div>
                 <div className="d-flex m-0 p-0 w-auto col-12 flex-row justify-content-start align-items-center">
