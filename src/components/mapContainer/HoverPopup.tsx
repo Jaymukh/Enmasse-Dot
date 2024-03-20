@@ -12,9 +12,10 @@ import { Button, ButtonTheme, ButtonSize, ButtonVariant } from '../ui/button/But
 interface HoverPopupProps {
     properties: any;
     onClickMapFeature: any;
+    selected: any;
 }
 
-const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature }) => {
+const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature, selected }) => {
     const { getCurrencyWithSymbol } = useMapHelpers();
     const [isFocused, setIsFocused] = useState(false);
 
@@ -80,25 +81,18 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature }
                         {properties?.pointsOfInterest}
                     </Body>
                 </div>
-                {/* <div className="d-flex cursor-pointer justify-content-start align-items-center" onClick={() => onClickMapFeature(properties)}>
-                    <Heading
-                        title='Explore'
-                        colour={TypographyColor.purple}
-                        type={TypographyType.h7}
-                        classname='m-0 text-start p-0'
-                    />
-                    <BiRightArrowAlt className='color-purple' />
-                </div> */}
-                <Button
-                    theme={ButtonTheme.primary}
-                    size={ButtonSize.small}
-                    variant={ButtonVariant.transparent}
-                    onClick={() => onClickMapFeature(properties)}
-                    classname='h-auto padding-left-0'
-                >
-                    Explore
-                    <FiArrowRight className="margin-left-1" />
-                </Button>
+                {!selected.district &&
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.small}
+                        variant={ButtonVariant.transparent}
+                        onClick={() => onClickMapFeature(properties)}
+                        classname='h-auto padding-left-0'
+                    >
+                        Explore
+                        <FiArrowRight className="margin-left-1" />
+                    </Button>
+                }
             </div>
 
         </div>

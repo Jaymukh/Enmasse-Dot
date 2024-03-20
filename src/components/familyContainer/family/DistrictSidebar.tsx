@@ -333,7 +333,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                                                 classname={`margin-0 ${selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key ? 'color-white' : 'initial'}`}
 
                                             />
-                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
+                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Healthcare")?.key && <img src={PoiIconFilterLabel} alt='POI Label' style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
                                         </div>
                                         <Body
                                             type={BodyType.p4}
@@ -351,7 +351,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                                                 type={TypographyType.h5}
                                                 classname={`margin-0 ${selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key ? 'color-white' : 'initial'}`}
                                             />
-                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
+                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Education")?.key && <img src={PoiIconFilterLabel} alt='POI Label' style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
                                         </div>
                                         <Body
                                             type={BodyType.p4}
@@ -369,7 +369,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                                                 type={TypographyType.h5}
                                                 classname={`margin-0 ${selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key ? 'color-white' : 'initial'}`}
                                             />
-                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
+                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Agri_Markets")?.key && <img src={PoiIconFilterLabel} alt='POI Label' style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
                                         </div>
                                         <Body
                                             type={BodyType.p4}
@@ -387,7 +387,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                                                 type={TypographyType.h5}
                                                 classname={`margin-0 ${selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key ? 'color-white' : 'initial'}`}
                                             />
-                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key && <img src={PoiIconFilterLabel} style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
+                                            {selectedRb === coreSolutions?.find((item: any) => item.type === "Financial_Solutions")?.key && <img src={PoiIconFilterLabel} alt='POI Label' style={{ height: '0.875rem', margin: '0 0 0 0.5vh' }} />}
                                         </div>
                                         <Body
                                             type={BodyType.p4}
