@@ -18,12 +18,13 @@ import Body, { BodyType, BodyColor } from '../../../../ui/typography/Body';
 import ChangePassword from './ChangePassword';
 import UpdateSuccessModal from './UpdateSuccessModel';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
-import { AllSettingsState, UserSettingsState, errorState, spinnerState } from "../../../../../states";
+import { AllSettingsState, UserSettingsState, spinnerState } from "../../../../../states";
 
 // Utilities
 import { RouteConstants } from '../../../../../constants';
 import { useSettingsService } from '../../../../../services'
 import InfoPanel from '../../../../ui/InfoPanel';
+import { useMapHelpers } from '../../../../../helpers';
 
 const Settings = () => {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Settings = () => {
     const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
     const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
     const setSpinner = useSetRecoilState(spinnerState);
-    const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
 
     const handleUpdateClick = () => {
         handleDrawer(false);
@@ -69,8 +70,7 @@ const Settings = () => {
             }
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     }
 
@@ -83,9 +83,7 @@ const Settings = () => {
             }
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
-
+            getErrorMsg(error);
         });
     }
 

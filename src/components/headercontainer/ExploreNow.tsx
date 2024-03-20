@@ -20,6 +20,7 @@ import { errorState, spinnerLiteState, mapFeatureState } from '../../states';
 import WorkInProgressImage from '../../utils/images/WIP-FINAL.svg';
 import { RouteConstants } from '../../constants';
 import { useMapsService } from '../../services';
+import { useMapHelpers } from '../../helpers';
 
 
 const ExploreNow = () => {
@@ -27,13 +28,13 @@ const ExploreNow = () => {
 	const navigate = useNavigate();
 	const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
 	const [spinnerLite, setSpinnerLite] = useRecoilState(spinnerLiteState);
-	const setError = useSetRecoilState(errorState);
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const [results, setResults] = useState<any>(mapFeatures.suggestions);
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const [selectedValue, setSelectedValue] = useState<{ state: string, district: string }>({ state: '', district: '' });
 	const [suggestions, setSuggestions] = useState<any>(mapFeatures.suggestions);
 	const [hasData, setHasData] = useState(true);
+	const { getErrorMsg } = useMapHelpers();
 
 	const handleInputChange = (value: string) => {
 		if (!value) {
@@ -88,8 +89,7 @@ const ExploreNow = () => {
 				setSpinnerLite(false);
 			}).catch(error => {
 				setSpinnerLite(false);
-				const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-				setError({ type: 'Error', message: errorMsg });
+				getErrorMsg(error);
 			});
 		}
 		else {

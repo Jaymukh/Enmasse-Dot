@@ -20,6 +20,7 @@ import { authState, errorState } from '../../../../../states';
 
 // Utilities
 import { useUserService } from '../../../../../services';
+import { useMapHelpers } from '../../../../../helpers';
 
 interface ChangePasswordProps {
     open: boolean,
@@ -32,6 +33,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
     const userService = useUserService();
     const auth = useRecoilValue(authState);
     const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
 
     const [filledInputCount, setFilledInputCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
@@ -99,8 +101,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, handleUpdateClick
                 handleShowModal(true);
             })
             .catch(error => {
-                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                setError({ type: 'Error', message: errorMsg });
+                getErrorMsg(error);
             });
     };
 

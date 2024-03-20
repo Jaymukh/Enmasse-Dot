@@ -17,6 +17,7 @@ import { AllSettingsState, User, errorState, spinnerState } from "../../../../..
 
 // Utilities
 import { useSettingsService } from '../../../../../services';
+import { useMapHelpers } from '../../../../../helpers';
 
 interface EditInviteProps {
     selectedData: User;
@@ -34,6 +35,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
     const setError = useSetRecoilState(errorState);
     const setSpinner = useSetRecoilState(spinnerState);
     const [updatedData, setUpdatedData] = useState<User>(selectedData);
+    const { getErrorMsg } = useMapHelpers();
 
     const fetchAllSettings = () => {
         setSpinner(true);
@@ -44,8 +46,7 @@ const EditInvite: React.FC<EditInviteProps> = ({
             }
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     }
 

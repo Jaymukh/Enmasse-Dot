@@ -20,6 +20,7 @@ import { cifState, mapFeatureState, CoreSolutionByEH, errorState } from '../../s
 // Utilities
 import { useCIFService, useMapsService, useStoriesService } from '../../services';
 import { TABLE_HEADERS } from '../../constants';
+import { useMapHelpers } from '../../helpers';
 
 
 const DashBoard = () => {
@@ -30,9 +31,9 @@ const DashBoard = () => {
     const cifData = useRecoilValue(cifState);
     const [mapFeatures, setMapFeatures] = useRecoilState(mapFeatureState);
     const geoCode = searchParams.get('geo_code');
-    const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
 
-    const [selected, setSelected] = useState<CoreSolutionByEH | undefined>( cifData?.coreSolutionsData?.coreSolutionsByEH![0] || []);
+    const [selected, setSelected] = useState<CoreSolutionByEH | undefined>(cifData?.coreSolutionsData?.coreSolutionsByEH![0] || []);
 
     const handleTabClick = (item: CoreSolutionByEH) => {
         setSelected(item);
@@ -44,8 +45,7 @@ const DashBoard = () => {
                 setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
             }
         }).catch(error => {
-            const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     };
     useEffect(() => {

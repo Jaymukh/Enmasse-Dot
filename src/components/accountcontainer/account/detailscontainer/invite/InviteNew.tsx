@@ -16,6 +16,7 @@ import { loggedUserState, AllSettingsState, errorState, spinnerState } from "../
 
 // Utilities
 import { useUserService, useSettingsService } from '../../../../../services';
+import { useMapHelpers } from '../../../../../helpers';
 
 interface NewData {
     name: string | undefined;
@@ -47,6 +48,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
     const [settings, setSettings] = useRecoilState(AllSettingsState);
     const setError = useSetRecoilState(errorState);
     const setSpinner = useSetRecoilState(spinnerState);
+    const { getErrorMsg } = useMapHelpers();
     const settingsService = useSettingsService();
 
 
@@ -62,8 +64,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
                     }
                 })
                 .catch(error => {
-                    const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                    setError({ type: 'Error', message: errorMsg });
+                    getErrorMsg(error);
                 });
         }
         else {
@@ -79,8 +80,7 @@ const InviteNew: React.FC<InviteNewProps> = ({
             }
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     }
 

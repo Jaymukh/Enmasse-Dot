@@ -24,7 +24,7 @@ export default function InsightBar() {
     const [settings, setSettings] = useRecoilState(AllSettingsState);
     const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
     const setError = useSetRecoilState(errorState);
-    const { getCurrencyWithSymbol } = useMapHelpers();
+    const { getCurrencyWithSymbol, getErrorMsg } = useMapHelpers();
 
     const handleChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(event.target.value);
@@ -36,8 +36,7 @@ export default function InsightBar() {
                 setSettings(response);
             }
         }).catch(error => {
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     }
 
@@ -49,9 +48,7 @@ export default function InsightBar() {
             }
         }).catch(error => {
             // setSpinner(false);
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
-
+            getErrorMsg(error);
         });
     }
 

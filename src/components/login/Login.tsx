@@ -23,6 +23,7 @@ import { errorState, spinnerState } from "../../states";
 
 // Utilities
 import { useUserService } from '../../services';
+import { useMapHelpers } from '../../helpers';
 
 
 interface IFormValues {
@@ -39,6 +40,7 @@ interface IModal {
 export default function Login() {
     const userService = useUserService();
     const setSpinner = useSetRecoilState(spinnerState);
+    const { getErrorMsg } = useMapHelpers();
     const setError = useSetRecoilState(errorState);
     const [email, setEmail] = useState('');
     const [showModal, setShowModal] = useState<IModal>({
@@ -91,8 +93,7 @@ export default function Login() {
             })
             .catch((error: any) => {
                 setSpinner(false);
-                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                setError({ type: 'Error', message: errorMsg });
+                getErrorMsg(error);
             });
         setEmail('');
         handleModal({ passwordModal: false });

@@ -16,7 +16,7 @@ import Select, { SelectSize } from '../../ui/select/Select';
 import { ProgressBar } from '../../ui/progressbar/ProgressBar';
 import InfoPanel from '../../ui/InfoPanel';
 import RequestData from './RequestData';
-import { mapFeatureState, AllSettingsState, UserSettingsState, errorState, spinnerState, userCurrencyState, geoJsonState } from '../../../states';
+import { mapFeatureState, AllSettingsState, UserSettingsState, spinnerState, userCurrencyState, geoJsonState } from '../../../states';
 
 // Utilities
 import WIPImage from '../../../utils/images/WIP-FINAL.svg';
@@ -43,9 +43,8 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
     const [settings, setSettings] = useRecoilState(AllSettingsState);
     const [currency, setCurrency] = useRecoilState(userCurrencyState);
     const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
-    const setError = useSetRecoilState(errorState);
     const setSpinner = useSetRecoilState(spinnerState);
-    const { getCurrencyWithSymbol } = useMapHelpers();
+    const { getCurrencyWithSymbol, getErrorMsg } = useMapHelpers();
     const mapServices = useMapsService();
     const storyServices = useStoriesService();
     const [geoJSON, setGeoJSON] = useRecoilState(geoJsonState)
@@ -66,8 +65,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
             }
         }).catch(error => {
             // setSpinner(false);
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error)
         });
     }
 
@@ -77,8 +75,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                 setSettings(response);
             }
         }).catch(error => {
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     }
 
@@ -97,8 +94,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
     
 
     const errorHandler = (error: any) => {
-        const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-        setError({ type: 'Error', message: errorMsg });
+        getErrorMsg(error);
     };
 
     const fetchGeoJsonData = (geo_id: string) => {
@@ -118,8 +114,7 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
                 setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
             }
         }).catch(error => {
-            const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     };
 

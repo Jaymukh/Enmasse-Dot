@@ -7,8 +7,7 @@ import { authState, loggedUserState, usersState, spinnerState, overlayState, err
 
 // Utilities
 import { APIS, RouteConstants } from '../constants';
-import { generateHSL, initialGenerator, useFetchWrapper } from '../helpers';
-import ReactGA from 'react-ga';
+import { generateHSL, initialGenerator, useFetchWrapper, useMapHelpers } from '../helpers';
 
 
 const useUserService = () => {
@@ -19,7 +18,7 @@ const useUserService = () => {
     const setLoggedUser = useSetRecoilState(loggedUserState);
     const setUsers = useSetRecoilState(usersState);
     const setSpinner = useSetRecoilState(spinnerState);
-    const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -48,12 +47,7 @@ const useUserService = () => {
             })
             .catch(error => {
                 setSpinner(false);
-                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                setError({ type: 'Error', message: errorMsg });
-                ReactGA.exception({
-                    description: errorMsg,
-                    fatal: false, // Set to true for fatal errors
-                });
+                getErrorMsg(error);                
             });
 
     }
@@ -73,8 +67,7 @@ const useUserService = () => {
             })
             .catch(error => {
                 setSpinner(false);
-                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                setError({ type: 'Error', message: errorMsg });
+                getErrorMsg(error);
             });
 
     }
@@ -85,8 +78,7 @@ const useUserService = () => {
             setSpinner(false);
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         })
     };
 
@@ -100,8 +92,7 @@ const useUserService = () => {
         })
             .catch(error => {
                 // setSpinner(false);
-                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                setError({ type: 'Error', message: errorMsg });
+                getErrorMsg(error);
             });
     };
 

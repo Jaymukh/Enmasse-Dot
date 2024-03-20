@@ -18,6 +18,7 @@ import EditInvite from './EditInvite';
 import InviteNew from './InviteNew';
 import ConfirmDelete from './ConfirmDelete';
 import { usersState, User, spinnerState, errorState } from "../../../../../states";
+import { useMapHelpers } from '../../../../../helpers';
 
 interface NewData {
 	name: string | undefined;
@@ -46,6 +47,7 @@ export default function Invite() {
 	const [openInviteSent, setOpenInviteSent] = useState(false);
 	const [spinner, setSpinner] = useRecoilState(spinnerState);
 	const setError = useSetRecoilState(errorState);
+	const { getErrorMsg } = useMapHelpers();
 
 	const handleChangeData = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		e.preventDefault();
@@ -78,8 +80,7 @@ export default function Invite() {
 			})
 			.catch(error => {
 				setSpinner(false);
-				const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-				setError({ type: 'Error', message: errorMsg });
+				getErrorMsg(error);
 			});
 	};
 
@@ -158,8 +159,7 @@ export default function Invite() {
 			})
 			.catch(error => {
 				setSpinner(false);
-				const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-				setError({ type: 'Error', message: errorMsg });
+				getErrorMsg(error);
 			});
 	};
 

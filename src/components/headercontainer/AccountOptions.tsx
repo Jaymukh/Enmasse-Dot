@@ -19,6 +19,7 @@ import { AllSettingsState, UserSettingsState, errorState, loggedUserState, visib
 import * as Constants from '../../utils/constants/Constants';
 import { RouteConstants } from '../../constants';
 import { useSettingsService, useUserService } from '../../services';
+import { useMapHelpers } from '../../helpers';
 
 
 const AccountOptions = () => {
@@ -30,8 +31,8 @@ const AccountOptions = () => {
 	const loggedUser = useRecoilValue(loggedUserState);
 	const setSettings = useSetRecoilState(AllSettingsState);
 	const setUserSettings = useSetRecoilState(UserSettingsState);
-	const setError = useSetRecoilState(errorState);
 	const setVisiblePanel = useSetRecoilState(visiblePanelState);
+	const { getErrorMsg } = useMapHelpers();
 
 	const fetchUserSettings = () => {
 		settingsService.getUserSettings().then((response) => {
@@ -41,8 +42,7 @@ const AccountOptions = () => {
 			}
 		}).catch(error => {
 			// setSpinner(false);
-			const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-			setError({ type: 'Error', message: errorMsg });
+			getErrorMsg(error);
 
 		});
 	}
@@ -53,8 +53,7 @@ const AccountOptions = () => {
 				setSettings(response);
 			}
 		}).catch(error => {
-			const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-			setError({ type: 'Error', message: errorMsg });
+			getErrorMsg(error);
 		});
 	}
 

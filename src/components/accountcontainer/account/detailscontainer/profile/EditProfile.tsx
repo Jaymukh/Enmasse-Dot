@@ -15,6 +15,7 @@ import { AllSettingsState, User, errorState, spinnerState } from "../../../../..
 
 // Utilities
 import { useSettingsService } from '../../../../../services';
+import { useMapHelpers } from '../../../../../helpers';
 
 interface EditProfileProps {
     selectedData: User;
@@ -36,6 +37,7 @@ export default function EditProfile({
     const setError = useSetRecoilState(errorState);
     const setSpinner = useSetRecoilState(spinnerState);
     const [updatedData, setUpdatedData] = useState<User>(selectedData);
+    const { getErrorMsg } = useMapHelpers();
 
     const fetchAllSettings = () => {
         setSpinner(true);
@@ -46,8 +48,7 @@ export default function EditProfile({
             }
         }).catch(error => {
             setSpinner(false);
-            const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     }
     //function to get all the settings details

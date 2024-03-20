@@ -15,7 +15,7 @@ import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
 import Select, { SelectSize } from '../../ui/select/Select';
 import FamiliesSorting from './FamiliesSorting';
-import { storiesState, errorState, mapFeatureState } from '../../../states';
+import { storiesState, mapFeatureState } from '../../../states';
 
 // Utilities
 import { storiesSelectOptions } from '../../../utils/constants/Constants';
@@ -32,8 +32,7 @@ const FamiliesDetailsContainer = () => {
     const [stories] = useRecoilState(storiesState);
     const mapServices = useMapsService();
     const setMapFeatures = useSetRecoilState(mapFeatureState);
-    const setError = useSetRecoilState(errorState);
-    const { getNumberWithZero, getSelectedObject, getCoreSolutions } = useMapHelpers();
+    const { getNumberWithZero, getSelectedObject, getCoreSolutions, getErrorMsg } = useMapHelpers();
     const [paginationData, setPaginationData] = useState<any>(getSelectedObject());
     const [iterator, setIterator] = useState(0);
     const [totalStoryInfo, setTotalStoryInfo] = useState<{ totalStories: number, totalPages: number }>({ totalStories: 0, totalPages: 0 });
@@ -65,8 +64,7 @@ const FamiliesDetailsContainer = () => {
                 });
             }
         }).catch(error => {
-            const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
 
     };

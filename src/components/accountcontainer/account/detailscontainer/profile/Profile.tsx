@@ -143,8 +143,11 @@ export default function Profile() {
                 })
                 .catch(error => {
                     setSpinner(false);
-                    const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                    setError({ type: 'Error', message: errorMsg });
+                    let detail = error?.response?.data?.detail;
+                    if (detail !== 'Authentication credentials were not provided.') {
+                        detail = detail ? detail : "Something went wrong. Please try again.";
+                        setError({ type: 'Error', message: detail });
+                    }
                 });
         } catch (e) {
             console.error(e)
@@ -185,8 +188,11 @@ export default function Profile() {
             })
             .catch(error => {
                 setSpinner(false);
-                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                setError({ type: 'Error', message: errorMsg });
+                let detail = error?.response?.data?.detail;
+                if (detail !== 'Authentication credentials were not provided.') {
+                    detail = detail ? detail : "Something went wrong. Please try again.";
+                    setError({ type: 'Error', message: detail });
+                }
             });
         setShowDeleteImageModal(false);
     }

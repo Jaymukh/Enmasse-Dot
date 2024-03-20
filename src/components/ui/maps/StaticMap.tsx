@@ -10,6 +10,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 import markerPurple from '../../../utils/images/Location pin-purple-01.svg';
 import markerGrey from '../../../utils/images/Location pin-gray-01.svg';
+import { useMapHelpers } from '../../../helpers';
 
 interface StaticMapProps {
 	coordinates?: any;
@@ -18,12 +19,13 @@ interface StaticMapProps {
 
 const StaticMap: React.FC<StaticMapProps>
 	= ({ coordinates, noMarkers }) => {
-		const mapRef = useRef(null);	
+		const mapRef = useRef(null);
 		const mapServices = useMapsService();
 		const [geoJSON, setGeoJSON] = useRecoilState(geoJsonState)
 		const { family } = useRecoilValue(storiesState);
 		const setError = useSetRecoilState(errorState);
 		const setSpinner = useSetRecoilState(spinnerState);
+		const { getErrorMsg } = useMapHelpers();
 		const [searchParams, setSearchParams] = useSearchParams();
 		const [map, setMap] = useState<google.maps.Map | null>(null);
 		const [focusedMarker, setFocusedMarker] = useState<any>(null);
@@ -51,17 +53,12 @@ const StaticMap: React.FC<StaticMapProps>
 			gestureHandling: "none", //manual zoom handling
 		};
 
-		
+
 
 		const handleMapLoad = useCallback((mapInstance: google.maps.Map) => {
 			setMap(mapInstance);
 			(mapInstance as any).circles = [];
 		}, []);
-
-		const errorHandler = (error: any) => {
-			const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-			setError({ type: 'Error', message: errorMsg });
-		};
 
 		const fetchGeoJsonData = (geo_id: string) => {
 
@@ -71,7 +68,7 @@ const StaticMap: React.FC<StaticMapProps>
 				setSpinner(false);
 			}).catch(error => {
 				setSpinner(false);
-				errorHandler(error);
+				getErrorMsg(error);
 			});
 		}
 

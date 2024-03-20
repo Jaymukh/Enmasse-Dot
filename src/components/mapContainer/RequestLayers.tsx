@@ -15,6 +15,7 @@ import { loggedUserState, User, geoJsonState, spinnerState, errorState } from ".
 
 // Utilities
 import { useCIFService } from '../../services';
+import { useMapHelpers } from '../../helpers';
 
 
 interface RequestLayersProps {
@@ -28,6 +29,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
     const cifService = useCIFService();
     const setSpinner = useSetRecoilState(spinnerState);
     const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
 
     const [payloadData, setPayloadData] = useState<
         { email_id: string, name: string, company: string, message: string, geo_code: string, geo_name: string, purpose: string }>
@@ -62,8 +64,7 @@ export default function RequestLayers({ requestLayersDrawerOpen, handleRequestLa
                 setSpinner(false);
             })
                 .catch(error => {
-                    const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                    setError({ type: 'Success', message: errorMsg });
+                    getErrorMsg(error);
                     setSpinner(false);
                 });
         }

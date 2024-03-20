@@ -15,6 +15,7 @@ import { loggedUserState, User, spinnerState, errorState } from "../../../states
 
 // Utilities
 import { useCIFService } from '../../../services';
+import { useMapHelpers } from '../../../helpers';
 
 
 interface ContactUsProps {
@@ -27,6 +28,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
     const cifService = useCIFService();
     const setSpinner = useSetRecoilState(spinnerState);
     const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
     // const location = geoJSON?.rootProperties?.Name + geoJSON?.rootProperties?.id + geoJSON?.rootProperties?.region;
 
     const [payloadData, setPayloadData] = useState
@@ -62,8 +64,7 @@ export default function ContactUs({ contactUsDrawerOpen, handleContactUsDrawer }
                 setSpinner(false);
             })
                 .catch(error => {
-                    const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                    setError({ type: 'Error', message: errorMsg });
+                    getErrorMsg(error);
                     setSpinner(false);
                 });
         }

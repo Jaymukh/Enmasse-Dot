@@ -24,13 +24,14 @@ import { useUserService } from '../../services';
 import { RouteConstants, } from '../../constants';
 import CheckGIF from "../../utils/images/Accept State-01.svg";
 import globe from '../../utils/images/LoginGlobe.svg';
+import { useMapHelpers } from '../../helpers';
 
 
 const UpdatePassword = () => {
     const navigate = useNavigate();
     const userService = useUserService();
     const [searchParams] = useSearchParams();
-    const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
     const token = searchParams.get('token');
     const [passwordCreated, setPasswordCreated] = useState(false);
     const validationSchema = Yup.object().shape({
@@ -88,8 +89,7 @@ const UpdatePassword = () => {
                 setPasswordCreated(true);
             })
             .catch(error => {
-                const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
-                setError({ type: 'Error', message: errorMsg });
+                getErrorMsg(error);
             });
     };
     

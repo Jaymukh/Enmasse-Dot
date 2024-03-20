@@ -11,7 +11,7 @@ import '../../../styles/main.css';
 import FamilyDetailsContainer from './FamilyDetailsContainer';
 import DistrictSidebar from './DistrictSidebar';
 import FamilySidePanel from './FamilySidePanel';
-import { errorState, mapFeatureState, storiesState } from '../../../states';
+import { mapFeatureState, storiesState } from '../../../states';
 
 // Utilities
 import { RouteConstants } from '../../../constants';
@@ -23,11 +23,10 @@ const Family = () => {
     const navigate = useNavigate();
     const storiesService = useStoriesService();
     const stories = useRecoilValue(storiesState);
-    const [searchParams, setSearchParams] = useSearchParams();    
+    const [searchParams, setSearchParams] = useSearchParams();
     const mapServices = useMapsService();
     const setMapFeatures = useSetRecoilState(mapFeatureState);
-    const setError = useSetRecoilState(errorState);
-    const { getSelectedObject } = useMapHelpers();
+    const { getSelectedObject, getErrorMsg } = useMapHelpers();
     const [pageInfo, setPageInfo] = useState<any>(getSelectedObject());
     const [selectedStory, setSelectedStory] = useState<{ index: number, story: any }>({ index: Number(searchParams.get('story_id')) - 1, story: {} });
 
@@ -43,13 +42,12 @@ const Family = () => {
                 setSelectedStory({
                     index: index,
                     story: stories?.family[index]
-                });                
+                });
             }
         }).catch(error => {
-            const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
-        
+
     };
     // const handleCarouselSlide = (index: number) => {
     //     let geo_id = stories?.family[index].parent_id[0];

@@ -20,6 +20,7 @@ import * as MapConstants from '../../utils/json/googlemapstyle'
 import * as Constants from '../../utils/constants/Constants';
 import { useMapsService } from '../../services';
 import HoverPopup from './HoverPopup';
+import { useMapHelpers } from '../../helpers';
 
 
 interface Option {
@@ -57,7 +58,7 @@ const StateMap: React.FC<StateMapProps> = ({
     const [focused, setFocused] = useState(0);
     const geoJSON = useRecoilValue(geoJsonState);
     const mapFeatures = useRecoilValue(mapFeatureState);
-    const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
     const [isInsideGeoJsonBounds, setIsInsideGeoJsonBounds] = useState(true);
     const [geoJsonBound, setGeoJsonBound] = useState({});
 
@@ -168,8 +169,7 @@ const StateMap: React.FC<StateMapProps> = ({
                 setSelectedCoreSoln(data[0]);
                 setIsChecked({ ...isChecked, coreSolution: data.length > 0 });
             }).catch(error => {
-                const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-                setError({ type: 'Error', message: errorMsg });
+                getErrorMsg(error);
             });
         }
     }, [geoJSON]);

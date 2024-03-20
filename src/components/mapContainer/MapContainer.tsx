@@ -16,6 +16,7 @@ import { geoJsonState, spinnerState, mapFeatureState, errorState } from '../../s
 
 // Utilities
 import { useMapsService } from '../../services';
+import { useMapHelpers } from '../../helpers';
 
 
 const countries = [{ geo_id: 1, name: 'India' }];
@@ -30,6 +31,7 @@ function MapContainer() {
     const setGeoJSON = useSetRecoilState(geoJsonState);
     const setMapFeatures = useSetRecoilState(mapFeatureState);
     const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
 
     const getSearchParams = () => {
         if (global) {
@@ -164,14 +166,12 @@ function MapContainer() {
                 setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
             }
         }).catch(error => {
-            const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-            setError({ type: 'Error', message: errorMsg });
+            getErrorMsg(error);
         });
     };
 
     const errorHandler = (error: any) => {
-        const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-        setError({ type: 'Error', message: errorMsg });
+        getErrorMsg(error);
     };
 
     useEffect(() => {

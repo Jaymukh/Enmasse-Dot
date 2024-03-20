@@ -3,16 +3,16 @@ import { useSetRecoilState } from 'recoil';
 // import { useRecoilState, useSetRecoilState } from "recoil";
 
 // Components
-import { storiesState, errorState } from "../states";
+import { storiesState } from "../states";
 
 // Utilities
-import { useFetchWrapper } from '../helpers';
+import { useFetchWrapper, useMapHelpers } from '../helpers';
 import { APIS } from '../constants';
 
 
 const useStoriesService = () => {
     const setStories = useSetRecoilState(storiesState);
-    const setError = useSetRecoilState(errorState);
+    const { getErrorMsg } = useMapHelpers();
     const fetchWrapper = useFetchWrapper();
 
     function getAllStories(paginationData: { geo_code: number, page_no: number, storiespp: number, sort_by?: string, reverse?: string }) {
@@ -27,8 +27,7 @@ const useStoriesService = () => {
                     setStories(response);
                 }
             }).catch(error => {
-                const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
-                setError({ type: 'Error', message: errorMsg });
+                getErrorMsg(error);
             });
     }
 

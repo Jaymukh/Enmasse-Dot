@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // External libraries
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 
 // Components
-import { AllSettingsState } from '../states';
+import { AllSettingsState, errorState } from '../states';
 
 const useMapHelpers = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const settings = useRecoilValue(AllSettingsState);
     const currencies = settings.currencies;
+    const setError = useSetRecoilState(errorState);
 
     const getCurrencyWithSymbol = (value: null | number | string, currency?: string | null) => {
         if (value !== undefined && value !== null) {
@@ -43,6 +44,14 @@ const useMapHelpers = () => {
         return params;
     }
 
+    const getErrorMsg = (error: any) => {
+        let detail = error?.response?.data?.detail;
+        if (detail !== 'Authentication credentials were not provided.') {
+            detail = detail ? detail : "Something went wrong. Please try again.";
+            setError({ type: 'Error', message: detail });
+        }
+    }
+
     const getCoreSolutions = (data: any) => {
         const coreSolutionList = [
             { name: 'Education', key: 'spendOnEducation' },
@@ -55,7 +64,6 @@ const useMapHelpers = () => {
         if (item) {
             return { key: item.key, name: item.name, value: getCurrencyWithSymbol(data[item.key], data[item.key + 'UOM']) };
         }
-
         return null;
     }
 
@@ -173,6 +181,7 @@ const useMapHelpers = () => {
         getRadianAngle,
         rotateSize,
         getCroppedImg,
+        getErrorMsg,
     };
 };
 
