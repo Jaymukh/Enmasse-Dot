@@ -81,7 +81,7 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature, 
                         {properties?.pointsOfInterest}
                     </Body>
                 </div>
-                {!selected.district &&
+                {!selected?.district &&
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.small}
