@@ -372,7 +372,7 @@ const StateMap: React.FC<StateMapProps> = ({
                                             shouldFocus: false
                                         } as any}
                                     >
-                                        <HoverPopup properties={hoverData} onClickMapFeature={onClickMapFeature} />
+                                        <HoverPopup properties={hoverData} onClickMapFeature={onClickMapFeature} selected={selected} />
                                     </InfoWindow>
                                 }
                             </GoogleMap>
