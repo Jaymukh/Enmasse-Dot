@@ -121,7 +121,7 @@ const Family = () => {
                 </div>
             </div>
             <div className='col-3 padding-0 bg-white' style={{ height: '91.75rem' }}>
-                <DistrictSidebar />
+                <DistrictSidebar selectedStory={selectedStory} />
             </div>
         </div>
     );

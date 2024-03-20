@@ -1,3 +1,8 @@
+// External libraries
+import { useEffect } from 'react';
+import { useSetRecoilState } from "recoil";
+import { useSearchParams } from 'react-router-dom';
+
 // CSS
 import '../../../styles/main.css';
 
@@ -5,9 +10,11 @@ import '../../../styles/main.css';
 import { Heading, TypographyColor, TypographyType } from '../../ui/typography/Heading';
 import Body, { BodyColor, BodyType } from '../../ui/typography/Body';
 import { Card, CardSize, CardVariant } from '../../ui/card/Card';
+import { errorState, mapFeatureState } from '../../../states';
 
 // Utilities
 import { useMapHelpers } from '../../../helpers';
+import { useMapsService } from '../../../services';
 
 interface FamilyDetailsContainerProps {
     selectedData: any; // Update with appropriate type
@@ -15,17 +22,22 @@ interface FamilyDetailsContainerProps {
 
 const FamilyDetailsContainer: React.FC<FamilyDetailsContainerProps> = ({ selectedData }) => {
     const { getCoreSolutions, getNumberWithZero } = useMapHelpers();
+    const mapServices = useMapsService();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const setMapFeatures = useSetRecoilState(mapFeatureState);
+    const setError = useSetRecoilState(errorState);
 
-    // useEffect(() => {
-    //     mapServices?.getCifData(Number(searchParams.get('geo_code')!)).then((response) => {
-    //         if (response) {
-    //             setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
-    //         }
-    //     }).catch(error => {
-    //         const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
-    //         setError({ type: 'Error', message: errorMsg });
-    //     });
-    // }, []);
+    useEffect(() => {
+        // mapServices?.getCifData(Number(searchParams.get('geo_code')!)).then((response) => {
+        //     if (response) {
+        //         setMapFeatures(prevMapFeatures => ({ ...prevMapFeatures, cifData: response }));
+        //     }
+        // }).catch(error => {
+        //     const errorMsg = error?.response?.data?.message || "Something went wrong. Please try again.";
+        //     setError({ type: 'Error', message: errorMsg });
+        // });
+        console.log('selectedData', selectedData)
+    }, []);
 
     return (
         <div className='col-lg-8 col-md-8 col-sm-12 margin-top-bottom-4 ' >

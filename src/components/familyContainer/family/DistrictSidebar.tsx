@@ -30,9 +30,10 @@ import { useMapHelpers } from '../../../helpers';
 interface DistrictSidebarProps {
     selectedRb?: number;
     coreSolutions?: any;
+    selectedStory?: any;
 }
 
-const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolutions }) => {
+const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolutions, selectedStory }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [searchParams] = useSearchParams();
@@ -85,7 +86,15 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
     useEffect(() => {
         fetchAllSettings();
         fetchUserSettings();
-    }, []);
+    }, []); 
+
+    useEffect(() => {
+        const parent_id = selectedStory?.story?.parent_id?.[0]; 
+        if (parent_id) {
+            fetchCifData(parent_id);
+        }
+    }, [selectedStory?.story?.parent_id]);
+    
 
     const errorHandler = (error: any) => {
         const errorMsg = error?.response?.data?.detail || "Something went wrong. Please try again.";
