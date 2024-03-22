@@ -46,7 +46,8 @@ const useMapHelpers = () => {
 
     const getErrorMsg = (error: any) => {
         let detail = error?.response?.data?.detail;
-        if (detail !== 'Authentication credentials were not provided.') {
+        const token_erros = ['authentication credentials were not provided.', 'invalid refresh token'];
+        if (token_erros.some(string => string.includes(detail.toLowerCase()))) {
             detail = detail ? detail : "Something went wrong. Please try again.";
             setError({ type: 'Error', message: detail });
         }
