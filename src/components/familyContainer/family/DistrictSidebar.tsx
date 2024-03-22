@@ -81,8 +81,8 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
 
     //function to get all the user's setting
     useEffect(() => {
-        fetchAllSettings();
-        fetchUserSettings();
+        // fetchAllSettings();
+        // fetchUserSettings();
     }, []); 
 
     useEffect(() => {
@@ -150,8 +150,8 @@ const DistrictSidebar: React.FC<DistrictSidebarProps> = ({ selectedRb, coreSolut
         localStorage.setItem("currency", event.target.value);
         fetchGeoJsonData(geoCode);
         fetchCifData(mapFeatures?.cifData?.properties?.geo_id);
-        fetchFeaturedStories(geoCode);
-        fetchAllStories()
+        // fetchFeaturedStories(geoCode);
+        // fetchAllStories()
     }
 
     const handleExploreMore = (geo_id: string) => {
