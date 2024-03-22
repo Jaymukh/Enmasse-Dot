@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // External libraries
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -62,9 +62,9 @@ export default function Profile() {
     //     }
     // };
 
-    const handleCloseDialog = () => {
-        setSelectedData(null);
-    };
+    // const handleCloseDialog = () => {
+    //     setSelectedData(null);
+    // };
 
     // const handleUpdate = (updatedData: any) => {
     //     setSpinner(true);
@@ -190,6 +190,10 @@ export default function Profile() {
             });
         setShowDeleteImageModal(false);
     }
+
+    useEffect(() => {
+		userService.getUserDetails();
+	}, []);
 
     return (
         <div className='container bg-white margin-top-4 margin-right-5 padding-left-right-0' style={{ height: '90%' }}>

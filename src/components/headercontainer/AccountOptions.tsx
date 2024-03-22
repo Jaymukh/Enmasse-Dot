@@ -68,7 +68,7 @@ const AccountOptions = () => {
 		Boolean(anchorEl) ? setAnchorEl(null) : setAnchorEl(event.currentTarget);
 	};
 
-	const handleClickMenuItem = (event: React.MouseEvent<HTMLElement>, route: string) => {
+	const handleClickMenuItem = (route: string) => {
 		setVisiblePanel('/' + route);
 		handleClose();
 		navigate(RouteConstants[route]);
@@ -110,7 +110,7 @@ const AccountOptions = () => {
 
 			{Boolean(anchorEl) &&
 				(<ul className='account-menu-dropdown '>
-					<li className='menu-item' onClick={(event) => handleClickMenuItem(event, 'profile')}>
+					<li className='menu-item' onClick={() => handleClickMenuItem('profile')}>
 						<ButtonAvatar
 							image={loggedUser?.profile_picture}
 							initial={loggedUser.initial}
@@ -130,7 +130,7 @@ const AccountOptions = () => {
 							<li
 								key={item.key}
 								className='menu-item d-flex fs-16'
-								onClick={(event) => handleClickMenuItem(event, (item.text)?.toLowerCase())}
+								onClick={() => handleClickMenuItem((item.text)?.toLowerCase())}
 							>
 								<div className='padding-left-1'>{item.icon}</div>
 

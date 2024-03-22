@@ -96,10 +96,10 @@ const useUserService = () => {
             const initial = initialGenerator(data.name);
             const userHSL = generateHSL(data.name);
             setLoggedUser({ ...data, initial: initial, userHSL: userHSL });
-            // setSpinner(false);
+            setSpinner(false);
         })
             .catch(error => {
-                // setSpinner(false);
+                setSpinner(false);
                 const errorMsg = error?.response?.data?.detail ? error?.response?.data?.detail : "Something went wrong. Please try again."
                 setError({ type: 'Error', message: errorMsg });
             });
