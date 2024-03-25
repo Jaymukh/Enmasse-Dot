@@ -29,7 +29,7 @@ function useFetchWrapper() {
             const user = localStorage.getItem('user')  || null;
             if (user != null) {
                 const token = JSON.parse(user)?.tokens?.access;
-                const isTokenExpired = checkTokenExpiry(token);
+                var isTokenExpired = checkTokenExpiry(token);
                 if (!isTokenExpired) {
                     config.headers['Authorization'] = `Bearer ${token}`;
                 } else {

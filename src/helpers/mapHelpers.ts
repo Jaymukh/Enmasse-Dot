@@ -54,7 +54,6 @@ const useMapHelpers = () => {
         } else {
             setError({ type: 'Error', message: "Something went wrong. Please try again." });
         }
-
     }
 
     const getCoreSolutions = (data: any) => {

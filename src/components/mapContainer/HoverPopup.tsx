@@ -24,7 +24,11 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature, 
     }
 
     return (
-        <div className="rounded row h-auto hover-popup-container" onMouseOver={() => handleMouseEvent(true)} onMouseOut={() => handleMouseEvent(false)}>
+        <div className="rounded row h-auto hover-popup-container cursor-pointer"
+            onMouseOver={() => handleMouseEvent(true)}
+            onMouseOut={() => handleMouseEvent(false)}
+            onClick={() => onClickMapFeature(properties)}
+        >
             <div className="d-flex m-0 p-0 col-12 flex-row align-items-center row">
                 <Heading
                     title={properties?.Name}
@@ -81,7 +85,7 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature, 
                         {properties?.pointsOfInterest}
                     </Body>
                 </div>
-                {!selected?.district &&
+                {/* {!selected?.district &&
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.small}
@@ -92,7 +96,7 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature, 
                         Explore
                         <FiArrowRight className="margin-left-1" />
                     </Button>
-                }
+                } */}
             </div>
 
         </div>
