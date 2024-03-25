@@ -88,10 +88,10 @@ const useUserService = () => {
             const initial = initialGenerator(data.name);
             const userHSL = generateHSL(data.name);
             setLoggedUser({ ...data, initial: initial, userHSL: userHSL });
-            // setSpinner(false);
+            setSpinner(false);
         })
             .catch(error => {
-                // setSpinner(false);
+                setSpinner(false);
                 getErrorMsg(error);
             });
     };
