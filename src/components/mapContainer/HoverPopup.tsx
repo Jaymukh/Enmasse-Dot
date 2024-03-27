@@ -85,18 +85,18 @@ const HoverPopup: React.FC<HoverPopupProps> = ({ properties, onClickMapFeature, 
                         {properties?.pointsOfInterest}
                     </Body>
                 </div>
-                {/* {!selected?.district &&
+                {!selected?.district &&
                     <Button
                         theme={ButtonTheme.primary}
                         size={ButtonSize.small}
                         variant={ButtonVariant.transparent}
-                        onClick={() => onClickMapFeature(properties)}
+                        // onClick={() => onClickMapFeature(properties)}
                         classname='h-auto padding-left-0'
                     >
                         Explore
                         <FiArrowRight className="margin-left-1" />
                     </Button>
-                } */}
+                }
             </div>
 
         </div>
