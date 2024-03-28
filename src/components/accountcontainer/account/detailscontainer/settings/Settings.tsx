@@ -18,7 +18,7 @@ import Body, { BodyType, BodyColor } from '../../../../ui/typography/Body';
 import ChangePassword from './ChangePassword';
 import UpdateSuccessModal from './UpdateSuccessModel';
 import WIPDrawer from '../../../../mapContainer/WIPDrawer';
-import { AllSettingsState, UserSettingsState, spinnerState } from "../../../../../states";
+import { AllSettingsState, UserSettingsState, spinnerState, authState, userCurrencyState } from "../../../../../states";
 
 // Utilities
 import { RouteConstants } from '../../../../../constants';
@@ -33,6 +33,8 @@ const Settings = () => {
     const [open, setOpen] = useState(false);
     // all settings's data
     const settingsService = useSettingsService();
+    const [auth, setAuth] = useRecoilState(authState);
+    const setUserCurrency = useSetRecoilState(userCurrencyState);
     const [settings, setSettings] = useRecoilState(AllSettingsState);
     const [usersettings, setUserSettings] = useRecoilState(UserSettingsState);
     const [isChecked, setIsChecked] = useState(usersettings?.email_notification);
@@ -53,6 +55,12 @@ const Settings = () => {
     const handleShowModal = (flag: boolean, navigateFlag?: boolean) => {
         setShowModal(flag);
         if (navigateFlag) {
+            // remove user from local storage, set auth state to null and redirect to login page
+            localStorage.removeItem('user');
+            localStorage.removeItem('currency');
+            setAuth({});
+            setUserCurrency('');
+            setSpinner(false);
             navigate(RouteConstants.login);
         }
     }
