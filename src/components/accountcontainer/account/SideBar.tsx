@@ -41,7 +41,7 @@ const SideBar = () => {
                                     <Body 
                                     color={BodyColor.secondary}
                                     type={BodyType.p3}
-                                    classname='margin-left-right-3 li-icon'>
+                                    classname='margin-left-right-3 li-icon d-flex align-items-center'>
                                         {data.icon}
                                     </Body>
                                     <Heading

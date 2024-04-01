@@ -3,7 +3,7 @@
 .input {
     border-radius: 0.703125vh;
     border: 1px solid var(--black-2);
-    /* height: 6.75vh; */
+    height: 6.75vh;
     padding: 1.98vh;
     font-size: 1.96875vh;
 }

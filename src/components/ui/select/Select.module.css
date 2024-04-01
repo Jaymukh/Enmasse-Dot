@@ -22,23 +22,23 @@
 
 .select_medium {
     /* For state and district select */
-    min-height: 1rem;
+    min-height: 2.25vh;
     border: none;
-    font-size: 0.875rem;
+    font-size: 1.96875vh;
 }
 
 .select_medium::after {
     /* For state and district select */
-    min-height: 1rem;
+    min-height: 2.25vh;
     border: none;
-    font-size: 0.875rem;
+    font-size: 1.96875vh;
 }
 
 .select_large {
-    border-radius: 0.3125rem;
-    height: 3rem;
-    padding: 0rem 0.75rem;
-    font-size: 0.875rem;
+    border-radius: 0.703125;
+    height: 6.75vh;
+    padding: 0rem 1.6875vh;
+    font-size: 1.96875vh;
     border: 1px solid var(--black-2);
 }
 

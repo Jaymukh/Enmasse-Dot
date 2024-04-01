@@ -3,12 +3,12 @@
 .alert_box {
     bottom: 0;
     position: absolute;
-    width: 31.25rem;
-    height: 5.9375rem;
-    border-radius: 0.3125rem;
+    width: 70.3125vh;
+    height: 13.359375vh;
+    border-radius: 0.703125vh;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 1.25rem;
+    margin-bottom: 2.8125vh;
     box-shadow: 0px 4px 4px 0px var(--black-25);
     z-index: 2000;
 }
@@ -24,10 +24,10 @@
 }
 
 .alert_title {
-    font-size: 1.25rem;
+    font-size: 2.8125vh;
 }
 
 .alert_-description {
-    font-size: 0.875rem;
+    font-size: 1.96875vh;
     color: var(--light-grey-0);
 }
