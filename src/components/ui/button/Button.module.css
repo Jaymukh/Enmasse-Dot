@@ -91,7 +91,7 @@
 	background-color: transparent;
 	border: none;
 	color: var(--purple-0);
-	height: 2.25rem !important;
+	height: 5vh !important;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -282,7 +282,7 @@
 	background-color: transparent;
 	border: none;
 	color: var(--black-0);
-	height: 2.25rem !important;
+	height: 5vh !important;
 	font-weight: 500;
 	font-family: "Poppins-Medium", sans-serif;
 	opacity: 0.5;
@@ -503,8 +503,10 @@
 }
 
 .btn_avatar {
-	width: 2.1875rem !important;
-	height: 2.1875rem !important;
+	/* width: 2.1875rem !important; */
+	width: 4.921875vh !important;
+	/* height: 2.1875rem !important; */
+	height: 4.921875vh !important;
 	color: var(--white-1);
 }
 
