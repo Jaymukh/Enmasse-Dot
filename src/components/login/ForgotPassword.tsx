@@ -1,5 +1,6 @@
 // External libraries
 import React from 'react';
+import { AiOutlineClose } from "react-icons/ai";
 
 // CSS
 import '../../styles/main.css';
@@ -39,12 +40,14 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (
                     classname='text-start'
                 />
                 <Button
-                    theme={ButtonTheme.dark}
+                    theme={ButtonTheme.primary}
                     variant={ButtonVariant.transparent}
                     onClick={() => handleModal({ passwordModal: false })}
                     type='button'
-                    classname='btn-close'
-                />
+                    classname='padding-left-right-0'
+                >
+                    <AiOutlineClose fontSize={20} />
+                </Button>
             </div>
             <Body
                 type={BodyType.p4}

@@ -2,6 +2,7 @@
 // External libraries
 import { useState, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { AiOutlineClose } from "react-icons/ai";
 
 // CSS
 import '../../../styles/main.css';
@@ -97,7 +98,9 @@ const OverlayModal: React.FC<OverlayModalProps> = ({ handleContactUsDrawer }) =>
                 {(0 < showHelp) && (showHelp <= Constants.helpContent.length) && (
                     <div style={{ height: '70vh' }} className='d-flex flex-column justify-content-between'>
                         <div className='d-flex flex-row justify-content-end w-100 padding-bottom-1'>
-                            <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleOverlayModal()}></Button>
+                            <Button type="button" theme={ButtonTheme.primary} variant={ButtonVariant.transparent} classname='padding-left-right-0' onClick={() => handleOverlayModal()}>
+                            <AiOutlineClose fontSize={20} />
+                            </Button>
                         </div>
                         <div className='d-flex flex-row align-items-center h-75 margin-left-right-3'>
                             <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: 'auto' }}>

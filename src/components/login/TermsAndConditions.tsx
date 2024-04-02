@@ -1,5 +1,6 @@
 // External libraries
 import React from 'react';
+import { AiOutlineClose } from "react-icons/ai";
 
 // CSS
 import '../../styles/main.css';
@@ -40,12 +41,14 @@ const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
 						</Body>
 					</div>
 					<Button
-						theme={ButtonTheme.dark}
+						theme={ButtonTheme.primary}
 						variant={ButtonVariant.transparent}
 						onClick={() => handleModal({ tncModal: false })}
 						type='button'
-						classname='btn-close'
-					/>
+						classname='padding-left-right-0'
+					>
+						<AiOutlineClose fontSize={20} />
+					</Button>
 				</div>
 				<div className="modal-body d-flex flex-column justify-content-center align-items-center m-auto p-6 padding-top-0 modal-padding">
 					<div className=" d-flex flex-column justify-content-start modal-dialog-scrollable margin-top-bottom-2">

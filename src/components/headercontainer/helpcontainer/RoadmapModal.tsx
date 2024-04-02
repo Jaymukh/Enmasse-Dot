@@ -3,6 +3,7 @@
 // External libraries
 import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { AiOutlineClose } from "react-icons/ai";
 
 // CSS
 import '../../../styles/main.css';
@@ -62,7 +63,9 @@ const RoadmapModal: React.FC<RoadmapModalProps> = ({ showRoadmap, setShowRoadmap
             <Modal showModal={openRoadmapModal} classname='width-62-5'>
                 <div style={{ height: '70vh' }} className='d-flex flex-column justify-content-between'>
                     <div className='d-flex flex-row justify-content-end w-100 padding-bottom-1'>
-                        <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => setOpenRoadmapModal(false)}></Button>
+                        <Button type="button" theme={ButtonTheme.primary} variant={ButtonVariant.transparent} classname='padding-left-right-0' onClick={() => setOpenRoadmapModal(false)}>
+                        <AiOutlineClose fontSize={20} />
+                        </Button>
                     </div>
                     <div className='d-flex flex-row align-items-center margin-left-right-3' style={{height: '52.5vh'}}>
                         <div className="col-5 d-flex flex-row justify-content-start align-items-center" style={{ height: '52.5vh', width: '26vw' }}>

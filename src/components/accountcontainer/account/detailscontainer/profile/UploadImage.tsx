@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import Cropper from 'react-easy-crop';
 import { BiUpload } from 'react-icons/bi';
 import { MdDeleteSweep } from 'react-icons/md'
-import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
+import { AiFillMinusCircle, AiFillPlusCircle, AiOutlineClose } from 'react-icons/ai';
 import { IoMdCheckmark } from "react-icons/io";
 
 // CSS
@@ -69,7 +69,9 @@ const UploadImage: React.FC<UploadImageProps> = ({
                             colour={TypographyColor.dark}
                             classname='margin-0 margin-bottom-2'
                         />
-                        <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeUploadImageModal()}></Button>
+                        <Button type="button" theme={ButtonTheme.primary} variant={ButtonVariant.transparent} classname='padding-left-right-0' onClick={() => closeUploadImageModal()}>
+                            <AiOutlineClose fontSize={20} />
+                        </Button>
                     </div>
                     <div>
                         {newImage ?
@@ -165,7 +167,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
                                     <div className="upload-image-box margin-bottom-4 d-flex justify-content-center align-items-center bg-light" >
                                         <span className='m-auto fs-64 w-100 h-100 d-flex flex-column justify-content-center align-items-center' style={{ backgroundColor: loggedUser.userHSL, color: '#ffffff' }}>{loggedUser.initial}</span>
                                     </div>
-                                    <label className="bg-dark rounded padding-3 height-2-25 d-flex align-items-center justify-content-center"  style={{ width: 'fit-content' }}>
+                                    <label className="bg-purple rounded padding-3 height-2-25 d-flex align-items-center justify-content-center"  style={{ width: 'fit-content' }}>
                                         <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                                         <div className="d-flex">
                                             <BiUpload fontSize={20} className='margin-right-2 text-white' />

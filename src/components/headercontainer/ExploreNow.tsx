@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { MdOutlineTravelExplore } from 'react-icons/md';
+import { AiOutlineClose } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 
 // CSS
@@ -135,12 +136,14 @@ const ExploreNow = () => {
 						colour={TypographyColor.dark}
 					/>
 					<Button
-						theme={ButtonTheme.dark}
+						theme={ButtonTheme.primary}
 						variant={ButtonVariant.transparent}
 						onClick={() => handleModalOpen(false)}
 						type='button'
-						classname='btn-close'
-					/>
+						classname='padding-left-right-0'
+					>
+						<AiOutlineClose fontSize={20} />
+					</Button>
 				</div>
 				<div className='' style={{ maxHeight: '68vh', minHeight: '68vh', minWidth: '56.27vw', maxWidth: '60vw' }}>
 					<div className='margin-left-right-2'>
@@ -162,12 +165,14 @@ const ExploreNow = () => {
 										classname='margin-bottom-0'
 									/>
 									<Button
-										theme={ButtonTheme.dark}
+										theme={ButtonTheme.primary}
 										variant={ButtonVariant.transparent}
 										onClick={() => handleCloseSelected(index)}
 										type='button'
-										classname='btn-close'
-									/>
+										classname='padding-left-right-0'
+									>
+										<AiOutlineClose fontSize={20} />
+									</Button>
 								</>)
 							))}
 

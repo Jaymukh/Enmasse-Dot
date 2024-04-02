@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import styles from "./Toast.module.css";
-import { IoIosCheckmarkCircle } from "react-icons/io";
-import { BiSolidErrorCircle } from 'react-icons/bi';
-import { errorState } from '../../../states';
 import { useRecoilState } from 'recoil';
+import { IoIosCheckmarkCircle } from "react-icons/io";
+import { AiOutlineClose } from "react-icons/ai";
+import { BiSolidErrorCircle } from 'react-icons/bi';
+import styles from "./Toast.module.css";
+import { errorState } from '../../../states';
 import { Button, ButtonTheme, ButtonVariant } from '../button/Button';
 
 const Toast = () => {
@@ -51,12 +52,14 @@ const Toast = () => {
                 </div>
                 <div className='d-flex align-items-start h-100 padding-top-bottom-3 padding-right-1'>
                     <Button
-                        theme={ButtonTheme.dark}
+                        theme={ButtonTheme.primary}
                         variant={ButtonVariant.transparent}
                         onClick={onClose}
                         type='button'
-                        classname='btn-close'
-                    />
+                        classname='padding-left-right-0'
+                    >
+                        <AiOutlineClose fontSize={20} />
+                    </Button>
                 </div>
 
             </div>}

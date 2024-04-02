@@ -1,6 +1,7 @@
 // External libraries
 import React from 'react'
 import { MdCancel } from 'react-icons/md';
+import { AiOutlineClose } from "react-icons/ai";
 
 // CSS
 import '../../../../../styles/main.css';
@@ -26,7 +27,15 @@ const ConfirmDelete: React.FC<ConfirmDeleteProps> = ({
         <div>
             <Modal showModal={showConfirmDeleteModal} classname='width-18-75' >
                 <div className='d-flex flex-row justify-content-end w-100 padding-bottom-1'>
-                    <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => closeConfirmDeleteModal()}></Button>
+                    <Button
+                        theme={ButtonTheme.primary}
+                        size={ButtonSize.small}
+                        variant={ButtonVariant.transparent}
+                        onClick={() => closeConfirmDeleteModal()}
+                        classname='padding-left-right-0'
+                    >
+                        <AiOutlineClose fontSize={20} />
+                    </Button>
                 </div>
                 <div className='d-flex justify-content-center'>
                     <MdCancel className='text-center fs-60 color-orange' />

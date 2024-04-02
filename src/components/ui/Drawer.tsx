@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineClose } from "react-icons/ai";
 import { Heading, TypographyColor, TypographyType } from '../ui/typography/Heading';
 import { Button, ButtonTheme, ButtonVariant } from './button/Button';
 
@@ -22,12 +23,13 @@ const Drawer: React.FC<DrawerProps> = ({ id, title, isOpen, toggleFunction, chil
                         classname='padding-0 text-start padding-right-3 margin-0'
                     />
                     <Button
-                        theme={ButtonTheme.dark}
+                        theme={ButtonTheme.primary}
                         variant={ButtonVariant.transparent}
                         onClick={() => toggleFunction(false)}
-                        // type='button'
-                        classname='btn-close'
-                    />
+                        classname='padding-left-right-0'
+                    >
+                        <AiOutlineClose fontSize={20} />
+                    </Button>
                 </div>
                 <div className="margin-top-bottom-3" style={{ overflowY: 'auto', overflowX: 'hidden' }}>
                     {children}

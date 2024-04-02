@@ -1,6 +1,7 @@
 // External libraries
 import React from 'react'
 import { MdCancel } from 'react-icons/md';
+import { AiOutlineClose } from "react-icons/ai";
 
 // CSS
 import '../../../../../styles/main.css';
@@ -26,7 +27,9 @@ const DeleteImage: React.FC<DeleteImageProps> = ({
         <div>
             <Modal showModal={showDeleteImageModal} classname='width-18-75' >
                 <div className='d-flex flex-row justify-content-end w-100 padding-0'>
-                    <Button type="button" theme={ButtonTheme.dark} variant={ButtonVariant.transparent} classname="btn-close" onClick={() => handleDeleteModel(false)}></Button>
+                    <Button type="button" theme={ButtonTheme.primary} variant={ButtonVariant.transparent} classname='padding-left-right-0' onClick={() => handleDeleteModel(false)}>
+                        <AiOutlineClose fontSize={20} />
+                    </Button>
                 </div>
                 <div d-flex justify-content-center>
                     <MdCancel className='text-center fs-60 color-orange' />
